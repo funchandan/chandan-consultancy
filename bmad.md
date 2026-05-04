@@ -128,3 +128,75 @@ Replace these with verified values before final publishing:
 - Revenue recovery or retention impact after US diagnostic work.
 - Stryker and HP impact numbers (turnaround time, error reduction, productivity gains).
 
+---
+
+## 10) Architect: commits, timing, and verification
+
+Use this as the system layer for how and when you ship changes to the portfolio repo. Goal: small, reviewable commits; nothing accidental in history; easy rollback.
+
+### When to commit
+
+1. **After a coherent unit of work** — one narrative or one system change (e.g. “nav + border tokens” or “Stryker case study page”), not half a card and unrelated CSS.
+2. **Before you switch context** — end of session, before meetings, or before trying a risky experiment (branch or stash first if experimenting).
+3. **Before merge or share** — rebase or merge only when `git status` is clean and checks below pass.
+4. **Not** on every keystroke — batch copy and asset tweaks so history stays readable.
+
+### What to commit (and what not to)
+
+**Include**
+
+- Site HTML, CSS, and any assets that belong on the public site.
+- `bmad.md` when narrative, positioning, or workflow rules change.
+
+**Exclude (do not add)**
+
+- `.cursor/` — IDE/agent local state; add `.gitignore` entry `.cursor/` if it keeps appearing.
+- Secrets: API keys, client-only PDFs, unpublished metrics, private email unless you intend them public.
+- Generated junk: OS files (`.DS_Store`) if you add a global or repo ignore.
+
+**Granularity**
+
+- Prefer **one commit per theme**: e.g. `feat(site): Stryker + HP case studies and work index` vs mixing unrelated `about.html` rewrites in the same commit unless they are one deliberate “launch slice”.
+
+### Suggested commit message shape
+
+- `feat(site): …` — new pages, sections, case studies.
+- `fix(site): …` — broken links, typos, nav mistakes.
+- `style(css): …` — borders, tokens, layout only.
+- `docs: …` — `bmad.md` or README-only.
+
+First line ~72 chars; body optional for “why” and “what changed for the reader”.
+
+### Pre-commit checklist (Architect + QA)
+
+Run locally before `git add` / commit:
+
+1. `git status` — only files you mean to ship; no surprise paths.
+2. `git diff` — scan for placeholder copy, wrong client names, or accidental deletes.
+3. **Links** — open `index.html`, `work.html`, each case study; click nav and primary CTAs (or grep `href=` against filenames you ship).
+4. **One voice** — brand/footer/nav match across pages you touched (legacy pages may still say “Your Name” until updated).
+5. **Claims** — no new hard metrics unless verified (see section 9).
+
+Optional if you add tooling later: HTML validator, Lighthouse, or a static server preview.
+
+### Checks run now (template for your machine)
+
+Execute from repo root:
+
+```bash
+git status -sb
+git diff
+git diff --stat
+```
+
+**Interpretation**
+
+- **Clean working tree, nothing to commit** — either already committed or edits not saved; confirm files on disk.
+- **Untracked only** — `git add` the HTML/CSS/docs you want versioned; leave `.cursor/` out.
+- **Mixed tracked + untracked** — add tracked changes in logical groups; decide whether legacy pages (`about.html`, `consulting.html`, `case-study-1.html`, `brand-guidelines.html`) go in the same commit or a follow-up “align legacy nav” commit.
+
+### After commit
+
+- `git log -1 --stat` — confirm files and message.
+- If using remote: `git push` after branch is ready; use PR for anything non-trivial so diff stays reviewable.
+
