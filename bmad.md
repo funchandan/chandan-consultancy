@@ -100,6 +100,7 @@ Use these role prompts when writing or refining any page.
   - Choose page structure and information hierarchy.
 - UX Designer
   - Shape readability, narrative flow, and section-level clarity.
+  - Hero “resources” panels: do not cap body copy with a very tight `max-width` (e.g. low `ch`) inside a wide card—it causes awkward wraps and orphaned words; prefer `min(ch, %)` or let the copy use the card width with padding only.
 - Data/Analytics Specialist
   - Insert measurable proof points and metric framing.
 - QA Engineer
