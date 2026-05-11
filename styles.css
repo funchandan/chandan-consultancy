@@ -396,6 +396,10 @@ html[data-theme="dark"] .site-header {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--nav-touch-target);
+  padding: 0 4px;
   font-family: var(--font-heading);
   font-size: 1.04rem;
   font-weight: 600;
@@ -1267,6 +1271,13 @@ html[data-theme="dark"] .hero-mira__surface {
 .hero-mira[data-mira-state="replied"]   [data-mira-show-when*="replied"]   { display: block; }
 .hero-mira[data-mira-state="calendar"]  [data-mira-show-when*="calendar"]  { display: block; }
 
+/* Per-element display overrides for elements that need non-block layout
+   when shown by the state-based rules above. Higher specificity wins. */
+.hero-mira[data-mira-state="idle"]      .hero-mira__chips[data-mira-show-when*="idle"],
+.hero-mira[data-mira-state="listening"] .hero-mira__chips[data-mira-show-when*="listening"] {
+  display: flex;
+}
+
 /* --- mic (primary affordance) --- */
 .hero-mira__mic {
   align-self: center;
@@ -1388,28 +1399,37 @@ html[data-theme="dark"] .hero-mira__surface {
   outline-offset: 2px;
 }
 
-/* --- JTBD action pills (v1.3: Sally's 4-up grid, equal widths) ---
-   4 pills cap; longest copy ~22ch fits cleanly at 13.5px Manrope on
-   the ~820px inner surface width. Mobile (≤480px) collapses to 2×2.
-   No horizontal scroll — JTBDs must be visible without swipe. */
+/* --- JTBD action pills (Manus.ai pattern + locked v1 spec) ---
+   Horizontal row of variable-width pills with Lucide icon prefixes.
+   Stretches edge-to-edge of the input row via space-between justification;
+   pills retain natural widths (flex: 0 0 auto) so they read as
+   distinct chips rather than equal-grid columns. Leftmost pill gets
+   accent tint as the headline action (locked pill spec §4.4).
+
+   Mobile fallback (<600px): fall back to flex-start + 8px gap so pills
+   don't get stretched apart on narrow viewports. */
 .hero-mira__chips {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   padding: 0;
   margin: 0;
   list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .hero-mira__chips > li {
-  min-width: 0;
+  margin: 0;
+  padding: 0;
+  flex: 0 0 auto;
 }
 
 .hero-mira__chip {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
   height: 36px;
   appearance: none;
   background: color-mix(in srgb, var(--accent) 5%, transparent);
@@ -1423,10 +1443,29 @@ html[data-theme="dark"] .hero-mira__surface {
   line-height: 1;
   letter-spacing: -0.005em;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   cursor: pointer;
   transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.hero-mira__chip-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  color: inherit;
+  flex-shrink: 0;
+}
+.hero-mira__chip-icon > svg { width: 16px; height: 16px; display: block; }
+
+/* Primary pill — leftmost only, accent-tinted (locked spec §4.4) */
+.hero-mira__chip--primary {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 28%, transparent);
+}
+.hero-mira__chip--primary .hero-mira__chip-icon {
+  color: var(--accent);
 }
 
 .hero-mira__chip:focus-visible {
@@ -1437,6 +1476,18 @@ html[data-theme="dark"] .hero-mira__surface {
 html[data-theme="dark"] .hero-mira__chip {
   background: color-mix(in srgb, var(--accent) 8%, transparent);
   border-color: color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+html[data-theme="dark"] .hero-mira__chip--primary {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 36%, transparent);
+}
+
+@media (max-width: 600px) {
+  .hero-mira__chips {
+    justify-content: flex-start;
+    gap: 8px;
+  }
 }
 
 /* --- secondary CTA --- */
@@ -1498,8 +1549,8 @@ html[data-theme="dark"] .hero-mira__chip {
 @media (max-width: 480px) {
   .hero-mira { gap: 24px; padding: 48px 18px 56px; }
   .hero-mira__h1 { max-width: none; }
-  /* Pills collapse to 2x2 (Sally v1.3 — no horizontal scroll on hero) */
-  .hero-mira__chips { grid-template-columns: repeat(2, 1fr); }
+  /* Pills use flex-wrap (above) — no special mobile rule needed.
+     They wrap naturally to the next line if the row overflows. */
   .hero-mira__mic-icon { width: 64px; height: 64px; }
   .hero-mira__mic-icon svg { width: 24px; height: 24px; }
 }
@@ -5894,3 +5945,150 @@ html[data-theme="dark"] .home-page .framework-visual figcaption {
     grid-template-columns: 1fr;
   }
 }
+
+/* ---------------------------------------------------------------- */
+/* Navbar revamp v1 (Slice A1) — canonical shell additions           */
+/* Scope: skip-to-content, sticky reserved height, .nav-cta pill,    */
+/* tightened :focus-visible, reduced-motion safety.                  */
+/* ---------------------------------------------------------------- */
+
+:root {
+  --site-header-height: var(--nav-height-desktop, 62px);
+}
+
+/* Reserve sticky-header layout space so JS init contributes 0 to CLS. */
+.site-header {
+  min-height: var(--site-header-height);
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --site-header-height: var(--nav-height-mobile, 52px);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  :root {
+    --site-header-height: 50px;
+  }
+}
+
+/* Skip-to-content: hidden offscreen until focused; first focusable on page. */
+.skip-to-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 10px 14px;
+  background: var(--card, #ffffff);
+  color: var(--ink, #0d1521);
+  border: 2px solid var(--focus-ring, #2f6fed);
+  border-radius: 6px;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-150%);
+  transition: transform 160ms ease;
+}
+
+.skip-to-content:focus,
+.skip-to-content:focus-visible {
+  transform: translateY(8px);
+  outline: 2px solid var(--focus-ring, #2f6fed);
+  outline-offset: 2px;
+}
+
+html[data-theme="dark"] .skip-to-content {
+  background: #0e1626;
+  color: #edf2fb;
+  border-color: var(--focus-ring, #9ec5ff);
+}
+
+/* Primary CTA pill: rightmost element of the nav on every page. */
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--nav-touch-target, 44px);
+  padding: 8px 18px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--accent, #4164d8);
+  color: #ffffff;
+  font-family: var(--font-ui);
+  font-size: var(--nav-link-font-size, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-cta:hover {
+    background: #2f4fc2;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(23, 34, 54, 0.18);
+  }
+}
+
+@supports (background: color-mix(in srgb, red, blue)) {
+  @media (hover: hover) and (pointer: fine) {
+    .nav-cta:hover {
+      background: color-mix(in srgb, var(--accent, #4164d8) 88%, #000 12%);
+    }
+  }
+}
+
+html[data-theme="dark"] .nav-cta {
+  background: #4f73e6;
+  color: #ffffff;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html[data-theme="dark"] .nav-cta:hover {
+    background: #6685ec;
+    box-shadow: 0 6px 18px rgba(2, 8, 18, 0.4);
+  }
+}
+
+/* Dialog variant: full-width pill inside the mobile menu list.            */
+/* Specificity bumped via .nav-links--dialog scope so .nav-links a rules   */
+/* (line 420) don't override the pill background/border/radius.           */
+.nav-cta--dialog,
+.nav-links--dialog .nav-cta--dialog,
+.site-nav-dialog .nav-cta--dialog {
+  width: 100%;
+  margin-top: 6px;
+  min-height: var(--nav-touch-target, 44px);
+  border-bottom: 0;
+  border-radius: 999px;
+  background: var(--accent, #4164d8);
+  color: #ffffff;
+}
+
+/* Tightened focus rings for every interactive nav element. */
+.skip-to-content:focus-visible,
+.brand:focus-visible,
+.nav-links a:focus-visible,
+.nav-cta:focus-visible,
+.nav-menu-toggle:focus-visible {
+  outline: 2px solid var(--focus-ring, #2f6fed);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Reduced-motion: disable any newly added transitions AND hover transforms. */
+@media (prefers-reduced-motion: reduce) {
+  .nav-cta,
+  .skip-to-content {
+    transition: none;
+  }
+  .nav-cta:hover,
+  html[data-theme="dark"] .nav-cta:hover {
+    transform: none;
+  }
+}
+

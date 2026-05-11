@@ -12,9 +12,10 @@
   <script src="assets/framework-puzzle.js" defer></script>
 </head>
 <body class="home-page">
+  <a class="skip-to-content" href="#main">Skip to content</a>
   <header class="site-header">
-    <nav class="nav shell" data-site-nav aria-label="Main navigation">
-      <a class="brand" href="index.html">Chandan Sharma</a>
+    <nav class="nav shell" data-site-nav aria-label="Primary">
+      <a class="brand" href="index.html" data-nav-brand>Chandan Sharma</a>
       <button type="button" class="nav-menu-toggle" id="site-nav-open" aria-expanded="false" aria-controls="site-nav-dialog" aria-label="Open menu">
         <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
         <span class="nav-menu-toggle__label">Menu</span>
@@ -27,26 +28,24 @@
               <button type="submit" class="site-nav-dialog__close">Close</button>
             </form>
           </div>
-          <div class="nav-links nav-links--dialog">
-            <a href="work.html">Work</a>
-            <a href="#resources">Resources</a>
-            <a href="#approach">Approach</a>
-            <a href="mailto:hello@example.com">Contact</a>
-            <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">◐</button>
+          <div class="nav-links nav-links--dialog" data-nav-links-dialog>
+            <a href="work.html" data-nav-item="work">Work</a>
+            <a href="services.html" data-nav-item="services">Services</a>
+            <a href="about.html" data-nav-item="about">About</a>
+            <a class="nav-cta nav-cta--dialog" href="mailto:hello@example.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
           </div>
         </div>
       </dialog>
-      <div class="nav-links nav-links--desktop">
-        <a href="work.html">Work</a>
-        <a href="#resources">Resources</a>
-        <a href="#approach">Approach</a>
-        <a href="mailto:hello@example.com">Contact</a>
-        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">◐</button>
+      <div class="nav-links nav-links--desktop" data-nav-links>
+        <a href="work.html" data-nav-item="work">Work</a>
+        <a href="services.html" data-nav-item="services">Services</a>
+        <a href="about.html" data-nav-item="about">About</a>
       </div>
+      <a class="nav-cta" href="mailto:hello@example.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
     </nav>
   </header>
 
-  <main>
+  <main id="main" tabindex="-1">
     <!--
       hero-mira (v1.1 — John × Sally party-mode iteration over Phase 0)
       Spec: _bmad-output/planning-artifacts/hero-saas-experience-ux-spec-v1.md
@@ -130,18 +129,45 @@
         </form>
 
         <!--
-          JTBD action pills (Manus.ai pattern).
-          Reconciled from John (PM) × Sally (UX) v1.3 roundtable:
-          - 4 pills (Sally's 4-up grid cap; 5 would ellipsise at 820px)
-          - Founder-voiced first-person copy (John's voice), compressed to
-            Sally's ~22ch ceiling so widths stay uniform in the grid.
-          - Each pill kicks a distinct scripted flow in Phase 1.
+          JTBD action pills — locked v1 spec, party-mode ship (2026-05-11).
+          - 4 pills, Paige's locked v1 copy (imperative peer voice).
+          - Leftmost = primary (accent-tinted) per locked spec §4.4.
+          - Lucide monoline icons (16×16, 1.5 stroke) leading each label.
+          - Row stretches edge-to-edge of input box (justify-content: space-between).
         -->
         <ul class="hero-mira__chips" data-mira-show-when="idle,listening" aria-label="Quick start">
-          <li><button type="button" class="hero-mira__chip" data-mira-chip="scope">Help me scope an idea</button></li>
-          <li><button type="button" class="hero-mira__chip" data-mira-chip="ai-feature">Where should AI fit?</button></li>
-          <li><button type="button" class="hero-mira__chip" data-mira-chip="audit">Audit my codebase</button></li>
-          <li><button type="button" class="hero-mira__chip" data-mira-chip="estimate">Cost &amp; timeline check</button></li>
+          <li>
+            <button type="button" class="hero-mira__chip hero-mira__chip--primary" data-mira-chip="scope">
+              <span class="hero-mira__chip-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+              </span>
+              Scope my build
+            </button>
+          </li>
+          <li>
+            <button type="button" class="hero-mira__chip" data-mira-chip="ai-placement">
+              <span class="hero-mira__chip-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              </span>
+              Place AI right
+            </button>
+          </li>
+          <li>
+            <button type="button" class="hero-mira__chip" data-mira-chip="audit">
+              <span class="hero-mira__chip-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></svg>
+              </span>
+              Audit my stack
+            </button>
+          </li>
+          <li>
+            <button type="button" class="hero-mira__chip" data-mira-chip="pressure-test">
+              <span class="hero-mira__chip-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
+              </span>
+              Pressure-test build
+            </button>
+          </li>
         </ul>
 
         <div class="hero-mira__calendar" data-mira-show-when="calendar">
@@ -177,7 +203,7 @@
                 <p class="offering-card__payoff">Ship predictably without rebuilding your leadership bench.</p>
                 <p class="offering-card__context">Senior product leadership, embedded with your team.</p>
                 <p class="offering-card__deliverable">Weekly roadmap, PRDs, and a shipping rhythm.</p>
-                <a class="button offering-card__action offering-card__action--sale offering-card__action--service offering-card__action--arrow" href="consulting.html#offering-embedded" aria-label="Learn more about embedded product and engineering">Learn more</a>
+                <a class="button offering-card__action offering-card__action--sale offering-card__action--service offering-card__action--arrow" href="services.html#offering-embedded" aria-label="Learn more about embedded product and engineering">Learn more</a>
               </div>
             </article>
             <article class="offering-card offering-card--service">
@@ -186,7 +212,7 @@
                 <p class="offering-card__payoff">Your product feels like one product, not ten.</p>
                 <p class="offering-card__context">Scattered features become one coherent product.</p>
                 <p class="offering-card__deliverable">Audit, north star, and a 90-day cohesion plan.</p>
-                <a class="button offering-card__action offering-card__action--sale offering-card__action--service offering-card__action--arrow" href="consulting.html#offering-ux-systems" aria-label="Learn more about UX strategy and design systems">Learn more</a>
+                <a class="button offering-card__action offering-card__action--sale offering-card__action--service offering-card__action--arrow" href="services.html#offering-ux-systems" aria-label="Learn more about UX strategy and design systems">Learn more</a>
               </div>
             </article>
             <article class="offering-card offering-card--service">
@@ -195,7 +221,7 @@
                 <p class="offering-card__payoff">Let AI near the decisions you can't get wrong.</p>
                 <p class="offering-card__context">Human-in-the-loop AI where mistakes are expensive.</p>
                 <p class="offering-card__deliverable">Decision map, guardrails, and one tested pilot.</p>
-                <a class="button offering-card__action offering-card__action--sale offering-card__action--service offering-card__action--arrow" href="consulting.html#offering-cyber-ai" aria-label="Learn more about cybersecurity and AI workflow UX">Learn more</a>
+                <a class="button offering-card__action offering-card__action--sale offering-card__action--service offering-card__action--arrow" href="services.html#offering-cyber-ai" aria-label="Learn more about cybersecurity and AI workflow UX">Learn more</a>
               </div>
             </article>
         </div>
@@ -462,6 +488,107 @@
                 </div>
               </div>
             </li>
+
+              <!-- Frame 05 — the close, rebuilt as a contact sheet.
+                   Sally × Paige × John party-mode v2: promote the Polaroid
+                   metaphor instead of abandoning it. Frames 01–04 become
+                   miniature receipts inside a working photographer's
+                   contact sheet; the empty 5th cell is the visitor's turn.
+                   No button — a single china-marker arrow curves into the
+                   empty cell and an underlined "take the fifth frame →" link
+                   beneath the grid carries the action. Influences:
+                   Cartier-Bresson Magnum sheets, Robert Frank Americans
+                   working sheets, Saul Bass. -->
+              <li class="framework-step framework-step--close" data-frame="5" style="--rot:0deg">
+                <div class="contact-sheet" data-contact-sheet>
+                  <ul class="contact-sheet__grid" aria-label="Contact sheet of the four methodology frames">
+                    <li class="contact-sheet__cell" data-cell="1">
+                      <span class="contact-sheet__mini" role="img" aria-label="Frame 1 — Map the system.">
+                        <svg viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                          <rect width="80" height="60" fill="#efe9dd"/>
+                          <circle cx="22" cy="20" r="3" fill="#3d3933" opacity="0.55"/>
+                          <circle cx="50" cy="14" r="3" fill="#3d3933" opacity="0.55"/>
+                          <circle cx="62" cy="34" r="3" fill="#3d3933" opacity="0.55"/>
+                          <circle cx="32" cy="42" r="3" fill="#3d3933" opacity="0.55"/>
+                          <path d="M22,20 L50,14 L62,34 L32,42" stroke="#3d3933" stroke-width="0.9" fill="none" opacity="0.4"/>
+                          <circle cx="50" cy="14" r="8" stroke="#B83A2E" stroke-width="1.4" fill="none" opacity="0.85"/>
+                        </svg>
+                      </span>
+                      <span class="contact-sheet__caption">
+                        <span class="contact-sheet__step">Map</span>
+                        <span class="contact-sheet__num" aria-hidden="true">01</span>
+                      </span>
+                    </li>
+                    <li class="contact-sheet__cell" data-cell="2">
+                      <span class="contact-sheet__mini" role="img" aria-label="Frame 2 — Commit the bet.">
+                        <svg viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                          <rect width="80" height="60" fill="#efe9dd"/>
+                          <line x1="40" y1="10" x2="40" y2="50" stroke="#3d3933" stroke-width="0.7" opacity="0.4"/>
+                          <line x1="14" y1="30" x2="66" y2="30" stroke="#3d3933" stroke-width="0.7" opacity="0.4"/>
+                          <rect x="44" y="14" width="20" height="14" stroke="#B83A2E" stroke-width="1.4" fill="none" opacity="0.85"/>
+                        </svg>
+                      </span>
+                      <span class="contact-sheet__caption">
+                        <span class="contact-sheet__step">Commit</span>
+                        <span class="contact-sheet__num" aria-hidden="true">02</span>
+                      </span>
+                    </li>
+                    <li class="contact-sheet__cell" data-cell="3">
+                      <span class="contact-sheet__mini" role="img" aria-label="Frame 3 — Ship the spine first.">
+                        <svg viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                          <rect width="80" height="60" fill="#efe9dd"/>
+                          <rect x="18" y="14" width="14" height="32" fill="#3d3933" opacity="0.18"/>
+                          <rect x="42" y="20" width="22" height="4" fill="#3d3933" opacity="0.55"/>
+                          <rect x="42" y="28" width="22" height="4" fill="#3d3933" opacity="0.55"/>
+                          <rect x="42" y="36" width="22" height="4" fill="#3d3933" opacity="0.4"/>
+                          <circle cx="58" cy="22" r="2" fill="#B83A2E" opacity="0.85"/>
+                        </svg>
+                      </span>
+                      <span class="contact-sheet__caption">
+                        <span class="contact-sheet__step">Ship</span>
+                        <span class="contact-sheet__num" aria-hidden="true">03</span>
+                      </span>
+                    </li>
+                    <li class="contact-sheet__cell" data-cell="4">
+                      <span class="contact-sheet__mini" role="img" aria-label="Frame 4 — The receipts.">
+                        <svg viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                          <rect width="80" height="60" fill="#efe9dd"/>
+                          <path d="M12,40 L24,32 L36,34 L48,22 L62,18 L70,14" stroke="#3d3933" stroke-width="1.1" fill="none" opacity="0.55"/>
+                          <circle cx="48" cy="22" r="3.5" stroke="#1c6e44" stroke-width="1.4" fill="none"/>
+                          <circle cx="36" cy="34" r="3.5" stroke="#B83A2E" stroke-width="1.4" fill="none"/>
+                        </svg>
+                      </span>
+                      <span class="contact-sheet__caption">
+                        <span class="contact-sheet__step">Receipts</span>
+                        <span class="contact-sheet__num" aria-hidden="true">04</span>
+                      </span>
+                    </li>
+                    <li class="contact-sheet__cell contact-sheet__cell--empty" data-cell="5">
+                      <span class="contact-sheet__empty" aria-hidden="true"></span>
+                      <span class="contact-sheet__caption">
+                        <span class="contact-sheet__step contact-sheet__step--live">Your loop</span>
+                        <span class="contact-sheet__num contact-sheet__num--circled" aria-hidden="true">05</span>
+                      </span>
+                    </li>
+                  </ul>
+                  <svg class="contact-sheet__arrow" viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M200,18 C 170,32 130,52 92,84 L 78,98" stroke="#B83A2E" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/>
+                    <path d="M78,98 L 96,92 M78,98 L 82,82" stroke="#B83A2E" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/>
+                  </svg>
+                </div>
+                <a class="contact-sheet__cta" href="mailto:hello@example.com?subject=Teardown%20request" data-framework-cta-close>
+                  <span class="contact-sheet__cta-text">take the fifth frame</span>
+                  <span class="contact-sheet__cta-arrow" aria-hidden="true">→</span>
+                </a>
+                <div id="step-5-reveal" class="framework-reveal contact-sheet__body" data-framework-reveal data-step="5">
+                  <div class="framework-reveal__inner">
+                    <div class="framework-reveal__copy" data-tier-copy>
+                      <p>Bring one real decision — a bet, a launch, or receipts you can't read clearly. Thirty minutes, we trace it through the four moves. Right-fit only; I take about two in five.</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
               </ul>
           </div>
 
