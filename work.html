@@ -2,18 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Work | Chandan Sharma</title>
   <meta name="description" content="Case studies across healthcare UX and AI-assisted field operations, focused on measurable user and business outcomes." />
   <link rel="stylesheet" href="styles.css" />
+  <script src="assets/site-nav.js" defer></script>
 </head>
 <body>
   <header class="site-header">
-    <nav class="nav shell" aria-label="Main navigation">
+    <nav class="nav shell" data-site-nav aria-label="Main navigation">
       <a class="brand" href="index.html">Chandan Sharma</a>
-      <div class="nav-links">
+      <button type="button" class="nav-menu-toggle" id="site-nav-open" aria-expanded="false" aria-controls="site-nav-dialog" aria-label="Open menu">
+        <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-menu-toggle__label">Menu</span>
+      </button>
+      <dialog id="site-nav-dialog" class="site-nav-dialog" aria-labelledby="site-nav-dialog-title">
+        <div class="site-nav-dialog__panel">
+          <div class="site-nav-dialog__header">
+            <p id="site-nav-dialog-title" class="site-nav-dialog__title">Menu</p>
+            <form method="dialog">
+              <button type="submit" class="site-nav-dialog__close">Close</button>
+            </form>
+          </div>
+          <div class="nav-links nav-links--dialog">
+            <a class="active" href="work.html">Work</a>
+            <a href="index.html#resources">Resources</a>
+            <a href="index.html#approach">Approach</a>
+            <a href="mailto:hello@example.com?subject=Experience%20consulting%20%E2%80%93%20intro">Contact</a>
+          </div>
+        </div>
+      </dialog>
+      <div class="nav-links nav-links--desktop">
         <a class="active" href="work.html">Work</a>
-        <a href="index.html#playbook">Resources</a>
+        <a href="index.html#resources">Resources</a>
         <a href="index.html#approach">Approach</a>
         <a href="mailto:hello@example.com?subject=Experience%20consulting%20%E2%80%93%20intro">Contact</a>
       </div>
@@ -45,14 +66,14 @@
                 <rect x="24" y="28" width="52" height="8" rx="2" fill="#eef0f2"/>
                 <rect x="24" y="42" width="88" height="6" rx="2" fill="#f3f4f5"/>
                 <rect x="120" y="28" width="56" height="22" rx="4" fill="var(--color-brand-primary)" opacity="0.12"/>
-                <text x="148" y="43" text-anchor="middle" fill="var(--color-brand-primary)" font-size="8" font-family="Inter,system-ui,sans-serif" font-weight="600">Skill</text>
+                <text x="148" y="43" text-anchor="middle" fill="var(--color-brand-primary)" font-size="8" font-family="Manrope,Inter,system-ui,sans-serif" font-weight="600">Skill</text>
               </svg>
             </div>
             <span class="visual-kicker">Healthcare UX</span>
           </div>
           <div class="work-card-body">
             <p class="project-type">Case study 01</p>
-            <h2>Stryker: UX systems for robotic surgery operations</h2>
+            <h2>UX systems for robotic surgery operations</h2>
             <p>Designing compliance-aware workflows and decision-support touchpoints to reduce operational risk in high-stakes clinical operations.</p>
           </div>
           <div class="work-card-cta">
@@ -86,6 +107,33 @@
           </div>
           <div class="work-card-cta">
             <a class="button button-primary" href="case-study-2.html">Read case study</a>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-card-visual" aria-hidden="true">
+            <div class="visual-frame">
+              <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="8" y="12" width="184" height="136" rx="8" stroke="#c5c8cc" stroke-width="1.2" fill="#fff"/>
+                <path d="M36 52c18-22 48-22 66 0" stroke="var(--color-brand-primary)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+                <circle cx="56" cy="48" r="4" fill="var(--color-brand-primary)" opacity="0.85"/>
+                <circle cx="82" cy="48" r="4" fill="var(--color-brand-primary)" opacity="0.55"/>
+                <rect x="32" y="78" width="136" height="36" rx="6" fill="#f6f7f8" stroke="var(--color-border-default)" stroke-width="1"/>
+                <rect x="42" y="88" width="72" height="6" rx="2" fill="#e3e6ea"/>
+                <rect x="42" y="98" width="96" height="5" rx="2" fill="#eef0f2"/>
+                <rect x="124" y="86" width="36" height="20" rx="4" fill="var(--color-brand-primary)" opacity="0.15"/>
+                <text x="142" y="100" text-anchor="middle" fill="var(--color-brand-primary)" font-size="7" font-family="Manrope,Inter,system-ui,sans-serif" font-weight="600">AI</text>
+              </svg>
+            </div>
+            <span class="visual-kicker">Pattern study · generative CX</span>
+          </div>
+          <div class="work-card-body">
+            <p class="project-type">Pattern study 03</p>
+            <h2>Trust-first AI inside the lesson loop</h2>
+            <p>Desk research on conversational practice and correction in consumer language products—pacing, explainability, and emotional safety.</p>
+          </div>
+          <div class="work-card-cta">
+            <a class="button button-primary" href="case-study-3.html">Read pattern study</a>
           </div>
         </article>
       </div>

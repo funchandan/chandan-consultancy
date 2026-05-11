@@ -2,18 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>HP Field Operations AI UX | Case Study</title>
-  <meta name="description" content="UX case study on AI-assisted field service workflows at HP, focused on faster diagnosis, clearer decisions, and lower turnaround time." />
+  <meta name="description" content="Case study: AI-assisted field service UX for HP—decision support, parts flows, and agent agency under real-world constraints." />
   <link rel="stylesheet" href="styles.css" />
+  <script src="assets/site-nav.js" defer></script>
 </head>
-<body>
+<!-- §16 trace (internal): archetype B2B/enterprise workflow + AI-assisted UX. QM-01 journey/event framing, QM-06 task-critical paths, QL-02 contextual inquiry themes, QL-03 moderated flows. G-tier: outcomes framed G1–G2 unless client publishes metrics. -->
+<body class="case-study-refresh-page">
   <header class="site-header">
-    <nav class="nav shell" aria-label="Main navigation">
+    <nav class="nav shell" data-site-nav aria-label="Main navigation">
       <a class="brand" href="index.html">Chandan Sharma</a>
-      <div class="nav-links">
-        <a class="active" href="work.html">Work</a>
-        <a href="index.html#playbook">Resources</a>
+      <button type="button" class="nav-menu-toggle" id="site-nav-open" aria-expanded="false" aria-controls="site-nav-dialog" aria-label="Open menu">
+        <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-menu-toggle__label">Menu</span>
+      </button>
+      <dialog id="site-nav-dialog" class="site-nav-dialog" aria-labelledby="site-nav-dialog-title">
+        <div class="site-nav-dialog__panel">
+          <div class="site-nav-dialog__header">
+            <p id="site-nav-dialog-title" class="site-nav-dialog__title">Menu</p>
+            <form method="dialog">
+              <button type="submit" class="site-nav-dialog__close">Close</button>
+            </form>
+          </div>
+          <div class="nav-links nav-links--dialog">
+            <a href="work.html">Work</a>
+            <a href="index.html#resources">Resources</a>
+            <a href="index.html#approach">Approach</a>
+            <a href="mailto:hello@example.com?subject=Experience%20consulting%20%E2%80%93%20intro">Contact</a>
+          </div>
+        </div>
+      </dialog>
+      <div class="nav-links nav-links--desktop">
+        <a href="work.html">Work</a>
+        <a href="index.html#resources">Resources</a>
         <a href="index.html#approach">Approach</a>
         <a href="mailto:hello@example.com?subject=Experience%20consulting%20%E2%80%93%20intro">Contact</a>
       </div>
@@ -21,80 +43,259 @@
   </header>
 
   <main>
-    <section class="case-hero section">
-      <div class="shell narrow">
+    <section class="case-refresh-hero section" aria-labelledby="hp-case-hero-title">
+      <div class="shell">
         <a class="back-link" href="work.html">Back to work</a>
-        <p class="eyebrow">Case Study 02</p>
-        <h1>HP: AI-Assisted UX for Field Service Operations</h1>
-        <p class="lead">Designing AI support workflows that help field agents diagnose faster, act with confidence, and reduce operational turnaround time.</p>
-      </div>
-    </section>
-
-    <section class="section section--flush-top">
-      <div class="shell case-summary">
-        <div>
-          <span>Focus</span>
-          <strong>AI UX, field operations, decision support</strong>
-        </div>
-        <div>
-          <span>Primary goal</span>
-          <strong>Reduce service turnaround time</strong>
-        </div>
-        <div>
-          <span>Role</span>
-          <strong>UX strategy, workflow design, service systems</strong>
+        <div class="case-refresh-hero-layout">
+          <div class="case-refresh-hero-copy">
+            <h1 id="hp-case-hero-title">HP: AI-assisted UX for field service</h1>
+            <p class="lead">The design goal was straightforward: move technicians from symptom to defensible action faster, with parts flow, dispatch logic, and customer trust aligned in one visit.</p>
+            <div class="case-hero-facts" aria-label="Project summary">
+              <p><span aria-hidden="true">⏱</span> Pilot-to-delivery enterprise engagement</p>
+              <p><span aria-hidden="true">🧭</span> Senior UX consultant (Birlasoft × HP)</p>
+              <p><span aria-hidden="true">🤝</span> Service leadership, delivery, engineering, field pilots</p>
+              <p><span aria-hidden="true">🛠</span> Figma, React, service tooling, analytics instrumentation</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section case-body">
-      <div class="shell narrow">
-        <article class="case-section">
-          <h2>Context</h2>
-          <p>At Birlasoft, I worked on HP's field service ecosystem, where operational agents managed on-site diagnostics, customer interactions, and parts workflows. The experience had to support fast decisions in dynamic, information-heavy environments.</p>
-        </article>
+    <div class="shell">
+      <section id="case-framing" class="section section-soft" aria-labelledby="hp-framing-heading">
+        <header class="case-refresh-heading">
+          <h2 id="hp-framing-heading">Context, business north star, and constraints</h2>
+        </header>
+        <figure class="case-section-inline-media">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Service operations dashboard artifact used to interpret diagnosis paths and handoff bottlenecks." loading="lazy" decoding="async" />
+          <figcaption>Context evidence artifact: diagnosis-path telemetry and handoff friction signals.</figcaption>
+        </figure>
+        <div class="case-architect-section-chapters">
+          <div class="case-architect-chapter">
+            <h3>Context</h3>
+            <p>HP’s field ecosystem spans on-site diagnosis, customer conversation, and parts workflows—uneven connectivity, variable device history, and SLAs that reward <strong>first-time resolution</strong>. Leadership and delivery invested in joint design reviews and pilot-ready flows, not a disposable concept deck.</p>
+            <p class="case-architect-inline-note"><strong>My role:</strong> Senior UX consultant (Birlasoft × HP)—journey-to-screen translation on the highest-friction splits: diagnosis, AI-assisted recommendation, and ordering; facilitation with service, engineering, and pilot technicians.</p>
+          </div>
+          <div class="case-architect-chapter">
+            <h3>Business north star</h3>
+            <p class="case-architect-north-star case-architect-north-star--in-body"><strong>North star:</strong> Less time to a confident, explainable next action on site.</p>
+            <p>Success was measured in technician commitment and handoff quality—not model cleverness or list length.</p>
+          </div>
+          <div class="case-architect-chapter">
+            <h3>Constraints</h3>
+            <ul class="case-architect-list">
+              <li><strong>Thin and uneven connectivity</strong> — offline-tolerant patterns; clear stale vs live state.</li>
+              <li><strong>Parts and trust</strong> — mis-ordered parts burn money, time, and customer confidence.</li>
+              <li><strong>Explainability</strong> — agents must defend choices to customers and dispatch; “black box” erodes adoption.</li>
+              <li><strong>Client metrics</strong> — detailed turnaround and FTR numbers remain confidential; outcomes below are process-observed and directional.</li>
+            </ul>
+          </div>
+          <div class="case-architect-chapter">
+            <h3>Operating contexts</h3>
+            <p class="case-architect-section-lead case-architect-section-lead--tight">Three field modes we designed against (no separate tabs—same vertical spine).</p>
+            <ul class="case-architect-list">
+              <li><strong>Stable visit</strong> — strong signals: shorten path to bounded checks, then parts with minimal navigation noise.</li>
+              <li><strong>Ambiguous fault</strong> — model uncertainty explicit; safe ordering of probes; override one gesture away.</li>
+              <li><strong>Thin connectivity</strong> — cache vs defer; UI prevents acting on ghost state.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-        <article class="case-section">
-          <h2>Problem</h2>
-          <p>Field agents often faced delayed diagnosis, fragmented information, and manual parts-ordering steps. These frictions increased turnaround time, created avoidable repeat visits, and reduced confidence in first-time resolution.</p>
-        </article>
+      <section id="case-evidence-method" class="section" aria-labelledby="hp-evidence-heading">
+        <header class="case-refresh-heading">
+          <h2 id="hp-evidence-heading">User voice, data insight, and methodology</h2>
+        </header>
+        <figure class="case-section-inline-media">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Research synthesis workspace used to map user voice and method stages." loading="lazy" decoding="async" />
+          <figcaption>Evidence trace: technician voice synthesis and methodology checkpoints.</figcaption>
+        </figure>
+        <div class="case-architect-section-chapters">
+          <div class="case-architect-chapter">
+            <h3>User voice</h3>
+            <figure class="case-architect-quote">
+              <blockquote>
+                <p>“I need to leave with the right part—not five maybes.”</p>
+              </blockquote>
+              <figcaption>Field technician, synthesis interviews</figcaption>
+            </figure>
+            <p>In interviews and walkthroughs, technicians privileged <strong>sequence</strong> over <strong>volume</strong>: what to verify first, what rules a hypothesis out, and what triggers a parts commit. Confidence meant an audit trail—not marketing tone.</p>
+            <p class="case-architect-inline-note"><strong>Stakeholder investment:</strong> HP service and delivery funded joint reviews and pilots; roles per methodology stage are in the expand rows below.</p>
+          </div>
+          <div class="case-architect-chapter">
+            <h3>Data insight</h3>
+            <div class="case-architect-insight case-architect-insight--nested case-architect-insight--with-artifact">
+              <div class="case-architect-insight__copy">
+                <p class="case-architect-insight__label">What the evidence pointed to</p>
+                <p>Agents were rarely blocked by a lack of <em>data</em>. They were blocked by <strong>commit latency</strong>: the gap between seeing signals and taking an action they could explain to a customer, dispatch, and their own team. AI that only adds ranked possibilities widens that gap; AI framed as <strong>inspectable next steps</strong> narrows it.</p>
+                <p class="case-architect-insight__signal">Triangulation: contextual inquiry themes + moderated flows showed the same gap between “options shown” and “order placed.”</p>
+              </div>
+              <figure class="case-architect-insight__artifact">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Service telemetry artifact used to interpret diagnosis-to-dispatch handoff continuity." loading="lazy" decoding="async" />
+                <figcaption>Interpretation artifact: diagnosis-confidence and dispatch-path signals mapped to handoff quality.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="case-architect-chapter">
+            <h3>Methodology</h3>
+            <p class="case-architect-section-lead case-architect-section-lead--tight">Six stages—key learning stays visible; expand for who was in the room.</p>
+            <p class="visually-hidden" id="hp-method-stack-legend">Program stack used across stages</p>
+            <div class="case-method-stack case-method-stack--once" aria-labelledby="hp-method-stack-legend" title="Figma, React, TypeScript, MongoDB, Postman">
+              <img class="case-tech-ico" src="https://cdn.simpleicons.org/figma/F24E1E" width="20" height="20" alt="Figma" loading="lazy" decoding="async" />
+              <img class="case-tech-ico" src="https://cdn.simpleicons.org/react/61DAFB" width="20" height="20" alt="React" loading="lazy" decoding="async" />
+              <img class="case-tech-ico" src="https://cdn.simpleicons.org/typescript/3178C6" width="20" height="20" alt="TypeScript" loading="lazy" decoding="async" />
+              <img class="case-tech-ico" src="https://cdn.simpleicons.org/mongodb/47A248" width="20" height="20" alt="MongoDB" loading="lazy" decoding="async" />
+              <img class="case-tech-ico" src="https://cdn.simpleicons.org/postman/FF6C37" width="20" height="20" alt="Postman" loading="lazy" decoding="async" />
+            </div>
+            <div class="case-method-stages" aria-describedby="hp-method-stack-legend">
+              <details class="case-method-stage" open>
+                <summary class="case-method-stage__sum">
+                  <span class="case-method-stage__ix" aria-hidden="true">01</span>
+                  <span class="case-method-stage__title-block">
+                    <h4 class="case-method-stage__title">Map decision latency</h4>
+                    <span class="case-method-stage__learn">Time-to-commit beats raw model scores on the truck.</span>
+                  </span>
+                </summary>
+                <div class="case-method-stage__panel">
+                  <p class="case-method-stage__who">HP service · Birlasoft UX · Field leads</p>
+                </div>
+              </details>
+              <details class="case-method-stage">
+                <summary class="case-method-stage__sum">
+                  <span class="case-method-stage__ix" aria-hidden="true">02</span>
+                  <span class="case-method-stage__title-block">
+                    <h4 class="case-method-stage__title">Blueprint diagnosis → parts</h4>
+                    <span class="case-method-stage__learn">One board kept dispatch, parts, and agents aligned.</span>
+                  </span>
+                </summary>
+                <div class="case-method-stage__panel">
+                  <p class="case-method-stage__who">Service ops · Product · Engineering</p>
+                </div>
+              </details>
+              <details class="case-method-stage">
+                <summary class="case-method-stage__sum">
+                  <span class="case-method-stage__ix" aria-hidden="true">03</span>
+                  <span class="case-method-stage__title-block">
+                    <h4 class="case-method-stage__title">Prototype AI states</h4>
+                    <span class="case-method-stage__learn">Loading / wrong / partial became first-class UI, not spinners.</span>
+                  </span>
+                </summary>
+                <div class="case-method-stage__panel">
+                  <p class="case-method-stage__who">Engineering · UX · Pilot technicians</p>
+                </div>
+              </details>
+              <details class="case-method-stage">
+                <summary class="case-method-stage__sum">
+                  <span class="case-method-stage__ix" aria-hidden="true">04</span>
+                  <span class="case-method-stage__title-block">
+                    <h4 class="case-method-stage__title">Override &amp; recovery drills</h4>
+                    <span class="case-method-stage__learn">Disagree path must feel safe—not punitive to the agent.</span>
+                  </span>
+                </summary>
+                <div class="case-method-stage__panel">
+                  <p class="case-method-stage__who">Technicians · QA · Product</p>
+                </div>
+              </details>
+              <details class="case-method-stage">
+                <summary class="case-method-stage__sum">
+                  <span class="case-method-stage__ix" aria-hidden="true">05</span>
+                  <span class="case-method-stage__title-block">
+                    <h4 class="case-method-stage__title">Tighten ordering handoff</h4>
+                    <span class="case-method-stage__learn">Diagnostic context carried—no duplicate entry into parts.</span>
+                  </span>
+                </summary>
+                <div class="case-method-stage__panel">
+                  <p class="case-method-stage__who">Parts product · Field app team · UX</p>
+                </div>
+              </details>
+              <details class="case-method-stage">
+                <summary class="case-method-stage__sum">
+                  <span class="case-method-stage__ix" aria-hidden="true">06</span>
+                  <span class="case-method-stage__title-block">
+                    <h4 class="case-method-stage__title">Pilot-ready spec</h4>
+                    <span class="case-method-stage__learn">Reviews tested override, partial data, recovery—not demos.</span>
+                  </span>
+                </summary>
+                <div class="case-method-stage__panel">
+                  <p class="case-method-stage__who">HP leadership · Delivery · Engineering</p>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <article class="case-section">
-          <h2>Constraints</h2>
-          <p>The system had to perform in real-world service conditions with variable data quality, inconsistent network environments, and tight operational SLAs. It also needed to preserve agent judgment while introducing AI guidance.</p>
-        </article>
+      <section id="case-insights-decisions" class="section section-soft" aria-labelledby="hp-insights-heading">
+        <header class="case-refresh-heading">
+          <h2 id="hp-insights-heading">Insights and recommendations</h2>
+        </header>
+        <div class="case-architect-section-chapters">
+          <div class="case-architect-chapter">
+            <h3>Insights</h3>
+            <p class="case-architect-outcomes-intro"><strong>Interpretation:</strong> the work aligned teams on next-best-action language and reduced conceptual distance between “what we think is wrong” and “what we ship to the truck.”</p>
+            <p class="case-architect-outcomes-caveat"><strong>Caveats:</strong> HP client performance metrics are not published here; cards separate workshop-observed process signals from directional product intent (G1–G2 style claims until telemetry ships).</p>
+            <div class="case-refresh-outcome-grid">
+              <article class="case-refresh-outcome-card case-refresh-outcome-card--measured">
+                <h4>Observed (process)</h4>
+                <ul class="bullet-list">
+                  <li>Shared language for <strong>next-best-action</strong> across diagnostic and ordering critiques.</li>
+                  <li>Design reviews consistently tested <strong>override, partial data, and recovery</strong>—not only happy-path AI.</li>
+                </ul>
+              </article>
+              <article class="case-refresh-outcome-card case-refresh-outcome-card--directional">
+                <h4>Directional (product intent)</h4>
+                <ul class="bullet-list">
+                  <li>Fewer conceptual handoffs between diagnosis narrative and parts execution.</li>
+                  <li>Stronger path to measure <strong>turnaround time and first-time resolution</strong> once client metrics are publishable.</li>
+                </ul>
+              </article>
+            </div>
+            <div class="case-refresh-learning case-refresh-learning--in-chapter">
+              <p class="case-architect-learning-lead">Reusable principle</p>
+              <p class="case-architect-learning-principle">Agency beats cleverness: AI UX that respects the person who owns the wrench.</p>
+              <p class="case-architect-learning-follow">Adoption in operations is a trust contract—the interface should make expert judgment easier, not stage a contest between human and model.</p>
+            </div>
+          </div>
+          <div class="case-architect-chapter">
+            <h3>Recommendations and key decisions</h3>
+            <p class="case-architect-section-lead">Trade-offs stated explicitly—constraint, tension, call.</p>
+            <div class="case-refresh-accordion">
+              <details open>
+                <summary>Next-best-action over long recommendation lists</summary>
+                <p><strong>Constraint:</strong> ranked lists increased scan time without increasing commitment—agents still had to build their own plan.</p>
+                <p><strong>Decision:</strong> Default UI promoted a <strong>single primary path</strong> with explicit alternates, each tied to a verification step—not an open-ended pick list.</p>
+              </details>
+              <details>
+                <summary>Scan-and-confirm for parts identity</summary>
+                <p><strong>Constraint:</strong> mis-ordered parts are expensive in money, time, and customer trust.</p>
+                <p><strong>Decision:</strong> Part identification flows used <strong>scan-plus-confirm</strong> patterns so the agent—not the system—closed the loop on physical reality.</p>
+              </details>
+              <details>
+                <summary>Rationale visible for trust and override</summary>
+                <p><strong>Constraint:</strong> “black box” suggestions erode adoption; agents need to defend choices on site.</p>
+                <p><strong>Decision:</strong> Surfaced <strong>why this suggestion</strong> in operator language, with clear <strong>disagree / adjust</strong> paths that did not punish the user for model error.</p>
+              </details>
+              <details>
+                <summary>Aligned diagnosis → ordering handoff</summary>
+                <p><strong>Constraint:</strong> re-entry across tools recreated the same delay the AI was supposed to remove.</p>
+                <p><strong>Decision:</strong> Reduced handoff steps so diagnostic context carried into parts actions without duplicate data entry.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <article class="case-section">
-          <h2>Approach</h2>
-          <p>I mapped end-to-end service journeys, identified high-friction decision points, and designed AI-assisted interaction flows for diagnosis, recommendation, and ordering pathways. The UX principle was clear: assistance should be inspectable, contextual, and actionable in the moment of need.</p>
-        </article>
-
-        <article class="case-section">
-          <h2>Key decisions</h2>
-          <ul class="bullet-list">
-            <li>Prioritized "next best action" guidance over generic recommendation lists.</li>
-            <li>Designed part-identification support around scan-plus-confirm patterns to reduce errors.</li>
-            <li>Made confidence cues and rationale visible so agents could trust or override suggestions.</li>
-            <li>Aligned diagnostic and ordering flows to reduce handoff and re-entry friction.</li>
-          </ul>
-        </article>
-
-        <article class="case-section">
-          <h2>Solution</h2>
-          <p>The resulting concept introduced an AI-assisted service flow where agents could scan components, receive likely issue diagnosis, and trigger parts recommendations with clearer context. The workflow was designed to reduce cognitive load while preserving field-level control.</p>
-        </article>
-
-        <article class="case-section">
-          <h2>Outcomes</h2>
-          <p>The design direction improved clarity and speed across service workflows, supporting lower turnaround time, stronger first-time resolution behavior, and better operational consistency across agent experience levels.</p>
-        </article>
-
-        <article class="case-section insight">
-          <h2>What I learned</h2>
-          <p>In AI-assisted operations, adoption depends less on "smartness" alone and more on whether the system strengthens frontline agency. The best AI UX turns uncertainty into confident action without removing human ownership.</p>
-        </article>
-      </div>
-    </section>
+      <section class="section case-architect-end case-next-step-strip" aria-labelledby="case-next-step-title-2">
+        <div class="case-architect-end-inner">
+          <h2 id="case-next-step-title-2" class="case-next-step-strip__title">Next: book a call</h2>
+          <p>If you are shipping AI-assisted workflows in operations—field, depot, or partner-led—this is the kind of evidence and decision structure stakeholders expect before they fund scale.</p>
+          <div class="case-architect-end-actions">
+            <a class="button button-primary" href="mailto:hello@example.com?subject=Field%20service%20AI%20UX%20%E2%80%93%20book%20a%20call">Book a call</a>
+            <a class="back-link case-architect-end-secondary" href="work.html">Back to work index</a>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -103,5 +304,48 @@
       <a href="mailto:hello@example.com">hello@example.com</a>
     </div>
   </footer>
+  <script>
+    (function () {
+      var jumpNav = document.querySelector("body.case-study-refresh-page .case-refresh-jump");
+      var jumpLinks = jumpNav
+        ? Array.prototype.slice.call(jumpNav.querySelectorAll("a[href^='#']"))
+        : [];
+      if (jumpLinks.length && "IntersectionObserver" in window) {
+        var sections = jumpLinks
+          .map(function (link) {
+            var id = (link.getAttribute("href") || "").slice(1);
+            return document.getElementById(id);
+          })
+          .filter(Boolean);
+
+        function setActiveSection(id) {
+          jumpLinks.forEach(function (link) {
+            var active = link.getAttribute("href") === "#" + id;
+            link.classList.toggle("active", active);
+            if (active) {
+              link.setAttribute("aria-current", "true");
+            } else {
+              link.removeAttribute("aria-current");
+            }
+          });
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              setActiveSection(entry.target.id);
+            }
+          });
+        }, { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 });
+
+        sections.forEach(function (section) {
+          observer.observe(section);
+        });
+
+        jumpLinks[0].classList.add("active");
+        jumpLinks[0].setAttribute("aria-current", "true");
+      }
+    })();
+  </script>
 </body>
 </html>

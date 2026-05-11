@@ -2,18 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stryker Healthcare UX | Case Study</title>
-  <meta name="description" content="Healthcare UX case study on designing compliance-aware clinical operations workflows and decision-support systems for Stryker." />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Healthcare Operations UX | Case Study</title>
+  <meta name="description" content="Healthcare UX case study: compliance-aware clinical operations workflows and decision-support for robotic surgery programs." />
   <link rel="stylesheet" href="styles.css" />
+  <script src="assets/site-nav.js" defer></script>
 </head>
-<body>
+<body class="case-study-refresh-page">
   <header class="site-header">
-    <nav class="nav shell" aria-label="Main navigation">
+    <nav class="nav shell" data-site-nav aria-label="Main navigation">
       <a class="brand" href="index.html">Chandan Sharma</a>
-      <div class="nav-links">
+      <button type="button" class="nav-menu-toggle" id="site-nav-open" aria-expanded="false" aria-controls="site-nav-dialog" aria-label="Open menu">
+        <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-menu-toggle__label">Menu</span>
+      </button>
+      <dialog id="site-nav-dialog" class="site-nav-dialog" aria-labelledby="site-nav-dialog-title">
+        <div class="site-nav-dialog__panel">
+          <div class="site-nav-dialog__header">
+            <p id="site-nav-dialog-title" class="site-nav-dialog__title">Menu</p>
+            <form method="dialog">
+              <button type="submit" class="site-nav-dialog__close">Close</button>
+            </form>
+          </div>
+          <div class="nav-links nav-links--dialog">
+            <a href="work.html">Work</a>
+            <a href="index.html#resources">Resources</a>
+            <a href="index.html#approach">Approach</a>
+            <a href="mailto:hello@example.com?subject=Experience%20consulting%20%E2%80%93%20intro">Contact</a>
+          </div>
+        </div>
+      </dialog>
+      <div class="nav-links nav-links--desktop">
         <a href="work.html">Work</a>
-        <a href="index.html#playbook">Resources</a>
+        <a href="index.html#resources">Resources</a>
         <a href="index.html#approach">Approach</a>
         <a href="mailto:hello@example.com?subject=Experience%20consulting%20%E2%80%93%20intro">Contact</a>
       </div>
@@ -21,145 +42,171 @@
   </header>
 
   <main>
-    <section class="case-hero shell">
-      <a class="back-link" href="work.html">Back to work</a>
-      <p class="eyebrow">Case study 01</p>
-      <h1>Stryker: UX Systems for Robotic Surgery Operations</h1>
-      <p class="lead">Designing compliance-aware backend workflows and decision-support touchpoints for high-stakes healthcare operations.</p>
-      <div class="case-meta">
-        <div>
-          <span>Business goal</span>
-          <strong>Reduce workflow risk in clinical operations</strong>
-        </div>
-        <div>
-          <span>User goal</span>
-          <strong>Improve clarity for time-critical decisions</strong>
-        </div>
-        <div>
-          <span>Design focus</span>
-          <strong>Reliable, compliant, edge-case-first UX</strong>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="shell two-col">
-        <article>
-          <p class="eyebrow">Context</p>
-          <h2>Where this work sat</h2>
-          <p>At Birlasoft, I worked on Stryker's healthcare operations workflows that support robotic-surgery-related delivery and coordination. The system touched critical backend interactions where delays, missed notifications, or unclear state transitions could cascade into operational risk.</p>
-        </article>
-        <article>
-          <p class="eyebrow">Role</p>
-          <h2>My scope</h2>
-          <p>I led UX research and service workflow design across high-risk operational journeys, partnering with product and engineering teams to define decision points, notification logic, and interface behavior under compliance constraints.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section-soft">
-      <div class="shell statement-card">
-        <p class="eyebrow">Problem</p>
-        <h2>How do you design backend operations UX so teams can move fast without compromising safety, compliance, or clinical confidence?</h2>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="shell comparison-grid">
-        <article class="comparison-card">
-          <h3>Constraints</h3>
-          <ul>
-            <li>Regulatory and compliance requirements (including GDPR-sensitive data handling).</li>
-            <li>Time-critical notifications where delays or misses created downstream risk.</li>
-            <li>Complex multi-actor workflows across operations and care teams.</li>
-            <li>Edge-case-heavy scenarios that were rare but high impact.</li>
-          </ul>
-        </article>
-        <article class="comparison-card">
-          <h3>Approach</h3>
-          <ul>
-            <li>Mapped high-risk journeys and failure states before moving into UI refinements.</li>
-            <li>Defined interaction patterns for alerts, escalations, and state visibility.</li>
-            <li>Prioritized actions by risk severity and operational urgency.</li>
-            <li>Validated decisions with cross-functional teams to balance speed and reliability.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section-soft">
-      <div class="shell section-heading">
-        <p class="eyebrow">Key decisions</p>
-        <h2>Design choices made to reduce ambiguity in critical workflows.</h2>
-      </div>
-      <div class="shell method-grid">
-        <article class="method-card">
-          <span>01</span>
-          <h3>Alert clarity</h3>
-          <p>Structured notifications around urgency and required next action, not just status updates.</p>
-        </article>
-        <article class="method-card">
-          <span>02</span>
-          <h3>Action hierarchy</h3>
-          <p>Made high-risk tasks visually and interactionally prominent to reduce missed critical steps.</p>
-        </article>
-        <article class="method-card">
-          <span>03</span>
-          <h3>Traceability</h3>
-          <p>Designed clearer system state and handoff visibility to improve accountability across teams.</p>
-        </article>
-        <article class="method-card">
-          <span>04</span>
-          <h3>Edge-case readiness</h3>
-          <p>Built patterns for exceptions and fallback actions when normal flow assumptions failed.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="shell two-col">
-        <article>
-          <p class="eyebrow">Solution</p>
-          <h2>A resilient operations UX layer for complex healthcare delivery.</h2>
-        </article>
-        <article>
-          <ul class="bullet-list">
-            <li>Redesigned backend workflows to make task status and ownership explicit.</li>
-            <li>Introduced risk-aware notification and escalation interaction patterns.</li>
-            <li>Aligned information architecture with compliance and auditability needs.</li>
-            <li>Created reusable decision-support UX patterns for future modules.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="shell impact-highlight">
-        <p class="eyebrow">Outcomes</p>
-        <h2>Operational confidence improved through better decision visibility and safer interaction design.</h2>
-        <div class="impact-grid">
-          <div>
-            <span>Risk handling</span>
-            <strong>Critical actions surfaced with greater clarity</strong>
-          </div>
-          <div>
-            <span>Workflow reliability</span>
-            <strong>Reduced ambiguity in handoffs and escalations</strong>
-          </div>
-          <div>
-            <span>Scalability</span>
-            <strong>Reusable patterns for future healthcare modules</strong>
+    <!-- Hero: minimal project statement (north star lives in #case-framing). -->
+    <section class="case-refresh-hero section" aria-labelledby="case-hero-title">
+      <div class="shell">
+        <a class="back-link" href="work.html">Back to work</a>
+        <p class="case-editorial-kicker">Case File 01 · Healthcare Operations UX</p>
+        <div class="case-refresh-hero-layout">
+          <div class="case-refresh-hero-copy">
+            <h1 id="case-hero-title">Healthcare operations: safer decisions at operational speed</h1>
+            <p class="lead">I redesigned robotic-surgery operations UX around next-step clarity, explicit ownership, and escalation logic so clinical teams could move quickly without compromising compliance rigor.</p>
+            <div class="case-hero-facts" aria-label="Project summary">
+              <p><span aria-hidden="true">⏱</span> 12-month enterprise program</p>
+              <p><span aria-hidden="true">🧭</span> UX strategy lead for operations workflows</p>
+              <p><span aria-hidden="true">🤝</span> Product, clinical ops, engineering, compliance</p>
+              <p><span aria-hidden="true">🛠</span> Figma, React, React Native, Model N, MongoDB</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section section-soft">
-      <div class="shell statement-card statement-dark">
-        <p class="eyebrow">What I learned</p>
-        <h2>In healthcare operations, great UX is not about simplification alone. It is about helping teams make the right decision quickly, clearly, and safely under real-world constraints.</h2>
-      </div>
-    </section>
+    <div class="shell">
+        <section id="case-framing" class="section section-soft" aria-labelledby="case-framing-heading">
+          <header class="case-refresh-heading">
+            <h2 id="case-framing-heading"><span class="case-heading-icon" aria-hidden="true">CT</span>Context</h2>
+          </header>
+        <figure class="case-section-inline-media">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Operational dashboard artifact used to interpret risk states and escalation patterns." loading="lazy" decoding="async" />
+          <figcaption>Context evidence artifact: operational signal board highlighting escalation pressure and state transitions.</figcaption>
+        </figure>
+          <div class="case-architect-section-chapters">
+            <div class="case-architect-chapter">
+              <h3>Operational ambiguity created avoidable risk and delay.</h3>
+              <p>The organization operated in a high-acuity environment where small UX ambiguities created handoff delay, rework, and avoidable risk.</p>
+              <p>The mandate was enterprise optimization: establish one decision-support language for risk, ownership, and escalation across modules.</p>
+              <p class="case-architect-inline-note"><strong>My role:</strong> I led UX strategy for operations workflows, including failure-state mapping, alert hierarchy, mode design, and language alignment with engineering and compliance.</p>
+            </div>
+            <div class="case-architect-chapter">
+              <h3>The north star prioritized safe speed, not interface density.</h3>
+              <p class="case-architect-north-star case-architect-north-star--in-body"><strong>North star:</strong> enable safer clinical decisions at operational speed, with explicit handoffs when risk rises.</p>
+              <p>The program prioritized correct action under pressure over screen-level optimization.</p>
+            </div>
+            <div class="case-architect-chapter">
+              <h3>Constraints demanded traceability, shared ownership, and legacy fit.</h3>
+              <ul class="case-architect-list">
+                <li><strong>Regulatory accountability:</strong> each critical state change had to remain auditable without slowing incident response.</li>
+                <li><strong>Distributed ownership:</strong> surgeons, robotics staff, and hospital operations each held partial context.</li>
+                <li><strong>Legacy integration:</strong> new patterns had to fit existing modules and enterprise release cadence.</li>
+                <li><strong>Data confidentiality:</strong> client metrics are private, so outcomes are reported as observed and directional.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="case-signoff-strip" aria-label="Stakeholder sign-off status">
+            <p><strong>Sign-off status:</strong> Pending review from Product Owner, UX Designer, and Developer.</p>
+          </div>
+        </section>
+
+        <section id="case-evidence-method" class="section" aria-labelledby="case-evidence-method-heading">
+          <header class="case-refresh-heading">
+            <h2 id="case-evidence-method-heading"><span class="case-heading-icon" aria-hidden="true">OB</span>Observations</h2>
+          </header>
+        <figure class="case-section-inline-media">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Interview and workflow notes representing user signals and methodology trace." loading="lazy" decoding="async" />
+          <figcaption>Evidence trace: user voice synthesis and step-by-step method framing.</figcaption>
+        </figure>
+          <div class="case-architect-section-chapters">
+            <div class="case-architect-chapter">
+              <p class="case-architect-insight__label case-architect-insight__label--left-heading">Teams asked for next action and owner, not more status.</p>
+              <figure class="case-architect-quote">
+                <blockquote>
+                  <p>“When it’s hot, I don’t need another chart—I need the next step and who owns it. If that’s missing, we slow down or we guess.”</p>
+                </blockquote>
+                <figcaption>Clinical operations lead, synthesis workshop</figcaption>
+              </figure>
+              <p>Across sessions, operators described the same failure mode: urgency without a clear action ladder, and handoffs that disappeared into chat threads.</p>
+              <p class="case-architect-inline-note"><strong>Stakeholder investment:</strong> sponsors opened real workflows; engineering funded iteration; compliance joined early—roles per step are spelled out in methodology below.</p>
+            </div>
+            <div class="case-architect-chapter">
+              <h3>Evidence showed action clarity mattered more than data volume.</h3>
+              <div class="case-architect-insight case-architect-insight--nested case-architect-insight--with-artifact">
+                <div class="case-architect-insight__copy">
+                  <p class="case-architect-insight__label">What the evidence pointed to</p>
+                  <p>The organization had optimized for <em>information completeness</em> in operations surfaces. Frontline operators were drowning in status that looked equally important—and they kept asking for one thing: <strong>what to do next, right now</strong>, with ownership visible when something crossed a risk threshold.</p>
+                  <p class="case-architect-insight__signal">Triangulation: workshop and shadowing notes repeatedly surfaced “next action + owner,” not more tiles or feeds—consistent with the quote pattern above.</p>
+                </div>
+                <figure class="case-architect-insight__artifact">
+                  <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Research synthesis artifact with clustered notes used to interpret next-action and ownership patterns." loading="lazy" decoding="async" />
+                  <figcaption>Interpretation artifact: clustered synthesis showing repeated next-action and ownership signals.</figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="case-architect-chapter">
+              <h3>A six-step method translated risk findings into reusable delivery patterns.</h3>
+              <p class="case-architect-section-lead case-architect-section-lead--tight">I used a six-step method that moved from observed risk to reusable delivery patterns.</p>
+              <div class="case-method-blueprint">
+                <article class="case-method-blueprint__step">
+                  <h4>01 · Map failure states</h4>
+                  <p>Captured where decision ambiguity created delay, rework, or unsafe handoffs.</p>
+                </article>
+                <article class="case-method-blueprint__step">
+                  <h4>02 · Define risk-action language</h4>
+                  <p>Aligned operations, product, and compliance on one escalation ladder and ownership verbs.</p>
+                </article>
+                <article class="case-method-blueprint__step">
+                  <h4>03 · Prototype operating modes</h4>
+                  <p>Built interface states for steady and urgent conditions so next action remained obvious.</p>
+                </article>
+                <article class="case-method-blueprint__step">
+                  <h4>04 · Run scenario validation</h4>
+                  <p>Tested realistic incident flows with cross-functional teams to expose copy and state gaps.</p>
+                </article>
+                <article class="case-method-blueprint__step">
+                  <h4>05 · Validate traceability</h4>
+                  <p>Confirmed each critical transition answered audit and accountability requirements.</p>
+                </article>
+                <article class="case-method-blueprint__step">
+                  <h4>06 · Ship reusable patterns</h4>
+                  <p>Delivered a repeatable interaction grammar so future modules inherited the same risk logic.</p>
+                </article>
+              </div>
+              <!-- §16 RMM: align QM/QL IDs in internal brief before publishing quant claims. -->
+            </div>
+          </div>
+        </section>
+
+        <section id="case-insights-decisions" class="section section-soft" aria-labelledby="case-insights-decisions-heading">
+          <header class="case-refresh-heading">
+            <h2 id="case-insights-decisions-heading"><span class="case-heading-icon" aria-hidden="true">ID</span>Insights and decisions</h2>
+          </header>
+          <p class="case-architect-outcomes-intro">The work established a shared risk-priority language for critical operations, reduced review friction, and improved confidence in future module rollouts.</p>
+          <div class="case-refresh-insight-decision-grid">
+            <article class="case-refresh-brief-card">
+              <h3><span class="case-heading-icon case-heading-icon--small" aria-hidden="true">IN</span>Insights</h3>
+              <ul class="bullet-list">
+                <li>A shared risk-priority model aligned stakeholders on critical alerts.</li>
+                <li>Reviews converged faster with consistent state and ownership vocabulary.</li>
+                <li>Escalation pathways became easier to follow during walkthroughs.</li>
+              </ul>
+            </article>
+            <article class="case-refresh-brief-card">
+              <h3><span class="case-heading-icon case-heading-icon--small" aria-hidden="true">DE</span>Decisions</h3>
+              <ul class="bullet-list">
+                <li>Prioritized alerts by risk tier and required next action over event chronology.</li>
+                <li>Elevated high-risk tasks and removed non-essential controls in urgent states.</li>
+                <li>Introduced explicit ownership states and handoff checkpoints across teams.</li>
+              </ul>
+            </article>
+          </div>
+          <div class="case-refresh-learning case-refresh-learning--in-chapter">
+            <p class="case-architect-learning-lead">Reusable principle</p>
+            <p class="case-architect-learning-principle">In high-risk operations, clarity improves speed, especially during handoffs.</p>
+            <p class="case-architect-learning-follow">In the next cycle, I would align paired metrics earlier with compliance, including time to next action and handoff completion, so directional outcomes convert into publishable quantified claims.</p>
+          </div>
+        </section>
+
+        <section class="section case-architect-end case-next-step-strip" aria-labelledby="case-next-step-title">
+          <div class="case-architect-end-inner">
+            <h2 id="case-next-step-title" class="case-next-step-strip__title">Next: book a call</h2>
+            <p>If you are steering a similar compliance-heavy workflow or robotics operations program, I am happy to compare notes on how to structure evidence, decisions, and outcomes for your stakeholders.</p>
+            <div class="case-architect-end-actions">
+              <a class="button button-primary" href="mailto:hello@example.com?subject=Healthcare%20operations%20UX%20%E2%80%93%20book%20a%20call">Book a call</a>
+              <a class="back-link case-architect-end-secondary" href="work.html">Back to work index</a>
+            </div>
+          </div>
+        </section>
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -168,5 +215,48 @@
       <a href="mailto:hello@example.com">hello@example.com</a>
     </div>
   </footer>
+  <script>
+    (function () {
+      var jumpNav = document.querySelector("body.case-study-refresh-page .case-refresh-jump");
+      var jumpLinks = jumpNav
+        ? Array.prototype.slice.call(jumpNav.querySelectorAll("a[href^='#']"))
+        : [];
+      if (jumpLinks.length && "IntersectionObserver" in window) {
+        var sections = jumpLinks
+          .map(function (link) {
+            var id = (link.getAttribute("href") || "").slice(1);
+            return document.getElementById(id);
+          })
+          .filter(Boolean);
+
+        function setActiveSection(id) {
+          jumpLinks.forEach(function (link) {
+            var active = link.getAttribute("href") === "#" + id;
+            link.classList.toggle("active", active);
+            if (active) {
+              link.setAttribute("aria-current", "true");
+            } else {
+              link.removeAttribute("aria-current");
+            }
+          });
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              setActiveSection(entry.target.id);
+            }
+          });
+        }, { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 });
+
+        sections.forEach(function (section) {
+          observer.observe(section);
+        });
+
+        jumpLinks[0].classList.add("active");
+        jumpLinks[0].setAttribute("aria-current", "true");
+      }
+    })();
+  </script>
 </body>
 </html>
