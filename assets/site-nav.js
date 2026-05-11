@@ -21,13 +21,16 @@
     }
   })();
 
+  // Session-only `?theme=light|dark` override for review/screenshots.
+  // Intentionally does not persist: v1 has no in-nav toggle, so persistence
+  // would strand users without a way to revert. Re-introduce alongside the
+  // Cmd+K palette in v2.
   (function applyThemeFromQuery() {
     try {
       var params = new URLSearchParams(window.location.search);
       var requested = (params.get("theme") || "").toLowerCase();
       if (requested === "light" || requested === "dark") {
         root.setAttribute("data-theme", requested);
-        localStorage.setItem("site-theme", requested);
       }
     } catch (_err) {
       /* no-op: keep defaults if query parsing fails */

@@ -524,51 +524,5 @@
       <a href="mailto:hello@example.com">hello@example.com</a>
     </div>
   </footer>
-
-  <script>
-    (function () {
-      var key = "site-theme";
-      var root = document.documentElement;
-      var toggles = Array.prototype.slice.call(document.querySelectorAll("[data-theme-toggle]"));
-
-      function label(theme) {
-        return theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
-      }
-
-      function icon(theme) {
-        return theme === "dark" ? "☀" : "◐";
-      }
-
-      function apply(theme) {
-        root.setAttribute("data-theme", theme);
-        toggles.forEach(function (btn) {
-          btn.textContent = icon(theme);
-          btn.setAttribute("aria-label", label(theme));
-        });
-      }
-
-      var stored = null;
-      try {
-        stored = window.localStorage.getItem(key);
-      } catch (e) {}
-      var search = new URLSearchParams(window.location.search);
-      var requested = search.get("theme");
-      var initial = requested === "dark" || requested === "light"
-        ? requested
-        : (stored === "dark" || stored === "light" ? stored : "dark");
-      apply(initial);
-
-      toggles.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-          apply(next);
-          try {
-            window.localStorage.setItem(key, next);
-          } catch (e) {}
-        });
-      });
-    })();
-
-  </script>
 </body>
 </html>
