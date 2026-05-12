@@ -8,6 +8,11 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="assets/framework-puzzle.css" />
   <script src="assets/site-nav.js" defer></script>
+  <script src="assets/_mira-config.js" defer></script>
+  <script type="module">
+    import Vapi from "https://cdn.jsdelivr.net/npm/@vapi-ai/web/+esm";
+    window.Vapi = Vapi;
+  </script>
   <script src="assets/hero-mira.js" defer></script>
   <script src="assets/framework-puzzle.js" defer></script>
 </head>
@@ -83,14 +88,13 @@
         <div class="hero-mira__status" role="note">
           <span class="hero-mira__status-dot" aria-hidden="true"></span>
           <span class="hero-mira__status-name">Mira</span>
-          <span class="hero-mira__status-sep" aria-hidden="true">/</span>
-          <span class="hero-mira__status-meta">Chandan&rsquo;s build-scoper &middot; scripted demo</span>
         </div>
 
         <button
           type="button"
           class="hero-mira__mic"
           aria-label="Tap to speak to Mira"
+          aria-pressed="false"
           data-mira-action="toggle-mic"
         >
           <span class="hero-mira__mic-icon" aria-hidden="true">

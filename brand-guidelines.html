@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Brand &amp; accessibility | Your Name</title>
+  <meta name="description" content="Primary and secondary colors, semantic tokens, and WCAG 2.1 AA contrast rules for this portfolio." />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="assets/site-nav.js" defer></script>
+</head>
+<body>
+  <a class="skip-to-content" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" data-site-nav aria-label="Primary">
+      <a class="brand" href="index.html" data-nav-brand>Chandan Sharma</a>
+      <button type="button" class="nav-menu-toggle" id="site-nav-open" aria-expanded="false" aria-controls="site-nav-dialog" aria-label="Open menu">
+        <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-menu-toggle__label">Menu</span>
+      </button>
+      <dialog id="site-nav-dialog" class="site-nav-dialog" aria-labelledby="site-nav-dialog-title">
+        <div class="site-nav-dialog__panel">
+          <div class="site-nav-dialog__header">
+            <p id="site-nav-dialog-title" class="site-nav-dialog__title">Menu</p>
+            <form method="dialog">
+              <button type="submit" class="site-nav-dialog__close">Close</button>
+            </form>
+          </div>
+          <div class="nav-links nav-links--dialog" data-nav-links-dialog>
+            <a href="work.html" data-nav-item="work">Work</a>
+            <a href="services.html" data-nav-item="services">Services</a>
+            <a href="about.html" data-nav-item="about">About</a>
+            <a class="nav-cta nav-cta--dialog" href="mailto:hello@example.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
+          </div>
+        </div>
+      </dialog>
+      <div class="nav-links nav-links--desktop" data-nav-links>
+        <a href="work.html" data-nav-item="work">Work</a>
+        <a href="services.html" data-nav-item="services">Services</a>
+        <a href="about.html" data-nav-item="about">About</a>
+      </div>
+      <a class="nav-cta" href="mailto:hello@example.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1" class="guidelines-page">
+    <header class="guidelines-hero shell">
+      <p class="eyebrow">Brand system</p>
+      <h1>Color, contrast, and usage</h1>
+      <p class="lead">
+        This site uses a small token set in <code>styles.css</code> (<code>:root</code>). Pairs below are checked for
+        <strong>WCAG 2.1 level AA</strong>: normal text at least <strong>4.5:1</strong>, large text (at least 24px
+        regular or 18.67px bold) at least <strong>3:1</strong>, and focus indicators visible against adjacent colors
+        (2.4.11 / 2.4.7).
+      </p>
+    </header>
+
+    <section class="guidelines-section shell" aria-labelledby="principles-heading">
+      <h2 id="principles-heading">Principles</h2>
+      <p class="guidelines-kicker">
+        Primary green anchors the brand; secondary slate adds depth for data-heavy or “enterprise” moments without
+        competing with the main accent. Semantic reds and greens are reserved for status and documentation—not
+        decoration.
+      </p>
+      <ul class="guidelines-list">
+        <li>Use <code>--color-text-muted</code> or <code>--color-text-lead</code> for body and supporting copy on white, not mid-gray below 4.5:1.</li>
+        <li>On dark panels, use <code>--color-text-on-inverse-muted</code> or <code>--color-text-on-inverse-soft</code> only (solid tokens, verified on <code>--color-surface-inverse</code>).</li>
+        <li>Reserve <code>--color-brand-highlight</code> for large type on dark, eyebrows on inverse, or decorative gradients—not for long body text on white.</li>
+      </ul>
+    </section>
+
+    <section class="guidelines-section shell" aria-labelledby="primary-heading">
+      <h2 id="primary-heading">Primary</h2>
+      <p class="guidelines-kicker">Forest green: navigation eyebrows, tags, links emphasis, and primary UI accents on light backgrounds.</p>
+      <div class="guidelines-swatch-grid">
+        <article class="guidelines-swatch">
+          <div class="guidelines-swatch__chip" style="background: var(--color-brand-primary); color: var(--color-text-on-inverse);">
+            <span style="font-size: 0.85rem; font-weight: 650;">Aa</span>
+          </div>
+          <div class="guidelines-swatch__meta">
+            <strong>Brand primary</strong>
+            <code>--color-brand-primary · #0f4f43</code>
+            <p class="guidelines-ratio guidelines-ratio--pass">9.5:1 on #ffffff — AA normal text</p>
+          </div>
+        </article>
+        <article class="guidelines-swatch">
+          <div class="guidelines-swatch__chip" style="background: var(--color-brand-primary-tint); color: var(--color-brand-primary);">
+            <span style="font-size: 0.85rem; font-weight: 650;">Aa</span>
+          </div>
+          <div class="guidelines-swatch__meta">
+            <strong>Primary tint</strong>
+            <code>--color-brand-primary-tint · #e5f4f0</code>
+            <p class="guidelines-ratio guidelines-ratio--pass">Primary on tint 8.4:1 — AA</p>
+          </div>
+        </article>
+        <article class="guidelines-swatch">
+          <div class="guidelines-swatch__chip" style="background: var(--color-surface-inverse); color: var(--color-brand-highlight);">
+            <span style="font-size: 0.85rem; font-weight: 650;">Aa</span>
+          </div>
+          <div class="guidelines-swatch__meta">
+            <strong>Highlight on inverse</strong>
+            <code>--color-brand-highlight · #9ff3d5</code>
+            <p class="guidelines-ratio guidelines-ratio--pass">14.7:1 on #0f1014 — AA (use for UI/large type on dark)</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="guidelines-section shell" aria-labelledby="secondary-heading">
+      <h2 id="secondary-heading">Secondary</h2>
+      <p class="guidelines-kicker">Deep slate for alternate emphasis, diagrams, or future “secondary” buttons. Keeps contrast high without duplicating the green story.</p>
+      <div class="guidelines-swatch-grid">
+        <article class="guidelines-swatch">
+          <div class="guidelines-swatch__chip" style="background: var(--color-brand-secondary); color: #fff;">
+            <span style="font-size: 0.85rem; font-weight: 650;">Aa</span>
+          </div>
+          <div class="guidelines-swatch__meta">
+            <strong>Brand secondary</strong>
+            <code>--color-brand-secondary · #263954</code>
+            <p class="guidelines-ratio guidelines-ratio--pass">11.7:1 on #ffffff — AA normal text</p>
+          </div>
+        </article>
+        <article class="guidelines-swatch">
+          <div class="guidelines-swatch__chip" style="background: var(--color-brand-secondary-tint); color: var(--color-brand-secondary);">
+            <span style="font-size: 0.85rem; font-weight: 650;">Aa</span>
+          </div>
+          <div class="guidelines-swatch__meta">
+            <strong>Secondary tint</strong>
+            <code>--color-brand-secondary-tint · #e9eef5</code>
+            <p class="guidelines-ratio guidelines-ratio--pass">Secondary on tint 10:1 — AA normal text</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="guidelines-section shell" aria-labelledby="neutrals-heading">
+      <h2 id="neutrals-heading">Neutrals &amp; text on light</h2>
+      <p class="guidelines-kicker">Headings use primary ink; paragraphs and UI chrome use muted tokens so nothing relies on borderline grays.</p>
+      <div class="guidelines-swatch-grid">
+        <article class="guidelines-swatch">
+          <div class="guidelines-swatch__chip" style="background: #fff; border-bottom: var(--hairline);">
+            <span style="color: var(--color-text-primary); font-size: 0.85rem; font-weight: 650;">Aa</span>
+          </div>
+          <div class="guidelines-swatch__meta">
+            <strong>Text primary</strong>
+            <code>--color-text-primary · #0a0a0c</code>
+            <p class="guidelines-ratio guidelines-ratio--pass">~19:1 on white</p>
+          </div>
+        </article>
+        <article class="guidelines-swatch">
+          <div class="guidelines-swatch__chip" style="background: #fff; border-bottom: var(--hairline);">
+            <span style="color: var(--color-text-muted); font-size: 0.85rem; font-weight: 650;">Aa</span>
+          </div>
+          <div class="guidelines-swatch__meta">
+            <strong>Text muted</strong>
+            <code>--color-text-muted · #4e525c</code>
+            <p class="guidelines-ratio guidelines-ratio--pass">7.8:1 on #ffffff — AA</p>
+          </div>
+        </article>
+        <article class="guidelines-swatch">
+          <div class="guidelines-swatch__chip" style="background: #fff; border-bottom: var(--hairline);">
+            <span style="color: var(--color-text-lead); font-size: 0.85rem; font-weight: 650;">Aa</span>
+          </div>
+          <div class="guidelines-swatch__meta">
+            <strong>Text lead</strong>
+            <code>--color-text-lead · #42454d</code>
+            <p class="guidelines-ratio guidelines-ratio--pass">9.6:1 on #ffffff — AA (hero/dek)</p>
+          </div>
+        </article>
+        <article class="guidelines-swatch">
+          <div class="guidelines-swatch__chip" style="background: var(--color-border-default);"></div>
+          <div class="guidelines-swatch__meta">
+            <strong>Border default</strong>
+            <code>--color-border-default · #cfd2d7</code>
+            <p class="guidelines-ratio">UI boundaries; not used for small text on white.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="guidelines-section shell" aria-labelledby="semantic-heading">
+      <h2 id="semantic-heading">Semantic</h2>
+      <p class="guidelines-kicker">For alerts, form validation, and documentation—never as arbitrary decoration.</p>
+      <div class="guidelines-swatch-grid">
+        <article class="guidelines-swatch">
+          <div class="guidelines-swatch__chip" style="background: #fff; border-bottom: var(--hairline);">
+            <span style="color: var(--color-semantic-success); font-size: 0.85rem; font-weight: 650;">Success copy</span>
+          </div>
+          <div class="guidelines-swatch__meta">
+            <strong>Success</strong>
+            <code>--color-semantic-success · #0f5132</code>
+            <p class="guidelines-ratio guidelines-ratio--pass">9.4:1 on #ffffff</p>
+          </div>
+        </article>
+        <article class="guidelines-swatch">
+          <div class="guidelines-swatch__chip" style="background: #fff; border-bottom: var(--hairline);">
+            <span style="color: var(--color-semantic-danger); font-size: 0.85rem; font-weight: 650;">Error copy</span>
+          </div>
+          <div class="guidelines-swatch__meta">
+            <strong>Danger</strong>
+            <code>--color-semantic-danger · #b42318</code>
+            <p class="guidelines-ratio guidelines-ratio--pass">6.6:1 on #ffffff</p>
+          </div>
+        </article>
+        <article class="guidelines-swatch">
+          <div class="guidelines-swatch__chip" style="background: var(--color-semantic-warning-bg); color: var(--color-semantic-warning-text);">
+            <span style="font-size: 0.85rem; font-weight: 650;">Warning copy</span>
+          </div>
+          <div class="guidelines-swatch__meta">
+            <strong>Warning pair</strong>
+            <code>text #5c4400 on bg #fff8e6</code>
+            <p class="guidelines-ratio guidelines-ratio--pass">8.7:1 — AA</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="guidelines-section shell" aria-labelledby="inverse-heading">
+      <h2 id="inverse-heading">Inverse surfaces</h2>
+      <p class="guidelines-kicker">Dark panels use <code>--color-surface-inverse</code> (#0f1014) with the on-inverse text tokens below.</p>
+      <div class="guidelines-swatch-grid">
+        <article class="guidelines-swatch">
+          <div class="guidelines-swatch__chip" style="background: var(--color-surface-inverse); color: var(--color-text-on-inverse-muted);">
+            <span style="font-size: 0.8rem;">Muted body</span>
+          </div>
+          <div class="guidelines-swatch__meta">
+            <strong>On-inverse muted</strong>
+            <code>--color-text-on-inverse-muted · #c5cad3</code>
+            <p class="guidelines-ratio guidelines-ratio--pass">11.6:1 on #0f1014</p>
+          </div>
+        </article>
+        <article class="guidelines-swatch">
+          <div class="guidelines-swatch__chip" style="background: var(--color-surface-inverse); color: var(--color-text-on-inverse-soft);">
+            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;">Soft label</span>
+          </div>
+          <div class="guidelines-swatch__meta">
+            <strong>On-inverse soft</strong>
+            <code>--color-text-on-inverse-soft · #a8aeb8</code>
+            <p class="guidelines-ratio guidelines-ratio--pass">8.5:1 on #0f1014 — AA small caps</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="guidelines-section shell" aria-labelledby="focus-heading">
+      <h2 id="focus-heading">Focus &amp; motion</h2>
+      <p class="guidelines-kicker">
+        Interactive elements use <code>:focus-visible</code> with a 3px outline and 3px offset via the shared
+        <code>--focus-ring</code> token (blue on light surfaces; light blue on dark cards). Press <kbd>Tab</kbd> on
+        this page to preview. Reduced motion prefers static
+        hovers and disables decorative motion where animations are used.
+      </p>
+    </section>
+
+    <section class="guidelines-section shell" aria-labelledby="usage-heading">
+      <h2 id="usage-heading">Do / Don’t</h2>
+      <p class="guidelines-kicker">Quick checks when adding new sections or client work.</p>
+      <div class="guidelines-do-grid">
+        <div class="guidelines-do">
+          <h3>Do</h3>
+          <p>Pair semantic tokens with their documented backgrounds. Prefer CSS variables over one-off hex values so contrast stays predictable.</p>
+        </div>
+        <div class="guidelines-do guidelines-do--dont">
+          <h3>Don’t</h3>
+          <p>Do not place mint (<code>#9ff3d5</code>) body copy on white or light gray; contrast fails for normal text sizes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="guidelines-section shell" aria-labelledby="case-spec-heading">
+      <h2 id="case-spec-heading">Homepage case-study card spec</h2>
+      <p class="guidelines-kicker">
+        The homepage case row in <code>index.html</code> follows one content hierarchy so visitors can scan domain,
+        role, and outcome signals in less than 10 seconds before choosing a case.
+      </p>
+      <ul class="guidelines-list">
+        <li><strong>Required order:</strong> kicker (domain + type), title, challenge summary, two outcome signals, role/scope line, single CTA.</li>
+        <li><strong>Title style:</strong> outcome-oriented and specific; avoid generic claims without decision context.</li>
+        <li><strong>Outcome signals:</strong> exactly two bullets per card, each mapping to one measurable axis (quality, cost, trust, retention, speed).</li>
+        <li><strong>Role line:</strong> include ownership and program scope to clarify strategic contribution.</li>
+        <li><strong>CTA pattern:</strong> keep one verb family per card type; use <code>Read case study</code> for client narratives and <code>Read pattern study</code> only for labeled research cards.</li>
+      </ul>
+    </section>
+
+    <section class="guidelines-section shell" aria-labelledby="qa-heading">
+      <h2 id="qa-heading">PO acceptance checklist</h2>
+      <p class="guidelines-kicker">Run this checklist before publishing any homepage or case-card update.</p>
+      <ul class="guidelines-list">
+        <li>Brand and token language in UI copy matches actual token behavior in <code>styles.css</code> for light and dark themes.</li>
+        <li>Case cards retain the documented hierarchy and contain two outcome signals each.</li>
+        <li>Role and scope are visible on every card to establish ownership credibility.</li>
+        <li>Card CTA copy is consistent with card type and links to the intended destination.</li>
+        <li>Focus states, keyboard access, and contrast remain compliant with WCAG 2.1 AA expectations.</li>
+        <li>Claims are evidence-oriented (specific directional outcomes) and avoid unsupported superlatives.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <span>Your Name</span>
+      <span class="footer-row__links">
+        <a href="index.html">Home</a>
+        <a href="mailto:hello@example.com">hello@example.com</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>
