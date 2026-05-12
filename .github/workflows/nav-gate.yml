@@ -32,6 +32,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Full history so Check 4 can diff against base ref on PRs;
+          # shallow default would break `git diff origin/main..HEAD`.
+          fetch-depth: 0
 
       - name: Check 1 — no false-plural "we / our / us" in nav-content.json
         run: |
@@ -94,12 +98,23 @@ jobs:
         if: github.event_name == 'pull_request'
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
+          BASE_REF: ${{ github.base_ref }}
         run: |
           set -euo pipefail
-          # Trigger condition: PR touches any methodology surface
-          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}..HEAD 2>/dev/null || git diff --name-only HEAD~1..HEAD)
-          if echo "$CHANGED" | grep -qE '(index\.html|styles\.css|assets/site-nav\.js|assets/methodology\.js)'; then
-            if ! echo "$PR_BODY" | grep -qE '^#\s+Linked design spec'; then
+          # Trigger condition: PR touches any methodology surface.
+          # With fetch-depth: 0 above, origin/$BASE_REF should be available.
+          CHANGED=""
+          if git rev-parse "origin/$BASE_REF" >/dev/null 2>&1; then
+            CHANGED=$(git diff --name-only "origin/$BASE_REF"...HEAD)
+          fi
+          if [ -z "$CHANGED" ]; then
+            # Fallback: check files in the PR's last commit only.
+            CHANGED=$(git show --name-only --format='' HEAD || true)
+          fi
+          echo "Files changed in this PR:"
+          echo "$CHANGED"
+          if echo "$CHANGED" | grep -qE '(^|/)(index\.html|styles\.css)$|^assets/(site-nav|methodology)\.js$'; then
+            if ! echo "$PR_BODY" | grep -qE '^#[[:space:]]+Linked design spec'; then
               echo "::error::PR touches methodology surface but is missing '# Linked design spec' section in PR body. Add a heading '# Linked design spec' referencing a file under _bmad-output/planning-artifacts/. See PRD v0 §7 process gate."
               exit 1
             fi
