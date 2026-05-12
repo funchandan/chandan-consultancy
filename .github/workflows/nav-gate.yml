@@ -1,0 +1,102 @@
+name: Nav gate
+
+# Enforces two manual audits from the Navbar Revamp v1 slices as automated
+# gates on every PR / push that touches nav-relevant files:
+#
+#   1. False-plural "we / our / us" in any nav-content.json string value.
+#      The site has one principal — no team voice anywhere in nav strings.
+#      (Source: PRD FR-NAV-COPY-2)
+#
+#   2. Analytics provider patterns (gtag, dataLayer, googletagmanager.com,
+#      plausible.io) appearing OUTSIDE the labelled adapter slot in
+#      assets/site-nav.js, or anywhere in HTML / CSS.
+#      The Slice C-1 telemetry shim is the single audit point for navbar
+#      telemetry; provider code lives only in the adapter slot.
+#      (Source: spec-navbar-revamp-v1-c1-telemetry.md §Acceptance Criteria #9)
+#
+# Local reproduction (no Act required):
+#   bash .github/workflows/nav-gate.local-check.sh  # not shipped; copy the
+#                                                    # shell from the steps
+#                                                    # below if you want one.
+
+on:
+  pull_request:
+    paths:
+      - 'assets/nav-content.json'
+      - 'assets/site-nav.js'
+      - '**/*.html'
+      - '.github/workflows/nav-gate.yml'
+  push:
+    branches: [main, master]
+    paths:
+      - 'assets/nav-content.json'
+      - 'assets/site-nav.js'
+      - '**/*.html'
+      - '.github/workflows/nav-gate.yml'
+
+jobs:
+  nav-gate:
+    name: nav-content + analytics-slot hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check 1 — no false-plural "we / our / us" in nav-content.json
+        run: |
+          set -euo pipefail
+          FILE="assets/nav-content.json"
+          if [ ! -f "$FILE" ]; then
+            echo "::warning::$FILE missing — skipping (no nav content to validate)"
+            exit 0
+          fi
+          # Whole-word, case-insensitive match for we / our / us. JSON keys
+          # like "work" / "label" don't contain these as whole words.
+          if grep -niwE '\<(we|our|us)\>' "$FILE"; then
+            echo "::error file=$FILE::False-plural 'we/our/us' detected. This site has one principal — no team voice in nav strings. Rewrite in first-person-singular ('I') or impersonal voice."
+            exit 1
+          fi
+          echo "OK: no false-plural in $FILE"
+
+      - name: Check 2a — no analytics patterns above the adapter slot in site-nav.js
+        run: |
+          set -euo pipefail
+          FILE="assets/site-nav.js"
+          if [ ! -f "$FILE" ]; then
+            echo "::warning::$FILE missing — skipping"
+            exit 0
+          fi
+          SLOT_LINE=$(grep -nF '=== Provider adapter slot' "$FILE" | head -1 | cut -d: -f1 || true)
+          if [ -z "${SLOT_LINE:-}" ]; then
+            echo "::error file=$FILE::Marker '=== Provider adapter slot' not found. Slice C-1 expected this banner; restore it or update this gate."
+            exit 1
+          fi
+          ABOVE_END=$((SLOT_LINE - 1))
+          if head -n "$ABOVE_END" "$FILE" | grep -nE 'gtag\(|dataLayer|googletagmanager\.com|plausible\.io'; then
+            echo "::error file=$FILE::Forbidden analytics pattern detected above the adapter slot (line 1..$ABOVE_END). The shim is the single audit point; provider code belongs inside /* === Provider adapter slot === */ only."
+            exit 1
+          fi
+          echo "OK: no analytics patterns above the adapter slot in $FILE"
+
+      - name: Check 2b — no analytics patterns in any HTML or CSS file
+        run: |
+          set -euo pipefail
+          MATCHES=$(grep -rnE 'gtag\(|dataLayer|googletagmanager\.com|plausible\.io' \
+            --include='*.html' --include='*.css' . 2>/dev/null || true)
+          if [ -n "$MATCHES" ]; then
+            echo "::error::Forbidden analytics pattern detected in HTML/CSS. Telemetry flows through assets/site-nav.js's adapter slot only."
+            echo "$MATCHES"
+            exit 1
+          fi
+          echo "OK: no analytics patterns in HTML/CSS"
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Nav gate summary" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Check 1 — false-plural \`we/our/us\` in \`assets/nav-content.json\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Check 2a — analytics patterns above adapter slot in \`assets/site-nav.js\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Check 2b — analytics patterns in HTML/CSS" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "See PRD \`FR-NAV-COPY-2\` and Slice C-1 spec for rationale." >> "$GITHUB_STEP_SUMMARY"

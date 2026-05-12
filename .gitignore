@@ -1,0 +1,60 @@
+# Privacy policy: private by default.
+#
+# Only the public portfolio site is tracked. Everything else --
+# IP, agents, planning artifacts, research, drafts, internal
+# configs, dev tooling -- stays private.
+#
+# To add a new public file, EXPLICITLY allowlist it below.
+# Do not modify the "ignore everything" rule.
+
+# 1. Ignore everything at the repo root.
+/*
+
+# 2. Allowlist: public portfolio pages.
+!/index.html
+!/about.html
+!/work.html
+!/services.html
+!/consulting.html
+!/brand-guidelines.html
+!/case-study.html
+!/case-study-1.html
+!/case-study-2.html
+!/case-study-3.html
+!/toolkits.html
+!/for-enterprise.html
+
+# 2a. Allowlist: CI workflows (nav-gate enforces nav-content + analytics-slot hygiene).
+!/.github/
+!/.github/workflows/
+!/.github/workflows/nav-gate.yml
+
+# 3. Allowlist: public site styling and assets.
+!/styles.css
+!/assets/
+
+# 3a. Private convention: underscore-prefixed folders are private,
+#     even inside allowlisted /assets/. Matches the repo-root convention
+#     (_bmad/, _bmad-output/) and catches legacy/draft/scratch buckets.
+/assets/_*/
+/assets/_*
+
+# 4. Allowlist: repo meta files (added later if desired).
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/LICENSE
+
+# 5. Defense-in-depth: ignore common leak patterns even inside allowlisted folders.
+**/.DS_Store
+**/Thumbs.db
+**/.env
+**/.env.*
+**/*.log
+**/node_modules/
+**/.idea/
+**/.vscode/
+**/*.pem
+**/*.key
+**/credentials*
+**/secrets*
