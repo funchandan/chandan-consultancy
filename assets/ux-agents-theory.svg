@@ -1,0 +1,84 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+    <style>
+      .title { font: 700 54px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #0F172A; }
+      .subtitle { font: 400 24px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .cardNo { font: 600 18px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .cardTitle { font: 700 40px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #0F172A; }
+      .cardBody { font: 400 22px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .outLabel { font: 600 18px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .outValue { font: 600 21px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #0F172A; }
+      .footerText { font: 600 22px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="900" fill="#F1F5F9"/>
+
+  <text class="title" x="800" y="98" text-anchor="middle">UX Agents Theory</text>
+  <text class="subtitle" x="800" y="140" text-anchor="middle">Turn UX work into growth leverage through a five-agent system</text>
+
+  <path d="M560 290 C760 270, 840 270, 1040 290" stroke="#64748B" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 10"/>
+  <path d="M1040 410 C960 460, 640 460, 560 530" stroke="#64748B" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 10"/>
+  <path d="M560 650 C760 630, 840 630, 1040 650" stroke="#64748B" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 10"/>
+  <path d="M1260 650 C1340 670, 1370 710, 1370 754" stroke="#64748B" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 10"/>
+
+  <g filter="url(#shadow)">
+    <rect x="120" y="205" width="640" height="185" rx="22" fill="#FFFFFF"/>
+    <text class="cardTitle" x="160" y="268">Friction Scout</text>
+    <text class="cardBody" x="220" y="312">
+      <tspan x="160" dy="0">Identify where users hesitate, abandon,</tspan>
+      <tspan x="160" dy="28">or miss value.</tspan>
+    </text>
+    <text class="outLabel" x="160" y="372">Output</text>
+    <text class="outValue" x="230" y="372">Friction map</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="840" y="205" width="640" height="185" rx="22" fill="#FFFFFF"/>
+    <text class="cardTitle" x="880" y="268">Behavior Analyst</text>
+    <text class="cardBody" x="940" y="312">
+      <tspan x="880" dy="0">Validate root causes using research, analytics,</tspan>
+      <tspan x="880" dy="28">and journey evidence.</tspan>
+    </text>
+    <text class="outLabel" x="880" y="372">Output</text>
+    <text class="outValue" x="950" y="372">Behavior diagnosis</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="120" y="445" width="640" height="185" rx="22" fill="#FFFFFF"/>
+    <text class="cardTitle" x="160" y="508">Impact Prioritizer</text>
+    <text class="cardBody" x="220" y="552">
+      <tspan x="160" dy="0">Rank opportunities by user value, business</tspan>
+      <tspan x="160" dy="28">impact, and effort.</tspan>
+    </text>
+    <text class="outLabel" x="160" y="612">Output</text>
+    <text class="outValue" x="230" y="612">Opportunity backlog</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="840" y="445" width="640" height="185" rx="22" fill="#FFFFFF"/>
+    <text class="cardTitle" x="880" y="508">System Designer</text>
+    <text class="cardBody" x="940" y="552">
+      <tspan x="880" dy="0">Design flows, cues, and feedback loops</tspan>
+      <tspan x="880" dy="28">that guide action.</tspan>
+    </text>
+    <text class="outLabel" x="880" y="612">Output</text>
+    <text class="outValue" x="950" y="612">Intervention blueprint</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="120" y="685" width="1120" height="145" rx="22" fill="#FFFFFF"/>
+    <text class="cardTitle" x="160" y="748">Outcome Operator</text>
+    <text class="cardBody" x="690" y="742">
+      <tspan x="690" dy="0">Measure activation, conversion, retention,</tspan>
+      <tspan x="690" dy="28">and adoption post-launch.</tspan>
+    </text>
+    <text class="outLabel" x="160" y="790">Output</text>
+    <text class="outValue" x="230" y="790">Learning dashboard</text>
+  </g>
+
+  <text class="footerText" x="1308" y="772">Human + business outcomes</text>
+</svg>
