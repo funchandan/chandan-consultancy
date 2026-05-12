@@ -1,0 +1,128 @@
+name: nav-gate
+
+# Methodology Funnel v0 (and forward) — enforce nav-content + analytics-slot +
+# mailto-subject hygiene + linked-design-spec discipline + rollback-flag presence.
+#
+# 5 checks; each is independent. Workflow fails on any single failure.
+# Backing artifacts:
+#   - _bmad-output/planning-artifacts/prd-methodology-funnel.md §7
+#   - _bmad-output/implementation-artifacts/spec-methodology-funnel-v0-fifth-frame.md §2 ST-1
+
+on:
+  pull_request:
+    paths:
+      - 'assets/nav-content.json'
+      - 'assets/site-nav.js'
+      - 'index.html'
+      - 'work.html'
+      - 'services.html'
+      - 'about.html'
+      - 'case-study*.html'
+      - 'brand-guidelines.html'
+      - 'styles.css'
+      - '.github/workflows/nav-gate.yml'
+  push:
+    branches:
+      - main
+
+jobs:
+  nav-gate:
+    name: nav-content + analytics-slot + mailto-subject + design-spec link hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check 1 — no false-plural "we / our / us" in nav-content.json
+        run: |
+          set -euo pipefail
+          FILE="assets/nav-content.json"
+          if [ ! -f "$FILE" ]; then
+            echo "::warning::$FILE missing — skipping (no nav content to validate)"
+            exit 0
+          fi
+          if grep -niwE '\<(we|our|us)\>' "$FILE"; then
+            echo "::error file=$FILE::False-plural 'we/our/us' detected. This site has one principal — no team voice in nav strings. Rewrite in first-person-singular ('I') or impersonal voice."
+            exit 1
+          fi
+          echo "OK: no false-plural in $FILE"
+
+      - name: Check 2 — no analytics patterns above adapter slot in site-nav.js
+        run: |
+          set -euo pipefail
+          FILE="assets/site-nav.js"
+          if [ ! -f "$FILE" ]; then
+            echo "::warning::$FILE missing — skipping"
+            exit 0
+          fi
+          SLOT_LINE=$(grep -nF '=== Provider adapter slot' "$FILE" | head -1 | cut -d: -f1 || true)
+          if [ -z "${SLOT_LINE:-}" ]; then
+            echo "::error file=$FILE::Marker '=== Provider adapter slot' not found. Telemetry shim expects this banner; restore it or update this gate."
+            exit 1
+          fi
+          ABOVE_END=$((SLOT_LINE - 1))
+          if head -n "$ABOVE_END" "$FILE" | grep -nE 'gtag\(|dataLayer|googletagmanager\.com|plausible\.io'; then
+            echo "::error file=$FILE::Forbidden analytics pattern detected above the adapter slot (line 1..$ABOVE_END). The shim is the single audit point; provider code belongs inside /* === Provider adapter slot === */ only."
+            exit 1
+          fi
+          echo "OK: no analytics patterns above the adapter slot in $FILE"
+
+      - name: Check 3 — no forked mailto subject in nav + methodology surface family
+        run: |
+          set -euo pipefail
+          FILE="index.html"
+          if [ ! -f "$FILE" ]; then
+            echo "::warning::$FILE missing — skipping"
+            exit 0
+          fi
+          # Allowlisted subjects on index.html:
+          #   Book%20a%20call               (canonical — nav + methodology family)
+          #   Focused%20Recommendation%20Inquiry (services teaser, intentional per-surface)
+          # Any other subject in index.html is a fork.
+          OFFENDERS=$(grep -nE 'mailto:hello@example\.com\?subject=' "$FILE" \
+            | grep -vE 'subject=Book%20a%20call(["&]|$)' \
+            | grep -vE 'subject=Focused%20Recommendation%20Inquiry(["&]|$)' \
+            || true)
+          if [ -n "$OFFENDERS" ]; then
+            echo "::error file=$FILE::Forked mailto subject detected. Canonical for nav + methodology family is 'Book%20a%20call'. Allowlisted services teaser: 'Focused%20Recommendation%20Inquiry'. Offenders:"
+            echo "$OFFENDERS"
+            exit 1
+          fi
+          echo "OK: no forked mailto subject in $FILE"
+
+      - name: Check 4 — methodology-affecting PRs must include linked design spec section
+        if: github.event_name == 'pull_request'
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          set -euo pipefail
+          # Trigger condition: PR touches any methodology surface
+          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}..HEAD 2>/dev/null || git diff --name-only HEAD~1..HEAD)
+          if echo "$CHANGED" | grep -qE '(index\.html|styles\.css|assets/site-nav\.js|assets/methodology\.js)'; then
+            if ! echo "$PR_BODY" | grep -qE '^#\s+Linked design spec'; then
+              echo "::error::PR touches methodology surface but is missing '# Linked design spec' section in PR body. Add a heading '# Linked design spec' referencing a file under _bmad-output/planning-artifacts/. See PRD v0 §7 process gate."
+              exit 1
+            fi
+            echo "OK: PR body contains '# Linked design spec' heading"
+          else
+            echo "OK: PR doesn't touch methodology surface — Check 4 not applicable"
+          fi
+
+      - name: Check 5 — data-methodology-funnel-variant attribute presence
+        run: |
+          set -euo pipefail
+          FILE="index.html"
+          if [ ! -f "$FILE" ]; then
+            echo "::warning::$FILE missing — skipping"
+            exit 0
+          fi
+          if ! grep -qE 'data-methodology-funnel-variant\s*=\s*"v[0-9]+"' "$FILE"; then
+            echo "::error file=$FILE::Rollback flag 'data-methodology-funnel-variant' missing. The fifth-frame design ships with a CSS-mechanized rollback trip-wire; removing the attribute silently un-ships the safety net. Restore it (see spec-methodology-funnel-v0-fifth-frame.md ST-4)."
+            exit 1
+          fi
+          echo "OK: data-methodology-funnel-variant attribute present in $FILE"
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "nav-gate finished. All 5 checks must pass for merge to main."

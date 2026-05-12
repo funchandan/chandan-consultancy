@@ -233,3 +233,304 @@
     }
   }
 })();
+
+/* === Telemetry shim (Slice C-1 + Methodology v0 bundled) =====================
+ *
+ * Provider-agnostic event router. Wraps every event in DNT respect and
+ * sessionStorage state. Real provider wiring happens at the adapter slot
+ * at the bottom of this file; until an adapter is wired, events fall back
+ * to console.log so local development and PR review can verify behavior.
+ *
+ * Implements:
+ *   - FR-NAV-TEL-* (nav engagement + CTA click; see prd-navbar-revamp.md)
+ *   - FR-MF-TEL-01..04 (methodology section + frame + CTA + exit; see prd-methodology-funnel.md)
+ *
+ * DNT, sessionStorage-only, dictionaryVersion stamping — all centralized here.
+ */
+(function () {
+  var DICTIONARY_VERSION_CACHE = null;
+  var METHODOLOGY_CONTENT_VERSION = 0;
+  var SESSION_KEY_ENGAGED = "__nav_engaged_session";
+  var SESSION_KEY_METHODOLOGY_ENTERED = "__methodology_entered_session";
+
+  function isDoNotTrack() {
+    try {
+      var dnt = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      return dnt === "1" || dnt === "yes";
+    } catch (_err) {
+      return false;
+    }
+  }
+
+  function readDictionaryVersion(callback) {
+    if (DICTIONARY_VERSION_CACHE !== null) {
+      callback(DICTIONARY_VERSION_CACHE);
+      return;
+    }
+    try {
+      var req = new XMLHttpRequest();
+      req.open("GET", "assets/nav-content.json", true);
+      req.onload = function () {
+        try {
+          var data = JSON.parse(req.responseText);
+          DICTIONARY_VERSION_CACHE = data && data.version ? data.version : "unknown";
+        } catch (_err) {
+          DICTIONARY_VERSION_CACHE = "unknown";
+        }
+        callback(DICTIONARY_VERSION_CACHE);
+      };
+      req.onerror = function () {
+        DICTIONARY_VERSION_CACHE = "unknown";
+        callback(DICTIONARY_VERSION_CACHE);
+      };
+      req.send();
+    } catch (_err) {
+      DICTIONARY_VERSION_CACHE = "unknown";
+      callback(DICTIONARY_VERSION_CACHE);
+    }
+  }
+
+  // Publish dictionaryVersion to window once available so other shim sections
+  // can read it synchronously without re-fetching.
+  readDictionaryVersion(function (version) {
+    window.__navTelemetryDictionaryVersion = version;
+  });
+
+  function track(eventName, props) {
+    if (isDoNotTrack()) return;
+    var payload = {};
+    if (props && typeof props === "object") {
+      for (var k in props) {
+        if (Object.prototype.hasOwnProperty.call(props, k)) payload[k] = props[k];
+      }
+    }
+    payload.dictionaryVersion = window.__navTelemetryDictionaryVersion || "pending";
+    payload.methodologyContentVersion = METHODOLOGY_CONTENT_VERSION;
+
+    try {
+      if (typeof window.__navTelemetryAdapter === "function") {
+        window.__navTelemetryAdapter(eventName, payload);
+      } else {
+        console.log("[telemetry]", eventName, payload);
+      }
+    } catch (_err) {
+      /* swallow — telemetry must never break the page */
+    }
+  }
+
+  // Export for other shim sections (methodology block uses these)
+  window.__navTrack = track;
+  window.__navIsDoNotTrack = isDoNotTrack;
+
+  /* === Nav engagement (FR-NAV-TEL-01) =================================== */
+
+  function hasEngagedThisSession() {
+    try {
+      return window.sessionStorage.getItem(SESSION_KEY_ENGAGED) === "1";
+    } catch (_err) {
+      return false;
+    }
+  }
+
+  function setEngagedThisSession() {
+    if (isDoNotTrack()) return;
+    try {
+      window.sessionStorage.setItem(SESSION_KEY_ENGAGED, "1");
+    } catch (_err) {
+      /* sessionStorage may be unavailable in some embed contexts; silent fail */
+    }
+  }
+
+  function markEngagedOnce(source) {
+    if (isDoNotTrack()) return;
+    if (hasEngagedThisSession()) return;
+    setEngagedThisSession();
+    track("nav_engaged", { source: source });
+  }
+
+  function onFirstInteraction(event) {
+    if (!event || !event.target) return;
+    var navRoot = event.target.closest && event.target.closest("[data-site-nav]");
+    if (!navRoot) return;
+    var source = "click";
+    if (event.type === "keydown") source = "keyboard";
+    markEngagedOnce(source);
+  }
+
+  document.addEventListener("click", onFirstInteraction, true);
+  document.addEventListener("keydown", onFirstInteraction, true);
+
+  /* === Nav CTA click (FR-NAV-TEL-04) ==================================== */
+
+  document.addEventListener(
+    "click",
+    function (event) {
+      var ctaEl = event.target.closest && event.target.closest("[data-nav-cta]");
+      if (!ctaEl) return;
+      var inDialog = !!ctaEl.closest(".site-nav-dialog");
+      track("nav_cta_click", {
+        destination: ctaEl.getAttribute("href") || "",
+        source: inDialog ? "dialog" : "nav"
+      });
+    },
+    true
+  );
+})();
+
+/* === Methodology telemetry events (FR-MF-TEL-01..04) =========================
+ *
+ * Single IntersectionObserver instance (NFR-MF-PERF-03), event delegation on
+ * the section root, sessionStorage-scoped one-shot flags. Rides the global
+ * track() function exported from the telemetry shim above.
+ */
+(function () {
+  var track = window.__navTrack;
+  var isDoNotTrack = window.__navIsDoNotTrack;
+  if (typeof track !== "function" || typeof isDoNotTrack !== "function") return;
+
+  var section = document.querySelector("[data-methodology-section]");
+  if (!section) return;
+  if (!("IntersectionObserver" in window)) return;
+
+  var SESSION_KEY_SECTION_ENTERED = "__methodology_section_entered_session";
+  var sectionEnteredAt = 0;
+  var deepestFrameSeen = 0;
+  var didClickCta = false;
+  var framesSeen = {};
+  var sectionExitedFired = false;
+
+  function detectEntrySource() {
+    var hash = (window.location.hash || "").toLowerCase();
+    var sectionId = (section.id || section.parentElement && section.parentElement.id || "").toLowerCase();
+    var approachAnchor = sectionId && hash === ("#" + sectionId);
+    var sectionContainerId = "";
+    var container = section.closest("section[id]");
+    if (container) sectionContainerId = (container.id || "").toLowerCase();
+    if (hash && (approachAnchor || hash === "#" + sectionContainerId)) return "deep-link";
+    var activeEl = document.activeElement;
+    if (activeEl && activeEl.matches && activeEl.matches('a.skip-link, a[href^="#main"]')) return "skip-link";
+    return "scroll";
+  }
+
+  function fireSectionEntered() {
+    if (isDoNotTrack()) return;
+    try {
+      if (window.sessionStorage.getItem(SESSION_KEY_SECTION_ENTERED) === "1") return;
+      window.sessionStorage.setItem(SESSION_KEY_SECTION_ENTERED, "1");
+    } catch (_err) {
+      /* sessionStorage unavailable — proceed without dedupe, accept double-fire risk */
+    }
+    sectionEnteredAt = Date.now();
+    track("methodology_section_entered", { source: detectEntrySource() });
+  }
+
+  function fireFrameSeen(frameNum) {
+    if (isDoNotTrack()) return;
+    if (framesSeen[frameNum]) return;
+    framesSeen[frameNum] = Date.now();
+    if (frameNum > deepestFrameSeen) deepestFrameSeen = frameNum;
+    track("methodology_frame_seen", { frame: frameNum, dwellMs: 0 });
+  }
+
+  function fireSectionExited() {
+    if (isDoNotTrack()) return;
+    if (sectionExitedFired) return;
+    if (!sectionEnteredAt) return;
+    sectionExitedFired = true;
+    track("methodology_section_exited", {
+      deepestFrameSeen: deepestFrameSeen,
+      dwellMs: Date.now() - sectionEnteredAt,
+      didClickCta: didClickCta
+    });
+  }
+
+  var sectionObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          fireSectionEntered();
+        }
+      });
+    },
+    { threshold: [0.5] }
+  );
+  sectionObserver.observe(section);
+
+  var frameObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          var frameAttr = entry.target.getAttribute("data-frame");
+          var frameNum = parseInt(frameAttr, 10);
+          if (!isNaN(frameNum)) fireFrameSeen(frameNum);
+        }
+      });
+    },
+    { threshold: [0.5] }
+  );
+  section.querySelectorAll("[data-frame]").forEach(function (el) {
+    frameObserver.observe(el);
+  });
+
+  // Delegated click handler for methodology CTAs (primary + secondary)
+  section.addEventListener(
+    "click",
+    function (event) {
+      var ctaEl =
+        event.target.closest &&
+        event.target.closest("[data-methodology-cta], [data-methodology-secondary-cta]");
+      if (!ctaEl) return;
+      var kind = ctaEl.getAttribute("data-event-kind") || "unknown";
+      didClickCta = true;
+      track("methodology_cta_click", {
+        destination: ctaEl.getAttribute("href") || "",
+        source: "methodology",
+        kind: kind
+      });
+    },
+    true
+  );
+
+  // Exit detection
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden") fireSectionExited();
+  });
+  window.addEventListener("beforeunload", fireSectionExited);
+})();
+
+/* === Provider adapter slot — single audit point for analytics ===============
+ *
+ * The telemetry shim's track() function calls window.__navTelemetryAdapter
+ * if defined; else falls back to console.log. To wire a real provider,
+ * uncomment ONE block below and add the corresponding <script> tag to
+ * each page's <head>. This is the ONLY place provider code may live; the
+ * CI nav-gate (.github/workflows/nav-gate.yml Check 2) enforces this.
+ *
+ * v0 default per PRD §4 FR-MF-INFRA-02: Plausible.
+ * Override via this slot to swap to GA4 or Cloudflare without re-instrumenting.
+ */
+
+// --- Plausible (cookieless, lightweight) — v0 default ----------------------
+// window.__navTelemetryAdapter = function (eventName, props) {
+//   if (typeof window.plausible === "function") {
+//     window.plausible(eventName, { props: props });
+//   }
+// };
+//
+// Also add to each page's <head>:
+//   <script defer
+//           data-domain="REPLACE_WITH_PROD_HOSTNAME"
+//           src="https://plausible.io/js/script.js"></script>
+
+// --- GA4 alternate ---------------------------------------------------------
+// window.__navTelemetryAdapter = function (eventName, props) {
+//   if (typeof window.gtag === "function") {
+//     window.gtag("event", eventName, props);
+//   }
+// };
+// (GA4 also requires the gtag.js loader script in <head>.)
+
+// --- Cloudflare Web Analytics alternate ------------------------------------
+// CF Web Analytics is currently passive (page-view only); custom events
+// require the Beacon API. If chosen, wire via:
+//   navigator.sendBeacon("/_cf-analytics-event", JSON.stringify({ eventName, props }));

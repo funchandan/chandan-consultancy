@@ -6067,3 +6067,235 @@ html[data-theme="dark"] .nav-cta {
   }
 }
 
+
+/* === Methodology funnel close (v0 fifth frame) ===========================
+ * Implements PRD v0 + UX design v2.
+ * Spec: _bmad-output/implementation-artifacts/spec-methodology-funnel-v0-fifth-frame.md ST-5
+ */
+
+:root {
+  --color-bg-inverse: rgba(10, 16, 26, 1);
+  --color-text-on-inverse: rgba(245, 247, 252, 0.96);
+}
+
+/* Rollback trip-wire — FR-MF-DESIGN-ROLLBACK */
+.framework-puzzle[data-methodology-funnel-variant="v1"] .framework-step--close {
+  display: none;
+}
+
+/* Fifth <li> — full-bleed dark wrapper with subtle radial gradient
+   (A2 finding: gives backdrop-filter something distinguishable to blur) */
+.framework-step--close {
+  background-color: var(--color-bg-inverse);
+  background-image: radial-gradient(
+    ellipse at 30% 20%,
+    rgba(40, 60, 100, 0.18) 0%,
+    transparent 60%
+  );
+  color: var(--color-text-on-inverse);
+  padding: clamp(48px, 6vw, 96px) clamp(24px, 4vw, 56px);
+  list-style: none;
+}
+
+/* Vertical-stack context: 64px gradient transition strip into the dark frame */
+.framework-step[data-frame="4"] + .framework-step--close {
+  background-image:
+    linear-gradient(
+      180deg,
+      var(--color-bg-soft) 0%,
+      var(--color-bg-soft) 24%,
+      var(--color-bg-inverse) 100%
+    ),
+    radial-gradient(
+      ellipse at 30% 20%,
+      rgba(40, 60, 100, 0.18) 0%,
+      transparent 60%
+    );
+}
+
+/* Horizontal-scroll-reel context (W2 finding): instant flip at slide boundary,
+   no gradient strip when wide enough for horizontal layout */
+@media (min-width: 960px) {
+  .framework-puzzle.reel-track .framework-step[data-frame="4"] + .framework-step--close {
+    background-image: radial-gradient(
+      ellipse at 30% 20%,
+      rgba(40, 60, 100, 0.18) 0%,
+      transparent 60%
+    );
+  }
+}
+
+/* The glass panel — borrows existing --glass-* tokens, uses backdrop-filter */
+.framework-close__panel {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: clamp(28px, 4vw, 44px);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border-strong);
+  background-color: var(--glass-bg-strong);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    var(--glass-shadow-md);
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.0) 14%,
+    rgba(0, 0, 0, 0.0) 86%,
+    rgba(0, 0, 0, 0.18) 100%
+  );
+  transition: transform 0.24s ease-out, box-shadow 0.24s ease-out;
+}
+
+/* Backdrop-filter fallback — Winston refinement-2 / NFR-MF-PERF-02 */
+@supports not (backdrop-filter: blur(1px)) {
+  .framework-close__panel {
+    background-color: rgba(17, 26, 39, 0.92);
+  }
+}
+
+.framework-close__panel:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 28px 56px rgba(2, 8, 18, 0.7);
+}
+
+/* Reduced motion — NFR-MF-A11Y-02 */
+@media (prefers-reduced-motion: reduce) {
+  .framework-close__panel {
+    transition: none;
+  }
+  .framework-close__panel:hover {
+    transform: none;
+  }
+}
+
+/* Dark-mode case — NFR-MF-A11Y-04: soft elevation, no full inversion */
+@media (prefers-color-scheme: dark) {
+  .framework-step--close {
+    background-color: var(--color-bg-soft);
+    background-image: none;
+    color: var(--color-text-body);
+  }
+  .framework-step[data-frame="4"] + .framework-step--close {
+    background-image: none;
+  }
+  .framework-close__panel {
+    background-color: var(--surface-elev);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 22px 46px rgba(2, 8, 18, 0.4);
+  }
+}
+
+/* Eyebrow */
+.framework-step__eyebrow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 16px 0;
+  font-family: var(--font-ui, system-ui);
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.framework-step__num {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.framework-step__sep {
+  opacity: 0.5;
+}
+
+/* Headline + lede */
+.framework-close__headline {
+  margin: 0 0 16px 0;
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.framework-close__lede {
+  margin: 0 0 28px 0;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  opacity: 0.86;
+}
+
+/* CTA actions */
+.framework-close__actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.framework-close__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: var(--font-ui, system-ui);
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.framework-close__cta--primary {
+  padding: 14px 28px;
+  border-radius: 999px;
+  background-color: var(--accent, #6b8aff);
+  color: #ffffff;
+  font-size: 1rem;
+  min-height: 44px;
+}
+
+.framework-close__cta--primary:hover {
+  background-color: var(--accent-strong, #5570e5);
+}
+
+.framework-close__cta--secondary {
+  color: var(--color-text-on-inverse);
+  font-size: 0.9375rem;
+  opacity: 0.86;
+}
+
+.framework-close__cta--secondary:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .framework-close__cta--secondary {
+    color: var(--color-text-body);
+  }
+}
+
+/* Focus rings — NFR-MF-A11Y-01 (A3 finding: single 3px accent ring with offset) */
+.framework-close__cta:focus-visible {
+  outline: 3px solid var(--accent, #6b8aff);
+  outline-offset: 3px;
+}
+
+/* Mobile — phase commitment per spec frontmatter (≤640px stacking, 48px tap target) */
+@media (max-width: 640px) {
+  .framework-close__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .framework-close__cta--primary {
+    width: 100%;
+    min-height: 48px;
+  }
+  .framework-close__cta--secondary {
+    text-align: center;
+  }
+}

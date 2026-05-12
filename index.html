@@ -176,7 +176,7 @@
       </div>
 
       <!-- TODO(Phase 1): wire real booking endpoint (Cal.com link or mailto until then). -->
-      <a class="hero-mira__cta-secondary" href="mailto:hello@example.com?subject=Book%20a%2030-min%20call%20with%20Chandan">
+      <a class="hero-mira__cta-secondary" href="mailto:hello@example.com?subject=Book%20a%20call">
         Book a 30-min call with Chandan &rarr;
       </a>
 
@@ -330,7 +330,7 @@
           </figure>
 
           <div class="reel-track-wrap">
-            <ul class="framework-puzzle reel-track" data-framework-puzzle data-reel-track>
+            <ul class="framework-puzzle reel-track" data-framework-puzzle data-reel-track data-methodology-funnel-variant="v2" data-methodology-section>
               <!-- Step 1 — Map the system -->
               <li class="framework-step" data-frame="1" style="--rot:-1.2deg">
                 <span class="framework-frame__number" aria-hidden="true">01</span>
@@ -488,6 +488,45 @@
                 </div>
               </div>
             </li>
+
+            <!-- Frame 05 — the close. Conversion surface, not a methodology step.
+                 Implements PRD v0 + UX design v2 (contrast-flip fifth frame).
+                 Spec: _bmad-output/implementation-artifacts/spec-methodology-funnel-v0-fifth-frame.md ST-4 -->
+            <li class="framework-step framework-step--close" data-frame="5">
+              <div class="framework-close__panel" role="group" aria-labelledby="framework-close-heading">
+                <p class="framework-step__eyebrow">
+                  <span class="framework-step__num" aria-hidden="true">05</span>
+                  <span class="framework-step__sep" aria-hidden="true">·</span>
+                  <span class="framework-step__label">Your move</span>
+                </p>
+                <h3 id="framework-close-heading" class="framework-close__headline">
+                  Bring a real decision. 30 minutes.
+                </h3>
+                <p class="framework-close__lede">
+                  The four moves above describe how the work goes. If one of them fits a decision
+                  you&rsquo;re carrying &mdash; a bet, a launch, or a receipt you can&rsquo;t read clearly &mdash;
+                  let&rsquo;s trace it together.
+                </p>
+                <div class="framework-close__actions">
+                  <a class="framework-close__cta framework-close__cta--primary"
+                     href="mailto:hello@example.com?subject=Book%20a%20call"
+                     data-methodology-cta
+                     data-event-source="methodology"
+                     data-event-kind="primary"
+                     aria-label="Book a 30-minute call">
+                    Book a 30-minute call
+                  </a>
+                  <a class="framework-close__cta framework-close__cta--secondary"
+                     href="#resources"
+                     data-methodology-secondary-cta
+                     data-event-source="methodology"
+                     data-event-kind="secondary"
+                     aria-label="Or describe what you're building — opens Mira">
+                    Or describe what you&rsquo;re building &rarr;
+                  </a>
+                </div>
+              </div>
+            </li>
               </ul>
           </div>
 
@@ -498,13 +537,6 @@
         </div>
       </div>
 
-      <div class="shell framework-cta">
-        <a class="button button-primary framework-cta__link" href="mailto:hello@example.com?subject=Teardown%20request" data-framework-cta>Want this run on your thing? Book a 30-minute teardown. No pitch, no deck.</a>
-      </div>
-
-      <div class="framework-pinned-cta" data-framework-pinned aria-hidden="true">
-        <a class="button button-primary" href="mailto:hello@example.com?subject=Teardown%20request" data-framework-pinned-link>Book a 30-minute teardown</a>
-      </div>
     </section>
 
     <section class="section">
