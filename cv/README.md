@@ -16,7 +16,7 @@ Evidence: `_bmad-output/planning-artifacts/cv-evidence-bank-v1.md`
 
 ## Before you share externally
 
-1. Replace the portfolio link: search for `../index.html` and use your public URL (or LinkedIn).
+1. When the site is public, add a **portfolio HTTPS URL** to the contact block on all three `cv-*.html` files (omitted in v1.1 per PRD §6.6).
 2. **BYJU’s Future School title (2021–22):** CV uses **Manager, user insights** (paired with **Manager, new initiatives** at WhiteHat Jr). If HR paperwork uses a different string, mirror that verbatim in all three `cv-*.html` files.
 3. Add LinkedIn on the contact block if you want it (not in v1).
 4. Re-read metrics with Evidence Bank; tighten wording if any claim needs employer sign-off.
