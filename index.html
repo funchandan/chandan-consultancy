@@ -3,6 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <!-- Sync: theme + scroll before CSS/deferred JS so first paint matches prod intent (light, hero at top).
+       Deferred site-nav.js still applies ?theme=dark|light for review. -->
+  <script>
+    (function () {
+      try {
+        document.documentElement.setAttribute("data-theme", "light");
+        if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      } catch (_e) {}
+    })();
+  </script>
   <title>Chandan Sharma | UX Strategy and Thought Leadership</title>
   <meta name="description" content="Thoughtful UX strategy and growth judgment for teams making high-stakes product decisions across education, healthcare, and enterprise operations." />
   <link rel="stylesheet" href="styles.css" />

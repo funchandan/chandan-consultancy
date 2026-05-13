@@ -240,6 +240,7 @@
          * Round to nearest frame index; this is the parked frame. */
         var newIdx = Math.round(progress * (frames.length - 1));
         if (newIdx !== currentParkedIdx) {
+          var prevParked = currentParkedIdx;
           if (currentParkedIdx >= 0 && frames[currentParkedIdx]) {
             frames[currentParkedIdx].classList.remove("is-parked");
           }
@@ -260,7 +261,12 @@
                 }
               }
               if (onboard) onboard.classList.add("is-dismissed");
-              updateHash(stepNum);
+              /* Do not update the URL on the initial park (-1 → first frame).
+               * replaceState(..., "#approach") on first paint can scroll the
+               * viewport to the methodology section on some browsers / Vercel. */
+              if (prevParked >= 0) {
+                updateHash(stepNum);
+              }
             }
           }
         }
