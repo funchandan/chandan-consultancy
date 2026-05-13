@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,500;1,8..60,600;1,8..60,700&display=swap");
 
 /*
  * Responsive layout: rules that depend on viewport width use
@@ -31,10 +31,13 @@
   --space-16: 4rem;
   --space-20: 5rem;
 
-  --font-body: Manrope, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* Type roles: Inter = reading; Manrope = headings + UI chrome; Source Serif 4 = display/editorial */
+  --font-body: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-heading: Manrope, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-ui: Manrope, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-cta: Manrope, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   --bg: #f6f5f2;
   --ink: #171a1f;
@@ -58,8 +61,8 @@
   --shadow: 0 10px 28px rgba(23, 34, 54, 0.08);
   --shadow-hover: 0 16px 40px rgba(23, 34, 54, 0.12);
   --hairline: 1px solid var(--line);
-  --glass-bg: rgba(255, 255, 255, 0.6);
-  --glass-bg-strong: rgba(255, 255, 255, 0.78);
+  --glass-bg: rgba(255, 255, 255, 0.68);
+  --glass-bg-strong: rgba(255, 255, 255, 0.85);
   --glass-border: rgba(206, 220, 240, 0.72);
   --glass-border-strong: rgba(179, 198, 227, 0.88);
   --glass-shadow-sm: 0 10px 26px rgba(19, 35, 62, 0.09);
@@ -72,7 +75,7 @@
   --accent-glow: linear-gradient(130deg, rgba(93, 129, 235, 0.26), rgba(73, 183, 191, 0.2) 42%, transparent 70%);
   --cta-primary-bg: linear-gradient(135deg, #5b7ef0 0%, #4a69dd 48%, #3e97a0 115%);
   --cta-primary-bg-hover: linear-gradient(135deg, #4f72e7 0%, #4463d5 48%, #378b93 115%);
-  --cta-secondary-bg: rgba(255, 255, 255, 0.52);
+  --cta-secondary-bg: rgba(255, 255, 255, 0.6);
   --control-radius: 8px;
   --control-border: rgba(143, 162, 192, 0.5);
   --control-border-strong: rgba(122, 142, 176, 0.72);
@@ -117,6 +120,15 @@
   --color-semantic-danger: #b42318;
   --color-semantic-warning-bg: #fff8e6;
   --color-semantic-warning-text: #5c4400;
+  /* Methodology reel + graph share one canvas (see design-system-typography-tokens.md) */
+  --methodology-canvas-bg: #f4efe6;
+  --color-bg-soft: var(--soft);
+  --color-bg-inverse: #0a101a;
+}
+
+html[data-theme="light"],
+html:not([data-theme="dark"]) {
+  color-scheme: light;
 }
 
 /* A/B color testing: Plan A = Ink Neutral, Plan B = Gold Accent + White-Forward Dark */
@@ -141,6 +153,7 @@ html:not([data-theme="dark"])[data-color-plan="b"] {
 
 html[data-theme="dark"] {
   color-scheme: dark;
+  --methodology-canvas-bg: #121a28;
   --bg: #0d1118;
   --soft: #111926;
   --surface: #0f1622;
@@ -814,7 +827,7 @@ html[data-theme="dark"] .nav-links--dialog a:hover {
   border-radius: 16px;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.14;
+  opacity: 0.2;
   background-image: radial-gradient(rgba(108, 136, 184, 0.18) 0.6px, transparent 0.6px);
   background-size: 3px 3px;
 }
@@ -1193,7 +1206,7 @@ html[data-theme="dark"] .home-page .hero .button-secondary.button--link-arrow:ho
 /* --- lead (restrained) --- */
 .hero-mira__lead {
   margin: 0;
-  font-family: var(--font-ui, system-ui);
+  font-family: var(--font-body);
   font-size: clamp(1.05rem, 1.4vw, 1.2rem);
   line-height: 1.5;
   font-weight: 400;
@@ -1321,6 +1334,7 @@ html[data-theme="dark"] .hero-mira__surface {
   font-size: 0.85rem;
   letter-spacing: 0;
   font-weight: 500;
+  font-family: var(--font-ui);
   color: var(--color-text-muted);
 }
 
@@ -1340,7 +1354,7 @@ html[data-theme="dark"] .hero-mira__surface {
   border: 1px solid color-mix(in srgb, var(--color-text-primary) 12%, transparent);
   background: transparent;
   color: var(--color-text-primary);
-  font-family: var(--font-ui, system-ui);
+  font-family: var(--font-body);
   font-size: 15px;
   font-weight: 400;
   line-height: 1.4;
@@ -1356,7 +1370,7 @@ html[data-theme="dark"] .hero-mira__surface {
 /* Placeholder subordinated: weight + opacity drop it below the status row. */
 .hero-mira__input-row input::placeholder {
   color: var(--color-text-muted);
-  font-family: var(--font-ui, system-ui);
+  font-family: var(--font-body);
   font-weight: 400;
   letter-spacing: -0.005em;
   opacity: 0.55;
@@ -1494,6 +1508,7 @@ html[data-theme="dark"] .hero-mira__chip--primary {
 .hero-mira__cta-secondary {
   align-self: flex-start;
   color: var(--color-text-body);
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 500;
   text-decoration: none;
@@ -1508,7 +1523,7 @@ html[data-theme="dark"] .hero-mira__chip--primary {
   flex-direction: column;
   gap: 8px;
   margin-top: clamp(8px, 1.5vw, 16px);
-  font-family: var(--font-ui, system-ui);
+  font-family: var(--font-body);
 }
 
 .hero-mira__testimonial {
@@ -2479,24 +2494,24 @@ html[data-theme="dark"] .section-soft {
   margin: 0;
   font-size: clamp(1.65rem, 2.5vw, 2.25rem);
   line-height: 1.22;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.1em;
   font-weight: 700;
   color: var(--ink);
   text-shadow: var(--title-shadow);
   text-wrap: balance;
 }
 
-/* Homepage: section h2 uses Manrope, bold, uppercase */
+/* Homepage: section h2 — Manrope, uppercase (tighter tracking than v0 for calmer band breaks) */
 body.home-page .section-head h2,
 body.home-page main h2 {
-  font-family: Manrope, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-heading);
   font-weight: 700;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 body.home-page .offerings-showcase__head h2 {
-  letter-spacing: 0.13em;
+  letter-spacing: 0.1em;
   font-weight: 700;
 }
 
@@ -2514,6 +2529,7 @@ body.home-page .approach-v2__panel h3 {
   margin-top: 1.1rem;
   margin-bottom: 0;
   max-width: min(52ch, 100%);
+  font-family: var(--font-body);
   font-size: 1.015rem;
   line-height: 1.62;
   color: var(--color-text-body);
@@ -3225,6 +3241,11 @@ html[data-theme="dark"] .home-page .framework-visual figcaption {
   border-top-color: transparent !important;
 }
 
+/* Methodology home band: one canvas when reel collapses to vertical stack */
+.home-page #approach.framework-module {
+  background-color: var(--methodology-canvas-bg);
+}
+
 /* Services showcase: black plate + white type (aligned with use-case tiles). */
 .home-page .offerings--services-only .offering-card--service {
   border: 1px solid rgba(255, 255, 255, 0.14) !important;
@@ -3245,28 +3266,32 @@ html[data-theme="dark"] .home-page .framework-visual figcaption {
 
 .home-page .offerings--services-only .offering-card--service .offering-card__body h3 {
   color: #ffffff !important;
+  font-family: var(--font-heading) !important;
 }
 
-/* Homepage Agentic AI: plain prose body, only the title carries weight. */
+/* Homepage Agentic AI: payoff = clear promise (Inter + weight); detail = subordinated size */
 .home-page .offerings--services-only .offering-card--service .offering-card__payoff {
-  margin: 10px 0 0 !important;
+  margin: 12px 0 0 !important;
+  font-family: var(--font-body) !important;
   color: #ffffff !important;
-  font-size: 0.95rem !important;
-  line-height: 1.5 !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.005em !important;
+  font-size: 1.03rem !important;
+  line-height: 1.45 !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.012em !important;
 }
 
 .home-page .offerings--services-only .offering-card--service .offering-card__context {
-  color: rgba(255, 255, 255, 0.74) !important;
-  font-size: 0.9rem !important;
+  font-family: var(--font-body) !important;
+  color: rgba(255, 255, 255, 0.68) !important;
+  font-size: 0.8125rem !important;
   line-height: 1.55 !important;
   font-weight: 400 !important;
 }
 
 .home-page .offerings--services-only .offering-card--service .offering-card__deliverable {
-  color: rgba(255, 255, 255, 0.74) !important;
-  font-size: 0.9rem !important;
+  font-family: var(--font-body) !important;
+  color: rgba(255, 255, 255, 0.68) !important;
+  font-size: 0.8125rem !important;
   line-height: 1.55 !important;
   font-weight: 400 !important;
 }
@@ -3763,6 +3788,26 @@ html[data-theme="dark"] .home-page .framework-visual figcaption {
 .work-list {
   display: grid;
   gap: 24px;
+}
+
+.work-list > .work-lane-eyebrow {
+  grid-column: 1 / -1;
+  margin: 0 0 4px;
+}
+
+.work-list > .work-lane-eyebrow--spaced {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: var(--hairline);
+}
+
+.work-list > .work-lane-note {
+  grid-column: 1 / -1;
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.875rem;
+  max-width: 56ch;
+  line-height: 1.5;
 }
 
 .work-card {
@@ -5875,7 +5920,7 @@ html[data-theme="dark"] .home-page .framework-visual figcaption {
 }
 
 .case-study-refresh-page h3 {
-  font-family: Manrope, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-family: var(--font-heading) !important;
   text-transform: uppercase !important;
   letter-spacing: 0.12em !important;
 }
@@ -6149,8 +6194,9 @@ html[data-theme="dark"] .nav-disclosure__trigger[aria-expanded="true"] {
   max-width: 360px;
   padding: 16px 18px 18px;
   border-radius: 14px;
-  border: 1px solid var(--glass-border, rgba(209, 217, 230, 0.9));
-  background: var(--glass-bg, rgba(252, 254, 255, 0.94));
+  border: 1px solid var(--glass-border-strong, rgba(179, 198, 227, 0.95));
+  background: var(--surface-elev, #fbfcfe);
+  opacity: 1;
   backdrop-filter: blur(var(--glass-blur, 14px));
   -webkit-backdrop-filter: blur(var(--glass-blur, 14px));
   box-shadow: var(--glass-shadow-md, 0 18px 44px rgba(23, 34, 54, 0.14));
@@ -6158,26 +6204,20 @@ html[data-theme="dark"] .nav-disclosure__trigger[aria-expanded="true"] {
 }
 
 html[data-theme="dark"] .nav-disclosure__panel {
-  background: rgba(17, 26, 39, 0.96);
-  border-color: var(--glass-border, rgba(109, 131, 165, 0.38));
+  background: var(--surface-elev, #0f1622);
+  border-color: var(--glass-border-strong, rgba(154, 182, 230, 0.45));
   box-shadow: 0 20px 48px rgba(2, 8, 18, 0.55);
+  opacity: 1;
 }
 
 .nav-disclosure__eyebrow {
-  margin: 0 0 6px 0;
+  margin: 0 0 10px 0;
   font-family: var(--font-ui);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
-}
-
-.nav-disclosure__lede {
-  margin: 0 0 12px 0;
-  font-size: 0.8125rem;
-  line-height: 1.45;
-  color: var(--color-text-muted, var(--muted));
 }
 
 .nav-disclosure__list {
@@ -6251,98 +6291,58 @@ html[data-theme="dark"] .nav-drawer-group {
 }
 
 
-/* === Methodology funnel close (v0 fifth frame) ===========================
- * Implements PRD v0 + UX design v2.
+/* === Methodology funnel close (v2 — shared canvas + cinematic panel) ====
+ * PRD / UX: single methodology background; frame 5 emphasis = panel only.
  * Spec: _bmad-output/implementation-artifacts/spec-methodology-funnel-v0-fifth-frame.md ST-5
+ * Tokens: _bmad-output/planning-artifacts/design-system-typography-tokens.md
  */
-
-:root {
-  --color-bg-inverse: rgba(10, 16, 26, 1);
-  --color-text-on-inverse: rgba(245, 247, 252, 0.96);
-}
 
 /* Rollback trip-wire — FR-MF-DESIGN-ROLLBACK */
 .framework-puzzle[data-methodology-funnel-variant="v1"] .framework-step--close {
   display: none;
 }
 
-/* Fifth <li> — full-bleed dark wrapper with subtle radial gradient
-   (A2 finding: gives backdrop-filter something distinguishable to blur) */
+/* Fifth beat — same canvas as reel + graph; drama is the close card below */
 .framework-step--close {
-  background-color: var(--color-bg-inverse);
-  background-image: radial-gradient(
-    ellipse at 30% 20%,
-    rgba(40, 60, 100, 0.18) 0%,
-    transparent 60%
-  );
-  color: var(--color-text-on-inverse);
-  padding: clamp(48px, 6vw, 96px) clamp(24px, 4vw, 56px);
+  background-color: var(--methodology-canvas-bg, var(--bg));
+  background-image: none;
+  color: var(--color-text-body);
+  padding: clamp(40px, 5vw, 88px) clamp(24px, 4vw, 56px);
   list-style: none;
 }
 
-/* Vertical-stack context: 64px gradient transition strip into the dark frame */
 .framework-step[data-frame="4"] + .framework-step--close {
-  background-image:
-    linear-gradient(
-      180deg,
-      var(--color-bg-soft) 0%,
-      var(--color-bg-soft) 24%,
-      var(--color-bg-inverse) 100%
-    ),
-    radial-gradient(
-      ellipse at 30% 20%,
-      rgba(40, 60, 100, 0.18) 0%,
-      transparent 60%
-    );
+  background-image: none;
 }
 
-/* Horizontal-scroll-reel context (W2 finding): instant flip at slide boundary,
-   no gradient strip when wide enough for horizontal layout */
 @media (min-width: 960px) {
   .framework-puzzle.reel-track .framework-step[data-frame="4"] + .framework-step--close {
-    background-image: radial-gradient(
-      ellipse at 30% 20%,
-      rgba(40, 60, 100, 0.18) 0%,
-      transparent 60%
-    );
+    background-image: none;
   }
 }
 
-/* The glass panel — borrows existing --glass-* tokens, uses backdrop-filter */
+/* Cinematic close card — light copy on controlled dark surface (WCAG-safe CTAs) */
 .framework-close__panel {
-  max-width: 640px;
+  max-width: min(640px, 100%);
   margin: 0 auto;
   padding: clamp(28px, 4vw, 44px);
-  border-radius: 20px;
-  border: 1px solid var(--glass-border-strong);
-  background-color: var(--glass-bg-strong);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(168deg, #1c2740 0%, #121b2e 52%, #0c1422 100%);
+  color: rgba(248, 250, 255, 0.96);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    var(--glass-shadow-md);
-  background-image: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.04) 0%,
-    rgba(255, 255, 255, 0.0) 14%,
-    rgba(0, 0, 0, 0.0) 86%,
-    rgba(0, 0, 0, 0.18) 100%
-  );
+    0 0 0 1px rgba(0, 0, 0, 0.22),
+    0 28px 56px rgba(4, 10, 24, 0.52),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transition: transform 0.24s ease-out, box-shadow 0.24s ease-out;
 }
 
-/* Backdrop-filter fallback — Winston refinement-2 / NFR-MF-PERF-02 */
-@supports not (backdrop-filter: blur(1px)) {
-  .framework-close__panel {
-    background-color: rgba(17, 26, 39, 0.92);
-  }
-}
-
 .framework-close__panel:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 28px 56px rgba(2, 8, 18, 0.7);
+    0 0 0 1px rgba(0, 0, 0, 0.22),
+    0 36px 72px rgba(4, 10, 24, 0.58),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* Reduced motion — NFR-MF-A11Y-02 */
@@ -6355,25 +6355,40 @@ html[data-theme="dark"] .nav-drawer-group {
   }
 }
 
-/* Dark-mode case — NFR-MF-A11Y-04: soft elevation, no full inversion */
-@media (prefers-color-scheme: dark) {
-  .framework-step--close {
-    background-color: var(--color-bg-soft);
-    background-image: none;
-    color: var(--color-text-body);
-  }
-  .framework-step[data-frame="4"] + .framework-step--close {
-    background-image: none;
-  }
-  .framework-close__panel {
-    background-color: var(--surface-elev);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.04),
-      0 22px 46px rgba(2, 8, 18, 0.4);
-  }
+/* Dark theme: shared methodology canvas; panel stays cinematic (lighter lift on dark field) */
+html[data-theme="dark"] .framework-step--close {
+  background-color: var(--methodology-canvas-bg);
+  background-image: none;
+  color: var(--color-text-body);
 }
 
-/* Eyebrow */
+html[data-theme="dark"] .framework-step[data-frame="4"] + .framework-step--close {
+  background-image: none;
+}
+
+html[data-theme="dark"] .framework-step--close .framework-close__panel {
+  background: linear-gradient(168deg, #2a3752 0%, #1e2a40 52%, #151f30 100%);
+  border-color: rgba(255, 255, 255, 0.11);
+  color: rgba(248, 250, 255, 0.98);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.35),
+    0 28px 56px rgba(0, 0, 0, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+/* Reel + v2: fifth frame fills the sticky track row (HUD → fold). */
+.reel-ok .framework-puzzle[data-methodology-funnel-variant="v2"].reel-track .framework-step--close {
+  border-radius: 0;
+  padding: clamp(20px, 3.5vh, 56px) clamp(20px, 5vw, 80px);
+}
+
+.reel-ok .framework-puzzle[data-methodology-funnel-variant="v2"].reel-track .framework-step--close .framework-close__panel {
+  width: 100%;
+  max-width: min(52rem, 92vw);
+  border-radius: 18px;
+}
+
+/* Eyebrow (global); frame-5 panel overrides below for contrast */
 .framework-step__eyebrow {
   display: flex;
   align-items: baseline;
@@ -6384,6 +6399,11 @@ html[data-theme="dark"] .nav-drawer-group {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   opacity: 0.7;
+}
+
+.framework-close__panel .framework-step__eyebrow {
+  opacity: 1;
+  color: rgba(205, 218, 245, 0.92);
 }
 
 .framework-step__num {
@@ -6398,17 +6418,21 @@ html[data-theme="dark"] .nav-drawer-group {
 /* Headline + lede */
 .framework-close__headline {
   margin: 0 0 16px 0;
-  font-family: var(--font-display, "Fraunces", serif);
+  font-family: var(--font-display);
   font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 600;
+  font-optical-sizing: auto;
   line-height: 1.15;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
+  color: #fbfcff;
 }
 
 .framework-close__lede {
   margin: 0 0 28px 0;
+  font-family: var(--font-body);
   font-size: 1.0625rem;
   line-height: 1.6;
-  opacity: 0.86;
+  color: rgba(228, 236, 255, 0.92);
 }
 
 /* CTA actions */
@@ -6444,27 +6468,34 @@ html[data-theme="dark"] .nav-drawer-group {
 }
 
 .framework-close__cta--secondary {
-  color: var(--color-text-on-inverse);
+  min-height: 44px;
+  padding: 8px 2px;
+  box-sizing: border-box;
+  align-items: center;
+  color: #dbe6ff;
   font-size: 0.9375rem;
-  opacity: 0.86;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(219, 230, 255, 0.55);
 }
 
 .framework-close__cta--secondary:hover {
-  opacity: 1;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-@media (prefers-color-scheme: dark) {
-  .framework-close__cta--secondary {
-    color: var(--color-text-body);
-  }
+  color: #ffffff;
+  text-decoration-color: rgba(255, 255, 255, 0.88);
 }
 
 /* Focus rings — NFR-MF-A11Y-01 (A3 finding: single 3px accent ring with offset) */
 .framework-close__cta:focus-visible {
   outline: 3px solid var(--accent, #6b8aff);
   outline-offset: 3px;
+}
+
+@media (forced-colors: active) {
+  .framework-close__panel {
+    border: 2px solid CanvasText;
+  }
 }
 
 /* Mobile — phase commitment per spec frontmatter (≤640px stacking, 48px tap target) */

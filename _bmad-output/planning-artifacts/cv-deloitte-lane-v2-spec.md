@@ -59,10 +59,10 @@ John’s abstract list is **mapped** to this repository (adjust filenames as imp
 
 | # | Artifact | Purpose | Repo path / action |
 |---|----------|---------|-------------------|
-| A1 | **Metrics manifest** — canonical KPIs with IDs for web/PDF | SSOT for numbers | **Extend** `_bmad-output/planning-artifacts/cv-evidence-bank-v1.md` or add `metrics-manifest.md` (human-readable; optional YAML later) |
+| A1 | **Metrics manifest** — canonical KPIs with IDs for web/PDF | SSOT for numbers | **`metrics-manifest.md`** (+ `cv-evidence-bank-v1.md` pointer) |
 | A2 | **Deloitte lane PRD addendum** | Locks IA + AC for web v2 | **This file** + section §6 below |
 | A3 | **Enterprise case study** (Stryker or HP flagship) | Primary proof | New `case-study-stryker.md` or extend existing `case-study*.html` + **one** flagship PDF export |
-| A4 | **Consumer case module** (BYJU’s) | Secondary proof | New `case-study-byjus-scale.md` or section in `work.html` under **secondary** fold |
+| A4 | **Consumer case module** (BYJU’s) | Secondary proof | `case-study-byjus-scale.md` + **`case-study-byjus-scale.html`**; lane in `work.html` · `index.html` tile |
 | A5 | **Copy register** — enterprise vocabulary | Paige gate | Section in `bmad.md` or `_bmad-output/planning-artifacts/copy-for-enterprise.md` |
 | A6 | **CV v2** | Page-one enterprise spine | Update `cv/cv-*.html` or add `cv/cv-enterprise.html` default outbound |
 | A7 | **Site IA v2** | Enterprise primary nav/fold | `index.html` / `work.html` / `services.html` — enterprise strip first; consumer module second (Sally §7) |
@@ -140,11 +140,20 @@ Sally suggested **sober neo-grotesque** for consulting read; current portfolio u
 
 ## 10. Next implementation ticket (John)
 
-1. Extend **Evidence Bank** with manifest-style **metric IDs** for Stryker / HP / BYJU’s bullets used on web.  
-2. Draft **Stryker flagship case** to Paige headings; one **BYJU’s scale** companion page.  
-3. **work.html** — default sort / hero: enterprise first; consumer strip below fold.  
-4. **cv-enterprise.html** (or retitle summary on `cv-pm.html`) as default outbound for consulting targets.  
-5. **CHANGELOG** entry when merged.
+**Shipped in repo (2026-05-13 web slice):**
+
+- [x] **Evidence bank + metrics** — `cv-evidence-bank-v1.md` restored as pointer; **`metrics-manifest.md`** is SSOT for `M-*` IDs.  
+- [x] **Stryker trace** — `case-study-stryker-longform.md` maps Paige headings → live `case-study.html`.  
+- [x] **BYJU’s scale** — `case-study-byjus-scale.md` + **`case-study-byjus-scale.html`**; **`case-study-3.html`** redirect fixes broken links.  
+- [x] **work.html** — enterprise lane eyebrow + hero; consumer lane `#india-consumer-scale` below enterprise cards.  
+- [x] **CHANGELOG** — root **`CHANGELOG.md`**.  
+- [x] **Copy register** — `copy-for-enterprise.md` (minimal v1).
+
+**Still open:**
+
+- [ ] **cv-enterprise.html** (or enterprise-first summary strip on `cv-pm.html`) for default consulting outbound.  
+- [ ] **Home / services** nav strip (§4 A7 full scope) if required beyond `work.html`.  
+- [ ] Optional **PDF** export for BYJU’s companion page.
 
 ---
 
