@@ -31,11 +31,49 @@
       var requested = (params.get("theme") || "").toLowerCase();
       if (requested === "light" || requested === "dark") {
         root.setAttribute("data-theme", requested);
+      } else {
+        /* Default: light everywhere. Dark only via ?theme=dark until a nav toggle ships. */
+        root.setAttribute("data-theme", "light");
       }
     } catch (_err) {
-      /* no-op: keep defaults if query parsing fails */
+      try {
+        root.setAttribute("data-theme", "light");
+      } catch (_e2) {
+        /* no-op */
+      }
     }
   })();
+
+  /* Brand “home”: strip reel / methodology URL state so we land on the hero, not
+   * #approach or #approach=frame-* (replaceState from framework-puzzle.js). */
+  document.addEventListener(
+    "click",
+    function (e) {
+      var a = e.target.closest && e.target.closest("a[data-nav-brand]");
+      if (!a) return;
+      var href = (a.getAttribute("href") || "").trim();
+      if (href !== "index.html" && href !== "/" && href !== "./") return;
+      var hash = (window.location.hash || "").toLowerCase();
+      if (hash.length <= 1) return;
+      var reelOrApproach =
+        hash === "#approach" ||
+        hash.indexOf("#approach=") === 0 ||
+        /frame-[1-5]/.test(hash);
+      if (!reelOrApproach) return;
+      var path = (window.location.pathname || "").replace(/\/+$/, "");
+      var onHome =
+        path === "" ||
+        path === "/" ||
+        /(^|\/)index\.html$/i.test(window.location.pathname || "");
+      if (!onHome) return;
+      e.preventDefault();
+      try {
+        window.history.replaceState(null, "", window.location.pathname + window.location.search);
+      } catch (_err) {}
+      window.scrollTo(0, 0);
+    },
+    true
+  );
 
   document.querySelectorAll("[data-site-nav]").forEach(function (root) {
     var openBtn = root.querySelector(".nav-menu-toggle");
@@ -80,6 +118,117 @@
 
   syncInPageNavActive();
   window.addEventListener("hashchange", syncInPageNavActive);
+
+  /* Desktop disclosure dropdowns — Toolkits + Services (restrained mega; one open at a time).
+   * Opens on hover (fine pointer), focus (keyboard), or click (toggle); outside click / Escape closes. */
+  (function initNavDisclosures() {
+    var finePointer =
+      window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    function closeAllInNav(navRoot) {
+      navRoot.querySelectorAll("[data-nav-disclosure]").forEach(function (d) {
+        var btn = d.querySelector("[data-nav-disclosure-trigger]");
+        var panel = d.querySelector("[data-nav-disclosure-panel]");
+        if (!btn || !panel) return;
+        btn.setAttribute("aria-expanded", "false");
+        panel.setAttribute("hidden", "hidden");
+        d.classList.remove("is-open");
+      });
+    }
+
+    function openDisclosure(navRoot, d, focusFirstLink) {
+      var btn = d.querySelector("[data-nav-disclosure-trigger]");
+      var panel = d.querySelector("[data-nav-disclosure-panel]");
+      if (!btn || !panel) return;
+      closeAllInNav(navRoot);
+      btn.setAttribute("aria-expanded", "true");
+      panel.removeAttribute("hidden");
+      d.classList.add("is-open");
+      if (focusFirstLink) {
+        var first = panel.querySelector("a[href]");
+        if (first) {
+          window.setTimeout(function () {
+            first.focus({ preventScroll: true });
+          }, 0);
+        }
+      }
+    }
+
+    document.querySelectorAll("[data-site-nav]").forEach(function (navRoot) {
+      var discs = navRoot.querySelectorAll("[data-nav-disclosure]");
+      if (!discs.length) return;
+
+      Array.prototype.forEach.call(discs, function (d) {
+        var btn = d.querySelector("[data-nav-disclosure-trigger]");
+        var panel = d.querySelector("[data-nav-disclosure-panel]");
+        if (!btn || !panel) return;
+
+        var hoverCloseTimer = null;
+        function cancelHoverClose() {
+          if (hoverCloseTimer) {
+            window.clearTimeout(hoverCloseTimer);
+            hoverCloseTimer = null;
+          }
+        }
+        function scheduleHoverClose() {
+          cancelHoverClose();
+          hoverCloseTimer = window.setTimeout(function () {
+            hoverCloseTimer = null;
+            if (!d.matches(":hover")) closeAllInNav(navRoot);
+          }, 140);
+        }
+
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+          if (isOpen) {
+            closeAllInNav(navRoot);
+            return;
+          }
+          openDisclosure(navRoot, d, true);
+        });
+
+        btn.addEventListener("focusin", function () {
+          openDisclosure(navRoot, d, false);
+        });
+
+        if (finePointer) {
+          d.addEventListener("mouseenter", function () {
+            cancelHoverClose();
+            openDisclosure(navRoot, d, false);
+          });
+          d.addEventListener("mouseleave", function () {
+            scheduleHoverClose();
+          });
+        }
+      });
+
+      navRoot.addEventListener("focusin", function (ev) {
+        var open = navRoot.querySelector("[data-nav-disclosure].is-open");
+        if (!open) return;
+        if (open.contains(ev.target)) return;
+        closeAllInNav(navRoot);
+      });
+
+      document.addEventListener("keydown", function (ev) {
+        if (ev.key !== "Escape") return;
+        if (!navRoot.contains(document.activeElement)) return;
+        var hadOpen = navRoot.querySelector("[data-nav-disclosure].is-open");
+        closeAllInNav(navRoot);
+        if (hadOpen) {
+          var t = hadOpen.querySelector("[data-nav-disclosure-trigger]");
+          if (t) t.focus();
+        }
+      });
+      document.addEventListener("pointerdown", function (ev) {
+        var open = navRoot.querySelector("[data-nav-disclosure].is-open");
+        if (!open) return;
+        if (open.contains(ev.target)) return;
+        closeAllInNav(navRoot);
+      });
+    });
+  })();
 
   var prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!("IntersectionObserver" in window) || prefersReducedMotion) {

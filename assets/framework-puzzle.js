@@ -240,6 +240,7 @@
          * Round to nearest frame index; this is the parked frame. */
         var newIdx = Math.round(progress * (frames.length - 1));
         if (newIdx !== currentParkedIdx) {
+          var prevParked = currentParkedIdx;
           if (currentParkedIdx >= 0 && frames[currentParkedIdx]) {
             frames[currentParkedIdx].classList.remove("is-parked");
           }
@@ -260,7 +261,12 @@
                 }
               }
               if (onboard) onboard.classList.add("is-dismissed");
-              updateHash(stepNum);
+              /* Do not update the URL on the initial park (-1 → first frame).
+               * replaceState(..., "#approach") on first paint can scroll the
+               * viewport to the methodology section on some browsers / Vercel. */
+              if (prevParked >= 0) {
+                updateHash(stepNum);
+              }
             }
           }
         }
@@ -445,9 +451,17 @@
 
     function updateHash(stepNum) {
       if (!("replaceState" in window.history)) return;
+      if (!stepNum || stepNum < 1) return;
       try {
-        var hash = stepNum > 1 ? "#approach=frame-" + stepNum : "#approach";
-        window.history.replaceState(null, "", hash);
+        /* Never use bare #approach — it matches <section id="approach"> and the
+         * browser scrolls the methodology block into view (e.g. after reel state
+         * or when clicking the brand “home” link on Vercel). */
+        var base = window.location.pathname + window.location.search;
+        if (stepNum <= 1) {
+          window.history.replaceState(null, "", base);
+        } else {
+          window.history.replaceState(null, "", base + "#approach=frame-" + stepNum);
+        }
       } catch (e) {}
     }
 

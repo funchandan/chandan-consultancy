@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Work | Chandan Sharma</title>
-  <meta name="description" content="Case studies across healthcare UX and AI-assisted field operations, focused on measurable user and business outcomes." />
+  <meta name="description" content="Enterprise-first case studies: healthcare operations UX, AI-assisted field service, then a secondary India-scale consumer chapter (BYJU’s / WhiteHat Jr)." />
   <link rel="stylesheet" href="styles.css" />
   <script src="assets/site-nav.js" defer></script>
 </head>
 <body>
+  <a class="skip-to-content" href="#main">Skip to content</a>
   <header class="site-header">
-    <nav class="nav shell" data-site-nav aria-label="Main navigation">
+    <nav class="nav shell" data-site-nav aria-label="Primary">
       <a class="brand" href="index.html">Chandan Sharma</a>
       <button type="button" class="nav-menu-toggle" id="site-nav-open" aria-expanded="false" aria-controls="site-nav-dialog" aria-label="Open menu">
         <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
@@ -24,34 +25,71 @@
               <button type="submit" class="site-nav-dialog__close">Close</button>
             </form>
           </div>
-          <div class="nav-links nav-links--dialog">
-            <a class="active" href="work.html">Work</a>
-            <a href="index.html#resources">Resources</a>
-            <a href="index.html#approach">Approach</a>
-            <a href="mailto:hello@example.com?subject=Experience%20consulting%20%E2%80%93%20intro">Contact</a>
+          <div class="nav-links nav-links--dialog" data-nav-links-dialog>
+            <a class="active" href="work.html" data-nav-item="work">Work</a>
+            <div class="nav-drawer-group" role="group" aria-labelledby="nav-d-toolkits-label">
+              <p id="nav-d-toolkits-label" class="nav-drawer-group__label">Toolkits</p>
+              <a href="toolkits.html">Toolkits overview</a>
+              <a href="mailto:hello@example.com?subject=Book%20a%20call&amp;body=Toolkits%20%E2%80%94%20what%20I%27d%20prioritize%3A%20">Signal kit interest</a>
+            </div>
+            <div class="nav-drawer-group" role="group" aria-labelledby="nav-d-services-label">
+              <p id="nav-d-services-label" class="nav-drawer-group__label">Services</p>
+              <a href="services.html">Services overview</a>
+              <a href="services.html#how-it-works">How it works</a>
+              <a href="for-enterprise.html">For enterprise</a>
+            </div>
+            <a href="about.html" data-nav-item="about">About</a>
+            <a class="nav-cta nav-cta--dialog" href="mailto:hello@example.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
           </div>
         </div>
       </dialog>
-      <div class="nav-links nav-links--desktop">
-        <a class="active" href="work.html">Work</a>
-        <a href="index.html#resources">Resources</a>
-        <a href="index.html#approach">Approach</a>
-        <a href="mailto:hello@example.com?subject=Experience%20consulting%20%E2%80%93%20intro">Contact</a>
+      <div class="nav-links nav-links--desktop" data-nav-links>
+        <a class="active" href="work.html" data-nav-item="work">Work</a>
+        <div class="nav-disclosure" data-nav-disclosure>
+          <button type="button" class="nav-disclosure__trigger" id="nav-trigger-toolkits" data-nav-disclosure-trigger aria-expanded="false" aria-haspopup="true" aria-controls="nav-panel-toolkits">
+            Toolkits
+            <span class="nav-disclosure__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="nav-disclosure__panel" id="nav-panel-toolkits" data-nav-disclosure-panel role="region" aria-labelledby="nav-trigger-toolkits" hidden>
+            <p class="nav-disclosure__eyebrow">Toolkits</p>
+            <ul class="nav-disclosure__list">
+              <li><a href="toolkits.html">Overview</a></li>
+              <li><a href="mailto:hello@example.com?subject=Book%20a%20call&amp;body=Toolkits%20%E2%80%94%20what%20I%27d%20buy%3A%20">Tell me what you&rsquo;d buy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="nav-disclosure" data-nav-disclosure>
+          <button type="button" class="nav-disclosure__trigger" id="nav-trigger-services" data-nav-disclosure-trigger aria-expanded="false" aria-haspopup="true" aria-controls="nav-panel-services">
+            Services
+            <span class="nav-disclosure__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="nav-disclosure__panel" id="nav-panel-services" data-nav-disclosure-panel role="region" aria-labelledby="nav-trigger-services" hidden>
+            <p class="nav-disclosure__eyebrow">Services</p>
+            <ul class="nav-disclosure__list">
+              <li><a href="services.html">Overview</a></li>
+              <li><a href="services.html#how-it-works">How it works</a></li>
+              <li><a href="for-enterprise.html">For enterprise</a></li>
+            </ul>
+          </div>
+        </div>
+        <a href="about.html" data-nav-item="about">About</a>
       </div>
+      <a class="nav-cta" href="mailto:hello@example.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
     </nav>
   </header>
 
-  <main>
+  <main id="main" tabindex="-1">
     <section class="page-hero section">
       <div class="shell narrow">
         <p class="eyebrow">Work</p>
-        <h1>Case studies with a clear problem, process, and outcome.</h1>
-        <p class="consulting-hero-lede">Selected work across engagement systems, AI-assisted field operations, and journeys where user trust and business metrics had to move together. Visuals are illustrative—client-specific artifacts are anonymized.</p>
+        <h1>Enterprise proof first; India-scale consumer as a contained second chapter.</h1>
+        <p class="consulting-hero-lede">Regulated delivery and field operations cases lead. A BYJU&rsquo;s / WhiteHat Jr module sits below as <strong>secondary</strong> evidence of multi-market judgment&mdash;not the primary consulting sell. Visuals are illustrative; client artifacts are anonymized.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="shell work-list">
+        <p class="eyebrow work-lane-eyebrow" id="enterprise-programs">Enterprise programs</p>
         <article class="work-card">
           <div class="work-card-visual" aria-hidden="true">
             <div class="visual-frame">
@@ -110,6 +148,9 @@
           </div>
         </article>
 
+        <p class="eyebrow work-lane-eyebrow work-lane-eyebrow--spaced" id="india-consumer-scale">India-scale consumer (secondary)</p>
+        <p class="work-lane-note">Multi-market live learning (eight countries), research volume, adoption and retention signals&mdash;framed as provable consumer judgment, subordinate to enterprise cases above.</p>
+
         <article class="work-card">
           <div class="work-card-visual" aria-hidden="true">
             <div class="visual-frame">
@@ -122,18 +163,18 @@
                 <rect x="42" y="88" width="72" height="6" rx="2" fill="#e3e6ea"/>
                 <rect x="42" y="98" width="96" height="5" rx="2" fill="#eef0f2"/>
                 <rect x="124" y="86" width="36" height="20" rx="4" fill="var(--color-brand-primary)" opacity="0.15"/>
-                <text x="142" y="100" text-anchor="middle" fill="var(--color-brand-primary)" font-size="7" font-family="Manrope,Inter,system-ui,sans-serif" font-weight="600">AI</text>
+                <text x="142" y="100" text-anchor="middle" fill="var(--color-brand-primary)" font-size="7" font-family="Manrope,Inter,system-ui,sans-serif" font-weight="600">8</text>
               </svg>
             </div>
-            <span class="visual-kicker">Pattern study · generative CX</span>
+            <span class="visual-kicker">Consumer scale · APAC / NA</span>
           </div>
           <div class="work-card-body">
-            <p class="project-type">Pattern study 03</p>
-            <h2>Trust-first AI inside the lesson loop</h2>
-            <p>Desk research on conversational practice and correction in consumer language products—pacing, explainability, and emotional safety.</p>
+            <p class="project-type">Case study 03</p>
+            <h2>BYJU&rsquo;s Future School &amp; WhiteHat Jr</h2>
+            <p>From 0&rarr;1 &ldquo;Create with Math&rdquo; through insights org and design-system scale: eight countries, structured research at volume, and adoption signals on tracked releases.</p>
           </div>
           <div class="work-card-cta">
-            <a class="button button-primary" href="case-study-3.html">Read pattern study</a>
+            <a class="button button-primary" href="case-study-byjus-scale.html">Read case study</a>
           </div>
         </article>
       </div>
