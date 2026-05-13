@@ -451,9 +451,17 @@
 
     function updateHash(stepNum) {
       if (!("replaceState" in window.history)) return;
+      if (!stepNum || stepNum < 1) return;
       try {
-        var hash = stepNum > 1 ? "#approach=frame-" + stepNum : "#approach";
-        window.history.replaceState(null, "", hash);
+        /* Never use bare #approach — it matches <section id="approach"> and the
+         * browser scrolls the methodology block into view (e.g. after reel state
+         * or when clicking the brand “home” link on Vercel). */
+        var base = window.location.pathname + window.location.search;
+        if (stepNum <= 1) {
+          window.history.replaceState(null, "", base);
+        } else {
+          window.history.replaceState(null, "", base + "#approach=frame-" + stepNum);
+        }
       } catch (e) {}
     }
 

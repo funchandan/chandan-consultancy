@@ -44,6 +44,37 @@
     }
   })();
 
+  /* Brand “home”: strip reel / methodology URL state so we land on the hero, not
+   * #approach or #approach=frame-* (replaceState from framework-puzzle.js). */
+  document.addEventListener(
+    "click",
+    function (e) {
+      var a = e.target.closest && e.target.closest("a[data-nav-brand]");
+      if (!a) return;
+      var href = (a.getAttribute("href") || "").trim();
+      if (href !== "index.html" && href !== "/" && href !== "./") return;
+      var hash = (window.location.hash || "").toLowerCase();
+      if (hash.length <= 1) return;
+      var reelOrApproach =
+        hash === "#approach" ||
+        hash.indexOf("#approach=") === 0 ||
+        /frame-[1-5]/.test(hash);
+      if (!reelOrApproach) return;
+      var path = (window.location.pathname || "").replace(/\/+$/, "");
+      var onHome =
+        path === "" ||
+        path === "/" ||
+        /(^|\/)index\.html$/i.test(window.location.pathname || "");
+      if (!onHome) return;
+      e.preventDefault();
+      try {
+        window.history.replaceState(null, "", window.location.pathname + window.location.search);
+      } catch (_err) {}
+      window.scrollTo(0, 0);
+    },
+    true
+  );
+
   document.querySelectorAll("[data-site-nav]").forEach(function (root) {
     var openBtn = root.querySelector(".nav-menu-toggle");
     var dialog = root.querySelector(".site-nav-dialog");
