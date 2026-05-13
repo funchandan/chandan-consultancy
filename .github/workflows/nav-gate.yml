@@ -3,7 +3,7 @@ name: nav-gate
 # Methodology Funnel v0 (and forward) — enforce nav-content + analytics-slot +
 # mailto-subject hygiene + linked-design-spec discipline + rollback-flag presence.
 #
-# 5 checks; each is independent. Workflow fails on any single failure.
+# 6 checks; each is independent. Workflow fails on any single failure.
 # Backing artifacts:
 #   - _bmad-output/planning-artifacts/prd-methodology-funnel.md §7
 #   - _bmad-output/implementation-artifacts/spec-methodology-funnel-v0-fifth-frame.md §2 ST-1
@@ -20,6 +20,8 @@ on:
       - 'case-study*.html'
       - 'brand-guidelines.html'
       - 'styles.css'
+      - 'assets/framework-puzzle.css'
+      - 'assets/framework-puzzle.js'
       - '.github/workflows/nav-gate.yml'
   push:
     branches:
@@ -137,7 +139,27 @@ jobs:
           fi
           echo "OK: data-methodology-funnel-variant attribute present in $FILE"
 
+      - name: Check 6 — methodology reel assets must exist if linked from index.html
+        run: |
+          set -euo pipefail
+          FILE="index.html"
+          if [ ! -f "$FILE" ]; then
+            echo "::warning::$FILE missing — skipping"
+            exit 0
+          fi
+          if ! grep -q 'assets/framework-puzzle.css' "$FILE"; then
+            echo "OK: index.html does not reference framework-puzzle.css — Check 6 not applicable"
+            exit 0
+          fi
+          for path in assets/framework-puzzle.css assets/framework-puzzle.js; do
+            if [ ! -f "$path" ]; then
+              echo "::error::Missing $path but index.html links to the methodology reel bundle. Horizontal reel + polaroid layout require both files (historically on feat/framework-puzzle-v1)."
+              exit 1
+            fi
+          done
+          echo "OK: framework-puzzle.css and framework-puzzle.js present"
+
       - name: Summary
         if: always()
         run: |
-          echo "nav-gate finished. All 5 checks must pass for merge to main."
+          echo "nav-gate finished. All 6 checks must pass for merge to main."
