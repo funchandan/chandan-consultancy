@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>About | Your Name</title>
+  <meta name="description" content="About a senior UX/Product Designer focused on activation, retention, and user-centered growth." />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="assets/site-nav.js" defer></script>
+</head>
+<body>
+  <a class="skip-to-content" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" data-site-nav aria-label="Primary">
+      <a class="brand" href="index.html" data-nav-brand>Chandan Sharma</a>
+      <button type="button" class="nav-menu-toggle" id="site-nav-open" aria-expanded="false" aria-controls="site-nav-dialog" aria-label="Open menu">
+        <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-menu-toggle__label">Menu</span>
+      </button>
+      <dialog id="site-nav-dialog" class="site-nav-dialog" aria-labelledby="site-nav-dialog-title">
+        <div class="site-nav-dialog__panel">
+          <div class="site-nav-dialog__header">
+            <p id="site-nav-dialog-title" class="site-nav-dialog__title">Menu</p>
+            <form method="dialog">
+              <button type="submit" class="site-nav-dialog__close">Close</button>
+            </form>
+          </div>
+          <div class="nav-links nav-links--dialog" data-nav-links-dialog>
+            <a href="work.html" data-nav-item="work">Work</a>
+            <a href="services.html" data-nav-item="services">Services</a>
+            <a href="about.html" data-nav-item="about">About</a>
+            <a class="nav-cta nav-cta--dialog" href="mailto:hello@example.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
+          </div>
+        </div>
+      </dialog>
+      <div class="nav-links nav-links--desktop" data-nav-links>
+        <a href="work.html" data-nav-item="work">Work</a>
+        <a href="services.html" data-nav-item="services">Services</a>
+        <a href="about.html" data-nav-item="about">About</a>
+      </div>
+      <a class="nav-cta" href="mailto:hello@example.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="page-hero section">
+      <div class="container narrow">
+        <p class="eyebrow">About</p>
+        <h1>I design where user behavior and business performance meet.</h1>
+        <p>My work focuses on helping product teams understand why users hesitate, where value fails to land, and how the experience can create clearer momentum from first touch to long-term use.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container two-column">
+        <div>
+          <h2>Design approach</h2>
+          <p>I combine research, product strategy, interaction design, and behavioral thinking to improve the moments that matter most: onboarding, activation, habit formation, trust, and decision-making.</p>
+          <p>The result is design work that is easy to evaluate because it connects directly to user needs, product goals, and measurable commercial outcomes.</p>
+        </div>
+        <div class="stack-list">
+          <p>Onboarding and activation strategy</p>
+          <p>Retention and engagement systems</p>
+          <p>AI-assisted workflow design</p>
+          <p>Usability research and product audits</p>
+          <p>Founder and product team advisory</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted">
+      <div class="container quote-block">
+        <p>"Good UX is not decoration. It is the operating system for how a product earns trust, teaches value, and makes progress feel obvious."</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>Your Name</p>
+      <a href="mailto:hello@example.com">hello@example.com</a>
+    </div>
+  </footer>
+</body>
+</html>

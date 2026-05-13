@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Pattern study: AI practice in consumer language learning | Chandan Sharma</title>
+  <meta name="description" content="Pattern study: generative AI in lesson loops—explainability, pacing, and learner trust in customer-facing language products. Desk research, not client delivery." />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="assets/site-nav.js" defer></script>
+</head>
+<!-- bmad.md §17 scout → Novelty Gate PASS (STELLAR). Pattern study: no implied client engagement. -->
+<body class="case-study-refresh-page">
+  <a class="skip-to-content" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" data-site-nav aria-label="Primary">
+      <a class="brand" href="index.html" data-nav-brand>Chandan Sharma</a>
+      <button type="button" class="nav-menu-toggle" id="site-nav-open" aria-expanded="false" aria-controls="site-nav-dialog" aria-label="Open menu">
+        <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-menu-toggle__label">Menu</span>
+      </button>
+      <dialog id="site-nav-dialog" class="site-nav-dialog" aria-labelledby="site-nav-dialog-title">
+        <div class="site-nav-dialog__panel">
+          <div class="site-nav-dialog__header">
+            <p id="site-nav-dialog-title" class="site-nav-dialog__title">Menu</p>
+            <form method="dialog">
+              <button type="submit" class="site-nav-dialog__close">Close</button>
+            </form>
+          </div>
+          <div class="nav-links nav-links--dialog" data-nav-links-dialog>
+            <a href="work.html" data-nav-item="work">Work</a>
+            <a href="services.html" data-nav-item="services">Services</a>
+            <a href="about.html" data-nav-item="about">About</a>
+            <a class="nav-cta nav-cta--dialog" href="mailto:hello@example.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
+          </div>
+        </div>
+      </dialog>
+      <div class="nav-links nav-links--desktop" data-nav-links>
+        <a href="work.html" data-nav-item="work">Work</a>
+        <a href="services.html" data-nav-item="services">Services</a>
+        <a href="about.html" data-nav-item="about">About</a>
+      </div>
+      <a class="nav-cta" href="mailto:hello@example.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="case-refresh-hero section" aria-labelledby="cx3-case-hero-title">
+      <div class="shell">
+        <a class="back-link" href="work.html">Back to work</a>
+        <div class="case-refresh-hero-layout">
+          <div class="case-refresh-hero-copy">
+            <h1 id="cx3-case-hero-title">When the model sits inside the lesson, trust is the product</h1>
+            <p class="lead">Generative AI moved from novelty to in-lesson correction. The UX question is whether learners feel safe to try, receive useful correction, and stay in control of pace.</p>
+            <div class="case-hero-facts" aria-label="Project summary">
+              <p>Ongoing category analysis (2024-2026)</p>
+              <p>Independent pattern extraction and UX synthesis</p>
+              <p>Public product signals, expert reviews, secondary research</p>
+              <p>Heuristic audits, behavior mapping, evidence synthesis</p>
+            </div>
+            <p class="case-architect-inline-note"><strong>Disclosure:</strong> This is a pattern study from public evidence. It does not claim delivery work for companies named in sources.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="shell">
+      <section id="case-framing" class="section section-soft" aria-labelledby="cx3-framing-heading">
+        <header class="case-refresh-heading">
+          <h2 id="cx3-framing-heading">Context, business north star, and constraints</h2>
+        </header>
+        <div class="case-architect-section-chapters">
+          <div class="case-architect-chapter">
+            <h3>Context</h3>
+            <p>Consumer language products compete on <strong>daily return</strong> and <strong>perceived progress</strong>. Generative models opened three high-visibility surfaces: conversational drills, explanations after errors, and marketing promises of “personalized” paths. Public write-ups (for example Duolingo’s own product narrative for <a href="https://blog.duolingo.com/duolingo-max/">Duolingo Max</a>) describe bundling those capabilities into the subscription core.</p>
+            <p class="case-architect-inline-note"><strong>My role:</strong> I treated the category as a <strong>signal deck</strong>: map where AI touches the learner, where trust frays, and what UX leadership should instrument before scaling tone-heavy features.</p>
+          </div>
+          <div class="case-architect-chapter">
+            <h3>Business north star</h3>
+            <p class="case-architect-north-star case-architect-north-star--in-body"><strong>North star:</strong> Durable practice minutes with <strong>learner-interpretable</strong> correction—not maximum model output per session.</p>
+            <p>Retention economics reward habit, but generative features can increase <strong>token cost</strong> and <strong>incident surface</strong> (unsafe replies, hallucinated grammar). The product bet is that better practice depth justifies both.</p>
+          </div>
+          <div class="case-architect-chapter">
+            <h3>Constraints</h3>
+            <ul class="case-architect-list">
+              <li><strong>Affective risk</strong> — a wrong tone at the mistake moment can read as judgment, not coaching.</li>
+              <li><strong>Latency and interruption</strong> — practice flow is fragile; long waits feel like broken UI, not “thinking.”</li>
+              <li><strong>Grounding</strong> — learners need to connect model text to <em>their</em> answer, not generic advice.</li>
+              <li><strong>Evidence ceiling</strong> — I do not have cohort data for named products; recommendations are <strong>design-pressure</strong> statements, not A/B outcomes.</li>
+            </ul>
+          </div>
+          <div class="case-architect-chapter">
+            <h3>Operating contexts</h3>
+            <p class="case-architect-section-lead case-architect-section-lead--tight">Three learner modes the pattern study designs against.</p>
+            <ul class="case-architect-list">
+              <li><strong>Micro-correction</strong> — immediate post-answer feedback; smallest window for trust.</li>
+              <li><strong>Open practice</strong> — role-play or free production; higher variance, stronger guardrail needs.</li>
+              <li><strong>Recovery</strong> — after a bad session or confusing model reply; needs a human-grade off-ramp.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="case-evidence-method" class="section" aria-labelledby="cx3-evidence-heading">
+        <header class="case-refresh-heading">
+          <h2 id="cx3-evidence-heading">User voice, data insight, and methodology</h2>
+        </header>
+        <div class="case-architect-section-chapters">
+          <div class="case-architect-chapter">
+            <h3>User voice</h3>
+            <figure class="case-architect-quote">
+              <blockquote>
+                <p>“I don’t mind being wrong—I mind feeling stupid.”</p>
+              </blockquote>
+              <figcaption>Paraphrased theme from app-store style reviews and learner forums (synthesis, not a single cite)</figcaption>
+            </figure>
+            <p>Across secondary sources, the emotional pattern repeats: users welcome help if it preserves <strong>agency</strong> and <strong>face</strong>. That maps directly to UI choices: who “speaks” first after a mistake, how corrections are framed, and whether the learner can dismiss or slow the model.</p>
+            <p class="case-architect-inline-note"><strong>Stakeholder investment (hypothetical product team):</strong> policy, trust &amp; safety, curriculum design, and growth share the same incident budget once AI sits in-lesson.</p>
+          </div>
+          <div class="case-architect-chapter">
+            <h3>Data insight</h3>
+            <div class="case-architect-insight case-architect-insight--nested case-architect-insight--with-artifact">
+              <div class="case-architect-insight__copy">
+                <p class="case-architect-insight__label">What the public pattern suggests</p>
+                <p>Engagement metrics alone are <strong>misleading</strong> here: a flashy tutor can lift session time while <strong>damaging</strong> willingness to speak aloud next time. The sharper signal is <strong>retry quality</strong>—does the learner attempt a harder production task again soon?</p>
+                <p class="case-architect-insight__signal">Triangulation: product marketing promises + review sentiment + classroom-adjacent learning research on intrinsic motivation (see section 4 themes in <code>bmad.md</code>).</p>
+              </div>
+              <figure class="case-architect-insight__artifact">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Research synthesis board artifact used to interpret learner retry-quality signals." loading="lazy" decoding="async" />
+                <figcaption>Interpretation artifact: clustered learner-signal evidence for retry quality and confidence.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="case-architect-chapter">
+            <h3>Methodology</h3>
+            <p class="case-architect-section-lead case-architect-section-lead--tight">Five stages used for this pattern extraction.</p>
+            <p class="visually-hidden" id="cx3-method-stack-legend">Tools referenced for analysis outputs</p>
+            <div class="case-method-stack case-method-stack--once" aria-labelledby="cx3-method-stack-legend" title="Figma, Notion">
+              <img class="case-tech-ico" src="https://cdn.simpleicons.org/figma/F24E1E" width="20" height="20" alt="Figma" loading="lazy" decoding="async" />
+              <img class="case-tech-ico" src="https://cdn.simpleicons.org/notion/000000" width="20" height="20" alt="Notion" loading="lazy" decoding="async" />
+            </div>
+            <div class="case-method-stages" aria-describedby="cx3-method-stack-legend">
+              <details class="case-method-stage" open>
+                <summary class="case-method-stage__sum">
+                  <span class="case-method-stage__ix" aria-hidden="true">01</span>
+                  <span class="case-method-stage__title-block">
+                    <h4 class="case-method-stage__title">Inventory AI touchpoints</h4>
+                    <span class="case-method-stage__learn">Separate marketing claims from in-lesson states.</span>
+                  </span>
+                </summary>
+                <div class="case-method-stage__panel">
+                  <p class="case-method-stage__who">Desk research · competitive screenshots · release notes</p>
+                </div>
+              </details>
+              <details class="case-method-stage">
+                <summary class="case-method-stage__sum">
+                  <span class="case-method-stage__ix" aria-hidden="true">02</span>
+                  <span class="case-method-stage__title-block">
+                    <h4 class="case-method-stage__title">Stress-test trust moments</h4>
+                    <span class="case-method-stage__learn">Mistake, compare, and “try again” paths first.</span>
+                  </span>
+                </summary>
+                <div class="case-method-stage__panel">
+                  <p class="case-method-stage__who">UX critique · red-team scenarios (paper)</p>
+                </div>
+              </details>
+              <details class="case-method-stage">
+                <summary class="case-method-stage__sum">
+                  <span class="case-method-stage__ix" aria-hidden="true">03</span>
+                  <span class="case-method-stage__title-block">
+                    <h4 class="case-method-stage__title">Map pacing ownership</h4>
+                    <span class="case-method-stage__learn">Who controls next prompt: learner, lesson engine, or model?</span>
+                  </span>
+                </summary>
+                <div class="case-method-stage__panel">
+                  <p class="case-method-stage__who">Flow diagrams · state charts for AI loading / failure</p>
+                </div>
+              </details>
+              <details class="case-method-stage">
+                <summary class="case-method-stage__sum">
+                  <span class="case-method-stage__ix" aria-hidden="true">04</span>
+                  <span class="case-method-stage__title-block">
+                    <h4 class="case-method-stage__title">Define instrumentation gaps</h4>
+                    <span class="case-method-stage__learn">What would convince PM + policy, pre-scale?</span>
+                  </span>
+                </summary>
+                <div class="case-method-stage__panel">
+                  <p class="case-method-stage__who">Metric dictionary stub (hypothesis-level only)</p>
+                </div>
+              </details>
+              <details class="case-method-stage">
+                <summary class="case-method-stage__sum">
+                  <span class="case-method-stage__ix" aria-hidden="true">05</span>
+                  <span class="case-method-stage__title-block">
+                    <h4 class="case-method-stage__title">Synthesize pattern brief</h4>
+                    <span class="case-method-stage__learn">Feeds BMAD case-study outline for a real build if commissioned.</span>
+                  </span>
+                </summary>
+                <div class="case-method-stage__panel">
+                  <p class="case-method-stage__who">Author · optional CRA pass before publish</p>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="case-insights-decisions" class="section section-soft" aria-labelledby="cx3-insights-heading">
+        <header class="case-refresh-heading">
+          <h2 id="cx3-insights-heading">Insights and recommendations</h2>
+        </header>
+        <div class="case-architect-section-chapters">
+          <div class="case-architect-chapter">
+            <h3>Insights</h3>
+            <p class="case-architect-outcomes-intro"><strong>Interpretation:</strong> the strongest consumer-facing implementations will treat generative AI as <strong>pedagogy infrastructure</strong>, not a sidebar chat. Differentiation is emotional and sequential—how correction lands in time—not model size alone.</p>
+            <p class="case-architect-outcomes-caveat"><strong>Caveats:</strong> no proprietary metrics; no claim that any specific company shipped exactly the decisions below. Use this as a <strong>design review lens</strong> if you hire me to harden a similar surface.</p>
+            <div class="case-refresh-outcome-grid">
+              <article class="case-refresh-outcome-card case-refresh-outcome-card--measured">
+                <h4>Observable in public pattern</h4>
+                <ul class="bullet-list">
+                  <li>Products bundle generative features into <strong>subscription tiers</strong> tied to practice—not support deflection.</li>
+                  <li>Marketing emphasizes <strong>role-play and explanations</strong>—high-trust modes by default.</li>
+                </ul>
+              </article>
+              <article class="case-refresh-outcome-card case-refresh-outcome-card--directional">
+                <h4>Hypotheses for a product team</h4>
+                <ul class="bullet-list">
+                  <li>Shorter, grounded replies beat encyclopedic tutoring for <strong>return rate</strong> on mobile.</li>
+                  <li>Explicit learner controls (slow down, skip AI, try without hints) reduce <strong>review blast radius</strong> after a bad reply.</li>
+                </ul>
+              </article>
+            </div>
+            <div class="case-refresh-learning case-refresh-learning--in-chapter">
+              <p class="case-architect-learning-lead">Reusable principle</p>
+              <p class="case-architect-learning-principle">Correction is a social act, even when the tutor is synthetic.</p>
+              <p class="case-architect-learning-follow">When the interface preserves dignity and pacing, practice quality compounds at scale.</p>
+            </div>
+          </div>
+          <div class="case-architect-chapter">
+            <h3>Recommendations and key decisions</h3>
+            <p class="case-architect-section-lead">Trade-offs for teams building customer-facing tutoring loops.</p>
+            <div class="case-refresh-accordion">
+              <details open>
+                <summary>Ground every model turn to the learner’s last action</summary>
+                <p><strong>Constraint:</strong> generic encouragement reads hollow and trains users to ignore AI.</p>
+                <p><strong>Decision:</strong> Tie visible copy to <strong>the specific mistake or utterance</strong>; if grounding is low confidence, say so and offer a narrower retry.</p>
+              </details>
+              <details>
+                <summary>Put pacing under learner control</summary>
+                <p><strong>Constraint:</strong> streaming latency varies; silence feels like failure in a lesson.</p>
+                <p><strong>Decision:</strong> Non-blocking UI, clear “working” semantics, and a throttle for <strong>how fast</strong> feedback appears in sensitive moments.</p>
+              </details>
+              <details>
+                <summary>Design for shame recovery, not only happy path</summary>
+                <p><strong>Constraint:</strong> one patronizing line after a streak loss can churn a paying user.</p>
+                <p><strong>Decision:</strong> Pre-compose <strong>recovery copy</strong> and model fallback paths; audit tone under stress scenarios, not only demo prompts.</p>
+              </details>
+              <details>
+                <summary>Instrument trust, not just usage</summary>
+                <p><strong>Constraint:</strong> session length can rise while willingness to use AI practice falls.</p>
+                <p><strong>Decision:</strong> Pair engagement with <strong>retry difficulty</strong>, opt-out rate, and qualitative flags on “felt judged” themes before widening rollout.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section case-architect-end case-next-step-strip" aria-labelledby="case-next-step-title-3">
+        <div class="case-architect-end-inner">
+          <h2 id="case-next-step-title-3" class="case-next-step-strip__title">Next: book a call</h2>
+          <p>If you are shipping generative surfaces inside a customer journey—not bolted onto a FAQ—I can bring the same framing to your workflows, policy touchpoints, and instrumentation plan.</p>
+          <div class="case-architect-end-actions">
+            <a class="button button-primary" href="mailto:hello@example.com?subject=Generative%20CX%20in%20product%20loops%20%E2%80%93%20book%20a%20call">Book a call</a>
+            <a class="back-link case-architect-end-secondary" href="work.html">Back to work index</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <span>Chandan Sharma</span>
+      <a href="mailto:hello@example.com">hello@example.com</a>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var jumpNav = document.querySelector("body.case-study-refresh-page .case-refresh-jump");
+      var jumpLinks = jumpNav
+        ? Array.prototype.slice.call(jumpNav.querySelectorAll("a[href^='#']"))
+        : [];
+      if (jumpLinks.length && "IntersectionObserver" in window) {
+        var sections = jumpLinks
+          .map(function (link) {
+            var id = (link.getAttribute("href") || "").slice(1);
+            return document.getElementById(id);
+          })
+          .filter(Boolean);
+
+        function setActiveSection(id) {
+          jumpLinks.forEach(function (link) {
+            var active = link.getAttribute("href") === "#" + id;
+            link.classList.toggle("active", active);
+            if (active) {
+              link.setAttribute("aria-current", "true");
+            } else {
+              link.removeAttribute("aria-current");
+            }
+          });
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              setActiveSection(entry.target.id);
+            }
+          });
+        }, { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 });
+
+        sections.forEach(function (section) {
+          observer.observe(section);
+        });
+
+        jumpLinks[0].classList.add("active");
+        jumpLinks[0].setAttribute("aria-current", "true");
+      }
+    })();
+  </script>
+</body>
+</html>
