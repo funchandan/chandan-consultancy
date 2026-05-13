@@ -30,7 +30,17 @@
           </div>
           <div class="nav-links nav-links--dialog" data-nav-links-dialog>
             <a href="work.html" data-nav-item="work">Work</a>
-            <a href="services.html" data-nav-item="services">Services</a>
+            <div class="nav-drawer-group" role="group" aria-labelledby="nav-d-toolkits-label">
+              <p id="nav-d-toolkits-label" class="nav-drawer-group__label">Toolkits</p>
+              <a href="toolkits.html">Toolkits overview</a>
+              <a href="mailto:hello@example.com?subject=Book%20a%20call&amp;body=Toolkits%20%E2%80%94%20what%20I%27d%20prioritize%3A%20">Signal kit interest</a>
+            </div>
+            <div class="nav-drawer-group" role="group" aria-labelledby="nav-d-services-label">
+              <p id="nav-d-services-label" class="nav-drawer-group__label">Services</p>
+              <a href="services.html">Services overview</a>
+              <a href="services.html#how-it-works">How it works</a>
+              <a href="for-enterprise.html">For enterprise</a>
+            </div>
             <a href="about.html" data-nav-item="about">About</a>
             <a class="nav-cta nav-cta--dialog" href="mailto:hello@example.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
           </div>
@@ -38,7 +48,65 @@
       </dialog>
       <div class="nav-links nav-links--desktop" data-nav-links>
         <a href="work.html" data-nav-item="work">Work</a>
-        <a href="services.html" data-nav-item="services">Services</a>
+        <div class="nav-disclosure" data-nav-disclosure>
+          <button
+            type="button"
+            class="nav-disclosure__trigger"
+            id="nav-trigger-toolkits"
+            data-nav-disclosure-trigger
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-controls="nav-panel-toolkits"
+          >
+            Toolkits
+            <span class="nav-disclosure__chevron" aria-hidden="true"></span>
+          </button>
+          <div
+            class="nav-disclosure__panel"
+            id="nav-panel-toolkits"
+            data-nav-disclosure-panel
+            role="region"
+            aria-labelledby="nav-trigger-toolkits"
+            hidden
+          >
+            <p class="nav-disclosure__eyebrow">Toolkits</p>
+            <p class="nav-disclosure__lede">Reusable diagnostics from the work — packaged when ready.</p>
+            <ul class="nav-disclosure__list">
+              <li><a href="toolkits.html">Overview</a></li>
+              <li><a href="mailto:hello@example.com?subject=Book%20a%20call&amp;body=Toolkits%20%E2%80%94%20what%20I%27d%20buy%3A%20">Tell me what you&rsquo;d buy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="nav-disclosure" data-nav-disclosure>
+          <button
+            type="button"
+            class="nav-disclosure__trigger"
+            id="nav-trigger-services"
+            data-nav-disclosure-trigger
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-controls="nav-panel-services"
+          >
+            Services
+            <span class="nav-disclosure__chevron" aria-hidden="true"></span>
+          </button>
+          <div
+            class="nav-disclosure__panel"
+            id="nav-panel-services"
+            data-nav-disclosure-panel
+            role="region"
+            aria-labelledby="nav-trigger-services"
+            hidden
+          >
+            <p class="nav-disclosure__eyebrow">Services</p>
+            <p class="nav-disclosure__lede">Embedded product leadership, UX strategy, and high-stakes AI workflow design.</p>
+            <ul class="nav-disclosure__list">
+              <li><a href="services.html">Overview</a></li>
+              <li><a href="services.html#how-it-works">How it works</a></li>
+              <li><a href="for-enterprise.html">For enterprise</a></li>
+            </ul>
+          </div>
+        </div>
         <a href="about.html" data-nav-item="about">About</a>
       </div>
       <a class="nav-cta" href="mailto:hello@example.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>

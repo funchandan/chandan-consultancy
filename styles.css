@@ -6067,6 +6067,189 @@ html[data-theme="dark"] .nav-cta {
   }
 }
 
+/* === Nav disclosure dropdowns (Toolkits + Services) =======================
+ * Restrained mega: single column, glass panel, desktop-only interaction.
+ */
+
+.nav {
+  position: relative;
+  z-index: 20;
+}
+
+.nav-disclosure {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+}
+
+.nav-disclosure__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: var(--nav-touch-target);
+  padding: 10px 10px;
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--font-ui);
+  font-size: var(--nav-link-font-size);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--btn-text);
+  cursor: pointer;
+  transition: color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.nav-disclosure__chevron {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  opacity: 0.65;
+  transform: translateY(1px);
+  transition: transform 160ms ease;
+}
+
+.nav-disclosure.is-open .nav-disclosure__chevron {
+  transform: rotate(180deg) translateY(-1px);
+}
+
+.nav-disclosure__trigger[aria-expanded="true"] {
+  color: var(--btn-text-strong);
+  border-bottom-color: color-mix(in srgb, var(--accent) 46%, transparent);
+}
+
+html[data-theme="dark"] .nav-disclosure__trigger {
+  color: var(--btn-text);
+}
+
+html[data-theme="dark"] .nav-disclosure__trigger[aria-expanded="true"] {
+  color: var(--btn-text-strong);
+  border-bottom-color: rgba(169, 194, 238, 0.72);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-disclosure__trigger:hover {
+    color: var(--btn-text-strong);
+    border-bottom-color: color-mix(in srgb, var(--accent) 38%, transparent);
+    transform: translateY(-1px);
+  }
+}
+
+.nav-disclosure__panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: min(320px, calc(100vw - 32px));
+  max-width: 360px;
+  padding: 16px 18px 18px;
+  border-radius: 14px;
+  border: 1px solid var(--glass-border, rgba(209, 217, 230, 0.9));
+  background: var(--glass-bg, rgba(252, 254, 255, 0.94));
+  backdrop-filter: blur(var(--glass-blur, 14px));
+  -webkit-backdrop-filter: blur(var(--glass-blur, 14px));
+  box-shadow: var(--glass-shadow-md, 0 18px 44px rgba(23, 34, 54, 0.14));
+  z-index: 50;
+}
+
+html[data-theme="dark"] .nav-disclosure__panel {
+  background: rgba(17, 26, 39, 0.96);
+  border-color: var(--glass-border, rgba(109, 131, 165, 0.38));
+  box-shadow: 0 20px 48px rgba(2, 8, 18, 0.55);
+}
+
+.nav-disclosure__eyebrow {
+  margin: 0 0 6px 0;
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.nav-disclosure__lede {
+  margin: 0 0 12px 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--color-text-muted, var(--muted));
+}
+
+.nav-disclosure__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-disclosure__list a {
+  display: block;
+  padding: 10px 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--btn-text-strong);
+  text-decoration: none;
+  transition: background 140ms ease;
+}
+
+.nav-disclosure__list a:hover {
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+html[data-theme="dark"] .nav-disclosure__list a {
+  color: #e8eefc;
+}
+
+html[data-theme="dark"] .nav-disclosure__list a:hover {
+  background: rgba(118, 149, 218, 0.14);
+}
+
+/* Mobile drawer: grouped links under Toolkits / Services */
+.nav-drawer-group {
+  padding: 4px 0 8px;
+  border-bottom: 1px solid rgba(209, 217, 230, 0.55);
+}
+
+html[data-theme="dark"] .nav-drawer-group {
+  border-bottom-color: rgba(109, 131, 165, 0.28);
+}
+
+.nav-drawer-group__label {
+  margin: 0 0 4px 0;
+  padding: 6px 14px 2px;
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.nav-links--dialog .nav-drawer-group a {
+  padding-left: 22px;
+}
+
+.nav-disclosure__trigger:focus-visible {
+  outline: 2px solid var(--focus-ring, #2f6fed);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-disclosure__chevron,
+  .nav-disclosure__trigger {
+    transition: none;
+  }
+}
+
 
 /* === Methodology funnel close (v0 fifth frame) ===========================
  * Implements PRD v0 + UX design v2.

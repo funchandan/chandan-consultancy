@@ -81,6 +81,61 @@
   syncInPageNavActive();
   window.addEventListener("hashchange", syncInPageNavActive);
 
+  /* Desktop disclosure dropdowns — Toolkits + Services (restrained mega; one open at a time). */
+  (function initNavDisclosures() {
+    function closeAllInNav(navRoot) {
+      navRoot.querySelectorAll("[data-nav-disclosure]").forEach(function (d) {
+        var btn = d.querySelector("[data-nav-disclosure-trigger]");
+        var panel = d.querySelector("[data-nav-disclosure-panel]");
+        if (!btn || !panel) return;
+        btn.setAttribute("aria-expanded", "false");
+        panel.setAttribute("hidden", "hidden");
+        d.classList.remove("is-open");
+      });
+    }
+    document.querySelectorAll("[data-site-nav]").forEach(function (navRoot) {
+      var discs = navRoot.querySelectorAll("[data-nav-disclosure]");
+      if (!discs.length) return;
+      Array.prototype.forEach.call(discs, function (d) {
+        var btn = d.querySelector("[data-nav-disclosure-trigger]");
+        var panel = d.querySelector("[data-nav-disclosure-panel]");
+        if (!btn || !panel) return;
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+          if (isOpen) {
+            closeAllInNav(navRoot);
+            return;
+          }
+          closeAllInNav(navRoot);
+          btn.setAttribute("aria-expanded", "true");
+          panel.removeAttribute("hidden");
+          d.classList.add("is-open");
+          var first = panel.querySelector("a[href]");
+          if (first) {
+            window.setTimeout(function () {
+              first.focus({ preventScroll: true });
+            }, 0);
+          }
+        });
+      });
+      document.addEventListener("keydown", function (ev) {
+        if (ev.key !== "Escape") return;
+        if (!navRoot.contains(document.activeElement)) return;
+        var hadOpen = navRoot.querySelector("[data-nav-disclosure].is-open");
+        closeAllInNav(navRoot);
+        if (hadOpen) {
+          var t = hadOpen.querySelector("[data-nav-disclosure-trigger]");
+          if (t) t.focus();
+        }
+      });
+      document.addEventListener("pointerdown", function (ev) {
+        if (!navRoot.contains(ev.target)) closeAllInNav(navRoot);
+      });
+    });
+  })();
+
   var prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!("IntersectionObserver" in window) || prefersReducedMotion) {
     return;
