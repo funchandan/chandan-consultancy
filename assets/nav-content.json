@@ -1,19 +1,12 @@
 {
-  "dictionaryVersion": 1,
+  "version": "1.1.0-nav-megas",
   "brand": "Chandan Sharma",
-  "aria": {
-    "nav": "Primary"
-  },
-  "skipToContent": {
-    "label": "Skip to content"
-  },
-  "topLevel": [
-    { "key": "work", "label": "Work", "href": "work.html" },
-    { "key": "services", "label": "Services", "href": "services.html" },
-    { "key": "about", "label": "About", "href": "about.html" }
+  "items": [
+    { "id": "work", "label": "Work", "href": "work.html" },
+    { "id": "toolkits", "label": "Toolkits", "href": "toolkits.html", "mega": true },
+    { "id": "services", "label": "Services", "href": "services.html", "mega": true },
+    { "id": "about", "label": "About", "href": "about.html" }
   ],
-  "cta": {
-    "label": "Book a call",
-    "href": "mailto:hello@example.com?subject=Book%20a%20call"
-  }
+  "cta": { "label": "Book a call", "href": "mailto:hello@example.com?subject=Book%20a%20call" },
+  "skipLink": { "label": "Skip to content", "href": "#main" }
 }

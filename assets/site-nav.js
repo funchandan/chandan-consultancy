@@ -31,11 +31,49 @@
       var requested = (params.get("theme") || "").toLowerCase();
       if (requested === "light" || requested === "dark") {
         root.setAttribute("data-theme", requested);
+      } else {
+        /* Default: light everywhere. Dark only via ?theme=dark until a nav toggle ships. */
+        root.setAttribute("data-theme", "light");
       }
     } catch (_err) {
-      /* no-op: keep defaults if query parsing fails */
+      try {
+        root.setAttribute("data-theme", "light");
+      } catch (_e2) {
+        /* no-op */
+      }
     }
   })();
+
+  /* Brand “home”: strip reel / methodology URL state so we land on the hero, not
+   * #approach or #approach=frame-* (replaceState from framework-puzzle.js). */
+  document.addEventListener(
+    "click",
+    function (e) {
+      var a = e.target.closest && e.target.closest("a[data-nav-brand]");
+      if (!a) return;
+      var href = (a.getAttribute("href") || "").trim();
+      if (href !== "index.html" && href !== "/" && href !== "./") return;
+      var hash = (window.location.hash || "").toLowerCase();
+      if (hash.length <= 1) return;
+      var reelOrApproach =
+        hash === "#approach" ||
+        hash.indexOf("#approach=") === 0 ||
+        /frame-[1-5]/.test(hash);
+      if (!reelOrApproach) return;
+      var path = (window.location.pathname || "").replace(/\/+$/, "");
+      var onHome =
+        path === "" ||
+        path === "/" ||
+        /(^|\/)index\.html$/i.test(window.location.pathname || "");
+      if (!onHome) return;
+      e.preventDefault();
+      try {
+        window.history.replaceState(null, "", window.location.pathname + window.location.search);
+      } catch (_err) {}
+      window.scrollTo(0, 0);
+    },
+    true
+  );
 
   document.querySelectorAll("[data-site-nav]").forEach(function (root) {
     var openBtn = root.querySelector(".nav-menu-toggle");
@@ -81,263 +119,116 @@
   syncInPageNavActive();
   window.addEventListener("hashchange", syncInPageNavActive);
 
-  /**
-   * Normalize a URL/pathname to a comparable "page" token. Strips query+hash,
-   * collapses trailing slashes, treats root ("/" or empty) as index.html, and
-   * appends ".html" to extensionless final segments so clean-URL deployments
-   * still match (e.g. "/work" ~ "work.html"). Returns a lowercase token.
-   */
-  function normalizePageToken(raw) {
-    var s = (raw || "").toLowerCase().split("#")[0].split("?")[0];
-    s = s.replace(/\/+$/g, "");
-    var slash = s.lastIndexOf("/");
-    var seg = slash >= 0 ? s.slice(slash + 1) : s;
-    if (!seg) seg = "index.html";
-    if (seg.indexOf(".") === -1) seg = seg + ".html";
-    return seg;
-  }
+  /* Desktop disclosure dropdowns — Toolkits + Services (restrained mega; one open at a time).
+   * Opens on hover (fine pointer), focus (keyboard), or click (toggle); outside click / Escape closes. */
+  (function initNavDisclosures() {
+    var finePointer =
+      window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-  /**
-   * Active-page indicator: match location.pathname's normalized token against
-   * each top-level item's normalized href token. Handles trailing slashes,
-   * extensionless URLs, and hash/query strip. Sets aria-current="page" on every
-   * matching anchor (desktop + dialog copies).
-   */
-  function applyActivePage() {
-    var page = normalizePageToken(window.location.pathname || "/");
-    document.querySelectorAll('[data-site-nav] a[data-nav-item]').forEach(function (a) {
-      var hrefToken = normalizePageToken(a.getAttribute("href") || "");
-      if (hrefToken === page) {
-        a.setAttribute("aria-current", "page");
-      } else {
-        a.removeAttribute("aria-current");
-      }
-    });
-  }
+    function closeAllInNav(navRoot) {
+      navRoot.querySelectorAll("[data-nav-disclosure]").forEach(function (d) {
+        var btn = d.querySelector("[data-nav-disclosure-trigger]");
+        var panel = d.querySelector("[data-nav-disclosure-panel]");
+        if (!btn || !panel) return;
+        btn.setAttribute("aria-expanded", "false");
+        panel.setAttribute("hidden", "hidden");
+        d.classList.remove("is-open");
+      });
+    }
 
-  /**
-   * Populate visible nav strings from assets/nav-content.json so a label/CTA
-   * rename is a one-file edit. The HTML labels are a defensive fallback; if
-   * the JSON 404s or is invalid we warn once and leave the inline labels.
-   */
-  var UNSAFE_HREF_SCHEME = /^\s*(javascript|data|vbscript):/i;
-  var SAFE_KEY = /^[a-z0-9_-]+$/i;
-  var NAV_CONTENT_URL = "/assets/nav-content.json";
-
-  function isSafeHref(href) {
-    return typeof href === "string" && href.length > 0 && !UNSAFE_HREF_SCHEME.test(href);
-  }
-
-  function applyNavContent() {
-    var warned = false;
-    function fallback() {
-      if (warned) return;
-      warned = true;
-      try {
-        if (window.console && console.warn) {
-          console.warn("[site-nav] nav-content.json unavailable; using HTML fallback");
+    function openDisclosure(navRoot, d, focusFirstLink) {
+      var btn = d.querySelector("[data-nav-disclosure-trigger]");
+      var panel = d.querySelector("[data-nav-disclosure-panel]");
+      if (!btn || !panel) return;
+      closeAllInNav(navRoot);
+      btn.setAttribute("aria-expanded", "true");
+      panel.removeAttribute("hidden");
+      d.classList.add("is-open");
+      if (focusFirstLink) {
+        var first = panel.querySelector("a[href]");
+        if (first) {
+          window.setTimeout(function () {
+            first.focus({ preventScroll: true });
+          }, 0);
         }
-      } catch (_e) {
-        /* no-op */
-      }
-      applyActivePage();
-    }
-
-    if (typeof window.fetch !== "function") {
-      fallback();
-      return;
-    }
-
-    try {
-      window.fetch(NAV_CONTENT_URL, { cache: "no-cache" })
-        .then(function (res) {
-          if (!res || !res.ok) throw new Error("nav-content.json fetch failed");
-          return res.json();
-        })
-        .then(function (data) {
-          if (!data || typeof data !== "object" || Array.isArray(data)) {
-            throw new Error("nav-content.json invalid shape");
-          }
-          if (data.dictionaryVersion !== 1) {
-            throw new Error("nav-content.json dictionaryVersion mismatch");
-          }
-          /* Slice C-1: publish version into the telemetry-visible global so   */
-          /* every nav_* event can tag itself with the dictionary version.     */
-          if (typeof window.__navTelemetryDictionaryVersion === "undefined" ||
-              window.__navTelemetryDictionaryVersion === null) {
-            window.__navTelemetryDictionaryVersion = data.dictionaryVersion;
-          }
-
-          if (typeof data.brand === "string" && data.brand) {
-            document.querySelectorAll("[data-nav-brand]").forEach(function (el) {
-              el.textContent = data.brand;
-            });
-          }
-
-          if (data.aria && typeof data.aria.nav === "string" && data.aria.nav) {
-            document.querySelectorAll("[data-site-nav]").forEach(function (el) {
-              el.setAttribute("aria-label", data.aria.nav);
-            });
-          }
-
-          if (data.skipToContent && typeof data.skipToContent.label === "string" && data.skipToContent.label) {
-            var skip = document.querySelector(".skip-to-content");
-            if (skip) skip.textContent = data.skipToContent.label;
-          }
-
-          if (data.topLevel && data.topLevel.length) {
-            for (var i = 0; i < data.topLevel.length; i += 1) {
-              var entry = data.topLevel[i];
-              if (!entry || typeof entry.key !== "string" || !SAFE_KEY.test(entry.key)) continue;
-              var matches = document.querySelectorAll('a[data-nav-item="' + entry.key + '"]');
-              matches.forEach(function (a) {
-                if (isSafeHref(entry.href)) a.setAttribute("href", entry.href);
-                if (typeof entry.label === "string" && entry.label) a.textContent = entry.label;
-              });
-            }
-          }
-
-          if (data.cta && typeof data.cta === "object") {
-            document.querySelectorAll("[data-nav-cta]").forEach(function (a) {
-              if (isSafeHref(data.cta.href)) a.setAttribute("href", data.cta.href);
-              if (typeof data.cta.label === "string" && data.cta.label) a.textContent = data.cta.label;
-            });
-          }
-
-          applyActivePage();
-        })
-        .catch(fallback);
-    } catch (_err) {
-      fallback();
-    }
-  }
-
-  applyActivePage();
-  applyNavContent();
-
-  /* === Telemetry (Slice C-1) =========================================== */
-  /* Provider-agnostic seam. Routes through window.__navTelemetryAdapter   */
-  /* if defined (set in a <script> tag before this file, or below the IIFE)*/
-  /* otherwise falls back to console.info. Respects DNT. No PII. No cookies*/
-  /* No localStorage. sessionStorage only, for once-per-session engagement.*/
-
-  var TELEMETRY_ENGAGED_KEY = "__nav_engaged_session";
-  var __sessionStorageWarned = false;
-
-  function getDictionaryVersion() {
-    /* Populated by applyNavContent() once nav-content.json resolves. Null   */
-    /* before that — early-fire events ship with dictionaryVersion: null,    */
-    /* which is the documented data-cleanup convention (drop those rows in   */
-    /* the baseline window, ~first 200ms of session at most).                */
-    var v = window.__navTelemetryDictionaryVersion;
-    return typeof v === "number" ? v : null;
-  }
-
-  function isDoNotTrack() {
-    try {
-      var nav = navigator || {};
-      var dnt = nav.doNotTrack || window.doNotTrack || nav.msDoNotTrack;
-      return dnt === "1" || dnt === "yes";
-    } catch (_e) {
-      return false;
-    }
-  }
-
-  function track(eventName, props) {
-    if (isDoNotTrack()) return;
-    var payload = {};
-    if (props && typeof props === "object") {
-      for (var k in props) {
-        if (Object.prototype.hasOwnProperty.call(props, k)) payload[k] = props[k];
-      }
-    }
-    payload.timestamp = Date.now();
-    payload.dictionaryVersion = getDictionaryVersion();
-
-    var adapter = window.__navTelemetryAdapter;
-    if (typeof adapter === "function") {
-      try {
-        adapter(eventName, payload);
-        return;
-      } catch (err) {
-        try {
-          if (window.console && console.warn) console.warn("[telemetry] adapter error", err);
-        } catch (_e) { /* no-op */ }
       }
     }
 
-    try {
-      if (window.console && console.log) console.log("[telemetry]", eventName, payload);
-    } catch (_e) { /* no-op */ }
-  }
+    document.querySelectorAll("[data-site-nav]").forEach(function (navRoot) {
+      var discs = navRoot.querySelectorAll("[data-nav-disclosure]");
+      if (!discs.length) return;
 
-  function hasEngagedThisSession() {
-    try {
-      return window.sessionStorage && sessionStorage.getItem(TELEMETRY_ENGAGED_KEY) === "1";
-    } catch (_e) {
-      return false;
-    }
-  }
+      Array.prototype.forEach.call(discs, function (d) {
+        var btn = d.querySelector("[data-nav-disclosure-trigger]");
+        var panel = d.querySelector("[data-nav-disclosure-panel]");
+        if (!btn || !panel) return;
 
-  function setEngagedThisSession() {
-    try {
-      if (window.sessionStorage) sessionStorage.setItem(TELEMETRY_ENGAGED_KEY, "1");
-    } catch (err) {
-      if (!__sessionStorageWarned) {
-        __sessionStorageWarned = true;
-        try {
-          if (window.console && console.warn) {
-            console.warn("[telemetry] sessionStorage unavailable; nav_engaged degrades to per-interaction firing");
+        var hoverCloseTimer = null;
+        function cancelHoverClose() {
+          if (hoverCloseTimer) {
+            window.clearTimeout(hoverCloseTimer);
+            hoverCloseTimer = null;
           }
-        } catch (_e) { /* no-op */ }
-      }
-    }
-  }
+        }
+        function scheduleHoverClose() {
+          cancelHoverClose();
+          hoverCloseTimer = window.setTimeout(function () {
+            hoverCloseTimer = null;
+            if (!d.matches(":hover")) closeAllInNav(navRoot);
+          }, 140);
+        }
 
-  function markEngagedOnce(source) {
-    if (isDoNotTrack()) return;
-    if (hasEngagedThisSession()) return;
-    setEngagedThisSession();
-    track("nav_engaged", { source: source || "unknown" });
-  }
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+          if (isOpen) {
+            closeAllInNav(navRoot);
+            return;
+          }
+          openDisclosure(navRoot, d, true);
+        });
 
-  /* Wire nav_engaged: first pointer/touch/click/focusin on [data-site-nav]*/
-  /* Single delegated listener per nav root; removes itself after firing. */
-  document.querySelectorAll("[data-site-nav]").forEach(function (navRoot) {
-    function onFirstInteraction(evt) {
-      /* Collapse pointer/touch/click into "click" so the spec's I/O matrix */
-      /* (source: "click" | "keyboard") matches reality.                    */
-      var source = evt.type === "focusin" ? "keyboard" : "click";
-      markEngagedOnce(source);
-      navRoot.removeEventListener("pointerdown", onFirstInteraction, true);
-      navRoot.removeEventListener("touchstart", onFirstInteraction, true);
-      navRoot.removeEventListener("focusin", onFirstInteraction, true);
-      navRoot.removeEventListener("click", onFirstInteraction, true);
-    }
-    if (hasEngagedThisSession()) return;
-    navRoot.addEventListener("pointerdown", onFirstInteraction, true);
-    navRoot.addEventListener("touchstart", onFirstInteraction, true);
-    navRoot.addEventListener("focusin", onFirstInteraction, true);
-    navRoot.addEventListener("click", onFirstInteraction, true);
-  });
+        btn.addEventListener("focusin", function () {
+          openDisclosure(navRoot, d, false);
+        });
 
-  /* Wire nav_cta_click: every activation of [data-nav-cta].               */
-  /* Use document-level delegation so dialog-injected CTA copies also fire.*/
-  document.addEventListener("click", function (evt) {
-    var target = evt.target;
-    while (target && target !== document) {
-      if (target.nodeType === 1 && target.hasAttribute && target.hasAttribute("data-nav-cta")) {
-        var destination = target.getAttribute("href") || "";
-        var source = target.classList && target.classList.contains("nav-cta--dialog") ? "dialog" : "nav";
-        markEngagedOnce("click");
-        track("nav_cta_click", { destination: destination, source: source });
-        return;
-      }
-      target = target.parentNode;
-    }
-  }, true);
+        if (finePointer) {
+          d.addEventListener("mouseenter", function () {
+            cancelHoverClose();
+            openDisclosure(navRoot, d, false);
+          });
+          d.addEventListener("mouseleave", function () {
+            scheduleHoverClose();
+          });
+        }
+      });
 
-  /* === /Telemetry ====================================================== */
+      navRoot.addEventListener("focusin", function (ev) {
+        var open = navRoot.querySelector("[data-nav-disclosure].is-open");
+        if (!open) return;
+        if (open.contains(ev.target)) return;
+        closeAllInNav(navRoot);
+      });
+
+      document.addEventListener("keydown", function (ev) {
+        if (ev.key !== "Escape") return;
+        if (!navRoot.contains(document.activeElement)) return;
+        var hadOpen = navRoot.querySelector("[data-nav-disclosure].is-open");
+        closeAllInNav(navRoot);
+        if (hadOpen) {
+          var t = hadOpen.querySelector("[data-nav-disclosure-trigger]");
+          if (t) t.focus();
+        }
+      });
+      document.addEventListener("pointerdown", function (ev) {
+        var open = navRoot.querySelector("[data-nav-disclosure].is-open");
+        if (!open) return;
+        if (open.contains(ev.target)) return;
+        closeAllInNav(navRoot);
+      });
+    });
+  })();
 
   var prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!("IntersectionObserver" in window) || prefersReducedMotion) {
@@ -492,58 +383,303 @@
   }
 })();
 
-/* === Provider adapter slot (Slice C-1) =================================
+/* === Telemetry shim (Slice C-1 + Methodology v0 bundled) =====================
  *
- * The navbar telemetry shim above looks for a function at
- *   window.__navTelemetryAdapter
- * and routes every event through it when defined. If undefined, events
- * fall back to console.info("[telemetry]", name, props) so you can verify
- * firing in DevTools without picking a provider.
+ * Provider-agnostic event router. Wraps every event in DNT respect and
+ * sessionStorage state. Real provider wiring happens at the adapter slot
+ * at the bottom of this file; until an adapter is wired, events fall back
+ * to console.log so local development and PR review can verify behavior.
  *
- * To wire a real provider, uncomment ONE of the templates below (and load
- * the provider's script tag in your HTML head before site-nav.js runs).
+ * Implements:
+ *   - FR-NAV-TEL-* (nav engagement + CTA click; see prd-navbar-revamp.md)
+ *   - FR-MF-TEL-01..04 (methodology section + frame + CTA + exit; see prd-methodology-funnel.md)
  *
- * --------------------------------------------------------------------- *
- * Template A — Google Analytics 4 (free; requires cookie banner in EU)   *
- * --------------------------------------------------------------------- *
- * In your <head> before site-nav.js:
- *   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
- *   <script>
- *     window.dataLayer = window.dataLayer || [];
- *     function gtag(){dataLayer.push(arguments);}
- *     gtag('js', new Date());
- *     gtag('config', 'G-XXXXXXX');
- *   </script>
- * Then uncomment:
- *
- * // window.__navTelemetryAdapter = function (name, props) {
- * //   if (typeof window.gtag === "function") window.gtag("event", name, props);
- * // };
- *
- * --------------------------------------------------------------------- *
- * Template B — Plausible (cookieless; $9/mo after trial; no EU banner)   *
- * --------------------------------------------------------------------- *
- * In your <head> before site-nav.js:
- *   <script defer data-domain="yourdomain.com"
- *           src="https://plausible.io/js/script.tagged-events.js"></script>
- * Then uncomment:
- *
- * // window.__navTelemetryAdapter = function (name, props) {
- * //   if (typeof window.plausible === "function") window.plausible(name, { props: props });
- * // };
- *
- * --------------------------------------------------------------------- *
- * Template C — Cloudflare Web Analytics (cookieless; free w/ Cloudflare) *
- * --------------------------------------------------------------------- *
- * Enable Web Analytics in your Cloudflare dashboard and add the snippet
- * Cloudflare gives you to your <head> (it injects a global `beacon` API).
- * Then uncomment:
- *
- * // window.__navTelemetryAdapter = function (name, props) {
- * //   if (window.beacon && typeof window.beacon.track === "function") {
- * //     window.beacon.track(name, props);
- * //   }
- * // };
- *
- * === /Provider adapter slot ============================================ */
+ * DNT, sessionStorage-only, dictionaryVersion stamping — all centralized here.
+ */
+(function () {
+  var DICTIONARY_VERSION_CACHE = null;
+  var METHODOLOGY_CONTENT_VERSION = 0;
+  var SESSION_KEY_ENGAGED = "__nav_engaged_session";
+  var SESSION_KEY_METHODOLOGY_ENTERED = "__methodology_entered_session";
 
+  function isDoNotTrack() {
+    try {
+      var dnt = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      return dnt === "1" || dnt === "yes";
+    } catch (_err) {
+      return false;
+    }
+  }
+
+  function readDictionaryVersion(callback) {
+    if (DICTIONARY_VERSION_CACHE !== null) {
+      callback(DICTIONARY_VERSION_CACHE);
+      return;
+    }
+    try {
+      var req = new XMLHttpRequest();
+      req.open("GET", "assets/nav-content.json", true);
+      req.onload = function () {
+        try {
+          var data = JSON.parse(req.responseText);
+          DICTIONARY_VERSION_CACHE = data && data.version ? data.version : "unknown";
+        } catch (_err) {
+          DICTIONARY_VERSION_CACHE = "unknown";
+        }
+        callback(DICTIONARY_VERSION_CACHE);
+      };
+      req.onerror = function () {
+        DICTIONARY_VERSION_CACHE = "unknown";
+        callback(DICTIONARY_VERSION_CACHE);
+      };
+      req.send();
+    } catch (_err) {
+      DICTIONARY_VERSION_CACHE = "unknown";
+      callback(DICTIONARY_VERSION_CACHE);
+    }
+  }
+
+  // Publish dictionaryVersion to window once available so other shim sections
+  // can read it synchronously without re-fetching.
+  readDictionaryVersion(function (version) {
+    window.__navTelemetryDictionaryVersion = version;
+  });
+
+  function track(eventName, props) {
+    if (isDoNotTrack()) return;
+    var payload = {};
+    if (props && typeof props === "object") {
+      for (var k in props) {
+        if (Object.prototype.hasOwnProperty.call(props, k)) payload[k] = props[k];
+      }
+    }
+    payload.dictionaryVersion = window.__navTelemetryDictionaryVersion || "pending";
+    payload.methodologyContentVersion = METHODOLOGY_CONTENT_VERSION;
+
+    try {
+      if (typeof window.__navTelemetryAdapter === "function") {
+        window.__navTelemetryAdapter(eventName, payload);
+      } else {
+        console.log("[telemetry]", eventName, payload);
+      }
+    } catch (_err) {
+      /* swallow — telemetry must never break the page */
+    }
+  }
+
+  // Export for other shim sections (methodology block uses these)
+  window.__navTrack = track;
+  window.__navIsDoNotTrack = isDoNotTrack;
+
+  /* === Nav engagement (FR-NAV-TEL-01) =================================== */
+
+  function hasEngagedThisSession() {
+    try {
+      return window.sessionStorage.getItem(SESSION_KEY_ENGAGED) === "1";
+    } catch (_err) {
+      return false;
+    }
+  }
+
+  function setEngagedThisSession() {
+    if (isDoNotTrack()) return;
+    try {
+      window.sessionStorage.setItem(SESSION_KEY_ENGAGED, "1");
+    } catch (_err) {
+      /* sessionStorage may be unavailable in some embed contexts; silent fail */
+    }
+  }
+
+  function markEngagedOnce(source) {
+    if (isDoNotTrack()) return;
+    if (hasEngagedThisSession()) return;
+    setEngagedThisSession();
+    track("nav_engaged", { source: source });
+  }
+
+  function onFirstInteraction(event) {
+    if (!event || !event.target) return;
+    var navRoot = event.target.closest && event.target.closest("[data-site-nav]");
+    if (!navRoot) return;
+    var source = "click";
+    if (event.type === "keydown") source = "keyboard";
+    markEngagedOnce(source);
+  }
+
+  document.addEventListener("click", onFirstInteraction, true);
+  document.addEventListener("keydown", onFirstInteraction, true);
+
+  /* === Nav CTA click (FR-NAV-TEL-04) ==================================== */
+
+  document.addEventListener(
+    "click",
+    function (event) {
+      var ctaEl = event.target.closest && event.target.closest("[data-nav-cta]");
+      if (!ctaEl) return;
+      var inDialog = !!ctaEl.closest(".site-nav-dialog");
+      track("nav_cta_click", {
+        destination: ctaEl.getAttribute("href") || "",
+        source: inDialog ? "dialog" : "nav"
+      });
+    },
+    true
+  );
+})();
+
+/* === Methodology telemetry events (FR-MF-TEL-01..04) =========================
+ *
+ * Single IntersectionObserver instance (NFR-MF-PERF-03), event delegation on
+ * the section root, sessionStorage-scoped one-shot flags. Rides the global
+ * track() function exported from the telemetry shim above.
+ */
+(function () {
+  var track = window.__navTrack;
+  var isDoNotTrack = window.__navIsDoNotTrack;
+  if (typeof track !== "function" || typeof isDoNotTrack !== "function") return;
+
+  var section = document.querySelector("[data-methodology-section]");
+  if (!section) return;
+  if (!("IntersectionObserver" in window)) return;
+
+  var SESSION_KEY_SECTION_ENTERED = "__methodology_section_entered_session";
+  var sectionEnteredAt = 0;
+  var deepestFrameSeen = 0;
+  var didClickCta = false;
+  var framesSeen = {};
+  var sectionExitedFired = false;
+
+  function detectEntrySource() {
+    var hash = (window.location.hash || "").toLowerCase();
+    var sectionId = (section.id || section.parentElement && section.parentElement.id || "").toLowerCase();
+    var approachAnchor = sectionId && hash === ("#" + sectionId);
+    var sectionContainerId = "";
+    var container = section.closest("section[id]");
+    if (container) sectionContainerId = (container.id || "").toLowerCase();
+    if (hash && (approachAnchor || hash === "#" + sectionContainerId)) return "deep-link";
+    var activeEl = document.activeElement;
+    if (activeEl && activeEl.matches && activeEl.matches('a.skip-link, a[href^="#main"]')) return "skip-link";
+    return "scroll";
+  }
+
+  function fireSectionEntered() {
+    if (isDoNotTrack()) return;
+    try {
+      if (window.sessionStorage.getItem(SESSION_KEY_SECTION_ENTERED) === "1") return;
+      window.sessionStorage.setItem(SESSION_KEY_SECTION_ENTERED, "1");
+    } catch (_err) {
+      /* sessionStorage unavailable — proceed without dedupe, accept double-fire risk */
+    }
+    sectionEnteredAt = Date.now();
+    track("methodology_section_entered", { source: detectEntrySource() });
+  }
+
+  function fireFrameSeen(frameNum) {
+    if (isDoNotTrack()) return;
+    if (framesSeen[frameNum]) return;
+    framesSeen[frameNum] = Date.now();
+    if (frameNum > deepestFrameSeen) deepestFrameSeen = frameNum;
+    track("methodology_frame_seen", { frame: frameNum, dwellMs: 0 });
+  }
+
+  function fireSectionExited() {
+    if (isDoNotTrack()) return;
+    if (sectionExitedFired) return;
+    if (!sectionEnteredAt) return;
+    sectionExitedFired = true;
+    track("methodology_section_exited", {
+      deepestFrameSeen: deepestFrameSeen,
+      dwellMs: Date.now() - sectionEnteredAt,
+      didClickCta: didClickCta
+    });
+  }
+
+  var sectionObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          fireSectionEntered();
+        }
+      });
+    },
+    { threshold: [0.5] }
+  );
+  sectionObserver.observe(section);
+
+  var frameObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          var frameAttr = entry.target.getAttribute("data-frame");
+          var frameNum = parseInt(frameAttr, 10);
+          if (!isNaN(frameNum)) fireFrameSeen(frameNum);
+        }
+      });
+    },
+    { threshold: [0.5] }
+  );
+  section.querySelectorAll("[data-frame]").forEach(function (el) {
+    frameObserver.observe(el);
+  });
+
+  // Delegated click handler for methodology CTAs (primary + secondary)
+  section.addEventListener(
+    "click",
+    function (event) {
+      var ctaEl =
+        event.target.closest &&
+        event.target.closest("[data-methodology-cta], [data-methodology-secondary-cta]");
+      if (!ctaEl) return;
+      var kind = ctaEl.getAttribute("data-event-kind") || "unknown";
+      didClickCta = true;
+      track("methodology_cta_click", {
+        destination: ctaEl.getAttribute("href") || "",
+        source: "methodology",
+        kind: kind
+      });
+    },
+    true
+  );
+
+  // Exit detection
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden") fireSectionExited();
+  });
+  window.addEventListener("beforeunload", fireSectionExited);
+})();
+
+/* === Provider adapter slot — single audit point for analytics ===============
+ *
+ * The telemetry shim's track() function calls window.__navTelemetryAdapter
+ * if defined; else falls back to console.log. To wire a real provider,
+ * uncomment ONE block below and add the corresponding <script> tag to
+ * each page's <head>. This is the ONLY place provider code may live; the
+ * CI nav-gate (.github/workflows/nav-gate.yml Check 2) enforces this.
+ *
+ * v0 default per PRD §4 FR-MF-INFRA-02: Plausible.
+ * Override via this slot to swap to GA4 or Cloudflare without re-instrumenting.
+ */
+
+// --- Plausible (cookieless, lightweight) — v0 default ----------------------
+// window.__navTelemetryAdapter = function (eventName, props) {
+//   if (typeof window.plausible === "function") {
+//     window.plausible(eventName, { props: props });
+//   }
+// };
+//
+// Also add to each page's <head>:
+//   <script defer
+//           data-domain="REPLACE_WITH_PROD_HOSTNAME"
+//           src="https://plausible.io/js/script.js"></script>
+
+// --- GA4 alternate ---------------------------------------------------------
+// window.__navTelemetryAdapter = function (eventName, props) {
+//   if (typeof window.gtag === "function") {
+//     window.gtag("event", eventName, props);
+//   }
+// };
+// (GA4 also requires the gtag.js loader script in <head>.)
+
+// --- Cloudflare Web Analytics alternate ------------------------------------
+// CF Web Analytics is currently passive (page-view only); custom events
+// require the Beacon API. If chosen, wire via:
+//   navigator.sendBeacon("/_cf-analytics-event", JSON.stringify({ eventName, props }));
