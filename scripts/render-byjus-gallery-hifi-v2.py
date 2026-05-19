@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import re
 import shutil
 import subprocess
 import sys
@@ -17,6 +18,21 @@ GALLERY = ROOT / "assets" / "case-studies" / SLUG / "gallery"
 BEATS = ROOT / "assets" / "case-studies" / SLUG / "beats"
 
 CANVAS_W, CANVAS_H = 1200, 960
+
+_INVALID_XML = re.compile(r"[\x00-\x08\x0B\x0C\x0E-\x1F]")
+
+
+def _sanitize_svg(path: Path) -> None:
+    """Remove control chars and fix latin-1 middots so browsers can parse SVG."""
+    data = path.read_bytes()
+    try:
+        text = data.decode("utf-8")
+    except UnicodeDecodeError:
+        text = data.decode("latin-1")
+    text = text.replace("\x14", "\u2014")
+    text = _INVALID_XML.sub(" ", text)
+    path.write_text(text, encoding="utf-8", newline="\n")
+
 
 # Gallery filename → v2 SVG (beat narrative preserved)
 BEAT_MAP = [
@@ -80,6 +96,7 @@ def main() -> int:
     print(f"Rendering v2 hi-fi → {DEST.relative_to(ROOT)}/")
     for out_name, svg_name, mode in BEAT_MAP:
         svg = SRC / svg_name
+        _sanitize_svg(svg)
         max_px = CANVAS_H if mode == "portrait" else CANVAS_W
         raw = _ql_raster(svg, tmp_dir, max_px)
         _fit_canvas(raw, DEST / out_name, mode)
