@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="900" viewBox="0 0 1260 900" role="img" aria-label="BYJU'S FutureSchool onboarding flow: earn, spend, and balance">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6f5f2"/>
+      <stop offset="100%" stop-color="#ebe8f4"/>
+    </linearGradient>
+    <linearGradient id="wallet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6b4fc4"/>
+      <stop offset="100%" stop-color="#5b3fa8"/>
+    </linearGradient>
+    <linearGradient id="cta" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f05b83"/>
+      <stop offset="100%" stop-color="#e84a75"/>
+    </linearGradient>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#171a1f" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <rect width="1260" height="900" fill="url(#bg)"/>
+  <text x="40" y="48" font-family="system-ui,sans-serif" font-size="24" font-weight="800" fill="#171a1f">Onboarding — deploy before marketplace</text>
+  <text x="40" y="76" font-family="system-ui,sans-serif" font-size="14" fill="#4f5866">3-step modal flow · single currency · plain language</text>
+
+  <!-- Step 1 -->
+  <g transform="translate(40,120)">
+    <text x="0" y="0" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#5b3fa8">STEP 1 OF 3</text>
+    <rect x="0" y="16" width="380" height="720" rx="32" fill="#fff" filter="url(#sh)"/>
+    <rect x="0" y="16" width="380" height="720" rx="32" fill="none" stroke="#171a1f" opacity="0.06"/>
+    <rect x="140" y="56" width="100" height="28" rx="14" fill="#171a1f" opacity="0.08"/>
+    <circle cx="190" cy="140" r="48" fill="#fde8ef"/>
+    <path d="M170 140h40M190 120v40" stroke="#f05b83" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="220" cy="120" r="10" fill="#ffc94d"/>
+    <text x="190" y="220" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="800" fill="#171a1f">How you earn points</text>
+    <text x="40" y="268" font-family="system-ui,sans-serif" font-size="14" fill="#4f5866">Finish your math class</text>
+    <circle cx="28" cy="262" r="4" fill="#5b3fa8"/>
+    <text x="40" y="300" font-family="system-ui,sans-serif" font-size="14" fill="#4f5866">Get answers right in practice</text>
+    <circle cx="28" cy="294" r="4" fill="#5b3fa8"/>
+    <text x="40" y="332" font-family="system-ui,sans-serif" font-size="14" fill="#4f5866">Keep your streak going</text>
+    <circle cx="28" cy="326" r="4" fill="#5b3fa8"/>
+    <circle cx="130" cy="640" r="5" fill="#5b3fa8"/>
+    <circle cx="150" cy="640" r="5" fill="#d4c4f0"/>
+    <circle cx="170" cy="640" r="5" fill="#d4c4f0"/>
+    <rect x="40" y="680" width="300" height="48" rx="24" fill="url(#cta)"/>
+    <text x="190" y="710" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#fff">Next</text>
+  </g>
+
+  <!-- Step 2 -->
+  <g transform="translate(440,120)">
+    <text x="0" y="0" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#5b3fa8">STEP 2 OF 3</text>
+    <rect x="0" y="16" width="380" height="720" rx="32" fill="#fff" filter="url(#sh)"/>
+    <rect x="140" y="56" width="100" height="28" rx="14" fill="#171a1f" opacity="0.08"/>
+    <rect x="90" y="100" width="200" height="120" rx="20" fill="#f0edf6"/>
+    <rect x="110" y="120" width="72" height="80" rx="12" fill="#fff" stroke="#5b3fa8" stroke-width="2"/>
+    <rect x="198" y="120" width="72" height="80" rx="12" fill="#fff"/>
+    <text x="190" y="260" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="800" fill="#171a1f">How you spend points</text>
+    <text x="40" y="308" font-family="system-ui,sans-serif" font-size="14" fill="#4f5866">Pick a hero you recognize</text>
+    <circle cx="28" cy="302" r="4" fill="#5b3fa8"/>
+    <text x="40" y="340" font-family="system-ui,sans-serif" font-size="14" fill="#4f5866">See the cost on each card</text>
+    <circle cx="28" cy="334" r="4" fill="#5b3fa8"/>
+    <text x="40" y="372" font-family="system-ui,sans-serif" font-size="14" fill="#4f5866">Tap Redeem when you have enough</text>
+    <circle cx="28" cy="366" r="4" fill="#5b3fa8"/>
+    <circle cx="130" cy="640" r="5" fill="#d4c4f0"/>
+    <circle cx="150" cy="640" r="5" fill="#5b3fa8"/>
+    <circle cx="170" cy="640" r="5" fill="#d4c4f0"/>
+    <rect x="40" y="680" width="300" height="48" rx="24" fill="url(#cta)"/>
+    <text x="190" y="710" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#fff">Next</text>
+  </g>
+
+  <!-- Step 3 -->
+  <g transform="translate(840,120)">
+    <text x="0" y="0" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#5b3fa8">STEP 3 OF 3</text>
+    <rect x="0" y="16" width="380" height="720" rx="32" fill="#fff" filter="url(#sh)"/>
+    <rect x="140" y="56" width="100" height="28" rx="14" fill="#171a1f" opacity="0.08"/>
+    <text x="190" y="140" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="800" fill="#171a1f">One balance, easy to read</text>
+    <text x="190" y="168" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#4f5866">No coins. No conversion. Just spendable points.</text>
+    <rect x="40" y="200" width="300" height="140" rx="24" fill="url(#wallet)"/>
+    <text x="64" y="236" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#e8e0f8" letter-spacing="0.05em">SPENDABLE POINTS</text>
+    <text x="64" y="296" font-family="system-ui,sans-serif" font-size="48" font-weight="800" fill="#fff">240</text>
+    <text x="64" y="320" font-family="system-ui,sans-serif" font-size="12" fill="#d8cef5">Ready to spend in marketplace</text>
+    <circle cx="130" cy="640" r="5" fill="#d4c4f0"/>
+    <circle cx="150" cy="640" r="5" fill="#d4c4f0"/>
+    <circle cx="170" cy="640" r="5" fill="#5b3fa8"/>
+    <rect x="40" y="680" width="300" height="48" rx="24" fill="#5b3fa8"/>
+    <text x="190" y="710" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#fff">Go to Rewards</text>
+  </g>
+</svg>

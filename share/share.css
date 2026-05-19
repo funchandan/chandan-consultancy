@@ -776,7 +776,7 @@
 .about-experience {
   --about-stage-h: min(50dvh, 380px);
   --about-stage-max-w: var(--about-content-width);
-  --about-card-gap: 10px;
+  --about-card-gap: 12px;
   --about-card-leading: 1.8;
   position: relative;
   z-index: 1;
@@ -1086,10 +1086,10 @@
   max-height: var(--about-stage-h);
 }
 
-.about-role-card__lens {
+.about-role-card__body .about-role-card__lens {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 8px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -1137,13 +1137,13 @@
   overflow: hidden;
 }
 
-.about-role-card__highlights {
-  margin: 3px 0 0;
+.about-role-card__body .about-role-card__highlights {
+  margin: 4px 0 0;
   padding: 0 0 0 1em;
   list-style: disc;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
 }
 
 .about-role-card__highlights li {
@@ -1152,8 +1152,8 @@
   color: var(--ink);
 }
 
-.about-role-card__callout {
-  margin: 3px 0 0;
+.about-role-card__body .about-role-card__callout {
+  margin: 4px 0 0;
   padding: 0;
   font-size: 0.75rem;
   font-style: italic;

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" role="img" aria-label="BYJU'S FutureSchool mobile rewards marketplace landing">
+  <defs>
+    <linearGradient id="screenBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6f5f2"/>
+      <stop offset="55%" stop-color="#ebe8f4"/>
+      <stop offset="100%" stop-color="#f6f5f2"/>
+    </linearGradient>
+    <linearGradient id="walletGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6b4fc4"/>
+      <stop offset="100%" stop-color="#5b3fa8"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#171a1f" flood-opacity="0.1"/>
+    </filter>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#5b3fa8" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect width="390" height="844" fill="url(#screenBg)"/>
+
+  <rect x="0" y="0" width="390" height="54" fill="#f6f5f2"/>
+  <rect x="128" y="12" width="134" height="28" rx="14" fill="#171a1f" opacity="0.08"/>
+  <text x="28" y="34" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="600" fill="#171a1f">9:41</text>
+  <rect x="318" y="20" width="44" height="12" rx="3" fill="#171a1f" opacity="0.15"/>
+
+  <text x="24" y="88" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="700" fill="#5b3fa8">BYJU'S</text>
+  <text x="24" y="106" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="600" fill="#4f5866" letter-spacing="0.08em">FUTURESCHOOL</text>
+  <circle cx="338" cy="92" r="20" fill="#fff" filter="url(#softShadow)"/>
+  <circle cx="338" cy="92" r="14" fill="#d4c4f0"/>
+  <text x="24" y="134" font-family="system-ui,-apple-system,sans-serif" font-size="22" font-weight="700" fill="#171a1f">Rewards</text>
+
+  <g filter="url(#cardShadow)">
+    <rect x="20" y="152" width="350" height="168" rx="24" fill="url(#walletGrad)"/>
+    <text x="44" y="188" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e0f8" letter-spacing="0.04em">SPENDABLE POINTS</text>
+    <text x="44" y="248" font-family="system-ui,-apple-system,sans-serif" font-size="52" font-weight="800" fill="#fff">240</text>
+    <text x="44" y="276" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#d8cef5">+12 this week from class</text>
+    <rect x="228" y="228" width="122" height="48" rx="24" fill="#fff"/>
+    <text x="289" y="258" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="700" fill="#5b3fa8">Redeem now</text>
+  </g>
+
+  <rect x="20" y="336" width="350" height="56" rx="16" fill="#fff" filter="url(#softShadow)"/>
+  <rect x="20" y="336" width="6" height="56" rx="3" fill="#f05b83"/>
+  <circle cx="52" cy="364" r="16" fill="#fde8ef"/>
+  <path d="M46 364h12M52 358v12" stroke="#f05b83" stroke-width="2" stroke-linecap="round"/>
+  <text x="76" y="358" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="700" fill="#171a1f">How to earn and spend</text>
+  <text x="76" y="378" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#4f5866">2 min guide before you shop</text>
+  <path d="M342 364l6 6-6 6" fill="none" stroke="#5b3fa8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="24" y="424" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="700" fill="#171a1f">Pick your hero</text>
+  <text x="24" y="444" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#4f5866">Powers you recognize, one points balance</text>
+
+  <!-- Cyborg — selected -->
+  <g filter="url(#softShadow)">
+    <rect x="20" y="460" width="168" height="148" rx="20" fill="#fff" stroke="#5b3fa8" stroke-width="2.5"/>
+    <rect x="36" y="476" width="136" height="88" rx="14" fill="#e8f4fc"/>
+    <circle cx="104" cy="520" r="28" fill="#4a9fd4"/>
+    <circle cx="96" cy="512" r="8" fill="#2d7ab0"/>
+    <text x="104" y="582" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#171a1f">Cyborg</text>
+    <rect x="118" y="592" width="54" height="22" rx="11" fill="#f0edf6"/>
+    <text x="145" y="607" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#5b3fa8">200 pts</text>
+  </g>
+
+  <!-- Bolt -->
+  <g filter="url(#softShadow)">
+    <rect x="202" y="460" width="168" height="148" rx="20" fill="#fff"/>
+    <rect x="218" y="476" width="136" height="88" rx="14" fill="#fff3e6"/>
+    <circle cx="286" cy="520" r="28" fill="#f0a84a"/>
+    <path d="M274 520h24M286 508v24" stroke="#c87820" stroke-width="3" stroke-linecap="round"/>
+    <text x="286" y="582" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#171a1f">Bolt</text>
+    <rect x="300" y="592" width="54" height="22" rx="11" fill="#f0edf6"/>
+    <text x="327" y="607" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#5b3fa8">180 pts</text>
+  </g>
+
+  <!-- Taz — owned -->
+  <g filter="url(#softShadow)">
+    <rect x="20" y="620" width="168" height="148" rx="20" fill="#fff"/>
+    <rect x="36" y="636" width="136" height="88" rx="14" fill="#fdeef4"/>
+    <circle cx="104" cy="680" r="28" fill="#e86b9a"/>
+    <text x="104" y="742" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#171a1f">Taz</text>
+    <rect x="118" y="752" width="54" height="22" rx="11" fill="#e3eff0"/>
+    <text x="145" y="767" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#2f7f85">Owned</text>
+  </g>
+
+  <!-- Nova — locked -->
+  <g filter="url(#softShadow)" opacity="0.55">
+    <rect x="202" y="620" width="168" height="148" rx="20" fill="#fff"/>
+    <rect x="218" y="636" width="136" height="88" rx="14" fill="#e8f8ee"/>
+    <circle cx="286" cy="680" r="28" fill="#5cc98a"/>
+    <rect x="250" y="652" width="72" height="56" rx="12" fill="#171a1f" opacity="0.35"/>
+    <circle cx="286" cy="680" r="14" fill="#fff" opacity="0.9"/>
+    <rect x="280" y="672" width="12" height="16" rx="3" fill="#5b3fa8"/>
+    <path d="M280 672h12v8c0 4-6 6-6 6s-6-2-6-6v-8" fill="none" stroke="#5b3fa8" stroke-width="2"/>
+    <text x="286" y="742" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#171a1f">Nova</text>
+    <rect x="300" y="752" width="54" height="22" rx="11" fill="#f0edf6"/>
+    <text x="327" y="767" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#5b3fa8">140 pts</text>
+  </g>
+
+  <rect x="20" y="778" width="350" height="36" rx="12" fill="#fff" opacity="0.92"/>
+  <text x="36" y="800" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#4f5866">Spent history</text>
+  <text x="354" y="800" text-anchor="end" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#5b3fa8">Last 7 days</text>
+
+  <rect x="0" y="812" width="390" height="32" fill="#fff"/>
+  <rect x="0" y="812" width="390" height="1" fill="#171a1f" opacity="0.06"/>
+  <circle cx="58" cy="796" r="4" fill="#c5c9d0"/>
+  <circle cx="130" cy="796" r="4" fill="#c5c9d0"/>
+  <circle cx="202" cy="796" r="5" fill="#5b3fa8"/>
+  <rect x="188" y="804" width="28" height="3" rx="1.5" fill="#5b3fa8"/>
+  <circle cx="274" cy="796" r="4" fill="#c5c9d0"/>
+  <circle cx="346" cy="796" r="4" fill="#c5c9d0"/>
+  <text x="58" y="826" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#8a919c">Home</text>
+  <text x="130" y="826" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#8a919c">Learn</text>
+  <text x="202" y="826" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#5b3fa8">Rewards</text>
+  <text x="274" y="826" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#8a919c">Class</text>
+  <text x="346" y="826" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#8a919c">You</text>
+</svg>
