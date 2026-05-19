@@ -74,6 +74,7 @@
   function setStageActive(on) {
     document.body.classList.toggle(BODY_CLASS, on);
     root.classList.toggle("is-stage-active", on);
+    if (exitBtn) exitBtn.hidden = !on;
     if (on) {
       var h = pin.offsetHeight || window.innerHeight;
       spacer.style.height = h + "px";
@@ -83,6 +84,28 @@
       pin.classList.remove("is-pinned");
     }
   }
+
+  function exitGallery() {
+    if (isDetailOpen()) collapseDetail(slides[activeIdx]);
+    lockUntil = 0;
+    transitioning = false;
+    var target =
+      document.querySelector(".case-scan-back") || document.getElementById("main");
+    if (target) {
+      target.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+    } else {
+      window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+    }
+  }
+
+  var exitBtn = document.createElement("button");
+  exitBtn.type = "button";
+  exitBtn.className = "case-gallery-exit";
+  exitBtn.hidden = true;
+  exitBtn.setAttribute("aria-label", "Exit gallery and return to top");
+  exitBtn.innerHTML = '<span class="case-gallery-exit__icon" aria-hidden="true">&times;</span>';
+  exitBtn.addEventListener("click", exitGallery);
+  document.body.appendChild(exitBtn);
 
   function setActive(idx, animate) {
     if (idx !== activeIdx) collapseDetail(slides[activeIdx]);
@@ -226,6 +249,12 @@
   if (!reduced && !window.matchMedia("(pointer: coarse)").matches) {
     window.addEventListener("wheel", onWheel, { passive: false });
   }
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.key !== "Escape" || !isStageActive()) return;
+    ev.preventDefault();
+    exitGallery();
+  });
 
   var shell = root.querySelector("[data-case-card-shell]");
   if (shell && !reduced) {

@@ -6,6 +6,48 @@
   overflow: visible;
 }
 
+/* Fixed exit — visible while gallery stage is pinned (body.case-gallery-stage-active) */
+.case-gallery-exit {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: max(20px, env(safe-area-inset-bottom, 0px));
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(26, 26, 26, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 10px 28px rgba(19, 35, 62, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--ink, #1a1a1a);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.case-gallery-exit:hover {
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(19, 35, 62, 0.18);
+  transform: scale(1.04);
+}
+
+.case-gallery-exit:focus-visible {
+  outline: 2px solid var(--color-brand-primary, #5b3fa8);
+  outline-offset: 3px;
+}
+
+.case-gallery-exit__icon {
+  font-size: 1.65rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
 .case-card-gallery {
   position: relative;
   width: 100%;
