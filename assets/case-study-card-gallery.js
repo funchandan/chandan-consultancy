@@ -85,27 +85,45 @@
     }
   }
 
+  var shell = root.querySelector("[data-case-card-shell]");
+
   function exitGallery() {
     if (isDetailOpen()) collapseDetail(slides[activeIdx]);
     lockUntil = 0;
     transitioning = false;
-    var target =
-      document.querySelector(".case-scan-back") || document.getElementById("main");
-    if (target) {
-      target.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
-    } else {
-      window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
-    }
+    setStageActive(false);
+    window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+  }
+
+  function isInsideGalleryCard(target) {
+    if (!target || !target.closest) return false;
+    if (shell && shell.contains(target)) return true;
+    if (nav && nav.contains(target)) return true;
+    return false;
   }
 
   var exitBtn = document.createElement("button");
   exitBtn.type = "button";
   exitBtn.className = "case-gallery-exit";
   exitBtn.hidden = true;
-  exitBtn.setAttribute("aria-label", "Exit gallery and return to top");
+  exitBtn.setAttribute("aria-label", "Exit gallery and scroll to top");
   exitBtn.innerHTML = '<span class="case-gallery-exit__icon" aria-hidden="true">&times;</span>';
-  exitBtn.addEventListener("click", exitGallery);
-  document.body.appendChild(exitBtn);
+  exitBtn.addEventListener("click", function (ev) {
+    ev.stopPropagation();
+    exitGallery();
+  });
+  if (shell) {
+    shell.appendChild(exitBtn);
+  } else {
+    document.body.appendChild(exitBtn);
+  }
+
+  document.addEventListener("click", function (ev) {
+    if (!isStageActive()) return;
+    if (exitBtn.contains(ev.target)) return;
+    if (isInsideGalleryCard(ev.target)) return;
+    exitGallery();
+  });
 
   function setActive(idx, animate) {
     if (idx !== activeIdx) collapseDetail(slides[activeIdx]);
@@ -133,7 +151,9 @@
 
   function syncRunwayHeight() {
     var vh = window.innerHeight;
-    runway.style.height = Math.round(vh * Math.max(1, count)) + "px";
+    /* Slightly shorter than count×100dvh — less dead scroll after the final beat. */
+    var runwayMult = Math.max(1, count - 0.35);
+    runway.style.height = Math.round(vh * runwayMult) + "px";
   }
 
   function isStageActive() {
@@ -142,13 +162,35 @@
     return rect.top <= 1 && rect.bottom > vh * 0.15;
   }
 
-  function indexFromRunway() {
+  function runwayScrollProgress() {
     var rect = runway.getBoundingClientRect();
     var vh = window.innerHeight;
-    var scrolled = Math.max(0, -rect.top);
     var scrollable = Math.max(1, runway.offsetHeight - vh);
-    var progress = Math.max(0, Math.min(1, scrolled / scrollable));
-    return Math.round(progress * (count - 1));
+    var scrolled = Math.max(0, -rect.top);
+    return Math.max(0, Math.min(1, scrolled / scrollable));
+  }
+
+  function indexFromRunway() {
+    return Math.round(runwayScrollProgress() * (count - 1));
+  }
+
+  /** Release fixed pin so scroll can reach the post-gallery CTA. */
+  function shouldReleaseToCta() {
+    if (runwayScrollProgress() >= 0.92) return true;
+    if (activeIdx < count - 1) return false;
+    if (runwayScrollProgress() >= 0.82) return true;
+    var close = document.querySelector(".case-scan-close");
+    if (!close) return false;
+    var r = close.getBoundingClientRect();
+    return r.top < window.innerHeight * 0.94;
+  }
+
+  function releaseGalleryStage() {
+    if (isDetailOpen()) collapseDetail(slides[activeIdx]);
+    lockUntil = 0;
+    transitioning = false;
+    wasStageActive = false;
+    setStageActive(false);
   }
 
   function runwayScrollTopForIndex(idx) {
@@ -181,6 +223,9 @@
   }
 
   function onScroll() {
+    if (shouldReleaseToCta()) {
+      releaseGalleryStage();
+    }
     var active = isStageActive();
     setStageActive(active);
     if (!active) {
@@ -213,7 +258,7 @@
 
     var dir = e.deltaY > 0 ? 1 : -1;
     if (dir > 0 && activeIdx >= count - 1) {
-      lockUntil = 0;
+      releaseGalleryStage();
       return;
     }
     if (dir < 0 && activeIdx <= 0) {
@@ -256,7 +301,6 @@
     exitGallery();
   });
 
-  var shell = root.querySelector("[data-case-card-shell]");
   if (shell && !reduced) {
     shell.addEventListener("keydown", function (ev) {
       if (!isStageActive() || isDetailOpen()) return;

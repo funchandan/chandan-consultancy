@@ -421,6 +421,12 @@ html[data-theme="dark"] .site-header {
   text-shadow: var(--title-shadow);
 }
 
+/* Share + case study: index/home is dev-only — label only, no navigation */
+.brand.brand--static {
+  cursor: default;
+  text-decoration: none;
+}
+
 .nav-links {
   display: flex;
   align-items: center;

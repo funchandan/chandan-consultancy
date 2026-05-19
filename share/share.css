@@ -43,6 +43,10 @@
   white-space: nowrap;
 }
 
+.share-nav .brand.brand--static {
+  cursor: default;
+}
+
 .share-nav__links {
   display: flex;
   align-items: center;
@@ -438,14 +442,74 @@
 
 .share-about-lede {
   margin: 0.75rem 0 0;
-  max-width: 52ch;
-  font-family: var(--font-display, Fraunces, Georgia, serif);
-  font-size: clamp(1rem, 2.4vw, 1.15rem);
-  font-style: italic;
-  font-weight: 450;
-  line-height: 1.62;
-  letter-spacing: -0.01em;
+  max-width: 42ch;
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: 0;
   color: var(--text-secondary, var(--muted));
+}
+
+.about-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 2vw, 12px);
+  margin: clamp(1.1rem, 2.8vw, 1.5rem) 0 0;
+  padding: 0;
+  list-style: none;
+  max-width: 40rem;
+}
+
+.about-hero-stats__cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-height: 0;
+  padding: clamp(12px, 2.2vw, 16px);
+  border-radius: 14px;
+  border: 1px solid var(--glass-border, rgba(206, 220, 240, 0.72));
+  background: var(--glass-bg-strong, rgba(255, 255, 255, 0.88));
+  box-shadow: 0 8px 22px rgba(19, 35, 62, 0.06);
+}
+
+.about-hero-stats__value {
+  font-family: var(--font-display, Fraunces, Georgia, serif);
+  font-size: clamp(1.5rem, 3.2vw, 1.85rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--ink, #1a1a1a);
+}
+
+.about-hero-stats__label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ink, #1a1a1a);
+}
+
+.about-hero-stats__qualifier {
+  margin-top: 2px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--muted, #5c6573);
+}
+
+.about-hero-stats__note {
+  margin: 10px 0 0;
+  max-width: 40rem;
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: var(--muted, #5c6573);
+}
+
+@media (max-width: 639px) {
+  .about-hero-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .share-about-block {
@@ -776,8 +840,8 @@
 .about-experience {
   --about-stage-h: min(50dvh, 380px);
   --about-stage-max-w: var(--about-content-width);
-  --about-card-gap: 12px;
-  --about-card-leading: 1.8;
+  --about-card-gap: 14px;
+  --about-card-leading: 1.65;
   position: relative;
   z-index: 1;
   overflow: visible;
@@ -852,24 +916,18 @@
   background: #f7f8fa;
 }
 
-/* Sticky nav rail */
+/* Sticky nav rail — no divider; active state only */
 .about-experience-nav {
   position: relative;
   align-self: center;
-  padding: 0 0 0 4px;
-  border-right: 2px solid rgba(26, 26, 26, 0.12);
-  padding-right: clamp(12px, 2vw, 20px);
+  padding: 0 clamp(8px, 1.5vw, 12px) 0 0;
+  border: 0;
   min-width: 0;
   overflow: visible;
 }
 
 .about-experience-nav__label {
-  margin: 0 0 12px;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
+  display: none;
 }
 
 .about-experience-nav__list {
@@ -888,17 +946,16 @@
   gap: 1px;
   width: 100%;
   margin: 0;
-  padding: 6px 0 6px 14px;
+  padding: 6px 0;
   border: 0;
-  border-left: 2px solid transparent;
   background: transparent;
   cursor: pointer;
   font: inherit;
   text-align: left;
   appearance: none;
   -webkit-appearance: none;
-  color: rgba(45, 70, 100, 0.42);
-  transition: color 0.2s ease, border-color 0.2s ease;
+  color: rgba(45, 70, 100, 0.45);
+  transition: color 0.2s ease;
 }
 
 .about-experience-nav__btn:hover {
@@ -909,12 +966,11 @@
 .about-experience-nav__btn[aria-current="true"] {
   color: #1a3550;
   font-weight: 600;
-  border-left-color: #5b3fa8;
 }
 
 .about-experience-nav__name {
-  font-size: 0.75rem;
-  line-height: 1.5;
+  font-size: 0.8125rem;
+  line-height: 1.45;
 }
 
 .about-experience-nav__when {
@@ -928,12 +984,12 @@
   height: var(--about-stage-h);
   max-height: var(--about-stage-h);
   overflow: hidden;
-  border-radius: 16px;
-  border: 1px solid var(--glass-border, rgba(206, 220, 240, 0.72));
-  background: var(--glass-bg-strong, rgba(255, 255, 255, 0.85));
-  box-shadow: var(--glass-shadow-md, 0 20px 44px rgba(19, 35, 62, 0.14));
-  backdrop-filter: blur(var(--glass-blur, 14px));
-  -webkit-backdrop-filter: blur(var(--glass-blur, 14px));
+  border-radius: 14px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 12px 32px rgba(19, 35, 62, 0.08);
   outline: none;
 }
 
@@ -982,10 +1038,9 @@
   }
 
   .about-experience-nav {
-    border-right: 0;
-    border-bottom: 2px solid rgba(26, 26, 26, 0.1);
+    border: 0;
     padding-right: 0;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
   }
 
   .about-experience-nav__list {
@@ -999,16 +1054,13 @@
 
   .about-experience-nav__btn {
     flex: 0 0 auto;
-    border-left: 0;
-    border-bottom: 2px solid transparent;
-    padding: 8px 12px;
+    padding: 8px 10px;
     white-space: nowrap;
   }
 
   .about-experience-nav__btn.is-active,
   .about-experience-nav__btn[aria-current="true"] {
-    border-left-color: transparent;
-    border-bottom-color: #5b3fa8;
+    color: #5b3fa8;
   }
 
   .about-experience-nav__when {
@@ -1077,7 +1129,7 @@
 }
 
 .about-role-card--compact .about-role-card__body {
-  padding: clamp(14px, 2.5vw, 18px) clamp(16px, 3vw, 20px);
+  padding: clamp(18px, 3vw, 22px) clamp(18px, 3.5vw, 24px);
   display: flex;
   flex-direction: column;
   gap: var(--about-card-gap);
@@ -1096,45 +1148,42 @@
 }
 
 .about-role-card__lens li {
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 4px 9px;
+  padding: 5px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(91, 63, 168, 0.22);
-  background: rgba(91, 63, 168, 0.06);
+  border: 0;
+  background: rgba(91, 63, 168, 0.08);
   color: #4a3d6b;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 .about-role-card__dates {
   margin: 0;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 500;
+  letter-spacing: 0.02em;
   color: var(--muted);
 }
 
 .about-role-card__title {
   margin: 0;
   font-family: var(--font-display, Fraunces, Georgia, serif);
-  font-size: clamp(0.95rem, 2.4vw, 1.1rem);
+  font-size: clamp(1.05rem, 2.6vw, 1.28rem);
   font-weight: 500;
-  line-height: 1.44;
+  line-height: 1.35;
   letter-spacing: -0.02em;
   color: var(--ink);
 }
 
 .about-role-card__copy {
   margin: 0;
-  font-size: 0.8125rem;
+  font-size: clamp(0.875rem, 2vw, 0.9375rem);
   line-height: var(--about-card-leading);
   color: var(--muted);
-  max-width: 46ch;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  max-width: 48ch;
 }
 
 .about-role-card__body .about-role-card__highlights {
@@ -1147,23 +1196,20 @@
 }
 
 .about-role-card__highlights li {
-  font-size: 0.75rem;
-  line-height: 1.68;
+  font-size: 0.8125rem;
+  line-height: 1.55;
   color: var(--ink);
 }
 
 .about-role-card__body .about-role-card__callout {
-  margin: 4px 0 0;
-  padding: 0;
-  font-size: 0.75rem;
+  margin: 2px 0 0;
+  padding: 10px 0 0;
+  border-top: 1px solid rgba(91, 63, 168, 0.1);
+  font-size: 0.8125rem;
   font-style: italic;
-  line-height: 1.68;
-  color: #c45c2a;
-  max-width: 46ch;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  line-height: 1.55;
+  color: #b85a2e;
+  max-width: 48ch;
 }
 
 .about-role-card__callout strong {
