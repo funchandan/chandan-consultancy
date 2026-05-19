@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="580" viewBox="0 0 300 580" role="img" aria-label="Stage A: rough sketch">
+  <text x="24" y="52" font-family="system-ui, sans-serif" font-size="16" fill="#888" transform="rotate(-1 24 52)">rewards???</text>
+  <rect x="20" y="100" width="118" height="52" rx="4" fill="none" stroke="#888" stroke-width="2.5" stroke-dasharray="6 4" transform="rotate(2 79 126)"/>
+  <rect x="148" y="98" width="118" height="55" rx="4" fill="none" stroke="#888" stroke-width="2.5" stroke-dasharray="6 4" transform="rotate(-2 207 125)"/>
+  <text x="28" y="108" font-family="system-ui, sans-serif" font-size="11" fill="#888">points?</text>
+  <text x="158" y="106" font-family="system-ui, sans-serif" font-size="11" fill="#888">coins??</text>
+  <line x1="70" y1="155" x2="200" y2="140" stroke="#888" stroke-width="2"/>
+  <rect x="22" y="200" width="72" height="90" rx="4" fill="none" stroke="#888" stroke-width="2" transform="rotate(3 58 245)"/>
+  <rect x="110" y="198" width="72" height="90" rx="4" fill="none" stroke="#888" stroke-width="2" transform="rotate(-2 146 243)"/>
+  <rect x="198" y="202" width="72" height="90" rx="4" fill="none" stroke="#888" stroke-width="2" transform="rotate(2 234 247)"/>
+  <text x="30" y="240" font-family="system-ui, sans-serif" font-size="9" fill="#888">robot</text>
+  <text x="118" y="238" font-family="system-ui, sans-serif" font-size="9" fill="#888">fast guy</text>
+  <text x="206" y="242" font-family="system-ui, sans-serif" font-size="9" fill="#888">???</text>
+  <rect x="40" y="340" width="220" height="44" rx="8" fill="none" stroke="#888" stroke-width="2" transform="rotate(1 150 362)"/>
+  <text x="100" y="368" font-family="system-ui, sans-serif" font-size="12" fill="#888">redeem button</text>
+  <ellipse cx="220" cy="430" rx="30" ry="20" fill="none" stroke="#888" stroke-width="2"/>
+  <text x="24" y="520" font-family="system-ui, sans-serif" font-size="9" fill="#666">Paige: test kids words not ledger</text>
+  <text x="150" y="562" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#aaa">A Rough sketch</text>
+</svg>

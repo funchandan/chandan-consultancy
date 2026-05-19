@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="960" viewBox="0 0 1200 960" role="img" aria-label="Synthesis wireframe: retention and loyalty gap">
+  <rect width="1200" height="960" fill="#f6f5f2"/>
+  <text x="80" y="72" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#5b3fa8" letter-spacing="0.12em">SYNTHESIS BOARD</text>
+  <text x="80" y="112" font-family="system-ui, sans-serif" font-size="28" font-weight="600" fill="#171a1f">Loyalty not in the journey</text>
+
+  <!-- Journey -->
+  <rect x="80" y="160" width="1040" height="200" rx="20" fill="#fff" stroke="#e8e4ef"/>
+  <text x="108" y="200" font-family="system-ui, sans-serif" font-size="13" fill="#4f5866" font-weight="600">Learner journey (today)</text>
+  <g font-family="system-ui, sans-serif" font-size="13" fill="#171a1f">
+    <rect x="120" y="230" width="140" height="72" rx="12" fill="#f0edf6"/>
+    <text x="190" y="262" text-anchor="middle">Class</text>
+    <text x="190" y="282" text-anchor="middle" fill="#5b3fa8">Earn</text>
+    <path d="M270 266 H320" stroke="#c4b8d8" stroke-width="2"/>
+    <polygon points="320,266 312,262 312,270" fill="#c4b8d8"/>
+    <rect x="330" y="230" width="140" height="72" rx="12" fill="#fff3e8" stroke="#e8a86a" stroke-dasharray="6 4"/>
+    <text x="400" y="258" text-anchor="middle" fill="#9a5c20">Points stack</text>
+    <text x="400" y="280" text-anchor="middle" font-size="11" fill="#9a5c20">No redeem path</text>
+    <path d="M480 266 H530" stroke="#c4b8d8" stroke-width="2"/>
+    <polygon points="530,266 522,262 522,270" fill="#c4b8d8"/>
+    <rect x="540" y="230" width="140" height="72" rx="12" fill="#f0edf6"/>
+    <text x="610" y="262" text-anchor="middle">Marketplace</text>
+    <text x="610" y="282" text-anchor="middle" fill="#8a919c">Hidden</text>
+    <path d="M690 266 H740" stroke="#c4b8d8" stroke-width="2"/>
+    <rect x="750" y="230" width="140" height="72" rx="12" fill="#fdecec" stroke="#e88a8a"/>
+    <text x="820" y="262" text-anchor="middle" fill="#a03030">Drop-off</text>
+  </g>
+
+  <!-- Metrics -->
+  <rect x="80" y="400" width="500" height="280" rx="20" fill="#fff" stroke="#e8e4ef"/>
+  <text x="108" y="440" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#4f5866">Platform time (8 wk)</text>
+  <polyline points="120,620 200,580 280,560 360,540 440,520 520,500" fill="none" stroke="#5b3fa8" stroke-width="3"/>
+  <line x1="120" y1="640" x2="520" y2="640" stroke="#e0dae8"/>
+  <text x="108" y="660" font-family="system-ui, sans-serif" font-size="12" fill="#a03030">↓ 18% vs baseline</text>
+
+  <rect x="620" y="400" width="500" height="280" rx="20" fill="#fff" stroke="#e8e4ef"/>
+  <text x="648" y="440" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#4f5866">Two currencies (verbatim theme)</text>
+  <rect x="648" y="470" width="420" height="56" rx="12" fill="#f6f4fb"/>
+  <text x="664" y="504" font-family="system-ui, sans-serif" font-size="14" fill="#171a1f">Points + creator coins · rules unclear</text>
+  <rect x="648" y="540" width="420" height="56" rx="12" fill="#f6f4fb"/>
+  <text x="664" y="574" font-family="system-ui, sans-serif" font-size="14" fill="#171a1f">Attendance down · loyalty not in loop</text>
+  <rect x="648" y="610" width="200" height="48" rx="10" fill="#5b3fa8"/>
+  <text x="748" y="640" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#fff" font-weight="600">Gap: earn → spend</text>
+
+  <text x="600" y="920" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#8a919c">Study wireframe · problem synthesis</text>
+</svg>

@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" role="img" aria-label="Byjus FutureSchool points wallet with profile, activity history, and quick actions">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff5f8"/>
+      <stop offset="40%" stop-color="#ebe8f4"/>
+      <stop offset="100%" stop-color="#f6f5f2"/>
+    </linearGradient>
+    <linearGradient id="wallet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7b5fd4"/>
+      <stop offset="50%" stop-color="#5b3fa8"/>
+      <stop offset="100%" stop-color="#4a3490"/>
+    </linearGradient>
+    <linearGradient id="pop" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff8fb0"/>
+      <stop offset="100%" stop-color="#f05b83"/>
+    </linearGradient>
+    <filter id="sh" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#5b3fa8" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+  <rect width="390" height="844" fill="url(#bg)"/>
+
+  <!-- playful stars -->
+  <path d="M48 48l4 10 10 2-7 7 2 10-9-6-9 6 2-10-7-7 10-2z" fill="#f05b83" opacity="0.35"/>
+  <path d="M330 72l3 7 7 1-5 5 1 7-6-4-6 4 1-7-5-5 7-1z" fill="#5b3fa8" opacity="0.3"/>
+  <path d="M300 140l2 5 5 1-4 4 1 5-4-3-4 3 1-5-4-4 5-1z" fill="#ffc94d" opacity="0.5"/>
+
+  <!-- Profile row -->
+  <rect x="20" y="56" width="350" height="88" rx="22" fill="#fff" filter="url(#sh)"/>
+  <circle cx="68" cy="100" r="32" fill="#d4c4f0" stroke="#5b3fa8" stroke-width="3"/>
+  <circle cx="68" cy="94" r="12" fill="#f0c9a8"/>
+  <path d="M48 118c6-10 32-10 40 0" fill="#5b3fa8" opacity="0.25"/>
+  <text x="112" y="92" font-family="system-ui,sans-serif" font-size="18" font-weight="800" fill="#171a1f">Hey, Alex!</text>
+  <text x="112" y="114" font-family="system-ui,sans-serif" font-size="12" fill="#4f5866">Grade 4  |  Math hero</text>
+  <rect x="112" y="122" width="72" height="22" rx="11" fill="#fff3e0"/>
+  <text x="148" y="137" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#e87820">5-day streak</text>
+  <rect x="290" y="78" width="64" height="44" rx="14" fill="#f0edf6"/>
+  <text x="322" y="98" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#5b3fa8">EDIT</text>
+  <text x="322" y="112" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#4f5866">profile</text>
+
+  <!-- Wallet hero - visibility of status -->
+  <g filter="url(#sh)">
+    <rect x="20" y="160" width="350" height="156" rx="26" fill="url(#wallet)"/>
+    <circle cx="330" cy="188" r="18" fill="#fff" opacity="0.15"/>
+    <circle cx="56" cy="280" r="24" fill="#fff" opacity="0.08"/>
+    <text x="44" y="196" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#e8e0f8" letter-spacing="0.06em">YOUR SPENDABLE POINTS</text>
+    <text x="44" y="258" font-family="system-ui,sans-serif" font-size="56" font-weight="800" fill="#fff">240</text>
+    <text x="44" y="284" font-family="system-ui,sans-serif" font-size="12" fill="#d8cef5">Ready to spend in marketplace</text>
+    <rect x="228" y="248" width="126" height="48" rx="24" fill="url(#pop)"/>
+    <text x="291" y="278" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="800" fill="#fff">Redeem</text>
+  </g>
+
+  <!-- Quick actions - recognition over recall -->
+  <text x="24" y="342" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#171a1f">Do something awesome</text>
+  <g>
+    <rect x="20" y="354" width="108" height="88" rx="18" fill="#fff" filter="url(#sh)"/>
+    <rect x="36" y="370" width="40" height="40" rx="12" fill="#e8f4fc"/>
+    <text x="56" y="396" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18">+</text>
+    <text x="74" y="428" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#171a1f">Earn</text>
+
+    <rect x="141" y="354" width="108" height="88" rx="18" fill="#fff" filter="url(#sh)"/>
+    <rect x="157" y="370" width="40" height="40" rx="12" fill="#fde8ef"/>
+    <text x="177" y="396" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16">*</text>
+    <text x="195" y="428" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#171a1f">Shop</text>
+
+    <rect x="262" y="354" width="108" height="88" rx="18" fill="#fff" filter="url(#sh)"/>
+    <rect x="278" y="370" width="40" height="40" rx="12" fill="#e8f8ee"/>
+    <text x="298" y="396" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16">!</text>
+    <text x="316" y="428" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#171a1f">Goals</text>
+  </g>
+
+  <!-- Activity history - earned and spent -->
+  <rect x="20" y="462" width="350" height="300" rx="22" fill="#fff" filter="url(#sh)"/>
+  <text x="40" y="494" font-family="system-ui,sans-serif" font-size="15" font-weight="800" fill="#171a1f">Points story</text>
+  <text x="350" y="494" text-anchor="end" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#5b3fa8">See all</text>
+
+  <g>
+    <circle cx="52" cy="528" r="16" fill="#e8f8ee"/>
+    <text x="52" y="533" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#3aa86a">+</text>
+    <text x="80" y="524" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#171a1f">Earned +25</text>
+    <text x="80" y="542" font-family="system-ui,sans-serif" font-size="12" fill="#4f5866">Class hero badge  |  Today</text>
+    <text x="350" y="532" text-anchor="end" font-family="system-ui,sans-serif" font-size="14" font-weight="800" fill="#3aa86a">+25</text>
+    <line x1="40" y1="556" x2="350" y2="556" stroke="#ebe8f4" stroke-width="1"/>
+
+    <circle cx="52" cy="588" r="16" fill="#fde8ef"/>
+    <text x="52" y="593" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#f05b83">-</text>
+    <text x="80" y="584" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#171a1f">Spent 80</text>
+    <text x="80" y="602" font-family="system-ui,sans-serif" font-size="12" fill="#4f5866">Unlocked Cyborg avatar  |  Yesterday</text>
+    <text x="350" y="592" text-anchor="end" font-family="system-ui,sans-serif" font-size="14" font-weight="800" fill="#f05b83">-80</text>
+    <line x1="40" y1="616" x2="350" y2="616" stroke="#ebe8f4" stroke-width="1"/>
+
+    <circle cx="52" cy="648" r="16" fill="#e8f8ee"/>
+    <text x="52" y="653" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#3aa86a">+</text>
+    <text x="80" y="644" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#171a1f">Earned +12</text>
+    <text x="80" y="662" font-family="system-ui,sans-serif" font-size="12" fill="#4f5866">5-day streak bonus  |  Mon</text>
+    <text x="350" y="652" text-anchor="end" font-family="system-ui,sans-serif" font-size="14" font-weight="800" fill="#3aa86a">+12</text>
+    <line x1="40" y1="676" x2="350" y2="676" stroke="#ebe8f4" stroke-width="1"/>
+
+    <circle cx="52" cy="708" r="16" fill="#e8f8ee"/>
+    <text x="52" y="713" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#3aa86a">+</text>
+    <text x="80" y="704" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#171a1f">Earned +8</text>
+    <text x="80" y="722" font-family="system-ui,sans-serif" font-size="12" fill="#4f5866">Practice pack complete  |  Sun</text>
+    <text x="350" y="712" text-anchor="end" font-family="system-ui,sans-serif" font-size="14" font-weight="800" fill="#3aa86a">+8</text>
+  </g>
+
+  <!-- Heuristic callouts - help prevent mistakes -->
+  <rect x="20" y="776" width="350" height="52" rx="14" fill="#f0edf6" stroke="#5b3fa8" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="36" y="798" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#5b3fa8">UX heuristics baked in</text>
+  <text x="36" y="816" font-family="system-ui,sans-serif" font-size="10" fill="#4f5866">Visible balance  |  Plain labels  |  Earn/spend history  |  Clear next step</text>
+</svg>

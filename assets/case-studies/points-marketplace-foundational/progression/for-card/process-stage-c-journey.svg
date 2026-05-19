@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="580" viewBox="0 0 300 580" role="img" aria-label="Stage C: learner journey structure">
+  <defs>
+    <linearGradient id="bgC" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f6f4fb"/>
+    </linearGradient>
+  </defs>
+  <text x="20" y="36" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#5b3fa8">Learner journey</text>
+  <text x="20" y="54" font-family="system-ui, sans-serif" font-size="10" fill="#4f5866">Earn - balance - redeem - browse</text>
+
+  <circle cx="28" cy="88" r="10" fill="#22a85a"/>
+  <text x="25" y="92" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#fff">1</text>
+  <line x1="28" y1="98" x2="28" y2="118" stroke="#d8d2e8" stroke-width="2"/>
+  <rect x="44" y="72" width="236" height="52" rx="8" fill="#f6f4fb" stroke="#e0dae8"/>
+  <text x="56" y="88" font-family="system-ui, sans-serif" font-size="8" font-weight="700" fill="#22a85a">CLASS</text>
+  <text x="56" y="104" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#171a1f">Earn in class</text>
+  <text x="56" y="118" font-family="system-ui, sans-serif" font-size="9" fill="#4f5866">Lesson, streak, correct work</text>
+
+  <circle cx="28" cy="148" r="10" fill="#5b3fa8"/>
+  <text x="25" y="152" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#fff">2</text>
+  <line x1="28" y1="158" x2="28" y2="178" stroke="#d8d2e8" stroke-width="2"/>
+  <rect x="44" y="132" width="236" height="52" rx="8" fill="#f0edf6" stroke="#d8d2e8"/>
+  <text x="56" y="148" font-family="system-ui, sans-serif" font-size="8" font-weight="700" fill="#5b3fa8">WALLET</text>
+  <text x="56" y="164" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#171a1f">See balance</text>
+  <text x="56" y="178" font-family="system-ui, sans-serif" font-size="9" fill="#4f5866">240 spendable points, history</text>
+
+  <circle cx="28" cy="208" r="10" fill="#f05b83"/>
+  <text x="25" y="212" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#fff">3</text>
+  <line x1="28" y1="218" x2="28" y2="238" stroke="#d8d2e8" stroke-width="2"/>
+  <rect x="44" y="192" width="236" height="52" rx="8" fill="#fff5f8" stroke="#f0c4d4"/>
+  <text x="56" y="208" font-family="system-ui, sans-serif" font-size="8" font-weight="700" fill="#f05b83">DEPLOY</text>
+  <text x="56" y="224" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#171a1f">Onboarding</text>
+  <text x="56" y="238" font-family="system-ui, sans-serif" font-size="9" fill="#4f5866">How to win, how to spend</text>
+
+  <circle cx="28" cy="268" r="10" fill="#501c58"/>
+  <text x="25" y="272" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#fff">4</text>
+  <line x1="28" y1="278" x2="28" y2="298" stroke="#d8d2e8" stroke-width="2"/>
+  <rect x="44" y="252" width="236" height="52" rx="8" fill="#f6f4fb" stroke="#d8d2e8"/>
+  <text x="56" y="268" font-family="system-ui, sans-serif" font-size="8" font-weight="700" fill="#501c58">SHOP</text>
+  <text x="56" y="284" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#171a1f">Redeem avatar</text>
+  <text x="56" y="298" font-family="system-ui, sans-serif" font-size="9" fill="#4f5866">Cyborg, Bolt, Taz</text>
+
+  <circle cx="28" cy="328" r="10" fill="#8a919c"/>
+  <text x="25" y="332" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#fff">5</text>
+  <rect x="44" y="312" width="236" height="52" rx="8" fill="#f6f4fb" stroke="#e0dae8"/>
+  <text x="56" y="328" font-family="system-ui, sans-serif" font-size="8" font-weight="700" fill="#8a919c">EXPLORE</text>
+  <text x="56" y="344" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#171a1f">Browse shop</text>
+  <text x="56" y="358" font-family="system-ui, sans-serif" font-size="9" fill="#4f5866">Backgrounds, class skins</text>
+
+  <rect x="16" y="390" width="268" height="56" rx="8" fill="#fdecec" stroke="#f0c4c4"/>
+  <text x="28" y="412" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#a03030">Today: loop breaks at 2-4</text>
+  <text x="28" y="430" font-family="system-ui, sans-serif" font-size="9" fill="#4f5866">Points idle, no redeem affordance</text>
+
+  <rect x="16" y="460" width="268" height="72" rx="10" fill="#fff" stroke="#e8e4ef"/>
+  <text x="28" y="480" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#4f5866">Journey today (synthesis ref)</text>
+  <rect x="24" y="492" width="52" height="28" rx="6" fill="#f0edf6"/>
+  <text x="50" y="510" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#5b3fa8">Earn</text>
+  <text x="82" y="506" font-family="system-ui, sans-serif" font-size="10" fill="#c4b8d8">&gt;</text>
+  <rect x="90" y="492" width="52" height="28" rx="6" fill="#fff3e8" stroke="#e8a86a" stroke-dasharray="4 3"/>
+  <text x="116" y="508" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="#9a5c20">Stack</text>
+  <text x="148" y="506" font-family="system-ui, sans-serif" font-size="10" fill="#c4b8d8">&gt;</text>
+  <rect x="156" y="492" width="52" height="28" rx="6" fill="#fdecec" stroke="#e88a8a"/>
+  <text x="182" y="510" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#a03030">Drop</text>
+
+  <text x="150" y="562" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#8a919c">C User journey BYJU #5B3FA8</text>
+</svg>

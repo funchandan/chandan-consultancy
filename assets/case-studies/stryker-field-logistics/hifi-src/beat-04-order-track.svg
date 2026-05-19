@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="960" viewBox="0 0 1200 960" role="img">
+<defs>
+  <filter id="devShadow" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="28" stdDeviation="24" flood-color="#000" flood-opacity="0.22"/>
+  </filter>
+  <linearGradient id="studio" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#E5E5EA"/><stop offset="100%" stop-color="#F2F2F7"/>
+  </linearGradient>
+</defs>
+<rect width="1200" height="960" fill="url(#studio)"/>
+<text x="80" y="80" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="11" font-weight="600" fill="#8E8E93" letter-spacing="0.1em">STRYKER · FIELD LOGISTICS</text>
+<text x="80" y="108" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="28" font-weight="700" fill="#1C1C1E">Rep workflow</text>
+<rect x="395" y="36" width="418" height="872" rx="54" fill="#1C1C1E" filter="url(#devShadow)"/>
+<rect x="409" y="50" width="390" height="844" rx="44" fill="#F2F2F7"/>
+<rect x="541" y="60" width="126" height="37" rx="19" fill="#000"/>
+<text x="437" y="88" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#1C1C1E">9:41</text>
+<rect x="723" y="76" width="22" height="11" rx="3" stroke="#1C1C1E" fill="none"/>
+<rect x="749" y="78" width="16" height="8" rx="2" fill="#1C1C1E"/>
+<rect x="409" y="104" width="390" height="44" fill="#F2F2F7"/>
+<g transform="translate(421,116) scale(-0.75,0.75)" fill="#007AFF"><path d="M10.3 4.3a1 1 0 0 1 1.4 0l7 7a1 1 0 0 1 0 1.4l-7 7a1 1 0 0 1-1.4-1.4L16.58 12 10.3 5.7a1 1 0 0 1 0-1.4Z"/></g>
+<text x="604" y="132" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="#1C1C1E" letter-spacing="0.04em">stryker</text>
+<g transform="translate(763,114) scale(0.9166666666666666,0.9166666666666666)" fill="#007AFF"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 4.07V3.5a.5.5 0 0 1 .85-.35l2.15 2.15a.5.5 0 0 1-.35.85H13.5a8 8 0 1 1-7.78 10.07.75.75 0 1 1 .28-1.48A6.5 6.5 0 1 0 13 6.07Z"/></g>
+<text x="425" y="182" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="34" font-weight="700" fill="#1C1C1E">Order status</text>
+<text x="425" y="206" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="15" fill="#8E8E93">Placed today · 09:14</text>
+<rect x="409" y="811" width="390" height="83" fill="rgba(255,255,255,0.94)"/>
+<line x1="409" y1="811" x2="799" y2="811" stroke="#C6C6C8"/>
+<g transform="translate(448,821) scale(0.9166666666666666,0.9166666666666666)" fill="#8E8E93"><path d="M10.55 2.1a1.5 1.5 0 0 1 2.1.35l8 10A1.5 1.5 0 0 1 19.5 15H17v6.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 11 21.5V17H9v4.5A1.5 1.5 0 0 1 7.5 23h-3A1.5 1.5 0 0 1 3 21.5V15H.9a1.5 1.5 0 0 1-1.15-2.45l8-10a1.5 1.5 0 0 1 2.1-.35Z"/></g>
+<text x="457" y="859" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="10" font-weight="400" fill="#8E8E93">Home</text>
+<g transform="translate(546,821) scale(0.9166666666666666,0.9166666666666666)" fill="#007AFF"><path d="M8 2.25A3.25 3.25 0 0 0 4.75 5.5v.26c0 .3.04.6.11.88L3 18.75A1.25 1.25 0 0 0 4.24 20.5h15.52a1.25 1.25 0 0 0 1.24-1.42l-1.86-12.11a3.25 3.25 0 0 0-3.21-2.77H8.9a3.25 3.25 0 0 0-3.2 2.77H4.75A1.25 1.25 0 0 1 8 4.75h8a1.25 1.25 0 0 1 0 2.5H8ZM7.5 21a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5Zm9 0a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5Z"/></g>
+<text x="555" y="859" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="10" font-weight="600" fill="#007AFF">Orders</text>
+<g transform="translate(644,821) scale(0.9166666666666666,0.9166666666666666)" fill="#8E8E93"><path d="M12 2.2a1.2 1.2 0 0 1 .5.1l8 3.5a1.2 1.2 0 0 1 .7 1.1v9.2a1.2 1.2 0 0 1-.7 1.1l-8 3.5a1.2 1.2 0 0 1-1 0l-8-3.5a1.2 1.2 0 0 1-.7-1.1V6.9a1.2 1.2 0 0 1 .7-1.1l8-3.5a1.2 1.2 0 0 1 .5-.1Zm0 2.3-6.8 3 6.8 3 6.8-3-6.8-3ZM5 10.2v5.1l6 2.6v-5.1l-6-2.6Zm14 0-6 2.6v5.1l6-2.6v-5.1Z"/></g>
+<text x="653" y="859" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="10" font-weight="400" fill="#8E8E93">Parts</text>
+<g transform="translate(742,821) scale(0.9166666666666666,0.9166666666666666)" fill="#8E8E93"><path d="M5.75 12a1.75 1.75 0 1 1-3.5 0 1.75 1.75 0 0 1 3.5 0Zm8.75 0a1.75 1.75 0 1 1-3.5 0 1.75 1.75 0 0 1 3.5 0Zm8.75 0a1.75 1.75 0 1 1-3.5 0 1.75 1.75 0 0 1 3.5 0Z"/></g>
+<text x="751" y="859" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="10" font-weight="400" fill="#8E8E93">More</text>
+<rect x="537" y="880" width="134" height="5" rx="3" fill="#000" opacity="0.35"/>
+<text x="604" y="944" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="13" fill="#8E8E93" letter-spacing="0.04em">04 · ORDER TRACK</text>
+<rect x="425" y="228" width="100" height="28" rx="14" fill="#E5E5EA"/><text x="439" y="246" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#1C1C1E">ORD-91827</text><rect x="537" y="228" width="110" height="28" rx="14" fill="#FFF4E5"/><text x="551" y="246" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#FF9500">In fulfillment</text>
+<rect x="425" y="268" width="358" height="216" rx="12" fill="#FFFFFF"/>
+<circle cx="453" cy="292" r="5" fill="#34C759"/>
+<line x1="453" y1="298" x2="453" y2="318" stroke="#C6C6C8" stroke-width="2"/>
+<text x="469" y="296" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="15" fill="#1C1C1E">Submitted</text>
+<circle cx="453" cy="332" r="5" fill="#34C759"/>
+<line x1="453" y1="338" x2="453" y2="358" stroke="#C6C6C8" stroke-width="2"/>
+<text x="469" y="336" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="15" fill="#1C1C1E">Confirmed by ops</text>
+<circle cx="453" cy="372" r="5" fill="#FF9500"/>
+<line x1="453" y1="378" x2="453" y2="398" stroke="#C6C6C8" stroke-width="2"/>
+<text x="469" y="376" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="15" fill="#1C1C1E" font-weight="600">Picking · ETA 2h</text>
+<circle cx="453" cy="412" r="5" fill="#C7C7CC"/>
+<line x1="453" y1="418" x2="453" y2="438" stroke="#C6C6C8" stroke-width="2"/>
+<text x="469" y="416" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="15" fill="#8E8E93">Shipped to hospital</text>
+<circle cx="453" cy="452" r="5" fill="#C7C7CC"/>
+<text x="469" y="456" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="15" fill="#8E8E93">Received at site</text>
+<rect x="425" y="504" width="358" height="110" rx="12" fill="#FFFFFF" stroke="#C6C6C8" stroke-width="0.5"/>
+<rect x="441" y="512" width="32" height="32" rx="8" fill="#007AFF20"/>
+<g transform="translate(448,519) scale(0.75,0.75)" fill="#007AFF"><path d="M12 3a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9ZM5.5 20.5a6.5 6.5 0 0 1 13 0 .75.75 0 0 1-.75.75h-11.5a.75.75 0 0 1-.75-.75Z"/></g>
+<text x="485" y="530" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="17" fill="#1C1C1E">Lisa M.</text>
+<text x="485" y="548" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="14" fill="#8E8E93">Central supply · Owner</text>
+<rect x="425" y="737" width="358" height="50" rx="12" fill="#FFCD00"/>
+<text x="604" y="768" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="#1C1C1E">View parts</text>
+</svg>

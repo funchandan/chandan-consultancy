@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="960" viewBox="0 0 1200 960" role="img">
+  <defs>
+    <filter id="shadow2"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/></filter>
+    <filter id="shadow4"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.12"/></filter>
+    <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A1A1A"/><stop offset="100%" stop-color="#2d2d2d"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF9E0"/><stop offset="100%" stop-color="#FFFDF5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="960" fill="#FFCD00"/>
+  <circle cx="160" cy="180" r="100" fill="#FFFFFF" opacity="0.1"/>
+  <text x="600" y="46" text-anchor="middle" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#1A1A1A" letter-spacing="0.1em">STRYKER · FIELD LOGISTICS</text>
+  <text x="600" y="74" text-anchor="middle" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" fill="#1A1A1A">09 · REQUEST</text>
+  <rect x="405" y="88" width="390" height="784" rx="40" fill="#FFFFFF" stroke="#D1D1D1" filter="url(#shadow4)"/>
+  <rect x="560" y="96" width="80" height="24" rx="12" fill="#F5F5F5"/>
+  <text x="600" y="112" text-anchor="middle" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="11" fill="#616161">9:41</text>
+  <rect x="405" y="124" width="390" height="48" fill="#FAFAFA" stroke="#E0E0E0"/>
+    <g transform="translate(425,136) scale(-0.75,0.75)" fill="#424242"><path d="M13.47 4.47a.75.75 0 0 1 1.06 0l6 6a.75.75 0 0 1 0 1.06l-6 6a.75.75 0 1 1-1.06-1.06L17.94 12H4.75a.75.75 0 0 1 0-1.5h13.19l-3.47-3.47a.75.75 0 0 1 0-1.06Z"/></g>
+  <text x="451" y="150" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#424242">STRYKER</text>
+    <g transform="translate(753,134) scale(0.9166666666666666,0.9166666666666666)" fill="#0078D4"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 5a1 1 0 0 0-2 0v4H7a1 1 0 0 0 0 2h4v4a1 1 0 0 0 2 0v-4h4a1 1 0 0 0 0-2h-4V7Z"/></g>
+  <line x1="405" y1="172" x2="795" y2="172" stroke="#E0E0E0"/>
+  <text x="425" y="196" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="22" font-weight="600" fill="#242424">New part request</text>
+  <rect x="425" y="216" width="119.0" height="24" rx="12" fill="#FFF4CE"/>
+  <text x="437" y="232" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#CA5010">Needs approval</text>
+  <rect x="425" y="256.0" width="40" height="40" rx="8" fill="#EBF3FC"/>
+  <g transform="translate(435,266.0) scale(0.8333333333333334,0.8333333333333334)" fill="#0078D4"><path d="M12 2.2a1.2 1.2 0 0 1 .5.1l8 3.5a1.2 1.2 0 0 1 .7 1.1v9.2a1.2 1.2 0 0 1-.7 1.1l-8 3.5a1.2 1.2 0 0 1-1 0l-8-3.5a1.2 1.2 0 0 1-.7-1.1V6.9a1.2 1.2 0 0 1 .7-1.1l8-3.5a1.2 1.2 0 0 1 .5-.1Zm0 2.3-6.8 3 6.8 3 6.8-3-6.8-3ZM5 10.2v5.1l6 2.6v-5.1l-6-2.6Zm14 0-6 2.6v5.1l6-2.6v-5.1Z"/></g>
+  <text x="477" y="268" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#616161" letter-spacing="0.05em">REQUESTED ITEM</text>
+  <text x="477" y="288" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#242424">Flexible reamer · 9mm</text>
+  <line x1="425" y1="304" x2="775" y2="304" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="425" y="317" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#242424">Justification</text>
+  <rect x="425" y="329" width="350" height="80" rx="12" fill="#FFFFFF" stroke="#D1D1D1" stroke-width="1" filter="url(#shadow2)"/>
+  <text x="441" y="365" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="12" fill="#242424">Surgeon requested for revision</text>
+  <text x="441" y="385" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="11" fill="#616161">CASE-28491</text>
+  <rect x="425" y="429.0" width="40" height="40" rx="8" fill="#F5F5F5"/>
+  <g transform="translate(435,439.0) scale(0.8333333333333334,0.8333333333333334)" fill="#424242"><path d="M12 3a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9ZM5.5 20.5a6.5 6.5 0 0 1 13 0 .75.75 0 0 1-.75.75h-11.5a.75.75 0 0 1-.75-.75Z"/></g>
+  <text x="477" y="441" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#616161" letter-spacing="0.05em">LINKED SURGEON</text>
+  <text x="477" y="461" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#242424">Dr. Vasquez</text>
+  <line x1="425" y1="477" x2="775" y2="477" stroke="#E0E0E0" stroke-width="1"/>
+  <g transform="translate(425,486) scale(0.75,0.75)" fill="#CA5010"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 5a.75.75 0 0 1 .75.75v4.69l3.72 2.23a.75.75 0 1 1-.74 1.3l-4-2.4A.75.75 0 0 1 11.25 12V7.75A.75.75 0 0 1 12 7Z"/></g>
+  <text x="451" y="500" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="11" fill="#616161">Ops SLA · 4h · notification on approve</text>
+  <rect x="425" y="740" width="350" height="48" rx="12" fill="#FFCD00" stroke="#1A1A1A" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="590" y="770" text-anchor="middle" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1A1A1A">Submit request</text>
+  <g transform="translate(735,754) scale(0.8333333333333334,0.8333333333333334)" fill="#1A1A1A"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1.2 13.2-4-4 1.4-1.4 2.6 2.6 6.6-6.6 1.4 1.4-8 8Z"/></g>
+None
+  <text x="600" y="942" text-anchor="middle" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="10" fill="#616161">Fluent UI · 20px margins · 8px grid</text>
+</svg>

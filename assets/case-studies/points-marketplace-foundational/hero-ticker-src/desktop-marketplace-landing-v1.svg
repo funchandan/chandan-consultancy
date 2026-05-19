@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-label="Byjus FutureSchool desktop rewards marketplace landing">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6f5f2"/>
+      <stop offset="100%" stop-color="#ebe8f4"/>
+    </linearGradient>
+    <linearGradient id="wallet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6b4fc4"/>
+      <stop offset="100%" stop-color="#5b3fa8"/>
+    </linearGradient>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#171a1f" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="720" rx="16" fill="url(#bg)"/>
+
+  <!-- Browser chrome hint -->
+  <rect x="0" y="0" width="1200" height="44" fill="#fff" opacity="0.9"/>
+  <circle cx="28" cy="22" r="6" fill="#f05b83" opacity="0.7"/>
+  <circle cx="48" cy="22" r="6" fill="#ffc94d" opacity="0.7"/>
+  <circle cx="68" cy="22" r="6" fill="#5cc98a" opacity="0.7"/>
+  <rect x="200" y="12" width="520" height="20" rx="10" fill="#f0edf6"/>
+  <text x="460" y="26" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#4f5866">futureschool.byjus.com/rewards</text>
+
+  <!-- Header -->
+  <text x="48" y="88" font-family="system-ui,sans-serif" font-size="18" font-weight="800" fill="#5b3fa8">BYJUS FUTURESCHOOL</text>
+  <text x="48" y="118" font-family="system-ui,sans-serif" font-size="32" font-weight="800" fill="#171a1f">Rewards marketplace</text>
+  <text x="48" y="148" font-family="system-ui,sans-serif" font-size="15" fill="#4f5866">Earn in class. See your balance. Redeem your hero.</text>
+  <circle cx="1080" cy="100" r="28" fill="#d4c4f0" stroke="#5b3fa8" stroke-width="2"/>
+  <text x="1140" y="104" font-family="system-ui,sans-serif" font-size="14" font-weight="600" fill="#171a1f">Alex</text>
+
+  <!-- Left column: wallet + onboarding -->
+  <g filter="url(#sh)">
+    <rect x="48" y="180" width="420" height="200" rx="24" fill="url(#wallet)"/>
+    <text x="76" y="220" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#e8e0f8" letter-spacing="0.05em">SPENDABLE POINTS</text>
+    <text x="76" y="290" font-family="system-ui,sans-serif" font-size="64" font-weight="800" fill="#fff">240</text>
+    <text x="76" y="322" font-family="system-ui,sans-serif" font-size="14" fill="#d8cef5">+12 this week from class</text>
+    <rect x="300" y="300" width="140" height="52" rx="26" fill="#fff"/>
+    <text x="370" y="332" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#5b3fa8">Redeem now</text>
+  </g>
+
+  <rect x="48" y="400" width="420" height="72" rx="16" fill="#fff" filter="url(#sh)"/>
+  <rect x="48" y="400" width="8" height="72" rx="4" fill="#f05b83"/>
+  <text x="80" y="432" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#171a1f">How to earn and spend</text>
+  <text x="80" y="454" font-family="system-ui,sans-serif" font-size="13" fill="#4f5866">2 min guide before you shop</text>
+  <path d="M422 432h16M430 424l8 8-8 8" fill="none" stroke="#5b3fa8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="48" y="492" width="200" height="56" rx="14" fill="#fff" filter="url(#sh)"/>
+  <text x="148" y="526" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#4f5866">Spent history · Last 7 days</text>
+
+  <rect x="268" y="492" width="200" height="56" rx="14" fill="#f0edf6"/>
+  <text x="368" y="526" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#5b3fa8">View earn goals</text>
+
+  <!-- Right: avatar grid -->
+  <text x="520" y="200" font-family="system-ui,sans-serif" font-size="20" font-weight="800" fill="#171a1f">Pick your hero</text>
+  <text x="520" y="224" font-family="system-ui,sans-serif" font-size="14" fill="#4f5866">Powers you recognize, one points balance</text>
+
+  <g filter="url(#sh)">
+    <rect x="520" y="248" width="200" height="168" rx="20" fill="#fff" stroke="#5b3fa8" stroke-width="2.5"/>
+    <rect x="536" y="264" width="168" height="100" rx="14" fill="#e8f4fc"/>
+    <circle cx="620" cy="314" r="32" fill="#4a9fd4"/>
+    <text x="620" y="392" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#171a1f">Cyborg</text>
+    <rect x="640" y="398" width="60" height="24" rx="12" fill="#f0edf6"/>
+    <text x="670" y="414" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#5b3fa8">200 pts</text>
+
+    <rect x="740" y="248" width="200" height="168" rx="20" fill="#fff"/>
+    <rect x="756" y="264" width="168" height="100" rx="14" fill="#fff3e6"/>
+    <circle cx="840" cy="314" r="32" fill="#f0a84a"/>
+    <text x="840" y="392" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#171a1f">Bolt</text>
+    <rect x="860" y="398" width="60" height="24" rx="12" fill="#f0edf6"/>
+    <text x="890" y="414" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#5b3fa8">180 pts</text>
+
+    <rect x="960" y="248" width="200" height="168" rx="20" fill="#fff"/>
+    <rect x="976" y="264" width="168" height="100" rx="14" fill="#fdeef4"/>
+    <circle cx="1060" cy="314" r="32" fill="#e86b9a"/>
+    <text x="1060" y="392" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#171a1f">Taz</text>
+    <rect x="1080" y="398" width="60" height="24" rx="12" fill="#f0edf6"/>
+    <text x="1110" y="414" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#5b3fa8">160 pts</text>
+
+    <rect x="520" y="436" width="200" height="168" rx="20" fill="#fff"/>
+    <rect x="536" y="452" width="168" height="100" rx="14" fill="#e8f8ee"/>
+    <circle cx="620" cy="502" r="32" fill="#5cc98a"/>
+    <text x="620" y="580" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#171a1f">Nova</text>
+    <rect x="640" y="586" width="60" height="24" rx="12" fill="#f0edf6"/>
+    <text x="670" y="602" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#5b3fa8">120 pts</text>
+
+    <rect x="740" y="436" width="200" height="168" rx="20" fill="#fff"/>
+    <rect x="756" y="452" width="168" height="100" rx="14" fill="#f4f1fa"/>
+    <circle cx="840" cy="502" r="32" fill="#9b7ad4"/>
+    <text x="840" y="580" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#171a1f">Spark</text>
+    <rect x="860" y="586" width="60" height="24" rx="12" fill="#f0edf6"/>
+    <text x="890" y="602" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#5b3fa8">100 pts</text>
+
+    <rect x="960" y="436" width="200" height="168" rx="20" fill="#fff"/>
+    <rect x="976" y="452" width="168" height="100" rx="14" fill="#fff8e6"/>
+    <circle cx="1060" cy="502" r="32" fill="#ffc94d"/>
+    <text x="1060" y="580" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#171a1f">Blaze</text>
+    <rect x="1080" y="586" width="60" height="24" rx="12" fill="#f0edf6"/>
+    <text x="1110" y="602" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#5b3fa8">90 pts</text>
+  </g>
+
+  <!-- Nav tabs -->
+  <rect x="520" y="632" width="640" height="48" rx="12" fill="#fff" opacity="0.85"/>
+  <text x="560" y="662" font-family="system-ui,sans-serif" font-size="12" fill="#8a919c">Home</text>
+  <text x="660" y="662" font-family="system-ui,sans-serif" font-size="12" fill="#8a919c">Learn</text>
+  <text x="760" y="662" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#5b3fa8">Rewards</text>
+  <rect x="730" y="672" width="60" height="3" rx="1.5" fill="#5b3fa8"/>
+  <text x="860" y="662" font-family="system-ui,sans-serif" font-size="12" fill="#8a919c">Class</text>
+  <text x="960" y="662" font-family="system-ui,sans-serif" font-size="12" fill="#8a919c">You</text>
+</svg>

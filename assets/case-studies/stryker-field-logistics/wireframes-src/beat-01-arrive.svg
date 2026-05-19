@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="960" viewBox="0 0 1200 960" role="img">
+  <defs>
+    <filter id="shadow2"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/></filter>
+    <filter id="shadow4"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.12"/></filter>
+    <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A1A1A"/><stop offset="100%" stop-color="#2d2d2d"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF9E0"/><stop offset="100%" stop-color="#FFFDF5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="960" fill="#FFCD00"/>
+  <circle cx="160" cy="180" r="100" fill="#FFFFFF" opacity="0.1"/>
+  <text x="600" y="46" text-anchor="middle" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#1A1A1A" letter-spacing="0.1em">STRYKER · FIELD LOGISTICS</text>
+  <text x="600" y="74" text-anchor="middle" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" fill="#1A1A1A">01 · ARRIVE</text>
+  <rect x="405" y="88" width="390" height="784" rx="40" fill="#FFFFFF" stroke="#D1D1D1" filter="url(#shadow4)"/>
+  <rect x="560" y="96" width="80" height="24" rx="12" fill="#F5F5F5"/>
+  <text x="600" y="112" text-anchor="middle" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="11" fill="#616161">9:41</text>
+  <rect x="405" y="124" width="390" height="48" fill="#FAFAFA" stroke="#E0E0E0"/>
+    <g transform="translate(425,136) scale(-0.75,0.75)" fill="#424242"><path d="M13.47 4.47a.75.75 0 0 1 1.06 0l6 6a.75.75 0 0 1 0 1.06l-6 6a.75.75 0 1 1-1.06-1.06L17.94 12H4.75a.75.75 0 0 1 0-1.5h13.19l-3.47-3.47a.75.75 0 0 1 0-1.06Z"/></g>
+  <text x="451" y="150" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#424242">STRYKER</text>
+    <g transform="translate(753,134) scale(0.9166666666666666,0.9166666666666666)" fill="#0078D4"><path d="M6.5 3A1.5 1.5 0 0 0 5 4.5V20a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-5h6v5a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1V4.5A1.5 1.5 0 0 0 17.5 3h-11ZM9 8.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm0 4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm8-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm0 4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></g>
+  <line x1="405" y1="172" x2="795" y2="172" stroke="#E0E0E0"/>
+  <text x="425" y="196" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="22" font-weight="600" fill="#242424">Hospital visit</text>
+  <text x="425" y="230" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="13" fill="#616161">Active visit · robotic spine case</text>
+  <rect x="425" y="244" width="350" height="108" rx="12" fill="url(#heroGrad)" stroke="#1A1A1A" stroke-width="1" filter="url(#shadow2)"/>
+  <g transform="translate(441,260) scale(1.0833333333333333,1.0833333333333333)" fill="#FFCD00"><path d="M6.5 3A1.5 1.5 0 0 0 5 4.5V20a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-5h6v5a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1V4.5A1.5 1.5 0 0 0 17.5 3h-11ZM9 8.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm0 4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm8-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm0 4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></g>
+  <rect x="477" y="260" width="106.0" height="24" rx="12" fill="#FFCD00"/>
+  <text x="489" y="276" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#1A1A1A">ACTIVE VISIT</text>
+  <text x="441" y="312" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="17" font-weight="600" fill="#FFFFFF">Northwest Medical Center</text>
+  <g transform="translate(441,318) scale(0.5833333333333334,0.5833333333333334)" fill="#B0B0B0"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/></g>
+  <text x="461" y="330" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="12" fill="#C8C8C8">OR 4 · Robotic spine</text>
+  <rect x="425" y="372.0" width="40" height="40" rx="8" fill="#FDE7E9"/>
+  <g transform="translate(435,382.0) scale(0.8333333333333334,0.8333333333333334)" fill="#C50F1F"><path d="M12 4.5c-1.5-2.5-5-2-5.5 1.5C5.5 11 12 18 12 18s6.5-7 5.5-12c-.5-3.5-4-4-5.5-1.5Z"/></g>
+  <text x="477" y="384" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#616161" letter-spacing="0.05em">SURGEON</text>
+  <text x="477" y="404" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#242424">Dr. Elena Vasquez</text>
+  <line x1="425" y1="420" x2="775" y2="420" stroke="#E0E0E0" stroke-width="1"/>
+  <rect x="425" y="429.0" width="40" height="40" rx="8" fill="#EBF3FC"/>
+  <g transform="translate(435,439.0) scale(0.8333333333333334,0.8333333333333334)" fill="#0078D4"><path d="M12 3a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9ZM5.5 20.5a6.5 6.5 0 0 1 13 0 .75.75 0 0 1-.75.75h-11.5a.75.75 0 0 1-.75-.75Z"/></g>
+  <text x="477" y="441" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#616161" letter-spacing="0.05em">REP</text>
+  <text x="477" y="461" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#242424">Jordan Lee · Territory West</text>
+  <line x1="425" y1="477" x2="775" y2="477" stroke="#E0E0E0" stroke-width="1"/>
+  <rect x="425" y="486.0" width="40" height="40" rx="8" fill="#F5F5F5"/>
+  <g transform="translate(435,496.0) scale(0.8333333333333334,0.8333333333333334)" fill="#424242"><path d="M9 3.5A1.5 1.5 0 0 0 7.5 2h9A1.5 1.5 0 0 0 15 3.5V4h2.5A1.5 1.5 0 0 1 19 5.5v15a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20.5v-15A1.5 1.5 0 0 1 6.5 4H9V3.5ZM8 6.5v13h8v-13H8Zm2-3h4v1H10v-1Z"/></g>
+  <text x="477" y="498" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#616161" letter-spacing="0.05em">CASE ID</text>
+  <text x="477" y="518" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#242424">CASE-28491</text>
+  <line x1="425" y1="534" x2="775" y2="534" stroke="#E0E0E0" stroke-width="1"/>
+  <rect x="425" y="547" width="350" height="76" rx="12" fill="url(#accentGrad)" stroke="#FFCD00" stroke-width="1" filter="url(#shadow2)"/>
+  <g transform="translate(441,563) scale(0.9166666666666666,0.9166666666666666)" fill="#CA5010"><path d="M12 2.6l2.4 5.5 6 .5-4.5 4 1.4 5.9L12 15.8l-5.3 2.7 1.4-5.9-4.5-4 6-.5L12 2.6Z"/></g>
+  <text x="473" y="581" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#242424">Review preferences before ordering</text>
+  <text x="473" y="599" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="11" fill="#616161">≈2 min · no open returns</text>
+  <rect x="425" y="740" width="350" height="48" rx="12" fill="#FFCD00" stroke="#1A1A1A" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="590" y="770" text-anchor="middle" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1A1A1A">Start visit</text>
+  <g transform="translate(735,754) scale(0.8333333333333334,0.8333333333333334)" fill="#1A1A1A"><path d="M13.47 4.47a.75.75 0 0 1 1.06 0l6 6a.75.75 0 0 1 0 1.06l-6 6a.75.75 0 1 1-1.06-1.06L17.94 12H4.75a.75.75 0 0 1 0-1.5h13.19l-3.47-3.47a.75.75 0 0 1 0-1.06Z"/></g>
+None
+  <text x="600" y="942" text-anchor="middle" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="10" fill="#616161">Fluent UI · 20px margins · 8px grid</text>
+</svg>

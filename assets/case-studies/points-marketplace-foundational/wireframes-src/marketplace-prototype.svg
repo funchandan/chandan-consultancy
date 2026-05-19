@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="960" viewBox="0 0 1200 960" role="img" aria-label="Marketplace wireframe: avatars and points wallet">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6f5f2"/>
+      <stop offset="100%" stop-color="#ebe8f4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="960" fill="url(#bg)"/>
+  <text x="600" y="72" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#5b3fa8" letter-spacing="0.12em">STIMULUS · MARKETPLACE</text>
+  <text x="600" y="108" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="600" fill="#171a1f">Earn and spend</text>
+
+  <!-- Phone frame -->
+  <rect x="420" y="150" width="360" height="720" rx="36" fill="#fff" stroke="#d8d2e8" stroke-width="2"/>
+  <rect x="520" y="178" width="160" height="28" rx="14" fill="#f0edf6"/>
+  <text x="600" y="198" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#5b3fa8" font-weight="600">My rewards</text>
+
+  <!-- Points wallet -->
+  <rect x="448" y="220" width="304" height="120" rx="20" fill="#5b3fa8"/>
+  <text x="472" y="258" font-family="system-ui, sans-serif" font-size="14" fill="#e8e0f8">Spendable points</text>
+  <text x="472" y="310" font-family="system-ui, sans-serif" font-size="42" font-weight="700" fill="#fff">240</text>
+  <rect x="620" y="268" width="108" height="44" rx="22" fill="#fff"/>
+  <text x="674" y="297" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#5b3fa8">Redeem</text>
+
+  <!-- Avatar grid -->
+  <text x="448" y="380" font-family="system-ui, sans-serif" font-size="13" fill="#4f5866" font-weight="600">Choose your avatar</text>
+  <g fill="#f4f1fa" stroke="#d8d2e8">
+    <rect x="448" y="400" width="88" height="88" rx="16"/>
+    <rect x="548" y="400" width="88" height="88" rx="16"/>
+    <rect x="648" y="400" width="88" height="88" rx="16"/>
+    <rect x="448" y="500" width="88" height="88" rx="16"/>
+    <rect x="548" y="500" width="88" height="88" rx="16" stroke="#5b3fa8" stroke-width="3"/>
+    <rect x="648" y="500" width="88" height="88" rx="16"/>
+  </g>
+  <circle cx="492" cy="444" r="22" fill="#c9b8e8"/>
+  <circle cx="592" cy="444" r="22" fill="#a8d4f0"/>
+  <circle cx="692" cy="444" r="22" fill="#f0c9a8"/>
+  <circle cx="492" cy="544" r="22" fill="#b8e8c9"/>
+  <circle cx="592" cy="544" r="22" fill="#5b3fa8" opacity="0.35"/>
+  <circle cx="692" cy="544" r="22" fill="#e8b8d4"/>
+
+  <rect x="448" y="620" width="304" height="56" rx="14" fill="#f6f4fb" stroke="#e0dae8"/>
+  <text x="464" y="654" font-family="system-ui, sans-serif" font-size="13" fill="#4f5866">Spent history · last 7 days</text>
+
+  <text x="600" y="920" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#8a919c">Study wireframe · single ledger mental model</text>
+</svg>

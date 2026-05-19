@@ -237,7 +237,7 @@
 
   var revealTargets = Array.prototype.slice.call(
     document.querySelectorAll(
-      ".section, .work-card, .hero-spotlight__card, .case-architect-chapter, .case-method-stage, .case-refresh-outcome-card"
+      ".section, .work-card, .hero-spotlight__card, .case-architect-chapter, .case-method-stage, .case-refresh-outcome-card, .case-scan-exec__block"
     )
   );
 

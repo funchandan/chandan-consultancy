@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="960" viewBox="0 0 1200 960" role="img" aria-label="04 · TESTING — IDI stimulus">
+<defs>
+  <filter id="btnShadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#F05B83" flood-opacity="0.35"/>
+  </filter>
+  <filter id="devShadow" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="28" stdDeviation="24" flood-color="#5B3FA8" flood-opacity="0.22"/>
+  </filter>
+  <radialGradient id="studio" cx="50%" cy="30%" r="70%">
+    <stop offset="0%" stop-color="#F0EDF6"/><stop offset="100%" stop-color="#F6F5F2"/>
+  </radialGradient>
+</defs>
+<rect width="1200" height="960" fill="url(#studio)"/>
+<text x="80" y="76" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="600" fill="#5B3FA8" letter-spacing="0.12em">BYJU&apos;S FUTURESCHOOL · K-8</text>
+<text x="80" y="108" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="28" font-weight="700" fill="#171A1F">Points Marketplace</text>
+<text x="80" y="136" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="15" fill="#6B7280">Sally hi-fi · Fluent UI · iPhone 15</text>
+<rect x="395" y="36" width="418" height="872" rx="54" fill="#1C1C1E" filter="url(#devShadow)"/>
+<rect x="409" y="50" width="390" height="844" rx="44" fill="#F6F4FB"/>
+<rect x="541" y="60" width="126" height="37" rx="19" fill="#000"/>
+<text x="437" y="88" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="15" font-weight="600" fill="#171A1F">9:41</text>
+<rect x="409" y="104" width="390" height="44" fill="#F6F4FB"/>
+<text x="604" y="132" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="17" font-weight="700" fill="#5B3FA8">Rewards</text>
+<text x="425" y="188" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="34" font-weight="700" fill="#171A1F">Try it out</text>
+<text x="425" y="212" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="15" fill="#6B7280">Quotes mapped to this screen</text>
+<rect x="409" y="811" width="390" height="83" fill="rgba(255,255,255,0.96)"/>
+<line x1="409" y1="811" x2="799" y2="811" stroke="#E8E0F4"/>
+<g transform="translate(448,821) scale(0.9166666666666666,0.9166666666666666)" fill="#6B7280"><path d="M10.55 2.1a1.5 1.5 0 0 1 2.1.35l8 10A1.5 1.5 0 0 1 19.5 15H17v6.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 11 21.5V17H9v4.5A1.5 1.5 0 0 1 7.5 23h-3A1.5 1.5 0 0 1 3 21.5V15H.9a1.5 1.5 0 0 1-1.15-2.45l8-10a1.5 1.5 0 0 1 2.1-.35Z"/></g>
+<text x="457" y="859" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="400" fill="#6B7280">Home</text>
+<g transform="translate(546,821) scale(0.9166666666666666,0.9166666666666666)" fill="#5B3FA8"><path d="M9.5 3.75A2.25 2.25 0 0 1 12 2.25a2.25 2.25 0 0 1 2.5 1.5 2.25 2.25 0 0 1 4.5 6v1.5H3V6A2.25 2.25 0 0 1 9.5 3.75ZM3 9v10.5A2.25 2.25 0 0 0 5.25 21.75h13.5A2.25 2.25 0 0 0 21 19.5V9H3Zm4.5 0v9h3v-9h-3Zm4.5 0v9h3v-9h-3Z"/></g>
+<text x="555" y="859" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="600" fill="#5B3FA8">Rewards</text>
+<g transform="translate(644,821) scale(0.9166666666666666,0.9166666666666666)" fill="#6B7280"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-2.2 6.3a.75.75 0 0 1 1.15-.63l6.5 4a.75.75 0 0 1 0 1.26l-6.5 4a.75.75 0 0 1-1.15-.63V8.3Z"/></g>
+<text x="653" y="859" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="400" fill="#6B7280">Play</text>
+<g transform="translate(742,821) scale(0.9166666666666666,0.9166666666666666)" fill="#6B7280"><path d="M12 3a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9ZM5.5 20.5a6.5 6.5 0 0 1 13 0 .75.75 0 0 1-.75.75h-11.5a.75.75 0 0 1-.75-.75Z"/></g>
+<text x="751" y="859" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="400" fill="#6B7280">You</text>
+<rect x="537" y="880" width="134" height="5" rx="3" fill="#000" opacity="0.35"/>
+<text x="604" y="944" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#6B7280" letter-spacing="0.04em">04 · TESTING — IDI stimulus</text>
+<defs><linearGradient id="walletGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6B4BB8"/><stop offset="100%" stop-color="#5B3FA8"/></linearGradient></defs>
+<rect x="425" y="236" width="358" height="118" rx="20" fill="url(#walletGrad)"/>
+<g transform="translate(439,250) scale(0.8333333333333334,0.8333333333333334)" fill="#FFD54F"><path d="M9.813 2.658a1.875 1.875 0 0 1 3.374 0l.928 1.88 2.078.302a1.875 1.875 0 0 1 1.04 3.198l-1.504 1.466.355 2.07a1.875 1.875 0 0 1-2.718 1.978L12 11.672l-1.856.976a1.875 1.875 0 0 1-2.718-1.978l.355-2.07L5.937 7.338a1.875 1.875 0 0 1 1.04-3.198l2.078-.302.928-1.88Z"/></g>
+<text x="465" y="266" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="600" fill="#E8E0F8">Spendable points</text>
+<text x="441" y="308" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="40" font-weight="700" fill="#FFFFFF">240</text>
+<text x="441" y="328" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#E8E0F8">Same surface as testing</text>
+<rect x="675" y="272" width="92" height="44" rx="22" fill="#FFFFFF"/>
+<text x="721" y="300" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="15" font-weight="600" fill="#5B3FA8">Redeem now</text>
+<rect x="425" y="370" width="358" height="72" rx="14" fill="#FFF9E0"/>
+<rect x="425" y="370" width="4" height="72" rx="2" fill="#FFD54F"/>
+<text x="441" y="398" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-style="italic" fill="#171A1F">"I think 1 coin = 2 points because coins feel more precious"</text>
+<text x="441" y="420" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#6B7280">Grade 6 · moderated IDI</text>
+<text x="425" y="472" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="600" fill="#6B7280">CHOOSE YOUR HERO</text>
+<rect x="425" y="482" width="88" height="96" rx="16" fill="#FFFFFF" stroke="#E8E0F4" stroke-width="1"/>
+<circle cx="469" cy="518" r="22" fill="#C9B8E8"/>
+<text x="469" y="550" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="600" fill="#171A1F">Cyborg</text>
+<text x="469" y="568" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#5B3FA8">80 pts</text>
+<rect x="525" y="482" width="88" height="96" rx="16" fill="#FFFFFF" stroke="#5B3FA8" stroke-width="3"/>
+<circle cx="569" cy="518" r="22" fill="#5B3FA8"/>
+<g transform="translate(587,490) scale(0.75,0.75)" fill="#5B3FA8"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1.2 13.2-4-4 1.4-1.4 2.6 2.6 6.6-6.6 1.4 1.4-8 8Z"/></g>
+<text x="569" y="550" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="600" fill="#171A1F">Bolt</text>
+<text x="569" y="568" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#5B3FA8">120 pts</text>
+<rect x="425" y="590" width="88" height="96" rx="16" fill="#FFFFFF" stroke="#E8E0F4" stroke-width="1"/>
+<circle cx="469" cy="626" r="22" fill="#A8D4F0"/>
+<text x="469" y="658" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="600" fill="#171A1F">Taz</text>
+<text x="469" y="676" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#5B3FA8">60 pts</text>
+<rect x="525" y="590" width="88" height="96" rx="16" fill="#FFFFFF" stroke="#E8E0F4" stroke-width="1"/>
+<circle cx="569" cy="626" r="22" fill="#F0C9A8"/>
+<text x="569" y="658" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="600" fill="#171A1F">Nova</text>
+<text x="569" y="676" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#5B3FA8">100 pts</text>
+</svg>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="960" viewBox="0 0 1200 960" role="img" aria-label="User testing wireframe: quotes on marketplace stimulus">
+  <rect width="1200" height="960" fill="#f6f5f2"/>
+  <text x="80" y="72" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#5b3fa8" letter-spacing="0.12em">USER TESTING · 15 SESSIONS</text>
+  <text x="80" y="108" font-family="system-ui, sans-serif" font-size="26" font-weight="600" fill="#171a1f">Stimulus + verbatim</text>
+
+  <rect x="200" y="150" width="420" height="700" rx="32" fill="#fff" stroke="#d8d2e8" stroke-width="2"/>
+  <rect x="228" y="190" width="200" height="88" rx="16" fill="#5b3fa8"/>
+  <text x="252" y="248" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="#fff">240</text>
+  <text x="252" y="222" font-family="system-ui, sans-serif" font-size="12" fill="#e8e0f8">Points</text>
+  <rect x="228" y="300" width="88" height="88" rx="14" fill="#f0edf6"/>
+  <rect x="328" y="300" width="88" height="88" rx="14" fill="#f0edf6"/>
+  <rect x="428" y="300" width="88" height="88" rx="14" fill="#f0edf6"/>
+  <rect x="228" y="420" width="364" height="48" rx="12" fill="#5b3fa8" opacity="0.15"/>
+  <text x="410" y="450" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#5b3fa8" font-weight="600">Where do I spend these?</text>
+
+  <!-- Sticky notes -->
+  <g>
+    <rect x="680" y="200" width="260" height="100" rx="8" fill="#fff9c4" stroke="#e8d86a"/>
+    <text x="700" y="232" font-family="system-ui, sans-serif" font-size="13" fill="#171a1f">"I have points but nothing</text>
+    <text x="700" y="252" font-family="system-ui, sans-serif" font-size="13" fill="#171a1f">to do with them."</text>
+    <text x="700" y="282" font-family="system-ui, sans-serif" font-size="11" fill="#6a5c20">G4 · US</text>
+  </g>
+  <g>
+    <rect x="720" y="340" width="280" height="100" rx="8" fill="#e8f4fc" stroke="#8ab8e8"/>
+    <text x="740" y="372" font-family="system-ui, sans-serif" font-size="13" fill="#171a1f">"1 coin = 2 points because</text>
+    <text x="740" y="392" font-family="system-ui, sans-serif" font-size="13" fill="#171a1f">coins are more precious."</text>
+    <text x="740" y="422" font-family="system-ui, sans-serif" font-size="11" fill="#3a5a7a">G6 · IN</text>
+  </g>
+  <g>
+    <rect x="660" y="480" width="300" height="100" rx="8" fill="#f0e8fc" stroke="#b8a0e8"/>
+    <text x="680" y="512" font-family="system-ui, sans-serif" font-size="13" fill="#171a1f">"Maybe I get creator coins</text>
+    <text x="680" y="532" font-family="system-ui, sans-serif" font-size="13" fill="#171a1f">for doing good stuff?"</text>
+    <text x="680" y="562" font-family="system-ui, sans-serif" font-size="11" fill="#5b3fa8">→ Frame 02</text>
+  </g>
+
+  <line x1="640" y1="250" x2="678" y2="250" stroke="#5b3fa8" stroke-width="2" stroke-dasharray="4 3"/>
+  <line x1="500" y1="450" x2="678" y2="390" stroke="#5b3fa8" stroke-width="2" stroke-dasharray="4 3"/>
+
+  <text x="600" y="920" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#8a919c">Study wireframe · HCI paired to UI</text>
+</svg>

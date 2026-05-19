@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="580" viewBox="0 0 300 580" role="img" aria-label="Stage B: feature mapping">
+  <rect x="16" y="16" width="268" height="52" rx="8" fill="#d9e8ff" stroke="#a8bdd8"/>
+  <text x="28" y="38" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#171a1f">Global nav</text>
+  <text x="28" y="54" font-family="system-ui, sans-serif" font-size="10" fill="#4f5866">Home, Learn, Rewards</text>
+  <rect x="16" y="76" width="268" height="84" rx="8" fill="#d9f0f0" stroke="#a8d4d4"/>
+  <text x="28" y="98" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#171a1f">Wallet module</text>
+  <text x="28" y="114" font-family="system-ui, sans-serif" font-size="10" fill="#4f5866">Balance, Spent history, Earn rules</text>
+  <rect x="16" y="168" width="268" height="132" rx="8" fill="#fff0d9" stroke="#e8c8a8"/>
+  <text x="28" y="190" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#171a1f">Marketplace grid</text>
+  <text x="28" y="206" font-family="system-ui, sans-serif" font-size="10" fill="#4f5866">Avatars, Backgrounds, Class skins</text>
+  <rect x="16" y="308" width="268" height="68" rx="8" fill="#ead9ff" stroke="#c4a8e8"/>
+  <text x="28" y="330" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#171a1f">Redeem flow</text>
+  <text x="28" y="346" font-family="system-ui, sans-serif" font-size="10" fill="#4f5866">CTA, Confirm modal, Success</text>
+  <rect x="16" y="384" width="268" height="80" rx="8" fill="#d9f0f0" stroke="#a8d4d4"/>
+  <text x="28" y="406" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#171a1f">Onboarding (deploy)</text>
+  <text x="28" y="422" font-family="system-ui, sans-serif" font-size="10" fill="#4f5866">How to earn, How to spend</text>
+  <rect x="16" y="472" width="268" height="56" rx="8" fill="#d9e8ff" stroke="#a8bdd8"/>
+  <text x="28" y="494" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#171a1f">Comms layer</text>
+  <text x="28" y="510" font-family="system-ui, sans-serif" font-size="10" fill="#4f5866">In-product tips, plain copy</text>
+  <text x="150" y="562" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#8a919c">B Feature mapping</text>
+</svg>

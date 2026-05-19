@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="960" viewBox="0 0 1200 960" role="img">
+  <defs>
+    <filter id="shadow2"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/></filter>
+    <filter id="shadow4"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.12"/></filter>
+    <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A1A1A"/><stop offset="100%" stop-color="#2d2d2d"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF9E0"/><stop offset="100%" stop-color="#FFFDF5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="960" fill="#FFCD00"/>
+  <circle cx="160" cy="180" r="100" fill="#FFFFFF" opacity="0.1"/>
+  <text x="600" y="46" text-anchor="middle" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#1A1A1A" letter-spacing="0.1em">STRYKER · FIELD LOGISTICS</text>
+  <text x="600" y="74" text-anchor="middle" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" fill="#1A1A1A">06 · DELIVER</text>
+  <rect x="405" y="88" width="390" height="784" rx="40" fill="#FFFFFF" stroke="#D1D1D1" filter="url(#shadow4)"/>
+  <rect x="560" y="96" width="80" height="24" rx="12" fill="#F5F5F5"/>
+  <text x="600" y="112" text-anchor="middle" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="11" fill="#616161">9:41</text>
+  <rect x="405" y="124" width="390" height="48" fill="#FAFAFA" stroke="#E0E0E0"/>
+    <g transform="translate(425,136) scale(-0.75,0.75)" fill="#424242"><path d="M13.47 4.47a.75.75 0 0 1 1.06 0l6 6a.75.75 0 0 1 0 1.06l-6 6a.75.75 0 1 1-1.06-1.06L17.94 12H4.75a.75.75 0 0 1 0-1.5h13.19l-3.47-3.47a.75.75 0 0 1 0-1.06Z"/></g>
+  <text x="451" y="150" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#424242">STRYKER</text>
+    <g transform="translate(753,134) scale(0.9166666666666666,0.9166666666666666)" fill="#0078D4"><path d="M18.33 8.5h-.42l-1.34-3.2A2.5 2.5 0 0 0 14.24 4H9.76a2.5 2.5 0 0 0-2.33 1.3L6.09 8.5h-.42A2.5 2.5 0 0 0 3 11v4.75A1.25 1.25 0 0 0 4.25 17h1.1a2.75 2.75 0 0 0 5.3 0h3.7a2.75 2.75 0 0 0 5.3 0h1.1A1.25 1.25 0 0 0 21 15.75V11a2.5 2.5 0 0 0-2.67-2.5ZM9 6.5h6l1.2 2.8H7.8L9 6.5ZM7.25 18a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Zm9.5 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Z"/></g>
+  <line x1="405" y1="172" x2="795" y2="172" stroke="#E0E0E0"/>
+  <text x="425" y="196" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="22" font-weight="600" fill="#242424">Delivery</text>
+  <text x="425" y="228" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#242424">Order delivery</text>
+  <rect x="425" y="240" width="73.5" height="24" rx="12" fill="#DFF6DD"/>
+  <text x="437" y="256" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#107C10">Shipped</text>
+  <rect x="425" y="272" width="40" height="40" rx="8" fill="#EBF3FC"/>
+  <g transform="translate(435,282) scale(0.8333333333333334,0.8333333333333334)" fill="#0078D4"><path d="M18.33 8.5h-.42l-1.34-3.2A2.5 2.5 0 0 0 14.24 4H9.76a2.5 2.5 0 0 0-2.33 1.3L6.09 8.5h-.42A2.5 2.5 0 0 0 3 11v4.75A1.25 1.25 0 0 0 4.25 17h1.1a2.75 2.75 0 0 0 5.3 0h3.7a2.75 2.75 0 0 0 5.3 0h1.1A1.25 1.25 0 0 0 21 15.75V11a2.5 2.5 0 0 0-2.67-2.5ZM9 6.5h6l1.2 2.8H7.8L9 6.5ZM7.25 18a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Zm9.5 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Z"/></g>
+  <text x="477" y="288" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="12" fill="#616161">Bay Area Med Logistics</text>
+  <text x="477" y="308" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#242424">Today · 14:30–15:00</text>
+  <line x1="425" y1="328" x2="775" y2="328" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="425" y="356" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#242424">Part delivery · OR shelf</text>
+  <rect x="425" y="368" width="125.5" height="24" rx="12" fill="#FFF4CE"/>
+  <text x="437" y="384" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#CA5010">2 of 3 received</text>
+  <rect x="425" y="400" width="350" height="108" rx="12" fill="#FFFFFF" stroke="#D1D1D1" stroke-width="1" filter="url(#shadow2)"/>
+  <g transform="translate(441,416) scale(0.8333333333333334,0.8333333333333334)" fill="#107C10"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1.97 13.03-3.5-3.5 1.41-1.42 2.09 2.08 4.59-4.59 1.41 1.42-6 6Z"/></g>
+  <text x="469" y="432" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#242424">Spine set A</text>
+  <text x="469" y="450" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="12" fill="#107C10">Received · OR 4 · 13:02</text>
+  <g transform="translate(441,464) scale(0.8333333333333334,0.8333333333333334)" fill="#CA5010"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 5a.75.75 0 0 1 .75.75v4.69l3.72 2.23a.75.75 0 1 1-.74 1.3l-4-2.4A.75.75 0 0 1 11.25 12V7.75A.75.75 0 0 1 12 7Z"/></g>
+  <text x="469" y="480" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#242424">Titanium screw kit</text>
+  <text x="469" y="498" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="12" fill="#CA5010">In transit</text>
+  <rect x="425" y="740" width="350" height="48" rx="12" fill="#FFCD00" stroke="#1A1A1A" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="590" y="770" text-anchor="middle" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1A1A1A">Confirm receipt</text>
+  <g transform="translate(735,754) scale(0.8333333333333334,0.8333333333333334)" fill="#1A1A1A"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1.2 13.2-4-4 1.4-1.4 2.6 2.6 6.6-6.6 1.4 1.4-8 8Z"/></g>
+None
+  <text x="600" y="942" text-anchor="middle" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="10" fill="#616161">Fluent UI · 20px margins · 8px grid</text>
+</svg>
