@@ -6,27 +6,49 @@
   overflow: visible;
 }
 
-/* Exit — top-right of gallery card shell */
+/* Exit — fixed to viewport, aligned to gallery card (JS positions top/right) */
 .case-gallery-exit {
-  position: absolute;
-  top: max(10px, env(safe-area-inset-top, 0px));
-  right: max(10px, env(safe-area-inset-right, 0px));
-  z-index: 20;
-  display: grid;
+  position: fixed;
+  top: calc(var(--site-header-height, 62px) + 10px);
+  right: max(16px, env(safe-area-inset-right, 0px));
+  z-index: 1002;
+  display: none;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   margin: 0;
   padding: 0;
-  border: 1px solid rgba(26, 26, 26, 0.1);
+  border: 1px solid rgba(26, 26, 26, 0.14);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 4px 14px rgba(19, 35, 62, 0.1);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 24px rgba(19, 35, 62, 0.14);
   color: var(--ink, #1a1a1a);
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
-  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 160ms ease,
+    visibility 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+.case-gallery-exit.is-visible {
+  display: grid;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.case-gallery-exit[hidden] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 .case-gallery-exit:hover {

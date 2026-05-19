@@ -71,21 +71,44 @@
     });
   });
 
+  var shell = root.querySelector("[data-case-card-shell]");
+
+  function positionExitBtn() {
+    if (!shell || !exitBtn.classList.contains("is-visible")) return;
+    var rect = shell.getBoundingClientRect();
+    var top = Math.max(12, rect.top + 12);
+    var right = Math.max(12, window.innerWidth - rect.right + 12);
+    exitBtn.style.top = top + "px";
+    exitBtn.style.right = right + "px";
+  }
+
+  function setExitVisible(on) {
+    if (!exitBtn) return;
+    exitBtn.hidden = !on;
+    exitBtn.classList.toggle("is-visible", on);
+    exitBtn.setAttribute("aria-hidden", on ? "false" : "true");
+    if (on) {
+      positionExitBtn();
+    } else {
+      exitBtn.style.top = "";
+      exitBtn.style.right = "";
+    }
+  }
+
   function setStageActive(on) {
     document.body.classList.toggle(BODY_CLASS, on);
     root.classList.toggle("is-stage-active", on);
-    if (exitBtn) exitBtn.hidden = !on;
+    setExitVisible(on);
     if (on) {
       var h = pin.offsetHeight || window.innerHeight;
       spacer.style.height = h + "px";
       pin.classList.add("is-pinned");
+      positionExitBtn();
     } else {
       spacer.style.height = "0";
       pin.classList.remove("is-pinned");
     }
   }
-
-  var shell = root.querySelector("[data-case-card-shell]");
 
   function exitGallery() {
     if (isDetailOpen()) collapseDetail(slides[activeIdx]);
@@ -106,17 +129,14 @@
   exitBtn.type = "button";
   exitBtn.className = "case-gallery-exit";
   exitBtn.hidden = true;
+  exitBtn.setAttribute("aria-hidden", "true");
   exitBtn.setAttribute("aria-label", "Exit gallery and scroll to top");
   exitBtn.innerHTML = '<span class="case-gallery-exit__icon" aria-hidden="true">&times;</span>';
   exitBtn.addEventListener("click", function (ev) {
     ev.stopPropagation();
     exitGallery();
   });
-  if (shell) {
-    shell.appendChild(exitBtn);
-  } else {
-    document.body.appendChild(exitBtn);
-  }
+  document.body.appendChild(exitBtn);
 
   document.addEventListener("click", function (ev) {
     if (!isStageActive()) return;
@@ -174,15 +194,14 @@
     return Math.round(runwayScrollProgress() * (count - 1));
   }
 
-  /** Release fixed pin so scroll can reach the post-gallery CTA. */
+  /** Release fixed pin so scroll can reach the post-gallery CTA (last beat only). */
   function shouldReleaseToCta() {
-    if (runwayScrollProgress() >= 0.92) return true;
     if (activeIdx < count - 1) return false;
-    if (runwayScrollProgress() >= 0.82) return true;
+    if (runwayScrollProgress() >= 0.88) return true;
     var close = document.querySelector(".case-scan-close");
     if (!close) return false;
     var r = close.getBoundingClientRect();
-    return r.top < window.innerHeight * 0.94;
+    return r.top > 0 && r.top < window.innerHeight * 0.85;
   }
 
   function releaseGalleryStage() {
@@ -285,9 +304,17 @@
   }
 
   window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (exitBtn.classList.contains("is-visible")) positionExitBtn();
+    },
+    { passive: true }
+  );
   window.addEventListener("resize", function () {
     syncRunwayHeight();
     onScroll();
+    if (exitBtn.classList.contains("is-visible")) positionExitBtn();
   }, { passive: true });
   syncRunwayHeight();
 
