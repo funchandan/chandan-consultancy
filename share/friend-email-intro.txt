@@ -1,0 +1,28 @@
+Subject: A quick look at my work — product, research, and design
+
+Hi [Name],
+
+I put together a small portfolio site so you can skim what I have been building without a deck or PDF. Start here:
+
+https://YOUR_DOMAIN/
+
+(Work is the home page; About has the career timeline; each project card opens a full case study.)
+
+In one line per chapter:
+
+• Birlasoft (Senior UX Consultant, 2022–present) — First-time-right research and design for Fortune 100 clients (Stryker, HPE): behavioural studies, digital maturity, category analysis, feature upgrades, technical user stories, and product–market fit.
+
+• BYJU'S Future School (Manager, user insights / Lead UX research, 2021–2022) — 400+ hours of research across APAC, EMEA, and NA; loyalty and marketplace launches; insights used by product, curriculum, sales, and design on SaaS lines worth $500M+ in aggregate.
+
+• WhiteHat Jr (Manager, new initiatives / Product, 2020–2021) — 0→1 "Create with Math" with CXO and curriculum; new categories and geographies; churn, NPS, and CAC through beta tests, class audits, and partnership-led learning access for 2M+ learners.
+
+• Teach For India (Fellow, 2017–2019) — Classroom prototypes and equity research in Delhi NCR; dashboard work that cut teacher intervention cycles ~30%.
+
+• Scraplabs (Early-stage generalist, 2015–2017) — Program design and national partner growth from 18 to 80+ schools.
+
+If you only have two minutes, open Work and pick whichever question sounds interesting — each case study is written like a short story with methods and screens.
+
+Happy to chat if anything sparks a question.
+
+Chandan
+chandan004sharma@gmail.com

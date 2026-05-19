@@ -1,0 +1,12 @@
+_bmad-output/
+_bmad/
+.cache/
+scripts/
+schemas/
+templates/
+cv/
+*.py
+*.pyc
+__pycache__/
+.git/
+agent-transcripts/
