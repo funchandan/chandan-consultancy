@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" role="img" aria-label="BYJU'S FutureSchool points wallet with history">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
@@ -22,7 +23,7 @@
   <rect x="0" y="0" width="390" height="54" fill="#f6f5f2"/>
   <text x="28" y="34" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#171a1f">9:41</text>
 
-  <text x="24" y="88" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#5b3fa8">BYJU'S</text>
+  <text x="24" y="88" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#5b3fa8">BYJU&apos;S</text>
   <text x="24" y="106" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#4f5866" letter-spacing="0.08em">FUTURESCHOOL</text>
   <text x="24" y="134" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#171a1f">Points wallet</text>
 
@@ -30,7 +31,7 @@
     <rect x="20" y="152" width="350" height="156" rx="24" fill="url(#wallet)"/>
     <text x="44" y="188" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#e8e0f8" letter-spacing="0.06em">SPENDABLE POINTS</text>
     <text x="44" y="248" font-family="system-ui,sans-serif" font-size="52" font-weight="800" fill="#fff">240</text>
-    <text x="44" y="276" font-family="system-ui,sans-serif" font-size="12" fill="#d8cef5">+12 earned this week · 3 lessons completed</text>
+    <text x="44" y="276" font-family="system-ui,sans-serif" font-size="12" fill="#d8cef5">+12 earned this week &#183; 3 lessons completed</text>
   </g>
 
   <!-- Segmented control -->

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" role="img" aria-label="BYJU'S FutureSchool mobile rewards marketplace landing">
   <defs>
     <linearGradient id="screenBg" x1="0" y1="0" x2="0" y2="1">
@@ -24,7 +25,7 @@
   <text x="28" y="34" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="600" fill="#171a1f">9:41</text>
   <rect x="318" y="20" width="44" height="12" rx="3" fill="#171a1f" opacity="0.15"/>
 
-  <text x="24" y="88" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="700" fill="#5b3fa8">BYJU'S</text>
+  <text x="24" y="88" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="700" fill="#5b3fa8">BYJU&apos;S</text>
   <text x="24" y="106" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="600" fill="#4f5866" letter-spacing="0.08em">FUTURESCHOOL</text>
   <circle cx="338" cy="92" r="20" fill="#fff" filter="url(#softShadow)"/>
   <circle cx="338" cy="92" r="14" fill="#d4c4f0"/>
@@ -50,7 +51,7 @@
   <text x="24" y="424" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="700" fill="#171a1f">Pick your hero</text>
   <text x="24" y="444" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#4f5866">Powers you recognize, one points balance</text>
 
-  <!-- Cyborg — selected -->
+  <!-- Cyborg - selected -->
   <g filter="url(#softShadow)">
     <rect x="20" y="460" width="168" height="148" rx="20" fill="#fff" stroke="#5b3fa8" stroke-width="2.5"/>
     <rect x="36" y="476" width="136" height="88" rx="14" fill="#e8f4fc"/>
@@ -72,7 +73,7 @@
     <text x="327" y="607" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#5b3fa8">180 pts</text>
   </g>
 
-  <!-- Taz — owned -->
+  <!-- Taz - owned -->
   <g filter="url(#softShadow)">
     <rect x="20" y="620" width="168" height="148" rx="20" fill="#fff"/>
     <rect x="36" y="636" width="136" height="88" rx="14" fill="#fdeef4"/>
@@ -82,7 +83,7 @@
     <text x="145" y="767" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#2f7f85">Owned</text>
   </g>
 
-  <!-- Nova — locked -->
+  <!-- Nova - locked -->
   <g filter="url(#softShadow)" opacity="0.55">
     <rect x="202" y="620" width="168" height="148" rx="20" fill="#fff"/>
     <rect x="218" y="636" width="136" height="88" rx="14" fill="#e8f8ee"/>

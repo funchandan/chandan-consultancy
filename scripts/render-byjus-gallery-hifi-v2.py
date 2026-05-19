@@ -23,14 +23,30 @@ _INVALID_XML = re.compile(r"[\x00-\x08\x0B\x0C\x0E-\x1F]")
 
 
 def _sanitize_svg(path: Path) -> None:
-    """Remove control chars and fix latin-1 middots so browsers can parse SVG."""
+    """Make SVG safe for browser XML parsers (no control chars in comments or text)."""
     data = path.read_bytes()
     try:
         text = data.decode("utf-8")
     except UnicodeDecodeError:
         text = data.decode("latin-1")
-    text = text.replace("\x14", "\u2014")
+    text = text.replace("\x14", " - ")
     text = _INVALID_XML.sub(" ", text)
+
+    def _fix_comment(match: re.Match[str]) -> str:
+        body = match.group(1)
+        body = _INVALID_XML.sub(" ", body)
+        body = body.replace("\u2014", "-").replace("\u2013", "-").replace("\xb7", "-")
+        return f"<!--{body}-->"
+
+    text = re.sub(r"<!--(.*?)-->", _fix_comment, text, flags=re.S)
+    text = text.replace("\u00b7", "&#183;").replace("\xb7", "&#183;")
+    text = re.sub(
+        r">([^<]+)</text>",
+        lambda m: ">" + m.group(1).replace("'", "&apos;") + "</text>",
+        text,
+    )
+    if not text.lstrip().startswith("<?xml"):
+        text = '<?xml version="1.0" encoding="UTF-8"?>\n' + text
     path.write_text(text, encoding="utf-8", newline="\n")
 
 
@@ -86,11 +102,25 @@ def sync_sources() -> None:
             print(f"Missing {src}", file=sys.stderr)
             sys.exit(1)
         shutil.copy2(src, SRC / svg_name)
-    print(f"Synced {len(BEAT_MAP)} SVGs → {SRC.relative_to(ROOT)}/")
+        _sanitize_svg(SRC / svg_name)
+    print(f"Synced + sanitized {len(BEAT_MAP)} SVGs → {SRC.relative_to(ROOT)}/")
 
 
 def main() -> int:
-    sync_sources()
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--sync-inbox",
+        action="store_true",
+        help="Copy from Desktop agent-generated inbox (default: use repo hifi-v2-src only)",
+    )
+    args = parser.parse_args()
+    if args.sync_inbox:
+        sync_sources()
+    elif not SRC.is_dir():
+        print(f"Missing {SRC}", file=sys.stderr)
+        return 1
     tmp_dir = ROOT / ".cache" / "byjus-hifi-v2-raster"
     tmp_dir.mkdir(parents=True, exist_ok=True)
     print(f"Rendering v2 hi-fi → {DEST.relative_to(ROOT)}/")

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1260" height="900" viewBox="0 0 1260 900" role="img" aria-label="BYJU'S FutureSchool onboarding flow: earn, spend, and balance">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
@@ -19,7 +20,7 @@
 
   <rect width="1260" height="900" fill="url(#bg)"/>
   <text x="40" y="48" font-family="system-ui,sans-serif" font-size="24" font-weight="800" fill="#171a1f">Onboarding — deploy before marketplace</text>
-  <text x="40" y="76" font-family="system-ui,sans-serif" font-size="14" fill="#4f5866">3-step modal flow · single currency · plain language</text>
+  <text x="40" y="76" font-family="system-ui,sans-serif" font-size="14" fill="#4f5866">3-step modal flow &#183; single currency &#183; plain language</text>
 
   <!-- Step 1 -->
   <g transform="translate(40,120)">
