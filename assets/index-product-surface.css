@@ -1,0 +1,104 @@
+/* Index product — unified canvas (single background, sections transparent) */
+
+body.home-page {
+  --wp-surface-light: #fafafa;
+  --wp-surface-dark: #08090d;
+  --wp-surface-work: #000000;
+  --wp-index-canvas: linear-gradient(165deg, #08090d 0%, #12151c 48%, #0d0f14 100%);
+}
+
+/* One canvas behind the full scroll story */
+html:has(body.home-page.home-page--product) {
+  background-color: #08090d;
+  background-image: var(--wp-index-canvas);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+body.home-page.home-page--product {
+  background: transparent !important;
+  color: var(--wp-ink-on-dark, #fff);
+  /* PP-C06 work case — Freya SPEC-INDEX-WORK-TOKENS-001 */
+  --wp-index-label-gold: #e2c878;
+  --wp-index-secondary-gold: #c9a962;
+  --wp-index-prose-on-dark: color-mix(in srgb, var(--wp-white, #fff) 78%, transparent);
+  --wp-font-prose: "Oxygen", var(--wp-font-ui, "Inter", system-ui, sans-serif);
+}
+
+body.home-page.home-page--product main#main {
+  background: transparent;
+}
+
+body.home-page.home-page--product main > section,
+body.home-page.home-page--product .site-footer--product {
+  background: transparent !important;
+}
+
+/* Method + footer typography on unified dark canvas */
+body.home-page--product #approach.home-product-section {
+  color: var(--wp-ink-on-dark, #fff);
+}
+
+body.home-page--product #approach .wp-section-display {
+  color: var(--wp-ink-on-dark, #fff);
+}
+
+body.home-page--product #approach .wp-method-line__num,
+body.home-page--product #approach .wp-method-line__title {
+  color: color-mix(in srgb, var(--wp-white, #fff) 92%, transparent);
+}
+
+body.home-page--product #approach .wp-method-line__desc {
+  color: color-mix(in srgb, var(--wp-white, #fff) 72%, transparent);
+}
+
+body.home-page--product #approach .wp-link-text {
+  color: var(--wp-white, #fff);
+}
+
+body.home-page--product #approach .wp-link-text:hover {
+  border-bottom-color: var(--wp-white, #fff);
+}
+
+body.home-page--product #approach .wp-method-close__headline {
+  color: var(--wp-ink-on-dark, #fff);
+}
+
+body.home-page--product #approach .wp-method-close__eyebrow,
+body.home-page--product #approach .wp-method-close__lede {
+  color: color-mix(in srgb, var(--wp-white, #fff) 72%, transparent);
+}
+
+body.home-page--product .site-footer--product {
+  color: color-mix(in srgb, var(--wp-white, #fff) 88%, transparent);
+}
+
+body.home-page--product .site-footer--product .wp-link-text {
+  color: color-mix(in srgb, var(--wp-white, #fff) 88%, transparent);
+}
+
+body.home-page--product .site-footer__sep {
+  color: color-mix(in srgb, var(--wp-white, #fff) 40%, transparent);
+}
+
+/* Non-product home (legacy marble) keeps light canvas */
+html:has(body.home-page:not(.home-page--product)) {
+  background: var(--wp-surface-light, #fafafa);
+}
+
+body.home-page:not(.home-page--product) {
+  background: var(--wp-surface-light, #fafafa) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(body.home-page.home-page--product) {
+    background-attachment: scroll;
+  }
+}
+
+@media (max-width: 768px) {
+  html:has(body.home-page.home-page--product) {
+    background-attachment: scroll;
+  }
+}

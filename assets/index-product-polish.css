@@ -1,0 +1,363 @@
+/* Index product polish — borderless bands, connect torch, lead glow (WO-011) */
+
+/* —— Unified canvas: sections inherit; no band fills —— */
+body.home-page--product .statement-viewport {
+  background: transparent;
+}
+
+/* Hero → work: soft blur seam (SPEC-INDEX-WORK-TOKENS-001 / IDEA-HERO-WORK-001 A1) */
+body.home-page--product .statement-viewport::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  height: clamp(6rem, 18vh, 12rem);
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    color-mix(in srgb, #08090d 55%, transparent) 52%,
+    color-mix(in srgb, #08090d 88%, transparent) 100%
+  );
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 58%);
+  opacity: calc(0.35 + var(--hero-handoff, 0) * 0.65);
+}
+
+body.home-page--product #work {
+  background: transparent !important;
+}
+
+body.home-page--product #work::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  height: clamp(8rem, 22vh, 14rem);
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, #12151c 72%, transparent) 0%,
+    transparent 100%
+  );
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+  opacity: calc(var(--page-torch-opacity, 1) * clamp(var(--hero-handoff, 0), 0, 1));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home-page--product .statement-viewport::after,
+  body.home-page--product #work::before {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+body.home-page--product .wp-connect {
+  background: transparent;
+}
+
+body.home-page--product .wp-method-close {
+  background: color-mix(in srgb, var(--wp-white, #fff) 4%, transparent);
+}
+
+/* —— Scroll: no snap / no overflow anchoring on product home (Lenis owns scroll) —— */
+html:has(body.home-page--product) {
+  scroll-snap-type: none !important;
+}
+
+html:has(body.home-page--product) body.home-page--product main > section {
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
+  overflow-anchor: none;
+}
+
+html.wp-journey--active:has(body.home-page--product) .journey-act,
+html.wp-journey--active:has(body.home-page--product) .journey-act.is-visible {
+  transform: none !important;
+  filter: none !important;
+}
+
+html.wp-journey--active:has(body.home-page--product) #hero.journey-act {
+  opacity: 1 !important;
+}
+
+/* —— Hero lead: shorter copy, editorial glow on hover —— */
+.statement-viewport__lead {
+  position: relative;
+  max-width: 36ch;
+  transition:
+    color 1s cubic-bezier(0.33, 1, 0.32, 1),
+    text-shadow 1s cubic-bezier(0.33, 1, 0.32, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .statement-viewport__lead:hover {
+    color: color-mix(in srgb, var(--wp-white, #fff) 96%, transparent);
+    text-shadow:
+      0 0 32px color-mix(in srgb, var(--wp-white, #fff) 18%, transparent),
+      0 0 64px color-mix(in srgb, var(--wp-white, #fff) 8%, transparent);
+  }
+}
+
+/* —— Impact strip: spacing, not box grid —— */
+body.home-page--product .wp-hero-impact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  max-width: none;
+  padding: 0;
+}
+
+body.home-page--product .wp-hero-impact__cell {
+  flex: 0 1 auto;
+  padding: 0;
+  border: none;
+}
+
+@media (max-width: 640px) {
+  body.home-page--product .wp-hero-impact {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  body.home-page--product .wp-hero-impact__cell {
+    border: none;
+    padding: 0;
+  }
+}
+
+/* —— Work cases: rhythm without rules —— */
+body.home-page--product .wp-project-case--anchor + .wp-project-case--compact {
+  border-top: none;
+  margin-top: clamp(3rem, 8vh, 4.5rem);
+  padding-top: clamp(2rem, 5vh, 3rem);
+}
+
+body.home-page--product .wp-project-case--compact + .wp-project-case--compact {
+  border-top: none;
+  padding-top: 0.5rem;
+}
+
+body.home-page--product .wp-project-case--anchor .wp-project-case__outcomes {
+  display: flex;
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  max-width: none;
+}
+
+body.home-page--product .wp-project-case--anchor .wp-project-case__outcome {
+  padding: 0;
+  border: none;
+}
+
+/* —— Anchor case copy: space between blocks, not padding around shell —— */
+body.home-page--product .wp-project-case--anchor .wp-project-case__inner {
+  align-items: stretch;
+}
+
+body.home-page--product .wp-project-case--anchor .wp-project-case__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: stretch;
+  height: 100%;
+  min-height: clamp(22rem, 44vh, 32rem);
+  margin: 0;
+  padding: 0;
+  gap: clamp(1.25rem, 3vh, 2rem);
+}
+
+body.home-page--product .wp-project-case--anchor .wp-project-case__title {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+  max-width: 22ch;
+  font-size: clamp(1.75rem, 3.6vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+body.home-page--product .wp-project-case--anchor .wp-project-case__copy-mid {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2.5vh, 1.35rem);
+}
+
+body.home-page--product .wp-project-case--anchor .wp-project-case__block {
+  margin: 0;
+  padding: 0;
+}
+
+body.home-page--product .wp-project-case--anchor .wp-project-case__label {
+  margin: 0 0 0.4rem;
+  padding: 0;
+  font-size: calc(0.6875rem + 1px);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--wp-index-label-gold, #e2c878);
+}
+
+body.home-page--product .wp-project-case--anchor .wp-project-case__proof {
+  margin: 0 0 0.65rem;
+  padding: 0;
+  max-width: 38ch;
+  font-family: var(--wp-font-prose, "Oxygen", "Inter", system-ui, sans-serif);
+  font-size: clamp(0.9375rem, 1.35vw, 1.0625rem);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--wp-index-prose-on-dark, color-mix(in srgb, var(--wp-white, #fff) 78%, transparent));
+}
+
+body.home-page--product .wp-project-case--anchor .wp-project-case__recommendation {
+  margin: 0;
+  padding: 0;
+  max-width: 42ch;
+  font-family: var(--wp-font-prose, "Oxygen", "Inter", system-ui, sans-serif);
+  font-size: clamp(0.9375rem, 1.35vw, 1.0625rem);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--wp-index-prose-on-dark, color-mix(in srgb, var(--wp-white, #fff) 78%, transparent));
+}
+
+body.home-page--product .wp-project-case--anchor .wp-project-case__metrics-line {
+  margin: 0;
+  padding: 0;
+  max-width: 44ch;
+  font-size: calc(0.6875rem + 1px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--wp-index-secondary-gold, #c9a962);
+}
+
+body.home-page--product .wp-project-case--anchor .wp-project-case__lede {
+  display: none;
+}
+
+body.home-page--product .wp-project-case--anchor .wp-project-case__copy-bottom {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+body.home-page--product .wp-project-case--anchor .wp-project-case__outcomes {
+  display: flex;
+  justify-content: space-between;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  width: 100%;
+  max-width: 36rem;
+  margin: 0;
+  padding: 0;
+}
+
+body.home-page--product .wp-project-case--anchor .wp-project-case__outcome {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+body.home-page--product .wp-project-case--anchor .wp-project-case__outcome-value {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--wp-index-secondary-gold, #c9a962);
+}
+
+body.home-page--product .wp-project-case--anchor .wp-project-case__outcome-label {
+  font-size: calc(0.6875rem + 1px);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: color-mix(in srgb, var(--wp-white, #fff) 52%, transparent);
+}
+
+body.home-page--product .wp-project-case--anchor .wp-link-text {
+  margin: 0;
+  padding: 0;
+  align-self: flex-start;
+}
+
+@media (max-width: 899px) {
+  body.home-page--product .wp-project-case--anchor .wp-project-case__copy {
+    min-height: 0;
+    gap: clamp(1.5rem, 4vh, 2.25rem);
+    justify-content: flex-start;
+  }
+
+  body.home-page--product .wp-project-case--anchor .wp-project-case__outcomes {
+    max-width: none;
+  }
+}
+
+/* —— Legacy section veils — global page torch replaces (MOTION-TORCH-002) —— */
+body.home-page--product .wp-work-atmosphere::after,
+body.home-page--product .wp-work-atmosphere__veil,
+body.home-page--product .wp-connect-atmosphere,
+body.home-page--product .wp-connect-atmosphere__veil {
+  display: none !important;
+}
+
+body.home-page--product .wp-project-case--anchor::before {
+  opacity: calc(var(--page-torch-opacity, 1) * 0.72);
+}
+
+/* —— Method close: soft surface, no box —— */
+body.home-page--product .wp-method-close {
+  border: none;
+  border-radius: 0;
+  background: color-mix(in srgb, var(--wp-black, #000) 3%, transparent);
+  padding-inline: 0;
+}
+
+/* —— Connect torch atmosphere —— */
+body.home-page--product .wp-connect {
+  position: relative;
+  overflow: hidden;
+}
+
+.wp-connect-atmosphere {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wp-connect-atmosphere__veil {
+  position: absolute;
+  inset: 0;
+  opacity: var(--connect-veil-opacity, 0);
+  background: radial-gradient(
+    ellipse 90% 70% at var(--hero-light-x, 50%) var(--hero-light-y, 42%),
+    color-mix(in srgb, var(--wp-white, #fff) 5%, transparent) 0%,
+    transparent 65%
+  );
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+body.home-page--product .wp-connect__inner {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statement-viewport__lead {
+    transition: none;
+  }
+
+  .statement-viewport__lead:hover {
+    text-shadow: none;
+  }
+}

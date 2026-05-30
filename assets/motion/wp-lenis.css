@@ -1,0 +1,30 @@
+/* Lenis integration — preserve layout, disable conflicting native snap */
+
+html.wp-lenis-active {
+  scroll-behavior: auto !important;
+}
+
+html.wp-lenis-active:has(body.home-page),
+html.lenis.wp-lenis-active:has(body.home-page) {
+  scroll-snap-type: none !important;
+}
+
+html.wp-lenis-active body.home-page main > section {
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
+}
+
+html.wp-lenis-active body.home-page--product {
+  overscroll-behavior-y: none;
+}
+
+html.wp-lenis-active body.home-page--product #hero,
+html.wp-lenis-active body.home-page--product #main {
+  touch-action: pan-y;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.wp-lenis-active:has(body.home-page) {
+    scroll-snap-type: none;
+  }
+}

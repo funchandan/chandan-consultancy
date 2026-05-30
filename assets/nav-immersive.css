@@ -1,0 +1,15 @@
+/* Nav pill — scroll state hooks (colors live in nav-pill.css) */
+
+body.home-page .site-header--immersive {
+  transition: none;
+}
+
+body.home-page .nav-menu-toggle {
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home-page .site-header--immersive {
+    transition: none;
+  }
+}

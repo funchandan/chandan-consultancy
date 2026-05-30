@@ -1,0 +1,479 @@
+/* Noomo-style immersive journey — WO-007 immersive pass */
+
+html.wp-journey--active {
+  scroll-behavior: smooth;
+}
+
+/* WO-010: rail removed from runtime — hide if legacy DOM exists */
+.journey-rail {
+  display: none !important;
+}
+
+.journey-rail--legacy {
+  position: fixed;
+  right: max(12px, env(safe-area-inset-right));
+  top: 50%;
+  z-index: 40;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.journey-rail__track {
+  position: absolute;
+  right: 3px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+  overflow: hidden;
+}
+
+.journey-rail__fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: top center;
+  transform: scaleY(0);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--motion-neon-blue, #144ccd) 30%, transparent),
+    var(--motion-neon-blue, #144ccd)
+  );
+  border-radius: inherit;
+  will-change: transform;
+}
+
+.journey-rail__list {
+  margin: 0;
+  padding: 0 0 0 18px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+}
+
+.journey-rail__link {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: color-mix(in srgb, var(--ink) 55%, transparent);
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 200ms ease;
+}
+
+.journey-rail__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--line));
+  background: rgba(255, 255, 255, 0.35);
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 280ms ease,
+    box-shadow 280ms ease;
+}
+
+.journey-rail__link:hover .journey-rail__dot,
+.journey-rail__link:focus-visible .journey-rail__dot {
+  transform: scale(1.2);
+}
+
+.journey-rail__link.is-active {
+  color: var(--ink);
+}
+
+.journey-rail__link.is-active .journey-rail__dot {
+  background: var(--motion-neon-blue, #144ccd);
+  border-color: transparent;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--motion-neon-blue, #144ccd) 65%, transparent);
+  transform: scale(1.35);
+}
+
+.journey-rail__label {
+  opacity: 0;
+  transform: translateX(6px);
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+
+.journey-rail__link:hover .journey-rail__label,
+.journey-rail__link:focus-visible .journey-rail__label,
+.journey-rail__link.is-active .journey-rail__label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 900px) {
+  .journey-rail {
+    display: none;
+  }
+}
+
+/* Hero scroll cue */
+.journey-scroll-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transform: translateX(-50%);
+  text-decoration: none;
+  color: color-mix(in srgb, var(--ink) 70%, transparent);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition:
+    opacity 400ms ease,
+    transform 400ms ease;
+}
+
+.journey-scroll-hint.is-hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(8px);
+  pointer-events: none;
+}
+
+.journey-scroll-hint__chevron {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  animation: journey-scroll-bob 1.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@keyframes journey-scroll-bob {
+  0%,
+  100% {
+    transform: rotate(45deg) translate(0, 0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: rotate(45deg) translate(3px, 3px);
+    opacity: 1;
+  }
+}
+
+/* Pointer-reactive light overlay (canvas sibling to marble) */
+.index-marble-light {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  opacity: 0.92;
+}
+
+/* Hero ambient veil */
+.hero-home {
+  position: relative;
+  isolation: isolate;
+  --hero-light-x: 22%;
+  --hero-light-y: 18%;
+}
+
+.hero-home__veil {
+  position: absolute;
+  inset: -8% -4%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.62;
+  background: radial-gradient(
+    44% 40% at var(--hero-light-x, 22%) var(--hero-light-y, 18%),
+    color-mix(in srgb, var(--motion-neon-blue, #144ccd) 32%, transparent) 0%,
+    transparent 70%
+  );
+  transition: opacity 400ms ease;
+}
+
+.hero-home__stage {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 2.5rem;
+}
+
+/* Scroll-act reveals + parallax */
+html.wp-journey--active .journey-act {
+  opacity: 0;
+  transform: translateY(calc(28px + var(--journey-parallax, 0px)));
+  transition:
+    opacity 720ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 720ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 520ms ease;
+  filter: brightness(calc(0.94 + var(--journey-focus, 1) * 0.06));
+}
+
+html.wp-journey--active .journey-act.is-visible {
+  opacity: 1;
+  transform: translateY(var(--journey-parallax, 0px));
+}
+
+html.wp-journey--active #hero.journey-act {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Stagger children inside visible acts */
+html.wp-journey--active .journey-act.is-visible .section-head {
+  animation: journey-child-in 640ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+html.wp-journey--active .journey-act.is-visible .offering-grid > .wp-card--neon {
+  animation: journey-child-in 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+html.wp-journey--active .journey-act.is-visible .offering-grid > .wp-card--neon:nth-child(1) {
+  animation-delay: 60ms;
+}
+html.wp-journey--active .journey-act.is-visible .offering-grid > .wp-card--neon:nth-child(2) {
+  animation-delay: 140ms;
+}
+html.wp-journey--active .journey-act.is-visible .offering-grid > .wp-card--neon:nth-child(3) {
+  animation-delay: 220ms;
+}
+
+@keyframes journey-child-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Work tiles stagger */
+html.wp-journey--active .case-home-tile {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--journey-stagger, 0ms);
+}
+
+html.wp-journey--active .case-home-tile.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Interactive cards — tilt + glare */
+.wp-tilt {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wp-card--neon.wp-tilt {
+  position: relative;
+}
+
+.wp-card--neon.wp-tilt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 38px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 280ms ease;
+  background: radial-gradient(
+    38% 42% at var(--card-glare-x, 50%) var(--card-glare-y, 40%),
+    rgba(255, 255, 255, 0.14),
+    transparent 68%
+  );
+  z-index: 3;
+}
+
+.wp-card--neon.wp-tilt--active::after {
+  opacity: 1;
+}
+
+.hero-path.wp-tilt--active {
+  box-shadow: 0 22px 52px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.wp-card--neon.wp-tilt--active {
+  box-shadow: 0 28px 64px rgba(20, 76, 205, 0.38);
+}
+
+.case-home-tile.wp-tilt--active {
+  box-shadow: 0 20px 48px color-mix(in srgb, var(--ink) 14%, transparent);
+}
+
+/* Immersive services band — neon stage */
+.section-immersive {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+}
+
+.section-immersive::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      70% 50% at 50% calc(100% - var(--journey-scroll, 0) * 120px),
+      color-mix(in srgb, var(--motion-neon-blue, #144ccd) 26%, transparent),
+      transparent 72%
+    ),
+    linear-gradient(180deg, transparent 0%, rgba(13, 12, 18, 0.86) 16%, rgba(13, 12, 18, 0.95) 100%);
+  animation: immersive-mesh 18s ease-in-out infinite alternate;
+}
+
+.section-immersive::after {
+  content: "";
+  position: absolute;
+  inset: -20% -10%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background: radial-gradient(
+    40% 35% at 30% 60%,
+    color-mix(in srgb, var(--motion-neon-blue, #144ccd) 18%, transparent),
+    transparent
+  );
+  animation: immersive-drift 22s ease-in-out infinite alternate;
+}
+
+@keyframes immersive-mesh {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(8deg);
+  }
+}
+
+@keyframes immersive-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(4%, -3%) scale(1.06);
+  }
+}
+
+.section-immersive > .shell,
+.section-immersive > .offerings {
+  position: relative;
+  z-index: 1;
+}
+
+.section-immersive .wp-card__title,
+.section-immersive .wp-card__body {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Method loop journey */
+.method-loop__item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.method-loop--revealed .method-loop__item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.method-loop--revealed .method-loop__item:nth-child(1) { transition-delay: 0ms; }
+.method-loop--revealed .method-loop__item:nth-child(2) { transition-delay: 80ms; }
+.method-loop--revealed .method-loop__item:nth-child(3) { transition-delay: 160ms; }
+.method-loop--revealed .method-loop__item:nth-child(4) { transition-delay: 240ms; }
+
+.method-loop__close {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) 320ms,
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1) 320ms;
+}
+
+.method-loop--revealed .method-loop__close {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.method-loop__rail::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top center;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    color-mix(in srgb, var(--motion-neon-blue, #144ccd) 70%, transparent),
+    transparent
+  );
+  opacity: 0.5;
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.method-loop--revealed .method-loop__rail::after {
+  transform: translateX(-50%) scaleY(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.wp-journey--active {
+    scroll-behavior: auto;
+  }
+
+  html.wp-journey--active .journey-act,
+  .method-loop__item,
+  .method-loop__close,
+  .case-home-tile {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    filter: none;
+    animation: none;
+  }
+
+  .wp-tilt {
+    transform: none !important;
+  }
+
+  .wp-card--neon.wp-tilt::after {
+    display: none;
+  }
+
+  .index-marble-light {
+    display: none;
+  }
+
+  .hero-home__veil,
+  .journey-scroll-hint {
+    display: none;
+  }
+
+  .section-immersive::before,
+  .section-immersive::after {
+    animation: none;
+  }
+}

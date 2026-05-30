@@ -70,7 +70,11 @@
       try {
         window.history.replaceState(null, "", window.location.pathname + window.location.search);
       } catch (_err) {}
-      window.scrollTo(0, 0);
+      if (window.WPLenis && window.WPLenis.ready) {
+        window.WPLenis.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
+      }
     },
     true
   );
@@ -621,10 +625,20 @@
     frameObserver.observe(el);
   });
 
-  // Delegated click handler for methodology CTAs (primary + secondary)
+  // Delegated click handler for methodology CTAs (primary + secondary) + proof links
   section.addEventListener(
     "click",
     function (event) {
+      var proofEl =
+        event.target.closest && event.target.closest("[data-methodology-proof-link]");
+      if (proofEl) {
+        track("methodology_proof_link_click", {
+          destination: proofEl.getAttribute("href") || "",
+          move: proofEl.getAttribute("data-proof-move") || "unknown",
+          source: "methodology"
+        });
+        return;
+      }
       var ctaEl =
         event.target.closest &&
         event.target.closest("[data-methodology-cta], [data-methodology-secondary-cta]");
@@ -639,6 +653,15 @@
     },
     true
   );
+
+  section.addEventListener("framework-tier-changed", function (event) {
+    var detail = event.detail || {};
+    track("methodology_tier_changed", {
+      tier: detail.tier || "unknown",
+      previous: detail.previous || "unknown",
+      source: "methodology"
+    });
+  });
 
   // Exit detection
   document.addEventListener("visibilitychange", function () {

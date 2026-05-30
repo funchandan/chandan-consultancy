@@ -1,0 +1,247 @@
+/* PP-C01 — Floating pill navbar (Figma mk1 visual spec) */
+
+body.home-page {
+  --nav-pill-radius: 999px;
+  --nav-pill-pad-y: 0.625rem;
+  --nav-pill-pad-x: 1.5rem;
+  --nav-pill-link-gap: clamp(1.25rem, 3vw, 2.5rem);
+  --nav-pill-bg-light: #ebebeb;
+  --nav-pill-bg-dark: #5a5a5a;
+  --nav-pill-shadow: 0 8px 32px color-mix(in srgb, var(--wp-black, #000) 12%, transparent);
+}
+
+/* Floating dock — no full-width bar; hero/work show through */
+body.home-page .site-header--pill,
+body.home-page.home-page--product .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  min-height: 0;
+  padding: max(0.75rem, env(safe-area-inset-top)) 0 0.5rem;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+body.home-page .site-header__dock {
+  width: min(1280px, calc(100% - var(--layout-pad, 1.25rem) * 2));
+  margin-inline: auto;
+}
+
+body.home-page .nav--pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 0;
+  gap: 0.75rem;
+}
+
+/* —— Pill shell —— */
+body.home-page .nav-pill {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 52px;
+  padding: var(--nav-pill-pad-y) var(--nav-pill-pad-x);
+  border-radius: var(--nav-pill-radius);
+  border: 1px solid transparent;
+  box-shadow: var(--nav-pill-shadow);
+  transition:
+    background 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+body.home-page .site-header--top .nav-pill {
+  background: var(--nav-pill-bg-light);
+  border-color: color-mix(in srgb, var(--wp-black, #000) 6%, transparent);
+  color: var(--wp-black, #000);
+}
+
+body.home-page .site-header--scrolled .nav-pill,
+body.home-page .site-header--on-dark .nav-pill,
+body.home-page .site-header--on-work .nav-pill {
+  background: var(--nav-pill-bg-dark);
+  border-color: color-mix(in srgb, var(--wp-white, #fff) 10%, transparent);
+  color: var(--wp-white, #fff);
+  box-shadow: 0 12px 40px color-mix(in srgb, var(--wp-black, #000) 35%, transparent);
+}
+
+/* Brand */
+body.home-page .nav-pill__brand {
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+  padding: 0.25rem 0;
+  font-family: var(--wp-font-ui, "Inter", system-ui, sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Center links */
+body.home-page .nav-pill__links {
+  display: none;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--nav-pill-link-gap);
+  min-width: 0;
+}
+
+body.home-page .nav-pill__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--nav-pill-radius);
+  border: none;
+  border-bottom: none;
+  font-family: var(--wp-font-ui, "Inter", system-ui, sans-serif);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+  color: inherit;
+  background: transparent;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+
+body.home-page .nav-pill__link:hover,
+body.home-page .nav-pill__link:focus-visible {
+  color: inherit;
+}
+
+body.home-page .site-header--top .nav-pill__link.is-active {
+  background: color-mix(in srgb, var(--wp-black, #000) 10%, transparent);
+}
+
+body.home-page .site-header--scrolled .nav-pill__link.is-active,
+body.home-page .site-header--on-dark .nav-pill__link.is-active,
+body.home-page .site-header--on-work .nav-pill__link.is-active {
+  background: color-mix(in srgb, var(--wp-white, #fff) 16%, transparent);
+}
+
+body.home-page .nav-pill__link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Right actions */
+body.home-page .nav-pill__actions {
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: 0.5rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+}
+
+body.home-page .nav-pill__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 1rem;
+  border-radius: var(--nav-pill-radius);
+  border: 1px solid transparent;
+  font-family: var(--wp-font-ui, "Inter", system-ui, sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+body.home-page .site-header--top .nav-pill__cta {
+  background: var(--wp-black, #000);
+  color: var(--wp-white, #fff);
+}
+
+body.home-page .site-header--top .nav-pill__cta:hover {
+  background: color-mix(in srgb, var(--wp-black, #000) 85%, var(--wp-white, #fff));
+  color: var(--wp-white, #fff);
+}
+
+body.home-page .site-header--scrolled .nav-pill__cta,
+body.home-page .site-header--on-dark .nav-pill__cta,
+body.home-page .site-header--on-work .nav-pill__cta {
+  background: var(--wp-white, #fff);
+  color: var(--wp-black, #000);
+}
+
+body.home-page .site-header--scrolled .nav-pill__cta:hover,
+body.home-page .site-header--on-dark .nav-pill__cta:hover,
+body.home-page .site-header--on-work .nav-pill__cta:hover {
+  background: color-mix(in srgb, var(--wp-white, #fff) 88%, var(--wp-black, #000));
+  color: var(--wp-black, #000);
+}
+
+body.home-page .nav-pill__cta:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Desktop: full pill */
+@media (min-width: 900px) {
+  body.home-page .nav-pill--desktop {
+    display: flex;
+  }
+
+  body.home-page .nav-pill__links,
+  body.home-page .nav-pill__actions {
+    display: flex;
+  }
+
+  body.home-page .nav-pill--mobile {
+    display: none;
+  }
+
+  body.home-page .nav--pill .nav-menu-toggle {
+    display: none;
+  }
+}
+
+/* Mobile: compact pill + menu */
+@media (max-width: 899px) {
+  body.home-page .nav-pill--desktop {
+    display: none;
+  }
+
+  body.home-page .nav-pill--mobile {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  body.home-page .nav--pill .nav-menu-toggle {
+    display: inline-flex;
+    flex-shrink: 0;
+    color: inherit;
+    background: transparent;
+    border: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home-page .nav-pill,
+  body.home-page .nav-pill__link,
+  body.home-page .nav-pill__cta {
+    transition: none;
+  }
+}
