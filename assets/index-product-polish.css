@@ -108,22 +108,32 @@ html.wp-journey--active:has(body.home-page--product) #hero.journey-act {
 
 /* —— Impact strip: spacing, not box grid —— */
 body.home-page--product .wp-hero-impact {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(1.25rem, 3vw, 2.5rem);
-  max-width: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  max-width: 52rem;
   padding: 0;
 }
 
 body.home-page--product .wp-hero-impact__cell {
-  flex: 0 1 auto;
+  flex: unset;
   padding: 0;
   border: none;
 }
 
+body.home-page--product .wp-hero-impact__value.is-counted {
+  color: var(--wp-index-secondary-gold, #c9a962);
+}
+
+@media (max-width: 899px) {
+  body.home-page--product .wp-hero-impact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 640px) {
   body.home-page--product .wp-hero-impact {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
 

@@ -4,9 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Toolkits | Chandan Sharma</title>
-  <meta name="description" content="Productized diagnostics from the work — decision teardowns, architecture audits, and AI workflow design. Coming v1.1." />
+  <meta name="description" content="Productized diagnostics from the work — decision teardowns, architecture audits, and AI workflow design." />
   <link rel="stylesheet" href="styles.css" />
   <script src="assets/site-nav.js" defer></script>
+  <link rel="stylesheet" href="assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="assets/motion/wp-lenis.css?v=1" />
+  <script src="assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="assets/motion/wp-lenis.js?v=1" defer></script>
 </head>
 <body>
   <a class="skip-to-content" href="#main">Skip to content</a>
@@ -30,7 +34,8 @@
             <div class="nav-drawer-group" role="group" aria-labelledby="nav-d-toolkits-label">
               <p id="nav-d-toolkits-label" class="nav-drawer-group__label">Toolkits</p>
               <a class="active" href="toolkits.html">Toolkits overview</a>
-              <a href="mailto:hello@example.com?subject=Book%20a%20call&amp;body=Toolkits%20%E2%80%94%20what%20I%27d%20prioritize%3A%20">Signal kit interest</a>
+              <a href="toolkits/decision-teardown.html">Decision teardown</a>
+              <a href="mailto:chandan004sharma@gmail.com?subject=Book%20a%20call&amp;body=Toolkits%20%E2%80%94%20what%20I%27d%20prioritize%3A%20">Signal kit interest</a>
             </div>
             <div class="nav-drawer-group" role="group" aria-labelledby="nav-d-services-label">
               <p id="nav-d-services-label" class="nav-drawer-group__label">Services</p>
@@ -39,7 +44,7 @@
               <a href="for-enterprise.html">For enterprise</a>
             </div>
             <a href="about.html" data-nav-item="about">About</a>
-            <a class="nav-cta nav-cta--dialog" href="mailto:hello@example.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
+            <a class="nav-cta nav-cta--dialog" href="mailto:chandan004sharma@gmail.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
           </div>
         </div>
       </dialog>
@@ -54,7 +59,8 @@
             <p class="nav-disclosure__eyebrow">Toolkits</p>
             <ul class="nav-disclosure__list">
               <li><a class="active" href="toolkits.html">Overview</a></li>
-              <li><a href="mailto:hello@example.com?subject=Book%20a%20call&amp;body=Toolkits%20%E2%80%94%20what%20I%27d%20buy%3A%20">Tell me what you&rsquo;d buy</a></li>
+              <li><a href="toolkits/decision-teardown.html">Decision teardown</a></li>
+              <li><a href="mailto:chandan004sharma@gmail.com?subject=Book%20a%20call&amp;body=Toolkits%20%E2%80%94%20what%20I%27d%20buy%3A%20">Tell me what you&rsquo;d buy</a></li>
             </ul>
           </div>
         </div>
@@ -74,26 +80,77 @@
         </div>
         <a href="about.html" data-nav-item="about">About</a>
       </div>
-      <a class="nav-cta" href="mailto:hello@example.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
+      <a class="nav-cta" href="mailto:chandan004sharma@gmail.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
     </nav>
   </header>
 
   <main id="main" tabindex="-1">
-    <section class="page-hero section">
+    <section class="page-hero section" id="toolkit-create">
       <div class="shell narrow">
         <p class="eyebrow">Toolkits</p>
         <h1>Reusable diagnostics from the work, packaged.</h1>
-        <p class="consulting-hero-lede">A toolkit here is a reusable diagnostic — the structured way I run a specific kind of decision when a team brings it to me. Not a Notion template, not a slide deck. The thinking, the questions, and the artifacts a team can run on their own once we have worked through it together.</p>
+        <p class="consulting-hero-lede">A toolkit is the structured way I run a specific kind of decision when a team brings it to me &mdash; not a Notion template or slide deck. The questions, the artefacts, and the handoff so your team can run it again.</p>
       </div>
     </section>
 
-    <section class="section section-soft">
+    <section class="section" aria-labelledby="toolkit-grid-heading">
+      <div class="shell">
+        <h2 id="toolkit-grid-heading" class="visually-hidden">Available toolkits</h2>
+        <div class="offering-grid offering-grid--toolkits">
+          <article class="offering-card offering-card--toolkit" id="kit-clarify">
+            <div class="offering-card__body">
+              <p class="eyebrow">Kit 01</p>
+              <h3>Decision teardown</h3>
+              <p class="offering-card__payoff">Leave with a written bet and kill criteria &mdash; not another brainstorm.</p>
+              <p class="offering-card__context">For founders and PMs carrying one high-stakes bet.</p>
+              <p class="offering-card__deliverable">Bet memo, reversal cost, two-week kill date.</p>
+              <a class="button offering-card__action offering-card__action--arrow" href="toolkits/decision-teardown.html">View kit</a>
+            </div>
+          </article>
+          <article class="offering-card offering-card--toolkit" id="kit-build">
+            <div class="offering-card__body">
+              <p class="eyebrow">Kit 02</p>
+              <h3>Architecture audit</h3>
+              <p class="offering-card__payoff">See where the seams are bending before they snap.</p>
+              <p class="offering-card__context">For eng and design leads inheriting a fragmented product.</p>
+              <p class="offering-card__deliverable">Seam map, north star, 90-day cohesion plan.</p>
+              <a class="button offering-card__action" href="mailto:chandan004sharma@gmail.com?subject=Architecture%20audit%20toolkit">Join waitlist</a>
+            </div>
+          </article>
+          <article class="offering-card offering-card--toolkit">
+            <div class="offering-card__body">
+              <p class="eyebrow">Kit 03</p>
+              <h3>AI workflow UX</h3>
+              <p class="offering-card__payoff">Put AI where humans can still override what matters.</p>
+              <p class="offering-card__context">For regulated or high-stakes AI in operations.</p>
+              <p class="offering-card__deliverable">HITL map, guardrails, one tested pilot scope.</p>
+              <a class="button offering-card__action" href="mailto:chandan004sharma@gmail.com?subject=AI%20workflow%20UX%20toolkit">Join waitlist</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" aria-labelledby="toolkit-how-heading">
       <div class="shell narrow">
-        <p class="eyebrow">Coming v1.1</p>
-        <h2>Productized kits — coming v1.1</h2>
-        <p>The kits I am scoping cover three areas where teams keep arriving with the same shape of problem: <strong>decision teardowns</strong> (the bet, the assumptions, the kill criteria), <strong>architecture audits</strong> (where the seams are bending and why), and <strong>AI workflow design</strong> (where humans stay in the loop and where they should not).</p>
-        <p>Until v1.1 ships them, the fastest way to use a toolkit is to bring the decision context to a teardown call.</p>
-        <p><a class="button button-primary" href="mailto:hello@example.com?subject=Book%20a%20call&amp;body=Toolkits%20%E2%80%94%20what%20I%27d%20actually%20buy%3A%20">Tell me what you&rsquo;d actually buy</a></p>
+        <p class="eyebrow">How it works</p>
+        <h2 id="toolkit-how-heading">Three steps from context to artefact</h2>
+        <ol class="toolkit-steps">
+          <li><strong>Bring context.</strong> One decision, one constraint, one timeline &mdash; not a full product dump.</li>
+          <li><strong>Run the diagnostic.</strong> We work through the kit questions live (typically 60&ndash;90 minutes).</li>
+          <li><strong>Leave with the artefact.</strong> Written output your team can execute and revisit.</li>
+        </ol>
+        <p class="section-intro">Scoped from Birlasoft and Fortune 100 field programmes &mdash; the same moves as the <a href="index.html#approach">case-study method</a>, packaged for a single decision.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell offer-card">
+        <div>
+          <h2>Not sure which kit fits?</h2>
+          <p>Tell me the decision you&rsquo;re carrying. I&rsquo;ll recommend a kit or a teardown call.</p>
+        </div>
+        <a class="wp-btn wp-btn--primary" href="mailto:chandan004sharma@gmail.com?subject=Toolkits%20%E2%80%94%20what%20I%27d%20actually%20buy%3A%20">Tell me what you&rsquo;d buy</a>
       </div>
     </section>
   </main>
@@ -101,7 +158,7 @@
   <footer class="site-footer">
     <div class="shell footer-row">
       <span>Chandan Sharma</span>
-      <a href="mailto:hello@example.com">hello@example.com</a>
+      <a href="mailto:chandan004sharma@gmail.com">chandan004sharma@gmail.com</a>
     </div>
   </footer>
 </body>

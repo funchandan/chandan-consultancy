@@ -20,16 +20,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="assets/journey-immersive.css" />
-  <link rel="stylesheet" href="assets/statement-viewport.css?v=9" />
+  <link rel="stylesheet" href="assets/statement-viewport.css?v=10" />
   <link rel="stylesheet" href="assets/wp-hero-display-slot.css?v=5" />
   <link rel="stylesheet" href="assets/noomo-primitives.css?v=8" />
   <link rel="stylesheet" href="assets/wp-project-case.css?v=8" />
   <link rel="stylesheet" href="assets/nav-immersive.css?v=5" />
   <link rel="stylesheet" href="assets/nav-product.css?v=2" />
-  <link rel="stylesheet" href="assets/nav-pill.css?v=7" />
+  <link rel="stylesheet" href="assets/nav-pill.css?v=8" />
   <link rel="stylesheet" href="assets/wp-index-page-torch.css?v=1" />
   <link rel="stylesheet" href="assets/index-product-surface.css?v=4" />
-  <link rel="stylesheet" href="assets/index-product-polish.css?v=6" />
+  <link rel="stylesheet" href="assets/index-product-polish.css?v=7" />
   <link rel="stylesheet" href="assets/vendor/lenis/lenis.css" />
   <link rel="stylesheet" href="assets/motion/wp-lenis.css?v=3" />
   <script src="assets/site-nav.js" defer></script>
@@ -38,6 +38,7 @@
   <script src="assets/motion/wp-motion.js?v=3" defer></script>
   <script src="assets/motion/wp-journey-immersive.js?v=15" defer></script>
   <script src="assets/motion/wp-hero-display-slot.js?v=1" defer></script>
+  <script src="assets/motion/wp-hero-impact-counter.js?v=1" defer></script>
   <script src="assets/motion/wp-nav-statement.js?v=6" defer></script>
 </head>
 <body class="home-page home-page--product" data-wp-motion="lenis-root" data-wp-motion-profile="portfolio-default">
@@ -59,7 +60,12 @@
             <a href="about.html" class="nav-pill__link nav-link-secondary" data-nav-item="about">About</a>
           </div>
           <div class="nav-pill__actions">
-            <a class="nav-pill__cta" href="mailto:chandan004sharma@gmail.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
+            <a class="nav-pill__cta" href="cv/pdf/cv-design.pdf" download data-nav-cta>
+              <svg class="nav-pill__cta-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false">
+                <path d="M10 2a.75.75 0 0 1 .75.75v8.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V2.75A.75.75 0 0 1 10 2Zm-3.25 12.5a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Z" />
+              </svg>
+              Download Resume
+            </a>
           </div>
         </div>
 
@@ -84,7 +90,12 @@
               <a href="#approach" class="nav-pill__link nav-anchor">Method</a>
               <a href="#connect" class="nav-pill__link nav-anchor">Connect</a>
               <a href="about.html" class="nav-pill__link" data-nav-item="about">About</a>
-              <a class="nav-pill__cta" href="mailto:chandan004sharma@gmail.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
+              <a class="nav-pill__cta" href="cv/pdf/cv-design.pdf" download data-nav-cta>
+                <svg class="nav-pill__cta-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false">
+                  <path d="M10 2a.75.75 0 0 1 .75.75v8.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V2.75A.75.75 0 0 1 10 2Zm-3.25 12.5a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Z" />
+                </svg>
+                Download Resume
+              </a>
               <div class="nav-drawer-group nav-drawer-group--tertiary" role="group" aria-labelledby="nav-d-more-label">
                 <p id="nav-d-more-label" class="nav-drawer-group__label">More</p>
                 <a href="services.html">Services</a>
@@ -135,20 +146,26 @@
             </span>
           </p>
           <p class="statement-viewport__lead">
-            Clarify what to build, ship work you can stand behind, and explain the why — for startups and regulated enterprise alike.
+            <a class="statement-viewport__lead-funnel" href="toolkits/decision-teardown.html">Clarify</a> what to
+            <a class="statement-viewport__lead-funnel" href="toolkits.html#toolkit-create">create</a>,
+            <a class="statement-viewport__lead-funnel" href="toolkits.html#kit-build">build</a> what ships, and explain the why &mdash; for startups and regulated enterprise alike.
           </p>
-          <div class="wp-hero-impact" role="list" aria-label="Scope and impact at a glance">
+          <div class="wp-hero-impact" role="list" aria-label="Scope and impact at a glance" data-wp-motion="hero-impact-counter">
             <div class="wp-hero-impact__cell" role="listitem">
-              <span class="wp-hero-impact__value">8</span>
+              <span class="wp-hero-impact__value" data-wp-count="8" aria-label="8 countries">0</span>
               <span class="wp-hero-impact__label">Countries shipped in</span>
             </div>
             <div class="wp-hero-impact__cell" role="listitem">
-              <span class="wp-hero-impact__value">Fortune 100</span>
+              <span class="wp-hero-impact__value wp-hero-impact__value--text">Fortune 100</span>
               <span class="wp-hero-impact__label">Enterprise practice</span>
             </div>
             <div class="wp-hero-impact__cell" role="listitem">
-              <span class="wp-hero-impact__value">9+</span>
+              <span class="wp-hero-impact__value" data-wp-count="9" data-wp-count-suffix="+" aria-label="9 plus years">0</span>
               <span class="wp-hero-impact__label">Years in product &amp; UX</span>
+            </div>
+            <div class="wp-hero-impact__cell" role="listitem">
+              <span class="wp-hero-impact__value" data-wp-count="800" data-wp-count-suffix="+" aria-label="800 plus hours">0</span>
+              <span class="wp-hero-impact__label">Listening to users</span>
             </div>
           </div>
           <a class="statement-viewport__skip" href="#work">View work</a>

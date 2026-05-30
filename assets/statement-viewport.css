@@ -123,10 +123,34 @@
   color: color-mix(in srgb, var(--wp-white, #fff) 88%, transparent);
 }
 
+/* Hero lead → toolkits funnel (IDEA-HERO-TOOLKIT-FUNNEL-001) */
+.statement-viewport__lead-funnel {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 55%, transparent);
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+  transition:
+    color 180ms ease,
+    text-decoration-color 180ms ease;
+}
+
+.statement-viewport__lead-funnel:hover {
+  color: var(--wp-index-label-gold, #e2c878);
+  text-decoration-color: color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 90%, transparent);
+}
+
+.statement-viewport__lead-funnel:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 75%, transparent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 /* PP-C02b — impact strip (breadth, no enterprise client names) */
 .wp-hero-impact {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0;
   margin: 0 0 calc(1.75rem * 1.25);
   max-width: 44rem;
@@ -157,6 +181,11 @@
   line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--wp-white, #fff);
+  font-variant-numeric: tabular-nums;
+}
+
+.wp-hero-impact__value.is-counted {
+  color: var(--wp-index-secondary-gold, #c9a962);
 }
 
 .wp-hero-impact__label {
@@ -173,6 +202,12 @@
   font-weight: 500;
   line-height: calc(1.35 * 1.25);
   color: color-mix(in srgb, var(--wp-white, #fff) 62%, transparent);
+}
+
+@media (max-width: 899px) {
+  .wp-hero-impact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 640px) {
