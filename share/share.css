@@ -8,6 +8,25 @@
   min-height: 100dvh;
 }
 
+body.work-page.has-index-marble {
+  background: transparent !important;
+}
+
+body.work-page.has-index-marble > :not(.index-page-backdrop) {
+  position: relative;
+  z-index: 1;
+}
+
+body.work-page.has-index-marble .share-hero,
+body.work-page.has-index-marble main > .section,
+body.work-page.has-index-marble .site-footer {
+  background: transparent !important;
+}
+
+body.work-page.has-index-marble .site-header {
+  background: rgba(255, 255, 255, 0.72);
+}
+
 /* Main site work.html uses full nav + share cards */
 .share-page .site-header {
   background: var(--glass-bg-strong, rgba(255, 255, 255, 0.88));
@@ -93,16 +112,19 @@
 
 .share-hero h1 {
   margin: 0;
+  font-family: var(--font-heading, "Source Serif Pro", "Source Serif 4", Georgia, serif);
   font-size: clamp(1.55rem, 4.2vw, 2.15rem);
-  line-height: 1.12;
-  letter-spacing: -0.02em;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  font-weight: 600;
   max-width: 22ch;
 }
 
 .share-hero .consulting-hero-lede {
+  font-family: var(--font-body, "Source Serif 4", Georgia, serif);
   max-width: 48ch;
   font-size: clamp(0.95rem, 2.2vw, 1.05rem);
-  line-height: 1.55;
+  line-height: 1.68;
   color: var(--muted);
 }
 
@@ -293,8 +315,10 @@
   padding-bottom: clamp(40px, 8vw, 72px);
 }
 
-/* Glass case card — entire surface is the link */
+/* Case card — solid white surface */
 .share-case-card {
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: 1fr;
   gap: 0;
@@ -302,15 +326,18 @@
   color: inherit;
   border-radius: var(--share-card-radius);
   border: 1px solid var(--glass-border, rgba(206, 220, 240, 0.72));
-  background: var(--glass-bg-strong, rgba(255, 255, 255, 0.85));
+  background: #fff;
   box-shadow: var(--glass-shadow-md, 0 20px 44px rgba(19, 35, 62, 0.12));
-  backdrop-filter: blur(var(--glass-blur, 14px));
-  -webkit-backdrop-filter: blur(var(--glass-blur, 14px));
   overflow: hidden;
   transition:
     border-color 180ms ease,
     box-shadow 180ms ease,
     transform 180ms ease;
+}
+
+.share-case-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 @media (min-width: 720px) {
@@ -343,7 +370,7 @@
   flex-shrink: 0;
   height: var(--share-case-visual-h);
   max-height: var(--share-case-visual-h);
-  background: #e8ecf2;
+  background: #fff;
   overflow: hidden;
 }
 
@@ -369,8 +396,8 @@
   object-position: 50% 22%;
 }
 
-.share-case-card--dark .share-case-card__visual {
-  background: #12161e;
+.share-case-card--dark {
+  background: #fff;
 }
 
 .share-case-card__copy {
@@ -382,6 +409,17 @@
   padding: var(--share-card-pad);
   padding-right: clamp(40px, 8vw, 52px);
   position: relative;
+  background: #fff;
+}
+
+.share-case-card__copy > * {
+  position: relative;
+  z-index: 1;
+}
+
+.share-case-card--dark .share-case-card__copy {
+  background: #fff;
+  color: inherit;
 }
 
 @media (min-width: 720px) {
@@ -401,18 +439,19 @@
 
 .share-case-card__title {
   margin: 0;
-  font-family: var(--font-display, Fraunces, Georgia, serif);
+  font-family: var(--font-heading, "Source Serif Pro", "Source Serif 4", Georgia, serif);
   font-size: clamp(1.05rem, 2.8vw, 1.35rem);
-  font-weight: 500;
-  line-height: 1.2;
+  font-weight: 600;
+  line-height: 1.24;
   letter-spacing: -0.02em;
   color: var(--ink);
 }
 
 .share-case-card__deck {
   margin: 0;
+  font-family: var(--font-body, "Source Serif 4", Georgia, serif);
   font-size: 0.9rem;
-  line-height: 1.5;
+  line-height: 1.62;
   color: var(--muted);
   display: -webkit-box;
   -webkit-line-clamp: 3;
