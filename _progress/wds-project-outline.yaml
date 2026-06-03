@@ -1,0 +1,22 @@
+wds-version: "1.0.0"
+project: "New project"
+created: "2026-05-22"
+rendering-tool: excalidraw
+
+phases:
+  product-brief: complete-lite
+  trigger-map: complete-lite
+  ux-scenarios: complete-v2-refresh
+  ux-design: complete-v2-spec-in-implement
+  index-methodology-audit: complete-2026-05-25
+  index-methodology-v2: implemented-wo-003
+  index-hero-audit: complete-2026-05-25
+  homepage-program-v2: brief-anchored-rev2-2026-05-26
+  design-system-central-truth: spec-and-index-wo-006
+  webgl-motion-program: site-wide-spec-programme-2026-05-29
+  motion-system-central-truth: spec-sweep-v1
+  noomo-adoption-compatibility-plan: q1-q5-2026-05-29
+  noomo-v1-c01-c12-signoff: approved-2026-05-29
+  development: built-brownfield
+
+output-folder: _bmad-output

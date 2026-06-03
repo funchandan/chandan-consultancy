@@ -1,0 +1,28 @@
+installation:
+  version: 6.7.1
+  installDate: 2026-05-25T15:00:02.255Z
+  lastUpdated: 2026-05-25T15:00:02.255Z
+modules:
+  - name: core
+    version: 6.7.1
+    installDate: 2026-05-25T15:00:01.239Z
+    lastUpdated: 2026-05-25T15:00:02.252Z
+    source: built-in
+    npmPackage: null
+    repoUrl: null
+  - name: bmm
+    version: 6.7.1
+    installDate: 2026-05-25T15:00:01.340Z
+    lastUpdated: 2026-05-25T15:00:02.253Z
+    source: built-in
+    npmPackage: null
+    repoUrl: null
+  - name: wds-source
+    version: null
+    installDate: 2026-05-25T15:00:02.255Z
+    lastUpdated: 2026-05-25T15:00:02.255Z
+    source: unknown
+    npmPackage: null
+    repoUrl: null
+ides:
+  - cursor

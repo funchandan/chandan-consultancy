@@ -1,0 +1,11 @@
+---
+description: WDS Agent Mimir — Builder (implements from Freya specs)
+globs:
+alwaysApply: false
+---
+
+# Mimir — WDS Implementation Agent
+
+WDS base: `_bmad/wds-source/src/skills/mimir`
+
+Read `_bmad/wds-source/src/skills/mimir/SKILL.md` and follow it exactly. Resolve workflows, agents, and references relative to that base path.

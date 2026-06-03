@@ -2,3 +2,6 @@
 .vercel
 .cache/
 _bmad-output/
+node_modules/
+progress/
+_bmad/wds-source/

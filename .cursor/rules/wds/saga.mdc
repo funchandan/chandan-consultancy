@@ -1,0 +1,13 @@
+---
+description: WDS Agent Saga — Strategic analyst (Product Brief, Trigger Map)
+globs:
+alwaysApply: false
+---
+
+# Saga — WDS Strategic Analyst
+
+WDS base: `_bmad/wds-source/src/skills/saga`
+
+Read `_bmad/wds-source/src/skills/saga/SKILL.md` and follow it exactly. Resolve workflows, agents, and references relative to that base path.
+
+If `_bmad/wds/agents/saga-analyst.md` exists (processed install), prefer that compiled agent instead.

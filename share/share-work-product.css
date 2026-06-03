@@ -1,0 +1,77 @@
+/* share/work.html — product surface + minimal share chrome on dark canvas */
+
+body.share-page.work-page.work-page--product .share-header {
+  background: color-mix(in srgb, #12151c 72%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--wp-white, #fff) 12%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+body.share-page.work-page.work-page--product .share-nav .brand,
+body.share-page.work-page.work-page--product .share-nav__links a {
+  color: color-mix(in srgb, var(--wp-white, #fff) 88%, transparent);
+}
+
+body.share-page.work-page.work-page--product .share-nav__links a.is-active,
+body.share-page.work-page.work-page--product .share-nav__links a:hover {
+  color: var(--wp-white, #fff);
+}
+
+body.share-page.work-page.work-page--product .share-footer {
+  color: color-mix(in srgb, var(--wp-white, #fff) 88%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--wp-white, #fff) 12%, transparent);
+  background: transparent;
+}
+
+body.share-page.work-page.work-page--product .share-footer a {
+  color: color-mix(in srgb, var(--wp-white, #fff) 88%, transparent);
+}
+
+/* Cred ticker legible on dark hero */
+body.work-page--product .share-cred-ticker__org,
+body.work-page--product .share-cred-ticker__pill {
+  color: color-mix(in srgb, var(--wp-white, #fff) 82%, transparent);
+  border-color: color-mix(in srgb, var(--wp-white, #fff) 18%, transparent);
+  background: color-mix(in srgb, #12151c 80%, #fff 8%);
+}
+
+body.work-page--product .share-cred-ticker__tech {
+  color: color-mix(in srgb, var(--wp-white, #fff) 70%, transparent);
+}
+
+/* Device-frame cards (aligned with root work.html) */
+body.work-page--product .share-case-card__visual--device {
+  display: grid;
+  place-items: center;
+  padding: 14px;
+  min-height: var(--share-case-visual-h, 210px);
+  background: color-mix(in srgb, #0d0f14 85%, #fff 5%);
+}
+
+body.work-page--product .share-case-card__device-stage {
+  width: 100%;
+  max-width: 118px;
+  aspect-ratio: 390 / 844;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+body.work-page--product .share-case-card__device-stage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+body.work-page--product .share-case-card__device-img--points {
+  object-position: 50% 6%;
+}
+
+body.work-page--product .share-case-card__device-img--hp {
+  object-position: 50% 12%;
+}
+
+body.work-page--product .share-case-card__device-img--stryker {
+  object-position: 50% 14%;
+}

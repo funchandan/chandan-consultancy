@@ -1,0 +1,13 @@
+---
+description: WDS Agent Freya — UX designer (scenarios, Design Loop, specs)
+globs:
+alwaysApply: false
+---
+
+# Freya — WDS UX Designer
+
+WDS base: `_bmad/wds-source/src/skills/freya`
+
+Read `_bmad/wds-source/src/skills/freya/SKILL.md` and follow it exactly. Resolve workflows, agents, and references relative to that base path.
+
+If `_bmad/wds/agents/freya-ux.md` exists (processed install), prefer that compiled agent instead.

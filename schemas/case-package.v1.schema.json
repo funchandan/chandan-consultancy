@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "case-package.v1.schema.json",
+  "title": "CaseStudyPackageV1",
+  "type": "object",
+  "required": ["meta", "narrative", "resources", "artefacts", "metrics", "voice", "media", "approvals"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["title", "client_safe_name", "slug"],
+      "properties": {
+        "title": { "type": "string" },
+        "client_safe_name": { "type": "string" },
+        "slug": { "type": "string" },
+        "study_type": { "type": "string" },
+        "study_type_inferred": { "type": "string" },
+        "study_type_confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "target_audience": { "type": "string" },
+        "export_profile": { "type": "string" },
+        "timeline": { "type": "string" },
+        "tools": { "type": "array", "items": { "type": "string" } },
+        "depth_href": { "type": "string" }
+      }
+    },
+    "narrative": {
+      "type": "object",
+      "required": ["narrative_id", "claims"],
+      "properties": {
+        "narrative_id": { "type": "string" },
+        "claims": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "statement", "proof_expectations"],
+            "properties": {
+              "id": { "type": "string" },
+              "statement": { "type": "string" },
+              "proof_expectations": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+    "resources": { "type": "object" },
+    "artefacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "description", "linked_claim_ids"],
+        "properties": {
+          "id": { "type": "string" },
+          "path": { "type": "string" },
+          "kind": { "type": "string" },
+          "description": { "type": "string" },
+          "linked_claim_ids": { "type": "array", "items": { "type": "string" } },
+          "caption": { "type": "string" },
+          "alt": { "type": "string" },
+          "sha256_prefix": { "type": "string" }
+        }
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "value", "verification"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "value": { "type": "string" },
+          "baseline": { "type": "string" },
+          "attribution": { "type": "string" },
+          "verification": {
+            "type": "string",
+            "enum": ["verified", "directional", "synthetic-scenario", "placeholder"]
+          }
+        }
+      }
+    },
+    "voice": {
+      "type": "object",
+      "required": ["seniority", "register"],
+      "properties": {
+        "seniority": { "type": "string" },
+        "register": { "type": "string" }
+      }
+    },
+    "media": {
+      "type": "object",
+      "required": ["youtube"],
+      "properties": {
+        "youtube": {
+          "type": "array",
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["id", "url", "title", "placement", "caption", "consent"],
+            "properties": {
+              "id": { "type": "string" },
+              "url": { "type": "string" },
+              "video_id": { "type": "string", "pattern": "^[A-Za-z0-9_-]{11}$" },
+              "title": { "type": "string" },
+              "placement": {
+                "type": "string",
+                "enum": [
+                  "scan_hero",
+                  "scan_beat_2",
+                  "scan_beat_4",
+                  "scan_beat_6",
+                  "depth_method",
+                  "appendix"
+                ]
+              },
+              "linked_claim_ids": { "type": "array", "items": { "type": "string" } },
+              "caption": { "type": "string" },
+              "consent": { "type": "string", "enum": ["owned", "third_party_reference"] },
+              "start_seconds": { "type": "integer", "minimum": 0 },
+              "end_seconds": { "type": ["integer", "null"] }
+            }
+          }
+        }
+      }
+    },
+    "approvals": {
+      "type": "object",
+      "required": ["copy", "design", "po"],
+      "properties": {
+        "copy": { "$ref": "#/$defs/approval" },
+        "design": { "$ref": "#/$defs/approval" },
+        "po": { "$ref": "#/$defs/approval" }
+      }
+    }
+  },
+  "$defs": {
+    "approval": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": { "type": "string", "enum": ["draft", "approved"] },
+        "approved_by": { "type": "string" },
+        "approved_at": { "type": "string" }
+      }
+    }
+  }
+}

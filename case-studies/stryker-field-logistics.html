@@ -4,12 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>How do field reps run robotic surgery logistics inside the hospital? | Case study</title>
-  <meta name="description" content="How do field reps run robotic surgery logistics inside the hospital? Foundational UX research on why loyalty mechanics failed and what earn-and-spend should mean for a K-8 math platform." />
+  <meta name="description" content="How do field reps run robotic surgery logistics inside the hospital? A single mobile path for Stryker field reps coordinating robotic surgery parts—orders, serials, delivery, surgical use, and returns—from visit start through auditable close." />
   <link rel="stylesheet" href="../styles.css" />
-  <link rel="stylesheet" href="../assets/case-study-card-gallery.css?v=2" />
+  <link rel="stylesheet" href="../assets/case-study-card-gallery.css?v=6" />
   <script src="../assets/site-nav.js" defer></script>
+  <link rel="stylesheet" href="../assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="../assets/motion/wp-lenis.css?v=1" />
+  <script src="../assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="../assets/motion/wp-lenis.js?v=1" defer></script>
   <script src="../assets/case-study-scan.js" defer></script>
-  <script src="../assets/case-study-card-gallery.js?v=2" defer></script>
+  <script src="../assets/case-study-card-gallery.js?v=6" defer></script>
   <script src="../assets/case-study-hero-ab.js" defer></script>
   <script src="../assets/share-case-back.js" defer></script>
 </head>
@@ -197,15 +201,17 @@
             <div class="case-card-gallery__track" data-case-card-track>
         <article class="case-card-gallery__slide is-active" id="beat_01_arrive" data-case-gallery-slide data-card-index="0">
           <div class="case-card-gallery__grid">
-            <div class="case-card-gallery__copy">
+            <div class="case-card-gallery__story">
               <h2 class="case-card-gallery__title">Arrive</h2>
-              <div class="case-card-gallery__subtitle-row">
-                <p class="case-card-gallery__subtitle">Active hospital, surgeon, and case on one screen.</p>
-                <button type="button" class="case-card-gallery__expand" data-card-read-more aria-expanded="false" aria-label="Show more detail">
-                  <svg class="case-card-gallery__expand-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
-                <div class="case-card-gallery__body-detail" data-card-body-detail hidden>
+              <p class="case-card-gallery__subtitle">Active hospital, surgeon, and case on one screen.</p>
+              <button type="button" class="case-card-gallery__evidence-trigger" data-evidence-trigger aria-expanded="false" aria-controls="evidence-beat_01_arrive">Evidence</button>
+            </div>
+            <aside class="case-card-gallery__evidence-rail" id="evidence-beat_01_arrive" data-evidence-rail hidden role="region" aria-label="Evidence for Arrive">
+              <header class="case-card-gallery__evidence-rail-header">
+                <h3 class="case-card-gallery__evidence-rail-title">Evidence</h3>
+                <button type="button" class="case-card-gallery__evidence-close" data-evidence-close>Close</button>
+              </header>
+              <div class="case-card-gallery__evidence-rail-scroll" data-evidence-rail-scroll tabindex="-1">
                 <p class="case-card-gallery__body-text">Jordan opens the visit knowing where they are and who they are supporting.</p>
                 <p class="case-card-gallery__body-text">Rep identity, hospital, surgeon, and case ID sit above the fold so every later action inherits the same context.</p>
           <aside class="case-scan-story__heuristic case-scan-story__heuristic--glass" aria-label="Design lens: Visibility of system status">
@@ -215,24 +221,26 @@
             <p class="case-scan-story__heuristic-line case-scan-story__heuristic-line--muted">Arrive screen: hospital, surgeon Dr. Vasquez, and case PO-48291 as the anchor for the visit.</p>
           </aside>
 
-                </div>
-            </div>
+              </div>
+            </aside>
             <div class="case-card-gallery__media">
-              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-01-arrive.png" alt="Arrive" loading="lazy" decoding="async" />
+              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-01-arrive.png" alt="Stryker field logistics — Arrive" loading="lazy" decoding="async" />
             </div>
           </div>
         </article>
         <article class="case-card-gallery__slide" id="beat_02_preferences" data-case-gallery-slide data-card-index="1" aria-hidden="true">
           <div class="case-card-gallery__grid">
-            <div class="case-card-gallery__copy">
+            <div class="case-card-gallery__story">
               <h2 class="case-card-gallery__title">Preferences</h2>
-              <div class="case-card-gallery__subtitle-row">
-                <p class="case-card-gallery__subtitle">Surgeon kits and sizes before the cart opens.</p>
-                <button type="button" class="case-card-gallery__expand" data-card-read-more aria-expanded="false" aria-label="Show more detail">
-                  <svg class="case-card-gallery__expand-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
-                <div class="case-card-gallery__body-detail" data-card-body-detail hidden>
+              <p class="case-card-gallery__subtitle">Surgeon kits and sizes before the cart opens.</p>
+              <button type="button" class="case-card-gallery__evidence-trigger" data-evidence-trigger aria-expanded="false" aria-controls="evidence-beat_02_preferences">Evidence</button>
+            </div>
+            <aside class="case-card-gallery__evidence-rail" id="evidence-beat_02_preferences" data-evidence-rail hidden role="region" aria-label="Evidence for Preferences">
+              <header class="case-card-gallery__evidence-rail-header">
+                <h3 class="case-card-gallery__evidence-rail-title">Evidence</h3>
+                <button type="button" class="case-card-gallery__evidence-close" data-evidence-close>Close</button>
+              </header>
+              <div class="case-card-gallery__evidence-rail-scroll" data-evidence-rail-scroll tabindex="-1">
                 <p class="case-card-gallery__body-text">Stored preferences surface at the start of the visit—not after a wrong line is placed.</p>
                 <p class="case-card-gallery__body-text">Kits, brands, and history are grouped for confirm-or-edit before order build.</p>
           <aside class="case-scan-story__heuristic case-scan-story__heuristic--glass" aria-label="Design lens: Recognition rather than recall">
@@ -242,24 +250,26 @@
             <p class="case-scan-story__heuristic-line case-scan-story__heuristic-line--muted">Preferences list with last-used kit, sizes, and edit affordance tied to the surgeon record.</p>
           </aside>
 
-                </div>
-            </div>
+              </div>
+            </aside>
             <div class="case-card-gallery__media">
-              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-02-preferences.png" alt="Preferences" loading="lazy" decoding="async" />
+              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-02-preferences.png" alt="Stryker field logistics — Preferences" loading="lazy" decoding="async" />
             </div>
           </div>
         </article>
         <article class="case-card-gallery__slide" id="beat_03_order" data-case-gallery-slide data-card-index="2" aria-hidden="true">
           <div class="case-card-gallery__grid">
-            <div class="case-card-gallery__copy">
+            <div class="case-card-gallery__story">
               <h2 class="case-card-gallery__title">Order</h2>
-              <div class="case-card-gallery__subtitle-row">
-                <p class="case-card-gallery__subtitle">Line items tied to the visit, not a desk PO.</p>
-                <button type="button" class="case-card-gallery__expand" data-card-read-more aria-expanded="false" aria-label="Show more detail">
-                  <svg class="case-card-gallery__expand-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
-                <div class="case-card-gallery__body-detail" data-card-body-detail hidden>
+              <p class="case-card-gallery__subtitle">Line items tied to the visit, not a desk PO.</p>
+              <button type="button" class="case-card-gallery__evidence-trigger" data-evidence-trigger aria-expanded="false" aria-controls="evidence-beat_03_order">Evidence</button>
+            </div>
+            <aside class="case-card-gallery__evidence-rail" id="evidence-beat_03_order" data-evidence-rail hidden role="region" aria-label="Evidence for Order">
+              <header class="case-card-gallery__evidence-rail-header">
+                <h3 class="case-card-gallery__evidence-rail-title">Evidence</h3>
+                <button type="button" class="case-card-gallery__evidence-close" data-evidence-close>Close</button>
+              </header>
+              <div class="case-card-gallery__evidence-rail-scroll" data-evidence-rail-scroll tabindex="-1">
                 <p class="case-card-gallery__body-text">The cart is built beside the surgeon with clear ownership and submit state.</p>
                 <p class="case-card-gallery__body-text">Quantities, surgeon association, and approval-needed states stay in the visit—not a back-office form.</p>
           <aside class="case-scan-story__heuristic case-scan-story__heuristic--glass" aria-label="Design lens: Match between system and real world">
@@ -269,24 +279,26 @@
             <p class="case-scan-story__heuristic-line case-scan-story__heuristic-line--muted">Order screen with line items, surgeon chip, and primary submit in visit context.</p>
           </aside>
 
-                </div>
-            </div>
+              </div>
+            </aside>
             <div class="case-card-gallery__media">
-              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-03-order.png" alt="Order" loading="lazy" decoding="async" />
+              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-03-order.png" alt="Stryker field logistics — Order" loading="lazy" decoding="async" />
             </div>
           </div>
         </article>
         <article class="case-card-gallery__slide" id="beat_04_order_track" data-case-gallery-slide data-card-index="3" aria-hidden="true">
           <div class="case-card-gallery__grid">
-            <div class="case-card-gallery__copy">
+            <div class="case-card-gallery__story">
               <h2 class="case-card-gallery__title">Order track</h2>
-              <div class="case-card-gallery__subtitle-row">
-                <p class="case-card-gallery__subtitle">Order state without calling ops.</p>
-                <button type="button" class="case-card-gallery__expand" data-card-read-more aria-expanded="false" aria-label="Show more detail">
-                  <svg class="case-card-gallery__expand-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
-                <div class="case-card-gallery__body-detail" data-card-body-detail hidden>
+              <p class="case-card-gallery__subtitle">Order state without calling ops.</p>
+              <button type="button" class="case-card-gallery__evidence-trigger" data-evidence-trigger aria-expanded="false" aria-controls="evidence-beat_04_order_track">Evidence</button>
+            </div>
+            <aside class="case-card-gallery__evidence-rail" id="evidence-beat_04_order_track" data-evidence-rail hidden role="region" aria-label="Evidence for Order track">
+              <header class="case-card-gallery__evidence-rail-header">
+                <h3 class="case-card-gallery__evidence-rail-title">Evidence</h3>
+                <button type="button" class="case-card-gallery__evidence-close" data-evidence-close>Close</button>
+              </header>
+              <div class="case-card-gallery__evidence-rail-scroll" data-evidence-rail-scroll tabindex="-1">
                 <p class="case-card-gallery__body-text">Placed → confirmed → fulfilled reads as a timeline with owner and ETA.</p>
                 <p class="case-card-gallery__body-text">Exception states are visible on the same screen so reps do not chase status by phone.</p>
           <aside class="case-scan-story__heuristic case-scan-story__heuristic--glass" aria-label="Design lens: Visibility of system status">
@@ -296,24 +308,26 @@
             <p class="case-scan-story__heuristic-line case-scan-story__heuristic-line--muted">Order timeline with confirmed step active, ETA, and exception affordance.</p>
           </aside>
 
-                </div>
-            </div>
+              </div>
+            </aside>
             <div class="case-card-gallery__media">
-              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-04-order-track.png" alt="Order track" loading="lazy" decoding="async" />
+              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-04-order-track.png" alt="Stryker field logistics — Order track" loading="lazy" decoding="async" />
             </div>
           </div>
         </article>
         <article class="case-card-gallery__slide" id="beat_05_part_track" data-case-gallery-slide data-card-index="4" aria-hidden="true">
           <div class="case-card-gallery__grid">
-            <div class="case-card-gallery__copy">
+            <div class="case-card-gallery__story">
               <h2 class="case-card-gallery__title">Part track</h2>
-              <div class="case-card-gallery__subtitle-row">
-                <p class="case-card-gallery__subtitle">Serial-level status, not just the PO rollup.</p>
-                <button type="button" class="case-card-gallery__expand" data-card-read-more aria-expanded="false" aria-label="Show more detail">
-                  <svg class="case-card-gallery__expand-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
-                <div class="case-card-gallery__body-detail" data-card-body-detail hidden>
+              <p class="case-card-gallery__subtitle">Serial-level status, not just the PO rollup.</p>
+              <button type="button" class="case-card-gallery__evidence-trigger" data-evidence-trigger aria-expanded="false" aria-controls="evidence-beat_05_part_track">Evidence</button>
+            </div>
+            <aside class="case-card-gallery__evidence-rail" id="evidence-beat_05_part_track" data-evidence-rail hidden role="region" aria-label="Evidence for Part track">
+              <header class="case-card-gallery__evidence-rail-header">
+                <h3 class="case-card-gallery__evidence-rail-title">Evidence</h3>
+                <button type="button" class="case-card-gallery__evidence-close" data-evidence-close>Close</button>
+              </header>
+              <div class="case-card-gallery__evidence-rail-scroll" data-evidence-rail-scroll tabindex="-1">
                 <p class="case-card-gallery__body-text">Each line shows lot/serial and a status distinct from order-level progress.</p>
                 <p class="case-card-gallery__body-text">Reps can answer surgeon questions about a specific part without opening another system.</p>
           <aside class="case-scan-story__heuristic case-scan-story__heuristic--glass" aria-label="Design lens: Visibility of system status">
@@ -323,24 +337,26 @@
             <p class="case-scan-story__heuristic-line case-scan-story__heuristic-line--muted">Part list with serial SN-8842, linked order, and in-transit vs on-site states.</p>
           </aside>
 
-                </div>
-            </div>
+              </div>
+            </aside>
             <div class="case-card-gallery__media">
-              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-05-part-track.png" alt="Part track" loading="lazy" decoding="async" />
+              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-05-part-track.png" alt="Stryker field logistics — Part track" loading="lazy" decoding="async" />
             </div>
           </div>
         </article>
         <article class="case-card-gallery__slide" id="beat_06_deliver" data-case-gallery-slide data-card-index="5" aria-hidden="true">
           <div class="case-card-gallery__grid">
-            <div class="case-card-gallery__copy">
+            <div class="case-card-gallery__story">
               <h2 class="case-card-gallery__title">Deliver</h2>
-              <div class="case-card-gallery__subtitle-row">
-                <p class="case-card-gallery__subtitle">Shipment and part-at-site in one beat.</p>
-                <button type="button" class="case-card-gallery__expand" data-card-read-more aria-expanded="false" aria-label="Show more detail">
-                  <svg class="case-card-gallery__expand-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
-                <div class="case-card-gallery__body-detail" data-card-body-detail hidden>
+              <p class="case-card-gallery__subtitle">Shipment and part-at-site in one beat.</p>
+              <button type="button" class="case-card-gallery__evidence-trigger" data-evidence-trigger aria-expanded="false" aria-controls="evidence-beat_06_deliver">Evidence</button>
+            </div>
+            <aside class="case-card-gallery__evidence-rail" id="evidence-beat_06_deliver" data-evidence-rail hidden role="region" aria-label="Evidence for Deliver">
+              <header class="case-card-gallery__evidence-rail-header">
+                <h3 class="case-card-gallery__evidence-rail-title">Evidence</h3>
+                <button type="button" class="case-card-gallery__evidence-close" data-evidence-close>Close</button>
+              </header>
+              <div class="case-card-gallery__evidence-rail-scroll" data-evidence-rail-scroll tabindex="-1">
                 <p class="case-card-gallery__body-text">Delivery splits carrier shipment from part received at hospital or OR shelf.</p>
                 <p class="case-card-gallery__body-text">Both segments use the same visual language so handoff to surgical use is obvious.</p>
           <aside class="case-scan-story__heuristic case-scan-story__heuristic--glass" aria-label="Design lens: Consistency and standards">
@@ -350,24 +366,26 @@
             <p class="case-scan-story__heuristic-line case-scan-story__heuristic-line--muted">Deliver view with shipment in transit and part received segments.</p>
           </aside>
 
-                </div>
-            </div>
+              </div>
+            </aside>
             <div class="case-card-gallery__media">
-              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-06-deliver.png" alt="Deliver" loading="lazy" decoding="async" />
+              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-06-deliver.png" alt="Stryker field logistics — Deliver" loading="lazy" decoding="async" />
             </div>
           </div>
         </article>
         <article class="case-card-gallery__slide" id="beat_07_use" data-case-gallery-slide data-card-index="6" aria-hidden="true">
           <div class="case-card-gallery__grid">
-            <div class="case-card-gallery__copy">
+            <div class="case-card-gallery__story">
               <h2 class="case-card-gallery__title">Use</h2>
-              <div class="case-card-gallery__subtitle-row">
-                <p class="case-card-gallery__subtitle">What was consumed in surgery, with case ID.</p>
-                <button type="button" class="case-card-gallery__expand" data-card-read-more aria-expanded="false" aria-label="Show more detail">
-                  <svg class="case-card-gallery__expand-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
-                <div class="case-card-gallery__body-detail" data-card-body-detail hidden>
+              <p class="case-card-gallery__subtitle">What was consumed in surgery, with case ID.</p>
+              <button type="button" class="case-card-gallery__evidence-trigger" data-evidence-trigger aria-expanded="false" aria-controls="evidence-beat_07_use">Evidence</button>
+            </div>
+            <aside class="case-card-gallery__evidence-rail" id="evidence-beat_07_use" data-evidence-rail hidden role="region" aria-label="Evidence for Use">
+              <header class="case-card-gallery__evidence-rail-header">
+                <h3 class="case-card-gallery__evidence-rail-title">Evidence</h3>
+                <button type="button" class="case-card-gallery__evidence-close" data-evidence-close>Close</button>
+              </header>
+              <div class="case-card-gallery__evidence-rail-scroll" data-evidence-rail-scroll tabindex="-1">
                 <p class="case-card-gallery__body-text">Usage is recorded against the procedure with timestamp and confirmation.</p>
                 <p class="case-card-gallery__body-text">Implanted and consumed lines support audit-friendly lifecycle without a separate form.</p>
           <aside class="case-scan-story__heuristic case-scan-story__heuristic--glass" aria-label="Design lens: Error prevention">
@@ -377,24 +395,26 @@
             <p class="case-scan-story__heuristic-line case-scan-story__heuristic-line--muted">Surgical use screen with case ID, consumed parts, and confirm action.</p>
           </aside>
 
-                </div>
-            </div>
+              </div>
+            </aside>
             <div class="case-card-gallery__media">
-              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-07-use.png" alt="Use" loading="lazy" decoding="async" />
+              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-07-use.png" alt="Stryker field logistics — Use" loading="lazy" decoding="async" />
             </div>
           </div>
         </article>
         <article class="case-card-gallery__slide" id="beat_08_return" data-case-gallery-slide data-card-index="7" aria-hidden="true">
           <div class="case-card-gallery__grid">
-            <div class="case-card-gallery__copy">
+            <div class="case-card-gallery__story">
               <h2 class="case-card-gallery__title">Return</h2>
-              <div class="case-card-gallery__subtitle-row">
-                <p class="case-card-gallery__subtitle">Send-back in the same flow as the order.</p>
-                <button type="button" class="case-card-gallery__expand" data-card-read-more aria-expanded="false" aria-label="Show more detail">
-                  <svg class="case-card-gallery__expand-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
-                <div class="case-card-gallery__body-detail" data-card-body-detail hidden>
+              <p class="case-card-gallery__subtitle">Send-back in the same flow as the order.</p>
+              <button type="button" class="case-card-gallery__evidence-trigger" data-evidence-trigger aria-expanded="false" aria-controls="evidence-beat_08_return">Evidence</button>
+            </div>
+            <aside class="case-card-gallery__evidence-rail" id="evidence-beat_08_return" data-evidence-rail hidden role="region" aria-label="Evidence for Return">
+              <header class="case-card-gallery__evidence-rail-header">
+                <h3 class="case-card-gallery__evidence-rail-title">Evidence</h3>
+                <button type="button" class="case-card-gallery__evidence-close" data-evidence-close>Close</button>
+              </header>
+              <div class="case-card-gallery__evidence-rail-scroll" data-evidence-rail-scroll tabindex="-1">
                 <p class="case-card-gallery__body-text">Returns are flagged with reason, pickup, and ship-back status beside open orders.</p>
                 <p class="case-card-gallery__body-text">Reps do not switch apps when a tray line must go back.</p>
           <aside class="case-scan-story__heuristic case-scan-story__heuristic--glass" aria-label="Design lens: Flexibility and efficiency of use">
@@ -404,24 +424,26 @@
             <p class="case-scan-story__heuristic-line case-scan-story__heuristic-line--muted">Return list with reason codes and pickup scheduled state.</p>
           </aside>
 
-                </div>
-            </div>
+              </div>
+            </aside>
             <div class="case-card-gallery__media">
-              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-08-return.png" alt="Return" loading="lazy" decoding="async" />
+              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-08-return.png" alt="Stryker field logistics — Return" loading="lazy" decoding="async" />
             </div>
           </div>
         </article>
         <article class="case-card-gallery__slide" id="beat_09_request" data-case-gallery-slide data-card-index="8" aria-hidden="true">
           <div class="case-card-gallery__grid">
-            <div class="case-card-gallery__copy">
+            <div class="case-card-gallery__story">
               <h2 class="case-card-gallery__title">Request</h2>
-              <div class="case-card-gallery__subtitle-row">
-                <p class="case-card-gallery__subtitle">New SKU intake when catalog gaps block the case.</p>
-                <button type="button" class="case-card-gallery__expand" data-card-read-more aria-expanded="false" aria-label="Show more detail">
-                  <svg class="case-card-gallery__expand-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
-                <div class="case-card-gallery__body-detail" data-card-body-detail hidden>
+              <p class="case-card-gallery__subtitle">New SKU intake when catalog gaps block the case.</p>
+              <button type="button" class="case-card-gallery__evidence-trigger" data-evidence-trigger aria-expanded="false" aria-controls="evidence-beat_09_request">Evidence</button>
+            </div>
+            <aside class="case-card-gallery__evidence-rail" id="evidence-beat_09_request" data-evidence-rail hidden role="region" aria-label="Evidence for Request">
+              <header class="case-card-gallery__evidence-rail-header">
+                <h3 class="case-card-gallery__evidence-rail-title">Evidence</h3>
+                <button type="button" class="case-card-gallery__evidence-close" data-evidence-close>Close</button>
+              </header>
+              <div class="case-card-gallery__evidence-rail-scroll" data-evidence-rail-scroll tabindex="-1">
                 <p class="case-card-gallery__body-text">Missing catalog lines capture justification and approval workflow in one request.</p>
                 <p class="case-card-gallery__body-text">Context from the visit carries into intake so ops does not re-ask the hospital story.</p>
           <aside class="case-scan-story__heuristic case-scan-story__heuristic--glass" aria-label="Design lens: Help users recognize, diagnose, and recover from errors">
@@ -431,24 +453,26 @@
             <p class="case-scan-story__heuristic-line case-scan-story__heuristic-line--muted">New part request form with SKU gap, justification, and pending approval state.</p>
           </aside>
 
-                </div>
-            </div>
+              </div>
+            </aside>
             <div class="case-card-gallery__media">
-              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-09-request.png" alt="Request" loading="lazy" decoding="async" />
+              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-09-request.png" alt="Stryker field logistics — Request" loading="lazy" decoding="async" />
             </div>
           </div>
         </article>
         <article class="case-card-gallery__slide" id="beat_10_close_loop" data-case-gallery-slide data-card-index="9" aria-hidden="true">
           <div class="case-card-gallery__grid">
-            <div class="case-card-gallery__copy">
+            <div class="case-card-gallery__story">
               <h2 class="case-card-gallery__title">Close loop</h2>
-              <div class="case-card-gallery__subtitle-row">
-                <p class="case-card-gallery__subtitle">Open work visible before leaving the hospital.</p>
-                <button type="button" class="case-card-gallery__expand" data-card-read-more aria-expanded="false" aria-label="Show more detail">
-                  <svg class="case-card-gallery__expand-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
-                <div class="case-card-gallery__body-detail" data-card-body-detail hidden>
+              <p class="case-card-gallery__subtitle">Open work visible before leaving the hospital.</p>
+              <button type="button" class="case-card-gallery__evidence-trigger" data-evidence-trigger aria-expanded="false" aria-controls="evidence-beat_10_close_loop">Evidence</button>
+            </div>
+            <aside class="case-card-gallery__evidence-rail" id="evidence-beat_10_close_loop" data-evidence-rail hidden role="region" aria-label="Evidence for Close loop">
+              <header class="case-card-gallery__evidence-rail-header">
+                <h3 class="case-card-gallery__evidence-rail-title">Evidence</h3>
+                <button type="button" class="case-card-gallery__evidence-close" data-evidence-close>Close</button>
+              </header>
+              <div class="case-card-gallery__evidence-rail-scroll" data-evidence-rail-scroll tabindex="-1">
                 <p class="case-card-gallery__body-text">Visit summary shows open orders, returns due, and preference updates.</p>
                 <p class="case-card-gallery__body-text">Reps leave with nothing ambiguous—next actions are listed, not implied.</p>
           <aside class="case-scan-story__heuristic case-scan-story__heuristic--glass" aria-label="Design lens: Visibility of system status">
@@ -458,13 +482,14 @@
             <p class="case-scan-story__heuristic-line case-scan-story__heuristic-line--muted">Close loop summary with open orders count, returns due, and preference delta.</p>
           </aside>
 
-                </div>
-            </div>
+              </div>
+            </aside>
             <div class="case-card-gallery__media">
-              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-10-close-loop.png" alt="Close loop" loading="lazy" decoding="async" />
+              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/stryker-field-logistics/beats/beat-10-close-loop.png" alt="Stryker field logistics — Close loop" loading="lazy" decoding="async" />
             </div>
           </div>
         </article>
+
             </div>
           </div>
         </div>

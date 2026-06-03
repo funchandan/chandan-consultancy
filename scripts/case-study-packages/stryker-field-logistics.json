@@ -1,0 +1,311 @@
+{
+  "meta": {
+    "title": "How do field reps run robotic surgery logistics inside the hospital?",
+    "hero_deck": "Field reps coordinate parts at the hospital\u2014orders, serials, delivery, surgical use, and returns\u2014without phone calls and spreadsheets splitting the story.",
+    "hero_bg": {
+      "style": "ticker"
+    },
+    "hero_ticker": {
+      "inbox": "/Users/chandansharma/Documents/New project/assets/case-studies/stryker-field-logistics/hero-ticker",
+      "signoff": "Sally \u00b7 US UX \u00b7 hi-fi iPhone renders v1 \u00b7 portrait ticker pending spacing sign-off",
+      "slides": [
+        {
+          "file": "beat-01-arrive.png",
+          "label": "Arrive",
+          "alt": "Stryker field logistics \u2014 hospital visit context",
+          "layout": "portrait",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "file": "beat-02-preferences.png",
+          "label": "Preferences",
+          "alt": "Surgeon preferences before order",
+          "layout": "portrait",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "file": "beat-04-order-track.png",
+          "label": "Order track",
+          "alt": "Order status without calling ops",
+          "layout": "portrait",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "file": "beat-07-use.png",
+          "label": "Surgical use",
+          "alt": "Record parts used in procedure",
+          "layout": "portrait",
+          "width": 390,
+          "height": 844
+        }
+      ]
+    },
+    "hero_ab": {
+      "enabled": false,
+      "default": "ticker",
+      "decision": "Portrait iPhone ticker from hi-fi beats 01, 02, 04, 07 (John D-STR-05)."
+    },
+    "hero_facts": [
+      {
+        "label": "Program",
+        "value": "Enterprise mobile logistics for robotic surgery field operations. Orders, part-level tracking, delivery, surgical use, returns, and surgeon preferences."
+      },
+      {
+        "label": "Role",
+        "value": "UX lead: visit-to-close journey, mobile IA, hi-fi specs, and engineering-ready handoff for rep-primary workflows."
+      },
+      {
+        "label": "Scope",
+        "value": "Rep-primary mobile app; surgeon as context. Ten-beat gallery aligned to hospital visit lifecycle."
+      }
+    ],
+    "client_safe_name": "Stryker (medical devices)",
+    "slug": "stryker-field-logistics",
+    "scan_layout": "gallery",
+    "study_type": "enterprise-regulated",
+    "study_type_inferred": "enterprise-regulated",
+    "study_type_confidence": 0.9,
+    "target_audience": "product_and_ux_leadership",
+    "export_profile": "enterprise",
+    "tools": [
+      "Figma",
+      "iOS patterns",
+      "journey mapping",
+      "SVG hi-fi pipeline"
+    ],
+    "depth_href": "../_bmad-output/case-studies/stryker-field-logistics-longform.md",
+    "wireframe_inbox": "/Users/chandansharma/Documents/New project/assets/case-studies/stryker-field-logistics/hifi-png",
+    "artefact_set": "hifi-v1",
+    "project_context": {
+      "product": {
+        "label": "Product",
+        "name": "Field logistics (mobile)",
+        "description": "Field representatives visit hospitals, work with surgeons, and manage the full part lifecycle\u2014order, track, deliver, record surgical use, and return unused inventory\u2014with preferences that persist across visits."
+      },
+      "narrative": [
+        {
+          "title": "Problem",
+          "subtitle": "Status lives in fragments",
+          "body": "Reps, surgeons, and hospital ops each hold partial context. Orders, parts, deliveries, usage, and returns sit in different tools\u2014so the next action is ambiguous under time pressure."
+        },
+        {
+          "title": "Solution",
+          "subtitle": "One thumb path through the visit",
+          "body": "A rep-primary mobile flow from arrive \u2192 preferences \u2192 order \u2192 track \u2192 deliver \u2192 use \u2192 return \u2192 request \u2192 close loop, with wireframes visible at every gallery beat."
+        }
+      ]
+    }
+  },
+  "narrative": {
+    "narrative_id": "enterprise-field-logistics-lifecycle",
+    "claims": [
+      {
+        "id": "N1",
+        "statement": "Unify order, part, delivery, use, and return status so reps act in the hospital without calling ops",
+        "proof_expectations": [
+          "method_steps",
+          "artefact_validation",
+          "decision_tradeoff"
+        ]
+      },
+      {
+        "id": "N2",
+        "statement": "Surface surgeon preferences before reorder to reduce wrong-part risk and visit rework",
+        "proof_expectations": [
+          "artefact_validation",
+          "metric_pair"
+        ]
+      }
+    ]
+  },
+  "resources": {
+    "objective_notes": "Design a single mobile path for field reps coordinating robotic surgery parts inside hospitals\u2014from visit start through auditable close.",
+    "method_notes": "PM alignment on 10-beat IA, Sally hi-fi iPhone renders, lifecycle state model, and portfolio gallery wired to the case-study generator (HP field-service pattern).",
+    "role_context": "UX lead: problem framing with John, beat map and hi-fi spec with Sally, copy with Paige, package and publish with Winston/build.",
+    "constraints": [
+      "Rep visits are time-boxed; status must be glanceable",
+      "Part serial/lot tracking is distinct from order rollup",
+      "Client outcome metrics are private\u2014portfolio uses directional labels only",
+      "Event-registration / delegate flows are out of scope"
+    ],
+    "insights": [
+      "Preferences before order prevents wrong-kit rework on repeat visits.",
+      "Part-level status must not collapse into PO rollup alone.",
+      "Delivery splits shipment vs part-at-hospital (OR shelf) states.",
+      "Returns and new-part requests belong in the same app as orders."
+    ],
+    "quotes": [
+      "I need to know if this serial is in the building\u2014not just that the order shipped.",
+      "Surgeon prefs should show up before I build the cart again."
+    ],
+    "recommendations": [
+      "Keep rep-primary IA; surface surgeon context without a second login.",
+      "Separate order track and part track beats in the gallery narrative.",
+      "Record surgical use with case ID for audit-friendly lifecycle.",
+      "Close each visit with open orders, returns due, and preference deltas visible."
+    ]
+  },
+  "artefacts": [
+    {
+      "id": "A01",
+      "kind": "ui_screen",
+      "path": "beats/beat-01-arrive.png",
+      "description": "Hospital visit context \u2014 rep, surgeon, case",
+      "linked_claim_ids": [
+        "N1"
+      ],
+      "caption": "Arrive: active hospital and surgeon context",
+      "sha256_prefix": "c629e9e945962758"
+    },
+    {
+      "id": "A02",
+      "kind": "ui_screen",
+      "path": "beats/beat-02-preferences.png",
+      "description": "Surgeon preferences \u2014 kits, sizes, brands",
+      "linked_claim_ids": [
+        "N2"
+      ],
+      "caption": "Preferences: stored surgeon kits before order",
+      "sha256_prefix": "ca6d6769ff6ec3e1"
+    },
+    {
+      "id": "A03",
+      "kind": "ui_screen",
+      "path": "beats/beat-03-order.png",
+      "description": "Create order with surgeon association",
+      "linked_claim_ids": [
+        "N1",
+        "N2"
+      ],
+      "caption": "Order: line items in visit context",
+      "sha256_prefix": "daabe10ed4eb7acd"
+    },
+    {
+      "id": "A04",
+      "kind": "ui_screen",
+      "path": "beats/beat-04-order-track.png",
+      "description": "Order status timeline",
+      "linked_claim_ids": [
+        "N1"
+      ],
+      "caption": "Order track: placed through fulfilled",
+      "sha256_prefix": "1a175d7d09866c6b"
+    },
+    {
+      "id": "A05",
+      "kind": "ui_screen",
+      "path": "beats/beat-05-part-track.png",
+      "description": "Part serial / lot tracking",
+      "linked_claim_ids": [
+        "N1"
+      ],
+      "caption": "Part track: serial-level status",
+      "sha256_prefix": "3470236dc613493d"
+    },
+    {
+      "id": "A06",
+      "kind": "ui_screen",
+      "path": "beats/beat-06-deliver.png",
+      "description": "Shipment and part-at-site delivery",
+      "linked_claim_ids": [
+        "N1"
+      ],
+      "caption": "Deliver: shipment and OR shelf states",
+      "sha256_prefix": "0f4adc959094db76"
+    },
+    {
+      "id": "A07",
+      "kind": "ui_screen",
+      "path": "beats/beat-07-use.png",
+      "description": "Surgical use recording",
+      "linked_claim_ids": [
+        "N1"
+      ],
+      "caption": "Use: parts consumed in procedure",
+      "sha256_prefix": "ea29b4e678eb3601"
+    },
+    {
+      "id": "A08",
+      "kind": "ui_screen",
+      "path": "beats/beat-08-return.png",
+      "description": "Return / send-back workflow",
+      "linked_claim_ids": [
+        "N1"
+      ],
+      "caption": "Return: send-back in same app",
+      "sha256_prefix": "55b2948d5ea65b9b"
+    },
+    {
+      "id": "A09",
+      "kind": "ui_screen",
+      "path": "beats/beat-09-request.png",
+      "description": "New part request when SKU missing",
+      "linked_claim_ids": [
+        "N2"
+      ],
+      "caption": "Request: catalog gap intake",
+      "sha256_prefix": "f339506e6ba25e35"
+    },
+    {
+      "id": "A10",
+      "kind": "ui_screen",
+      "path": "beats/beat-10-close-loop.png",
+      "description": "Visit summary and next actions",
+      "linked_claim_ids": [
+        "N1",
+        "N2"
+      ],
+      "caption": "Close loop: leave hospital with clarity",
+      "sha256_prefix": "55ac57914310604b"
+    }
+  ],
+  "metrics": [
+    {
+      "id": "M-STR-FL-01",
+      "label": "Gallery lifecycle beats",
+      "value": "10",
+      "verification": "verified"
+    },
+    {
+      "id": "M-STR-FL-02",
+      "label": "Primary persona",
+      "value": "Field rep",
+      "baseline": "Surgeon as context",
+      "verification": "verified"
+    },
+    {
+      "id": "M-STR-FL-03",
+      "label": "Status-call reduction",
+      "value": "directional",
+      "verification": "directional"
+    }
+  ],
+  "voice": {
+    "seniority": "staff_ux",
+    "register": "enterprise"
+  },
+  "media": {
+    "youtube": []
+  },
+  "approvals": {
+    "copy": {
+      "status": "approved",
+      "approved_by": "Paige",
+      "approved_at": "2026-05-19T13:29:10.423961+00:00"
+    },
+    "design": {
+      "status": "approved",
+      "approved_by": "Sally",
+      "approved_at": "2026-05-19T13:29:10.505198+00:00"
+    },
+    "po": {
+      "status": "draft",
+      "approved_by": "",
+      "approved_at": "",
+      "notes": "Scope approved; publish pending G5\u2013G10"
+    }
+  }
+}

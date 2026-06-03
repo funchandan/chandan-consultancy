@@ -73,6 +73,7 @@
    * ------------------------------------------------------------------------- */
   function init(root) {
     if (!root) return;
+    if (root.classList.contains("framework-module--serious")) return;
 
     var inReelMode = document.documentElement.classList.contains("reel-ok");
     var pill = root.querySelector("[data-framework-pill]");
@@ -255,10 +256,6 @@
                * fully draws even if the user jumped straight to the close. */
               if (stepNum <= 4) {
                 markExplored(stepNum);
-              } else if (stepNum === 5) {
-                for (var i = 1; i <= 4; i++) {
-                  if (!state.exploredSteps.has(i)) markExplored(i);
-                }
               }
               if (onboard) onboard.classList.add("is-dismissed");
               /* Do not update the URL on the initial park (-1 → first frame).
@@ -412,6 +409,10 @@
      * and feels too snappy for the filmstrip metaphor. */
     var tweenRaf = 0;
     function smoothScrollToY(targetY, duration) {
+      if (window.WPLenis && window.WPLenis.ready) {
+        window.WPLenis.scrollTo(targetY, { duration: (duration || 850) / 1000 });
+        return;
+      }
       if (tweenRaf) cancelAnimationFrame(tweenRaf);
       duration = duration || 850;
       var startY = window.pageYOffset;
@@ -467,10 +468,21 @@
 
     function setTier(tier) {
       if (!tier || TIERS.indexOf(tier) < 0 || tier === state.tier) return;
+      var previous = state.tier;
       state.tier = tier;
       saveTier(tier);
       applyTier(tier);
       rehydrateRevealsForTier(tier, true);
+      try {
+        root.dispatchEvent(
+          new CustomEvent("framework-tier-changed", {
+            bubbles: true,
+            detail: { tier: tier, previous: previous }
+          })
+        );
+      } catch (_err) {
+        /* CustomEvent unavailable — telemetry may miss tier change */
+      }
     }
 
     function applyTier(tier) {
@@ -558,7 +570,7 @@
       if (explored.length > 0) {
         subject += " — explored: " + explored.join(", ");
       }
-      return "mailto:hello@example.com?subject=" + encodeURIComponent(subject);
+      return "mailto:chandan004sharma@gmail.com?subject=" + encodeURIComponent(subject);
     }
 
     function labelIndex(label) {

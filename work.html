@@ -3,91 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <script>
+    (function () {
+      try {
+        document.documentElement.setAttribute("data-theme", "light");
+      } catch (_e) {}
+    })();
+  </script>
   <title>Work | Chandan Sharma</title>
   <meta name="description" content="Work by Chandan Sharma — from classroom instinct to BYJU's-scale edtech and Fortune 100 healthcare UX. Three case studies." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="share/share.css" />
-  <script src="assets/site-nav.js" defer></script>
+  <link rel="stylesheet" href="assets/noomo-primitives.css?v=8" />
+  <link rel="stylesheet" href="assets/nav-immersive.css?v=5" />
+  <link rel="stylesheet" href="assets/nav-product.css?v=2" />
+  <link rel="stylesheet" href="assets/nav-pill.css?v=8" />
+  <link rel="stylesheet" href="assets/work-product-surface.css?v=1" />
   <link rel="stylesheet" href="assets/vendor/lenis/lenis.css" />
   <link rel="stylesheet" href="assets/motion/wp-lenis.css?v=1" />
+  <script src="assets/site-nav.js" defer></script>
   <script src="assets/vendor/lenis/lenis.min.js" defer></script>
   <script src="assets/motion/wp-lenis.js?v=1" defer></script>
-  <script src="assets/index-marble.js" defer></script>
 </head>
-<body class="share-page work-page">
-  <header class="site-header">
-    <nav class="nav shell" data-site-nav aria-label="Primary">
-      <a class="brand" href="index.html">Chandan Sharma</a>
-      <button type="button" class="nav-menu-toggle" id="site-nav-open" aria-expanded="false" aria-controls="site-nav-dialog" aria-label="Open menu">
-        <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
-        <span class="nav-menu-toggle__label">Menu</span>
-      </button>
-      <dialog id="site-nav-dialog" class="site-nav-dialog" aria-labelledby="site-nav-dialog-title">
-        <div class="site-nav-dialog__panel">
-          <div class="site-nav-dialog__header">
-            <p id="site-nav-dialog-title" class="site-nav-dialog__title">Menu</p>
-            <form method="dialog">
-              <button type="submit" class="site-nav-dialog__close">Close</button>
-            </form>
+<body class="share-page work-page work-page--product">
+  <header
+    class="site-header site-header--product site-header--pill site-header--immersive site-header--on-dark"
+    data-wp-motion="nav-immersive"
+  >
+    <div class="site-header__dock">
+      <nav class="nav nav--product nav--pill" data-site-nav aria-label="Primary">
+        <div class="nav-pill nav-pill--desktop" role="presentation">
+          <a class="nav-pill__brand brand nav__brand" href="index.html" data-nav-brand>Chandan Sharma</a>
+          <div class="nav-pill__links" data-nav-links>
+            <a href="work.html" class="nav-pill__link" aria-current="page">Work</a>
+            <a href="index.html#approach" class="nav-pill__link">Method</a>
+            <a href="index.html#connect" class="nav-pill__link">Connect</a>
+            <a href="about.html" class="nav-pill__link nav-link-secondary" data-nav-item="about">About</a>
           </div>
-          <div class="nav-links nav-links--dialog" data-nav-links-dialog>
-            <a class="active" href="work.html" data-nav-item="work">Work</a>
-            <div class="nav-drawer-group" role="group" aria-labelledby="nav-d-toolkits-label">
-              <p id="nav-d-toolkits-label" class="nav-drawer-group__label">Toolkits</p>
-              <a href="toolkits.html">Toolkits overview</a>
-              <a href="mailto:chandan004sharma@gmail.com?subject=Book%20a%20call&amp;body=Toolkits%20%E2%80%94%20what%20I%27d%20prioritize%3A%20">Signal kit interest</a>
-            </div>
-            <div class="nav-drawer-group" role="group" aria-labelledby="nav-d-services-label">
-              <p id="nav-d-services-label" class="nav-drawer-group__label">Services</p>
-              <a href="services.html">Services overview</a>
-              <a href="services.html#how-it-works">How it works</a>
-              <a href="for-enterprise.html">For enterprise</a>
-            </div>
-            <a href="about.html" data-nav-item="about">About</a>
-            <a class="wp-btn wp-btn--nav nav-cta nav-cta--dialog" href="mailto:chandan004sharma@gmail.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
+          <div class="nav-pill__actions">
+            <a class="nav-pill__cta" href="cv/pdf/cv-design.pdf" download data-nav-cta>
+              <svg class="nav-pill__cta-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false">
+                <path d="M10 2a.75.75 0 0 1 .75.75v8.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V2.75A.75.75 0 0 1 10 2Zm-3.25 12.5a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Z" />
+              </svg>
+              Download Resume
+            </a>
           </div>
         </div>
-      </dialog>
-      <div class="nav-links nav-links--desktop" data-nav-links>
-        <a class="active" href="work.html" data-nav-item="work">Work</a>
-        <div class="nav-disclosure" data-nav-disclosure>
-          <button type="button" class="nav-disclosure__trigger" id="nav-trigger-toolkits" data-nav-disclosure-trigger aria-expanded="false" aria-haspopup="true" aria-controls="nav-panel-toolkits">
-            Toolkits
-            <span class="nav-disclosure__chevron" aria-hidden="true"></span>
+
+        <div class="nav-pill nav-pill--mobile" role="presentation">
+          <a class="nav-pill__brand brand nav__brand" href="index.html" data-nav-brand>Chandan Sharma</a>
+          <button type="button" class="nav-menu-toggle" id="site-nav-open" aria-expanded="false" aria-controls="site-nav-dialog" aria-label="Open menu">
+            <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
+            <span class="nav-menu-toggle__label">Menu</span>
           </button>
-          <div class="nav-disclosure__panel" id="nav-panel-toolkits" data-nav-disclosure-panel role="region" aria-labelledby="nav-trigger-toolkits" hidden>
-            <p class="nav-disclosure__eyebrow">Toolkits</p>
-            <ul class="nav-disclosure__list">
-              <li><a href="toolkits.html">Overview</a></li>
-              <li><a href="mailto:chandan004sharma@gmail.com?subject=Book%20a%20call&amp;body=Toolkits%20%E2%80%94%20what%20I%27d%20buy%3A%20">Tell me what you&rsquo;d buy</a></li>
-            </ul>
-          </div>
         </div>
-        <div class="nav-disclosure" data-nav-disclosure>
-          <button type="button" class="nav-disclosure__trigger" id="nav-trigger-services" data-nav-disclosure-trigger aria-expanded="false" aria-haspopup="true" aria-controls="nav-panel-services">
-            Services
-            <span class="nav-disclosure__chevron" aria-hidden="true"></span>
-          </button>
-          <div class="nav-disclosure__panel" id="nav-panel-services" data-nav-disclosure-panel role="region" aria-labelledby="nav-trigger-services" hidden>
-            <p class="nav-disclosure__eyebrow">Services</p>
-            <ul class="nav-disclosure__list">
-              <li><a href="services.html">Overview</a></li>
-              <li><a href="services.html#how-it-works">How it works</a></li>
-              <li><a href="for-enterprise.html">For enterprise</a></li>
-            </ul>
+
+        <dialog id="site-nav-dialog" class="site-nav-dialog" aria-labelledby="site-nav-dialog-title">
+          <div class="site-nav-dialog__panel">
+            <div class="site-nav-dialog__header">
+              <p id="site-nav-dialog-title" class="site-nav-dialog__title">Menu</p>
+              <form method="dialog">
+                <button type="submit" class="site-nav-dialog__close">Close</button>
+              </form>
+            </div>
+            <div class="nav-links nav-links--dialog" data-nav-links-dialog>
+              <a href="work.html" class="nav-pill__link" aria-current="page">Work</a>
+              <a href="index.html#approach" class="nav-pill__link">Method</a>
+              <a href="index.html#connect" class="nav-pill__link">Connect</a>
+              <a href="about.html" class="nav-pill__link" data-nav-item="about">About</a>
+              <a class="nav-pill__cta" href="cv/pdf/cv-design.pdf" download data-nav-cta>
+                <svg class="nav-pill__cta-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false">
+                  <path d="M10 2a.75.75 0 0 1 .75.75v8.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V2.75A.75.75 0 0 1 10 2Zm-3.25 12.5a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Z" />
+                </svg>
+                Download Resume
+              </a>
+              <div class="nav-drawer-group nav-drawer-group--tertiary" role="group" aria-labelledby="nav-d-more-label">
+                <p id="nav-d-more-label" class="nav-drawer-group__label">More</p>
+                <a href="services.html">Services</a>
+                <a href="toolkits.html">Toolkits</a>
+                <a href="index.html#work">Featured on home</a>
+              </div>
+            </div>
           </div>
-        </div>
-        <a href="about.html" data-nav-item="about">About</a>
-      </div>
-      <a class="wp-btn wp-btn--nav nav-cta" href="mailto:chandan004sharma@gmail.com?subject=Book%20a%20call" data-nav-cta>Book a call</a>
-    </nav>
+        </dialog>
+      </nav>
+    </div>
   </header>
 
   <main id="main" tabindex="-1">
-    <section class="share-hero section">
+    <section class="share-hero section" aria-labelledby="work-hero-heading">
       <div class="shell narrow">
         <p class="eyebrow">Work</p>
-        <h1>Research that ships. Design that scales.</h1>
+        <h1 id="work-hero-heading">Research that ships. Design that scales.</h1>
         <p class="share-hero__quote">Nine years from edtech at scale to Fortune 100 healthcare &mdash; leading teams, systems, and 0&rarr;1 products.</p>
         <p class="consulting-hero-lede">I started in classrooms and fellowship programs&mdash;explaining ideas until they land. That habit carried me to <strong>BYJU&rsquo;s Future School</strong> at global edtech scale (eight countries, research with kids at volume), and into <strong>Fortune 100</strong> healthcare delivery with <strong>Stryker</strong> and <strong>HP</strong>&mdash;where a confused screen has real consequences. Below are three projects that show the same bar: clarity first, evidence in the room, recommendations you can ship. Client names are anonymized where required.</p>
       </div>
@@ -104,20 +114,20 @@
           <div class="share-case-card__copy">
             <p class="share-case-card__eyebrow">Foundational UX &middot; K-8</p>
             <h2 class="share-case-card__title">How do we make earn-and-spend legible before scaling the rewards marketplace?</h2>
-            <p class="share-case-card__deck">Foundational study: design-system stimulus, learner testing, and shippable decisions—one ledger and onboarding before marketplace UI scaled.</p>
+            <p class="share-case-card__deck">Earn-and-spend wasn&rsquo;t legible while marketplace UI was scaling. I ran moderated sessions on production-aligned screens and staged ship: one ledger and onboarding before the shop.</p>
             <span class="share-case-card__arrow" aria-hidden="true">&rarr;</span>
           </div>
         </a>
 
         <a class="share-case-card share-case-card--dark" href="case-studies/hp-field-service-ai.html">
           <div class="share-case-card__visual share-case-card__visual--device">
-<div class="share-case-card__device-stage">
+            <div class="share-case-card__device-stage">
               <img class="share-case-card__device-img--hp" src="assets/case-studies/hp-field-service-ai/hero-ticker/diagnosis-ai.png" width="390" height="844" alt="" loading="lazy" decoding="async" />
             </div>
           </div>
           <div class="share-case-card__copy">
             <h2 class="share-case-card__title">How do we help field technicians act faster with AI they can trust?</h2>
-            <p class="share-case-card__deck">Pilot reviews showed technicians hesitating between diagnosis and parts ordering. We redesigned the flow so the next action was clear, explainable, and easy to override.</p>
+            <p class="share-case-card__deck">Technicians stalled between AI diagnosis and parts order on the truck. We redesigned the handoff so the next step was obvious, explained, and overrideable when the model was wrong.</p>
             <span class="share-case-card__arrow" aria-hidden="true">&rarr;</span>
           </div>
         </a>
@@ -130,7 +140,7 @@
           </div>
           <div class="share-case-card__copy">
             <h2 class="share-case-card__title">How do field reps run robotic surgery logistics inside the hospital?</h2>
-            <p class="share-case-card__deck">Field reps coordinate parts at the hospital&mdash;orders, serials, delivery, surgical use, and returns&mdash;without phone calls and spreadsheets splitting the story.</p>
+            <p class="share-case-card__deck">Reps juggled orders, serials, delivery, use, and returns across calls and spreadsheets. One mobile thread now runs the visit&mdash;preferences through auditable close.</p>
             <span class="share-case-card__arrow" aria-hidden="true">&rarr;</span>
           </div>
         </a>
@@ -138,10 +148,16 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="shell footer-row">
-      <span>Chandan Sharma</span>
-      <a href="mailto:chandan004sharma@gmail.com">chandan004sharma@gmail.com</a>
+  <footer class="site-footer site-footer--product">
+    <div class="shell site-footer__row">
+      <span class="site-footer__name">Chandan Sharma</span>
+      <nav class="site-footer__tertiary" aria-label="More">
+        <a class="wp-link-text" href="index.html#work">Home</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a class="wp-link-text" href="services.html">Services</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a class="wp-link-text" href="mailto:chandan004sharma@gmail.com">Email</a>
+      </nav>
     </div>
   </footer>
 </body>

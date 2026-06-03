@@ -38,6 +38,24 @@
 .framework-module {
   padding-bottom: var(--space-section-y);
 }
+
+.framework-meta-cue {
+  font-weight: 600;
+  color: var(--ink-soft, rgba(45, 70, 100, 0.72));
+}
+
+.framework-tier-hint {
+  margin: 0.35rem 0 0;
+  max-width: 42ch;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--muted, rgba(56, 90, 130, 0.78));
+}
+
+.framework-tier-hint strong {
+  font-weight: 650;
+  color: var(--ink, #1a3550);
+}
 .framework-module__shell {
   display: grid;
   gap: var(--space-block);
@@ -534,7 +552,7 @@
  * When absent, the vertical fallback above renders unchanged.
  *
  * Locked spec:
- *   - Sticky stage, viewport-pinned for 500vh of scroll runway (5 frames)
+ *   - Sticky stage, viewport-pinned for 450vh of scroll runway (5 frames)
  *   - Horizontal translateX scrub on the puzzle (acts as the film track)
  *   - Tier toggle pinned top of stage; HUD graph at top
  *   - Polaroid develop animation gated to the parked frame only
@@ -545,7 +563,7 @@
  * ========================================================================== */
 
 :root {
-  --reel-runway-vh: 500;
+  --reel-runway-vh: 450;
   --reel-frame-pad: clamp(24px, 6vw, 64px);
   /* Align with styles.css --methodology-canvas-bg (single methodology field) */
   --reel-cyc-bg: var(--methodology-canvas-bg, #f4efe6);

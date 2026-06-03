@@ -6,10 +6,14 @@
   <title>How do we help field technicians act faster with AI they can trust? | Case study</title>
   <meta name="description" content="How do we help field technicians act faster with AI they can trust? Enterprise field-service UX for AI-assisted diagnosis, parts ordering, and first-time resolution on the truck." />
   <link rel="stylesheet" href="../styles.css" />
-  <link rel="stylesheet" href="../assets/case-study-card-gallery.css?v=2" />
+  <link rel="stylesheet" href="../assets/case-study-card-gallery.css?v=6" />
   <script src="../assets/site-nav.js" defer></script>
+  <link rel="stylesheet" href="../assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="../assets/motion/wp-lenis.css?v=1" />
+  <script src="../assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="../assets/motion/wp-lenis.js?v=1" defer></script>
   <script src="../assets/case-study-scan.js" defer></script>
-  <script src="../assets/case-study-card-gallery.js?v=2" defer></script>
+  <script src="../assets/case-study-card-gallery.js?v=6" defer></script>
   <script src="../assets/case-study-hero-ab.js" defer></script>
   <script src="../assets/share-case-back.js" defer></script>
 </head>
@@ -212,15 +216,17 @@
             <div class="case-card-gallery__track" data-case-card-track>
         <article class="case-card-gallery__slide is-active" id="beat_objective" data-case-gallery-slide data-card-index="0">
           <div class="case-card-gallery__grid">
-            <div class="case-card-gallery__copy">
+            <div class="case-card-gallery__story">
               <h2 class="case-card-gallery__title">Objective</h2>
-              <div class="case-card-gallery__subtitle-row">
-                <p class="case-card-gallery__subtitle">Move from symptom to a defensible next action on site.</p>
-                <button type="button" class="case-card-gallery__expand" data-card-read-more aria-expanded="false" aria-label="Show more detail">
-                  <svg class="case-card-gallery__expand-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
-                <div class="case-card-gallery__body-detail" data-card-body-detail hidden>
+              <p class="case-card-gallery__subtitle">Move from symptom to a defensible next action on site.</p>
+              <button type="button" class="case-card-gallery__evidence-trigger" data-evidence-trigger aria-expanded="false" aria-controls="evidence-beat_objective">Evidence</button>
+            </div>
+            <aside class="case-card-gallery__evidence-rail" id="evidence-beat_objective" data-evidence-rail hidden role="region" aria-label="Evidence for Objective">
+              <header class="case-card-gallery__evidence-rail-header">
+                <h3 class="case-card-gallery__evidence-rail-title">Evidence</h3>
+                <button type="button" class="case-card-gallery__evidence-close" data-evidence-close>Close</button>
+              </header>
+              <div class="case-card-gallery__evidence-rail-scroll" data-evidence-rail-scroll tabindex="-1">
                 <p class="case-card-gallery__body-text">Help technicians commit to the right diagnosis and parts path faster, with AI they can explain to the customer.</p>
                 <p class="case-card-gallery__body-text">Success meant less time between seeing signals and taking an action they could defend to dispatch and the customer, not longer recommendation lists.</p>
           <aside class="case-scan-story__heuristic case-scan-story__heuristic--glass" aria-label="Design lens: Match between system and real world">
@@ -230,24 +236,26 @@
             <p class="case-scan-story__heuristic-line case-scan-story__heuristic-line--muted">Field-app prototypes framed one truck visit: symptom → verify → commit → explain.</p>
           </aside>
 
-                </div>
-            </div>
+              </div>
+            </aside>
             <div class="case-card-gallery__media">
-              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/hp-field-service-ai/progression/for-card/beat-objective.png" alt="Objective" loading="lazy" decoding="async" />
+              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/hp-field-service-ai/progression/for-card/beat-objective.png" alt="Objective: field app home and visit framing" loading="lazy" decoding="async" />
             </div>
           </div>
         </article>
         <article class="case-card-gallery__slide" id="beat_problem" data-case-gallery-slide data-card-index="1" aria-hidden="true">
           <div class="case-card-gallery__grid">
-            <div class="case-card-gallery__copy">
+            <div class="case-card-gallery__story">
               <h2 class="case-card-gallery__title">Problem</h2>
-              <div class="case-card-gallery__subtitle-row">
-                <p class="case-card-gallery__subtitle">Commit latency blocked first-time resolution.</p>
-                <button type="button" class="case-card-gallery__expand" data-card-read-more aria-expanded="false" aria-label="Show more detail">
-                  <svg class="case-card-gallery__expand-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
-                <div class="case-card-gallery__body-detail" data-card-body-detail hidden>
+              <p class="case-card-gallery__subtitle">Commit latency blocked first-time resolution.</p>
+              <button type="button" class="case-card-gallery__evidence-trigger" data-evidence-trigger aria-expanded="false" aria-controls="evidence-beat_problem">Evidence</button>
+            </div>
+            <aside class="case-card-gallery__evidence-rail" id="evidence-beat_problem" data-evidence-rail hidden role="region" aria-label="Evidence for Problem">
+              <header class="case-card-gallery__evidence-rail-header">
+                <h3 class="case-card-gallery__evidence-rail-title">Evidence</h3>
+                <button type="button" class="case-card-gallery__evidence-close" data-evidence-close>Close</button>
+              </header>
+              <div class="case-card-gallery__evidence-rail-scroll" data-evidence-rail-scroll tabindex="-1">
                 <p class="case-card-gallery__body-text">Technicians had data and AI suggestions but still hesitated before ordering parts.</p>
                 <p class="case-card-gallery__body-text">The gap between seeing signals and placing an order they could explain widened when the UI showed many options without a clear primary path.</p>
               <ul class="case-card-gallery__learner-quotes" aria-label="Learner quotes">
@@ -260,24 +268,26 @@
             <p class="case-scan-story__heuristic-line case-scan-story__heuristic-line--muted">Diagnosis screens where hesitation before parts order blocked first-time resolution.</p>
           </aside>
 
-                </div>
-            </div>
+              </div>
+            </aside>
             <div class="case-card-gallery__media">
-              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/hp-field-service-ai/progression/for-card/beat-problem.png" alt="Problem" loading="lazy" decoding="async" />
+              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/hp-field-service-ai/progression/for-card/beat-problem.png" alt="Problem: hesitation before parts commit" loading="lazy" decoding="async" />
             </div>
           </div>
         </article>
         <article class="case-card-gallery__slide" id="beat_role_method" data-case-gallery-slide data-card-index="2" aria-hidden="true">
           <div class="case-card-gallery__grid">
-            <div class="case-card-gallery__copy">
+            <div class="case-card-gallery__story">
               <h2 class="case-card-gallery__title"><span class="visually-hidden">My role / Methodology: </span>My role and methodology</h2>
-              <div class="case-card-gallery__subtitle-row">
-                <p class="case-card-gallery__subtitle">User experience lead with service, delivery, and engineering.</p>
-                <button type="button" class="case-card-gallery__expand" data-card-read-more aria-expanded="false" aria-label="Show more detail">
-                  <svg class="case-card-gallery__expand-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
-                <div class="case-card-gallery__body-detail" data-card-body-detail hidden>
+              <p class="case-card-gallery__subtitle">User experience lead with service, delivery, and engineering.</p>
+              <button type="button" class="case-card-gallery__evidence-trigger" data-evidence-trigger aria-expanded="false" aria-controls="evidence-beat_role_method">Evidence</button>
+            </div>
+            <aside class="case-card-gallery__evidence-rail" id="evidence-beat_role_method" data-evidence-rail hidden role="region" aria-label="Evidence for My role and methodology">
+              <header class="case-card-gallery__evidence-rail-header">
+                <h3 class="case-card-gallery__evidence-rail-title">Evidence</h3>
+                <button type="button" class="case-card-gallery__evidence-close" data-evidence-close>Close</button>
+              </header>
+              <div class="case-card-gallery__evidence-rail-scroll" data-evidence-rail-scroll tabindex="-1">
                 <p class="case-card-gallery__body-text">I led journey-to-screen design for diagnosis, AI recommendation, and parts ordering.</p>
                 <p class="case-card-gallery__body-text">Mapped decision latency with field leads, prototyped AI states in Figma, ran moderated flows with pilot technicians, and aligned handoff specs with engineering.</p>
           <aside class="case-scan-story__heuristic case-scan-story__heuristic--glass" aria-label="Design lens: Consistency and standards">
@@ -287,24 +297,26 @@
             <p class="case-scan-story__heuristic-line case-scan-story__heuristic-line--muted">Shared diagnosis, AI-state, and ordering patterns—validated with field leads before handoff.</p>
           </aside>
 
-                </div>
-            </div>
+              </div>
+            </aside>
             <div class="case-card-gallery__media">
-              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/hp-field-service-ai/progression/for-card/beat-role.png" alt="My role and methodology" loading="lazy" decoding="async" />
+              <img class="case-card-gallery__wireframe-img" src="../assets/case-studies/hp-field-service-ai/progression/for-card/beat-role.png" alt="Role: end-to-end journey alignment" loading="lazy" decoding="async" />
             </div>
           </div>
         </article>
-        <article class="case-card-gallery__slide" id="beat_insights" data-case-gallery-slide data-card-index="3" aria-hidden="true">
+        <article class="case-card-gallery__slide is-evidence-open" id="beat_insights" data-case-gallery-slide data-card-index="3" aria-hidden="true">
           <div class="case-card-gallery__grid">
-            <div class="case-card-gallery__copy">
+            <div class="case-card-gallery__story">
               <h2 class="case-card-gallery__title"><span class="visually-hidden">Insights: </span>User testing</h2>
-              <div class="case-card-gallery__subtitle-row">
-                <p class="case-card-gallery__subtitle">What technicians said matched the screens they used.</p>
-                <button type="button" class="case-card-gallery__expand" data-card-read-more aria-expanded="false" aria-label="Show more detail">
-                  <svg class="case-card-gallery__expand-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
-                <div class="case-card-gallery__body-detail" data-card-body-detail hidden>
+              <p class="case-card-gallery__subtitle">What technicians said matched the screens they used.</p>
+              <button type="button" class="case-card-gallery__evidence-trigger" data-evidence-trigger aria-expanded="true" aria-controls="evidence-beat_insights">Evidence</button>
+            </div>
+            <aside class="case-card-gallery__evidence-rail is-open" id="evidence-beat_insights" data-evidence-rail data-evidence-default-open="true" role="region" aria-label="Evidence for User testing">
+              <header class="case-card-gallery__evidence-rail-header">
+                <h3 class="case-card-gallery__evidence-rail-title">Evidence</h3>
+                <button type="button" class="case-card-gallery__evidence-close" data-evidence-close>Close</button>
+              </header>
+              <div class="case-card-gallery__evidence-rail-scroll" data-evidence-rail-scroll tabindex="-1">
                 <p class="case-card-gallery__body-text">Field walkthroughs favored sequence over volume on the truck.</p>
           <ul class="case-scan-story__bullets" aria-label="Themes">
 <li>Verify-first sequence beats long ranked lists.</li><li>Commit latency matters more than model scores.</li><li>Override paths must feel safe, not punitive.</li>          </ul>
@@ -315,24 +327,26 @@
             <p class="case-scan-story__heuristic-line case-scan-story__heuristic-line--muted">Themes tied to diagnosis and parts frames in pilot review.</p>
           </aside>
 
-                </div>
-            </div>
+              </div>
+            </aside>
             <div class="case-card-gallery__media">
-              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/hp-field-service-ai/progression/for-card/beat-insights.png" alt="User testing" loading="lazy" decoding="async" />
+              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/hp-field-service-ai/progression/for-card/beat-insights.png" alt="User testing: AI states and technician walkthroughs" loading="lazy" decoding="async" />
             </div>
           </div>
         </article>
-        <article class="case-card-gallery__slide" id="beat_recommendations" data-case-gallery-slide data-card-index="4" aria-hidden="true">
+        <article class="case-card-gallery__slide is-evidence-open" id="beat_recommendations" data-case-gallery-slide data-card-index="4" aria-hidden="true">
           <div class="case-card-gallery__grid">
-            <div class="case-card-gallery__copy">
+            <div class="case-card-gallery__story">
               <h2 class="case-card-gallery__title"><span class="visually-hidden">Recommendations: </span>Recommendations and implementation guide</h2>
-              <div class="case-card-gallery__subtitle-row">
-                <p class="case-card-gallery__subtitle">Agency beats cleverness on the truck.</p>
-                <button type="button" class="case-card-gallery__expand" data-card-read-more aria-expanded="false" aria-label="Show more detail">
-                  <svg class="case-card-gallery__expand-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
-                <div class="case-card-gallery__body-detail" data-card-body-detail hidden>
+              <p class="case-card-gallery__subtitle">Agency beats cleverness on the truck.</p>
+              <button type="button" class="case-card-gallery__evidence-trigger" data-evidence-trigger aria-expanded="true" aria-controls="evidence-beat_recommendations">Evidence</button>
+            </div>
+            <aside class="case-card-gallery__evidence-rail is-open" id="evidence-beat_recommendations" data-evidence-rail data-evidence-default-open="true" role="region" aria-label="Evidence for Recommendations and implementation guide">
+              <header class="case-card-gallery__evidence-rail-header">
+                <h3 class="case-card-gallery__evidence-rail-title">Evidence</h3>
+                <button type="button" class="case-card-gallery__evidence-close" data-evidence-close>Close</button>
+              </header>
+              <div class="case-card-gallery__evidence-rail-scroll" data-evidence-rail-scroll tabindex="-1">
                 <p class="case-card-gallery__body-text">Next-best action, scan-and-confirm parts, rationale on every suggestion.</p>
           <h3 class="case-scan-story__subhead">Implementation guide</h3>
           <ul class="case-scan-story__impl"><li>One next-best action with explicit alternates.</li><li>Scan-and-confirm parts; context carries into ordering.</li></ul>
@@ -345,13 +359,14 @@
             <p class="case-scan-story__heuristic-line case-scan-story__heuristic-line--muted">Rationale, scan-and-confirm, context into ordering.</p>
           </aside>
 
-                </div>
-            </div>
+              </div>
+            </aside>
             <div class="case-card-gallery__media">
-              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/hp-field-service-ai/progression/for-card/beat-recommendations.png" alt="Recommendations and implementation guide" loading="lazy" decoding="async" />
+              <img class="case-card-gallery__wireframe-img case-card-gallery__wireframe-img--portrait" src="../assets/case-studies/hp-field-service-ai/progression/for-card/beat-recommendations.png" alt="Recommendations: ordering with carried context" loading="lazy" decoding="async" />
             </div>
           </div>
         </article>
+
             </div>
           </div>
         </div>

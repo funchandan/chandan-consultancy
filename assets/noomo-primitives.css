@@ -296,8 +296,8 @@ body.home-page .site-header--on-dark .wp-pill--header {
 
 .wp-connect__inner {
   max-width: 40rem;
-  padding: var(--wp-text-box);
-  margin: var(--wp-text-box);
+  padding: var(--wp-text-box) 16px;
+  margin: var(--wp-text-box) 16px;
 }
 
 .wp-connect__lede {

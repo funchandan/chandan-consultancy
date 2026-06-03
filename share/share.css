@@ -108,6 +108,7 @@ body.work-page.has-index-marble .site-header {
 .share-hero {
   padding-top: clamp(28px, 5vw, 48px);
   padding-bottom: clamp(20px, 3vw, 32px);
+  padding-inline: 16px;
 }
 
 .share-hero h1 {

@@ -3,32 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <script>
+    (function () {
+      try {
+        document.documentElement.setAttribute("data-theme", "light");
+      } catch (_e) {}
+    })();
+  </script>
   <title>Work | Chandan Sharma</title>
-  <meta name="description" content="Three case studies: foundational learning, trustworthy field AI, and mobile logistics in high-stakes operations." />
+  <meta name="description" content="Work by Chandan Sharma — from classroom instinct to BYJU's-scale edtech and Fortune 100 healthcare UX. Three case studies." />
   <meta property="og:title" content="Work | Chandan Sharma" />
   <meta property="og:description" content="Research that ships. Design that scales. Nine years from edtech at scale to Fortune 100 healthcare." />
   <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
   <link rel="stylesheet" href="share.css" />
+  <link rel="stylesheet" href="../assets/noomo-primitives.css?v=8" />
+  <link rel="stylesheet" href="../assets/work-product-surface.css?v=1" />
+  <link rel="stylesheet" href="share-work-product.css?v=1" />
 </head>
-<body class="share-page">
+<body class="share-page work-page work-page--product">
   <a class="skip-to-content" href="#main">Skip to content</a>
   <header class="share-header">
     <nav class="share-nav shell" aria-label="Primary">
-      <span class="brand brand--static">Chandan Sharma</span>
+      <a class="brand" href="../index.html">Chandan Sharma</a>
       <ul class="share-nav__links">
         <li><a href="work.html" class="is-active" aria-current="page">Work</a></li>
         <li><a href="about.html">About</a></li>
+        <li><a href="../work.html">Full site</a></li>
         <li><a href="mailto:chandan004sharma@gmail.com">Email</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="main" tabindex="-1">
-    <section class="share-hero section">
+    <section class="share-hero section" aria-labelledby="work-hero-heading">
       <div class="shell narrow">
-        <h1>Research that ships. Design that scales.</h1>
+        <p class="eyebrow">Work</p>
+        <h1 id="work-hero-heading">Research that ships. Design that scales.</h1>
         <p class="share-hero__quote">Nine years from edtech at scale to Fortune 100 healthcare &mdash; leading teams, systems, and 0&rarr;1 products.</p>
+        <p class="consulting-hero-lede">I started in classrooms and fellowship programs&mdash;explaining ideas until they land. That habit carried me to <strong>BYJU&rsquo;s Future School</strong> at global edtech scale (eight countries, research with kids at volume), and into <strong>Fortune 100</strong> healthcare delivery with <strong>Stryker</strong> and <strong>HP</strong>&mdash;where a confused screen has real consequences. Below are three projects that show the same bar: clarity first, evidence in the room, recommendations you can ship. Client names are anonymized where required.</p>
 
         <div class="share-cred-ticker" aria-label="Credentials at a glance">
           <div class="share-cred-ticker__lane" data-cred-lane="orgs" style="--cred-duration: 48s">
@@ -109,23 +125,26 @@
       <div class="shell share-work-grid">
 
         <a class="share-case-card" href="../case-studies/points-marketplace-foundational.html?from=share">
-          <div class="share-case-card__visual">
-            <img class="share-case-card__thumb share-case-card__thumb--points" src="../assets/case-studies/points-marketplace-foundational/hero-ticker/mobile-marketplace-landing-v1.png" width="1200" height="960" alt="" loading="lazy" decoding="async" />
+          <div class="share-case-card__visual share-case-card__visual--device">
+            <div class="share-case-card__device-stage">
+              <img class="share-case-card__device-img--points" src="../assets/case-studies/points-marketplace-foundational/hero-ticker/mobile-marketplace-landing-v1.png" width="390" height="844" alt="" loading="lazy" decoding="async" />
+            </div>
           </div>
           <div class="share-case-card__copy">
             <p class="share-case-card__eyebrow">Foundational UX &middot; K-8</p>
-            <h2 class="share-case-card__title">What should a loyalty program look like for young learners?</h2>
-            <p class="share-case-card__deck">After class 8, attendance and time-on-platform dropped while points piled up unused. We reframed earn-and-spend before scaling rewards UI.</p>
+            <h2 class="share-case-card__title">How do we make earn-and-spend legible before scaling the rewards marketplace?</h2>
+            <p class="share-case-card__deck">Foundational study: design-system stimulus, learner testing, and shippable decisions—one ledger and onboarding before marketplace UI scaled.</p>
             <span class="share-case-card__arrow" aria-hidden="true">&rarr;</span>
           </div>
         </a>
 
         <a class="share-case-card share-case-card--dark" href="../case-studies/hp-field-service-ai.html?from=share">
-          <div class="share-case-card__visual">
-            <img class="share-case-card__thumb share-case-card__thumb--hp" src="../assets/case-studies/hp-field-service-ai/hero-ticker/diagnosis-ai.png" width="1200" height="960" alt="" loading="lazy" decoding="async" />
+          <div class="share-case-card__visual share-case-card__visual--device">
+            <div class="share-case-card__device-stage">
+              <img class="share-case-card__device-img--hp" src="../assets/case-studies/hp-field-service-ai/hero-ticker/diagnosis-ai.png" width="390" height="844" alt="" loading="lazy" decoding="async" />
+            </div>
           </div>
           <div class="share-case-card__copy">
-            <p class="share-case-card__eyebrow">AI-assisted workflows &middot; Enterprise</p>
             <h2 class="share-case-card__title">How do we help field technicians act faster with AI they can trust?</h2>
             <p class="share-case-card__deck">Pilot reviews showed technicians hesitating between diagnosis and parts ordering. We redesigned the flow so the next action was clear, explainable, and easy to override.</p>
             <span class="share-case-card__arrow" aria-hidden="true">&rarr;</span>
@@ -133,13 +152,14 @@
         </a>
 
         <a class="share-case-card" href="../case-studies/stryker-field-logistics.html?from=share">
-          <div class="share-case-card__visual">
-            <img class="share-case-card__thumb share-case-card__thumb--stryker" src="../assets/case-studies/stryker-field-logistics/hero-ticker/beat-01-arrive.png" width="1200" height="960" alt="" loading="lazy" decoding="async" />
+          <div class="share-case-card__visual share-case-card__visual--device">
+            <div class="share-case-card__device-stage">
+              <img class="share-case-card__device-img--stryker" src="../assets/case-studies/stryker-field-logistics/hero-ticker/beat-01-arrive.png" width="390" height="844" alt="" loading="lazy" decoding="async" />
+            </div>
           </div>
           <div class="share-case-card__copy">
-            <p class="share-case-card__eyebrow">Mobile logistics &middot; Regulated healthcare</p>
             <h2 class="share-case-card__title">How do field reps run robotic surgery logistics inside the hospital?</h2>
-            <p class="share-case-card__deck">Field reps coordinate parts at the hospital: orders, serials, delivery, surgical use, and returns, without phone calls and spreadsheets splitting the story.</p>
+            <p class="share-case-card__deck">Field reps coordinate parts at the hospital&mdash;orders, serials, delivery, surgical use, and returns&mdash;without phone calls and spreadsheets splitting the story.</p>
             <span class="share-case-card__arrow" aria-hidden="true">&rarr;</span>
           </div>
         </a>

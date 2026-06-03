@@ -6,7 +6,9 @@ body.home-page #work {
   overflow: hidden;
   background: var(--wp-black, #000) !important;
   color: var(--wp-white, #fff);
+  margin: 16px;
   padding-block: clamp(4rem, 10vh, 5rem) clamp(4rem, 12vh, 6rem);
+  padding-inline: 16px;
 }
 
 .wp-work-atmosphere {
@@ -109,14 +111,19 @@ body.home-page #work > .shell {
 
 .wp-project-case--compact + .wp-project-case--compact {
   margin-top: 0;
-  padding-top: 0;
+  padding-top: calc(clamp(1.5rem, 4vh, 2.25rem) + var(--wp-text-box, 2px));
   border-top: 1px solid color-mix(in srgb, var(--wp-white, #fff) 10%, transparent);
+}
+
+.wp-project-case--compact .wp-project-case__inner {
+  align-items: start;
+  padding-block: calc(1.25rem + var(--wp-text-box, 2px));
 }
 
 .wp-project-case__inner {
   display: grid;
   gap: calc(clamp(2rem, 5vw, 4rem) + var(--wp-text-box, 2px));
-  align-items: center;
+  align-items: start;
 }
 
 .wp-project-case__copy {
@@ -320,13 +327,10 @@ body.home-page #work > .shell {
   }
 }
 
-/* Compact rows — title, meta, one line, link */
-.wp-project-case--compact .wp-project-case__inner {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: calc(1rem + var(--wp-text-box, 2px)) calc(1.25rem + var(--wp-text-box, 2px));
-  align-items: start;
-  padding-block: calc(1.25rem + var(--wp-text-box, 2px));
+/* Compact rows — title, meta, one line, link (grid layout in wp-work-peek.css) */
+.wp-project-case--compact .wp-project-case__copy {
+  margin: 0;
+  padding: 0;
 }
 
 .wp-project-case--compact .wp-project-case__index {
@@ -341,6 +345,8 @@ body.home-page #work > .shell {
   margin: 0 0 calc(0.35rem + var(--wp-text-box, 2px));
   padding: 0;
   font-size: clamp(1.25rem, 3vw, 1.75rem);
+  line-height: 25px;
+  letter-spacing: -0.2px;
 }
 
 .wp-project-case--compact .wp-project-case__meta {
@@ -353,8 +359,8 @@ body.home-page #work > .shell {
   margin: 0 0 calc(0.75rem + var(--wp-text-box, 2px));
   padding: 0;
   max-width: 52ch;
-  font-family: var(--wp-font-ui);
-  font-size: var(--wp-text-body, calc(1rem + 2px));
+  font-family: var(--wp-font-prose, "Oxygen", "Inter", system-ui, sans-serif);
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.45;
   color: color-mix(in srgb, var(--wp-white, #fff) 88%, transparent);

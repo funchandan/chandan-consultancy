@@ -152,7 +152,11 @@ body.home-page--product .wp-project-case--anchor + .wp-project-case--compact {
 
 body.home-page--product .wp-project-case--compact + .wp-project-case--compact {
   border-top: none;
-  padding-top: 0.5rem;
+  padding-top: clamp(1.5rem, 4vh, 2.25rem);
+}
+
+body.home-page--product .wp-project-case--compact .wp-project-case__copy {
+  padding-inline: 0;
 }
 
 body.home-page--product .wp-project-case--anchor .wp-project-case__outcomes {
@@ -221,7 +225,7 @@ body.home-page--product .wp-project-case--anchor .wp-project-case__proof {
   padding: 0;
   max-width: 38ch;
   font-family: var(--wp-font-prose, "Oxygen", "Inter", system-ui, sans-serif);
-  font-size: clamp(0.9375rem, 1.35vw, 1.0625rem);
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.45;
   color: var(--wp-index-prose-on-dark, color-mix(in srgb, var(--wp-white, #fff) 78%, transparent));
@@ -232,7 +236,7 @@ body.home-page--product .wp-project-case--anchor .wp-project-case__recommendatio
   padding: 0;
   max-width: 42ch;
   font-family: var(--wp-font-prose, "Oxygen", "Inter", system-ui, sans-serif);
-  font-size: clamp(0.9375rem, 1.35vw, 1.0625rem);
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.45;
   color: var(--wp-index-prose-on-dark, color-mix(in srgb, var(--wp-white, #fff) 78%, transparent));
@@ -306,9 +310,25 @@ body.home-page--product .wp-project-case--anchor .wp-link-text {
     justify-content: flex-start;
   }
 
+  body.home-page--product .wp-project-case--anchor .wp-project-case__title,
+  body.home-page--product #project-points-marketplace-title {
+    font-size: 1.5rem;
+    line-height: 37px;
+    letter-spacing: -0.2px;
+  }
+
   body.home-page--product .wp-project-case--anchor .wp-project-case__outcomes {
     max-width: none;
   }
+}
+
+/* —— How I work —— */
+body.home-page--product #approach > .shell {
+  text-align: center;
+}
+
+body.home-page--product #approach .wp-method-line {
+  text-align: left;
 }
 
 /* —— Legacy section veils — global page torch replaces (MOTION-TORCH-002) —— */

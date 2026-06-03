@@ -1,0 +1,259 @@
+{
+  "meta": {
+    "title": "How do we make earn-and-spend legible before scaling the rewards marketplace?",
+    "hero_deck": "Attendance and time-on-platform were falling while points piled up with nowhere to go. I ran a foundational study—problem frame, design-system stimulus, and moderated testing—to define one earn-and-spend story product could ship before marketplace UI scaled.",
+    "hero_bg": {
+      "style": "ticker"
+    },
+    "hero_ticker": {
+      "inbox": "/Users/chandansharma/Desktop/hero-ticker",
+      "signoff": "",
+      "signoffs": [
+        {
+          "name": "Sally",
+          "role": "US UX",
+          "items": [
+            "Ticker slide spacing"
+          ]
+        }
+      ],
+      "slides": [
+        {
+          "file": "mobile-marketplace-landing-v1.svg",
+          "label": "Mobile marketplace",
+          "alt": "",
+          "layout": "portrait",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "file": "coin-ledger-wallet-v1.svg",
+          "label": "Points wallet",
+          "alt": "",
+          "layout": "portrait",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "file": "redeem-confirmation.svg",
+          "label": "Redeem confirmation",
+          "alt": "",
+          "layout": "portrait",
+          "width": 390,
+          "height": 400
+        }
+      ]
+    },
+    "hero_ab": {
+      "enabled": false,
+      "default": "ticker",
+      "decision": "Wireframe ticker hero. Sally signed off spacing + MacBook frame."
+    },
+    "hero_facts": [
+      {
+        "label": "Program",
+        "value": "Foundational UX · K-8 math platform · 2022. Rewards and retention before marketplace and avatar UI scaled."
+      },
+      {
+        "label": "Practice",
+        "value": "Frame the problem with product, build DS-aligned stimulus, test with learners, translate evidence into shippable decisions—with engineering in the loop."
+      },
+      {
+        "label": "Role",
+        "value": "Design lead: screener and guide, Figma stimulus and tokens, moderated IDIs, synthesis readout, and implementation guide for product and engineering."
+      },
+      {
+        "label": "Evidence",
+        "value": "15 in-depth interviews · grades 1–8 · US and India · every theme mapped to a stimulus frame."
+      }
+    ],
+    "client_safe_name": "Byju's FutureSchool",
+    "slug": "points-marketplace-foundational",
+    "study_type": "foundational-research",
+    "study_type_inferred": "scale-consumer",
+    "study_type_confidence": 0.92,
+    "target_audience": "product_and_ux_leadership",
+    "export_profile": "scale-consumer",
+    "tools": [
+      "Figma",
+      "design systems",
+      "1:1 interviews",
+      "stimulus testing"
+    ],
+    "depth_href": "../_bmad-output/case-studies/points-marketplace-foundational-longform.md",
+    "wireframe_inbox": "/Users/chandansharma/Desktop/points-marketplace-wireframes-export/agent-generated",
+    "artefact_set": "regenerated",
+    "gallery_artefact_set": "hifi-v2"
+  },
+  "narrative": {
+    "narrative_id": "staff-ux-research-judgment",
+    "claims": [
+      {
+        "id": "N1",
+        "statement": "Clarify confusing dual-currency mental models so children know how to earn and spend rewards",
+        "proof_expectations": [
+          "method_steps",
+          "artefact_validation",
+          "decision_tradeoff"
+        ]
+      },
+      {
+        "id": "N2",
+        "statement": "Translate qualitative learner language into shippable marketplace and onboarding bets",
+        "proof_expectations": [
+          "method_steps",
+          "metric_pair"
+        ]
+      }
+    ]
+  },
+  "resources": {
+    "objective_notes": "Understand how young learners think about marketplaces and points redemption. Develop possible marketplace names, currencies, and personal avatar designs.",
+    "method_notes": "Conducted in-depth interviews with 15 users, evenly distributed across grades 1\u20138 and US & IN geographies. Learners reviewed marketplace Figma prototypes with avatars, profile backgrounds, and class backgrounds.",
+    "role_context": "I owned the design research practice end to end: problem framing with product, Figma stimulus on the FutureSchool design system, moderated sessions with learners, and a readout that tied every insight to a shippable UI decision.",
+    "constraints": [
+      "Attendance and time-on-platform fell while unredeemed points accumulated",
+      "Product planned marketplace and avatar UI without a validated earn-and-spend mental model",
+      "Dual currency (points and creator coins) with no plain-language ledger or next action"
+    ],
+    "insights": [
+      "Learners invented conversion rules because the product showed two currencies with no single balance story.",
+      "Creator coins felt random—children guessed at triggers instead of reading clear earn rules on screen.",
+      "Redemption intent was real; the marketplace surface did not show a obvious spend path from balance to hero.",
+      "Avatar picks followed power fantasy and aspiration, not abstract currency labels—design should frame heroes, not coins."
+    ],
+    "quotes": [
+      "I think 1 coin = 2 points because coins are more precious than points",
+      "Points? nothing, i just have them, i dont know what to do with them",
+      "By doing good stuff, doing things correct - maybe I get creator coins?",
+      "I need points. I think I have enough points for Cyborg, Bolt & taz"
+    ],
+    "recommendations": [
+      "One ledger: a single spendable balance, plain-language labels, and visible spent history on the marketplace surface.",
+      "Onboarding at deploy: short earn and spend modules before learners enter the shop—not after confusion shows up in support.",
+      "Aspiration-first marketplace: hero grids and copy keyed to powers learners name, not parallel currency mechanics.",
+      "Staged ship order: ledger clarity and onboarding first, then depth (badges, avatars, level-ups) on a foundation engineering already reviewed in stimulus."
+    ]
+  },
+  "artefacts": [
+    {
+      "id": "A1",
+      "kind": "prototype",
+      "path": "regenerated/marketplace-prototype.png",
+      "description": "Marketplace stimulus: profile characters and points wallet",
+      "linked_claim_ids": [
+        "N1",
+        "N2"
+      ],
+      "caption": "Earn-and-spend stimulus for foundational IDIs",
+      "sha256_prefix": "71eba72dfe22a3bf"
+    },
+    {
+      "id": "A2",
+      "kind": "research_synthesis",
+      "path": "regenerated/synthesis-trends.png",
+      "description": "Synthesis board: retention and currency themes",
+      "linked_claim_ids": [
+        "N2"
+      ],
+      "caption": "Synthesis: loyalty not visible in the product loop",
+      "sha256_prefix": "e3f0ed25314f5efe"
+    },
+    {
+      "id": "A3",
+      "kind": "prototype",
+      "path": "regenerated/design-stimulus-figma.png",
+      "description": "Figma design-system-aligned stimulus",
+      "linked_claim_ids": [
+        "N1",
+        "N2"
+      ],
+      "caption": "Design-system-aligned stimulus I built and tested with learners",
+      "sha256_prefix": "fb0bdd83f7101c03"
+    },
+    {
+      "id": "A4",
+      "kind": "flow",
+      "path": "regenerated/onboarding-recommendations.png",
+      "description": "Onboarding and ship path frames",
+      "linked_claim_ids": [
+        "N1",
+        "N2"
+      ],
+      "caption": "How/what UX research outputs: onboarding path and shippable recommendations",
+      "sha256_prefix": "0ae5998a1b59ae96"
+    },
+    {
+      "id": "A5",
+      "kind": "prototype",
+      "path": "regenerated/user-testing-stimulus.png",
+      "description": "Study wireframe: stimulus with learner quote callouts",
+      "linked_claim_ids": [
+        "N1",
+        "N2"
+      ],
+      "caption": "User testing: verbatim mapped to marketplace frames",
+      "sha256_prefix": "f64eb0bba6a32792"
+    }
+  ],
+  "metrics": [
+    {
+      "id": "M-PM-01",
+      "label": "In-depth interviews",
+      "value": "15",
+      "baseline": "Grades 1\u20138 \u00b7 US + IN",
+      "verification": "verified"
+    },
+    {
+      "id": "M-PM-02",
+      "label": "Geographies",
+      "value": "US + IN",
+      "verification": "verified"
+    },
+    {
+      "id": "M-PM-03",
+      "label": "Learners reporting unclear point utility",
+      "value": "directional majority",
+      "verification": "directional"
+    }
+  ],
+  "voice": {
+    "seniority": "staff_ux",
+    "register": "consumer"
+  },
+  "media": {
+    "youtube": [
+      {
+        "id": "YT1",
+        "url": "https://www.youtube.com/watch?v=rD31vOjLOOw",
+        "title": "Portfolio case study presentation patterns (Tony Aub\u00e9)",
+        "placement": "appendix",
+        "linked_claim_ids": [
+          "N2"
+        ],
+        "caption": "Reference: visual scan + interview depth for case presentation.",
+        "consent": "third_party_reference",
+        "start_seconds": 0,
+        "video_id": "rD31vOjLOOw"
+      }
+    ]
+  },
+  "approvals": {
+    "copy": {
+      "status": "approved",
+      "approved_by": "Chandan",
+      "approved_at": "2026-05-17T22:14:30.550944+00:00"
+    },
+    "design": {
+      "status": "approved",
+      "approved_by": "Sally",
+      "approved_at": "2026-05-18T03:45:00+00:00",
+      "notes": "Ticker slide spacing + MacBook Pro frame"
+    },
+    "po": {
+      "status": "approved",
+      "approved_by": "Chandan",
+      "approved_at": ""
+    }
+  }
+}
