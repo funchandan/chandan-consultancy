@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/share/work.html", "destination": "/", "permanent": false },
+    { "source": "/share/(.*)", "destination": "/$1", "permanent": false }
+  ]
+}
