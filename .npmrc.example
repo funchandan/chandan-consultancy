@@ -1,0 +1,4 @@
+# Copy to .npmrc and add your Club GSAP npm token if required.
+# https://gsap.com/docs/v3/Installation#club
+@gsap:registry=https://npm.gsap.com
+//npm.gsap.com/:_authToken=YOUR_CLUB_TOKEN
