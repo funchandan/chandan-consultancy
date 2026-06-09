@@ -1,0 +1,249 @@
+/* PP-C02c — unified hero toolkit path (Direction A + H1) */
+
+body.home-page--product {
+  --wp-toolkit-path-surface: color-mix(in srgb, #12151c 88%, transparent);
+  --wp-toolkit-path-border: color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 22%, transparent);
+  --wp-toolkit-path-radius: 14px;
+  --wp-toolkit-path-pad: 16px;
+  --wp-toolkit-path-gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+.wp-hero-toolkit-path:not(.wp-glass-compose) {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--wp-toolkit-path-gap);
+  width: 100%;
+  max-width: 52rem;
+  margin: 16px 0;
+  padding: var(--wp-toolkit-path-pad);
+  border-radius: var(--wp-toolkit-path-radius);
+  border: 1px solid var(--wp-toolkit-path-border);
+  background: var(--wp-toolkit-path-surface);
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: calc(1rem + 2px);
+  font-weight: 400;
+  line-height: calc(1.35 * 1.25);
+  color: rgba(255, 255, 255, 1);
+}
+
+body.wp-hero-funnel-open .wp-hero-toolkit-path[data-hero-funnel-root] {
+  z-index: 50;
+}
+
+/* Beat global `p { color: var(--color-text-body) }` on light theme */
+body.home-page--product .wp-hero-toolkit-path__lead {
+  margin: 0;
+  padding: 0;
+  color: color-mix(in srgb, var(--wp-white, #fff) 92%, transparent);
+}
+
+.wp-hero-toolkit-path__lead-col,
+.wp-hero-toolkit-path__lead-close {
+  color: inherit;
+}
+
+body.home-page--product .wp-hero-toolkit-path .statement-viewport__lead-funnel {
+  color: color-mix(in srgb, var(--wp-white, #fff) 96%, transparent);
+}
+
+.wp-hero-toolkit-path__verb {
+  display: inline;
+}
+
+.wp-hero-toolkit-path__stages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--wp-toolkit-path-gap);
+  margin: 0;
+  padding: 0;
+}
+
+.wp-hero-toolkit-path__stage {
+  position: relative;
+  min-width: 0;
+}
+
+.wp-hero-toolkit-path__stage .hero-funnel__panel {
+  position: absolute;
+  left: 0;
+  right: auto;
+  top: auto;
+  bottom: calc(100% + 8px);
+  z-index: 30;
+}
+
+.wp-hero-toolkit-path__stage .hero-funnel__panel--above {
+  top: calc(100% + 8px);
+  bottom: auto;
+}
+
+body.home-page--product .wp-hero-toolkit-path .wp-hero-project-strip__tile {
+  display: grid;
+  grid-template-columns: 3.25rem 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.35rem 0.75rem;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 0.85rem;
+  border-radius: var(--wp-toolkit-path-radius);
+  border: 1px solid color-mix(in srgb, var(--wp-white, #fff) 10%, transparent);
+  background: color-mix(in srgb, #12151c 92%, transparent);
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.65;
+  transform: translateY(0);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+body.home-page--product .wp-hero-toolkit-path .wp-hero-project-strip__thumb {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 22%, transparent);
+  background: color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 8%, transparent);
+}
+
+body.home-page--product .wp-hero-toolkit-path .wp-hero-project-strip__kit {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--wp-index-label-gold, #e2c878);
+}
+
+body.home-page--product .wp-hero-toolkit-path .wp-hero-project-strip__status {
+  margin-left: 0.35rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+body.home-page--product .wp-hero-toolkit-path .wp-hero-project-strip__status--live {
+  color: color-mix(in srgb, #7dcea0 85%, transparent);
+}
+
+body.home-page--product .wp-hero-toolkit-path .wp-hero-project-strip__status--waitlist {
+  color: color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 75%, transparent);
+}
+
+body.home-page--product .wp-hero-toolkit-path .wp-hero-project-strip__status--soon {
+  color: color-mix(in srgb, var(--wp-white, #fff) 45%, transparent);
+}
+
+body.home-page--product .wp-hero-toolkit-path .wp-hero-project-strip__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+body.home-page--product .wp-hero-toolkit-path .wp-hero-project-strip__label {
+  font-family: "Oxygen", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 1);
+}
+
+body.home-page--product .wp-hero-toolkit-path .wp-hero-project-strip__meta {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: color-mix(in srgb, var(--wp-white, #fff) 52%, transparent);
+}
+
+#hero[data-hero-project-active="clarify"]
+  .wp-hero-toolkit-path
+  .wp-hero-project-strip__tile[data-hero-project="clarify"],
+#hero[data-hero-project-active="create"]
+  .wp-hero-toolkit-path
+  .wp-hero-project-strip__tile[data-hero-project="create"],
+#hero[data-hero-project-active="build"]
+  .wp-hero-toolkit-path
+  .wp-hero-project-strip__tile[data-hero-project="build"] {
+  opacity: 1;
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 55%, transparent);
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.35),
+    0 0 0 1px color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 18%, transparent) inset;
+}
+
+#hero[data-hero-project-active="clarify"]
+  .wp-hero-toolkit-path
+  .wp-hero-project-strip__tile:not([data-hero-project="clarify"]),
+#hero[data-hero-project-active="create"]
+  .wp-hero-toolkit-path
+  .wp-hero-project-strip__tile:not([data-hero-project="create"]),
+#hero[data-hero-project-active="build"]
+  .wp-hero-toolkit-path
+  .wp-hero-project-strip__tile:not([data-hero-project="build"]) {
+  opacity: 0.35;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.home-page--product .wp-hero-toolkit-path .wp-hero-project-strip__tile:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--wp-white, #fff) 22%, transparent);
+  }
+}
+
+@media (min-width: 900px) {
+  .wp-hero-toolkit-path__lead {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--wp-toolkit-path-gap);
+    align-items: start;
+  }
+
+  .wp-hero-toolkit-path__lead-col {
+    display: block;
+  }
+
+  .wp-hero-toolkit-path__lead-close {
+    display: block;
+    grid-column: 1 / -1;
+    margin-top: 0.15rem;
+  }
+}
+
+@media (max-width: 899px) {
+  .wp-hero-toolkit-path__stages {
+    grid-template-columns: 1fr;
+    max-width: 22rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .wp-hero-toolkit-path__stage .hero-funnel__panel {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+
+  .wp-hero-toolkit-path__stage .hero-funnel__panel--above {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home-page--product .wp-hero-toolkit-path .wp-hero-project-strip__tile {
+    transition: none;
+    transform: none !important;
+  }
+}

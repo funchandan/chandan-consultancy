@@ -4,16 +4,12 @@ body.home-page {
   --wp-surface-light: #fafafa;
   --wp-surface-dark: #08090d;
   --wp-surface-work: #000000;
-  --wp-index-canvas: linear-gradient(165deg, #08090d 0%, #12151c 48%, #0d0f14 100%);
 }
 
-/* One canvas behind the full scroll story */
+/* Solid base — @aicanvas/dot-grid canvas paints the field */
 html:has(body.home-page.home-page--product) {
   background-color: #08090d;
-  background-image: var(--wp-index-canvas);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-attachment: fixed;
+  background-image: none;
 }
 
 body.home-page.home-page--product {
@@ -53,12 +49,36 @@ body.home-page--product #approach .wp-method-line__desc {
   color: color-mix(in srgb, var(--wp-white, #fff) 72%, transparent);
 }
 
-body.home-page--product #approach .wp-link-text {
+body.home-page--product #approach .wp-method-line__receipt-chip {
+  color: color-mix(in srgb, var(--wp-white, #fff) 86%, transparent);
+  border-color: color-mix(in srgb, var(--wp-white, #fff) 22%, transparent);
+  background: color-mix(in srgb, var(--wp-white, #fff) 8%, transparent);
+}
+
+body.home-page--product #approach .wp-link-text,
+body.home-page--product #approach .wp-method-line__proof {
   color: var(--wp-white, #fff);
 }
 
 body.home-page--product #approach .wp-link-text:hover {
   border-bottom-color: var(--wp-white, #fff);
+}
+
+body.home-page--product #approach .wp-method-lines::before {
+  background: color-mix(in srgb, var(--wp-white, #fff) 22%, transparent);
+}
+
+body.home-page--product #approach .home-product-section__intro--method {
+  color: color-mix(in srgb, var(--wp-white, #fff) 72%, transparent);
+}
+
+body.home-page--product #approach .wp-method-line__thumb {
+  border-color: color-mix(in srgb, var(--wp-white, #fff) 22%, transparent);
+  background: color-mix(in srgb, var(--wp-white, #fff) 8%, transparent);
+}
+
+body.home-page--product #approach .wp-method-line__proof:focus-visible {
+  outline-color: color-mix(in srgb, var(--wp-white, #fff) 55%, transparent);
 }
 
 body.home-page--product #approach .wp-method-close__headline {
@@ -91,14 +111,3 @@ body.home-page:not(.home-page--product) {
   background: var(--wp-surface-light, #fafafa) !important;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html:has(body.home-page.home-page--product) {
-    background-attachment: scroll;
-  }
-}
-
-@media (max-width: 768px) {
-  html:has(body.home-page.home-page--product) {
-    background-attachment: scroll;
-  }
-}

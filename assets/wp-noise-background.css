@@ -1,0 +1,98 @@
+/* @aceternity/noise-background — hero CTA wrapper (ported from noise-background-demo) */
+
+.wp-noise-background {
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  border-radius: 9999px;
+  padding: 0.5rem;
+  background: #e5e5e5;
+  box-shadow:
+    0 0.5px 1px 0 color-mix(in srgb, #a3a3a3 100%, transparent) inset,
+    0 1px 0 0 #f5f5f5;
+  isolation: isolate;
+}
+
+.wp-noise-background__layers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.wp-noise-background__gradient {
+  position: absolute;
+  inset: 0;
+}
+
+.wp-noise-background__strip {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 4px;
+  border-radius: 9999px 9999px 0 0;
+  opacity: 0.8;
+  filter: blur(4px);
+  background: linear-gradient(
+    to right,
+    rgb(255, 100, 150),
+    rgb(100, 150, 255),
+    rgb(255, 200, 100)
+  );
+}
+
+.wp-noise-background__noise {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.wp-noise-background__noise img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: var(--wp-noise-opacity, 0.2);
+  mix-blend-mode: overlay;
+}
+
+.wp-noise-background__content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero skip — demo button surface inside noise shell */
+.wp-noise-background .statement-viewport__skip {
+  min-height: 44px;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 9999px;
+  color: #0a0a0a;
+  background: linear-gradient(to right, #f5f5f5, #f5f5f5, #fff);
+  box-shadow:
+    0 2px 0 0 #fafafa inset,
+    0 0.5px 1px 0 #a3a3a3;
+  transition:
+    transform 100ms ease,
+    background 220ms ease,
+    color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.wp-noise-background .statement-viewport__skip::before {
+  display: none;
+}
+
+.wp-noise-background .statement-viewport__skip:hover {
+  color: #0a0a0a;
+  background: linear-gradient(to right, #fff, #fff, #fff);
+}
+
+.wp-noise-background .statement-viewport__skip:active {
+  transform: scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-noise-background .statement-viewport__skip:active {
+    transform: none;
+  }
+}

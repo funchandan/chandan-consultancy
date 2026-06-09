@@ -20,32 +20,53 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="assets/journey-immersive.css" />
-  <link rel="stylesheet" href="assets/statement-viewport.css?v=10" />
-  <link rel="stylesheet" href="assets/wp-hero-display-slot.css?v=5" />
-  <link rel="stylesheet" href="assets/noomo-primitives.css?v=8" />
-  <link rel="stylesheet" href="assets/wp-project-case.css?v=11" />
-  <link rel="stylesheet" href="assets/wp-work-peek.css?v=5" />
+  <link rel="stylesheet" href="assets/statement-viewport.css?v=12" />
+  <link rel="stylesheet" href="assets/hero-toolkit-funnel.css?v=6" />
+  <link rel="stylesheet" href="assets/wp-glass-compose.css?v=1" />
+  <link rel="stylesheet" href="assets/wp-hero-toolkit-path.css?v=3" />
+  <link rel="stylesheet" href="assets/wp-hero-display-slot.css?v=7" />
+  <link rel="stylesheet" href="assets/noomo-primitives.css?v=9" />
+  <link rel="stylesheet" href="assets/wp-project-case.css?v=16" />
   <link rel="stylesheet" href="assets/nav-immersive.css?v=5" />
   <link rel="stylesheet" href="assets/nav-product.css?v=2" />
-  <link rel="stylesheet" href="assets/nav-pill.css?v=8" />
+  <link rel="stylesheet" href="assets/nav-pill.css?v=10" />
   <link rel="stylesheet" href="assets/wp-index-page-torch.css?v=1" />
+  <link rel="stylesheet" href="assets/wp-dot-grid.css?v=1" />
+  <link rel="stylesheet" href="assets/wp-noise-background.css?v=1" />
   <link rel="stylesheet" href="assets/index-product-surface.css?v=4" />
-  <link rel="stylesheet" href="assets/index-product-polish.css?v=11" />
+  <link rel="stylesheet" href="assets/index-product-polish.css?v=18" />
+  <link rel="stylesheet" href="assets/wp-hero-service-images.css?v=2" />
+  <link rel="stylesheet" href="assets/index-noomo-tier3.css?v=2" />
   <link rel="stylesheet" href="assets/vendor/lenis/lenis.css" />
   <link rel="stylesheet" href="assets/motion/wp-lenis.css?v=3" />
   <script src="assets/site-nav.js" defer></script>
   <script src="assets/vendor/lenis/lenis.min.js" defer></script>
   <script src="assets/vendor/gsap/wp-gsap-all.min.js?v=1" defer></script>
+  <script src="assets/vendor/three/three.min.js" defer></script>
   <script src="assets/motion/wp-lenis.js?v=3" defer></script>
   <script src="assets/motion/wp-motion.js?v=3" defer></script>
-  <script src="assets/motion/wp-journey-immersive.js?v=15" defer></script>
-  <script src="assets/motion/wp-work-peek.js?v=2" defer></script>
+  <script src="assets/motion/wp-dot-grid.js?v=1" defer></script>
+  <script src="assets/motion/wp-noise-background.js?v=1" defer></script>
+  <script src="assets/motion/wp-journey-immersive.js?v=19" defer></script>
+  <script src="assets/motion/wp-work-case-reveal.js?v=1" defer></script>
+  <script src="assets/motion/wp-work-case-depth.js?v=1" defer></script>
+  <script src="assets/motion/wp-work-case-evidence-3d.js?v=4" defer></script>
+  <script src="assets/motion/wp-section-depth.js?v=1" defer></script>
+  <script src="assets/motion/wp-hero-service-images.js?v=1" defer></script>
+  <script src="assets/motion/wp-glass-scroll.js?v=1" defer></script>
+  <script src="assets/motion/wp-method-close-reveal.js?v=1" defer></script>
+  <script src="assets/motion/wp-method-proof-preview.js?v=1" defer></script>
+  <script src="assets/motion/wp-connect-reveal.js?v=1" defer></script>
   <script src="assets/motion/wp-hero-display-slot.js?v=1" defer></script>
+  <script src="assets/motion/wp-hero-project-strip.js?v=1" defer></script>
   <script src="assets/motion/wp-hero-impact-counter.js?v=1" defer></script>
   <script src="assets/motion/wp-nav-statement.js?v=6" defer></script>
+  <script src="assets/motion/wp-glass-compose.js?v=1" defer></script>
+  <script src="assets/hero-toolkit-funnel.js?v=6" defer></script>
 </head>
-<body class="home-page home-page--product" data-wp-motion="lenis-root" data-wp-motion-profile="portfolio-default">
+<body class="home-page home-page--product" data-wp-motion="lenis-root glass-scroll dot-grid" data-wp-motion-profile="portfolio-default">
   <div class="wp-motion-sentinels" hidden aria-hidden="true"></div>
+  <!-- nav-pill:start -->
   <header
     class="site-header site-header--product site-header--pill site-header--immersive site-header--top"
     data-figma-file="3GwVtlklKaMMNXs8MkArcR"
@@ -89,16 +110,16 @@
               </form>
             </div>
             <div class="nav-links nav-links--dialog" data-nav-links-dialog>
-              <a href="#work" class="nav-pill__link nav-anchor">Work</a>
-              <a href="#approach" class="nav-pill__link nav-anchor">Method</a>
-              <a href="#connect" class="nav-pill__link nav-anchor">Connect</a>
-              <a href="about.html" class="nav-pill__link" data-nav-item="about">About</a>
-              <a class="nav-pill__cta" href="cv/pdf/cv-design.pdf" download data-nav-cta>
-                <svg class="nav-pill__cta-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false">
-                  <path d="M10 2a.75.75 0 0 1 .75.75v8.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V2.75A.75.75 0 0 1 10 2Zm-3.25 12.5a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Z" />
-                </svg>
-                Download Resume
-              </a>
+            <a href="#work" class="nav-pill__link nav-anchor">Work</a>
+            <a href="#approach" class="nav-pill__link nav-anchor">Method</a>
+            <a href="#connect" class="nav-pill__link nav-anchor">Connect</a>
+            <a href="about.html" class="nav-pill__link nav-link-secondary" data-nav-item="about">About</a>
+            <a class="nav-pill__cta" href="cv/pdf/cv-design.pdf" download data-nav-cta>
+              <svg class="nav-pill__cta-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false">
+                <path d="M10 2a.75.75 0 0 1 .75.75v8.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V2.75A.75.75 0 0 1 10 2Zm-3.25 12.5a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Z" />
+              </svg>
+              Download Resume
+            </a>
               <div class="nav-drawer-group nav-drawer-group--tertiary" role="group" aria-labelledby="nav-d-more-label">
                 <p id="nav-d-more-label" class="nav-drawer-group__label">More</p>
                 <a href="services.html">Services</a>
@@ -111,10 +132,11 @@
       </nav>
     </div>
   </header>
+  <!-- nav-pill:end -->
 
-  <main id="main" tabindex="-1" data-wp-motion="journey scroll-depth">
+  <main id="main" tabindex="-1" data-wp-motion="journey section-depth scroll-depth">
     <!-- Statement viewport — WO-010 scroll-native -->
-    <section class="statement-viewport journey-act" id="hero" data-wp-motion="hero-veil" aria-labelledby="statement-title">
+    <section class="statement-viewport journey-act" id="hero" data-wp-motion="hero-veil hero-service-images hero-project-strip" aria-labelledby="statement-title">
       <div class="statement-viewport__canvas">
         <div class="statement-viewport__inner shell">
           <h1 id="statement-title" class="statement-viewport__display">
@@ -130,10 +152,10 @@
                 <span class="wp-hero-slot__viewport">
                   <span class="wp-hero-slot__track">
                     <span class="wp-hero-slot__word is-active" data-slot-index="0">Design leadership</span>
-                    <span class="wp-hero-slot__word" data-slot-index="1">Agentic development</span>
+                    <span class="wp-hero-slot__word" data-slot-index="1">Agentic product design</span>
                     <span class="wp-hero-slot__word" data-slot-index="2">Product strategy</span>
-                    <span class="wp-hero-slot__word" data-slot-index="3">Monetization</span>
-                    <span class="wp-hero-slot__word" data-slot-index="4">GTM</span>
+                    <span class="wp-hero-slot__word" data-slot-index="3">Monetization strategy</span>
+                    <span class="wp-hero-slot__word" data-slot-index="4">Go-to-market</span>
                   </span>
                 </span>
               </span><span class="statement-viewport__display-tail"> for teams shipping under real constraints.</span>
@@ -148,30 +170,120 @@
               <span class="wp-hero-range__dot" data-slot-index="4"></span>
             </span>
           </p>
-          <p class="statement-viewport__lead">
-            <a class="statement-viewport__lead-funnel" href="toolkits/decision-teardown.html">Clarify</a> what to
-            <a class="statement-viewport__lead-funnel" href="toolkits.html#toolkit-create">create</a>,
-            <a class="statement-viewport__lead-funnel" href="toolkits.html#kit-build">build</a> what ships, and explain the why &mdash; for startups and regulated enterprise alike.
+          <p class="wp-hero-proof" aria-label="Scope and impact" data-wp-motion="hero-impact-counter">
+            <strong class="wp-hero-proof__count" data-wp-count="8" aria-label="8 countries">0</strong> countries
+            <span class="wp-hero-proof__sep" aria-hidden="true">&middot;</span>
+            Fortune 100 enterprise
+            <span class="wp-hero-proof__sep" aria-hidden="true">&middot;</span>
+            <strong class="wp-hero-proof__count" data-wp-count="9" data-wp-count-suffix="+" aria-label="9 plus years">0</strong> years
+            <span class="wp-hero-proof__sep" aria-hidden="true">&middot;</span>
+            <strong class="wp-hero-proof__count" data-wp-count="800" data-wp-count-suffix="+" aria-label="800 plus hours">0</strong> hours listening
           </p>
-          <div class="wp-hero-impact" role="list" aria-label="Scope and impact at a glance" data-wp-motion="hero-impact-counter">
-            <div class="wp-hero-impact__cell" role="listitem">
-              <span class="wp-hero-impact__value" data-wp-count="8" aria-label="8 countries">0</span>
-              <span class="wp-hero-impact__label">Countries shipped in</span>
+          <section class="wp-hero-toolkit-path statement-viewport__lead wp-glass-compose" data-hero-funnel-root data-wp-glass-compose aria-label="Toolkit path">
+            <div class="wp-glass-compose__frame" data-glass-compose-frame tabindex="-1">
+              <div class="wp-glass-compose__blur" aria-hidden="true"></div>
+              <div class="wp-glass-compose__bg" aria-hidden="true">
+                <img src="https://ik.imagekit.io/aitoolkit/bg%20images/Ethereal%20Orange%20Flower%204%20(1).png?updatedAt=1775226802133" alt="" width="840" height="560" decoding="async" />
+              </div>
+              <div class="wp-glass-compose__highlight" aria-hidden="true"></div>
+
+              <div class="wp-glass-compose__main">
+                <div class="wp-glass-compose__prompt">
+                  <p class="wp-hero-toolkit-path__lead">
+                    <span class="wp-hero-toolkit-path__lead-col" data-hero-funnel-col="clarify">
+                      <a class="wp-hero-toolkit-path__verb statement-viewport__lead-funnel hero-funnel__trigger" id="hero-funnel-clarify" href="toolkits/decision-teardown.html" data-hero-funnel-trigger data-hero-funnel-id="clarify" role="button" aria-expanded="false" aria-haspopup="true" aria-controls="hero-funnel-panel-clarify">Clarify</a> what to
+                    </span>
+                    <span class="wp-hero-toolkit-path__lead-col" data-hero-funnel-col="create">
+                      <a class="wp-hero-toolkit-path__verb statement-viewport__lead-funnel hero-funnel__trigger" id="hero-funnel-create" href="toolkits.html#kit-create" data-hero-funnel-trigger data-hero-funnel-id="create" role="button" aria-expanded="false" aria-haspopup="true" aria-controls="hero-funnel-panel-create">create</a>,
+                    </span>
+                    <span class="wp-hero-toolkit-path__lead-col" data-hero-funnel-col="build">
+                      <a class="wp-hero-toolkit-path__verb statement-viewport__lead-funnel hero-funnel__trigger" id="hero-funnel-build" href="toolkits.html#kit-build" data-hero-funnel-trigger data-hero-funnel-id="build" role="button" aria-expanded="false" aria-haspopup="true" aria-controls="hero-funnel-panel-build">build</a> what ships,
+                    </span>
+                    <span class="wp-hero-toolkit-path__lead-close">and explain the why &mdash; for startups and regulated enterprises alike.</span>
+                  </p>
+                </div>
+
+                <div class="wp-hero-toolkit-path__stages wp-hero-project-strip wp-glass-compose__stages" role="list" aria-label="Toolkit previews">
+                  <article class="wp-hero-toolkit-path__stage" data-hero-funnel-stage="clarify" role="listitem">
+                    <a class="wp-hero-toolkit-path__tile wp-hero-project-strip__tile" href="toolkits/decision-teardown.html" data-hero-project="clarify">
+                      <span class="wp-hero-project-strip__thumb" aria-hidden="true">
+                        <span class="wp-hero-project-strip__kit">01</span>
+                      </span>
+                      <span class="wp-hero-project-strip__copy">
+                        <span class="wp-hero-project-strip__label">Decision teardown</span>
+                        <span class="wp-hero-project-strip__meta">Bet memo, kill date <span class="wp-hero-project-strip__status wp-hero-project-strip__status--live">Live</span></span>
+                      </span>
+                    </a>
+                    <div class="hero-funnel__panel" id="hero-funnel-panel-clarify" data-hero-funnel-panel data-hero-funnel-id="clarify" role="region" aria-labelledby="hero-funnel-clarify" hidden></div>
+                  </article>
+                  <article class="wp-hero-toolkit-path__stage" data-hero-funnel-stage="create" role="listitem">
+                    <a class="wp-hero-toolkit-path__tile wp-hero-project-strip__tile" href="toolkits.html#kit-create" data-hero-project="create">
+                      <span class="wp-hero-project-strip__thumb" aria-hidden="true">
+                        <span class="wp-hero-project-strip__kit">03</span>
+                      </span>
+                      <span class="wp-hero-project-strip__copy">
+                        <span class="wp-hero-project-strip__label">AI workflow UX</span>
+                        <span class="wp-hero-project-strip__meta">HITL map, guardrails <span class="wp-hero-project-strip__status wp-hero-project-strip__status--waitlist">Waitlist</span></span>
+                      </span>
+                    </a>
+                    <div class="hero-funnel__panel" id="hero-funnel-panel-create" data-hero-funnel-panel data-hero-funnel-id="create" role="region" aria-labelledby="hero-funnel-create" hidden></div>
+                  </article>
+                  <article class="wp-hero-toolkit-path__stage" data-hero-funnel-stage="build" role="listitem">
+                    <a class="wp-hero-toolkit-path__tile wp-hero-project-strip__tile" href="toolkits.html#kit-build" data-hero-project="build">
+                      <span class="wp-hero-project-strip__thumb" aria-hidden="true">
+                        <span class="wp-hero-project-strip__kit">02</span>
+                      </span>
+                      <span class="wp-hero-project-strip__copy">
+                        <span class="wp-hero-project-strip__label">Architecture audit</span>
+                        <span class="wp-hero-project-strip__meta">Seam map, 90-day plan <span class="wp-hero-project-strip__status wp-hero-project-strip__status--waitlist">Waitlist</span></span>
+                      </span>
+                    </a>
+                    <div class="hero-funnel__panel" id="hero-funnel-panel-build" data-hero-funnel-panel data-hero-funnel-id="build" role="region" aria-labelledby="hero-funnel-build" hidden></div>
+                  </article>
+                </div>
+
+                <div class="wp-glass-compose__toolbar">
+                  <div class="wp-glass-compose__toolbar-left">
+                    <a class="wp-glass-compose__icon-btn" href="toolkits.html" aria-label="Browse all toolkits">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.08l32-32L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"/></svg>
+                    </a>
+                    <button type="button" class="wp-glass-compose__icon-btn" data-glass-path-toggle aria-label="Highlight toolkit path" aria-pressed="false">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M128,24a96,96,0,0,0,0,192c14.23,0,27.62-3.16,39.68-8.72a8,8,0,0,0,3.32-11.32l-8-16a8,8,0,0,0-11.32-3.32A72,72,0,1,1,128,56a8,8,0,0,0,0-16A96,96,0,0,0,128,24Zm0,56a40,40,0,1,0,40,40A40,40,0,0,0,128,80Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,144Z"/></svg>
+                    </button>
+                    <span class="wp-glass-compose__flash" data-glass-flash hidden>Path view on</span>
+                  </div>
+                  <a class="wp-glass-compose__send" data-glass-send href="toolkits/decision-teardown.html" aria-label="Open featured toolkit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M231.87,114l-168-96A16,16,0,0,0,40.92,37.34L71.55,128,40.92,218.67A16,16,0,0,0,56,240a16.15,16.15,0,0,0,7.93-2.1l167.87-96.05a16,16,0,0,0,.05-27.89ZM56,224V32L216.16,128Z"/></svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="wp-glass-compose__divider" aria-hidden="true"></div>
+
+              <div class="wp-glass-compose__switcher" data-glass-switcher role="tablist" aria-label="Toolkit stage">
+                <span class="wp-glass-compose__pill" data-glass-pill aria-hidden="true"></span>
+                <button type="button" class="wp-glass-compose__switcher-btn" role="tab" data-glass-stage="clarify" data-stage-color="#FF7B54" aria-selected="true">Clarify</button>
+                <button type="button" class="wp-glass-compose__switcher-btn" role="tab" data-glass-stage="create" data-stage-color="#10A37F" aria-selected="false">Create</button>
+                <button type="button" class="wp-glass-compose__switcher-btn" role="tab" data-glass-stage="build" data-stage-color="#3A86FF" aria-selected="false">Build</button>
+              </div>
             </div>
-            <div class="wp-hero-impact__cell" role="listitem">
-              <span class="wp-hero-impact__value wp-hero-impact__value--text">Fortune 100</span>
-              <span class="wp-hero-impact__label">Enterprise practice</span>
+          </section>
+          <div
+            class="wp-noise-background wp-noise-background--hero-skip statement-viewport__skip-wrap"
+            data-wp-noise-background
+            data-noise-colors="255,100,150|100,150,255|255,200,100"
+          >
+            <div class="wp-noise-background__layers" aria-hidden="true">
+              <div class="wp-noise-background__gradient"></div>
+              <div class="wp-noise-background__gradient"></div>
+              <div class="wp-noise-background__gradient"></div>
+              <div class="wp-noise-background__strip"></div>
+              <div class="wp-noise-background__noise">
+                <img src="https://assets.aceternity.com/noise.webp" alt="" width="256" height="256" decoding="async" />
+              </div>
             </div>
-            <div class="wp-hero-impact__cell" role="listitem">
-              <span class="wp-hero-impact__value" data-wp-count="9" data-wp-count-suffix="+" aria-label="9 plus years">0</span>
-              <span class="wp-hero-impact__label">Years in product &amp; UX</span>
-            </div>
-            <div class="wp-hero-impact__cell" role="listitem">
-              <span class="wp-hero-impact__value" data-wp-count="800" data-wp-count-suffix="+" aria-label="800 plus hours">0</span>
-              <span class="wp-hero-impact__label">Listening to users</span>
-            </div>
+            <a class="statement-viewport__skip wp-noise-background__content" href="#work">View work</a>
           </div>
-          <a class="statement-viewport__skip" href="#work">View work</a>
         </div>
         <a class="statement-viewport__scroll-cue" href="#work" aria-label="Scroll to case studies">
           <span>Scroll</span>
@@ -180,100 +292,86 @@
       </div>
     </section>
 
-    <section id="work" class="journey-act" data-wp-motion="work-reveal work-peek" aria-labelledby="work-heading">
+    <section id="work" class="journey-act" data-wp-motion="work-reveal work-case-reveal work-case-depth work-case-evidence-3d" aria-labelledby="work-heading">
       <div class="wp-work-atmosphere" aria-hidden="true"></div>
       <div class="shell">
         <h2 id="work-heading" class="wp-section-display wp-section-display--on-dark">Selected work</h2>
 
-        <article class="wp-project-case wp-project-case--anchor" id="project-points-marketplace" data-project-index="01" aria-labelledby="project-points-marketplace-title">
+        <article class="wp-project-case" id="project-points-marketplace" data-project-index="01" aria-labelledby="project-points-marketplace-title">
           <div class="wp-project-case__inner">
+            <span class="wp-project-case__index" aria-hidden="true">01</span>
             <div class="wp-project-case__copy">
-              <h3 class="wp-project-case__title" id="project-points-marketplace-title">How do we make earn-and-spend legible before scaling the rewards marketplace?</h3>
-              <div class="wp-project-case__copy-mid">
-                <div class="wp-project-case__block">
-                  <p class="wp-project-case__label">What broke</p>
-                  <p class="wp-project-case__proof">A rewards programme scaling toward 23M learners had no validated model for how children understood currency. Balances accumulated while earning and spending stayed two separate ideas&mdash;and the product was weeks from a marketplace build on top of that gap.</p>
-                  <p class="wp-project-case__recommendation">Research ran on production components&mdash;not throwaway prototypes&mdash;so every finding translated directly into a buildable spec. One unified balance, earn context before the shop opens, and aspiration-led assets: staged to fix comprehension before adding depth.</p>
-                </div>
-                <div class="wp-project-case__block">
-                  <p class="wp-project-case__label">What moved</p>
-                  <p class="wp-project-case__metrics-line">43% attendance lift &middot; 27% completion lift &middot; 15 learner interviews (grades 1&ndash;8, US + IN)</p>
-                </div>
+              <h3 class="wp-project-case__title" id="project-points-marketplace-title">What does a loyalty ecosystem for 20m+ learners look like?</h3>
+              <p class="wp-project-case__meta">BYJU&rsquo;s FutureSchool &middot; Edtech &middot; Foundational research</p>
+              <div class="wp-project-case__body">
+                <p>The rewards programme serves 23M+ learners who need one clear earn-and-spend story before marketplace UI and avatar work scale.</p>
+                <p>I led foundational UX and system design&mdash;production-aligned stimulus, moderated sessions across US and India, and ship-ready specs for product and engineering.</p>
               </div>
-              <div class="wp-project-case__copy-bottom">
-                <div class="wp-project-case__outcomes" role="list" aria-label="Scope at a glance">
-                  <div class="wp-project-case__outcome" role="listitem">
-                    <span class="wp-project-case__outcome-value">8 weeks</span>
-                    <span class="wp-project-case__outcome-label">Study to ship plan</span>
-                  </div>
-                  <div class="wp-project-case__outcome" role="listitem">
-                    <span class="wp-project-case__outcome-value">15</span>
-                    <span class="wp-project-case__outcome-label">Moderated sessions</span>
-                  </div>
-                  <div class="wp-project-case__outcome" role="listitem">
-                    <span class="wp-project-case__outcome-value">23M+</span>
-                    <span class="wp-project-case__outcome-label">Learners in programme</span>
-                  </div>
-                </div>
-                <a class="wp-link-text wp-link-text--on-dark" href="case-studies/points-marketplace-foundational.html">View case study <span aria-hidden="true">→</span></a>
-              </div>
+              <a class="wp-link-text wp-link-text--on-dark" href="case-studies/points-marketplace-foundational.html">View case study <span aria-hidden="true">→</span></a>
             </div>
-            <div class="wp-work-peek" data-work-peek-frames="2" aria-hidden="true">
-              <div class="wp-work-peek__stage">
-                <figure class="wp-work-peek__frame is-active" data-work-peek-index="0">
-                  <img src="assets/case-studies/points-marketplace-foundational/hero-ticker/mobile-marketplace-landing-v1.svg" alt="" width="390" height="844" loading="lazy" decoding="async" />
-                </figure>
-                <figure class="wp-work-peek__frame" data-work-peek-index="1">
-                  <img src="assets/case-studies/points-marketplace-foundational/hero-ticker/coin-ledger-wallet-v1.svg" alt="" width="390" height="844" loading="lazy" decoding="async" />
-                </figure>
-              </div>
+            <div class="wp-project-case__media" aria-hidden="true">
+              <figure class="wp-project-case__device">
+                <img src="assets/case-studies/points-marketplace-foundational/hero-ticker/mobile-marketplace-landing-v1.svg" alt="" width="390" height="844" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="wp-project-case__device">
+                <img src="assets/case-studies/points-marketplace-foundational/hero-ticker/coin-ledger-wallet-v1.svg" alt="" width="390" height="844" loading="lazy" decoding="async" />
+              </figure>
             </div>
           </div>
         </article>
 
-        <article class="wp-project-case wp-project-case--compact" id="project-hp-field-service" data-project-index="02" aria-labelledby="project-hp-field-service-title">
+        <article class="wp-project-case" id="project-hp-field-service" data-project-index="02" aria-labelledby="project-hp-field-service-title">
           <div class="wp-project-case__inner">
             <span class="wp-project-case__index" aria-hidden="true">02</span>
-            <div class="wp-work-peek" data-work-peek-frames="1" aria-hidden="true">
-              <div class="wp-work-peek__stage">
-                <figure class="wp-work-peek__frame is-active" data-work-peek-index="0">
-                  <img src="assets/case-studies/hp-field-service-ai/hero-ticker/diagnosis-ai.png" alt="" width="390" height="844" loading="lazy" decoding="async" />
-                </figure>
-              </div>
-            </div>
             <div class="wp-project-case__copy">
               <h3 class="wp-project-case__title" id="project-hp-field-service-title">How do we help field technicians act faster with AI they can trust?</h3>
-              <p class="wp-project-case__meta">HP · Field service · AI-assisted workflows</p>
-              <p class="wp-project-case__summary">The AI flagged a part. The technician had no idea why&mdash;and couldn&rsquo;t explain it to the customer or dispatch before placing the order. We redesigned around that moment: one suggested part, the reasoning behind it visible, and a clear way to push back if the tech disagreed. Four fewer steps from fault to parts commit.</p>
+              <p class="wp-project-case__meta">HP &middot; Field service &middot; AI-assisted workflows</p>
+              <div class="wp-project-case__body">
+                <p>Technicians resolve faults on the truck; AI only helps when the next part and action are defensible to the customer and dispatch.</p>
+                <p>I led system design and UX for diagnosis-to-parts&mdash;AI state patterns, override flows, and React Native handoff specs validated with pilot technicians.</p>
+              </div>
               <a class="wp-link-text wp-link-text--on-dark" href="case-studies/hp-field-service-ai.html">View case study <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="wp-project-case__media" aria-hidden="true">
+              <figure class="wp-project-case__device">
+                <img src="assets/case-studies/hp-field-service-ai/hero-ticker/diagnosis-ai.png" alt="" width="390" height="844" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="wp-project-case__device">
+                <img src="assets/case-studies/hp-field-service-ai/hero-ticker/parts-flow.png" alt="" width="390" height="844" loading="lazy" decoding="async" />
+              </figure>
             </div>
           </div>
         </article>
 
-        <article class="wp-project-case wp-project-case--compact" id="project-stryker-logistics" data-project-index="03" aria-labelledby="project-stryker-logistics-title">
+        <article class="wp-project-case" id="project-stryker-logistics" data-project-index="03" aria-labelledby="project-stryker-logistics-title">
           <div class="wp-project-case__inner">
             <span class="wp-project-case__index" aria-hidden="true">03</span>
-            <div class="wp-work-peek" data-work-peek-frames="1" aria-hidden="true">
-              <div class="wp-work-peek__stage">
-                <figure class="wp-work-peek__frame is-active" data-work-peek-index="0">
-                  <img class="wp-work-peek__img--slide-crop" src="assets/case-studies/stryker-field-logistics/hifi-src/beat-01-arrive.svg" alt="" width="390" height="844" loading="lazy" decoding="async" />
-                </figure>
-              </div>
-            </div>
             <div class="wp-project-case__copy">
               <h3 class="wp-project-case__title" id="project-stryker-logistics-title">How do field reps run robotic surgery logistics inside the hospital?</h3>
-              <p class="wp-project-case__meta">Stryker · Medical devices · Hospital mobile</p>
-              <p class="wp-project-case__summary">Before a robotic surgery case, a Stryker rep needs to know whether the right serial is in the building, what kit the surgeon prefers, and what needs to go back after. That information lived in three places. We built one mobile path that loads surgeon preferences on arrival, tracks each part to its serial number, and closes the visit with usage and returns recorded.</p>
+              <p class="wp-project-case__meta">Stryker &middot; Medical devices &middot; Hospital mobile</p>
+              <div class="wp-project-case__body">
+                <p>Field reps coordinate orders, serials, delivery, surgical use, and returns inside the hospital&mdash;without calls and spreadsheets splitting the visit.</p>
+                <p>I led UX and system design for one mobile thread&mdash;serial-level tracking, surgeon preferences on arrival, and auditable close with clinical ops and engineering.</p>
+              </div>
               <a class="wp-link-text wp-link-text--on-dark" href="case-studies/stryker-field-logistics.html">View case study <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="wp-project-case__media" aria-hidden="true">
+              <figure class="wp-project-case__device">
+                <img src="assets/case-studies/stryker-field-logistics/hero-ticker/beat-01-arrive.png" alt="" width="390" height="844" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="wp-project-case__device">
+                <img src="assets/case-studies/stryker-field-logistics/hero-ticker/beat-04-order-track.png" alt="" width="390" height="844" loading="lazy" decoding="async" />
+              </figure>
             </div>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="approach" class="home-product-section journey-act" data-wp-motion="method-rail" aria-labelledby="approach-heading">
+    <section id="approach" class="home-product-section journey-act" data-wp-motion="method-rail method-proof-preview" data-methodology-section aria-labelledby="approach-heading">
       <div class="shell">
-        <h2 id="approach-heading" class="wp-section-display">How I work</h2>
+        <h2 id="approach-heading" class="wp-section-display" data-method-heading-variant="programmes">How I run programmes</h2>
+        <p class="home-product-section__intro home-product-section__intro--method">Four moves &middot; ~2 min read &middot; same proof as the cases above</p>
         <ol class="wp-method-lines">
           <li>
             <article class="wp-method-line">
@@ -281,7 +379,14 @@
               <div class="wp-method-line__body">
                 <h3 class="wp-method-line__title">Map the system</h3>
                 <p class="wp-method-line__desc">Find what&rsquo;s actually broken before you fix the loudest symptom.</p>
-                <a class="wp-link-text" href="case-studies/points-marketplace-foundational.html#beat_problem" data-methodology-proof-link data-proof-move="map">Read the story &rarr;</a>
+                <p class="wp-method-line__receipt" aria-label="Proof from BYJU&rsquo;s case">
+                  <span class="wp-method-line__receipt-chip">15 interviews</span>
+                  <span class="wp-method-line__receipt-chip">US + IN</span>
+                </p>
+                <a class="wp-method-line__proof wp-link-text" href="case-studies/points-marketplace-foundational.html#beat_problem" data-methodology-proof-link data-proof-move="map" data-proof-preview-src="assets/case-studies/points-marketplace-foundational/hero-ticker/ticker-beat-problem.png">
+                  <img class="wp-method-line__thumb" src="assets/case-studies/points-marketplace-foundational/hero-ticker/ticker-beat-problem.png" alt="" width="52" height="52" loading="lazy" decoding="async" />
+                  <span class="wp-method-line__proof-label">See the problem map <span aria-hidden="true">&rarr;</span></span>
+                </a>
               </div>
             </article>
           </li>
@@ -291,7 +396,14 @@
               <div class="wp-method-line__body">
                 <h3 class="wp-method-line__title">Choose one direction</h3>
                 <p class="wp-method-line__desc">Pick the move that matters, be clear what would change your mind, and say it plainly.</p>
-                <a class="wp-link-text" href="case-studies/hp-field-service-ai.html#beat_recommendations" data-methodology-proof-link data-proof-move="commit">Read the story &rarr;</a>
+                <p class="wp-method-line__receipt" aria-label="Proof from HP field service case">
+                  <span class="wp-method-line__receipt-chip">One next-best action</span>
+                  <span class="wp-method-line__receipt-chip">3 operating contexts</span>
+                </p>
+                <a class="wp-method-line__proof wp-link-text" href="case-studies/hp-field-service-ai.html#beat_recommendations" data-methodology-proof-link data-proof-move="commit" data-proof-preview-src="assets/case-studies/hp-field-service-ai/progression/for-card/beat-recommendations.png">
+                  <img class="wp-method-line__thumb" src="assets/case-studies/hp-field-service-ai/progression/for-card/beat-recommendations.png" alt="" width="52" height="52" loading="lazy" decoding="async" />
+                  <span class="wp-method-line__proof-label">See the decision <span aria-hidden="true">&rarr;</span></span>
+                </a>
               </div>
             </article>
           </li>
@@ -301,7 +413,14 @@
               <div class="wp-method-line__body">
                 <h3 class="wp-method-line__title">Ship the essentials first</h3>
                 <p class="wp-method-line__desc">Get the core journey working end to end before polishing surfaces that might change.</p>
-                <a class="wp-link-text" href="case-studies/stryker-field-logistics.html#beat_03_order" data-methodology-proof-link data-proof-move="ship">Read the story &rarr;</a>
+                <p class="wp-method-line__receipt" aria-label="Proof from Stryker field logistics case">
+                  <span class="wp-method-line__receipt-chip">10-beat IA</span>
+                  <span class="wp-method-line__receipt-chip">Visit-context order</span>
+                </p>
+                <a class="wp-method-line__proof wp-link-text" href="case-studies/stryker-field-logistics.html#beat_03_order" data-methodology-proof-link data-proof-move="ship" data-proof-preview-src="assets/case-studies/stryker-field-logistics/beats/beat-03-order.png">
+                  <img class="wp-method-line__thumb" src="assets/case-studies/stryker-field-logistics/hero-ticker/beat-04-order-track.png" alt="" width="52" height="52" loading="lazy" decoding="async" />
+                  <span class="wp-method-line__proof-label">See the order path <span aria-hidden="true">&rarr;</span></span>
+                </a>
               </div>
             </article>
           </li>
@@ -311,35 +430,41 @@
               <div class="wp-method-line__body">
                 <h3 class="wp-method-line__title">Measure what changed</h3>
                 <p class="wp-method-line__desc">Look at what actually moved after launch &mdash; including what didn&rsquo;t go to plan.</p>
-                <a class="wp-link-text" href="case-studies/hp-field-service-ai.html#beat_insights" data-methodology-proof-link data-proof-move="receipts">Read the story &rarr;</a>
+                <p class="wp-method-line__receipt" aria-label="Proof from HP field service testing">
+                  <span class="wp-method-line__receipt-chip">Field walkthroughs</span>
+                  <span class="wp-method-line__receipt-chip">Frame-mapped evidence</span>
+                </p>
+                <a class="wp-method-line__proof wp-link-text" href="case-studies/hp-field-service-ai.html#beat_insights" data-methodology-proof-link data-proof-move="receipts" data-proof-preview-src="assets/case-studies/hp-field-service-ai/progression/for-card/beat-insights.png">
+                  <img class="wp-method-line__thumb" src="assets/case-studies/hp-field-service-ai/progression/for-card/beat-insights.png" alt="" width="52" height="52" loading="lazy" decoding="async" />
+                  <span class="wp-method-line__proof-label">See the evidence <span aria-hidden="true">&rarr;</span></span>
+                </a>
               </div>
             </article>
           </li>
         </ol>
 
-        <div class="wp-method-close" role="group" aria-labelledby="method-close-heading">
+        <div class="wp-method-close" role="group" aria-labelledby="method-close-heading" data-wp-motion="method-close-reveal">
           <p class="wp-method-close__eyebrow">Next step</p>
           <h3 id="method-close-heading" class="wp-method-close__headline">Have a decision worth a second opinion?</h3>
           <p class="wp-method-close__lede">
-            Book 30 minutes to talk through a product call, an upcoming launch, or results that are hard to read.
-            I&rsquo;ll use the same four steps we use on client work.
+            Book 30 minutes and I&rsquo;ll walk your bet through the same four moves &mdash; a product call, an upcoming launch, or results that are hard to read.
           </p>
           <div class="wp-method-close__actions">
             <a class="wp-pill" href="mailto:chandan004sharma@gmail.com?subject=Book%20a%20call" data-methodology-cta data-event-source="methodology" data-event-kind="primary" aria-label="Book a 30-minute call">Book a 30-minute call</a>
-            <a class="wp-link-text" href="toolkits.html" data-event-source="methodology" data-event-kind="secondary" aria-label="View toolkits">View toolkits &rarr;</a>
+            <a class="wp-link-text" href="toolkits.html" data-methodology-secondary-cta data-event-source="methodology" data-event-kind="secondary" aria-label="Frameworks behind these method moves">Frameworks behind these moves &rarr;</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="connect" class="wp-connect journey-act" aria-labelledby="connect-heading">
+    <section id="connect" class="wp-connect journey-act" data-wp-motion="connect-reveal" aria-labelledby="connect-heading">
       <div class="wp-connect-atmosphere" aria-hidden="true"></div>
       <div class="shell wp-connect__inner">
         <h2 id="connect-heading" class="wp-section-display wp-section-display--on-dark">Connect</h2>
-        <p class="wp-connect__lede">Have a bet worth a second opinion?</p>
+        <p class="wp-connect__lede">Email, CV, or LinkedIn &mdash; pick what fits after you&rsquo;ve seen the work.</p>
         <div class="wp-connect__actions">
-          <a class="wp-pill wp-pill--on-dark" href="mailto:chandan004sharma@gmail.com?subject=Book%20a%20call">Book a call</a>
           <a class="wp-pill" href="cv/pdf/cv-design.pdf" download>Download CV</a>
+          <a class="wp-pill wp-pill--on-dark" href="https://www.linkedin.com/in/chandansrma/" rel="noopener noreferrer" target="_blank">LinkedIn</a>
         </div>
         <p class="wp-connect__meta">
           <a class="wp-link-text wp-link-text--on-dark" href="mailto:chandan004sharma@gmail.com">chandan004sharma@gmail.com</a>

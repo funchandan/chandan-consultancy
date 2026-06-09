@@ -1,0 +1,71 @@
+/* @aicanvas/dot-grid — interactive canvas background on product index */
+
+body.home-page--product .wp-dot-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background-color: #08090d;
+}
+
+body.home-page--product .wp-dot-grid__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+html.wp-dot-grid-active:has(body.home-page.home-page--product) {
+  background-color: #08090d;
+  background-image: none;
+}
+
+html.wp-dot-grid-active body.home-page--product .wp-page-torch,
+html.wp-dot-grid-active body.home-page--product .wp-l0-atmosphere,
+html.wp-dot-grid-active body.home-page--product .statement-viewport__bloom,
+html.wp-dot-grid-active body.home-page--product .statement-viewport__veil,
+html.wp-dot-grid-active body.home-page--product .statement-viewport__grain,
+html.wp-dot-grid-active body.home-page--product .statement-viewport__canvas::after {
+  display: none !important;
+}
+
+/* Hero, main, copy — no fills; dot grid reads through */
+html.wp-dot-grid-active body.home-page--product #hero,
+html.wp-dot-grid-active body.home-page--product #hero.statement-viewport,
+html.wp-dot-grid-active body.home-page--product main#main,
+html.wp-dot-grid-active body.home-page--product main#main > section,
+html.wp-dot-grid-active body.home-page--product main#main p,
+html.wp-dot-grid-active body.home-page--product .statement-viewport__display,
+html.wp-dot-grid-active body.home-page--product .statement-viewport__display-sentence,
+html.wp-dot-grid-active body.home-page--product .statement-viewport__display-tail,
+html.wp-dot-grid-active body.home-page--product .statement-viewport__lead,
+html.wp-dot-grid-active body.home-page--product .wp-hero-proof,
+html.wp-dot-grid-active body.home-page--product .wp-hero-toolkit-path,
+html.wp-dot-grid-active body.home-page--product .wp-hero-toolkit-path__lead,
+html.wp-dot-grid-active body.home-page--product .wp-hero-toolkit-path__lead-col,
+html.wp-dot-grid-active body.home-page--product .wp-hero-toolkit-path__lead-close,
+html.wp-dot-grid-active body.home-page--product .wp-hero-range,
+html.wp-dot-grid-active body.home-page--product .wp-connect,
+html.wp-dot-grid-active body.home-page--product .wp-connect p,
+html.wp-dot-grid-active body.home-page--product .wp-connect__lede,
+html.wp-dot-grid-active body.home-page--product .wp-connect__meta,
+html.wp-dot-grid-active body.home-page--product .wp-link-text,
+html.wp-dot-grid-active body.home-page--product .home-product-section__intro,
+html.wp-dot-grid-active body.home-page--product .wp-section-display,
+html.wp-dot-grid-active body.home-page--product .wp-method-line__desc,
+html.wp-dot-grid-active body.home-page--product .wp-method-close,
+html.wp-dot-grid-active body.home-page--product .wp-method-close__headline,
+html.wp-dot-grid-active body.home-page--product .wp-method-close__lede,
+html.wp-dot-grid-active body.home-page--product .wp-project-case__body,
+html.wp-dot-grid-active body.home-page--product .wp-project-case__body p,
+html.wp-dot-grid-active body.home-page--product .site-footer--product {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home-page--product .wp-dot-grid {
+    display: block !important;
+  }
+}
