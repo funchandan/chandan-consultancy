@@ -62,14 +62,14 @@
     root.setAttribute("data-wp-motion-profile", profile);
     root.classList.add(reduced ? "wp-motion--static" : "wp-motion--ready");
 
-    if (reduced) return;
-
     var ctx = createContext(profile);
 
-    document.addEventListener("visibilitychange", function () {
-      if (document.hidden) ctx.pause();
-      else ctx.resume();
-    });
+    if (!reduced) {
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) ctx.pause();
+        else ctx.resume();
+      });
+    }
 
     var nodes = document.querySelectorAll("[data-wp-motion]");
     var queue = [];

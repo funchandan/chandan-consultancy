@@ -1,107 +1,228 @@
 /**
- * Glass compose toolkit shell — hero toolkit path interaction layer.
- * Visual/interaction port of GlassAiCompose brief (vanilla; no React on index).
+ * Glass compose prompt — chat input + category suggestion tabs (prompt-kit pivot).
  */
 (function () {
   "use strict";
 
-  var STAGES = [
-    { id: "clarify", label: "Clarify", color: "#FF7B54", href: "toolkits/decision-teardown.html" },
-    { id: "create", label: "Create", color: "#10A37F", href: "toolkits.html#kit-create" },
-    { id: "build", label: "Build", color: "#3A86FF", href: "toolkits.html#kit-build" },
+  var SUGGESTION_GROUPS = [
+    {
+      label: "Summary",
+      highlight: "Summarize",
+      items: [
+        "Summarize a document",
+        "Summarize a video",
+        "Summarize a podcast",
+        "Summarize a book",
+      ],
+    },
+    {
+      label: "Code",
+      highlight: "Help me",
+      items: [
+        "Help me write React components",
+        "Help me debug code",
+        "Help me learn Python",
+        "Help me learn SQL",
+      ],
+    },
+    {
+      label: "Design",
+      highlight: "Design",
+      items: [
+        "Design a small logo",
+        "Design a hero section",
+        "Design a landing page",
+        "Design a social media post",
+      ],
+    },
+    {
+      label: "Research",
+      highlight: "Research",
+      items: [
+        "Research the best practices for SEO",
+        "Research the best running shoes",
+        "Research the best restaurants in Paris",
+        "Research the best AI tools",
+      ],
+    },
   ];
 
-  function stageById(id) {
-    for (var i = 0; i < STAGES.length; i++) {
-      if (STAGES[i].id === id) return STAGES[i];
+  var BRAIN_ICON =
+    '<svg class="wp-glass-compose__tab-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/>' +
+    '<path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/>' +
+    '<path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>' +
+    '<path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/>' +
+    '<path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/>' +
+    '<path d="M3.477 10.896a4 4 0 0 1 .585-.396"/>' +
+    '<path d="M19.938 10.5a4 4 0 0 1 .585.396"/>' +
+    '<path d="M6 18a4 4 0 0 1-1.967-.516"/>' +
+    '<path d="M19.967 17.484A4 4 0 0 1 18 18"/>' +
+    "</svg>";
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function highlightText(text, highlight) {
+    if (!highlight) return escapeHtml(text);
+    var idx = text.indexOf(highlight);
+    if (idx < 0) return escapeHtml(text);
+    return (
+      escapeHtml(text.slice(0, idx)) +
+      "<strong>" +
+      escapeHtml(text.slice(idx, idx + highlight.length)) +
+      "</strong>" +
+      escapeHtml(text.slice(idx + highlight.length))
+    );
+  }
+
+  function groupByLabel(label) {
+    for (var i = 0; i < SUGGESTION_GROUPS.length; i++) {
+      if (SUGGESTION_GROUPS[i].label === label) return SUGGESTION_GROUPS[i];
     }
-    return STAGES[0];
+    return null;
   }
 
   function init(root) {
     var frame = root.querySelector("[data-glass-compose-frame]");
-    var pill = root.querySelector("[data-glass-pill]");
-    var switcher = root.querySelector("[data-glass-switcher]");
-    var send = root.querySelector("[data-glass-send]");
-    var pathToggle = root.querySelector("[data-glass-path-toggle]");
-    var flash = root.querySelector("[data-glass-flash]");
-    var reduced =
-      window.matchMedia &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var form = root.querySelector("[data-glass-prompt-form]");
+    var input = root.querySelector("[data-glass-prompt-input]");
+    var sendBtn = root.querySelector("[data-glass-prompt-send]");
+    var tabsHost = root.querySelector("[data-glass-suggestion-tabs]");
+    var listHost = root.querySelector("[data-glass-suggestion-list]");
 
-    if (!frame || !pill || !switcher) return;
+    if (!frame || !form || !input || !sendBtn || !tabsHost || !listHost) return;
 
-    var activeId = "clarify";
-    var flashTimer = 0;
+    var activeCategory = "";
+    var maxHeight = 160;
 
-    function setAccent(color) {
-      root.style.setProperty("--wp-glass-accent", color);
-      frame.style.setProperty("--wp-glass-accent", color);
+    function resizeTextarea() {
+      input.style.height = "auto";
+      input.style.height = Math.min(input.scrollHeight, maxHeight) + "px";
     }
 
-    function movePill(btn) {
-      if (!btn) return;
-      var color = btn.getAttribute("data-stage-color") || stageById(activeId).color;
-      pill.style.width = btn.offsetWidth + "px";
-      pill.style.transform = "translateX(" + btn.offsetLeft + "px)";
-      pill.style.background = color + "18";
-      pill.style.border = "1px solid " + color + "22";
-      setAccent(color);
+    function syncSendState() {
+      sendBtn.disabled = input.value.trim().length === 0;
     }
 
-    function setActiveStage(id, focusTrigger) {
-      var stage = stageById(id);
-      activeId = stage.id;
-      setAccent(stage.color);
+    function setActiveCategory(label) {
+      activeCategory = label || "";
+      root.classList.toggle("wp-glass-compose--category-open", !!activeCategory);
 
-      var buttons = switcher.querySelectorAll("[data-glass-stage]");
+      var tabs = tabsHost.querySelectorAll("[data-glass-suggestion-tab]");
       var i;
-      for (i = 0; i < buttons.length; i++) {
-        var selected = buttons[i].getAttribute("data-glass-stage") === activeId;
-        buttons[i].setAttribute("aria-selected", selected ? "true" : "false");
-        if (selected) movePill(buttons[i]);
+      for (i = 0; i < tabs.length; i++) {
+        var isActive = tabs[i].getAttribute("data-glass-suggestion-tab") === activeCategory;
+        tabs[i].setAttribute("aria-pressed", isActive ? "true" : "false");
       }
 
-      if (send) send.setAttribute("href", stage.href);
-
-      var trigger = root.querySelector(
-        '[data-hero-funnel-trigger][data-hero-funnel-id="' + activeId + '"]'
-      );
-      if (focusTrigger && trigger) {
-        trigger.click();
+      if (!activeCategory) {
+        tabsHost.hidden = false;
+        listHost.hidden = true;
+        listHost.innerHTML = "";
+        return;
       }
+
+      var group = groupByLabel(activeCategory);
+      if (!group) return;
+
+      tabsHost.hidden = true;
+      listHost.hidden = false;
+      listHost.innerHTML = group.items
+        .map(function (item) {
+          return (
+            '<button type="button" class="wp-glass-compose__suggestion-item" role="listitem" data-glass-suggestion-item="' +
+            escapeHtml(item) +
+            '">' +
+            highlightText(item, group.highlight) +
+            "</button>"
+          );
+        })
+        .join("");
     }
 
-    function onFunnel(ev) {
-      var detail = ev && ev.detail;
-      if (!detail || !detail.open || !detail.id) return;
-      setActiveStage(detail.id, false);
+    var submitPipeline = null;
+
+    function deliverMailto(value) {
+      var subject = encodeURIComponent("Portfolio inquiry");
+      var body = encodeURIComponent(value);
+      window.location.href =
+        "mailto:chandan004sharma@gmail.com?subject=" + subject + "&body=" + body;
+
+      input.value = "";
+      resizeTextarea();
+      syncSendState();
+      setActiveCategory("");
     }
 
-    switcher.addEventListener("click", function (ev) {
-      var btn = ev.target.closest("[data-glass-stage]");
-      if (!btn || !switcher.contains(btn)) return;
-      var id = btn.getAttribute("data-glass-stage");
-      if (!id || id === activeId) return;
-      setActiveStage(id, true);
+    function handleSend(ev) {
+      if (ev) ev.preventDefault();
+      var value = input.value.trim();
+      if (!value) return;
+
+      if (submitPipeline) {
+        submitPipeline(value, deliverMailto);
+        return;
+      }
+
+      deliverMailto(value);
+    }
+
+    SUGGESTION_GROUPS.forEach(function (group) {
+      var tab = document.createElement("button");
+      tab.type = "button";
+      tab.className = "wp-glass-compose__suggestion-tab";
+      tab.setAttribute("data-glass-suggestion-tab", group.label);
+      tab.setAttribute("role", "listitem");
+      tab.setAttribute("aria-pressed", "false");
+      tab.innerHTML = BRAIN_ICON + escapeHtml(group.label);
+      tabsHost.appendChild(tab);
     });
 
-    switcher.addEventListener("keydown", function (ev) {
-      if (ev.key !== "ArrowLeft" && ev.key !== "ArrowRight") return;
-      ev.preventDefault();
-      var buttons = Array.prototype.slice.call(
-        switcher.querySelectorAll("[data-glass-stage]")
-      );
-      var idx = buttons.findIndex(function (b) {
-        return b.getAttribute("data-glass-stage") === activeId;
-      });
-      if (idx < 0) idx = 0;
-      idx = ev.key === "ArrowRight" ? (idx + 1) % buttons.length : (idx - 1 + buttons.length) % buttons.length;
-      setActiveStage(buttons[idx].getAttribute("data-glass-stage"), true);
-      buttons[idx].focus();
+    tabsHost.addEventListener("click", function (ev) {
+      var tab = ev.target.closest("[data-glass-suggestion-tab]");
+      if (!tab || !tabsHost.contains(tab)) return;
+      var label = tab.getAttribute("data-glass-suggestion-tab");
+      input.value = "";
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+      resizeTextarea();
+      syncSendState();
+      input.focus();
+      setActiveCategory(label);
     });
 
-    document.addEventListener("wp:hero-funnel", onFunnel);
+    listHost.addEventListener("click", function (ev) {
+      var item = ev.target.closest("[data-glass-suggestion-item]");
+      if (!item || !listHost.contains(item)) return;
+      input.value = item.getAttribute("data-glass-suggestion-item") || item.textContent || "";
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+      resizeTextarea();
+      syncSendState();
+      input.focus();
+    });
+
+    input.addEventListener("input", function () {
+      resizeTextarea();
+      syncSendState();
+      if (input.value.trim() === "") setActiveCategory("");
+    });
+
+    input.addEventListener("keydown", function (ev) {
+      if (ev.key === "Enter" && !ev.shiftKey) {
+        ev.preventDefault();
+        handleSend();
+      }
+      if (ev.key === "Escape" && activeCategory) {
+        setActiveCategory("");
+      }
+    });
+
+    form.addEventListener("submit", handleSend);
 
     frame.addEventListener("focusin", function () {
       frame.classList.add("is-active");
@@ -117,39 +238,31 @@
       frame.classList.remove("is-active");
     });
 
-    if (pathToggle && flash) {
-      pathToggle.addEventListener("click", function () {
-        var pressed = pathToggle.getAttribute("aria-pressed") === "true";
-        pathToggle.setAttribute("aria-pressed", pressed ? "false" : "true");
-        root.classList.toggle("wp-glass-compose--path-on", !pressed);
-        if (flashTimer) window.clearTimeout(flashTimer);
-        if (!pressed) {
-          flash.hidden = false;
-          flashTimer = window.setTimeout(function () {
-            flash.hidden = true;
-            flashTimer = 0;
-          }, 1000);
-        } else {
-          flash.hidden = true;
-        }
-      });
-    }
+    resizeTextarea();
+    syncSendState();
+    setActiveCategory("");
 
-    function layoutPill() {
-      var activeBtn = switcher.querySelector('[data-glass-stage][aria-selected="true"]');
-      movePill(activeBtn || switcher.querySelector("[data-glass-stage]"));
-    }
-
-    setActiveStage("clarify", false);
-    window.requestAnimationFrame(layoutPill);
-
-    if (!reduced) {
-      window.addEventListener("resize", layoutPill, { passive: true });
-    }
+    window.setTimeout(function () {
+      document.dispatchEvent(
+        new CustomEvent("wp:glass-compose-init", {
+          detail: {
+            root: root,
+            input: input,
+            form: form,
+            sendBtn: sendBtn,
+            resizeTextarea: resizeTextarea,
+            syncSendState: syncSendState,
+            registerSubmit: function (fn) {
+              submitPipeline = fn;
+            },
+          },
+        })
+      );
+    }, 0);
   }
 
   function boot() {
-    var root = document.querySelector(".wp-glass-compose[data-hero-funnel-root]");
+    var root = document.querySelector("[data-wp-glass-compose]");
     if (root) init(root);
   }
 

@@ -1,0 +1,52 @@
+/* MagicUI Pointer — document-level blue cursor (product index) */
+
+@media (hover: hover) and (pointer: fine) {
+  html.wp-blue-pointer-active,
+  html.wp-blue-pointer-active body,
+  html.wp-blue-pointer-active a,
+  html.wp-blue-pointer-active button,
+  html.wp-blue-pointer-active [role="button"],
+  html.wp-blue-pointer-active input,
+  html.wp-blue-pointer-active textarea,
+  html.wp-blue-pointer-active select,
+  html.wp-blue-pointer-active label {
+    cursor: none !important;
+  }
+}
+
+.wp-blue-pointer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100000;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
+  transition: opacity 0.15s ease;
+  will-change: transform, opacity;
+}
+
+.wp-blue-pointer.is-visible {
+  opacity: 1;
+}
+
+.wp-blue-pointer__svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  fill: #3b82f6;
+  stroke: #fff;
+  stroke-width: 1;
+  transform: rotate(-70deg);
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.35));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-blue-pointer {
+    display: none !important;
+  }
+}
+
+html.wp-motion--static .wp-blue-pointer {
+  display: none !important;
+}

@@ -6,6 +6,7 @@ body.home-page {
   --wp-hero-kw-2: color-mix(in srgb, #c9bde8 88%, #fff);
   --wp-hero-kw-3: color-mix(in srgb, #e8c98a 85%, #fff);
   --wp-hero-kw-4: color-mix(in srgb, #e8b08a 85%, #fff);
+  --wp-hero-kw-5: color-mix(in srgb, #9ec8f5 86%, #fff);
   --wp-hero-kw-active: var(--wp-hero-kw-0);
   --wp-hero-slot-active: 0;
 }
@@ -14,8 +15,93 @@ body.home-page {
   display: inline;
 }
 
-.statement-viewport__display-tail {
+.wp-hero-slot__suffix {
   color: color-mix(in srgb, var(--wp-white, #fff) 88%, transparent);
+}
+
+/* —— First-load full title scramble (FR-HERO-002) —— */
+.wp-hero-slot__scramble-full {
+  display: block;
+  padding-left: 16px;
+  padding-right: 16px;
+  color: var(--wp-hero-kw-active);
+  white-space: normal;
+}
+
+.wp-hero-slot-sentence--full-scramble .wp-hero-slot__suffix,
+.wp-hero-slot-sentence--full-scramble .wp-hero-slot {
+  display: none !important;
+}
+
+/* —— Keyword-only scramble (0.75s interval updates) —— */
+.wp-hero-slot__scramble-surface {
+  display: inline;
+  padding-left: 16px;
+  padding-right: 0;
+  white-space: nowrap;
+  color: var(--wp-hero-kw-active);
+}
+
+.wp-hero-slot__scramble-surface[data-slot-index="0"] {
+  color: var(--wp-hero-kw-0);
+}
+
+.wp-hero-slot__scramble-surface[data-slot-index="1"] {
+  color: var(--wp-hero-kw-1);
+}
+
+.wp-hero-slot__scramble-surface[data-slot-index="2"] {
+  color: var(--wp-hero-kw-2);
+}
+
+.wp-hero-slot__scramble-surface[data-slot-index="3"] {
+  color: var(--wp-hero-kw-3);
+}
+
+.wp-hero-slot__scramble-surface[data-slot-index="4"] {
+  color: var(--wp-hero-kw-4);
+}
+
+.wp-hero-slot__scramble-surface[data-slot-index="5"] {
+  color: var(--wp-hero-kw-5);
+}
+
+.wp-hero-slot__keyword {
+  padding-left: 16px;
+  color: var(--wp-hero-kw-active);
+}
+
+.wp-hero-slot--static .wp-hero-slot__viewport {
+  display: none !important;
+}
+
+.wp-hero-slot--static .wp-hero-slot__keyword[data-slot-index="0"] {
+  color: var(--wp-hero-kw-0);
+}
+
+.wp-hero-slot--static .wp-hero-slot__keyword[data-slot-index="1"] {
+  color: var(--wp-hero-kw-1);
+}
+
+.wp-hero-slot--static .wp-hero-slot__keyword[data-slot-index="2"] {
+  color: var(--wp-hero-kw-2);
+}
+
+.wp-hero-slot--static .wp-hero-slot__keyword[data-slot-index="3"] {
+  color: var(--wp-hero-kw-3);
+}
+
+.wp-hero-slot--static .wp-hero-slot__keyword[data-slot-index="4"] {
+  color: var(--wp-hero-kw-4);
+}
+
+.wp-hero-slot--static .wp-hero-slot__keyword[data-slot-index="5"] {
+  color: var(--wp-hero-kw-5);
+}
+
+.wp-hero-slot--static {
+  display: inline;
+  vertical-align: baseline;
 }
 
 /* —— Vertical slot reel —— */
@@ -105,6 +191,21 @@ body.home-page {
   color: var(--wp-hero-kw-4);
 }
 
+.wp-hero-slot__word[data-slot-index="5"] {
+  color: var(--wp-hero-kw-5);
+}
+
+/* —— Scramble intro — reel disabled (AC-2) —— */
+.wp-hero-slot--intro .wp-hero-slot__track,
+.wp-hero-slot--static .wp-hero-slot__track {
+  transform: none !important;
+  transition: none;
+}
+
+.wp-hero-slot--intro .wp-hero-slot__viewport {
+  display: none !important;
+}
+
 /* —— Reel index dots —— */
 .wp-hero-range--index {
   display: flex;
@@ -139,9 +240,10 @@ body.home-page {
 }
 
 /* —— Editorial enter (no startup pop) —— */
-.statement-viewport__display-tail,
+.wp-hero-slot__suffix,
 .wp-hero-proof,
 .wp-hero-toolkit-path,
+.wp-glass-compose,
 .statement-viewport__skip-wrap {
   animation: wp-hero-editorial-in 1.6s cubic-bezier(0.33, 1, 0.32, 1) both;
 }
@@ -174,7 +276,7 @@ body.home-page--product .wp-hero-toolkit-path__stage:nth-child(3) .wp-hero-proje
   }
 }
 
-.statement-viewport__display-tail {
+.wp-hero-slot__suffix {
   animation-delay: 0.12s;
 }
 
@@ -182,7 +284,8 @@ body.home-page--product .wp-hero-toolkit-path__stage:nth-child(3) .wp-hero-proje
   animation-delay: 0.36s;
 }
 
-.wp-hero-toolkit-path {
+.wp-hero-toolkit-path,
+.wp-glass-compose {
   animation-delay: 0.48s;
 }
 
@@ -225,9 +328,10 @@ body.home-page--product .wp-hero-toolkit-path__stage:nth-child(3) .wp-hero-proje
     display: none;
   }
 
-  .statement-viewport__display-tail,
+  .wp-hero-slot__suffix,
   .wp-hero-proof,
   .wp-hero-toolkit-path,
+.wp-glass-compose,
   .statement-viewport__skip-wrap,
   .statement-viewport__skip,
   body.home-page--product .wp-hero-toolkit-path .wp-hero-project-strip__tile {
@@ -266,9 +370,10 @@ html.wp-motion--static .wp-hero-slot__word {
   opacity: 1;
 }
 
-html.wp-motion--static .statement-viewport__display-tail,
+html.wp-motion--static .wp-hero-slot__suffix,
 html.wp-motion--static .wp-hero-proof,
 html.wp-motion--static .wp-hero-toolkit-path,
+.wp-glass-compose,
 html.wp-motion--static .statement-viewport__skip,
 html.wp-motion--static body.home-page--product .wp-hero-toolkit-path .wp-hero-project-strip__tile {
   animation: none;
