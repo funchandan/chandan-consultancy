@@ -1,0 +1,75 @@
+{
+  "toolkits": {
+    "title": "Toolkits",
+    "description": "Decision teardowns, research scaffolds, and ship-ready frameworks.",
+    "href": "toolkits.html",
+    "cta": "Explore toolkits",
+    "marquee": [
+      {
+        "name": "Decision teardown",
+        "body": "Bet memo, kill date, and reversal cost before the brainstorm runs long.",
+        "href": "toolkits/decision-teardown.html"
+      },
+      {
+        "name": "AI workflow UX",
+        "body": "HITL map and guardrails for pilots humans can still override.",
+        "href": "toolkits.html#kit-create"
+      },
+      {
+        "name": "Architecture audit",
+        "body": "Seam map and 90-day cohesion plan before the stack bends.",
+        "href": "toolkits.html#kit-build"
+      },
+      {
+        "name": "User needs research",
+        "body": "Structured discovery doc for framing before UI scales.",
+        "href": "mailto:chandan004sharma@gmail.com?subject=User%20needs%20research%20toolkit"
+      },
+      {
+        "name": "90-day rollout checklist",
+        "body": "Ship-ready checklist for enterprise programme delivery.",
+        "href": "toolkits.html#kit-build"
+      }
+    ]
+  },
+  "experience": {
+    "title": "My experience",
+    "description": "Teacher first. Then scale. Then Fortune 100 stakes.",
+    "href": "about.html#experience",
+    "secondaryHref": "work.html",
+    "secondaryCta": "View work",
+    "cta": "See timeline",
+    "currentRole": {
+      "dates": "2022 — Present",
+      "title": "Birlasoft · Senior UX Consultant",
+      "copy": "Stryker robotic surgery ops and HP field service AI — five-person UX pod."
+    },
+    "timeline": [
+      { "name": "Birlasoft", "when": "2022 —" },
+      { "name": "BYJU's", "when": "2021–22" },
+      { "name": "WhiteHat Jr", "when": "2020–21" },
+      { "name": "Teach For India", "when": "2017–19" },
+      { "name": "Scraplabs", "when": "2015–17" }
+    ]
+  },
+  "reviews": {
+    "title": "My reviews",
+    "description": "What collaborators say about working together.",
+    "href": "about.html",
+    "cta": "Read more",
+    "quotes": [
+      {
+        "text": "Chandan brings structure to ambiguous enterprise problems — research that engineering can ship against.",
+        "cite": "Product lead, Fortune 100 healthcare"
+      },
+      {
+        "text": "One of the strongest design leaders I've worked with at global edtech scale.",
+        "cite": "Design director, BYJU's Future School"
+      },
+      {
+        "text": "Frames the bet before UI — stakeholders leave with decisions, not decks.",
+        "cite": "Engineering partner, field service AI"
+      }
+    ]
+  }
+}

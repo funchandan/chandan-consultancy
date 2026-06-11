@@ -20,6 +20,75 @@ body.home-page.home-page--product {
   --wp-index-secondary-gold: #c9a962;
   --wp-index-prose-on-dark: color-mix(in srgb, var(--wp-white, #fff) 78%, transparent);
   --wp-font-prose: "Oxygen", var(--wp-font-ui, "Inter", system-ui, sans-serif);
+  /* Match floating nav dock — default horizontal rhythm for all index shells */
+  --wp-layout-width: min(1280px, calc(100% - var(--layout-pad) * 2));
+}
+
+body.home-page--product .shell,
+body.home-page--product .site-header__dock {
+  width: var(--wp-layout-width);
+  margin-inline: auto;
+}
+
+body.home-page--product .statement-viewport__inner.shell {
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  row-gap: 24px;
+}
+
+body.home-page--product .statement-viewport__inner.shell > * {
+  margin-block: 0;
+}
+
+body.home-page--product .statement-viewport__display {
+  margin: 0;
+}
+
+body.home-page--product .statement-viewport__display-sentence {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+body.home-page--product .statement-viewport__display-tail-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+}
+
+body.home-page--product .wp-hero-slot,
+body.home-page--product .wp-hero-slot--static {
+  display: block;
+}
+
+body.home-page--product .statement-viewport__display-tail,
+body.home-page--product .wp-hero-tail-accent {
+  display: block;
+}
+
+body.home-page--product .wp-box-bento-ledge .wp-glass-compose,
+body.home-page--product .wp-box-bento-ledge .wp-box-bento {
+  margin: 0;
+}
+
+body.home-page--product .wp-box-bento-ledge .wp-glass-compose {
+  margin-inline: 0;
+  padding: 0;
+}
+
+body.home-page--product .wp-glass-compose__main {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+body.home-page--product #work > .shell {
+  width: var(--wp-layout-width);
 }
 
 body.home-page.home-page--product main#main {

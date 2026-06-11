@@ -1,0 +1,86 @@
+/* Hero Gemini CTA electrification — scroll-synced via --hero-gemini-progress */
+
+html.wp-gemini-effect-ready {
+  --gemini-input-t: var(--box-bento-t, 0);
+}
+
+/* Search inside BoxBento — electrification when shell is interactive */
+html.wp-gemini-effect-ready:not(.wp-motion--static):not(.wp-gemini-cta-reveal--static)
+  body.home-page--product
+  [data-box-bento-search]
+  .wp-glass-compose[data-gemini-input-active] {
+  transform: translateY(calc(-2px * var(--gemini-input-border-peak, 0) * (1 - var(--gemini-input-t, 0))))
+    scale(calc(1 + 0.01 * var(--gemini-input-border-peak, 0) * (1 - var(--gemini-input-t, 0))));
+  transition: transform 80ms linear;
+}
+
+/* Electrification on input shell (border + shadow) */
+html.wp-gemini-effect-ready:not(.wp-motion--static):not(.wp-gemini-cta-reveal--static)
+  body.home-page--product
+  .wp-glass-compose__input-shell {
+  border-color: color-mix(
+    in srgb,
+    #4fabff calc(var(--gemini-input-border-peak, 0) * 70%),
+    color-mix(
+      in srgb,
+      #ffb7c5 calc(var(--gemini-input-border-peak, 0) * 40%),
+      rgba(0, 0, 0, 0.1)
+    )
+  );
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, calc(0.06 * var(--gemini-input-t))),
+    0 0 calc(4px + 32px * var(--gemini-input-border-peak, 0)) color-mix(
+      in srgb,
+      #ffb7c5 calc(var(--gemini-input-border-peak, 0) * 55%),
+      transparent
+    ),
+    0 0 calc(2px + 24px * var(--gemini-input-border-peak, 0)) color-mix(
+      in srgb,
+      #076eff calc(var(--gemini-input-border-peak, 0) * 35%),
+      transparent
+    ),
+    0 0 calc(8px + 12px * (1 - var(--gemini-input-border-peak, 0)) * var(--gemini-input-t))
+      color-mix(in srgb, #4fabff calc(var(--gemini-input-t) * 12%), transparent);
+  transition:
+    border-color 80ms linear,
+    box-shadow 80ms linear;
+}
+
+/* —— Reduced motion / static fallback —— */
+html.wp-motion--static body.home-page--product [data-box-bento],
+html.wp-gemini-cta-reveal--static body.home-page--product [data-box-bento] {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+html.wp-motion--static body.home-page--product [data-box-bento-search] .wp-glass-compose,
+html.wp-gemini-cta-reveal--static body.home-page--product [data-box-bento-search] .wp-glass-compose {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+html.wp-motion--static body.home-page--product .wp-glass-compose__input-shell,
+html.wp-gemini-cta-reveal--static body.home-page--product .wp-glass-compose__input-shell {
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.wp-gemini-effect-ready body.home-page--product [data-box-bento-search] .wp-glass-compose {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    visibility: visible;
+    transition: none;
+  }
+
+  html.wp-gemini-effect-ready body.home-page--product .wp-glass-compose__input-shell {
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    transition: none;
+  }
+}
