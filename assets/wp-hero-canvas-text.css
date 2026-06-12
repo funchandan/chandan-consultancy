@@ -1,0 +1,42 @@
+/* Aceternity CanvasText — hero morph keywords */
+
+.wp-hero-canvas-text {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  color: color-mix(in srgb, var(--wp-white, #fff) 88%, transparent);
+}
+
+.wp-hero-canvas-text__host {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  overflow: visible;
+}
+
+.wp-hero-canvas-text__measure {
+  visibility: hidden;
+  display: inline-block;
+  white-space: nowrap;
+  pointer-events: none;
+  color: color-mix(in srgb, var(--wp-white, #fff) 88%, transparent);
+}
+
+.wp-hero-canvas-text__canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-hero-canvas-text__canvas {
+    display: none;
+  }
+
+  .wp-hero-canvas-text__measure {
+    visibility: visible;
+    position: static;
+  }
+}
