@@ -31,7 +31,7 @@ html.wp-section-depth-ready body.home-page--product .wp-box-bento-ledge {
   min-height: clamp(420px, 52vh, 540px);
 }
 
-html.wp-gemini-effect-ready:not(.wp-motion--static):not(.wp-gemini-cta-reveal--static)
+html.wp-box-bento-fallback:not(.wp-motion--static)
   body.home-page--product
   [data-box-bento] {
   --box-bento-blur: calc(12px * (1 - var(--box-bento-t, 0)));
@@ -44,19 +44,19 @@ html.wp-gemini-effect-ready:not(.wp-motion--static):not(.wp-gemini-cta-reveal--s
   will-change: opacity, filter, transform;
 }
 
-html.wp-gemini-effect-ready:not(.wp-motion--static):not(.wp-gemini-cta-reveal--static)
+html.wp-box-bento-fallback:not(.wp-motion--static)
   body.home-page--product
   [data-box-bento][data-box-bento-active] {
   visibility: visible;
 }
 
-html.wp-gemini-effect-ready:not(.wp-motion--static):not(.wp-gemini-cta-reveal--static)
+html.wp-box-bento-fallback:not(.wp-motion--static)
   body.home-page--product
   [data-box-bento][data-box-bento-interactive] {
   pointer-events: auto;
 }
 
-html:not(.wp-gemini-effect-ready):not(.wp-motion--static) body.home-page--product [data-box-bento] {
+html:not(.wp-box-bento-fallback):not(.wp-motion--static) body.home-page--product [data-box-bento] {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;

@@ -152,9 +152,76 @@
     }
   }
 
+  function clamp(v, min, max) {
+    return Math.max(min, Math.min(max, v));
+  }
+
+  function heroProgress(hero) {
+    var heroH = hero.offsetHeight;
+    var range = Math.min(window.innerHeight * 0.75, heroH * 0.85);
+    if (range < 1) return 0;
+    var traveled = Math.max(0, -hero.getBoundingClientRect().top);
+    return clamp(traveled / range, 0, 1);
+  }
+
+  function publishBoxBentoProgress(root, progress) {
+    var boxT = clamp((progress - 0.3) / 0.15, 0, 1);
+    var boxTStr = boxT.toFixed(4);
+    document.documentElement.style.setProperty("--box-bento-t", boxTStr);
+
+    if (boxT > 0.01) {
+      root.setAttribute("data-box-bento-active", "");
+    } else {
+      root.removeAttribute("data-box-bento-active");
+    }
+
+    if (boxT >= 0.5) {
+      root.setAttribute("data-box-bento-interactive", "");
+    } else {
+      root.removeAttribute("data-box-bento-interactive");
+    }
+
+    var askBlock = document.querySelector("[data-box-bento-search] .wp-glass-compose");
+    var promptInput = document.querySelector("#hero-glass-prompt");
+
+    if (askBlock) {
+      if (boxT >= 0.05) {
+        askBlock.removeAttribute("aria-hidden");
+      } else {
+        askBlock.setAttribute("aria-hidden", "true");
+      }
+    }
+
+    if (promptInput) {
+      if (boxT < 0.5) {
+        promptInput.setAttribute("aria-hidden", "true");
+        promptInput.setAttribute("tabindex", "-1");
+      } else {
+        promptInput.removeAttribute("aria-hidden");
+        promptInput.removeAttribute("tabindex");
+      }
+    }
+  }
+
+  function bootRevealScroll(root) {
+    var hero = document.getElementById("hero");
+    if (!hero) return;
+
+    function update() {
+      publishBoxBentoProgress(root, heroProgress(hero));
+    }
+
+    document.documentElement.classList.add("wp-box-bento-fallback");
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+  }
+
   function boot() {
     var root = document.querySelector("[data-box-bento]");
     if (!root) return;
+
+    bootRevealScroll(root);
 
     fetch(DATA_URL)
       .then(function (res) {
