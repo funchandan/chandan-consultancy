@@ -2,10 +2,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run build:gsap && npm run build:three && next build",
+    "build": "next build",
     "build:gsap": "node scripts/build-gsap-bundle.mjs",
     "build:three": "node scripts/build-three-bundle.mjs",
-    "postinstall": "npm run build:gsap && npm run build:three",
+    "build:vendors": "npm run build:gsap && npm run build:three",
     "start": "next start",
     "lint": "next lint"
   },

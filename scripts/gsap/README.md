@@ -6,13 +6,17 @@
 
 - `assets/vendor/gsap/wp-gsap-all.min.js` — core GSAP + all plugins, `window.gsap` globals
 
-Rebuild after `npm install` or upgrading `gsap`:
+Rebuild after upgrading `gsap` or `three` (local dev only — bundles are committed; Vercel ignores `scripts/`):
 
 ```bash
+npm run build:vendors
+# or individually:
 npm run build:gsap
+npm run build:three
 ```
 
-Source: `scripts/gsap/site-bundle-entry.mjs` → `scripts/build-gsap-bundle.mjs` (esbuild IIFE).
+Source: `scripts/gsap/site-bundle-entry.mjs` → `scripts/build-gsap-bundle.mjs` (esbuild IIFE).  
+Three: `scripts/three/site-bundle-entry.mjs` → `scripts/build-three-bundle.mjs` → `assets/vendor/three/wp-three-all.min.js`.
 
 ## React / Next.js
 
