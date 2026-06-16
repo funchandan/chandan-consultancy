@@ -1,0 +1,220 @@
+/* DistortedGlass parallax deco — post-hero scroll tiers (gemini palette) */
+
+.wp-distorted-glass-parallax {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  min-height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+body.home-page--product .wp-distorted-glass-parallax-host {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.wp-distorted-glass-parallax__tier {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.wp-distorted-glass-parallax__tier--slow {
+  transform: translate3d(0, calc(var(--dg-parallax-slow, 0px) * -1), 0);
+}
+
+.wp-distorted-glass-parallax__tier--mid {
+  transform: translate3d(0, calc(var(--dg-parallax-mid, 0px) * -1), 0);
+}
+
+.wp-distorted-glass-parallax__tier--fast {
+  transform: translate3d(0, calc(var(--dg-parallax-fast, 0px) * -1), 0);
+}
+
+.wp-distorted-glass-parallax__label {
+  position: absolute;
+  font-family: "Oxygen", system-ui, sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(255, 183, 197, 0.05);
+  user-select: none;
+  white-space: nowrap;
+}
+
+.wp-distorted-glass-parallax__label--a {
+  top: 8%;
+  left: 4%;
+  animation: dg-drift-x 8s ease-in-out infinite;
+}
+
+.wp-distorted-glass-parallax__label--b {
+  top: 18%;
+  right: 4%;
+  color: rgba(79, 171, 255, 0.05);
+  animation: dg-drift-x-rev 10s ease-in-out infinite;
+}
+
+.wp-distorted-glass-parallax__grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 1rem;
+  padding: 2rem;
+  max-width: 56rem;
+  margin: 28vh auto 0;
+}
+
+.wp-distorted-glass-parallax__square {
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 4rem;
+  margin-inline: auto;
+  border-radius: 0.5rem;
+  border: 2px solid rgba(79, 171, 255, 0.35);
+  background: rgba(7, 110, 255, 0.08);
+  opacity: 0.35;
+  animation: dg-square-pulse 3s ease-in-out infinite;
+}
+
+.wp-distorted-glass-parallax__rings {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wp-distorted-glass-parallax__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 183, 197, 0.25);
+  animation: dg-ring-spin 20s linear infinite;
+}
+
+.wp-distorted-glass-parallax__ring:nth-child(1) {
+  width: 12rem;
+  height: 12rem;
+}
+
+.wp-distorted-glass-parallax__ring:nth-child(2) {
+  width: 16rem;
+  height: 16rem;
+  animation-duration: 25s;
+}
+
+.wp-distorted-glass-parallax__ring:nth-child(3) {
+  width: 20rem;
+  height: 20rem;
+  animation-duration: 30s;
+}
+
+.wp-distorted-glass-parallax__ring:nth-child(4) {
+  width: 24rem;
+  height: 24rem;
+  animation-duration: 35s;
+}
+
+.wp-distorted-glass-parallax__ring:nth-child(5) {
+  width: 28rem;
+  height: 28rem;
+  animation-duration: 40s;
+}
+
+.wp-distorted-glass-parallax__lines {
+  position: absolute;
+  inset: 0;
+}
+
+.wp-distorted-glass-parallax__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(79, 171, 255, 0.25);
+  animation: dg-line-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dg-drift-x {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(50px);
+  }
+}
+
+@keyframes dg-drift-x-rev {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-50px);
+  }
+}
+
+@keyframes dg-square-pulse {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.15) rotate(45deg);
+    opacity: 0.65;
+  }
+}
+
+@keyframes dg-ring-spin {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.06);
+  }
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes dg-line-pulse {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scaleX(1.35);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-distorted-glass-parallax__label,
+  .wp-distorted-glass-parallax__square,
+  .wp-distorted-glass-parallax__ring,
+  .wp-distorted-glass-parallax__line {
+    animation: none !important;
+  }
+
+  .wp-distorted-glass-parallax__tier--slow,
+  .wp-distorted-glass-parallax__tier--mid,
+  .wp-distorted-glass-parallax__tier--fast {
+    transform: none;
+  }
+}
+
+@media (max-width: 1279px) {
+  .wp-distorted-glass-parallax {
+    display: none;
+  }
+}

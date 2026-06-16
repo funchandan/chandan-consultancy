@@ -1,0 +1,498 @@
+/* Aceternity 3D Pin — My Experience bento (brownfield port of components/ui/3d-pin.tsx) */
+
+.bento-card--experience,
+.bento-card--reviews {
+  --bento-pin-scale: 1.45;
+  --bento-pin-tilt: 65deg;
+  overflow: visible;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none;
+  z-index: 1;
+}
+
+.bento-card--reviews {
+  --bento-pin-scale: 1.35;
+}
+
+.bento-card--experience.is-pin-active,
+.bento-card--reviews.is-pin-active {
+  z-index: 3;
+}
+
+/* Expanded hit area — keeps hover while pointer is over chip above card */
+.bento-card--experience .bento-3d-pin__hover-zone,
+.bento-card--reviews .bento-3d-pin__hover-zone {
+  position: absolute;
+  top: -4.5rem;
+  left: -0.75rem;
+  right: -0.75rem;
+  bottom: -0.75rem;
+  z-index: 0;
+  pointer-events: auto;
+}
+
+/* Card shell + content tilt together; pin overlay stays screen-aligned sibling */
+.bento-card--experience .bento-card__tilt,
+.bento-card--reviews .bento-card__tilt {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  width: 100%;
+  min-height: inherit;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: #fffff0;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.03),
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    0 12px 24px rgba(0, 0, 0, 0.05);
+  transform-style: preserve-3d;
+  transform: perspective(1100px) rotateX(0deg);
+  transform-origin: 50% 100%;
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  backface-visibility: hidden;
+}
+
+.bento-card--experience.is-pin-active .bento-card__tilt,
+.bento-card--reviews.is-pin-active .bento-card__tilt {
+  transform: perspective(1100px) rotateX(var(--bento-pin-tilt));
+}
+
+.bento-card--experience.is-pin-active .bento-card__shade,
+.bento-card--reviews.is-pin-active .bento-card__shade {
+  background: #fffff0;
+  opacity: 0.5;
+}
+
+@media (min-width: 1024px) {
+  .bento-card--reviews.is-pin-active .bento-card__panel,
+  .bento-card--reviews.is-pin-active .bento-card__shade {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  /* Reviews — readable flat lift inside tilted card (3D crush made quote ~6px tall) */
+  .bento-card--reviews.is-pin-active .bento-3d-pin--surface {
+    z-index: 4;
+  }
+
+  .bento-card--reviews.is-pin-active .bento-3d-pin__perspective {
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    bottom: auto;
+    width: min(20rem, 92%);
+    height: auto;
+    transform: translate(-50%, -50%);
+    perspective: none;
+  }
+
+  .bento-card--reviews.is-pin-active .bento-3d-pin__lift {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    padding: 0.75rem;
+  }
+
+}
+
+.bento-card--experience .bento-card__panel,
+.bento-card--experience .bento-card__cta--desktop,
+.bento-card--experience .bento-card__cta--mobile,
+.bento-card--experience .bento-card__shade,
+.bento-card--reviews .bento-card__panel,
+.bento-card--reviews .bento-card__cta--desktop,
+.bento-card--reviews .bento-card__cta--mobile,
+.bento-card--reviews .bento-card__shade {
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 1024px) {
+  .bento-card--experience:hover .bento-card__content,
+  .bento-card--experience:focus-within .bento-card__content,
+  .bento-card--experience.is-pin-active .bento-card__content,
+  .bento-card--reviews:hover .bento-card__content,
+  .bento-card--reviews:focus-within .bento-card__content,
+  .bento-card--reviews.is-pin-active .bento-card__content {
+    transform: none;
+  }
+
+  .bento-card--experience:hover .bento-card__icon,
+  .bento-card--experience:focus-within .bento-card__icon,
+  .bento-card--experience.is-pin-active .bento-card__icon,
+  .bento-card--reviews:hover .bento-card__icon,
+  .bento-card--reviews:focus-within .bento-card__icon,
+  .bento-card--reviews.is-pin-active .bento-card__icon {
+    transform: scale(0.75);
+  }
+}
+
+/* Timeline surface — hidden until hover */
+.bento-card--experience .bento-3d-pin--surface,
+.bento-card--reviews .bento-3d-pin--surface {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 450ms ease, visibility 450ms ease;
+}
+
+.bento-card--experience.is-pin-active .bento-3d-pin--surface,
+.bento-card--reviews.is-pin-active .bento-3d-pin--surface {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Screen-space pin overlay — NOT inside tilt layer */
+.bento-card--experience .bento-3d-pin__screen,
+.bento-card--reviews .bento-3d-pin__screen {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 450ms ease, visibility 450ms ease;
+  transform: none;
+}
+
+.bento-card--experience.is-pin-active .bento-3d-pin__screen,
+.bento-card--reviews.is-pin-active .bento-3d-pin__screen {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bento-card--experience .bento-3d-pin__perspective,
+.bento-card--reviews .bento-3d-pin__perspective {
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  width: min(26rem, 95%);
+  height: 88%;
+  perspective: 1000px;
+  transform: translateX(-50%) rotateX(70deg) translateZ(0);
+}
+
+.bento-card--experience .bento-3d-pin__lift,
+.bento-card--reviews .bento-3d-pin__lift {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: calc(0.75rem * var(--bento-pin-scale));
+  border-radius: calc(1rem * var(--bento-pin-scale));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0a0a0a;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  transform: translate(-50%, -50%) rotateX(0deg) scale(calc(0.92 * var(--bento-pin-scale)));
+  transition: transform 700ms ease;
+  overflow: hidden;
+}
+
+.bento-card--experience.is-pin-active .bento-3d-pin__lift,
+.bento-card--reviews.is-pin-active .bento-3d-pin__lift {
+  transform: translate(-50%, -50%) rotateX(40deg) scale(var(--bento-pin-scale));
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.bento-card--experience .bento-3d-pin__card,
+.bento-card--reviews .bento-3d-pin__card {
+  position: relative;
+  z-index: 2;
+}
+
+.bento-card--experience .bento-3d-pin__timeline,
+.bento-card--reviews .bento-3d-pin__timeline {
+  position: relative;
+  inset: auto;
+  display: flex;
+  flex-direction: column;
+  gap: calc(6px * var(--bento-pin-scale));
+  padding: 0;
+  mask-image: none;
+  -webkit-mask-image: none;
+  transform: none;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.bento-card--experience .bento-3d-pin__timeline .bento-card__timeline-row,
+.bento-card--reviews .bento-3d-pin__timeline .bento-card__timeline-row {
+  min-width: calc(222px * var(--bento-pin-scale));
+  font-size: calc(0.744rem * var(--bento-pin-scale));
+  padding: calc(8px * var(--bento-pin-scale)) calc(15px * var(--bento-pin-scale));
+}
+
+.bento-card--experience .bento-3d-pin__fx {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: calc(18rem * var(--bento-pin-scale));
+  height: calc(14rem * var(--bento-pin-scale));
+  margin-left: calc(-9rem * var(--bento-pin-scale));
+  margin-top: calc(-7rem * var(--bento-pin-scale));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transform: none;
+}
+
+.bento-card--reviews .bento-3d-pin__fx {
+  display: none;
+}
+
+.bento-card--experience .bento-3d-pin__fx-inner,
+.bento-card--reviews .bento-3d-pin__fx-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Chip floats above bento box — screen space */
+.bento-card--experience .bento-3d-pin__chip-wrap,
+.bento-card--reviews .bento-3d-pin__chip-wrap {
+  position: absolute;
+  left: 50%;
+  top: -3.5rem;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  white-space: nowrap;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.bento-card--experience.is-pin-active .bento-3d-pin__chip-wrap,
+.bento-card--reviews.is-pin-active .bento-3d-pin__chip-wrap {
+  pointer-events: auto;
+}
+
+.bento-card--experience .bento-3d-pin__chip,
+.bento-card--reviews .bento-3d-pin__chip {
+  position: relative;
+  z-index: 10;
+  display: inline-block;
+  padding: 0.35rem 1.25rem;
+  border-radius: 9999px;
+  background: #09090b;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: calc(0.8125rem * var(--bento-pin-scale));
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transform: none;
+}
+
+.bento-card--experience .bento-3d-pin__chip::after,
+.bento-card--reviews .bento-3d-pin__chip::after {
+  content: "";
+  position: absolute;
+  left: 1.125rem;
+  bottom: 0;
+  width: calc(100% - 2.25rem);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(52, 211, 153, 0),
+    rgba(52, 211, 153, 0.9),
+    rgba(52, 211, 153, 0)
+  );
+  opacity: 0.4;
+}
+
+.bento-card--experience .bento-3d-pin__rings,
+.bento-card--reviews .bento-3d-pin__rings {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  width: 0;
+  height: 0;
+  transform: none;
+}
+
+.bento-card--experience .bento-3d-pin__ring,
+.bento-card--reviews .bento-3d-pin__ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(11.25rem * var(--bento-pin-scale));
+  height: calc(11.25rem * var(--bento-pin-scale));
+  margin: calc(-5.625rem * var(--bento-pin-scale)) 0 0 calc(-5.625rem * var(--bento-pin-scale));
+  border-radius: 50%;
+  background: rgba(14, 165, 233, 0.1);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  transform: scale(0);
+  opacity: 0;
+  animation: bento-3d-pin-ring 6s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.bento-card--experience.is-pin-active .bento-3d-pin__ring,
+.bento-card--reviews.is-pin-active .bento-3d-pin__ring {
+  animation-play-state: running;
+}
+
+.bento-card--experience .bento-3d-pin__ring:nth-child(2),
+.bento-card--reviews .bento-3d-pin__ring:nth-child(2) {
+  animation-delay: 2s;
+}
+
+.bento-card--experience .bento-3d-pin__ring:nth-child(3),
+.bento-card--reviews .bento-3d-pin__ring:nth-child(3) {
+  animation-delay: 4s;
+}
+
+@keyframes bento-3d-pin-ring {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  60% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.bento-card--experience .bento-3d-pin__beam,
+.bento-card--reviews .bento-3d-pin__beam {
+  position: absolute;
+  right: 50%;
+  bottom: 38%;
+  width: 0;
+  height: 0;
+}
+
+.bento-card--experience .bento-3d-pin__beam-glow,
+.bento-card--experience .bento-3d-pin__beam-core,
+.bento-card--reviews .bento-3d-pin__beam-glow,
+.bento-card--reviews .bento-3d-pin__beam-core {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 2px;
+  height: calc(4rem * var(--bento-pin-scale));
+  transform: translateY(14px);
+  background: linear-gradient(to bottom, transparent, #06b6d4);
+  transition: height 500ms ease;
+}
+
+.bento-card--experience.is-pin-active .bento-3d-pin__beam-glow,
+.bento-card--experience.is-pin-active .bento-3d-pin__beam-core,
+.bento-card--reviews.is-pin-active .bento-3d-pin__beam-glow,
+.bento-card--reviews.is-pin-active .bento-3d-pin__beam-core {
+  height: calc(8.5rem * var(--bento-pin-scale));
+}
+
+.bento-card--experience .bento-3d-pin__beam-glow,
+.bento-card--reviews .bento-3d-pin__beam-glow {
+  filter: blur(2px);
+}
+
+.bento-card--experience .bento-3d-pin__beam-dot,
+.bento-card--reviews .bento-3d-pin__beam-dot {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  transform: translate(0.5px, 14px);
+  background: #67e8f9;
+}
+
+.bento-card--experience .bento-3d-pin__beam-dot--blur,
+.bento-card--reviews .bento-3d-pin__beam-dot--blur {
+  width: 5px;
+  height: 5px;
+  transform: translate(1.5px, 14px);
+  background: #0891b2;
+  filter: blur(3px);
+}
+
+@media (max-width: 1023px) {
+  .bento-card--experience,
+.bento-card--reviews {
+    --bento-pin-scale: 1.15;
+  }
+
+  .bento-card--experience .bento-card__tilt,
+.bento-card--reviews .bento-card__tilt {
+    transform: none !important;
+  }
+
+  .bento-card--experience .bento-3d-pin__perspective,
+.bento-card--reviews .bento-3d-pin__perspective {
+    bottom: 4%;
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bento-card--experience .bento-card__tilt,
+.bento-card--reviews .bento-card__tilt {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .bento-card--experience .bento-3d-pin--surface,
+  .bento-card--experience .bento-3d-pin__screen,
+  .bento-card--experience .bento-3d-pin__lift,
+  .bento-card--experience .bento-3d-pin__beam-glow,
+  .bento-card--experience .bento-3d-pin__beam-core,
+  .bento-card--reviews .bento-3d-pin--surface,
+  .bento-card--reviews .bento-3d-pin__screen,
+  .bento-card--reviews .bento-3d-pin__lift,
+  .bento-card--reviews .bento-3d-pin__beam-glow,
+  .bento-card--reviews .bento-3d-pin__beam-core {
+    transition: none !important;
+  }
+
+  .bento-card--experience .bento-3d-pin__ring,
+.bento-card--reviews .bento-3d-pin__ring {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  .bento-card--experience.is-pin-active .bento-3d-pin--surface,
+  .bento-card--experience.is-pin-active .bento-3d-pin__screen,
+  .bento-card--reviews.is-pin-active .bento-3d-pin--surface,
+  .bento-card--reviews.is-pin-active .bento-3d-pin__screen {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .bento-card--experience.is-pin-active .bento-3d-pin--surface,
+  .bento-card--experience.is-pin-active .bento-3d-pin__screen,
+  .bento-card--reviews.is-pin-active .bento-3d-pin--surface,
+  .bento-card--reviews.is-pin-active .bento-3d-pin__screen {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .bento-card--experience.is-pin-active .bento-card__tilt,
+.bento-card--reviews.is-pin-active .bento-card__tilt {
+    transform: none;
+  }
+}

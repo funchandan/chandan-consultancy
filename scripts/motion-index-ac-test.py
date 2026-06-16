@@ -58,6 +58,9 @@ def run_hero_bento_tests() -> list[str]:
         fails.append("G-002: gemini-effect must anchor layout to data-box-bento-search")
     if "data-box-bento" not in html:
         fails.append("BB-001: missing data-box-bento in index.html")
+    hero_motion = re.search(r'id="hero"[^>]*data-wp-motion="([^"]+)"', html)
+    if not hero_motion or "gemini-effect" not in hero_motion.group(1):
+        fails.append("BB-015: #hero must include gemini-effect in data-wp-motion")
     if "wp-box-bento.css" not in html:
         fails.append("BB-002: missing wp-box-bento.css link in index.html")
     if "wp-box-bento.js" not in html:
@@ -98,6 +101,48 @@ def run_hero_bento_tests() -> list[str]:
         fails.append("M-004: box-bento JS must not run scroll reveal animations")
     if "--gemini-bento-t" in cta_css:
         fails.append("M-005: legacy --gemini-bento-t must be removed from CTA CSS")
+    return fails
+
+
+def run_hero_atmosphere_tests() -> list[str]:
+    """WO-024 RetroGrid atmosphere — LR-/IG- gates."""
+    fails: list[str] = []
+    html = read(INDEX)
+    retro_js = read(ROOT / "assets/motion/wp-hero-retrogrid-morph.js")
+    rays_css = read(ROOT / "assets/wp-hero-light-rays.css")
+    ig_css = read(ROOT / "assets/bg-grid-after-hero.css")
+
+    if "data-hero-light-rays" not in html:
+        fails.append("LR-001: missing data-hero-light-rays in index.html")
+    if "--hero-light-rays-t" not in retro_js:
+        fails.append("LR-002: retrogrid morph must publish --hero-light-rays-t")
+    if "lightRaysT" not in retro_js:
+        fails.append("LR-003: retrogrid morph must map scroll progress to light rays")
+    if not (ROOT / "components/ui/light-rays.tsx").is_file():
+        fails.append("LR-004: components/ui/light-rays.tsx missing (Magic UI install)")
+    if "--hero-light-rays-t" not in rays_css:
+        fails.append("LR-005: wp-hero-light-rays.css must consume --hero-light-rays-t")
+    if "z-index: 4" not in rays_css:
+        fails.append("LR-006: light rays must render above retrogrid fade")
+
+    if 'id="bg-grid-after-hero"' not in html or "data-bg-grid-after-hero" not in html:
+        fails.append("IG-001: missing #bg-grid-after-hero in index.html")
+    if "bg-grid-after-hero" not in html or "wp-bg-grid-after-hero.js" not in html:
+        fails.append("IG-002: bg-grid-after-hero assets must be linked in index.html")
+    if not module_registered("bg-grid-after-hero"):
+        fails.append("IG-003: bg-grid-after-hero motion module must register")
+    if not (ROOT / "components/ui/interactive-grid-pattern.tsx").is_file():
+        fails.append("IG-004: components/ui/interactive-grid-pattern.tsx missing")
+    if "home-page--post-hero" not in ig_css:
+        fails.append("IG-005: bg-grid-after-hero.css must show grid on post-hero")
+    if "--bg-grid-inset-top" not in ig_css:
+        fails.append("IG-006: bg-grid-after-hero must clip below hero via --bg-grid-inset-top")
+    if "pointer-events: all" not in ig_css:
+        fails.append("IG-007: grid cells must use pointer-events: all (Magic UI parity)")
+    if "svg.style.height" not in read(ROOT / "assets/motion/wp-bg-grid-after-hero.js"):
+        fails.append("IG-008: bg-grid-after-hero JS must size SVG to visible band")
+    if "home-page--post-hero" not in ig_css:
+        fails.append("IG-009: dot-grid must fade when post-hero active")
     return fails
 
 
@@ -570,6 +615,61 @@ def run_noomo_tests(baseline: bool) -> tuple[list[str], list[str]]:
     return fails, warns
 
 
+    return fails
+
+
+def run_distorted_glass_tests() -> list[str]:
+    """DistortedGlass — DG-* gates."""
+    fails: list[str] = []
+    html = read(INDEX)
+    polish = read(POLISH_CSS)
+    dg_css = ROOT / "assets/wp-distorted-glass.css"
+    dg_parallax_css = ROOT / "assets/wp-distorted-glass-parallax.css"
+    dg_js = MOTION_DIR / "wp-distorted-glass-handoff.js"
+    component = ROOT / "components/ui/distorted-glass.tsx"
+
+    def require(gate: str, ok: bool, msg: str) -> None:
+        if not ok:
+            fails.append(f"{gate}: {msg}")
+
+    require("DG-001", component.is_file(), "components/ui/distorted-glass.tsx missing")
+    require("DG-002", module_registered("distorted-glass-handoff"), "distorted-glass-handoff module not registered")
+    require(
+        "DG-003",
+        "data-wp-distorted-glass-handoff" in html
+        and "wp-distorted-glass-strip" in html
+        and "wp-distorted-glass-frost" in html,
+        "index missing distorted glass shell, strip, or frost pane",
+    )
+    require(
+        "DG-004",
+        dg_css.is_file()
+        and dg_parallax_css.is_file()
+        and dg_js.is_file()
+        and "wp-distorted-glass.css" in html
+        and "wp-distorted-glass-handoff.js" in html,
+        "distorted glass assets missing or not linked in index",
+    )
+    require("DG-005", "wp-fractal-noise-glass" in html, "SVG filter #wp-fractal-noise-glass missing from index")
+    require(
+        "DG-006",
+        "wp-distorted-glass-ready" in polish and "statement-viewport::after" in polish,
+        "legacy blur seam not gated behind wp-distorted-glass-ready",
+    )
+    require(
+        "DG-007",
+        grep_files(r"pointer-events:\s*none", dg_css),
+        "glass shell missing pointer-events: none",
+    )
+    require(
+        "DG-007",
+        "distorted-glass-handoff" in html,
+        "#main missing distorted-glass-handoff hook",
+    )
+
+    return fails
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -591,6 +691,8 @@ def main() -> int:
 
     fails, warns = run_wo015_tests(baseline=args.baseline)
     fails.extend(run_hero_bento_tests())
+    fails.extend(run_hero_atmosphere_tests())
+    fails.extend(run_distorted_glass_tests())
 
     if not args.baseline:
         w21_fails, w21_warns = run_wo021_tests(baseline=args.baseline)

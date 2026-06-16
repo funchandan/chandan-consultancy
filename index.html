@@ -23,10 +23,10 @@
   <link rel="stylesheet" href="assets/statement-viewport.css?v=12" />
   <link rel="stylesheet" href="assets/hero-toolkit-funnel.css?v=6" />
   <link rel="stylesheet" href="assets/wp-glass-compose.css?v=7" />
-  <link rel="stylesheet" href="assets/wp-glass-vanish-input.css?v=1" />
+  <link rel="stylesheet" href="assets/wp-glass-vanish-input.css?v=2" />
   <link rel="stylesheet" href="assets/wp-hero-toolkit-path.css?v=3" />
   <link rel="stylesheet" href="assets/wp-hero-display-slot.css?v=15" />
-  <link rel="stylesheet" href="assets/wp-hero-retrogrid.css?v=7" />
+  <link rel="stylesheet" href="assets/wp-hero-retrogrid.css?v=8" />
   <link rel="stylesheet" href="assets/wp-hero-light-rays.css?v=2" />
   <link rel="stylesheet" href="assets/bg-grid-after-hero.css?v=5" />
   <link rel="stylesheet" href="assets/wp-hero-morphing-text.css?v=5" />
@@ -42,11 +42,15 @@
   <link rel="stylesheet" href="assets/wp-blue-pointer.css?v=1" />
   <link rel="stylesheet" href="assets/wp-dot-grid.css?v=1" />
   <link rel="stylesheet" href="assets/wp-noise-background.css?v=5" />
-  <link rel="stylesheet" href="assets/wp-box-bento.css?v=8" />
-  <link rel="stylesheet" href="assets/wp-bento-3d-pin.css?v=4" />
+  <link rel="stylesheet" href="assets/wp-distorted-glass.css?v=4" />
+  <link rel="stylesheet" href="assets/wp-distorted-glass-parallax.css?v=2" />
+  <link rel="stylesheet" href="assets/wp-box-bento.css?v=12" />
+  <link rel="stylesheet" href="assets/wp-bento-3d-pin.css?v=11" />
+  <link rel="stylesheet" href="assets/wp-bento-poll-widget.css?v=3" />
+  <link rel="stylesheet" href="assets/wp-bento-testimonial-box.css?v=2" />
   <link rel="stylesheet" href="assets/wp-bento-title-reveal.css?v=3" />
   <link rel="stylesheet" href="assets/index-product-surface.css?v=11" />
-  <link rel="stylesheet" href="assets/index-product-polish.css?v=19" />
+  <link rel="stylesheet" href="assets/index-product-polish.css?v=20" />
   <link rel="stylesheet" href="assets/index-noomo-tier3.css?v=2" />
   <link rel="stylesheet" href="assets/wp-work-case-evidence-fps.css?v=1" />
   <link rel="stylesheet" href="assets/vendor/lenis/lenis.css" />
@@ -58,11 +62,11 @@
   <script src="assets/motion/wp-lenis.js?v=3" defer></script>
   <script src="assets/motion/wp-motion.js?v=4" defer></script>
   <script src="assets/motion/wp-hero-canvas-text.js?v=6" defer></script>
-  <script src="assets/motion/wp-hero-retrogrid-morph.js?v=9" defer></script>
+  <script src="assets/motion/wp-hero-retrogrid-morph.js?v=10" defer></script>
   <script src="assets/motion/wp-bento-title-reveal.js?v=1" defer></script>
   <script src="assets/motion/wp-blue-pointer.js?v=1" defer></script>
   <script src="assets/motion/wp-dot-grid.js?v=2" defer></script>
-  <script src="assets/motion/wp-bg-grid-after-hero.js?v=5" defer></script>
+  <script src="assets/motion/wp-bg-grid-after-hero.js?v=7" defer></script>
   <script src="assets/motion/wp-noise-background.js?v=1" defer></script>
   <script src="assets/motion/wp-journey-immersive.js?v=19" defer></script>
   <script src="assets/motion/wp-iphone-frame.js?v=1" defer></script>
@@ -78,11 +82,15 @@
   <script src="assets/motion/wp-hero-project-strip.js?v=1" defer></script>
   <script src="assets/motion/wp-hero-impact-counter.js?v=1" defer></script>
   <script src="assets/motion/wp-nav-statement.js?v=6" defer></script>
-  <script src="assets/motion/wp-glass-vanish-input.js?v=1" defer></script>
+  <script src="assets/motion/wp-glass-vanish-input.js?v=2" defer></script>
   <script src="assets/motion/wp-glass-compose.js?v=3" defer></script>
   <script src="assets/hero-toolkit-funnel.js?v=6" defer></script>
-  <script src="assets/motion/wp-bento-3d-pin.js?v=5" defer></script>
-  <script src="assets/wp-box-bento.js?v=5" defer></script>
+  <script src="assets/motion/wp-distorted-glass-handoff.js?v=7" defer></script>
+  <script src="assets/motion/wp-bento-3d-pin.js?v=8" defer></script>
+  <script src="assets/motion/wp-bento-poll-widget.js?v=3" defer></script>
+  <script src="assets/motion/wp-bento-testimonial-box.js?v=5" defer></script>
+  <script src="assets/motion/wp-bento-bg-toolkit-terminal.js?v=1" defer></script>
+  <script src="assets/wp-box-bento.js?v=11" defer></script>
 </head>
 <body class="home-page home-page--product" data-wp-motion="lenis-root glass-scroll dot-grid bg-grid-after-hero blue-pointer" data-wp-motion-profile="portfolio-default">
   <div class="bg-grid-after-hero" id="bg-grid-after-hero" data-bg-grid-after-hero aria-hidden="true"></div>
@@ -155,7 +163,7 @@
   </header>
   <!-- nav-pill:end -->
 
-  <main id="main" tabindex="-1" data-wp-motion="journey section-depth scroll-depth">
+  <main id="main" tabindex="-1" data-wp-motion="journey section-depth scroll-depth distorted-glass-handoff">
     <!-- Statement viewport — WO-010 scroll-native -->
     <section class="statement-viewport journey-act" id="hero" data-wp-motion="hero-retrogrid-morph hero-project-strip" aria-labelledby="statement-title">
       <div class="statement-viewport__canvas">
@@ -204,6 +212,27 @@
         </a>
       </div>
     </section>
+
+    <div class="wp-distorted-glass-shell" data-wp-distorted-glass-handoff aria-hidden="true">
+      <svg class="wp-distorted-glass__defs" aria-hidden="true" focusable="false">
+        <defs>
+          <filter id="wp-fractal-noise-glass">
+            <feTurbulence type="fractalNoise" baseFrequency="0.12 0.12" numOctaves="1" result="warp"></feTurbulence>
+            <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp"></feDisplacementMap>
+          </filter>
+        </defs>
+      </svg>
+      <div class="wp-distorted-glass-strip" data-distorted-glass-strip>
+        <div class="wp-distorted-glass-strip__frame">
+          <div class="wp-distorted-glass-strip__fill glass-effect"></div>
+        </div>
+      </div>
+      <div class="wp-distorted-glass-frost" data-distorted-glass-frost aria-hidden="true"></div>
+    </div>
+
+    <div class="wp-distorted-glass-parallax-host" data-distorted-glass-parallax-host aria-hidden="true">
+      <div class="wp-distorted-glass-parallax" data-distorted-glass-parallax></div>
+    </div>
 
     <section class="wp-box-bento-ledge" data-box-bento-ledge data-wp-motion="bento-text-reveal" aria-label="Explore pathways">
       <div class="shell">
@@ -256,8 +285,8 @@
               </section>
             </div>
             <div class="bento-card bento-card--toolkits" data-hero-bento-toolkits>
-              <div class="bento-card__bg" data-hero-bento-marquee aria-hidden="true">
-                <div class="bento-card__marquee-track" data-hero-bento-marquee-track></div>
+              <div class="bento-card__bg bento-bg-toolkit" data-bento-bg-toolkit data-wp-motion="bento-bg-toolkit-terminal" aria-hidden="true">
+                <div class="bento-bg-artifact bento-bg-artifact--terminal" data-bento-bg-artifact="terminal"></div>
               </div>
               <div class="bento-card__panel">
                 <div class="bento-card__content">
@@ -290,71 +319,55 @@
               </div>
               <div class="bento-card__shade" aria-hidden="true"></div>
             </div>
-            <div class="bento-card bento-card--experience" data-hero-bento-experience data-bento-3d-pin data-wp-motion="bento-3d-pin">
+            <div class="bento-card bento-card--poll" data-hero-bento-poll data-wp-motion="bento-poll-widget">
+              <div class="bento-card__panel bento-card__panel--poll">
+                <div
+                  class="bento-poll-widget-mount"
+                  data-bento-poll-widget
+                  data-bento-poll-data='{"question":"What would you like to see more of?","description":"Pick one, then submit.","options":[{"id":"cases","label":"Case study deep dives"},{"id":"toolkits","label":"Design toolkits"},{"id":"ai","label":"AI product UX"},{"id":"process","label":"Design process notes"}],"votes":{"cases":12,"toolkits":8,"ai":15,"process":5}}'
+                  aria-live="polite"
+                >
+                  <div class="bento-poll-widget" data-bento-poll-root>
+                    <div class="bento-poll-widget__body">
+                      <div class="bento-poll-widget__question">
+                        <h3 class="bento-poll-widget__title" data-bento-poll-question>What would you like to see more of?</h3>
+                        <p class="bento-poll-widget__desc" data-bento-poll-desc>Pick one, then submit.</p>
+                      </div>
+                      <ul class="bento-poll-widget__options" role="listbox" data-bento-poll-options>
+                        <li><button type="button" class="bento-poll-widget__option" data-bento-poll-option="cases" role="option" aria-selected="false"><span class="bento-poll-widget__progress" data-bento-poll-progress aria-hidden="true"></span><span class="bento-poll-widget__option-inner"><span class="bento-poll-widget__indicator"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="bento-poll-widget__label">Case study deep dives</span><span class="bento-poll-widget__pct" data-bento-poll-pct>0%</span></span></button></li>
+                        <li><button type="button" class="bento-poll-widget__option" data-bento-poll-option="toolkits" role="option" aria-selected="false"><span class="bento-poll-widget__progress" data-bento-poll-progress aria-hidden="true"></span><span class="bento-poll-widget__option-inner"><span class="bento-poll-widget__indicator"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="bento-poll-widget__label">Design toolkits</span><span class="bento-poll-widget__pct" data-bento-poll-pct>0%</span></span></button></li>
+                        <li><button type="button" class="bento-poll-widget__option" data-bento-poll-option="ai" role="option" aria-selected="false"><span class="bento-poll-widget__progress" data-bento-poll-progress aria-hidden="true"></span><span class="bento-poll-widget__option-inner"><span class="bento-poll-widget__indicator"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="bento-poll-widget__label">AI product UX</span><span class="bento-poll-widget__pct" data-bento-poll-pct>0%</span></span></button></li>
+                        <li><button type="button" class="bento-poll-widget__option" data-bento-poll-option="process" role="option" aria-selected="false"><span class="bento-poll-widget__progress" data-bento-poll-progress aria-hidden="true"></span><span class="bento-poll-widget__option-inner"><span class="bento-poll-widget__indicator"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="bento-poll-widget__label">Design process notes</span><span class="bento-poll-widget__pct" data-bento-poll-pct>0%</span></span></button></li>
+                      </ul>
+                      <div class="bento-poll-widget__meta">
+                        <span data-bento-poll-total>40 votes</span>
+                        <span class="bento-poll-widget__meta-voted" data-bento-poll-you-voted>You voted</span>
+                      </div>
+                      <button type="button" class="bento-poll-widget__submit" data-bento-poll-submit disabled>Submit vote</button>
+                    </div>
+                    <div class="bento-poll-widget__success" data-bento-poll-success hidden>
+                      <svg class="bento-poll-widget__success-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M27.6 16C27.6 17.5234 27.3 19.0318 26.717 20.4392C26.1341 21.8465 25.2796 23.1253 24.2025 24.2025C23.1253 25.2796 21.8465 26.1341 20.4392 26.717C19.0318 27.3 17.5234 27.6 16 27.6C14.4767 27.6 12.9683 27.3 11.5609 26.717C10.1535 26.1341 8.87475 25.2796 7.79759 24.2025C6.72043 23.1253 5.86598 21.8465 5.28302 20.4392C4.70007 19.0318 4.40002 17.5234 4.40002 16C4.40002 12.9235 5.62216 9.97301 7.79759 7.79759C9.97301 5.62216 12.9235 4.40002 16 4.40002C19.0765 4.40002 22.027 5.62216 24.2025 7.79759C26.3779 9.97301 27.6 12.9235 27.6 16Z" fill="rgba(0,0,0,0.08)"/><path d="M12.1334 16.9667L15.0334 19.8667L19.8667 13.1M27.6 16C27.6 17.5234 27.3 19.0318 26.717 20.4392C26.1341 21.8465 25.2796 23.1253 24.2025 24.2025C23.1253 25.2796 21.8465 26.1341 20.4392 26.717C19.0318 27.3 17.5234 27.6 16 27.6C14.4767 27.6 12.9683 27.3 11.5609 26.717C10.1535 26.1341 8.87475 25.2796 7.79759 24.2025C6.72043 23.1253 5.86598 21.8465 5.28302 20.4392C4.70007 19.0318 4.40002 17.5234 4.40002 16C4.40002 12.9235 5.62216 9.97301 7.79759 7.79759C9.97301 5.62216 12.9235 4.40002 16 4.40002C19.0765 4.40002 22.027 5.62216 24.2025 7.79759C26.3779 9.97301 27.6 12.9235 27.6 16Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/></svg>
+                      <p class="bento-poll-widget__success-title">Thanks for voting!</p>
+                      <p class="bento-poll-widget__success-desc" data-bento-poll-success-desc>Your vote has been recorded</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bento-card__shade" aria-hidden="true"></div>
+            </div>
+            <div class="bento-card bento-card--reviews" data-hero-bento-reviews-card data-bento-3d-pin data-wp-motion="bento-3d-pin bento-testimonial-box">
               <div class="bento-3d-pin__hover-zone" data-bento-3d-pin-hover aria-hidden="true"></div>
               <div class="bento-card__tilt">
                 <div class="bento-3d-pin bento-3d-pin--surface" aria-hidden="true">
                   <div class="bento-3d-pin__perspective">
                     <div class="bento-3d-pin__lift" data-bento-3d-pin-lift>
                       <div class="bento-3d-pin__card">
-                        <div class="bento-card__bg bento-card__bg--timeline bento-3d-pin__timeline" data-hero-bento-timeline></div>
+                        <div class="bento-bg-artifact bento-bg-artifact--testimonial-box bento-3d-pin__testimonial" data-bento-bg-artifact="testimonial-box" data-hero-bento-reviews aria-hidden="true"></div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="bento-card__panel">
-                <div class="bento-card__content">
-                  <svg class="bento-card__icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-                  <h3 class="bento-card__title" data-hero-bento-experience-title>
-                    <span class="wp-bento-title-reveal" data-bento-title-reveal>
-                      <span class="wp-bento-title-reveal__word" style="--bento-word-i:0">
-                        <span class="wp-bento-title-reveal__ghost" aria-hidden="true">My</span>
-                        <span class="wp-bento-title-reveal__fill">My</span>
-                      </span>
-                      <span class="wp-bento-title-reveal__word" style="--bento-word-i:1">
-                        <span class="wp-bento-title-reveal__ghost" aria-hidden="true">experience</span>
-                        <span class="wp-bento-title-reveal__fill"><span class="wp-aurora-text">experience</span></span>
-                      </span>
-                    </span>
-                  </h3>
-                  <p class="bento-card__desc" data-hero-bento-experience-desc>Birlasoft · Senior UX Consultant — Stryker and HP field service AI.</p>
-                  <p class="bento-card__extras">
-                    <a class="bento-card__cta-link bento-card__cta-link--secondary" href="work.html" data-hero-bento-experience-secondary>View work</a>
-                  </p>
-                </div>
-                <div class="bento-card__cta bento-card__cta--mobile">
-                  <a class="bento-card__cta-link" href="about.html#experience" data-hero-bento-experience-cta>See timeline <span class="bento-card__cta-arrow" aria-hidden="true">→</span></a>
-                </div>
-              </div>
-              <div class="bento-card__cta bento-card__cta--desktop">
-                <a class="bento-card__cta-link" href="about.html#experience" data-hero-bento-experience-cta>See timeline <span class="bento-card__cta-arrow" aria-hidden="true">→</span></a>
-              </div>
-              <div class="bento-card__shade" aria-hidden="true"></div>
-              </div>
-              <div class="bento-3d-pin__screen" aria-hidden="true">
-                <div class="bento-3d-pin__chip-wrap">
-                  <span class="bento-3d-pin__chip" data-bento-3d-pin-title>See timeline</span>
-                </div>
-                <div class="bento-3d-pin__fx">
-                  <div class="bento-3d-pin__fx-inner">
-                    <div class="bento-3d-pin__rings" aria-hidden="true">
-                      <span class="bento-3d-pin__ring"></span>
-                      <span class="bento-3d-pin__ring"></span>
-                      <span class="bento-3d-pin__ring"></span>
-                    </div>
-                    <div class="bento-3d-pin__beam" aria-hidden="true">
-                      <span class="bento-3d-pin__beam-glow"></span>
-                      <span class="bento-3d-pin__beam-core"></span>
-                      <span class="bento-3d-pin__beam-dot bento-3d-pin__beam-dot--blur"></span>
-                      <span class="bento-3d-pin__beam-dot"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="bento-card bento-card--reviews" data-hero-bento-reviews-card>
-              <div class="bento-card__bg bento-card__bg--reviews" data-hero-bento-reviews aria-hidden="true"></div>
-              <div class="bento-card__panel">
                 <div class="bento-card__content">
                   <svg class="bento-card__icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
                   <h3 class="bento-card__title" data-hero-bento-reviews-title>
@@ -379,6 +392,27 @@
                 <a class="bento-card__cta-link" href="about.html" data-hero-bento-reviews-cta>Read more <span class="bento-card__cta-arrow" aria-hidden="true">→</span></a>
               </div>
               <div class="bento-card__shade" aria-hidden="true"></div>
+              </div>
+              <div class="bento-3d-pin__screen" aria-hidden="true">
+                <div class="bento-3d-pin__chip-wrap">
+                  <span class="bento-3d-pin__chip" data-bento-3d-pin-title>Read more</span>
+                </div>
+                <div class="bento-3d-pin__fx">
+                  <div class="bento-3d-pin__fx-inner">
+                    <div class="bento-3d-pin__rings" aria-hidden="true">
+                      <span class="bento-3d-pin__ring"></span>
+                      <span class="bento-3d-pin__ring"></span>
+                      <span class="bento-3d-pin__ring"></span>
+                    </div>
+                    <div class="bento-3d-pin__beam" aria-hidden="true">
+                      <span class="bento-3d-pin__beam-glow"></span>
+                      <span class="bento-3d-pin__beam-core"></span>
+                      <span class="bento-3d-pin__beam-dot bento-3d-pin__beam-dot--blur"></span>
+                      <span class="bento-3d-pin__beam-dot"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

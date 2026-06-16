@@ -1,6 +1,7 @@
 import { type ComponentPropsWithoutRef, type ReactNode } from "react"
 import { ArrowRightIcon } from "@radix-ui/react-icons"
 
+import { BentoCardTitle } from "@/components/bento-card-title"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
@@ -11,6 +12,7 @@ interface BentoGridProps extends ComponentPropsWithoutRef<"div"> {
 
 interface BentoCardProps extends ComponentPropsWithoutRef<"div"> {
   name: string
+  accentIndex?: number
   className: string
   background: ReactNode
   Icon: React.ElementType
@@ -23,7 +25,7 @@ const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
   return (
     <div
       className={cn(
-        "grid w-full auto-rows-[22rem] grid-cols-3 gap-4",
+        "grid w-full auto-rows-[16.5rem] grid-cols-3 gap-x-4 gap-y-5",
         className
       )}
       {...props}
@@ -35,6 +37,7 @@ const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
 
 const BentoCard = ({
   name,
+  accentIndex,
   className,
   background,
   Icon,
@@ -56,13 +59,13 @@ const BentoCard = ({
     {...props}
   >
     <div>{background}</div>
-    <div className="p-4">
-      <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 transition-all duration-300 lg:group-hover:-translate-y-10">
-        <Icon className="h-12 w-12 origin-left transform-gpu text-neutral-700 transition-all duration-300 ease-in-out group-hover:scale-75" />
-        <h3 className="text-xl font-semibold text-neutral-700 dark:text-neutral-300">
-          {name}
+    <div className="p-[1.125rem]">
+      <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1.5 transition-all duration-300 lg:group-hover:-translate-y-[1.875rem]">
+        <Icon className="h-[2.4rem] w-[2.4rem] origin-left transform-gpu text-neutral-700 transition-all duration-300 ease-in-out group-hover:scale-75" />
+        <h3 className="bento-card__title text-[1.35rem] font-semibold leading-tight text-neutral-900">
+          <BentoCardTitle text={name} accentIndex={accentIndex} />
         </h3>
-        <p className="max-w-lg text-neutral-400">{description}</p>
+        <p className="max-w-lg text-[0.975rem] leading-snug text-neutral-600">{description}</p>
       </div>
 
       <div
@@ -70,13 +73,13 @@ const BentoCard = ({
           "pointer-events-none flex w-full translate-y-0 transform-gpu flex-row items-center transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 lg:hidden"
         )}
       >
-        <Button variant="link" size="sm" className="pointer-events-auto p-0" render={<a href={href} />} nativeButton={false}>{cta}<ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" /></Button>
+        <Button variant="link" size="sm" className="pointer-events-auto p-0 text-[1.05rem]" render={<a href={href} />} nativeButton={false}>{cta}<ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" /></Button>
       </div>
     </div>
 
     <div
       className={cn(
-        "pointer-events-none absolute bottom-0 hidden w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 lg:flex"
+        "pointer-events-none absolute bottom-0 hidden w-full translate-y-[1.875rem] transform-gpu flex-row items-center p-[1.125rem] opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 lg:flex"
       )}
     >
       <Button variant="link" size="sm" className="pointer-events-auto p-0" render={<a href={href} />} nativeButton={false}>{cta}<ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" /></Button>

@@ -1,7 +1,7 @@
 (function initBoxBento() {
   "use strict";
 
-  var DATA_URL = "assets/hero-bento.json";
+  var DATA_URL = "assets/hero-bento.json?v=3";
 
   function escapeHtml(str) {
     return String(str)
@@ -31,68 +31,81 @@
     });
   }
 
-  function buildMarquee(items) {
-    return items
-      .map(function (item) {
-        return (
-          '<figure class="bento-card__marquee-item">' +
-          '<span class="bento-card__marquee-name">' +
-          escapeHtml(item.name) +
-          "</span>" +
-          '<blockquote class="bento-card__marquee-body">' +
-          escapeHtml(item.body) +
-          "</blockquote></figure>"
-        );
-      })
-      .join("");
+  function buildTitleReveal(title, accentIndex) {
+    var words = String(title || "Title")
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+    if (!words.length) words = ["Title"];
+    var accentIdx =
+      accentIndex != null ? accentIndex : Math.max(0, words.length - 1);
+    var html = '<span class="wp-bento-title-reveal" data-bento-title-reveal>';
+    words.forEach(function (word, i) {
+      html +=
+        '<span class="wp-bento-title-reveal__word" style="--bento-word-i:' +
+        i +
+        '">' +
+        '<span class="wp-bento-title-reveal__ghost" aria-hidden="true">' +
+        escapeHtml(word) +
+        "</span>" +
+        '<span class="wp-bento-title-reveal__fill">';
+      if (i === accentIdx) {
+        html += '<span class="wp-aurora-text">' + escapeHtml(word) + "</span>";
+      } else {
+        html += escapeHtml(word);
+      }
+      html += "</span></span>";
+    });
+    html += "</span>";
+    return html;
   }
 
-  function buildTimeline(rows) {
-    return rows
-      .map(function (row, idx) {
-        var cls = idx === 0 ? " bento-card__timeline-row is-current" : " bento-card__timeline-row";
-        return (
-          '<div class="' +
-          cls.trim() +
-          '"><span>' +
-          escapeHtml(row.name) +
-          '</span><span class="bento-card__timeline-when">' +
-          escapeHtml(row.when) +
-          "</span></div>"
-        );
-      })
-      .join("");
+  function setTitleReveal(el, title, accentIndex) {
+    if (!el) return;
+    el.innerHTML = buildTitleReveal(title, accentIndex);
+    el.removeAttribute("data-bento-title-wired");
   }
 
-  function buildReviews(quotes) {
-    return quotes
-      .map(function (q) {
-        return (
-          '<div class="bento-card__review-item is-visible">' +
-          '<p class="bento-card__review-text">' +
-          escapeHtml(q.text) +
-          "</p>" +
-          '<cite class="bento-card__review-cite">' +
-          escapeHtml(q.cite) +
-          "</cite></div>"
-        );
+  function avatarUrl(name) {
+    return (
+      "https://api.dicebear.com/9.x/avataaars/svg?seed=" +
+      encodeURIComponent(name || "Collaborator")
+    );
+  }
+
+  function normalizeTestimonialQuotes(quotes) {
+    if (!quotes || !quotes.length) return [];
+    return quotes.map(function (q) {
+      return {
+        quote: q.quote || q.text || "",
+        name: q.name || "Collaborator",
+        designation: q.designation || q.cite || "",
+        src: q.src || avatarUrl(q.name || q.cite || "Collaborator"),
+      };
+    });
+  }
+
+  function hydrateTestimonials(mount, quotes) {
+    if (!mount) return;
+    var normalized = normalizeTestimonialQuotes(quotes);
+    if (!normalized.length) return;
+    mount.setAttribute("data-bento-testimonial-data", JSON.stringify(normalized));
+    document.dispatchEvent(
+      new CustomEvent("wp:bento-testimonials-hydrated", {
+        detail: { mount: mount, quotes: normalized },
       })
-      .join("");
+    );
   }
 
   function render(root, data) {
     var toolkits = data.toolkits || {};
-    var experience = data.experience || {};
+    var poll = data.poll || {};
     var reviews = data.reviews || {};
 
     var toolkitsCard = root.querySelector("[data-hero-bento-toolkits]");
     if (toolkitsCard) {
-      var marqueeTrack = toolkitsCard.querySelector("[data-hero-bento-marquee-track]");
-      if (marqueeTrack && toolkits.marquee) {
-        marqueeTrack.innerHTML = buildMarquee(toolkits.marquee);
-      }
       var toolkitsTitle = toolkitsCard.querySelector("[data-hero-bento-toolkits-title]");
-      if (toolkitsTitle) toolkitsTitle.textContent = toolkits.title || "Toolkits";
+      setTitleReveal(toolkitsTitle, toolkits.title || "Toolkits", 0);
       var toolkitsDesc = toolkitsCard.querySelector("[data-hero-bento-toolkits-desc]");
       if (toolkitsDesc) toolkitsDesc.textContent = toolkits.description || "";
       setCtaLinks(
@@ -103,44 +116,33 @@
       );
     }
 
-    var experienceCard = root.querySelector("[data-hero-bento-experience]");
-    if (experienceCard) {
-      var timeline = experienceCard.querySelector("[data-hero-bento-timeline]");
-      if (timeline && experience.timeline) {
-        timeline.innerHTML = buildTimeline(experience.timeline);
-      }
-      var expTitle = experienceCard.querySelector("[data-hero-bento-experience-title]");
-      if (expTitle) expTitle.textContent = experience.title || "My experience";
-      var expDesc = experienceCard.querySelector("[data-hero-bento-experience-desc]");
-      if (expDesc) {
-        var role = experience.currentRole || {};
-        expDesc.textContent = role.title
-          ? role.title + " — " + (role.copy || experience.description || "")
-          : experience.description || "";
-      }
-      setCtaLinks(
-        experienceCard,
-        "[data-hero-bento-experience-cta]",
-        experience.href || "about.html#experience",
-        experience.cta || "See timeline"
-      );
-      var expSecondary = experienceCard.querySelector("[data-hero-bento-experience-secondary]");
-      if (expSecondary && experience.secondaryHref) {
-        expSecondary.href = experience.secondaryHref;
-        expSecondary.textContent = experience.secondaryCta || "View work";
-      } else if (expSecondary) {
-        expSecondary.hidden = true;
+    var pollCard = root.querySelector("[data-hero-bento-poll]");
+    if (pollCard) {
+      var pollMount = pollCard.querySelector("[data-bento-poll-widget]");
+      if (pollMount && poll.options && poll.options.length) {
+        if (window.WPBentoPoll && typeof window.WPBentoPoll.hydrate === "function") {
+          window.WPBentoPoll.hydrate(pollMount, poll);
+        } else {
+          pollMount.setAttribute("data-bento-poll-data", JSON.stringify(poll));
+          document.dispatchEvent(
+            new CustomEvent("wp:bento-poll-hydrated", {
+              detail: { mount: pollMount, poll: poll },
+            })
+          );
+        }
       }
     }
 
     var reviewsCard = root.querySelector("[data-hero-bento-reviews-card]");
     if (reviewsCard) {
-      var reviewsList = reviewsCard.querySelector("[data-hero-bento-reviews]");
-      if (reviewsList && reviews.quotes) {
-        reviewsList.innerHTML = buildReviews(reviews.quotes);
+      var testimonialMount = reviewsCard.querySelector("[data-bento-bg-artifact='testimonial-box']");
+      if (testimonialMount && reviews.quotes) {
+        hydrateTestimonials(testimonialMount, reviews.quotes);
       }
+      var revPinTitle = reviewsCard.querySelector("[data-bento-3d-pin-title]");
+      if (revPinTitle) revPinTitle.textContent = reviews.cta || "Read more";
       var revTitle = reviewsCard.querySelector("[data-hero-bento-reviews-title]");
-      if (revTitle) revTitle.textContent = reviews.title || "My reviews";
+      setTitleReveal(revTitle, reviews.title || "My reviews", 1);
       var revDesc = reviewsCard.querySelector("[data-hero-bento-reviews-desc]");
       if (revDesc) revDesc.textContent = reviews.description || "";
       setCtaLinks(
@@ -150,6 +152,8 @@
         reviews.cta || "Read more"
       );
     }
+
+    document.dispatchEvent(new CustomEvent("wp:bento-titles-updated"));
   }
 
   function clamp(v, min, max) {

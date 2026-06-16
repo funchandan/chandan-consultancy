@@ -32,25 +32,16 @@
       }
     ]
   },
-  "experience": {
-    "title": "My experience",
-    "description": "Teacher first. Then scale. Then Fortune 100 stakes.",
-    "href": "about.html#experience",
-    "secondaryHref": "work.html",
-    "secondaryCta": "View work",
-    "cta": "See timeline",
-    "currentRole": {
-      "dates": "2022 — Present",
-      "title": "Birlasoft · Senior UX Consultant",
-      "copy": "Stryker robotic surgery ops and HP field service AI — five-person UX pod."
-    },
-    "timeline": [
-      { "name": "Birlasoft", "when": "2022 —" },
-      { "name": "BYJU's", "when": "2021–22" },
-      { "name": "WhiteHat Jr", "when": "2020–21" },
-      { "name": "Teach For India", "when": "2017–19" },
-      { "name": "Scraplabs", "when": "2015–17" }
-    ]
+  "poll": {
+    "question": "What would you like to see more of?",
+    "description": "Pick one, then submit.",
+    "options": [
+      { "id": "cases", "label": "Case study deep dives" },
+      { "id": "toolkits", "label": "Design toolkits" },
+      { "id": "ai", "label": "AI product UX" },
+      { "id": "process", "label": "Design process notes" }
+    ],
+    "votes": { "cases": 12, "toolkits": 8, "ai": 15, "process": 5 }
   },
   "reviews": {
     "title": "My reviews",
@@ -59,16 +50,19 @@
     "cta": "Read more",
     "quotes": [
       {
-        "text": "Chandan brings structure to ambiguous enterprise problems — research that engineering can ship against.",
-        "cite": "Product lead, Fortune 100 healthcare"
+        "quote": "Chandan's design perception is well ahead of what I could imagine as a business leader. I like his approach very much.",
+        "name": "Spencer W.",
+        "designation": "Fortune 100 VP-Product"
       },
       {
-        "text": "One of the strongest design leaders I've worked with at global edtech scale.",
-        "cite": "Design director, BYJU's Future School"
+        "quote": "Chandan is great at baking user voice into product solutions which ultimately create delightful users",
+        "name": "Prachi",
+        "designation": "Head of UX, Byju's"
       },
       {
-        "text": "Frames the bet before UI — stakeholders leave with decisions, not decks.",
-        "cite": "Engineering partner, field service AI"
+        "quote": "I have worked on multiple projects with Chandan and I often been impressed by his ability to present his findings back in an nstructive way that provides thoughtful guidance.",
+        "name": "Co-worker",
+        "designation": "Byju's"
       }
     ]
   }

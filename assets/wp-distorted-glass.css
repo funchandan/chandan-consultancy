@@ -1,0 +1,123 @@
+/* DistortedGlass — Cult UI seam strip + top-viewport frost band (post-hero scroll-behind) */
+
+:root {
+  --dg-strip-top: 100vh;
+  --dg-frost-top: 100vh;
+  --dg-strip-height: clamp(3rem, 12vh, 12rem);
+  --dg-frost-height: clamp(4rem, 14vh, 14rem);
+  --dg-seam-overlap: 17px;
+  --dg-glass-border: rgba(245, 245, 245, 0.1);
+  --dg-frost-opacity: 0.85;
+}
+
+/* Cult UI diamond distortion — seam strip ONLY */
+.wp-distorted-glass-shell .glass-effect {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  background-image: repeating-radial-gradient(
+    circle at 50% 50%,
+    rgb(255 255 255 / 0),
+    rgba(255, 255, 255, 0.2) 10px,
+    rgb(255 255 255) 31px
+  );
+  background-size: 6px 6px;
+  filter: url(#wp-fractal-noise-glass);
+  -webkit-backdrop-filter: blur(0);
+  backdrop-filter: blur(0);
+}
+
+.wp-distorted-glass__defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.wp-distorted-glass-shell {
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.wp-distorted-glass-strip {
+  position: fixed;
+  top: var(--dg-strip-top);
+  left: 0;
+  right: 0;
+  height: var(--dg-strip-height);
+  margin-top: calc(var(--dg-seam-overlap) * -1);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.28s ease;
+}
+
+.wp-distorted-glass-frost {
+  position: fixed;
+  top: var(--dg-frost-top);
+  left: 0;
+  right: 0;
+  height: var(--dg-frost-height);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.32s ease;
+  -webkit-backdrop-filter: blur(14px) saturate(1.18);
+  backdrop-filter: blur(14px) saturate(1.18);
+  background: rgba(8, 9, 13, 0.12);
+  border-radius: 0 0 0.75rem 0.75rem;
+}
+
+html.wp-distorted-glass-ready .wp-distorted-glass-strip.is-active,
+html.wp-distorted-glass-ready .wp-distorted-glass-frost.is-active {
+  visibility: visible;
+  opacity: var(--dg-frost-opacity, 1);
+}
+
+html.wp-distorted-glass-ready .wp-distorted-glass-strip.is-active {
+  opacity: 1;
+}
+
+.wp-distorted-glass-strip__frame {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid var(--dg-glass-border);
+  border-radius: 0 0 1rem 1rem;
+}
+
+html.wp-distorted-glass-ready body.home-page--product #main > section:not(#hero) {
+  position: relative;
+  z-index: 1;
+}
+
+body.home-page--product .wp-box-bento-ledge {
+  margin-top: calc(var(--dg-seam-overlap) * -1);
+}
+
+@media (max-width: 1279px) {
+  .wp-distorted-glass-strip,
+  .wp-distorted-glass-frost {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-distorted-glass-shell .glass-effect {
+    filter: none;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  .wp-distorted-glass-frost {
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    background: rgba(8, 9, 13, 0.08);
+  }
+}

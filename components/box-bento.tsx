@@ -1,12 +1,11 @@
 "use client";
 
 import type { ReactNode } from "react";
-import {
-  BellIcon,
-  CalendarIcon,
-  FileTextIcon,
-} from "@radix-ui/react-icons";
+import { PollBentoCard } from "@/components/poll-bento-card";
+import { ReviewsBentoCard } from "@/components/reviews-bento-card";
+import { FileTextIcon } from "@radix-ui/react-icons";
 
+import { BentoToolkitTerminalBg } from "@/components/bento-toolkit-terminal-bg";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import { cn } from "@/lib/utils";
 
@@ -32,31 +31,24 @@ export function BoxBento({
         </div>
         <BentoCard
           name="Toolkits"
+          accentIndex={0}
           description="Decision teardowns, research scaffolds, and ship-ready frameworks."
           href="toolkits.html"
           cta="Explore toolkits"
           Icon={FileTextIcon}
           className="col-span-3 lg:col-span-2"
-          background={<div className="absolute inset-0 bg-neutral-100/80" />}
+          background={
+            <div
+              className="bento-bg-toolkit absolute inset-0"
+              data-bento-bg-toolkit
+              aria-hidden
+            >
+              <BentoToolkitTerminalBg />
+            </div>
+          }
         />
-        <BentoCard
-          name="My experience"
-          description="Birlasoft · Senior UX Consultant — Stryker and HP field service AI."
-          href="about.html#experience"
-          cta="See timeline"
-          Icon={CalendarIcon}
-          className="col-span-3 lg:col-span-1"
-          background={<div className="absolute inset-0 bg-neutral-100/60" />}
-        />
-        <BentoCard
-          name="My reviews"
-          description="What collaborators say about working together."
-          href="about.html"
-          cta="Read more"
-          Icon={BellIcon}
-          className="col-span-3"
-          background={<div className="absolute inset-0 bg-neutral-100/60" />}
-        />
+        <PollBentoCard className="col-span-3 lg:col-span-1" />
+        <ReviewsBentoCard className="col-span-3" />
       </BentoGrid>
     </div>
   );
