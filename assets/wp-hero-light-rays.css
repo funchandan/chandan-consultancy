@@ -1,0 +1,175 @@
+/* Magic UI Light Rays — static brownfield port (WO-024) */
+
+.wp-hero-light-rays {
+  --light-rays-color: rgba(120, 190, 255, 0.55);
+  --light-rays-blur: 28px;
+  --light-rays-length: 70vh;
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: inherit;
+}
+
+.wp-hero-light-rays[data-hero-light-rays-active] {
+  visibility: visible;
+  opacity: 1;
+}
+
+.wp-hero-light-rays__inner {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: var(--hero-light-rays-t, 0);
+  transition: opacity 0.12s linear;
+}
+
+html.wp-hero-light-rays--engaged .wp-hero-light-rays {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  border-radius: 0;
+}
+
+html.wp-hero-light-rays--engaged .wp-hero-light-rays__inner {
+  transition: opacity 0.8s ease;
+}
+
+.wp-hero-light-rays__glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.wp-hero-light-rays__glow--a {
+  background: radial-gradient(
+    circle at 20% 12%,
+    color-mix(in srgb, var(--light-rays-color) 65%, transparent),
+    transparent 72%
+  );
+}
+
+.wp-hero-light-rays__glow--b {
+  background: radial-gradient(
+    circle at 78% 8%,
+    color-mix(in srgb, var(--light-rays-color) 50%, transparent),
+    transparent 76%
+  );
+}
+
+.wp-hero-light-rays__ray {
+  --ray-left: 50%;
+  --ray-width: 200px;
+  --ray-rotate: 0deg;
+  --ray-swing: 12deg;
+  --ray-delay: 0s;
+  --ray-duration: 14s;
+  position: absolute;
+  top: -12%;
+  left: var(--ray-left);
+  width: var(--ray-width);
+  height: var(--light-rays-length);
+  transform: translateX(-50%) rotate(var(--ray-rotate));
+  transform-origin: top center;
+  border-radius: 999px;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--light-rays-color) 85%, transparent),
+    transparent 88%
+  );
+  filter: blur(var(--light-rays-blur));
+  opacity: 0;
+  animation: wp-hero-light-ray var(--ray-duration) ease-in-out infinite;
+  animation-delay: var(--ray-delay);
+}
+
+.wp-hero-light-rays__ray:nth-child(3) {
+  --ray-left: 18%;
+  --ray-width: 180px;
+  --ray-rotate: -18deg;
+  --ray-delay: 0.4s;
+}
+
+.wp-hero-light-rays__ray:nth-child(4) {
+  --ray-left: 34%;
+  --ray-width: 240px;
+  --ray-rotate: 8deg;
+  --ray-delay: 1.2s;
+}
+
+.wp-hero-light-rays__ray:nth-child(5) {
+  --ray-left: 52%;
+  --ray-width: 210px;
+  --ray-rotate: -6deg;
+  --ray-delay: 2.1s;
+}
+
+.wp-hero-light-rays__ray:nth-child(6) {
+  --ray-left: 68%;
+  --ray-width: 260px;
+  --ray-rotate: 14deg;
+  --ray-delay: 0.8s;
+}
+
+.wp-hero-light-rays__ray:nth-child(7) {
+  --ray-left: 82%;
+  --ray-width: 190px;
+  --ray-rotate: -22deg;
+  --ray-delay: 3s;
+}
+
+.wp-hero-light-rays__ray:nth-child(8) {
+  --ray-left: 44%;
+  --ray-width: 280px;
+  --ray-rotate: 4deg;
+  --ray-delay: 1.8s;
+}
+
+.wp-hero-light-rays__ray:nth-child(9) {
+  --ray-left: 58%;
+  --ray-width: 220px;
+  --ray-rotate: -10deg;
+  --ray-delay: 2.6s;
+}
+
+@keyframes wp-hero-light-ray {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) rotate(calc(var(--ray-rotate) - var(--ray-swing)));
+  }
+
+  35%,
+  55% {
+    opacity: 0.92;
+  }
+
+  50% {
+    transform: translateX(-50%) rotate(calc(var(--ray-rotate) + var(--ray-swing)));
+  }
+}
+
+html.wp-motion--static .wp-hero-light-rays,
+html.wp-hero-light-rays--static .wp-hero-light-rays {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+html.wp-motion--static .wp-hero-light-rays__ray {
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-hero-light-rays {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  .wp-hero-light-rays__ray {
+    animation: none !important;
+  }
+}

@@ -28,35 +28,19 @@
     return Math.max(min, Math.min(max, v));
   }
 
-  function lightRaysT(progress) {
-    var p = clamp(progress, 0, 1);
-    if (p < 0.12) return 0;
-    if (p < 0.35) return ((p - 0.12) / 0.23) * 0.45;
-    if (p < 0.72) return 0.45 + ((p - 0.35) / 0.37) * 0.4;
-    if (p < FLASH_SCROLL) return 0.85 - ((p - 0.72) / (FLASH_SCROLL - 0.72)) * 0.6;
-    return 0;
-  }
+  var LIGHT_RAYS_T = 0.9;
+  var LIGHT_RAYS_LENGTH = "62vh";
 
-  function lightRaysLength(progress) {
-    var p = clamp(progress, 0, 1);
-    return 70 - p * 28;
-  }
-
-  function publishLightRays(hero, progress) {
-    var t = lightRaysT(progress);
-    var lengthVh = lightRaysLength(progress).toFixed(2) + "vh";
+  function publishLightRays(raysEl, t) {
     var root = document.documentElement;
-    var tStr = t.toFixed(4);
+    var tStr = clamp(t, 0, 1).toFixed(4);
 
     root.style.setProperty("--hero-light-rays-t", tStr);
-    hero.style.setProperty("--hero-light-rays-t", tStr);
-    root.style.setProperty("--hero-light-rays-length", lengthVh);
-    hero.style.setProperty("--hero-light-rays-length", lengthVh);
+    root.style.setProperty("--hero-light-rays-length", LIGHT_RAYS_LENGTH);
 
-    var rays = hero.querySelector("[data-hero-light-rays]");
-    if (rays) {
-      if (t > 0.01) rays.setAttribute("data-hero-light-rays-active", "");
-      else rays.removeAttribute("data-hero-light-rays-active");
+    if (raysEl) {
+      if (t > 0.01) raysEl.setAttribute("data-hero-light-rays-active", "");
+      else raysEl.removeAttribute("data-hero-light-rays-active");
     }
   }
 
@@ -75,12 +59,24 @@
 
       if (!canvas || !title || !keywordSlot || !canvasRoot || !gridRoot || !gridPlane) return;
 
+      var raysEl = hero.querySelector("[data-hero-light-rays]");
       var keywordIndex = 0;
       var rotateTimer = null;
       var flashDone = false;
       var settled = false;
+      var lightRaysEngaged = false;
       var kwColors = KEYWORDS.length;
       var ROTATE_MS = (MORPH_TIME + COOLDOWN_TIME) * 1000;
+
+      function engageLightRays() {
+        if (lightRaysEngaged) return;
+        lightRaysEngaged = true;
+        if (raysEl && raysEl.parentElement !== document.body) {
+          document.body.appendChild(raysEl);
+        }
+        publishLightRays(raysEl, LIGHT_RAYS_T);
+        document.documentElement.classList.add("wp-hero-light-rays--engaged");
+      }
 
       function scrollY() {
         if (window.WPScroll && typeof window.WPScroll.getY === "function") {
@@ -130,6 +126,7 @@
         setKeywordCanvas(text, i);
         setKeywordColor(i);
         updateAria(text);
+        if (i >= 1) engageLightRays();
         if (animateSwap) {
           window.setTimeout(function () {
             keywordSlot.classList.remove("is-swapping");
@@ -210,7 +207,6 @@
         var deg = GRID_ANGLE_START + (GRID_ANGLE_END - GRID_ANGLE_START) * p;
         var flat = p >= 0.72;
         setGridAngle(deg, flat);
-        publishLightRays(hero, p);
 
         if (p >= FLASH_SCROLL) {
           triggerDarkTheme();
@@ -224,13 +220,14 @@
         showKeyword(0, false);
         keywordSlot.classList.add("wp-hero-keyword--static");
         setGridAngle(GRID_ANGLE_END, true);
-        publishLightRays(hero, 0);
+        publishLightRays(raysEl, 0);
         document.documentElement.classList.add("wp-hero-light-rays--static");
         document.documentElement.setAttribute("data-theme", "dark");
         document.body.classList.add("home-page--post-hero");
         return;
       }
 
+      publishLightRays(raysEl, 0);
       showKeyword(0, false);
       startRotation();
 

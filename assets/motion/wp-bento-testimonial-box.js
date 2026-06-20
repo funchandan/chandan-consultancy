@@ -1,5 +1,5 @@
 /**
- * Reviews bento — testimonial-box carousel (AnimatedTestimonials brownfield port)
+ * Reviews bento — AnimatedTestimonials brownfield port
  */
 (function () {
   "use strict";
@@ -36,20 +36,49 @@
     }
   }
 
+  function arrowIcon(dir) {
+    if (dir === "prev") {
+      return (
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
+        '<path d="m15 18-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      );
+    }
+    return (
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
+      '<path d="m9 18 6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    );
+  }
+
+  function shellHtml() {
+    return (
+      '<div class="bento-animated-testimonials" data-bento-animated-testimonials data-embedded="true">' +
+      '<div class="bento-animated-testimonials__grid">' +
+      '<div class="bento-animated-testimonials__media" data-bento-testimonial-avatars></div>' +
+      '<div class="bento-animated-testimonials__copy">' +
+      '<p class="bento-animated-testimonials__name" data-bento-testimonial-name></p>' +
+      '<p class="bento-animated-testimonials__designation" data-bento-testimonial-designation></p>' +
+      '<p class="bento-animated-testimonials__quote" data-bento-testimonial-quote></p>' +
+      '<div class="bento-animated-testimonials__nav">' +
+      '<button type="button" class="bento-animated-testimonials__nav-btn" data-bento-testimonial-prev aria-label="Previous review">' +
+      arrowIcon("prev") +
+      "</button>" +
+      '<button type="button" class="bento-animated-testimonials__nav-btn" data-bento-testimonial-next aria-label="Next review">' +
+      arrowIcon("next") +
+      "</button>" +
+      "</div></div></div></div>"
+    );
+  }
+
   function render(mount, quotes, activeIndex) {
     if (!quotes.length) return;
 
     var idx = ((activeIndex % quotes.length) + quotes.length) % quotes.length;
     var item = quotes[idx];
 
-    mount.classList.add("bento-testimonial-box");
-    mount.innerHTML =
-      '<div class="bento-testimonial-box__avatars" data-bento-testimonial-avatars></div>' +
-      '<div class="bento-testimonial-box__copy">' +
-      '<p class="bento-testimonial-box__name" data-bento-testimonial-name></p>' +
-      '<p class="bento-testimonial-box__designation" data-bento-testimonial-designation></p>' +
-      '<p class="bento-testimonial-box__quote" data-bento-testimonial-quote></p>' +
-      "</div>";
+    if (!mount.querySelector("[data-bento-animated-testimonials]")) {
+      mount.classList.add("bento-animated-testimonials-shell");
+      mount.innerHTML = shellHtml();
+    }
 
     var avatars = mount.querySelector("[data-bento-testimonial-avatars]");
     var nameEl = mount.querySelector("[data-bento-testimonial-name]");
@@ -64,7 +93,7 @@
       avatars.innerHTML = quotes
         .map(function (q, i) {
           var cls =
-            "bento-testimonial-box__avatar" +
+            "bento-animated-testimonials__avatar" +
             (i === idx
               ? " is-active"
               : i === idx - 1 || (idx === 0 && i === quotes.length - 1)
@@ -75,10 +104,37 @@
             cls +
             '" src="' +
             q.src +
-            '" alt="" width="120" height="120" draggable="false" />'
+            '" alt="' +
+            q.name +
+            '" width="120" height="120" draggable="false" />'
           );
         })
         .join("");
+    }
+  }
+
+  function wireNav(mount, getActive, setActive, paint, startAutoplay) {
+    var prev = mount.querySelector("[data-bento-testimonial-prev]");
+    var next = mount.querySelector("[data-bento-testimonial-next]");
+
+    if (prev) {
+      prev.addEventListener("click", function () {
+        var quotes = getActive().quotes;
+        if (!quotes.length) return;
+        setActive((getActive().active - 1 + quotes.length) % quotes.length);
+        paint();
+        startAutoplay();
+      });
+    }
+
+    if (next) {
+      next.addEventListener("click", function () {
+        var quotes = getActive().quotes;
+        if (!quotes.length) return;
+        setActive((getActive().active + 1) % quotes.length);
+        paint();
+        startAutoplay();
+      });
     }
   }
 
@@ -93,6 +149,11 @@
       var quotes = parseQuotes(mount);
       var active = 0;
       var timer = null;
+      var navWired = false;
+
+      function state() {
+        return { quotes: quotes, active: active };
+      }
 
       function clearTimer() {
         if (timer) {
@@ -122,6 +183,19 @@
         active = 0;
         paint();
         startAutoplay();
+      }
+
+      if (!navWired) {
+        wireNav(
+          mount,
+          state,
+          function (next) {
+            active = next;
+          },
+          paint,
+          startAutoplay
+        );
+        navWired = true;
       }
 
       document.addEventListener("wp:bento-testimonials-hydrated", onHydrate);

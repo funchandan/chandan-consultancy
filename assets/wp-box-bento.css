@@ -120,7 +120,7 @@ html:not(.wp-box-bento-fallback):not(.wp-motion--static)
     grid-column: span 2;
   }
 
-  .bento-card--poll {
+  .bento-card--quiz {
     grid-column: span 1;
   }
 }
@@ -159,14 +159,14 @@ body.home-page--product .bento-card--search .wp-glass-compose__main {
 
 .bento-card--search .wp-glass-compose__input-shell {
   gap: 8px;
-  padding: 0.75rem;
+  padding: 1rem;
   border-radius: 1.3125rem;
 }
 
 .bento-card--search .wp-glass-compose__textarea {
   min-height: 2.0625rem;
-  max-height: 7.5rem;
-  font-size: 1.3125rem;
+  max-height: 8rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
@@ -212,7 +212,7 @@ body.home-page--product .bento-card--search .wp-glass-compose__main {
 .bento-card--search .wp-glass-compose__suggestion-item {
   gap: 0.75rem;
   padding: 0.75rem 1.125rem;
-  font-size: 1.21875rem;
+  font-size: 1rem;
   line-height: 1.35;
   border-radius: 9999px;
 }
@@ -288,7 +288,7 @@ body.home-page--product .bento-card--search .wp-glass-compose__main {
 .bento-card__title {
   margin: 0;
   font-family: "Inter", system-ui, sans-serif;
-  font-size: 1.35rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   color: rgba(0, 0, 0, 0.9);
@@ -299,7 +299,7 @@ body.home-page--product .bento-card--search .wp-glass-compose__main {
 .bento-card__desc {
   margin: 0;
   max-width: 32rem;
-  font-size: 0.975rem;
+  font-size: 1rem;
   line-height: 1.4;
   color: #000000;
 }

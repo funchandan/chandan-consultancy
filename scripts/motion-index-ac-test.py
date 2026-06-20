@@ -116,8 +116,10 @@ def run_hero_atmosphere_tests() -> list[str]:
         fails.append("LR-001: missing data-hero-light-rays in index.html")
     if "--hero-light-rays-t" not in retro_js:
         fails.append("LR-002: retrogrid morph must publish --hero-light-rays-t")
-    if "lightRaysT" not in retro_js:
-        fails.append("LR-003: retrogrid morph must map scroll progress to light rays")
+    if "engageLightRays" not in retro_js:
+        fails.append("LR-003: retrogrid morph must engage light rays on first keyword change")
+    if "wp-hero-light-rays--engaged" not in retro_js:
+        fails.append("LR-003b: retrogrid morph must lock light rays via wp-hero-light-rays--engaged")
     if not (ROOT / "components/ui/light-rays.tsx").is_file():
         fails.append("LR-004: components/ui/light-rays.tsx missing (Magic UI install)")
     if "--hero-light-rays-t" not in rays_css:
@@ -618,53 +620,50 @@ def run_noomo_tests(baseline: bool) -> tuple[list[str], list[str]]:
     return fails
 
 
-def run_distorted_glass_tests() -> list[str]:
-    """DistortedGlass — DG-* gates."""
+def run_edge_blur_tests() -> list[str]:
+    """EdgeBlur — EB-* gates."""
     fails: list[str] = []
     html = read(INDEX)
     polish = read(POLISH_CSS)
-    dg_css = ROOT / "assets/wp-distorted-glass.css"
-    dg_parallax_css = ROOT / "assets/wp-distorted-glass-parallax.css"
-    dg_js = MOTION_DIR / "wp-distorted-glass-handoff.js"
-    component = ROOT / "components/ui/distorted-glass.tsx"
+    eb_css = ROOT / "assets/wp-edge-blur.css"
+    eb_js = MOTION_DIR / "wp-edge-blur-handoff.js"
+    component = ROOT / "components/ui/edge-blur.tsx"
 
     def require(gate: str, ok: bool, msg: str) -> None:
         if not ok:
             fails.append(f"{gate}: {msg}")
 
-    require("DG-001", component.is_file(), "components/ui/distorted-glass.tsx missing")
-    require("DG-002", module_registered("distorted-glass-handoff"), "distorted-glass-handoff module not registered")
+    require("EB-001", component.is_file(), "components/ui/edge-blur.tsx missing")
+    require("EB-002", module_registered("edge-blur-handoff"), "edge-blur-handoff module not registered")
     require(
-        "DG-003",
-        "data-wp-distorted-glass-handoff" in html
-        and "wp-distorted-glass-strip" in html
-        and "wp-distorted-glass-frost" in html,
-        "index missing distorted glass shell, strip, or frost pane",
+        "EB-003",
+        "data-wp-edge-blur-handoff" in html
+        and "data-edge-blur-seam" in html
+        and "data-edge-blur-bottom" in html,
+        "index missing edge blur shell, seam, or bottom pane",
     )
     require(
-        "DG-004",
-        dg_css.is_file()
-        and dg_parallax_css.is_file()
-        and dg_js.is_file()
-        and "wp-distorted-glass.css" in html
-        and "wp-distorted-glass-handoff.js" in html,
-        "distorted glass assets missing or not linked in index",
-    )
-    require("DG-005", "wp-fractal-noise-glass" in html, "SVG filter #wp-fractal-noise-glass missing from index")
-    require(
-        "DG-006",
-        "wp-distorted-glass-ready" in polish and "statement-viewport::after" in polish,
-        "legacy blur seam not gated behind wp-distorted-glass-ready",
+        "EB-004",
+        eb_css.is_file()
+        and eb_js.is_file()
+        and "wp-edge-blur.css" in html
+        and "wp-edge-blur-handoff.js" in html,
+        "edge blur assets missing or not linked in index",
     )
     require(
-        "DG-007",
-        grep_files(r"pointer-events:\s*none", dg_css),
-        "glass shell missing pointer-events: none",
+        "EB-005",
+        "wp-edge-blur-ready" in polish and "statement-viewport::after" in polish,
+        "legacy blur seam not gated behind wp-edge-blur-ready",
     )
     require(
-        "DG-007",
-        "distorted-glass-handoff" in html,
-        "#main missing distorted-glass-handoff hook",
+        "EB-006",
+        grep_files(r"pointer-events:\s*none", eb_css),
+        "edge blur shell missing pointer-events: none",
+    )
+    require(
+        "EB-007",
+        "edge-blur-handoff" in html,
+        "#main missing edge-blur-handoff hook",
     )
 
     return fails
@@ -692,7 +691,7 @@ def main() -> int:
     fails, warns = run_wo015_tests(baseline=args.baseline)
     fails.extend(run_hero_bento_tests())
     fails.extend(run_hero_atmosphere_tests())
-    fails.extend(run_distorted_glass_tests())
+    fails.extend(run_edge_blur_tests())
 
     if not args.baseline:
         w21_fails, w21_warns = run_wo021_tests(baseline=args.baseline)

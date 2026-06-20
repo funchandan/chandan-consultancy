@@ -27,8 +27,8 @@
   <link rel="stylesheet" href="assets/wp-hero-toolkit-path.css?v=3" />
   <link rel="stylesheet" href="assets/wp-hero-display-slot.css?v=15" />
   <link rel="stylesheet" href="assets/wp-hero-retrogrid.css?v=8" />
-  <link rel="stylesheet" href="assets/wp-hero-light-rays.css?v=2" />
-  <link rel="stylesheet" href="assets/bg-grid-after-hero.css?v=5" />
+  <link rel="stylesheet" href="assets/wp-hero-light-rays.css?v=3" />
+  <link rel="stylesheet" href="assets/bg-grid-after-hero.css?v=8" />
   <link rel="stylesheet" href="assets/wp-hero-morphing-text.css?v=5" />
   <link rel="stylesheet" href="assets/wp-hero-canvas-text.css?v=2" />
   <link rel="stylesheet" href="assets/wp-index-hero-dark.css?v=2" />
@@ -42,15 +42,14 @@
   <link rel="stylesheet" href="assets/wp-blue-pointer.css?v=1" />
   <link rel="stylesheet" href="assets/wp-dot-grid.css?v=1" />
   <link rel="stylesheet" href="assets/wp-noise-background.css?v=5" />
-  <link rel="stylesheet" href="assets/wp-distorted-glass.css?v=4" />
-  <link rel="stylesheet" href="assets/wp-distorted-glass-parallax.css?v=2" />
-  <link rel="stylesheet" href="assets/wp-box-bento.css?v=12" />
-  <link rel="stylesheet" href="assets/wp-bento-3d-pin.css?v=11" />
-  <link rel="stylesheet" href="assets/wp-bento-poll-widget.css?v=3" />
-  <link rel="stylesheet" href="assets/wp-bento-testimonial-box.css?v=2" />
+  <link rel="stylesheet" href="assets/wp-edge-blur.css?v=5" />
+  <link rel="stylesheet" href="assets/wp-box-bento.css?v=17" />
+  <link rel="stylesheet" href="assets/wp-bento-testimonial-box.css?v=5" />
+  <link rel="stylesheet" href="assets/wp-bento-sortable-quiz.css?v=1" />
   <link rel="stylesheet" href="assets/wp-bento-title-reveal.css?v=3" />
   <link rel="stylesheet" href="assets/index-product-surface.css?v=11" />
-  <link rel="stylesheet" href="assets/index-product-polish.css?v=20" />
+  <link rel="stylesheet" href="assets/index-product-polish.css?v=21" />
+  <link rel="stylesheet" href="assets/wp-method-feature-carousel.css?v=5" />
   <link rel="stylesheet" href="assets/index-noomo-tier3.css?v=2" />
   <link rel="stylesheet" href="assets/wp-work-case-evidence-fps.css?v=1" />
   <link rel="stylesheet" href="assets/vendor/lenis/lenis.css" />
@@ -62,11 +61,11 @@
   <script src="assets/motion/wp-lenis.js?v=3" defer></script>
   <script src="assets/motion/wp-motion.js?v=4" defer></script>
   <script src="assets/motion/wp-hero-canvas-text.js?v=6" defer></script>
-  <script src="assets/motion/wp-hero-retrogrid-morph.js?v=10" defer></script>
+  <script src="assets/motion/wp-hero-retrogrid-morph.js?v=11" defer></script>
   <script src="assets/motion/wp-bento-title-reveal.js?v=1" defer></script>
   <script src="assets/motion/wp-blue-pointer.js?v=1" defer></script>
   <script src="assets/motion/wp-dot-grid.js?v=2" defer></script>
-  <script src="assets/motion/wp-bg-grid-after-hero.js?v=7" defer></script>
+  <script src="assets/motion/wp-bg-grid-after-hero.js?v=8" defer></script>
   <script src="assets/motion/wp-noise-background.js?v=1" defer></script>
   <script src="assets/motion/wp-journey-immersive.js?v=19" defer></script>
   <script src="assets/motion/wp-iphone-frame.js?v=1" defer></script>
@@ -78,6 +77,8 @@
   <script src="assets/motion/wp-glass-scroll.js?v=1" defer></script>
   <script src="assets/motion/wp-method-close-reveal.js?v=1" defer></script>
   <script src="assets/motion/wp-method-proof-preview.js?v=1" defer></script>
+  <script src="assets/motion/wp-method-feature-carousel.js?v=2" defer></script>
+  <script src="assets/motion/wp-method-carousel-terminal.js?v=1" defer></script>
   <script src="assets/motion/wp-connect-reveal.js?v=1" defer></script>
   <script src="assets/motion/wp-hero-project-strip.js?v=1" defer></script>
   <script src="assets/motion/wp-hero-impact-counter.js?v=1" defer></script>
@@ -85,12 +86,11 @@
   <script src="assets/motion/wp-glass-vanish-input.js?v=2" defer></script>
   <script src="assets/motion/wp-glass-compose.js?v=3" defer></script>
   <script src="assets/hero-toolkit-funnel.js?v=6" defer></script>
-  <script src="assets/motion/wp-distorted-glass-handoff.js?v=7" defer></script>
-  <script src="assets/motion/wp-bento-3d-pin.js?v=8" defer></script>
-  <script src="assets/motion/wp-bento-poll-widget.js?v=3" defer></script>
-  <script src="assets/motion/wp-bento-testimonial-box.js?v=5" defer></script>
+  <script src="assets/motion/wp-edge-blur-handoff.js?v=4" defer></script>
+  <script src="assets/motion/wp-bento-sortable-quiz.js?v=1" defer></script>
+  <script src="assets/motion/wp-bento-testimonial-box.js?v=8" defer></script>
   <script src="assets/motion/wp-bento-bg-toolkit-terminal.js?v=1" defer></script>
-  <script src="assets/wp-box-bento.js?v=11" defer></script>
+  <script src="assets/wp-box-bento.js?v=13" defer></script>
 </head>
 <body class="home-page home-page--product" data-wp-motion="lenis-root glass-scroll dot-grid bg-grid-after-hero blue-pointer" data-wp-motion-profile="portfolio-default">
   <div class="bg-grid-after-hero" id="bg-grid-after-hero" data-bg-grid-after-hero aria-hidden="true"></div>
@@ -163,7 +163,7 @@
   </header>
   <!-- nav-pill:end -->
 
-  <main id="main" tabindex="-1" data-wp-motion="journey section-depth scroll-depth distorted-glass-handoff">
+  <main id="main" tabindex="-1" data-wp-motion="journey section-depth scroll-depth edge-blur-handoff">
     <!-- Statement viewport — WO-010 scroll-native -->
     <section class="statement-viewport journey-act" id="hero" data-wp-motion="hero-retrogrid-morph hero-project-strip" aria-labelledby="statement-title">
       <div class="statement-viewport__canvas">
@@ -212,27 +212,6 @@
         </a>
       </div>
     </section>
-
-    <div class="wp-distorted-glass-shell" data-wp-distorted-glass-handoff aria-hidden="true">
-      <svg class="wp-distorted-glass__defs" aria-hidden="true" focusable="false">
-        <defs>
-          <filter id="wp-fractal-noise-glass">
-            <feTurbulence type="fractalNoise" baseFrequency="0.12 0.12" numOctaves="1" result="warp"></feTurbulence>
-            <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp"></feDisplacementMap>
-          </filter>
-        </defs>
-      </svg>
-      <div class="wp-distorted-glass-strip" data-distorted-glass-strip>
-        <div class="wp-distorted-glass-strip__frame">
-          <div class="wp-distorted-glass-strip__fill glass-effect"></div>
-        </div>
-      </div>
-      <div class="wp-distorted-glass-frost" data-distorted-glass-frost aria-hidden="true"></div>
-    </div>
-
-    <div class="wp-distorted-glass-parallax-host" data-distorted-glass-parallax-host aria-hidden="true">
-      <div class="wp-distorted-glass-parallax" data-distorted-glass-parallax></div>
-    </div>
 
     <section class="wp-box-bento-ledge" data-box-bento-ledge data-wp-motion="bento-text-reveal" aria-label="Explore pathways">
       <div class="shell">
@@ -319,96 +298,51 @@
               </div>
               <div class="bento-card__shade" aria-hidden="true"></div>
             </div>
-            <div class="bento-card bento-card--poll" data-hero-bento-poll data-wp-motion="bento-poll-widget">
-              <div class="bento-card__panel bento-card__panel--poll">
+            <div class="bento-card bento-card--quiz" data-hero-bento-quiz data-wp-motion="bento-sortable-quiz">
+              <div class="bento-card__panel bento-card__panel--quiz">
                 <div
-                  class="bento-poll-widget-mount"
-                  data-bento-poll-widget
-                  data-bento-poll-data='{"question":"What would you like to see more of?","description":"Pick one, then submit.","options":[{"id":"cases","label":"Case study deep dives"},{"id":"toolkits","label":"Design toolkits"},{"id":"ai","label":"AI product UX"},{"id":"process","label":"Design process notes"}],"votes":{"cases":12,"toolkits":8,"ai":15,"process":5}}'
+                  class="bento-quiz-mount"
+                  data-bento-quiz-widget
+                  data-bento-quiz-data='{"title":"Test your systems instinct","description":"Rank these moves for a 20M+ learner loyalty launch — most critical first.","items":[{"id":"map-journey","text":"Map earn-and-spend journeys end to end","rationale":"One clear story before marketplace UI scales."},{"id":"align-metric","text":"Align stakeholders on one north-star metric","rationale":"Shared success measure before surface debates."},{"id":"moderated-test","text":"Run moderated tests on production stimulus","rationale":"Validate with real learners in US + India."},{"id":"marketplace","text":"Define marketplace mechanics and edge cases","rationale":"Earn/spend rules need defensible boundaries."},{"id":"avatar","text":"Ship avatar rewards as a fast follow","rationale":"Delight layer after the core loop works."}],"expertOrder":["map-journey","align-metric","moderated-test","marketplace","avatar"],"startOrder":["avatar","marketplace","moderated-test","align-metric","map-journey"],"caseHref":"#work","caseCta":"See the BYJU&apos;s case"}'
                   aria-live="polite"
                 >
-                  <div class="bento-poll-widget" data-bento-poll-root>
-                    <div class="bento-poll-widget__body">
-                      <div class="bento-poll-widget__question">
-                        <h3 class="bento-poll-widget__title" data-bento-poll-question>What would you like to see more of?</h3>
-                        <p class="bento-poll-widget__desc" data-bento-poll-desc>Pick one, then submit.</p>
-                      </div>
-                      <ul class="bento-poll-widget__options" role="listbox" data-bento-poll-options>
-                        <li><button type="button" class="bento-poll-widget__option" data-bento-poll-option="cases" role="option" aria-selected="false"><span class="bento-poll-widget__progress" data-bento-poll-progress aria-hidden="true"></span><span class="bento-poll-widget__option-inner"><span class="bento-poll-widget__indicator"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="bento-poll-widget__label">Case study deep dives</span><span class="bento-poll-widget__pct" data-bento-poll-pct>0%</span></span></button></li>
-                        <li><button type="button" class="bento-poll-widget__option" data-bento-poll-option="toolkits" role="option" aria-selected="false"><span class="bento-poll-widget__progress" data-bento-poll-progress aria-hidden="true"></span><span class="bento-poll-widget__option-inner"><span class="bento-poll-widget__indicator"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="bento-poll-widget__label">Design toolkits</span><span class="bento-poll-widget__pct" data-bento-poll-pct>0%</span></span></button></li>
-                        <li><button type="button" class="bento-poll-widget__option" data-bento-poll-option="ai" role="option" aria-selected="false"><span class="bento-poll-widget__progress" data-bento-poll-progress aria-hidden="true"></span><span class="bento-poll-widget__option-inner"><span class="bento-poll-widget__indicator"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="bento-poll-widget__label">AI product UX</span><span class="bento-poll-widget__pct" data-bento-poll-pct>0%</span></span></button></li>
-                        <li><button type="button" class="bento-poll-widget__option" data-bento-poll-option="process" role="option" aria-selected="false"><span class="bento-poll-widget__progress" data-bento-poll-progress aria-hidden="true"></span><span class="bento-poll-widget__option-inner"><span class="bento-poll-widget__indicator"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="bento-poll-widget__label">Design process notes</span><span class="bento-poll-widget__pct" data-bento-poll-pct>0%</span></span></button></li>
-                      </ul>
-                      <div class="bento-poll-widget__meta">
-                        <span data-bento-poll-total>40 votes</span>
-                        <span class="bento-poll-widget__meta-voted" data-bento-poll-you-voted>You voted</span>
-                      </div>
-                      <button type="button" class="bento-poll-widget__submit" data-bento-poll-submit disabled>Submit vote</button>
+                  <div class="bento-quiz" data-bento-quiz-root data-bento-quiz-play>
+                    <div class="bento-quiz__header">
+                      <h3 class="bento-quiz__title" data-bento-quiz-title>Test your systems instinct</h3>
+                      <p class="bento-quiz__desc" data-bento-quiz-desc>Rank these moves for a 20M+ learner loyalty launch — most critical first.</p>
                     </div>
-                    <div class="bento-poll-widget__success" data-bento-poll-success hidden>
-                      <svg class="bento-poll-widget__success-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M27.6 16C27.6 17.5234 27.3 19.0318 26.717 20.4392C26.1341 21.8465 25.2796 23.1253 24.2025 24.2025C23.1253 25.2796 21.8465 26.1341 20.4392 26.717C19.0318 27.3 17.5234 27.6 16 27.6C14.4767 27.6 12.9683 27.3 11.5609 26.717C10.1535 26.1341 8.87475 25.2796 7.79759 24.2025C6.72043 23.1253 5.86598 21.8465 5.28302 20.4392C4.70007 19.0318 4.40002 17.5234 4.40002 16C4.40002 12.9235 5.62216 9.97301 7.79759 7.79759C9.97301 5.62216 12.9235 4.40002 16 4.40002C19.0765 4.40002 22.027 5.62216 24.2025 7.79759C26.3779 9.97301 27.6 12.9235 27.6 16Z" fill="rgba(0,0,0,0.08)"/><path d="M12.1334 16.9667L15.0334 19.8667L19.8667 13.1M27.6 16C27.6 17.5234 27.3 19.0318 26.717 20.4392C26.1341 21.8465 25.2796 23.1253 24.2025 24.2025C23.1253 25.2796 21.8465 26.1341 20.4392 26.717C19.0318 27.3 17.5234 27.6 16 27.6C14.4767 27.6 12.9683 27.3 11.5609 26.717C10.1535 26.1341 8.87475 25.2796 7.79759 24.2025C6.72043 23.1253 5.86598 21.8465 5.28302 20.4392C4.70007 19.0318 4.40002 17.5234 4.40002 16C4.40002 12.9235 5.62216 9.97301 7.79759 7.79759C9.97301 5.62216 12.9235 4.40002 16 4.40002C19.0765 4.40002 22.027 5.62216 24.2025 7.79759C26.3779 9.97301 27.6 12.9235 27.6 16Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/></svg>
-                      <p class="bento-poll-widget__success-title">Thanks for voting!</p>
-                      <p class="bento-poll-widget__success-desc" data-bento-poll-success-desc>Your vote has been recorded</p>
-                    </div>
+                    <ul class="bento-quiz__list" data-bento-quiz-list role="list">
+                      <li class="bento-quiz__row" data-bento-quiz-item="avatar" draggable="true"><span class="bento-quiz__rank" aria-hidden="true">1</span><span class="bento-quiz__label">Ship avatar rewards as a fast follow</span><span class="bento-quiz__handle" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="6" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="18" r="1"/></svg></span></li>
+                      <li class="bento-quiz__row" data-bento-quiz-item="marketplace" draggable="true"><span class="bento-quiz__rank" aria-hidden="true">2</span><span class="bento-quiz__label">Define marketplace mechanics and edge cases</span><span class="bento-quiz__handle" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="6" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="18" r="1"/></svg></span></li>
+                      <li class="bento-quiz__row" data-bento-quiz-item="moderated-test" draggable="true"><span class="bento-quiz__rank" aria-hidden="true">3</span><span class="bento-quiz__label">Run moderated tests on production stimulus</span><span class="bento-quiz__handle" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="6" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="18" r="1"/></svg></span></li>
+                      <li class="bento-quiz__row" data-bento-quiz-item="align-metric" draggable="true"><span class="bento-quiz__rank" aria-hidden="true">4</span><span class="bento-quiz__label">Align stakeholders on one north-star metric</span><span class="bento-quiz__handle" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="6" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="18" r="1"/></svg></span></li>
+                      <li class="bento-quiz__row" data-bento-quiz-item="map-journey" draggable="true"><span class="bento-quiz__rank" aria-hidden="true">5</span><span class="bento-quiz__label">Map earn-and-spend journeys end to end</span><span class="bento-quiz__handle" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="6" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="18" r="1"/></svg></span></li>
+                    </ul>
+                    <button type="button" class="bento-quiz__submit" data-bento-quiz-submit disabled>Check my ranking</button>
                   </div>
                 </div>
               </div>
               <div class="bento-card__shade" aria-hidden="true"></div>
             </div>
-            <div class="bento-card bento-card--reviews" data-hero-bento-reviews-card data-bento-3d-pin data-wp-motion="bento-3d-pin bento-testimonial-box">
-              <div class="bento-3d-pin__hover-zone" data-bento-3d-pin-hover aria-hidden="true"></div>
-              <div class="bento-card__tilt">
-                <div class="bento-3d-pin bento-3d-pin--surface" aria-hidden="true">
-                  <div class="bento-3d-pin__perspective">
-                    <div class="bento-3d-pin__lift" data-bento-3d-pin-lift>
-                      <div class="bento-3d-pin__card">
-                        <div class="bento-bg-artifact bento-bg-artifact--testimonial-box bento-3d-pin__testimonial" data-bento-bg-artifact="testimonial-box" data-hero-bento-reviews aria-hidden="true"></div>
+            <div class="bento-reviews-embed" data-hero-bento-reviews-card data-wp-motion="bento-testimonial-box">
+              <div
+                class="bento-animated-testimonials-shell bento-bg-artifact bento-bg-artifact--testimonial-box"
+                data-bento-bg-artifact="testimonial-box"
+                data-hero-bento-reviews
+              >
+                <div class="bento-animated-testimonials" data-bento-animated-testimonials data-embedded="true">
+                  <div class="bento-animated-testimonials__grid">
+                    <div class="bento-animated-testimonials__media" data-bento-testimonial-avatars>
+                      <img class="bento-animated-testimonials__avatar is-active" src="https://api.dicebear.com/9.x/avataaars/svg?seed=Spencer%20W." alt="Spencer W." width="120" height="120" draggable="false" />
+                    </div>
+                    <div class="bento-animated-testimonials__copy">
+                      <p class="bento-animated-testimonials__name" data-bento-testimonial-name>Spencer W.</p>
+                      <p class="bento-animated-testimonials__designation" data-bento-testimonial-designation>Fortune 100 VP-Product</p>
+                      <p class="bento-animated-testimonials__quote" data-bento-testimonial-quote>Chandan's design perception is well ahead of what I could imagine as a business leader. I like his approach very much.</p>
+                      <div class="bento-animated-testimonials__nav">
+                        <button type="button" class="bento-animated-testimonials__nav-btn" data-bento-testimonial-prev aria-label="Previous review"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                        <button type="button" class="bento-animated-testimonials__nav-btn" data-bento-testimonial-next aria-label="Next review"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                       </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="bento-card__panel">
-                <div class="bento-card__content">
-                  <svg class="bento-card__icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-                  <h3 class="bento-card__title" data-hero-bento-reviews-title>
-                    <span class="wp-bento-title-reveal" data-bento-title-reveal>
-                      <span class="wp-bento-title-reveal__word" style="--bento-word-i:0">
-                        <span class="wp-bento-title-reveal__ghost" aria-hidden="true">My</span>
-                        <span class="wp-bento-title-reveal__fill">My</span>
-                      </span>
-                      <span class="wp-bento-title-reveal__word" style="--bento-word-i:1">
-                        <span class="wp-bento-title-reveal__ghost" aria-hidden="true">reviews</span>
-                        <span class="wp-bento-title-reveal__fill"><span class="wp-aurora-text">reviews</span></span>
-                      </span>
-                    </span>
-                  </h3>
-                  <p class="bento-card__desc" data-hero-bento-reviews-desc>What collaborators say about working together.</p>
-                </div>
-                <div class="bento-card__cta bento-card__cta--mobile">
-                  <a class="bento-card__cta-link" href="about.html" data-hero-bento-reviews-cta>Read more <span class="bento-card__cta-arrow" aria-hidden="true">→</span></a>
-                </div>
-              </div>
-              <div class="bento-card__cta bento-card__cta--desktop">
-                <a class="bento-card__cta-link" href="about.html" data-hero-bento-reviews-cta>Read more <span class="bento-card__cta-arrow" aria-hidden="true">→</span></a>
-              </div>
-              <div class="bento-card__shade" aria-hidden="true"></div>
-              </div>
-              <div class="bento-3d-pin__screen" aria-hidden="true">
-                <div class="bento-3d-pin__chip-wrap">
-                  <span class="bento-3d-pin__chip" data-bento-3d-pin-title>Read more</span>
-                </div>
-                <div class="bento-3d-pin__fx">
-                  <div class="bento-3d-pin__fx-inner">
-                    <div class="bento-3d-pin__rings" aria-hidden="true">
-                      <span class="bento-3d-pin__ring"></span>
-                      <span class="bento-3d-pin__ring"></span>
-                      <span class="bento-3d-pin__ring"></span>
-                    </div>
-                    <div class="bento-3d-pin__beam" aria-hidden="true">
-                      <span class="bento-3d-pin__beam-glow"></span>
-                      <span class="bento-3d-pin__beam-core"></span>
-                      <span class="bento-3d-pin__beam-dot bento-3d-pin__beam-dot--blur"></span>
-                      <span class="bento-3d-pin__beam-dot"></span>
                     </div>
                   </div>
                 </div>
@@ -495,80 +429,90 @@
       </div>
     </section>
 
-    <section id="approach" class="home-product-section journey-act" data-wp-motion="method-rail method-proof-preview" data-methodology-section aria-labelledby="approach-heading">
+    <section id="approach" class="home-product-section journey-act" data-wp-motion="method-rail method-carousel method-carousel-terminal method-proof-preview" data-methodology-section aria-labelledby="approach-heading">
       <div class="shell">
         <h2 id="approach-heading" class="wp-section-display" data-method-heading-variant="programmes">How I run programmes</h2>
-        <p class="home-product-section__intro home-product-section__intro--method">Four moves &middot; ~2 min read &middot; same proof as the cases above</p>
-        <ol class="wp-method-lines">
-          <li>
-            <article class="wp-method-line">
-              <span class="wp-method-line__num" aria-hidden="true">01</span>
-              <div class="wp-method-line__body">
-                <h3 class="wp-method-line__title">Map the system</h3>
-                <p class="wp-method-line__desc">Find what&rsquo;s actually broken before you fix the loudest symptom.</p>
-                <p class="wp-method-line__receipt" aria-label="Proof from BYJU&rsquo;s case">
-                  <span class="wp-method-line__receipt-chip">15 interviews</span>
-                  <span class="wp-method-line__receipt-chip">US + IN</span>
-                </p>
-                <a class="wp-method-line__proof wp-link-text" href="case-studies/points-marketplace-foundational.html#beat_problem" data-methodology-proof-link data-proof-move="map" data-proof-preview-src="assets/case-studies/points-marketplace-foundational/hero-ticker/ticker-beat-problem.png">
-                  <img class="wp-method-line__thumb" src="assets/case-studies/points-marketplace-foundational/hero-ticker/ticker-beat-problem.png" alt="" width="52" height="52" loading="lazy" decoding="async" />
-                  <span class="wp-method-line__proof-label">See the problem map <span aria-hidden="true">&rarr;</span></span>
+        <p class="home-product-section__intro home-product-section__intro--method">Four moves &middot; proof from the cases above &middot; step through</p>
+
+        <div
+          class="wp-method-carousel"
+          data-method-carousel
+          data-method-carousel-autoplay="5000"
+          data-method-carousel-steps='[{"title":"Map the system","description":"Trace the real failure mode before touching UI — who\u0027s blocked, what\u0027s measured, and what would falsify the frame.","chips":["15 interviews","US + IN"],"proofHref":"case-studies/points-marketplace-foundational.html#beat_problem","proofLabel":"See the problem map","proofMove":"map","proofPreview":"assets/method-carousel/map/insight-synthesis-crop.png","images":{"a":"assets/method-carousel/map/figma-system-design.png","b":"assets/method-carousel/map/user-stories-stack.png"}},{"title":"Choose one direction","description":"Name the bet that matters, write what would change your mind, and make the tradeoff legible to engineering and the field.","chips":["One next-best action","3 operating contexts"],"proofHref":"case-studies/hp-field-service-ai.html#beat_recommendations","proofLabel":"See the decision","proofMove":"commit","proofPreview":"assets/method-carousel/choose/code-block-falsifier.png","images":{"a":"assets/method-carousel/choose/journey-decision-point.png","b":"assets/method-carousel/choose/system-handoff-diagram.png"}},{"title":"Ship the essentials first","description":"Lock the end-to-end journey before polishing surfaces that might move after the next pilot.","chips":["10-beat IA","Visit-context order"],"proofHref":"case-studies/stryker-field-logistics.html#beat_03_order","proofLabel":"See the order path","proofMove":"ship","proofPreview":"assets/method-carousel/ship/go-live-banner.png","images":{"b":"assets/method-carousel/ship/uat-results-matrix.png"},"terminal":true},{"title":"Measure what changed","description":"Read what moved after launch — including the misses — so the next iteration has receipts, not opinions.","chips":["Field walkthroughs","Frame-mapped evidence"],"proofHref":"case-studies/hp-field-service-ai.html#beat_insights","proofLabel":"See the evidence","proofMove":"receipts","proofPreview":"assets/method-carousel/measure/hotjar-uat-sit-analytics.png","images":{"a":"assets/method-carousel/measure/hotjar-uat-sit-analytics.png","b":"assets/method-carousel/measure/hotjar-session-replay.png"}}]'
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Method moves"
+        >
+          <ol class="wp-method-carousel__steps" role="tablist" aria-label="Method steps">
+            <li class="wp-method-carousel__step" role="presentation">
+              <button type="button" class="wp-method-carousel__step-btn" role="tab" data-method-carousel-step="0" aria-selected="true" aria-controls="method-carousel-panel">
+                <span class="wp-method-carousel__step-mark" aria-hidden="true">1</span>
+                <span class="wp-method-carousel__step-label">Map</span>
+              </button>
+            </li>
+            <li class="wp-method-carousel__step" role="presentation">
+              <button type="button" class="wp-method-carousel__step-btn" role="tab" data-method-carousel-step="1" aria-selected="false" aria-controls="method-carousel-panel">
+                <span class="wp-method-carousel__step-mark" aria-hidden="true">2</span>
+                <span class="wp-method-carousel__step-label">Choose</span>
+              </button>
+            </li>
+            <li class="wp-method-carousel__step" role="presentation">
+              <button type="button" class="wp-method-carousel__step-btn" role="tab" data-method-carousel-step="2" aria-selected="false" aria-controls="method-carousel-panel">
+                <span class="wp-method-carousel__step-mark" aria-hidden="true">3</span>
+                <span class="wp-method-carousel__step-label">Ship</span>
+              </button>
+            </li>
+            <li class="wp-method-carousel__step" role="presentation">
+              <button type="button" class="wp-method-carousel__step-btn" role="tab" data-method-carousel-step="3" aria-selected="false" aria-controls="method-carousel-panel">
+                <span class="wp-method-carousel__step-mark" aria-hidden="true">4</span>
+                <span class="wp-method-carousel__step-label">Measure</span>
+              </button>
+            </li>
+          </ol>
+
+          <div class="wp-method-carousel__stage" data-method-carousel-stage tabindex="0" aria-label="Advance to next method step">
+            <article class="wp-method-carousel__card" id="method-carousel-panel" role="tabpanel" aria-labelledby="method-carousel-title">
+              <div class="wp-method-carousel__panel">
+                <h3 id="method-carousel-title" class="wp-method-carousel__title" data-method-carousel-title>Map the system</h3>
+                <p class="wp-method-carousel__desc" data-method-carousel-desc>Trace the real failure mode before touching UI.</p>
+                <ul class="wp-method-carousel__chips" data-method-carousel-chips role="list" aria-label="Proof receipts"></ul>
+                <a
+                  class="wp-method-carousel__proof"
+                  href="case-studies/points-marketplace-foundational.html#beat_problem"
+                  data-method-carousel-proof
+                  data-methodology-proof-link
+                  data-proof-move="map"
+                  data-proof-preview-src="assets/method-carousel/map/insight-synthesis-crop.png"
+                >
+                  <span data-method-carousel-proof-label>See the problem map</span>
+                  <span aria-hidden="true">&rarr;</span>
                 </a>
+                <span class="visually-hidden" data-method-carousel-live aria-live="polite" aria-atomic="true"></span>
+              </div>
+              <div class="wp-method-carousel__visual" aria-hidden="true">
+                <img class="wp-method-carousel__img wp-method-carousel__img--a" data-method-carousel-img data-img-step="0" data-img-slot="a" src="assets/method-carousel/map/figma-system-design.png" alt="Figma system design diagram with service architecture nodes" width="960" height="600" loading="lazy" decoding="async" />
+                <img class="wp-method-carousel__img wp-method-carousel__img--b" data-method-carousel-img data-img-step="0" data-img-slot="b" src="assets/method-carousel/map/user-stories-stack.png" alt="FigJam user story stickies" width="720" height="400" loading="lazy" decoding="async" />
+                <img class="wp-method-carousel__img wp-method-carousel__img--a" data-method-carousel-img data-img-step="1" data-img-slot="a" src="assets/method-carousel/choose/journey-decision-point.png" alt="User journey with decision point highlighted" width="840" height="480" loading="lazy" decoding="async" />
+                <img class="wp-method-carousel__img wp-method-carousel__img--b" data-method-carousel-img data-img-step="1" data-img-slot="b" src="assets/method-carousel/choose/system-handoff-diagram.png" alt="Figma architecture handoff diagram" width="960" height="600" loading="lazy" decoding="async" />
+                <div
+                  class="wp-method-carousel__terminal wp-method-carousel__img wp-method-carousel__img--a"
+                  data-method-carousel-terminal
+                  data-img-step="2"
+                  data-img-slot="a"
+                  aria-hidden="true"
+                >
+                  <div data-method-carousel-terminal-mount></div>
+                </div>
+                <img class="wp-method-carousel__img wp-method-carousel__img--b" data-method-carousel-img data-img-step="2" data-img-slot="b" src="assets/method-carousel/ship/uat-results-matrix.png" alt="UAT SIT walkthrough pass matrix" width="520" height="480" loading="lazy" decoding="async" />
+                <img class="wp-method-carousel__img wp-method-carousel__img--a" data-method-carousel-img data-img-step="3" data-img-slot="a" src="assets/method-carousel/measure/hotjar-uat-sit-analytics.png" alt="Hotjar UAT SIT funnel and heatmap analytics" width="960" height="580" loading="lazy" decoding="async" />
+                <img class="wp-method-carousel__img wp-method-carousel__img--b" data-method-carousel-img data-img-step="3" data-img-slot="b" src="assets/method-carousel/measure/hotjar-session-replay.png" alt="Hotjar session replay with hesitation events" width="800" height="520" loading="lazy" decoding="async" />
               </div>
             </article>
-          </li>
-          <li>
-            <article class="wp-method-line">
-              <span class="wp-method-line__num" aria-hidden="true">02</span>
-              <div class="wp-method-line__body">
-                <h3 class="wp-method-line__title">Choose one direction</h3>
-                <p class="wp-method-line__desc">Pick the move that matters, be clear what would change your mind, and say it plainly.</p>
-                <p class="wp-method-line__receipt" aria-label="Proof from HP field service case">
-                  <span class="wp-method-line__receipt-chip">One next-best action</span>
-                  <span class="wp-method-line__receipt-chip">3 operating contexts</span>
-                </p>
-                <a class="wp-method-line__proof wp-link-text" href="case-studies/hp-field-service-ai.html#beat_recommendations" data-methodology-proof-link data-proof-move="commit" data-proof-preview-src="assets/case-studies/hp-field-service-ai/progression/for-card/beat-recommendations.png">
-                  <img class="wp-method-line__thumb" src="assets/case-studies/hp-field-service-ai/progression/for-card/beat-recommendations.png" alt="" width="52" height="52" loading="lazy" decoding="async" />
-                  <span class="wp-method-line__proof-label">See the decision <span aria-hidden="true">&rarr;</span></span>
-                </a>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article class="wp-method-line">
-              <span class="wp-method-line__num" aria-hidden="true">03</span>
-              <div class="wp-method-line__body">
-                <h3 class="wp-method-line__title">Ship the essentials first</h3>
-                <p class="wp-method-line__desc">Get the core journey working end to end before polishing surfaces that might change.</p>
-                <p class="wp-method-line__receipt" aria-label="Proof from Stryker field logistics case">
-                  <span class="wp-method-line__receipt-chip">10-beat IA</span>
-                  <span class="wp-method-line__receipt-chip">Visit-context order</span>
-                </p>
-                <a class="wp-method-line__proof wp-link-text" href="case-studies/stryker-field-logistics.html#beat_03_order" data-methodology-proof-link data-proof-move="ship" data-proof-preview-src="assets/case-studies/stryker-field-logistics/beats/beat-03-order.png">
-                  <img class="wp-method-line__thumb" src="assets/case-studies/stryker-field-logistics/hero-ticker/beat-04-order-track.png" alt="" width="52" height="52" loading="lazy" decoding="async" />
-                  <span class="wp-method-line__proof-label">See the order path <span aria-hidden="true">&rarr;</span></span>
-                </a>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article class="wp-method-line">
-              <span class="wp-method-line__num" aria-hidden="true">04</span>
-              <div class="wp-method-line__body">
-                <h3 class="wp-method-line__title">Measure what changed</h3>
-                <p class="wp-method-line__desc">Look at what actually moved after launch &mdash; including what didn&rsquo;t go to plan.</p>
-                <p class="wp-method-line__receipt" aria-label="Proof from HP field service testing">
-                  <span class="wp-method-line__receipt-chip">Field walkthroughs</span>
-                  <span class="wp-method-line__receipt-chip">Frame-mapped evidence</span>
-                </p>
-                <a class="wp-method-line__proof wp-link-text" href="case-studies/hp-field-service-ai.html#beat_insights" data-methodology-proof-link data-proof-move="receipts" data-proof-preview-src="assets/case-studies/hp-field-service-ai/progression/for-card/beat-insights.png">
-                  <img class="wp-method-line__thumb" src="assets/case-studies/hp-field-service-ai/progression/for-card/beat-insights.png" alt="" width="52" height="52" loading="lazy" decoding="async" />
-                  <span class="wp-method-line__proof-label">See the evidence <span aria-hidden="true">&rarr;</span></span>
-                </a>
-              </div>
-            </article>
-          </li>
-        </ol>
+          </div>
+          <div class="wp-method-carousel__progress" aria-hidden="true">
+            <span class="wp-method-carousel__progress-bar" data-method-carousel-progress></span>
+          </div>
+        </div>
 
         <div class="wp-method-close" role="group" aria-labelledby="method-close-heading" data-wp-motion="method-close-reveal">
           <p class="wp-method-close__eyebrow">Next step</p>
@@ -600,6 +544,23 @@
     </section>
 
   </main>
+
+  <div class="wp-edge-blur-shell" data-wp-edge-blur-handoff aria-hidden="true">
+    <div class="wp-edge-blur wp-edge-blur--seam" data-edge-blur-seam aria-hidden="true">
+      <div class="wp-edge-blur__layer" aria-hidden="true"></div>
+      <div class="wp-edge-blur__layer" aria-hidden="true"></div>
+      <div class="wp-edge-blur__layer" aria-hidden="true"></div>
+      <div class="wp-edge-blur__layer" aria-hidden="true"></div>
+      <div class="wp-edge-blur__layer" aria-hidden="true"></div>
+    </div>
+    <div class="wp-edge-blur wp-edge-blur--bottom" data-edge-blur-bottom aria-hidden="true">
+      <div class="wp-edge-blur__layer" aria-hidden="true"></div>
+      <div class="wp-edge-blur__layer" aria-hidden="true"></div>
+      <div class="wp-edge-blur__layer" aria-hidden="true"></div>
+      <div class="wp-edge-blur__layer" aria-hidden="true"></div>
+      <div class="wp-edge-blur__layer" aria-hidden="true"></div>
+    </div>
+  </div>
 
   <footer class="site-footer site-footer--product">
     <div class="shell site-footer__row">

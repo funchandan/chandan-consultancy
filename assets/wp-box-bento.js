@@ -99,7 +99,7 @@
 
   function render(root, data) {
     var toolkits = data.toolkits || {};
-    var poll = data.poll || {};
+    var quiz = data.quiz || {};
     var reviews = data.reviews || {};
 
     var toolkitsCard = root.querySelector("[data-hero-bento-toolkits]");
@@ -116,17 +116,17 @@
       );
     }
 
-    var pollCard = root.querySelector("[data-hero-bento-poll]");
-    if (pollCard) {
-      var pollMount = pollCard.querySelector("[data-bento-poll-widget]");
-      if (pollMount && poll.options && poll.options.length) {
-        if (window.WPBentoPoll && typeof window.WPBentoPoll.hydrate === "function") {
-          window.WPBentoPoll.hydrate(pollMount, poll);
+    var quizCard = root.querySelector("[data-hero-bento-quiz]");
+    if (quizCard) {
+      var quizMount = quizCard.querySelector("[data-bento-quiz-widget]");
+      if (quizMount && quiz.items && quiz.items.length) {
+        if (window.WPBentoQuiz && typeof window.WPBentoQuiz.hydrate === "function") {
+          window.WPBentoQuiz.hydrate(quizMount, quiz);
         } else {
-          pollMount.setAttribute("data-bento-poll-data", JSON.stringify(poll));
+          quizMount.setAttribute("data-bento-quiz-data", JSON.stringify(quiz));
           document.dispatchEvent(
-            new CustomEvent("wp:bento-poll-hydrated", {
-              detail: { mount: pollMount, poll: poll },
+            new CustomEvent("wp:bento-quiz-hydrated", {
+              detail: { mount: quizMount, quiz: quiz },
             })
           );
         }
@@ -139,18 +139,6 @@
       if (testimonialMount && reviews.quotes) {
         hydrateTestimonials(testimonialMount, reviews.quotes);
       }
-      var revPinTitle = reviewsCard.querySelector("[data-bento-3d-pin-title]");
-      if (revPinTitle) revPinTitle.textContent = reviews.cta || "Read more";
-      var revTitle = reviewsCard.querySelector("[data-hero-bento-reviews-title]");
-      setTitleReveal(revTitle, reviews.title || "My reviews", 1);
-      var revDesc = reviewsCard.querySelector("[data-hero-bento-reviews-desc]");
-      if (revDesc) revDesc.textContent = reviews.description || "";
-      setCtaLinks(
-        reviewsCard,
-        "[data-hero-bento-reviews-cta]",
-        reviews.href || "about.html",
-        reviews.cta || "Read more"
-      );
     }
 
     document.dispatchEvent(new CustomEvent("wp:bento-titles-updated"));

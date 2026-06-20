@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { PollBentoCard } from "@/components/poll-bento-card";
+import { SortableBentoCard } from "@/components/sortable-bento-card";
 import { ReviewsBentoCard } from "@/components/reviews-bento-card";
 import { FileTextIcon } from "@radix-ui/react-icons";
 
@@ -47,7 +47,7 @@ export function BoxBento({
             </div>
           }
         />
-        <PollBentoCard className="col-span-3 lg:col-span-1" />
+        <SortableBentoCard className="col-span-3 lg:col-span-1" />
         <ReviewsBentoCard className="col-span-3" />
       </BentoGrid>
     </div>
