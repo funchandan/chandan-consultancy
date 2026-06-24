@@ -1,0 +1,160 @@
+/* React Bits CardSwap — prompt-mind.md (bento-scoped) */
+
+.card-swap-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(5%, 20%);
+  transform-origin: bottom right;
+  perspective: 900px;
+  overflow: visible;
+}
+
+.bento-toolkit-swap .card-swap-container {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  transform-origin: center center;
+  perspective: 900px;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: #000;
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.45;
+  transition: opacity 200ms ease;
+}
+
+.card.is-front {
+  pointer-events: auto;
+  opacity: 1;
+  border-color: #fff;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+.card.is-back {
+  pointer-events: none;
+  opacity: 0.22;
+}
+
+.card.is-hidden {
+  pointer-events: none;
+  opacity: 0 !important;
+}
+
+.bento-toolkit-swap .card {
+  width: calc(100% - 1.25rem);
+  max-width: 100%;
+  height: 10.5rem;
+  padding: 0.75rem 0.9rem;
+  left: 50%;
+  top: 46%;
+}
+
+@media (min-width: 1024px) {
+  .bento-toolkit-swap .card {
+    height: 11rem;
+  }
+}
+
+.card__eyebrow {
+  margin: 0 0 0.2rem;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c5a059;
+}
+
+.card__title {
+  margin: 0 0 0.15rem;
+  font-family: var(--wp-font-ui, "Inter", system-ui, sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.card__meta {
+  margin: 0 0 0.35rem;
+  font-size: 0.7rem;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.card__steps {
+  margin: 0;
+  padding-left: 1rem;
+  font-size: 0.64rem;
+  line-height: 1.38;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.card__steps li {
+  margin-bottom: 0.15rem;
+}
+
+.card__footer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.card__status {
+  padding: 0.12rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.card__status--live {
+  background: rgba(34, 255, 115, 0.12);
+  color: #22ff73;
+}
+
+.card__status--waitlist {
+  background: rgba(179, 154, 255, 0.12);
+  color: #b39aff;
+}
+
+.card__status--guide {
+  background: rgba(50, 243, 233, 0.1);
+  color: #32f3e9;
+}
+
+.card__cta {
+  position: relative;
+  z-index: 2;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #076eff;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.card__cta:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none !important;
+  }
+}

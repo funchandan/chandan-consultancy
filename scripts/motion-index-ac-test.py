@@ -259,6 +259,41 @@ def run_wo015_tests(baseline: bool) -> tuple[list[str], list[str]]:
         "method line active emphasis CSS not found",
     )
 
+
+
+    require(
+        "TB-001",
+        html.count('class="bento-toolkit-pill"') == 4,
+        "expected 4 toolkit stage pills",
+    )
+    require(
+        "TB-002",
+        "data-toolkit-cardswap-root" in html and 'data-card-swap' in html,
+        "toolkit CardSwap mount missing",
+    )
+    require(
+        "TB-003",
+        'data-bento-bg-artifact="terminal"' not in html
+        and "bento-bg-toolkit" not in html,
+        "terminal/noise toolkit bg removed from index",
+    )
+    require(
+        "TB-004",
+        "card-swap.js" in html or "hero-toolkit-cards.json" in html,
+        "toolkit cards assets not linked",
+    )
+    require(
+        "TB-005",
+        "card-swap.js" in html and "card-swap.css" in html,
+        "CardSwap css/js missing from index.html",
+    )
+    require(
+        "TB-006",
+        html.count('class="card"') >= 4
+        and html.count('data-toolkit-stage="research"') >= 1,
+        "inline CardSwap cards missing from index",
+    )
+
     return fails, warns
 
 

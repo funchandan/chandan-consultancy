@@ -43,7 +43,9 @@
   <link rel="stylesheet" href="assets/wp-dot-grid.css?v=1" />
   <link rel="stylesheet" href="assets/wp-noise-background.css?v=5" />
   <link rel="stylesheet" href="assets/wp-edge-blur.css?v=5" />
-  <link rel="stylesheet" href="assets/wp-box-bento.css?v=17" />
+  <link rel="stylesheet" href="assets/wp-box-bento.css?v=18" />
+  <link rel="stylesheet" href="assets/wp-toolkit-cardswap.css?v=5" />
+  <link rel="stylesheet" href="assets/card-swap.css?v=5" />
   <link rel="stylesheet" href="assets/wp-bento-testimonial-box.css?v=5" />
   <link rel="stylesheet" href="assets/wp-bento-sortable-quiz.css?v=1" />
   <link rel="stylesheet" href="assets/wp-bento-title-reveal.css?v=3" />
@@ -89,7 +91,7 @@
   <script src="assets/motion/wp-edge-blur-handoff.js?v=4" defer></script>
   <script src="assets/motion/wp-bento-sortable-quiz.js?v=1" defer></script>
   <script src="assets/motion/wp-bento-testimonial-box.js?v=8" defer></script>
-  <script src="assets/motion/wp-bento-bg-toolkit-terminal.js?v=1" defer></script>
+  <script src="assets/card-swap.js?v=6" defer></script>
   <script src="assets/wp-box-bento.js?v=13" defer></script>
 </head>
 <body class="home-page home-page--product" data-wp-motion="lenis-root glass-scroll dot-grid bg-grid-after-hero blue-pointer" data-wp-motion-profile="portfolio-default">
@@ -263,40 +265,87 @@
                 </div>
               </section>
             </div>
-            <div class="bento-card bento-card--toolkits" data-hero-bento-toolkits>
-              <div class="bento-card__bg bento-bg-toolkit" data-bento-bg-toolkit data-wp-motion="bento-bg-toolkit-terminal" aria-hidden="true">
-                <div class="bento-bg-artifact bento-bg-artifact--terminal" data-bento-bg-artifact="terminal"></div>
-              </div>
-              <div class="bento-card__panel">
-                <div class="bento-card__content">
-                  <svg class="bento-card__icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 15 15" fill="currentColor" aria-hidden="true"><path d="M3 2.5C3 2.22386 3.22386 2 3.5 2H9.08579C9.21839 2 9.34557 2.05268 9.43934 2.14645L11.8536 4.56066C11.9473 4.65443 12 4.78161 12 4.91421V12.5C12 12.7761 11.7761 13 11.5 13H3.5C3.22386 13 3 12.7761 3 12.5V2.5ZM3.5 1C2.67157 1 2 1.67157 2 2.5V12.5C2 13.3284 2.67157 14 3.5 14H11.5C12.3284 14 13 13.3284 13 12.5V4.91421C13 4.51639 12.842 4.13486 12.5607 3.85355L10.1464 1.43934C9.86514 1.15804 9.48361 1 9.08579 1H3.5ZM4.5 6C4.5 5.72386 4.72386 5.5 5 5.5H10C10.2761 5.5 10.5 5.72386 10.5 6C10.5 6.27614 10.2761 6.5 10 6.5H5C4.72386 6.5 4.5 6.27614 4.5 6ZM4.5 8C4.5 7.72386 4.72386 7.5 5 7.5H10C10.2761 7.5 10.5 7.72386 10.5 8C10.5 8.27614 10.2761 8.5 10 8.5H5C4.72386 8.5 4.5 8.27614 4.5 8ZM4.5 10C4.5 9.72386 4.72386 9.5 5 9.5H8C8.27614 9.5 8.5 9.72386 8.5 10C8.5 10.2761 8.27614 10.5 8 10.5H5C4.72386 10.5 4.5 10.2761 4.5 10Z"/></svg>
-                  <h3 class="bento-card__title" data-hero-bento-toolkits-title>
-                    <span class="wp-bento-title-reveal" data-bento-title-reveal>
-                      <span class="wp-bento-title-reveal__word" style="--bento-word-i:0">
-                        <span class="wp-bento-title-reveal__ghost" aria-hidden="true">Toolkits</span>
-                        <span class="wp-bento-title-reveal__fill"><span class="wp-aurora-text">Toolkits</span></span>
-                      </span>
-                    </span>
-                  </h3>
-                  <p class="bento-card__desc" data-hero-bento-toolkits-desc>Decision teardowns, research scaffolds, and ship-ready frameworks.</p>
-                  <p class="bento-card__proof" aria-label="Scope and impact" data-wp-motion="hero-impact-counter">
-                    <strong class="bento-card__proof-count" data-wp-count="8" aria-label="8 countries">0</strong> countries
-                    <span class="bento-card__proof-sep" aria-hidden="true">&middot;</span>
-                    Fortune 100 enterprise
-                    <span class="bento-card__proof-sep" aria-hidden="true">&middot;</span>
-                    <strong class="bento-card__proof-count" data-wp-count="9" data-wp-count-suffix="+" aria-label="9 plus years">0</strong> years
-                    <span class="bento-card__proof-sep" aria-hidden="true">&middot;</span>
-                    <strong class="bento-card__proof-count" data-wp-count="800" data-wp-count-suffix="+" aria-label="800 plus hours">0</strong> hours listening
-                  </p>
+            <div class="bento-card bento-card--toolkits" data-hero-bento-toolkits data-toolkit-cardswap-root>
+              <div class="bento-card__panel bento-card__panel--toolkits">
+                <div class="bento-toolkit-pills" data-toolkit-pills role="tablist" aria-label="Programme stages">
+                  <button type="button" class="bento-toolkit-pill" role="tab" data-toolkit-pill="research" aria-selected="true">Research</button>
+                  <button type="button" class="bento-toolkit-pill" role="tab" data-toolkit-pill="clarify" aria-selected="false" tabindex="-1">Clarify</button>
+                  <button type="button" class="bento-toolkit-pill" role="tab" data-toolkit-pill="ship" aria-selected="false" tabindex="-1">Ship</button>
+                  <button type="button" class="bento-toolkit-pill" role="tab" data-toolkit-pill="measure" aria-selected="false" tabindex="-1">Measure</button>
                 </div>
-                <div class="bento-card__cta bento-card__cta--mobile">
-                  <a class="bento-card__cta-link" href="toolkits.html" data-hero-bento-toolkits-cta>Explore toolkits <span class="bento-card__cta-arrow" aria-hidden="true">→</span></a>
+                <div class="bento-toolkit-swap" data-toolkit-cardswap>
+                  <div
+                    class="card-swap-container"
+                    data-card-swap
+                    data-delay="5000"
+                    data-pause-on-hover="true"
+                    data-card-distance="10"
+                    data-vertical-distance="8"
+                    data-y-drop="72"
+                    data-skew="3"
+                    data-stack-invert="true"
+                    data-easing="elastic"
+                    aria-live="polite"
+                  >
+                    <div class="card" data-toolkit-stage="research">
+                      <p class="card__eyebrow">Research</p>
+                      <h3 class="card__title">AI-assisted research synthesis</h3>
+                      <p class="card__meta">Transcript themes, HITL review gate</p>
+                      <ol class="card__steps">
+                        <li>Collect interviews, tickets, and field notes into one corpus.</li>
+                        <li>Run AI summarization with a human review gate before sharing.</li>
+                        <li>Export a stakeholder-ready theme map linked to open bets.</li>
+                      </ol>
+                      <div class="card__footer">
+                        <span class="card__status card__status--waitlist">waitlist</span>
+                        <a class="card__cta" href="mailto:chandan004sharma@gmail.com?subject=AI-assisted%20research%20synthesis%20toolkit">Join waitlist <span aria-hidden="true">→</span></a>
+                      </div>
+                    </div>
+                    <div class="card" data-toolkit-stage="clarify">
+                      <p class="card__eyebrow">Clarify</p>
+                      <h3 class="card__title">Decision teardown</h3>
+                      <p class="card__meta">Bet memo, kill date, reversal cost</p>
+                      <ol class="card__steps">
+                        <li>Frame one high-stakes decision with product and eng in the room.</li>
+                        <li>Write the bet, kill criterion, and reversal cost in plain language.</li>
+                        <li>Log the call in an append-only decision record the team can revisit.</li>
+                      </ol>
+                      <div class="card__footer">
+                        <span class="card__status card__status--live">live</span>
+                        <a class="card__cta" href="toolkits/decision-teardown.html">View kit <span aria-hidden="true">→</span></a>
+                      </div>
+                    </div>
+                    <div class="card" data-toolkit-stage="ship">
+                      <p class="card__eyebrow">Ship</p>
+                      <h3 class="card__title">AI workflow in production pilots</h3>
+                      <p class="card__meta">HITL map, override paths, RN handoff</p>
+                      <ol class="card__steps">
+                        <li>Map the in-field journey where AI suggests the next action.</li>
+                        <li>Define live, partial, and offline states with override on every suggestion.</li>
+                        <li>Hand off RN-ready specs after pilot technicians validate flows.</li>
+                      </ol>
+                      <div class="card__footer">
+                        <span class="card__status card__status--waitlist">waitlist</span>
+                        <a class="card__cta" href="mailto:chandan004sharma@gmail.com?subject=AI%20workflow%20production%20pilot%20toolkit">Join waitlist <span aria-hidden="true">→</span></a>
+                      </div>
+                    </div>
+                    <div class="card" data-toolkit-stage="measure">
+                      <p class="card__eyebrow">Measure</p>
+                      <h3 class="card__title">Outcomes proof loop</h3>
+                      <p class="card__meta">Decision latency signals, guardrail checks</p>
+                      <ol class="card__steps">
+                        <li>Name one decision latency signal per programme.</li>
+                        <li>Track override and exception rates inside agreed guardrails.</li>
+                        <li>Close the loop in a measure memo tied to the original bet.</li>
+                      </ol>
+                      <div class="card__footer">
+                        <span class="card__status card__status--guide">guide</span>
+                        <a class="card__cta" href="index.html#approach">See method <span aria-hidden="true">→</span></a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="bento-card__cta bento-card__cta--desktop">
-                <a class="bento-card__cta-link" href="toolkits.html" data-hero-bento-toolkits-cta>Explore toolkits <span class="bento-card__cta-arrow" aria-hidden="true">→</span></a>
-              </div>
-              <div class="bento-card__shade" aria-hidden="true"></div>
             </div>
             <div class="bento-card bento-card--quiz" data-hero-bento-quiz data-wp-motion="bento-sortable-quiz">
               <div class="bento-card__panel bento-card__panel--quiz">

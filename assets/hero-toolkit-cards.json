@@ -1,0 +1,84 @@
+{
+  "stages": [
+    {
+      "id": "research",
+      "pillLabel": "Research",
+      "eyebrow": "Research",
+      "title": "AI-assisted research synthesis",
+      "meta": "Transcript themes, HITL review gate",
+      "status": "waitlist",
+      "steps": [
+        "Collect raw inputs (interviews, tickets, field notes) into one corpus.",
+        "Run AI summarization only with a human review gate before anything is shared.",
+        "Export a stakeholder-ready theme map linked to open bets."
+      ],
+      "useCases": [
+        "Interview transcript indexing and theme surfacing",
+        "Stakeholder map drafts — moderator approves before workshop",
+        "Research stimulus for moderated tests on production-aligned UI"
+      ],
+      "primaryCta": {
+        "label": "Join waitlist",
+        "href": "mailto:chandan004sharma@gmail.com?subject=AI-assisted%20research%20synthesis%20toolkit"
+      }
+    },
+    {
+      "id": "clarify",
+      "pillLabel": "Clarify",
+      "eyebrow": "Clarify",
+      "title": "Decision teardown",
+      "meta": "Bet memo, kill date, reversal cost",
+      "status": "live",
+      "steps": [
+        "Frame one high-stakes decision with product and eng in the room.",
+        "Write the bet, kill criterion, and reversal cost in plain language.",
+        "Log the call in an append-only decision record the team can revisit."
+      ],
+      "useCases": [],
+      "primaryCta": {
+        "label": "View kit",
+        "href": "toolkits/decision-teardown.html"
+      }
+    },
+    {
+      "id": "ship",
+      "pillLabel": "Ship",
+      "eyebrow": "Ship",
+      "title": "AI workflow in production pilots",
+      "meta": "HITL map, override paths, RN handoff",
+      "status": "waitlist",
+      "steps": [
+        "Map the on-truck or in-field journey where AI suggests the next action.",
+        "Define live, partial, and offline states with override on every suggestion.",
+        "Hand off RN-ready specs only after pilot technicians validate flows."
+      ],
+      "useCases": [
+        "Diagnosis-to-parts assist with a defensible next action",
+        "Next-best-action cards with override and audit trail for dispatch",
+        "Offline-safe AI states so technicians are never blocked mid-visit"
+      ],
+      "primaryCta": {
+        "label": "Join waitlist",
+        "href": "mailto:chandan004sharma@gmail.com?subject=AI%20workflow%20production%20pilot%20toolkit"
+      }
+    },
+    {
+      "id": "measure",
+      "pillLabel": "Measure",
+      "eyebrow": "Measure",
+      "title": "Outcomes proof loop",
+      "meta": "Decision latency signals, guardrail checks",
+      "status": "guide",
+      "steps": [
+        "Name one decision latency signal per programme (what got faster, not vanity metrics).",
+        "Track override and exception rates inside agreed guardrails.",
+        "Close the loop in a written measure memo tied to the original bet."
+      ],
+      "useCases": [],
+      "primaryCta": {
+        "label": "See method",
+        "href": "index.html#approach"
+      }
+    }
+  ]
+}
