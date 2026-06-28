@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="580" viewBox="0 0 960 580" role="img" aria-label="Hotjar UAT SIT analytics">
+<rect width="960" height="580" fill="#f5f6f8"/>
+<rect x="0" y="0" width="960" height="52" rx="0" fill="#ffffff" stroke="#e4e7ec" stroke-width="1"/>
+<text x="20" y="32" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#ff3c00">hotjar</text>
+<text x="90" y="32" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#1d2939">Recordings · UAT / SIT</text>
+<rect x="820" y="14" width="56" height="24" rx="4" fill="#f5f6f8" stroke="#e4e7ec" stroke-width="1"/>
+<text x="848" y="30" text-anchor="middle" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#667085">Staging</text>
+<rect x="888" y="14" width="56" height="24" rx="4" fill="#ff3c00" stroke="#ff3c00" stroke-width="1"/>
+<text x="916" y="30" text-anchor="middle" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#fff">Live</text>
+<rect x="0" y="52" width="180" height="528" rx="0" fill="#fafbfc" stroke="#e4e7ec" stroke-width="1"/>
+<text x="20" y="88" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" fill="#667085">Dashboard</text>
+<text x="20" y="120" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" fill="#667085">Heatmaps</text>
+<text x="20" y="152" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" fill="#667085">Recordings</text>
+<text x="20" y="184" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#ff3c00">Funnels</text>
+<text x="20" y="216" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" fill="#667085">Feedback</text>
+<text x="200" y="80" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#1d2939">UAT / SIT · parts commit funnel</text>
+<text x="200" y="128" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#1d2939">Diagnosis screen</text>
+<text x="520" y="128" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#ff3c00">100%</text>
+<rect x="200" y="138" width="360" height="20" rx="4" fill="#f5f6f8" stroke="#e4e7ec" stroke-width="1"/>
+<rect x="200" y="138" width="280" height="20" rx="4" fill="#ff6b35" stroke="#ff6b35" stroke-width="1"/>
+<text x="200" y="184" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#1d2939">Next-best-action</text>
+<text x="520" y="184" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#ff3c00">78%</text>
+<rect x="200" y="194" width="360" height="20" rx="4" fill="#f5f6f8" stroke="#e4e7ec" stroke-width="1"/>
+<rect x="200" y="194" width="220" height="20" rx="4" fill="#ff6b35" stroke="#ff6b35" stroke-width="1"/>
+<text x="200" y="240" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#1d2939">Scan confirm</text>
+<text x="520" y="240" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#ff3c00">61%</text>
+<rect x="200" y="250" width="360" height="20" rx="4" fill="#f5f6f8" stroke="#e4e7ec" stroke-width="1"/>
+<rect x="200" y="250" width="170" height="20" rx="4" fill="#ff6b35" stroke="#ff6b35" stroke-width="1"/>
+<text x="200" y="296" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#1d2939">Order submitted</text>
+<text x="520" y="296" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#ff3c00">54%</text>
+<rect x="200" y="306" width="360" height="20" rx="4" fill="#f5f6f8" stroke="#e4e7ec" stroke-width="1"/>
+<rect x="200" y="306" width="130" height="20" rx="4" fill="#ff6b35" stroke="#ff6b35" stroke-width="1"/>
+<rect x="200" y="460" width="740" height="88" rx="8" fill="#ffffff" stroke="#e4e7ec" stroke-width="1"/>
+<text x="214" y="484" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#1d2939">Heatmap · hesitation zone (ranked list)</text>
+<rect x="214" y="500" width="22" height="36" rx="3" fill="#ff6b35" opacity="0.25"/>
+<rect x="242" y="500" width="22" height="36" rx="3" fill="#ff6b35" opacity="0.43"/>
+<rect x="270" y="500" width="22" height="36" rx="3" fill="#ff6b35" opacity="0.61"/>
+<rect x="298" y="500" width="22" height="36" rx="3" fill="#ff6b35" opacity="0.79"/>
+<rect x="326" y="500" width="22" height="36" rx="3" fill="#ff6b35" opacity="0.25"/>
+<rect x="354" y="500" width="22" height="36" rx="3" fill="#ff6b35" opacity="0.43"/>
+<rect x="382" y="500" width="22" height="36" rx="3" fill="#ff6b35" opacity="0.61"/>
+<rect x="410" y="500" width="22" height="36" rx="3" fill="#ff6b35" opacity="0.79"/>
+<rect x="438" y="500" width="22" height="36" rx="3" fill="#ff6b35" opacity="0.25"/>
+<rect x="466" y="500" width="22" height="36" rx="3" fill="#ff6b35" opacity="0.43"/>
+<rect x="494" y="500" width="22" height="36" rx="3" fill="#ff6b35" opacity="0.61"/>
+<rect x="522" y="500" width="22" height="36" rx="3" fill="#ff6b35" opacity="0.79"/>
+<text x="214" y="544" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" fill="#667085">Drop-off before commit — validates Map failure frame</text>
+</svg>

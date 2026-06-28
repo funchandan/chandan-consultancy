@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" role="img" aria-label="Go live">
+<rect width="720" height="360" fill="#f5f6f8"/>
+<rect x="20" y="20" width="680" height="36" rx="6" fill="#e8eaed" stroke="#e4e7ec" stroke-width="1"/>
+<text x="32" y="44" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" fill="#667085">pilot.field-app.internal</text>
+<rect x="20" y="64" width="680" height="48" rx="0" fill="#fff4e6" stroke="#f0c674" stroke-width="1"/>
+<text x="34" y="94" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#9a6700">PILOT LIVE · West region</text>
+<rect x="20" y="120" width="680" height="224" rx="8" fill="#ffffff" stroke="#e4e7ec" stroke-width="1"/>
+<text x="34" y="156" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" fill="#212529">In: next-best-action · scan confirm</text>
+</svg>

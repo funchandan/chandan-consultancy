@@ -1,0 +1,68 @@
+{
+  "map/figma-system-design": {
+    "width": 960,
+    "height": 600,
+    "alt": "Figma system design diagram with service architecture nodes",
+    "tab": "map"
+  },
+  "map/user-stories-stack": {
+    "width": 720,
+    "height": 400,
+    "alt": "FigJam user story stickies",
+    "tab": "map"
+  },
+  "map/insight-synthesis-crop": {
+    "width": 640,
+    "height": 420,
+    "alt": "FigJam insight synthesis board",
+    "tab": "map"
+  },
+  "choose/journey-decision-point": {
+    "width": 840,
+    "height": 480,
+    "alt": "User journey with decision point highlighted",
+    "tab": "choose"
+  },
+  "choose/system-handoff-diagram": {
+    "width": 960,
+    "height": 600,
+    "alt": "Figma architecture handoff diagram",
+    "tab": "choose"
+  },
+  "choose/code-block-falsifier": {
+    "width": 560,
+    "height": 360,
+    "alt": "Code falsifier contract in editor",
+    "tab": "choose"
+  },
+  "ship/terminal-ship-sequence": {
+    "width": 640,
+    "height": 400,
+    "alt": "Terminal build test deploy sequence",
+    "tab": "ship"
+  },
+  "ship/uat-results-matrix": {
+    "width": 520,
+    "height": 480,
+    "alt": "UAT SIT walkthrough pass matrix",
+    "tab": "ship"
+  },
+  "ship/go-live-banner": {
+    "width": 720,
+    "height": 360,
+    "alt": "Pilot go-live browser banner",
+    "tab": "ship"
+  },
+  "measure/hotjar-uat-sit-analytics": {
+    "width": 960,
+    "height": 580,
+    "alt": "Hotjar UAT SIT funnel and heatmap analytics",
+    "tab": "measure"
+  },
+  "measure/hotjar-session-replay": {
+    "width": 800,
+    "height": 520,
+    "alt": "Hotjar session replay with hesitation events",
+    "tab": "measure"
+  }
+}

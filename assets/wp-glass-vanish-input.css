@@ -1,0 +1,88 @@
+/* Aceternity PlaceholdersAndVanishInput — hero glass compose */
+
+.wp-glass-compose__input-shell[data-glass-vanish-input] {
+  position: relative;
+}
+
+.wp-glass-compose__input-shell[data-glass-vanish-input] .wp-glass-compose__textarea {
+  position: relative;
+  z-index: 3;
+}
+
+.wp-glass-vanish-input__placeholder-layer {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  right: 3.25rem;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  height: 1.5em;
+}
+
+.wp-glass-vanish-input__placeholder {
+  display: block;
+  font-family: Helvetica, "Oxygen", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wp-glass-vanish-input__typewriter-text {
+  display: inline;
+}
+
+.wp-glass-vanish-input__cursor {
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  background: #000;
+  animation: wp-typewriter-cursor-blink 1s step-end infinite;
+}
+
+@keyframes wp-typewriter-cursor-blink {
+  0%,
+  50% {
+    opacity: 0;
+  }
+
+  50.01%,
+  100% {
+    opacity: 1;
+  }
+}
+
+.wp-glass-vanish-input__canvas {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2;
+  width: 400px;
+  height: 400px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.5);
+  transform-origin: top left;
+}
+
+.wp-glass-compose__input-shell.is-vanishing .wp-glass-vanish-input__canvas {
+  opacity: 1;
+}
+
+.wp-glass-compose__input-shell.is-vanishing .wp-glass-compose__textarea {
+  color: transparent;
+  caret-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-glass-vanish-input__cursor {
+    animation: none;
+    opacity: 1;
+  }
+}

@@ -5,8 +5,8 @@ body.home-page--product .statement-viewport {
   background: transparent;
 }
 
-/* Hero → work: soft blur seam (SPEC-INDEX-WORK-TOKENS-001 / IDEA-HERO-WORK-001 A1) */
-body.home-page--product .statement-viewport::after {
+/* Hero → work: soft blur seam — superseded by EdgeBlur when ready */
+html:not(.wp-edge-blur-ready) body.home-page--product .statement-viewport::after {
   content: "";
   position: absolute;
   left: 0;
@@ -51,8 +51,20 @@ body.home-page--product #work::before {
   opacity: calc(var(--page-torch-opacity, 1) * clamp(var(--hero-handoff, 0), 0, 1));
 }
 
+html.wp-edge-blur-ready body.home-page--product .statement-viewport::after {
+  display: none;
+}
+
+html.wp-edge-blur-ready body.home-page--product #work::before {
+  display: none;
+}
+
+body.home-page--product #main {
+  position: relative;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  body.home-page--product .statement-viewport::after,
+  html:not(.wp-edge-blur-ready) body.home-page--product .statement-viewport::after,
   body.home-page--product #work::before {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
@@ -88,17 +100,15 @@ html.wp-journey--active:has(body.home-page--product) #hero.journey-act {
   opacity: 1 !important;
 }
 
-/* —— Hero lead: shorter copy, editorial glow on hover —— */
-.statement-viewport__lead {
-  position: relative;
-  max-width: 36ch;
+/* —— Hero toolkit path: editorial glow on hover —— */
+.wp-glass-compose.statement-viewport__lead {
   transition:
     color 1s cubic-bezier(0.33, 1, 0.32, 1),
     text-shadow 1s cubic-bezier(0.33, 1, 0.32, 1);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .statement-viewport__lead:hover {
+  .wp-glass-compose.statement-viewport__lead:hover {
     color: color-mix(in srgb, var(--wp-white, #fff) 96%, transparent);
     text-shadow:
       0 0 32px color-mix(in srgb, var(--wp-white, #fff) 18%, transparent),
@@ -106,90 +116,118 @@ html.wp-journey--active:has(body.home-page--product) #hero.journey-act {
   }
 }
 
-/* —— Impact strip: spacing, not box grid —— */
-body.home-page--product .wp-hero-impact {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(1rem, 2vw, 1.5rem);
+/* —— Hero proof (H1) + toolkit path motion hooks —— */
+body.home-page--product .wp-hero-proof {
+  margin: 0;
   max-width: 52rem;
-  padding: 0;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 18%, transparent);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: clamp(1rem, 2vw, 1.0625rem);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: color-mix(in srgb, var(--wp-white, #fff) 52%, transparent);
 }
 
-body.home-page--product .wp-hero-impact__cell {
-  flex: unset;
-  padding: 0;
-  border: none;
+body.home-page--product .wp-hero-proof__count {
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
 }
 
-body.home-page--product .wp-hero-impact__value.is-counted {
+body.home-page--product .wp-hero-proof__count.is-counted {
   color: var(--wp-index-secondary-gold, #c9a962);
+  font-weight: 600;
 }
 
-@media (max-width: 899px) {
-  body.home-page--product .wp-hero-impact {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+body.home-page--product .wp-hero-proof__sep {
+  margin: 0 0.35rem;
+  opacity: 0.55;
+}
+
+@keyframes wp-hero-strip-pulse {
+  0%,
+  100% {
+    transform: translateY(0);
   }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+#hero[data-hero-work-hover] .wp-hero-toolkit-path .wp-hero-project-strip__tile {
+  opacity: 1;
+  border-color: color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 35%, transparent);
+}
+
+#hero[data-hero-work-hover] .wp-hero-toolkit-path__stage:nth-child(1) .wp-hero-project-strip__tile {
+  animation: wp-hero-strip-pulse 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+#hero[data-hero-work-hover] .wp-hero-toolkit-path__stage:nth-child(2) .wp-hero-project-strip__tile {
+  animation: wp-hero-strip-pulse 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 80ms;
+}
+
+#hero[data-hero-work-hover] .wp-hero-toolkit-path__stage:nth-child(3) .wp-hero-project-strip__tile {
+  animation: wp-hero-strip-pulse 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 160ms;
 }
 
 @media (max-width: 640px) {
-  body.home-page--product .wp-hero-impact {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  body.home-page--product .wp-hero-proof {
+    font-size: 16px;
+    line-height: 1.45;
   }
 
-  body.home-page--product .wp-hero-impact__cell {
-    border: none;
-    padding: 0;
+  body.home-page--product .wp-hero-proof__sep {
+    margin: 0 0.2rem;
   }
 }
 
-/* —— Work cases: rhythm without rules —— */
-body.home-page--product .wp-project-case--anchor + .wp-project-case--compact {
-  border-top: none;
-  margin-top: clamp(3rem, 8vh, 4.5rem);
-  padding-top: clamp(2rem, 5vh, 3rem);
+@media (prefers-reduced-motion: reduce) {
+  body.home-page--product .wp-hero-toolkit-path .wp-hero-project-strip__tile,
+  #hero[data-hero-work-hover] .wp-hero-toolkit-path .wp-hero-project-strip__tile {
+    animation: none !important;
+    transform: none !important;
+  }
 }
 
-body.home-page--product .wp-project-case--compact + .wp-project-case--compact {
-  border-top: none;
-  padding-top: clamp(1.5rem, 4vh, 2.25rem);
+/* —— Work cases: Spectacles v2 (PP-C06) —— */
+body.home-page--product #work .wp-section-display {
+  margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
 }
 
-body.home-page--product .wp-project-case--compact .wp-project-case__copy {
+body.home-page--product .wp-project-case {
+  min-height: calc(100svh - var(--wp-nav-height, 4rem));
+  min-height: calc(100dvh - var(--wp-nav-height, 4rem));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(1rem, 2.5vh, 1.75rem);
+}
+
+body.home-page--product .wp-project-case:first-of-type {
+  min-height: calc(100svh - var(--wp-nav-height, 4rem) - clamp(3rem, 8vh, 4.5rem));
+  min-height: calc(100dvh - var(--wp-nav-height, 4rem) - clamp(3rem, 8vh, 4.5rem));
+}
+
+body.home-page--product .wp-project-case + .wp-project-case {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+body.home-page--product .wp-project-case__inner {
+  width: 100%;
+}
+
+body.home-page--product .wp-project-case__copy {
   padding-inline: 0;
 }
 
-body.home-page--product .wp-project-case--anchor .wp-project-case__outcomes {
-  display: flex;
-  gap: clamp(1rem, 2.5vw, 1.75rem);
-  max-width: none;
-}
-
-body.home-page--product .wp-project-case--anchor .wp-project-case__outcome {
-  padding: 0;
-  border: none;
-}
-
-/* —— Anchor case copy: space between blocks, not padding around shell —— */
-body.home-page--product .wp-project-case--anchor .wp-project-case__inner {
-  align-items: stretch;
-}
-
-body.home-page--product .wp-project-case--anchor .wp-project-case__copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-self: stretch;
-  height: 100%;
-  min-height: clamp(22rem, 44vh, 32rem);
-  margin: 0;
-  padding: 0;
-  gap: clamp(1.25rem, 3vh, 2rem);
-}
-
-body.home-page--product .wp-project-case--anchor .wp-project-case__title {
-  flex: 0 0 auto;
-  margin: 0;
+body.home-page--product .wp-project-case__title {
+  margin: 0 0 0.65rem;
   padding: 0;
   max-width: 22ch;
   font-size: clamp(1.75rem, 3.6vw, 2.75rem);
@@ -198,127 +236,75 @@ body.home-page--product .wp-project-case--anchor .wp-project-case__title {
   letter-spacing: -0.02em;
 }
 
-body.home-page--product .wp-project-case--anchor .wp-project-case__copy-mid {
-  flex: 0 1 auto;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1rem, 2.5vh, 1.35rem);
+body.home-page--product .wp-project-case__meta {
+  margin: 0 0 1.25rem;
+  padding: 0;
+  font-size: 0.875rem;
 }
 
-body.home-page--product .wp-project-case--anchor .wp-project-case__block {
-  margin: 0;
+body.home-page--product .wp-project-case__body {
+  margin: 0 0 1.25rem;
   padding: 0;
 }
 
-body.home-page--product .wp-project-case--anchor .wp-project-case__label {
-  margin: 0 0 0.4rem;
+body.home-page--product .wp-project-case__body p {
+  margin: 0 0 1rem;
   padding: 0;
-  font-size: calc(0.6875rem + 1px);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--wp-index-label-gold, #e2c878);
-}
-
-body.home-page--product .wp-project-case--anchor .wp-project-case__proof {
-  margin: 0 0 0.65rem;
-  padding: 0;
-  max-width: 38ch;
   font-family: var(--wp-font-prose, "Oxygen", "Inter", system-ui, sans-serif);
   font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.45;
-  color: var(--wp-index-prose-on-dark, color-mix(in srgb, var(--wp-white, #fff) 78%, transparent));
-}
-
-body.home-page--product .wp-project-case--anchor .wp-project-case__recommendation {
-  margin: 0;
-  padding: 0;
-  max-width: 42ch;
-  font-family: var(--wp-font-prose, "Oxygen", "Inter", system-ui, sans-serif);
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.45;
-  color: var(--wp-index-prose-on-dark, color-mix(in srgb, var(--wp-white, #fff) 78%, transparent));
-}
-
-body.home-page--product .wp-project-case--anchor .wp-project-case__metrics-line {
-  margin: 0;
-  padding: 0;
-  max-width: 44ch;
-  font-size: calc(0.6875rem + 1px);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--wp-index-secondary-gold, #c9a962);
-}
-
-body.home-page--product .wp-project-case--anchor .wp-project-case__lede {
-  display: none;
-}
-
-body.home-page--product .wp-project-case--anchor .wp-project-case__copy-bottom {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.15rem;
-}
-
-body.home-page--product .wp-project-case--anchor .wp-project-case__outcomes {
-  display: flex;
-  justify-content: space-between;
-  gap: clamp(0.75rem, 2vw, 1.5rem);
-  width: 100%;
-  max-width: 36rem;
-  margin: 0;
-  padding: 0;
-}
-
-body.home-page--product .wp-project-case--anchor .wp-project-case__outcome {
-  flex: 1 1 0;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-body.home-page--product .wp-project-case--anchor .wp-project-case__outcome-value {
-  font-size: clamp(1.125rem, 2vw, 1.5rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--wp-index-secondary-gold, #c9a962);
-}
-
-body.home-page--product .wp-project-case--anchor .wp-project-case__outcome-label {
-  font-size: calc(0.6875rem + 1px);
   font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: none;
-  color: color-mix(in srgb, var(--wp-white, #fff) 52%, transparent);
+  line-height: 1.45;
+  color: var(--wp-white, #fff);
 }
 
-body.home-page--product .wp-project-case--anchor .wp-link-text {
+body.home-page--product .wp-project-case__body p:last-child {
+  margin-bottom: 0;
+}
+
+body.home-page--product .wp-link-text {
   margin: 0;
   padding: 0;
-  align-self: flex-start;
+}
+
+@media (min-width: 900px) {
+  body.home-page--product .wp-project-case__index {
+    margin: 0;
+    font-size: clamp(4.5rem, 6vw, 6rem);
+  }
 }
 
 @media (max-width: 899px) {
-  body.home-page--product .wp-project-case--anchor .wp-project-case__copy {
-    min-height: 0;
-    gap: clamp(1.5rem, 4vh, 2.25rem);
-    justify-content: flex-start;
+  body.home-page--product .wp-project-case {
+    min-height: auto;
+    padding-block: clamp(1.5rem, 4vh, 2.5rem);
   }
 
-  body.home-page--product .wp-project-case--anchor .wp-project-case__title,
-  body.home-page--product #project-points-marketplace-title {
-    font-size: 1.5rem;
-    line-height: 37px;
-    letter-spacing: -0.2px;
+  body.home-page--product .wp-project-case__inner {
+    grid-template-columns: 1fr;
   }
 
-  body.home-page--product .wp-project-case--anchor .wp-project-case__outcomes {
+  body.home-page--product .wp-project-case__index {
+    margin: 0 0 0.75rem;
+    font-size: clamp(3rem, 12vw, 4.5rem);
+  }
+
+  body.home-page--product .wp-project-case__title {
     max-width: none;
+    font-size: 1.5rem;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+
+  body.home-page--product .wp-project-case__media {
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  body.home-page--product .wp-project-case__device {
+    width: min(44vw, 200px);
+    max-width: 200px;
   }
 }
 
@@ -327,7 +313,7 @@ body.home-page--product #approach > .shell {
   text-align: center;
 }
 
-body.home-page--product #approach .wp-method-line {
+body.home-page--product #approach .wp-method-carousel {
   text-align: left;
 }
 
@@ -339,16 +325,130 @@ body.home-page--product .wp-connect-atmosphere__veil {
   display: none !important;
 }
 
-body.home-page--product .wp-project-case--anchor::before {
-  opacity: calc(var(--page-torch-opacity, 1) * 0.72);
-}
-
-/* —— Method close: soft surface, no box —— */
 body.home-page--product .wp-method-close {
   border: none;
   border-radius: 0;
   background: color-mix(in srgb, var(--wp-black, #000) 3%, transparent);
   padding-inline: 0;
+  transform: scale(0.98);
+  transition: transform 640ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.home-page--product .wp-method-close--revealed {
+  transform: scale(1);
+}
+
+/* WO-015 — method close reveal */
+html.wp-motion--ready:not(.wp-motion--static) body.home-page--product .wp-method-close:not(.wp-method-close--revealed) .wp-method-close__eyebrow,
+html.wp-motion--ready:not(.wp-motion--static) body.home-page--product .wp-method-close:not(.wp-method-close--revealed) .wp-method-close__headline,
+html.wp-motion--ready:not(.wp-motion--static) body.home-page--product .wp-method-close:not(.wp-method-close--revealed) .wp-method-close__lede,
+html.wp-motion--ready:not(.wp-motion--static) body.home-page--product .wp-method-close:not(.wp-method-close--revealed) .wp-method-close__actions {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+body.home-page--product .wp-method-close--revealed .wp-method-close__eyebrow,
+body.home-page--product .wp-method-close--revealed .wp-method-close__headline,
+body.home-page--product .wp-method-close--revealed .wp-method-close__lede,
+body.home-page--product .wp-method-close--revealed .wp-method-close__actions {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 480ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.home-page--product .wp-method-close--revealed .wp-method-close__eyebrow {
+  transition-delay: 0ms;
+}
+
+body.home-page--product .wp-method-close--revealed .wp-method-close__headline {
+  transition-delay: 60ms;
+}
+
+body.home-page--product .wp-method-close--revealed .wp-method-close__lede {
+  transition-delay: 120ms;
+}
+
+body.home-page--product .wp-method-close--revealed .wp-method-close__actions {
+  transition-delay: 180ms;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.home-page--product .wp-method-close .wp-pill {
+    transition:
+      background 220ms ease,
+      color 220ms ease,
+      transform var(--motion-duration-s, 160ms) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  body.home-page--product .wp-method-close .wp-pill:hover,
+  body.home-page--product .wp-method-close .wp-pill:focus-visible {
+    transform: translateY(-1px);
+  }
+}
+
+/* WO-015 — method line active emphasis */
+body.home-page--product .wp-method-line__num {
+  opacity: 0.55;
+  transition: opacity 200ms ease;
+}
+
+body.home-page--product .wp-method-line:hover .wp-method-line__num,
+body.home-page--product .wp-method-line:focus-within .wp-method-line__num,
+body.home-page--product .wp-method-lines--has-active .wp-method-line--in-view .wp-method-line__num {
+  opacity: 1;
+}
+
+body.home-page--product .wp-method-lines--has-active .wp-method-line__num {
+  opacity: 0.55;
+}
+
+/* WO-015 — connect reveal */
+html.wp-motion--ready:not(.wp-motion--static) body.home-page--product .wp-connect:not(.wp-connect--revealed) .wp-section-display,
+html.wp-motion--ready:not(.wp-motion--static) body.home-page--product .wp-connect:not(.wp-connect--revealed) .wp-connect__lede,
+html.wp-motion--ready:not(.wp-motion--static) body.home-page--product .wp-connect:not(.wp-connect--revealed) .wp-connect__actions .wp-pill,
+html.wp-motion--ready:not(.wp-motion--static) body.home-page--product .wp-connect:not(.wp-connect--revealed) .wp-connect__meta {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+body.home-page--product .wp-connect--revealed .wp-section-display,
+body.home-page--product .wp-connect--revealed .wp-connect__lede,
+body.home-page--product .wp-connect--revealed .wp-connect__actions .wp-pill,
+body.home-page--product .wp-connect--revealed .wp-connect__meta {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 480ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.home-page--product .wp-connect--revealed .wp-section-display {
+  transition-delay: 0ms;
+}
+
+body.home-page--product .wp-connect--revealed .wp-connect__lede {
+  transition-delay: 60ms;
+}
+
+body.home-page--product .wp-connect--revealed .wp-connect__actions .wp-pill:nth-child(1) {
+  transition-delay: 80ms;
+}
+
+body.home-page--product .wp-connect--revealed .wp-connect__actions .wp-pill:nth-child(2) {
+  transition-delay: 160ms;
+}
+
+body.home-page--product .wp-connect--revealed .wp-connect__meta {
+  transition-delay: 200ms;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.home-page--product .wp-connect .wp-pill--on-dark:hover,
+  body.home-page--product .wp-connect .wp-pill--on-dark:focus-visible {
+    box-shadow: 0 0 24px color-mix(in srgb, var(--wp-white, #fff) 22%, transparent);
+  }
 }
 
 /* —— Connect torch atmosphere —— */
@@ -389,5 +489,26 @@ body.home-page--product .wp-connect__inner {
 
   .statement-viewport__lead:hover {
     text-shadow: none;
+  }
+
+  body.home-page--product .wp-method-close:not(.wp-method-close--revealed) .wp-method-close__eyebrow,
+  body.home-page--product .wp-method-close:not(.wp-method-close--revealed) .wp-method-close__headline,
+  body.home-page--product .wp-method-close:not(.wp-method-close--revealed) .wp-method-close__lede,
+  body.home-page--product .wp-method-close:not(.wp-method-close--revealed) .wp-method-close__actions,
+  body.home-page--product .wp-connect:not(.wp-connect--revealed) .wp-section-display,
+  body.home-page--product .wp-connect:not(.wp-connect--revealed) .wp-connect__lede,
+  body.home-page--product .wp-connect:not(.wp-connect--revealed) .wp-connect__actions .wp-pill,
+  body.home-page--product .wp-connect:not(.wp-connect--revealed) .wp-connect__meta {
+    opacity: 1;
+    transform: none;
+  }
+
+  body.home-page--product .wp-method-close .wp-pill:hover {
+    transform: none;
+  }
+
+  body.home-page--product .wp-method-close,
+  body.home-page--product .wp-method-close--revealed {
+    transform: none;
   }
 }

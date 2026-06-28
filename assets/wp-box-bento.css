@@ -107,7 +107,7 @@ html:not(.wp-box-bento-fallback):not(.wp-motion--static)
   grid-column: span 3;
   overflow: hidden;
   border-radius: 0.75rem;
-  background: #fffff0;
+  background: #000000;
   box-shadow:
     0 0 0 1px rgba(0, 0, 0, 0.03),
     0 2px 4px rgba(0, 0, 0, 0.05),
@@ -129,7 +129,7 @@ html:not(.wp-box-bento-fallback):not(.wp-motion--static)
   grid-column: 1 / -1;
   min-height: 0;
   height: auto;
-  background: #fffdd0;
+  background: #000000;
   box-shadow: none;
   overflow: visible;;
 }
@@ -288,10 +288,10 @@ body.home-page--product .bento-card--search .wp-glass-compose__main {
 .bento-card__title {
   margin: 0;
   font-family: "Inter", system-ui, sans-serif;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: rgba(0, 0, 0, 0.9);
+  color: rgba(0, 0, 0, 1);
   line-height: 1.2;
   transform: none;
 }
@@ -301,14 +301,14 @@ body.home-page--product .bento-card--search .wp-glass-compose__main {
   max-width: 32rem;
   font-size: 1rem;
   line-height: 1.4;
-  color: #000000;
+  color: #ffffff;
 }
 
 .bento-card__proof {
   margin: 0.525rem 0 0;
   font-size: 0.864rem;
   line-height: 1.5;
-  color: #000000;
+  color: #ffffff;
 }
 
 .bento-card__proof-count {
@@ -399,12 +399,12 @@ body.home-page--product .bento-card--search .wp-glass-compose__main {
 @media (min-width: 1024px) {
   .bento-card:hover .bento-card__shade,
   .bento-card:focus-within .bento-card__shade {
-    background: #fffff0;
-    opacity: 0.5;
+    background: #ffffff;
+    opacity: 0.8;
   }
 }
 
-/* Toolkit bento — CardSwap cell (terminal artefact removed) */
+/* Toolkit bento — CardSwap cell (terminal artefact removed v1) */
 .bento-card--toolkits {
   overflow: hidden;
 }
@@ -518,17 +518,12 @@ body.home-page--product .bento-card--search .wp-glass-compose__main {
   color: rgba(0, 0, 0, 1);
 }
 
-/* White bento surfaces — keep dark text even when page theme is dark */
-html[data-theme="dark"] body.home-page--product .bento-card:not(.bento-card--search) .bento-card__title,
-html[data-theme="dark"] body.home-page--product .bento-card:not(.bento-card--search) .bento-card__title .wp-bento-title-reveal__ghost,
-html[data-theme="dark"] body.home-page--product .bento-card:not(.bento-card--search) .bento-card__title .wp-bento-title-reveal__fill {
-  color: rgba(0, 0, 0, 0.9);
-}
+
 
 html[data-theme="dark"] body.home-page--product .bento-card:not(.bento-card--search) .bento-card__desc,
 html[data-theme="dark"] body.home-page--product .bento-card:not(.bento-card--search) .bento-card__proof,
 html[data-theme="dark"] body.home-page--product .bento-card:not(.bento-card--search) .bento-card__cta-link--secondary {
-  color: #525252;
+  color: #ffffff;
 }
 
 html[data-theme="dark"] body.home-page--product .bento-card:not(.bento-card--search) .bento-card__proof-count {

@@ -18,17 +18,17 @@
     var probe = document.createElement("span");
     probe.style.position = "absolute";
     probe.style.visibility = "hidden";
-    probe.style.color = "var(--wp-hero-kw-" + index + ", #a8c8f0)";
+    probe.style.color = "var(--wp-hero-kw-" + index + ", #ffb500)";
     document.body.appendChild(probe);
-    var base = getComputedStyle(probe).color || "rgb(168, 200, 240)";
+    var base = getComputedStyle(probe).color || "#ffb500";
     document.body.removeChild(probe);
 
     var match = base.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
     if (!match) {
       return [
-        "rgba(168, 200, 240, 1)",
-        "rgba(168, 200, 240, 0.7)",
-        "rgba(168, 200, 240, 0.4)",
+        "rgb(48, 172, 230, 0.7)",
+        "rgb(48, 172, 230, 0.4)",
+        "rgb(48, 172, 230, 0.3)",
       ];
     }
 
@@ -75,12 +75,12 @@
       }
 
       var animationDuration = parseFloat(
-        root.getAttribute("data-canvas-duration") || "5"
+        root.getAttribute("data-canvas-duration") || "7"
       );
-      var lineWidth = parseFloat(root.getAttribute("data-canvas-line-width") || "1.5");
-      var lineGap = parseFloat(root.getAttribute("data-canvas-line-gap") || "4");
+      var lineWidth = parseFloat(root.getAttribute("data-canvas-line-width") || "3.5");
+      var lineGap = parseFloat(root.getAttribute("data-canvas-line-gap") || "2");
       var curveIntensity = parseFloat(
-        root.getAttribute("data-canvas-curve") || "60"
+        root.getAttribute("data-canvas-curve") || "15"
       );
       var rafId = 0;
       var disposed = false;

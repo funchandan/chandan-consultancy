@@ -1,0 +1,89 @@
+[
+  {
+    "id": "clarify",
+    "label": "Clarify",
+    "stageIndex": "01",
+    "featuredKit": {
+      "title": "Decision teardown",
+      "meta": "Bet memo, kill date",
+      "status": "live",
+      "href": "toolkits/decision-teardown.html"
+    },
+    "payoff": "Leave with a written bet and kill criteria — not another brainstorm.",
+    "deliverable": "Bet memo, reversal cost, two-week kill date.",
+    "examples": [
+      {
+        "title": "Decision teardown",
+        "href": "toolkits/decision-teardown.html",
+        "status": "live"
+      },
+      {
+        "title": "User needs research doc",
+        "href": "mailto:chandan004sharma@gmail.com?subject=User%20needs%20research%20toolkit",
+        "status": "waitlist"
+      }
+    ],
+    "primaryCta": {
+      "label": "View kit",
+      "href": "toolkits/decision-teardown.html"
+    }
+  },
+  {
+    "id": "create",
+    "label": "create",
+    "stageIndex": "03",
+    "featuredKit": {
+      "title": "AI workflow UX",
+      "meta": "HITL map, guardrails",
+      "status": "waitlist",
+      "href": "toolkits.html#kit-create"
+    },
+    "payoff": "Put AI where humans can still override what matters.",
+    "deliverable": "HITL map, guardrails, one tested pilot scope.",
+    "examples": [
+      {
+        "title": "AI workflow UX",
+        "href": "mailto:chandan004sharma@gmail.com?subject=AI%20workflow%20UX%20toolkit",
+        "status": "waitlist"
+      },
+      {
+        "title": "Product spec scaffold",
+        "href": "",
+        "status": "soon"
+      }
+    ],
+    "primaryCta": {
+      "label": "Join waitlist",
+      "href": "mailto:chandan004sharma@gmail.com?subject=AI%20workflow%20UX%20toolkit"
+    }
+  },
+  {
+    "id": "build",
+    "label": "build",
+    "stageIndex": "02",
+    "featuredKit": {
+      "title": "Architecture audit",
+      "meta": "Seam map, 90-day plan",
+      "status": "waitlist",
+      "href": "toolkits.html#kit-build"
+    },
+    "payoff": "See where the seams are bending before they snap.",
+    "deliverable": "Seam map, north star, 90-day cohesion plan.",
+    "examples": [
+      {
+        "title": "Architecture audit",
+        "href": "mailto:chandan004sharma@gmail.com?subject=Architecture%20audit%20toolkit",
+        "status": "waitlist"
+      },
+      {
+        "title": "90-day rollout checklist",
+        "href": "toolkits.html#kit-build",
+        "status": "live"
+      }
+    ],
+    "primaryCta": {
+      "label": "Join waitlist",
+      "href": "mailto:chandan004sharma@gmail.com?subject=Architecture%20audit%20toolkit"
+    }
+  }
+]

@@ -1,0 +1,95 @@
+/* First-person evidence room — MOTION-WORK-CASE-FPS-001 */
+
+.wp-project-case__media {
+  position: relative;
+}
+
+.wp-case-fps__enter {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 3;
+  border: 1px solid color-mix(in srgb, var(--wp-white, #fff) 22%, transparent);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  font: 500 0.75rem/1.2 Inter, system-ui, sans-serif;
+  letter-spacing: 0.02em;
+  color: var(--wp-white, #fff);
+  background: color-mix(in srgb, var(--wp-black, #000) 42%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.wp-case-fps__enter:hover,
+.wp-case-fps__enter:focus-visible {
+  background: color-mix(in srgb, var(--motion-neon-blue, #144ccd) 55%, transparent);
+  border-color: color-mix(in srgb, var(--wp-white, #fff) 40%, transparent);
+  outline: none;
+}
+
+.wp-case-fps {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: #08090d;
+}
+
+.wp-case-fps__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.wp-case-fps__hud {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  pointer-events: none;
+}
+
+.wp-case-fps__hint,
+.wp-case-fps__exit {
+  pointer-events: auto;
+}
+
+.wp-case-fps__hint {
+  margin: 0;
+  font: 400 0.75rem/1.35 Inter, system-ui, sans-serif;
+  color: color-mix(in srgb, var(--wp-white, #fff) 72%, transparent);
+}
+
+.wp-case-fps__exit {
+  border: 1px solid color-mix(in srgb, var(--wp-white, #fff) 24%, transparent);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  font: 500 0.75rem/1.2 Inter, system-ui, sans-serif;
+  color: var(--wp-white, #fff);
+  background: color-mix(in srgb, var(--wp-black, #000) 50%, transparent);
+  cursor: pointer;
+}
+
+body.wp-case-fps-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-case-fps__enter,
+  .wp-case-fps {
+    display: none !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .wp-case-fps__hint {
+    display: none;
+  }
+}

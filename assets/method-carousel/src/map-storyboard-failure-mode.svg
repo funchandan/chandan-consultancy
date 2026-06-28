@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" role="img" aria-label="Storyboard failure mode">
+<rect width="880" height="520" fill="#f8f9fa" rx="16" stroke="#dee2e6"/>
+<text x="24" y="36" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#495057">MAP</text><text x="24" y="58" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#212529">Failure mode storyboard</text>
+<rect x="24" y="120" width="199" height="376" rx="10" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+<text x="38" y="148" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#495057">1</text>
+<text x="38" y="172" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#212529">Symptom</text>
+<text x="38" y="196" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" fill="#495057">Earn path unclear</text>
+<line x1="229" y1="200" x2="241" y2="200" stroke="#dee2e6" stroke-width="2"/>
+<rect x="235" y="120" width="199" height="376" rx="10" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+<text x="249" y="148" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#495057">2</text>
+<text x="249" y="172" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#212529">Friction</text>
+<text x="249" y="196" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" fill="#495057">Pause at ranked list</text>
+<line x1="440" y1="200" x2="452" y2="200" stroke="#dee2e6" stroke-width="2"/>
+<rect x="446" y="120" width="199" height="376" rx="10" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+<text x="460" y="148" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#495057">3</text>
+<text x="460" y="172" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#212529">Wrong commit</text>
+<text x="460" y="196" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" fill="#495057">Part mismatch</text>
+<line x1="651" y1="200" x2="663" y2="200" stroke="#dee2e6" stroke-width="2"/>
+<rect x="657" y="120" width="199" height="376" rx="10" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+<text x="671" y="148" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#495057">4</text>
+<text x="671" y="172" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#212529">Impact</text>
+<text x="671" y="196" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" fill="#495057">Trust + SLA slip</text>
+</svg>

@@ -1,0 +1,260 @@
+/* Hero toolkit funnel — IDEA-HERO-TOOLKIT-FUNNEL-002 (disclosure panels) */
+
+body.home-page--product .statement-viewport__inner {
+  z-index: 4;
+}
+
+.wp-hero-toolkit-path[data-hero-funnel-root],
+.statement-viewport__lead[data-hero-funnel-root] {
+  position: relative;
+  z-index: 1;
+}
+
+body.wp-hero-funnel-open .wp-hero-toolkit-path[data-hero-funnel-root],
+body.wp-hero-funnel-open .statement-viewport__lead[data-hero-funnel-root] {
+  z-index: 50;
+}
+
+body.wp-hero-funnel-open .statement-viewport__display,
+body.wp-hero-funnel-open .wp-hero-range {
+  opacity: 0.4;
+  transition: opacity 200ms ease;
+}
+
+body.wp-hero-funnel-open .statement-viewport__inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: color-mix(in srgb, #08090d 42%, transparent);
+}
+
+.hero-funnel__trigger {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 55%, transparent);
+}
+
+.hero-funnel__panel {
+  isolation: isolate;
+  min-width: min(300px, calc(100vw - 48px));
+  max-width: 340px;
+  padding: 14px 16px 16px;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 28%, transparent);
+  background: color-mix(in srgb, #12151c 96%, transparent);
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.52),
+    0 0 0 1px color-mix(in srgb, var(--wp-white, #fff) 6%, transparent) inset;
+  text-align: left;
+  animation: wp-hero-funnel-panel-in 280ms cubic-bezier(0.33, 1, 0.32, 1) both;
+}
+
+@keyframes wp-hero-funnel-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wp-hero-toolkit-path[data-hero-funnel-root]:hover .statement-viewport__lead-funnel,
+  .statement-viewport__lead[data-hero-funnel-root]:hover .statement-viewport__lead-funnel {
+    opacity: 0.55;
+    transition:
+      opacity 180ms cubic-bezier(0.33, 1, 0.32, 1),
+      color 180ms ease,
+      text-shadow 180ms ease;
+  }
+
+  .wp-hero-toolkit-path[data-hero-funnel-root]:hover .statement-viewport__lead-funnel:hover,
+  .statement-viewport__lead[data-hero-funnel-root]:hover .statement-viewport__lead-funnel:hover {
+    opacity: 1;
+    color: color-mix(in srgb, var(--wp-white, #fff) 96%, transparent);
+    text-shadow:
+      0 0 24px color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 22%, transparent),
+      0 0 48px color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 10%, transparent);
+  }
+}
+
+.hero-funnel__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: #12151c;
+}
+
+.hero-funnel__eyebrow {
+  margin: 0 0 8px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wp-index-label-gold, #e2c878);
+}
+
+.hero-funnel__payoff {
+  margin: 0 0 8px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--wp-white, #fff) 92%, transparent);
+}
+
+.hero-funnel__deliverable {
+  margin: 0 0 12px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: color-mix(in srgb, var(--wp-white, #fff) 68%, transparent);
+}
+
+.hero-funnel__deliverable strong {
+  font-weight: 600;
+  color: color-mix(in srgb, var(--wp-white, #fff) 82%, transparent);
+}
+
+.hero-funnel__examples {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-funnel__examples a,
+.hero-funnel__examples span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: color-mix(in srgb, var(--wp-white, #fff) 90%, transparent);
+  transition: background 140ms ease;
+}
+
+.hero-funnel__examples a:hover {
+  background: color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 12%, transparent);
+}
+
+.hero-funnel__examples span {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.hero-funnel__status {
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 75%, transparent);
+}
+
+.hero-funnel__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 45%, transparent);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--wp-index-label-gold, #e2c878);
+  transition:
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-funnel__cta:hover {
+    background: color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 10%, transparent);
+    border-color: color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 70%, transparent);
+  }
+}
+
+.wp-hero-toolkit-path__stage.is-open .statement-viewport__lead-funnel,
+.hero-funnel__trigger[aria-expanded="true"] {
+  color: var(--wp-index-label-gold, #e2c878);
+  text-decoration-color: color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 90%, transparent);
+}
+
+.hero-funnel__trigger:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 75%, transparent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.hero-funnel__examples a:focus-visible,
+.hero-funnel__cta:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 75%, transparent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .wp-hero-toolkit-path__stage .hero-funnel__panel {
+    min-width: min(320px, calc(100vw - 32px));
+    max-width: calc(100vw - 32px);
+    animation-name: wp-hero-funnel-panel-in-mobile;
+  }
+}
+
+@keyframes wp-hero-funnel-panel-in-mobile {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-funnel__panel,
+  .hero-funnel__examples a,
+  .hero-funnel__cta,
+  .statement-viewport__lead-funnel {
+    transition: none;
+    animation: none;
+    transform: none;
+  }
+
+  .wp-hero-toolkit-path[data-hero-funnel-root]:hover .statement-viewport__lead-funnel,
+  .statement-viewport__lead[data-hero-funnel-root]:hover .statement-viewport__lead-funnel {
+    opacity: 1;
+    text-shadow: none;
+  }
+}

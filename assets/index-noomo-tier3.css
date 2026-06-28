@@ -1,0 +1,96 @@
+/* Tier 3 — Noomo parity immersive layer (WO-017/018 + glass + hero 3D) */
+
+/* —— Section 3D depth (WO-017) —— */
+html.wp-section-depth-ready body.home-page--product #main {
+  perspective: 1000px;
+}
+
+html.wp-section-depth-ready:not(.wp-motion--static) body.home-page--product .journey-act.wp-section-stage {
+  transform:
+    translateY(var(--section-stage-shift, 0px))
+    scale(var(--section-stage-scale, 1))
+    rotateX(var(--section-stage-rotate, 0deg));
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+html.wp-section-depth-ready.wp-journey--active:has(body.home-page--product) .journey-act.wp-section-stage {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+html.wp-section-depth-ready.wp-journey--active:has(body.home-page--product) .journey-act.wp-section-stage.is-visible {
+  transform:
+    translateY(var(--section-stage-shift, 0px))
+    scale(var(--section-stage-scale, 1))
+    rotateX(var(--section-stage-rotate, 0deg)) !important;
+}
+
+/* —— Case evidence WebGL (WO-018) —— */
+.wp-project-case__media {
+  position: relative;
+}
+
+.wp-case-evidence-gl {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+body.home-page--product #work.wp-work-evidence-3d .wp-project-case__media {
+  min-height: clamp(16rem, 42vh, 22rem);
+}
+
+body.home-page--product #work.wp-work-evidence-3d.wp-work-depth .wp-project-case__media {
+  transform: translateY(var(--case-media-parallax, 0px));
+  opacity: var(--case-media-opacity, 1);
+}
+
+body.home-page--product #work.wp-work-evidence-3d.wp-work-depth .wp-project-case__media {
+  scale: unset;
+  rotate: none;
+}
+
+/* —— Glass on-scroll (Tier 3) —— */
+html.wp-glass-scroll-ready .wp-glass-scroll-target.wp-method-line,
+html.wp-glass-scroll-ready .wp-connect__pill {
+  -webkit-backdrop-filter: blur(calc(8px + var(--glass-scroll-progress, 0) * 14px));
+  backdrop-filter: blur(calc(8px + var(--glass-scroll-progress, 0) * 14px));
+  background: color-mix(
+    in srgb,
+    var(--wp-white, #fff) calc(6% + var(--glass-scroll-progress, 0) * 14%),
+    transparent
+  );
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--wp-white, #fff) calc(var(--glass-scroll-progress, 0) * 28%), transparent),
+    0 calc(var(--glass-scroll-progress, 0) * 20px) calc(var(--glass-scroll-progress, 0) * 48px)
+      color-mix(in srgb, var(--wp-black, #000) 18%, transparent);
+  transform: translateY(calc((1 - var(--glass-scroll-progress, 0)) * 12px))
+    scale(calc(0.98 + var(--glass-scroll-progress, 0) * 0.02));
+  transition: none;
+}
+
+html.wp-glass-scroll-ready .wp-method-line.wp-glass-scroll-target {
+  border-radius: 12px;
+  padding: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.wp-section-depth-ready body.home-page--product .journey-act.wp-section-stage {
+    transform: none !important;
+  }
+
+  .wp-case-evidence-gl {
+    display: none !important;
+  }
+
+  html.wp-glass-scroll-ready .wp-glass-scroll-target {
+    backdrop-filter: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}

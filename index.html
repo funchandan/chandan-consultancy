@@ -33,8 +33,8 @@
   <link rel="stylesheet" href="assets/wp-hero-canvas-text.css?v=2" />
   <link rel="stylesheet" href="assets/wp-index-hero-dark.css?v=2" />
   <link rel="stylesheet" href="assets/noomo-primitives.css?v=9" />
-  <link rel="stylesheet" href="assets/wp-project-case.css?v=17" />
-  <link rel="stylesheet" href="assets/wp-iphone-frame.css?v=1" />
+  <link rel="stylesheet" href="assets/wp-project-case.css?v=19" />
+  <link rel="stylesheet" href="assets/wp-iphone-frame.css?v=2" />
   <link rel="stylesheet" href="assets/nav-immersive.css?v=5" />
   <link rel="stylesheet" href="assets/nav-product.css?v=2" />
   <link rel="stylesheet" href="assets/nav-pill.css?v=10" />
@@ -43,7 +43,7 @@
   <link rel="stylesheet" href="assets/wp-dot-grid.css?v=1" />
   <link rel="stylesheet" href="assets/wp-noise-background.css?v=5" />
   <link rel="stylesheet" href="assets/wp-edge-blur.css?v=5" />
-  <link rel="stylesheet" href="assets/wp-box-bento.css?v=18" />
+  <link rel="stylesheet" href="assets/wp-box-bento.css?v=19" />
   <link rel="stylesheet" href="assets/wp-toolkit-cardswap.css?v=5" />
   <link rel="stylesheet" href="assets/card-swap.css?v=5" />
   <link rel="stylesheet" href="assets/wp-bento-testimonial-box.css?v=5" />
@@ -70,10 +70,10 @@
   <script src="assets/motion/wp-bg-grid-after-hero.js?v=8" defer></script>
   <script src="assets/motion/wp-noise-background.js?v=1" defer></script>
   <script src="assets/motion/wp-journey-immersive.js?v=19" defer></script>
-  <script src="assets/motion/wp-iphone-frame.js?v=1" defer></script>
+  <script src="assets/motion/wp-iphone-frame.js?v=2" defer></script>
   <script src="assets/motion/wp-work-case-reveal.js?v=1" defer></script>
   <script src="assets/motion/wp-work-case-depth.js?v=1" defer></script>
-  <script src="assets/motion/wp-work-case-evidence-3d.js?v=4" defer></script>
+  <script src="assets/motion/wp-work-case-evidence-3d.js?v=5" defer></script>
   <script src="assets/motion/wp-work-case-evidence-fps.js?v=1" defer></script>
   <script src="assets/motion/wp-section-depth.js?v=1" defer></script>
   <script src="assets/motion/wp-glass-scroll.js?v=1" defer></script>
@@ -289,58 +289,58 @@
                   >
                     <div class="card" data-toolkit-stage="research">
                       <p class="card__eyebrow">Research</p>
-                      <h3 class="card__title">AI-assisted research synthesis</h3>
-                      <p class="card__meta">Transcript themes, HITL review gate</p>
+                      <h3 class="card__title">Curate high-impact agent skills</h3>
+                      <p class="card__meta">skills-picks.yaml, npx skills, top 10 picks</p>
                       <ol class="card__steps">
-                        <li>Collect interviews, tickets, and field notes into one corpus.</li>
-                        <li>Run AI summarization with a human review gate before sharing.</li>
-                        <li>Export a stakeholder-ready theme map linked to open bets.</li>
+                        <li>Audit installed skills and sources in skills-lock.json.</li>
+                        <li>Install targeted skills from BMAD, Hermes, or WDS.</li>
+                        <li>Pin a short list in .hermes.md or skills-picks.yaml.</li>
                       </ol>
                       <div class="card__footer">
-                        <span class="card__status card__status--waitlist">waitlist</span>
-                        <a class="card__cta" href="mailto:chandan004sharma@gmail.com?subject=AI-assisted%20research%20synthesis%20toolkit">Join waitlist <span aria-hidden="true">→</span></a>
+                        <span class="card__status card__status--guide">guide</span>
+                        <a class="card__cta" href="toolkits/curate-agent-skills.html">View walkthrough <span aria-hidden="true">→</span></a>
                       </div>
                     </div>
                     <div class="card" data-toolkit-stage="clarify">
                       <p class="card__eyebrow">Clarify</p>
-                      <h3 class="card__title">Decision teardown</h3>
-                      <p class="card__meta">Bet memo, kill date, reversal cost</p>
+                      <h3 class="card__title">Set up BMAD in your repo</h3>
+                      <p class="card__meta">npx bmad-method, config.yaml, bmad-help</p>
                       <ol class="card__steps">
-                        <li>Frame one high-stakes decision with product and eng in the room.</li>
-                        <li>Write the bet, kill criterion, and reversal cost in plain language.</li>
-                        <li>Log the call in an append-only decision record the team can revisit.</li>
+                        <li>Install BMAD Method and verify _bmad/bmm/config.yaml paths.</li>
+                        <li>Load skills via npx skills add from BMAD-METHOD.</li>
+                        <li>Run bmad-help to get the next recommended planning skill.</li>
                       </ol>
                       <div class="card__footer">
-                        <span class="card__status card__status--live">live</span>
-                        <a class="card__cta" href="toolkits/decision-teardown.html">View kit <span aria-hidden="true">→</span></a>
+                        <span class="card__status card__status--guide">guide</span>
+                        <a class="card__cta" href="toolkits/setup-bmad.html">View walkthrough <span aria-hidden="true">→</span></a>
                       </div>
                     </div>
                     <div class="card" data-toolkit-stage="ship">
                       <p class="card__eyebrow">Ship</p>
-                      <h3 class="card__title">AI workflow in production pilots</h3>
-                      <p class="card__meta">HITL map, override paths, RN handoff</p>
+                      <h3 class="card__title">Personal Hermes AI stack</h3>
+                      <p class="card__meta">gateway, cron, .hermes.md</p>
                       <ol class="card__steps">
-                        <li>Map the in-field journey where AI suggests the next action.</li>
-                        <li>Define live, partial, and offline states with override on every suggestion.</li>
-                        <li>Hand off RN-ready specs after pilot technicians validate flows.</li>
+                        <li>Install Hermes CLI and set repo workdir.</li>
+                        <li>Install gateway so cron runs without an open terminal.</li>
+                        <li>Create toolkit-education-review cron and .hermes.md.</li>
                       </ol>
                       <div class="card__footer">
-                        <span class="card__status card__status--waitlist">waitlist</span>
-                        <a class="card__cta" href="mailto:chandan004sharma@gmail.com?subject=AI%20workflow%20production%20pilot%20toolkit">Join waitlist <span aria-hidden="true">→</span></a>
+                        <span class="card__status card__status--guide">guide</span>
+                        <a class="card__cta" href="toolkits/setup-hermes-personal.html">View walkthrough <span aria-hidden="true">→</span></a>
                       </div>
                     </div>
                     <div class="card" data-toolkit-stage="measure">
                       <p class="card__eyebrow">Measure</p>
-                      <h3 class="card__title">Outcomes proof loop</h3>
-                      <p class="card__meta">Decision latency signals, guardrail checks</p>
+                      <h3 class="card__title">Self-improving toolkit loop</h3>
+                      <p class="card__meta">registry, education rubric, review log</p>
                       <ol class="card__steps">
-                        <li>Name one decision latency signal per programme.</li>
-                        <li>Track override and exception rates inside agreed guardrails.</li>
-                        <li>Close the loop in a measure memo tied to the original bet.</li>
+                        <li>Add walkthroughs only to walkthrough-registry.yaml.</li>
+                        <li>Score pages against _education-rubric.md v2.</li>
+                        <li>Let Hermes cron patch gaps until all published pages pass.</li>
                       </ol>
                       <div class="card__footer">
                         <span class="card__status card__status--guide">guide</span>
-                        <a class="card__cta" href="index.html#approach">See method <span aria-hidden="true">→</span></a>
+                        <a class="card__cta" href="toolkits/toolkit-review-loop.html">View walkthrough <span aria-hidden="true">→</span></a>
                       </div>
                     </div>
                   </div>
@@ -412,10 +412,24 @@
             <span class="wp-project-case__index" aria-hidden="true">01</span>
             <div class="wp-project-case__copy">
               <h3 class="wp-project-case__title" id="project-points-marketplace-title">What does a loyalty ecosystem for 20m+ learners look like?</h3>
-              <p class="wp-project-case__meta">BYJU&rsquo;s FutureSchool &middot; Edtech &middot; Foundational research</p>
+              <p class="wp-project-case__meta">BYJU&rsquo;s FutureSchool &middot; Edtech &middot; Design lead &middot; Loyalty</p>
+              <dl class="wp-project-case__stats">
+                <div class="wp-project-case__stat">
+                  <dt class="wp-project-case__stat-value">15</dt>
+                  <dd class="wp-project-case__stat-label">Moderated learner sessions</dd>
+                </div>
+                <div class="wp-project-case__stat">
+                  <dt class="wp-project-case__stat-value">8 weeks</dt>
+                  <dd class="wp-project-case__stat-label">Problem frame to ship-ready spec</dd>
+                </div>
+                <div class="wp-project-case__stat">
+                  <dt class="wp-project-case__stat-value">23M+</dt>
+                  <dd class="wp-project-case__stat-label">Learners &middot; US &amp; India</dd>
+                </div>
+              </dl>
+              <p class="wp-project-case__impact" aria-label="Programme impact">2&rarr;1 CURRENCIES &middot; 3 JOURNEY STAGES &middot; 15 FRAME-MAPPED THEMES</p>
               <div class="wp-project-case__body">
-                <p>The rewards programme serves 23M+ learners who need one clear earn-and-spend story before marketplace UI and avatar work scale.</p>
-                <p>I led foundational UX and system design&mdash;production-aligned stimulus, moderated sessions across US and India, and ship-ready specs for product and engineering.</p>
+                <p>Attendance and time on platform were falling while points piled up with nowhere to go. I framed the gap with product, built wallet and marketplace flows on the design system, and ran 15 moderated sessions in the US and India. Engineering got one earn-and-spend story to ship before the shop scaled.</p>
               </div>
               <a class="wp-link-text wp-link-text--on-dark" href="case-studies/points-marketplace-foundational.html">View case study <span aria-hidden="true">→</span></a>
             </div>
@@ -435,10 +449,24 @@
             <span class="wp-project-case__index" aria-hidden="true">02</span>
             <div class="wp-project-case__copy">
               <h3 class="wp-project-case__title" id="project-hp-field-service-title">How do we help field technicians act faster with AI they can trust?</h3>
-              <p class="wp-project-case__meta">HP &middot; Field service &middot; AI-assisted workflows</p>
+              <p class="wp-project-case__meta">HP &middot; Field service &middot; UX lead &middot; AI-assisted workflows</p>
+              <dl class="wp-project-case__stats">
+                <div class="wp-project-case__stat">
+                  <dt class="wp-project-case__stat-value">12</dt>
+                  <dd class="wp-project-case__stat-label">Field sessions with technicians</dd>
+                </div>
+                <div class="wp-project-case__stat">
+                  <dt class="wp-project-case__stat-value">8 weeks</dt>
+                  <dd class="wp-project-case__stat-label">Journey map to RN handoff</dd>
+                </div>
+                <div class="wp-project-case__stat">
+                  <dt class="wp-project-case__stat-value">3</dt>
+                  <dd class="wp-project-case__stat-label">AI states &middot; live, partial, offline</dd>
+                </div>
+              </dl>
+              <p class="wp-project-case__impact" aria-label="Programme impact">&minus;4 TAPS TO PARTS COMMIT &middot; 3 AI STATES DEFINED &middot; OVERRIDE ON EVERY SUGGESTION</p>
               <div class="wp-project-case__body">
-                <p>Technicians resolve faults on the truck; AI only helps when the next part and action are defensible to the customer and dispatch.</p>
-                <p>I led system design and UX for diagnosis-to-parts&mdash;AI state patterns, override flows, and React Native handoff specs validated with pilot technicians.</p>
+                <p>Technicians in pilot reviews paused between AI diagnosis and parts ordering, unsure what was live or safe offline. I mapped diagnosis-to-parts on the truck, designed next-best action with overrides, and validated flows with field pilots before React Native handoff.</p>
               </div>
               <a class="wp-link-text wp-link-text--on-dark" href="case-studies/hp-field-service-ai.html">View case study <span aria-hidden="true">→</span></a>
             </div>
@@ -458,10 +486,24 @@
             <span class="wp-project-case__index" aria-hidden="true">03</span>
             <div class="wp-project-case__copy">
               <h3 class="wp-project-case__title" id="project-stryker-logistics-title">How do field reps run robotic surgery logistics inside the hospital?</h3>
-              <p class="wp-project-case__meta">Stryker &middot; Medical devices &middot; Hospital mobile</p>
+              <p class="wp-project-case__meta">Stryker &middot; Medical devices &middot; UX lead &middot; Hospital mobile</p>
+              <dl class="wp-project-case__stats">
+                <div class="wp-project-case__stat">
+                  <dt class="wp-project-case__stat-value">10</dt>
+                  <dd class="wp-project-case__stat-label">Lifecycle beats &middot; arrive to close</dd>
+                </div>
+                <div class="wp-project-case__stat">
+                  <dt class="wp-project-case__stat-value">8 weeks</dt>
+                  <dd class="wp-project-case__stat-label">Visit map to engineering spec</dd>
+                </div>
+                <div class="wp-project-case__stat">
+                  <dt class="wp-project-case__stat-value">1</dt>
+                  <dd class="wp-project-case__stat-label">Mobile thread &middot; order through return</dd>
+                </div>
+              </dl>
+              <p class="wp-project-case__impact" aria-label="Programme impact">10 LIFECYCLE BEATS &middot; 1 SERIAL TRACE PATH &middot; FEWER OPS CALLS MID-VISIT</p>
               <div class="wp-project-case__body">
-                <p>Field reps coordinate orders, serials, delivery, surgical use, and returns inside the hospital&mdash;without calls and spreadsheets splitting the visit.</p>
-                <p>I led UX and system design for one mobile thread&mdash;serial-level tracking, surgeon preferences on arrival, and auditable close with clinical ops and engineering.</p>
+                <p>Reps juggled orders, serials, and returns across calls and spreadsheets during hospital visits. I mapped the full part lifecycle and designed one mobile thread from arrive through close, with surgeon preferences at the beats where reps act.</p>
               </div>
               <a class="wp-link-text wp-link-text--on-dark" href="case-studies/stryker-field-logistics.html">View case study <span aria-hidden="true">→</span></a>
             </div>

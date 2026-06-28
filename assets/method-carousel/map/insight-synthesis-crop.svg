@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-label="Insight synthesis">
+<rect width="640" height="420" fill="#f5f5f5"/>
+<text x="20" y="32" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#a259ff">FigJam · insight synthesis</text>
+<rect x="20" y="70" width="200" height="72" rx="4" fill="#fff9b1" stroke="#e9ecef" stroke-width="1"/>
+<text x="34" y="112" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#212529">Loyalty invisible</text>
+<rect x="20" y="158" width="200" height="72" rx="4" fill="#fff9b1" stroke="#e9ecef" stroke-width="1"/>
+<text x="34" y="200" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#212529">Commit latency</text>
+<rect x="20" y="246" width="200" height="72" rx="4" fill="#fff9b1" stroke="#e9ecef" stroke-width="1"/>
+<text x="34" y="288" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#212529">Sequence &gt; volume</text>
+<rect x="240" y="70" width="380" height="330" rx="8" fill="#e8eefc" stroke="#144ccd" stroke-width="1"/>
+<text x="260" y="110" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#144ccd">So what</text>
+<text x="260" y="140" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" fill="#212529">Map system before UI pixels.</text>
+</svg>

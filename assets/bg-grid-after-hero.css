@@ -1,0 +1,151 @@
+/* Magic UI Interactive Grid Pattern — post-hero layer (WO-024)
+   Readability: dim grid on dark canvas, amber hover @ 50%, opaque text panels */
+
+.bg-grid-after-hero {
+  --bg-grid-stroke: rgba(255, 255, 255, 0.11);
+  --bg-grid-stroke-opacity: 0.5;
+  --bg-grid-hover-fill: #ffb500;
+  --bg-grid-hover-fill-opacity: 0.5;
+  --bg-grid-veil: rgba(8, 9, 13, 0.5);
+  --bg-grid-panel-bg: rgba(8, 9, 13, 0.88);
+  --bg-grid-panel-blur: 22px;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 400ms ease;
+  clip-path: inset(var(--bg-grid-inset-top, 100vh) 0 0 0);
+}
+
+.bg-grid-after-hero.is-active {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+body.home-page--post-hero .bg-grid-after-hero.is-active {
+  opacity: 1 !important;
+}
+
+body.home-page--product:not(.home-page--post-hero) .bg-grid-after-hero {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Dimming veil behind grid lines */
+.bg-grid-after-hero.is-active::before {
+  content: "";
+  position: absolute;
+  top: var(--bg-grid-inset-top, 100vh);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-grid-veil);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-grid-after-hero__svg {
+  position: absolute;
+  top: var(--bg-grid-inset-top, 100vh);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: auto;
+}
+
+.bg-grid-after-hero__cell {
+  fill: transparent;
+  fill-opacity: 0;
+  stroke: var(--bg-grid-stroke);
+  stroke-opacity: var(--bg-grid-stroke-opacity);
+  stroke-width: 1;
+  pointer-events: all;
+  transition:
+    fill 100ms ease-in-out,
+    fill-opacity 100ms ease-in-out;
+}
+
+.bg-grid-after-hero__cell.is-hovered {
+  fill: var(--bg-grid-hover-fill);
+  fill-opacity: var(--bg-grid-hover-fill-opacity);
+}
+
+body.home-page--post-hero .wp-dot-grid {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 400ms ease, visibility 400ms ease;
+}
+
+/* Content above fixed grid */
+html:has(.bg-grid-after-hero.is-active) body.home-page--product main#main {
+  position: relative;
+  z-index: 1;
+}
+
+/* —— Readable panels when interactive grid is active —— */
+html:has(.bg-grid-after-hero.is-active) body.home-page--product #work-heading,
+html:has(.bg-grid-after-hero.is-active) body.home-page--product #approach-heading {
+  display: inline-block;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.4em 0.9em;
+  border-radius: 0.65rem;
+  background: var(--bg-grid-panel-bg);
+  -webkit-backdrop-filter: blur(var(--bg-grid-panel-blur)) saturate(1.06);
+  backdrop-filter: blur(var(--bg-grid-panel-blur)) saturate(1.06);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+html:has(.bg-grid-after-hero.is-active) body.home-page--product #approach > .shell {
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border-radius: 1.15rem;
+  background: var(--bg-grid-panel-bg);
+  -webkit-backdrop-filter: blur(var(--bg-grid-panel-blur)) saturate(1.05);
+  backdrop-filter: blur(var(--bg-grid-panel-blur)) saturate(1.05);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+html:has(.bg-grid-after-hero.is-active) body.home-page--product #work .wp-project-case__copy {
+  padding: clamp(1rem, 2.5vw, 1.35rem);
+  border-radius: 1rem;
+  background: var(--bg-grid-panel-bg);
+  -webkit-backdrop-filter: blur(var(--bg-grid-panel-blur)) saturate(1.05);
+  backdrop-filter: blur(var(--bg-grid-panel-blur)) saturate(1.05);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+html.wp-motion--static .bg-grid-after-hero.is-active {
+  opacity: 1;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-grid-after-hero__cell {
+    transition: none;
+  }
+
+  html:has(.bg-grid-after-hero.is-active) body.home-page--product #work-heading,
+  html:has(.bg-grid-after-hero.is-active) body.home-page--product #approach-heading,
+  html:has(.bg-grid-after-hero.is-active) body.home-page--product #approach > .shell,
+  html:has(.bg-grid-after-hero.is-active) body.home-page--product #work .wp-project-case__copy {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(8, 9, 13, 0.94);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .bg-grid-after-hero__cell {
+    pointer-events: none;
+  }
+}

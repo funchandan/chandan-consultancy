@@ -158,7 +158,12 @@
       var veil = document.createElement("div");
       veil.setAttribute("aria-hidden", "true");
 
-      if (isProductIndex && isStatement) {
+      var useGlAtmosphere =
+        isProductIndex &&
+        isStatement &&
+        document.documentElement.classList.contains("wp-l0-gl-active");
+
+      if (isProductIndex && isStatement && !useGlAtmosphere) {
         pageTorch = document.createElement("div");
         pageTorch.className = "wp-page-torch";
         pageTorch.setAttribute("aria-hidden", "true");
@@ -414,7 +419,16 @@
         ly = lerp(ly, aimY, ease);
         applyHandoff();
         if (hint) {
-          hint.classList.toggle("is-hidden", scrollY() > 48);
+          var cueHidden = false;
+          if (ctx.reduced) {
+            cueHidden = false;
+          } else if (isProductIndex && isStatement) {
+            cueHidden =
+              hero.offsetHeight > 0 && scrollY() > hero.offsetHeight * 0.35;
+          } else {
+            cueHidden = scrollY() > 48;
+          }
+          hint.classList.toggle("is-hidden", cueHidden);
         }
         rafId = requestAnimationFrame(tickLight);
       }
@@ -688,33 +702,50 @@
     },
   });
 
-  /* --- Method loop stagger --- */
+  /* --- Method carousel reveal (WO-029) --- */
   WPM.register("method-rail", {
     layer: 1,
     init: function (section, ctx) {
       if (!section) return;
-      var lines = section.querySelector(".wp-method-lines");
-      if (!lines) return;
-      if (ctx.reduced) {
-        lines.classList.add("wp-method-lines--revealed");
+      var carousel = section.querySelector("[data-method-carousel]");
+      if (!carousel) return;
+      var observers = [];
+      var reduced = ctx && ctx.reduced;
+
+      function observe(target, options, onEntry) {
+        if (!("IntersectionObserver" in window)) return null;
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(onEntry);
+        }, options);
+        obs.observe(target);
+        observers.push(obs);
+        return obs;
+      }
+
+      if (reduced) {
+        carousel.classList.add("wp-method-carousel--revealed");
         return;
       }
-      if ("IntersectionObserver" in window) {
-        var obs = new IntersectionObserver(
-          function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                lines.classList.add("wp-method-lines--revealed");
-                obs.disconnect();
-              }
-            });
-          },
-          { threshold: 0.15 }
-        );
-        obs.observe(lines);
-      } else {
-        lines.classList.add("wp-method-lines--revealed");
+
+      observe(
+        carousel,
+        { threshold: 0.2 },
+        function (entry) {
+          if (entry.isIntersecting) {
+            carousel.classList.add("wp-method-carousel--revealed");
+          }
+        }
+      );
+
+      if (!("IntersectionObserver" in window)) {
+        carousel.classList.add("wp-method-carousel--revealed");
       }
+
+      return function destroy() {
+        observers.forEach(function (obs) {
+          obs.disconnect();
+        });
+      };
     },
   });
 })();

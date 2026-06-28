@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" role="img" aria-label="FigJam user stories">
+<rect width="720" height="400" fill="#f5f5f5"/>
+<text x="20" y="36" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#a259ff">FigJam · user stories</text>
+<rect x="20" y="80" width="218" height="300" rx="4" fill="#fff9b1" stroke="#e9ecef" stroke-width="1"/>
+<text x="34" y="116" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#495057">As a parent</text>
+<text x="34" y="144" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#212529">One spendable balance</text>
+<rect x="250" y="80" width="218" height="300" rx="4" fill="#b8f1ed" stroke="#e9ecef" stroke-width="1"/>
+<text x="264" y="116" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#495057">As a field tech</text>
+<text x="264" y="144" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#212529">Right part first time</text>
+<rect x="480" y="80" width="218" height="300" rx="4" fill="#ffd8a8" stroke="#e9ecef" stroke-width="1"/>
+<text x="494" y="116" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#495057">As dispatch</text>
+<text x="494" y="144" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#212529">Explainable next step</text>
+</svg>

@@ -1,0 +1,79 @@
+/* Magic UI Iphone frame — selected work wireframes (WO work cases 001–003) */
+
+.wp-iphone-frame__shell {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 433 / 882;
+  line-height: 0;
+}
+
+.wp-iphone-frame__screen {
+  position: absolute;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: #f6f5f2;
+}
+
+.wp-iphone-frame__screen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  border-radius: inherit;
+  box-shadow: none;
+}
+
+.wp-iphone-frame__bezel {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.wp-iphone-frame.wp-project-case__device {
+  width: min(44vw, 220px);
+  max-width: 220px;
+  filter: drop-shadow(0 20px 48px rgba(0, 0, 0, 0.55));
+}
+
+@media (min-width: 900px) {
+  .wp-iphone-frame.wp-project-case__device {
+    width: clamp(10rem, 12.5vw, 13.5rem);
+    max-width: 13.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .wp-iphone-frame.wp-project-case__device {
+    width: clamp(11rem, 13vw, 14.5rem);
+    max-width: 14.5rem;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.home-page--product .wp-iphone-frame.wp-project-case__device:hover .wp-iphone-frame__shell {
+    transform: scale(1.02);
+  }
+
+  body.home-page--product .wp-iphone-frame.wp-project-case__device .wp-iphone-frame__shell {
+    transition: transform 160ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home-page--product .wp-iphone-frame.wp-project-case__device .wp-iphone-frame__shell {
+    transition: none;
+  }
+
+  body.home-page--product .wp-iphone-frame.wp-project-case__device:hover .wp-iphone-frame__shell {
+    transform: none;
+  }
+}

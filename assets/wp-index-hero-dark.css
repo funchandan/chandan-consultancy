@@ -1,0 +1,41 @@
+/* Product index — post-hero black cascade */
+
+html[data-theme="dark"] body.home-page--product {
+  background: #0a0a0a;
+  color: #f5f5f5;
+}
+
+html[data-theme="dark"] body.home-page--product .wp-box-bento-ledge,
+html[data-theme="dark"] body.home-page--product #work,
+html[data-theme="dark"] body.home-page--product #approach,
+html[data-theme="dark"] body.home-page--product .wp-connect {
+  background: transparent;
+  color: inherit;
+}
+
+html[data-theme="dark"] body.home-page--product .wp-project-case__title,
+html[data-theme="dark"] body.home-page--product .wp-section-display {
+  color: #f5f5f5;
+}
+
+html[data-theme="dark"] body.home-page--product .wp-project-case__meta,
+html[data-theme="dark"] body.home-page--product .wp-project-case__body {
+  color: color-mix(in srgb, #f5f5f5 72%, transparent);
+}
+
+html[data-theme="dark"] body.home-page--product .statement-viewport__scroll-cue {
+  color: color-mix(in srgb, #f5f5f5 55%, transparent);
+}
+
+html[data-theme="dark"] body.home-page--product .wp-hero-retrogrid {
+  opacity: 0.45;
+}
+
+html[data-theme="dark"] body.home-page--product .wp-hero-retrogrid {
+  --wp-hero-grid-line: rgba(148, 163, 184, 0.38);
+  --wp-hero-grid-line-bright: rgba(226, 232, 240, 0.28);
+}
+
+html[data-theme="dark"] body.home-page--product .site-header--product {
+  --nav-pill-bg: color-mix(in srgb, #141414 88%, transparent);
+}

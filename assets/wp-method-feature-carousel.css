@@ -1,0 +1,414 @@
+/* WO-029 — Methodology Feature Carousel (Cult UI port) */
+/* WO-030 — full-panel wireframe visual zone */
+
+.wp-method-carousel {
+  --method-carousel-radius: 1.25rem;
+  --method-carousel-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --method-carousel-duration: 480ms;
+  --method-wireframe-w: 880;
+  --method-wireframe-h: 520;
+  position: relative;
+  margin: clamp(1.5rem, 4vw, 2.5rem) auto 0;
+  max-width: 56rem;
+  text-align: left;
+}
+
+.wp-method-carousel__steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.wp-method-carousel__step {
+  margin: 0;
+}
+
+.wp-method-carousel__step-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.25rem;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--wp-ink, #111) 12%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--wp-ink, #111) 4%, transparent);
+  color: var(--color-text-secondary, #5c5c5c);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background var(--method-carousel-duration) var(--method-carousel-ease),
+    border-color var(--method-carousel-duration) var(--method-carousel-ease),
+    color var(--method-carousel-duration) var(--method-carousel-ease),
+    transform var(--method-carousel-duration) var(--method-carousel-ease);
+}
+
+.wp-method-carousel__step-btn:hover {
+  border-color: color-mix(in srgb, var(--accent, #144ccd) 35%, transparent);
+}
+
+.wp-method-carousel__step-btn:focus-visible {
+  outline: 2px solid var(--accent, #144ccd);
+  outline-offset: 2px;
+}
+
+.wp-method-carousel__step-btn[aria-selected="true"] {
+  border-color: color-mix(in srgb, var(--accent, #144ccd) 45%, transparent);
+  background: color-mix(in srgb, var(--accent, #144ccd) 12%, transparent);
+  color: var(--color-text-primary, #111);
+  transform: scale(1.02);
+}
+
+.wp-method-carousel__step-btn[aria-selected="false"][data-completed="true"] {
+  color: var(--color-text-primary, #111);
+}
+
+.wp-method-carousel__step-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 50%;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  background: color-mix(in srgb, var(--wp-ink, #111) 10%, transparent);
+  color: var(--accent, #144ccd);
+}
+
+.wp-method-carousel__step-btn[aria-selected="true"] .wp-method-carousel__step-mark {
+  background: var(--accent, #144ccd);
+  color: #fff;
+}
+
+.wp-method-carousel__step-btn[data-completed="true"] .wp-method-carousel__step-mark {
+  background: color-mix(in srgb, var(--accent, #144ccd) 75%, #000);
+  color: #fff;
+}
+
+.wp-method-carousel__stage {
+  position: relative;
+  cursor: pointer;
+}
+
+.wp-method-carousel__card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 48%);
+  align-items: stretch;
+  min-height: clamp(24rem, 50vw, 30rem);
+  border-radius: var(--method-carousel-radius);
+  border: 1px solid color-mix(in srgb, var(--wp-ink, #111) 10%, transparent);
+  background:
+    radial-gradient(
+      120% 80% at 12% 0%,
+      color-mix(in srgb, var(--accent, #144ccd) 14%, transparent),
+      transparent 55%
+    ),
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--wp-black, #0a0a0a) 92%, transparent),
+      color-mix(in srgb, var(--wp-black, #1a1a1a) 88%, transparent)
+    );
+  box-shadow: 0 18px 48px color-mix(in srgb, var(--wp-black, #000) 18%, transparent);
+}
+
+.wp-method-carousel__card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+  background: radial-gradient(
+    600px circle at var(--method-glow-x, 50%) var(--method-glow-y, 50%),
+    color-mix(in srgb, var(--accent, #144ccd) 22%, transparent),
+    transparent 55%
+  );
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wp-method-carousel__card:hover::before {
+    opacity: 1;
+  }
+}
+
+.wp-method-carousel__panel {
+  position: relative;
+  z-index: 2;
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-self: center;
+  max-width: none;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.wp-method-carousel__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2.4vw, 1.65rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.wp-method-carousel__desc {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
+  line-height: 1.55;
+  color: color-mix(in srgb, #fff 78%, transparent);
+  max-width: 42ch;
+}
+
+.wp-method-carousel__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.15rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wp-method-carousel__chip {
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, #fff 16%, transparent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, #fff 88%, transparent);
+  background: color-mix(in srgb, #fff 6%, transparent);
+}
+
+.wp-method-carousel__proof {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--accent-bright, #6b9fff) 90%, #fff);
+  text-decoration: none;
+}
+
+.wp-method-carousel__proof:hover,
+.wp-method-carousel__proof:focus-visible {
+  color: #fff;
+}
+
+.wp-method-carousel__proof:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Full-panel wireframe zone — right column */
+.wp-method-carousel__visual {
+  position: relative;
+  z-index: 1;
+  grid-column: 2;
+  grid-row: 1;
+  min-height: 0;
+  padding: clamp(0.65rem, 1.8vw, 1rem);
+  padding-left: 0;
+  pointer-events: none;
+}
+
+.wp-method-carousel__img {
+  position: absolute;
+  inset: clamp(0.65rem, 1.8vw, 1rem) clamp(0.65rem, 1.8vw, 1rem) clamp(0.65rem, 1.8vw, 1rem) 0;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  pointer-events: none;
+  user-select: none;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, #fff 18%, transparent);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.42);
+  object-fit: contain;
+  object-position: center right;
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  transition:
+    opacity var(--method-carousel-duration) var(--method-carousel-ease),
+    transform var(--method-carousel-duration) var(--method-carousel-ease);
+}
+
+.wp-method-carousel__img--visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Secondary wireframe — ghost layer behind primary */
+.wp-method-carousel__img--b {
+  z-index: 0;
+  opacity: 0;
+  transform: translate(10px, 10px) scale(0.96);
+  filter: brightness(0.92);
+}
+
+.wp-method-carousel__img--a {
+  z-index: 1;
+}
+
+/* Ship tab — Cult UI terminal animation (live DOM, not static PNG) */
+.wp-method-carousel__terminal {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.wp-method-carousel__terminal .bento-terminal {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  min-height: 12rem;
+  font-size: clamp(10px, 1.15vw, 12px);
+}
+
+.wp-method-carousel__terminal .bento-terminal__window {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  border-radius: 0.75rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+.wp-method-carousel__terminal .bento-terminal__content {
+  flex: 1;
+  min-height: 9rem;
+}
+
+.wp-method-carousel__terminal [data-method-carousel-terminal-mount] {
+  width: 100%;
+  height: 100%;
+}
+
+.wp-method-carousel__img--b.wp-method-carousel__img--visible {
+  opacity: 0.42;
+  transform: translate(12px, 12px) scale(0.94);
+}
+
+.wp-method-carousel[data-step="0"] .wp-method-carousel__img--a,
+.wp-method-carousel[data-step="1"] .wp-method-carousel__img--a,
+.wp-method-carousel[data-step="2"] .wp-method-carousel__img--a,
+.wp-method-carousel[data-step="3"] .wp-method-carousel__img--a {
+  transition-delay: 0ms;
+}
+
+.wp-method-carousel[data-step="0"] .wp-method-carousel__img--b,
+.wp-method-carousel[data-step="1"] .wp-method-carousel__img--b,
+.wp-method-carousel[data-step="2"] .wp-method-carousel__img--b,
+.wp-method-carousel[data-step="3"] .wp-method-carousel__img--b {
+  transition-delay: 90ms;
+}
+
+.wp-method-carousel__progress {
+  display: block;
+  height: 3px;
+  margin-top: 0.75rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--wp-ink, #111) 8%, transparent);
+  overflow: hidden;
+}
+
+.wp-method-carousel__progress-bar {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    var(--accent, #144ccd),
+    color-mix(in srgb, var(--accent-bright, #6b9fff) 80%, #fff)
+  );
+  transition: width 120ms linear;
+}
+
+.wp-method-carousel--revealed .wp-method-carousel__card {
+  animation: wp-method-carousel-enter 640ms var(--method-carousel-ease) both;
+}
+
+@keyframes wp-method-carousel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .wp-method-carousel__card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-bottom: clamp(14rem, 62vw, 18rem);
+  }
+
+  .wp-method-carousel__panel {
+    max-width: none;
+  }
+
+  .wp-method-carousel__visual {
+    grid-column: 1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: clamp(13rem, 48vw, 16rem);
+    padding: 0.75rem;
+  }
+
+  .wp-method-carousel__img {
+    inset: 0.75rem;
+    object-position: center bottom;
+  }
+
+  .wp-method-carousel__img--b {
+    display: none;
+  }
+
+  .wp-method-carousel__step-label {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-method-carousel__img,
+  .wp-method-carousel__card,
+  .wp-method-carousel__step-btn {
+    transition: none;
+    animation: none;
+  }
+
+  .wp-method-carousel__img {
+    opacity: 1;
+    transform: none;
+  }
+
+  .wp-method-carousel__img--b.wp-method-carousel__img--visible {
+    opacity: 0.42;
+    transform: translate(8px, 8px) scale(0.96);
+  }
+
+  .wp-method-carousel__progress-bar {
+    transition: none;
+  }
+}

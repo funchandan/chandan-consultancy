@@ -33,6 +33,7 @@
       var mouse = null;
       var alive = true;
       var animId = 0;
+      var postHero = false;
       var dots = [];
       var cw = 0;
       var ch = 0;
@@ -78,7 +79,7 @@
       }
 
       function frame() {
-        if (!alive || ctx.paused) {
+        if (!alive || ctx.paused || postHero) {
           animId = requestAnimationFrame(frame);
           return;
         }
@@ -150,8 +151,20 @@
       });
       ro.observe(host);
 
+      function syncPostHero() {
+        postHero = document.body.classList.contains("home-page--post-hero");
+        if (postHero) {
+          context.clearRect(0, 0, cw, ch);
+        }
+      }
+
+      syncPostHero();
+      var bodyObserver = new MutationObserver(syncPostHero);
+      bodyObserver.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+
       return function () {
         alive = false;
+        bodyObserver.disconnect();
         cancelAnimationFrame(animId);
         ro.disconnect();
         if (!ctx.reduced) {

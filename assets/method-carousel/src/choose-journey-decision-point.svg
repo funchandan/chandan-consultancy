@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="480" viewBox="0 0 840 480" role="img" aria-label="Journey decision">
+<rect width="840" height="480" fill="#f5f6f8"/>
+<text x="20" y="36" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#144ccd">CHOOSE</text>
+<text x="20" y="58" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#212529">Journey · decision point</text>
+<rect x="20" y="180" width="150" height="64" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+<text x="95.0" y="218" text-anchor="middle" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#212529">Arrive</text>
+<rect x="182" y="180" width="150" height="64" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+<text x="257.0" y="218" text-anchor="middle" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#212529">Diagnose</text>
+<rect x="344" y="180" width="150" height="64" rx="8" fill="#e8eefc" stroke="#144ccd" stroke-width="1"/>
+<text x="419.0" y="218" text-anchor="middle" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#144ccd">DECIDE</text>
+<rect x="506" y="180" width="150" height="64" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+<text x="581.0" y="218" text-anchor="middle" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#212529">Order</text>
+<rect x="668" y="180" width="150" height="64" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+<text x="743.0" y="218" text-anchor="middle" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#212529">Close</text>
+<rect x="20" y="280" width="800" height="80" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+<text x="34" y="312" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#212529">Bet: next-best-action · Falsifier: confidence &lt; 0.85</text>
+</svg>

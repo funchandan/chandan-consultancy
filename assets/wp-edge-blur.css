@@ -1,0 +1,164 @@
+/* EdgeBlur — Cult UI stacked backdrop-blur layers (brownfield port of components/ui/edge-blur.tsx) */
+
+:root {
+  --eb-seam-top: 100vh;
+  --eb-seam-height: clamp(2.25rem, 6vh, 4.5rem);
+  --eb-bottom-height: 5rem;
+  --eb-seam-opacity: 0.7;
+}
+
+/* Body-level shell — must stay outside #main (perspective breaks position:fixed) */
+.wp-edge-blur-shell {
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.wp-edge-blur {
+  position: fixed;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.wp-edge-blur--seam {
+  top: var(--eb-seam-top);
+  height: var(--eb-seam-height);
+  z-index: 2;
+  opacity: 0.5;
+  visibility: hidden;
+  transition: opacity 0.65s ease;
+}
+
+.wp-edge-blur--bottom {
+  bottom: 0;
+  height: var(--eb-bottom-height);
+  z-index: 1;
+}
+
+html.wp-edge-blur-ready .wp-edge-blur--seam.is-active {
+  visibility: visible;
+  opacity: var(--eb-seam-opacity, 1);
+}
+
+/* Frost tint so blur reads on dark / low-contrast backgrounds */
+.wp-edge-blur--seam.is-active::before,
+.wp-edge-blur--bottom::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wp-edge-blur--seam.is-active::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 9, 13, 0.36),
+    rgba(8, 9, 13, 0.1) 55%,
+    transparent 100%
+  );
+}
+
+.wp-edge-blur--bottom::before {
+  background: linear-gradient(
+    to top,
+    rgba(8, 9, 13, 0.28),
+    rgba(8, 9, 13, 0.1) 50%,
+    transparent
+  );
+}
+
+.wp-edge-blur__layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Top fade — blur strongest at top edge, falls off downward */
+.wp-edge-blur--seam .wp-edge-blur__layer:nth-child(1) {
+  -webkit-backdrop-filter: blur(1px) saturate(1.12);
+  backdrop-filter: blur(1px) saturate(1.12);
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+  mask-image: linear-gradient(to bottom, #000, transparent);
+}
+
+.wp-edge-blur--seam .wp-edge-blur__layer:nth-child(2) {
+  -webkit-backdrop-filter: blur(2px) saturate(1.12);
+  backdrop-filter: blur(2px) saturate(1.12);
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+  mask-image: linear-gradient(to bottom, #000, transparent);
+}
+
+.wp-edge-blur--seam .wp-edge-blur__layer:nth-child(3) {
+  -webkit-backdrop-filter: blur(3px) saturate(1.12);
+  backdrop-filter: blur(3px) saturate(1.12);
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+  mask-image: linear-gradient(to bottom, #000, transparent);
+}
+
+.wp-edge-blur--seam .wp-edge-blur__layer:nth-child(4) {
+  -webkit-backdrop-filter: blur(6px) saturate(1.15);
+  backdrop-filter: blur(6px) saturate(1.15);
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+  mask-image: linear-gradient(to bottom, #000, transparent);
+}
+
+.wp-edge-blur--seam .wp-edge-blur__layer:nth-child(5) {
+  -webkit-backdrop-filter: blur(12px) saturate(1.18);
+  backdrop-filter: blur(12px) saturate(1.18);
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+  mask-image: linear-gradient(to bottom, #000, transparent);
+}
+
+/* Bottom viewport fade — blur strongest at bottom edge */
+.wp-edge-blur--bottom .wp-edge-blur__layer:nth-child(1) {
+  -webkit-backdrop-filter: blur(1px) saturate(1.12);
+  backdrop-filter: blur(1px) saturate(1.12);
+  -webkit-mask-image: linear-gradient(to top, #000, transparent);
+  mask-image: linear-gradient(to top, #000, transparent);
+}
+
+.wp-edge-blur--bottom .wp-edge-blur__layer:nth-child(2) {
+  -webkit-backdrop-filter: blur(2px) saturate(1.12);
+  backdrop-filter: blur(2px) saturate(1.12);
+  -webkit-mask-image: linear-gradient(to top, #000, transparent);
+  mask-image: linear-gradient(to top, #000, transparent);
+}
+
+.wp-edge-blur--bottom .wp-edge-blur__layer:nth-child(3) {
+  -webkit-backdrop-filter: blur(3px) saturate(1.12);
+  backdrop-filter: blur(3px) saturate(1.12);
+  -webkit-mask-image: linear-gradient(to top, #000, transparent);
+  mask-image: linear-gradient(to top, #000, transparent);
+}
+
+.wp-edge-blur--bottom .wp-edge-blur__layer:nth-child(4) {
+  -webkit-backdrop-filter: blur(6px) saturate(1.15);
+  backdrop-filter: blur(6px) saturate(1.15);
+  -webkit-mask-image: linear-gradient(to top, #000, transparent);
+  mask-image: linear-gradient(to top, #000, transparent);
+}
+
+.wp-edge-blur--bottom .wp-edge-blur__layer:nth-child(5) {
+  -webkit-backdrop-filter: blur(12px) saturate(1.18);
+  backdrop-filter: blur(12px) saturate(1.18);
+  -webkit-mask-image: linear-gradient(to top, #000, transparent);
+  mask-image: linear-gradient(to top, #000, transparent);
+}
+
+html.wp-edge-blur-ready body.home-page--product #main > section:not(#hero) {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-edge-blur--seam .wp-edge-blur__layer,
+  .wp-edge-blur--bottom .wp-edge-blur__layer {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+}

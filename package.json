@@ -6,6 +6,7 @@
     "build:gsap": "node scripts/build-gsap-bundle.mjs",
     "build:three": "node scripts/build-three-bundle.mjs",
     "build:vendors": "npm run build:gsap && npm run build:three",
+    "check:index-assets": "bash scripts/check-index-assets.sh",
     "start": "next start",
     "lint": "next lint"
   },
@@ -27,6 +28,7 @@
     "next": "^16.0.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-use-measure": "^2.1.7",
     "shadcn": "^4.11.0",
     "tailwind-merge": "^3.6.0",
     "tw-animate-css": "^1.4.0"

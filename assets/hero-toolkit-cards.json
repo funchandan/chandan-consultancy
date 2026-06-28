@@ -4,80 +4,128 @@
       "id": "research",
       "pillLabel": "Research",
       "eyebrow": "Research",
-      "title": "AI-assisted research synthesis",
-      "meta": "Transcript themes, HITL review gate",
-      "status": "waitlist",
+      "title": "Curate high-impact agent skills",
+      "meta": "skills-lock.yaml, npx skills, top 10 picks",
+      "status": "guide",
       "steps": [
-        "Collect raw inputs (interviews, tickets, field notes) into one corpus.",
-        "Run AI summarization only with a human review gate before anything is shared.",
-        "Export a stakeholder-ready theme map linked to open bets."
+        "Audit installed skills and sources in skills-lock.json.",
+        "Install targeted skills from BMAD, Hermes, or WDS — not --all by default.",
+        "Pin a short list in .hermes.md or a skills-picks.yaml you can share."
       ],
       "useCases": [
-        "Interview transcript indexing and theme surfacing",
-        "Stakeholder map drafts — moderator approves before workshop",
-        "Research stimulus for moderated tests on production-aligned UI"
+        "Reduce skill roulette in long agent sessions",
+        "Onboard teammates to the same BMAD + Hermes stack",
+        "Document why each skill is worth installing"
       ],
       "primaryCta": {
-        "label": "Join waitlist",
-        "href": "mailto:chandan004sharma@gmail.com?subject=AI-assisted%20research%20synthesis%20toolkit"
+        "label": "View walkthrough",
+        "href": "toolkits/curate-agent-skills.html"
       }
     },
     {
       "id": "clarify",
       "pillLabel": "Clarify",
       "eyebrow": "Clarify",
-      "title": "Decision teardown",
-      "meta": "Bet memo, kill date, reversal cost",
-      "status": "live",
+      "title": "Set up BMAD in your repo",
+      "meta": "npx bmad-method, config.yaml, bmad-help",
+      "status": "guide",
       "steps": [
-        "Frame one high-stakes decision with product and eng in the room.",
-        "Write the bet, kill criterion, and reversal cost in plain language.",
-        "Log the call in an append-only decision record the team can revisit."
+        "Install BMAD Method and verify _bmad/bmm/config.yaml paths.",
+        "Load skills via npx skills add from BMAD-METHOD.",
+        "Run bmad-help to get the next recommended planning skill."
       ],
       "useCases": [],
       "primaryCta": {
-        "label": "View kit",
-        "href": "toolkits/decision-teardown.html"
+        "label": "View walkthrough",
+        "href": "toolkits/setup-bmad.html"
       }
     },
     {
       "id": "ship",
       "pillLabel": "Ship",
       "eyebrow": "Ship",
-      "title": "AI workflow in production pilots",
-      "meta": "HITL map, override paths, RN handoff",
-      "status": "waitlist",
+      "title": "Personal Hermes AI stack",
+      "meta": "gateway, cron, .hermes.md",
+      "status": "guide",
       "steps": [
-        "Map the on-truck or in-field journey where AI suggests the next action.",
-        "Define live, partial, and offline states with override on every suggestion.",
-        "Hand off RN-ready specs only after pilot technicians validate flows."
+        "Install Hermes CLI and migrate config to your repo workdir.",
+        "Install gateway so cron runs without an open terminal.",
+        "Create a toolkit-education-review cron and .hermes.md context file."
       ],
       "useCases": [
-        "Diagnosis-to-parts assist with a defensible next action",
-        "Next-best-action cards with override and audit trail for dispatch",
-        "Offline-safe AI states so technicians are never blocked mid-visit"
+        "Self-improving toolkit pages on a 12h loop",
+        "Repo-aware automation without re-pasting context",
+        "Pair Hermes cron with BMAD/WDS skills"
       ],
       "primaryCta": {
-        "label": "Join waitlist",
-        "href": "mailto:chandan004sharma@gmail.com?subject=AI%20workflow%20production%20pilot%20toolkit"
+        "label": "View walkthrough",
+        "href": "toolkits/setup-hermes-personal.html"
+      }
+    },
+    {
+      "id": "design",
+      "pillLabel": "Design",
+      "eyebrow": "Design",
+      "title": "Score design outputs before review",
+      "meta": "rubric, checklist, Excalidraw/Figma evidence",
+      "status": "guide",
+      "steps": [
+        "Write intent and pass/fail acceptance criteria.",
+        "Copy design-standards-rubric.md and adapt for your system.",
+        "Attach Excalidraw or Figma artefact; score before share."
+      ],
+      "useCases": [
+        "Fewer prompt iterations on agent-assisted UI",
+        "Higher first-pass acceptance in design review",
+        "Shared pass bar before Figma comments or Slack threads"
+      ],
+      "primaryCta": {
+        "label": "View walkthrough",
+        "href": "toolkits/score-design-before-review.html"
+      },
+      "secondaryCta": {
+        "label": "Full R&D loop",
+        "href": "toolkits/score-research-and-design-loop.html"
+      }
+    },
+    {
+      "id": "rd-loop",
+      "pillLabel": "R&D",
+      "eyebrow": "Research + Design",
+      "title": "Score research and design loop",
+      "meta": "path convention, rubric workshop, agent prompt",
+      "status": "guide",
+      "steps": [
+        "Agree where rubrics and outputs live (repo, drive, or links).",
+        "Run the workshop; save customized research and design rubrics.",
+        "Score before share; rerun agent review until the score log shows pass."
+      ],
+      "useCases": [
+        "One quality bar for research synthesis and design evidence",
+        "Works with any chat or IDE agent - no required vendor",
+        "Score log the whole team can read"
+      ],
+      "primaryCta": {
+        "label": "View walkthrough",
+        "href": "toolkits/score-research-and-design-loop.html"
       }
     },
     {
       "id": "measure",
       "pillLabel": "Measure",
       "eyebrow": "Measure",
-      "title": "Outcomes proof loop",
-      "meta": "Decision latency signals, guardrail checks",
+      "title": "Self-improving toolkit loop",
+      "meta": "registry, education rubric, review log",
       "status": "guide",
       "steps": [
-        "Name one decision latency signal per programme (what got faster, not vanity metrics).",
-        "Track override and exception rates inside agreed guardrails.",
-        "Close the loop in a written measure memo tied to the original bet."
+        "Add walkthroughs only to walkthrough-registry.yaml.",
+        "Score pages against _education-rubric.md v2.",
+        "Let Hermes cron patch gaps until all published pages pass."
       ],
       "useCases": [],
       "primaryCta": {
-        "label": "See method",
-        "href": "index.html#approach"
+        "label": "View walkthrough",
+        "href": "toolkits/toolkit-review-loop.html"
       }
     }
   ]

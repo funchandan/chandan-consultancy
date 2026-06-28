@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" role="img" aria-label="Insight evidence wall">
+<rect width="880" height="520" fill="#f8f9fa" rx="16" stroke="#dee2e6"/>
+<text x="24" y="36" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#495057">MEASURE</text><text x="24" y="58" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#212529">Field evidence wall</text>
+<rect x="24" y="108" width="832" height="64" rx="10" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+<text x="40" y="136" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" fill="#212529">&quot;Right part, not five maybes.&quot;</text>
+<text x="40" y="156" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" fill="#495057">Tech · S4</text>
+<rect x="24" y="180" width="832" height="64" rx="10" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+<text x="40" y="208" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" fill="#212529">&quot;What to verify first.&quot;</text>
+<text x="40" y="228" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" fill="#495057">Tech · S9</text>
+<rect x="24" y="252" width="832" height="64" rx="10" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+<text x="40" y="280" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" fill="#212529">&quot;Override shouldn't feel punitive.&quot;</text>
+<text x="40" y="300" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" fill="#495057">Tech · S11</text>
+<text x="24" y="332" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#495057">Contexts</text>
+<rect x="24" y="348" width="96" height="28" rx="6" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+<text x="72" y="366" text-anchor="middle" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#212529">Stable</text>
+<rect x="134" y="348" width="96" height="28" rx="6" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+<text x="182" y="366" text-anchor="middle" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#212529">Ambiguous</text>
+<rect x="244" y="348" width="96" height="28" rx="6" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+<text x="292" y="366" text-anchor="middle" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#212529">Offline</text>
+<rect x="24" y="392" width="832" height="48" rx="8" fill="#e8eefc" stroke="#144ccd" stroke-width="1"/>
+<text x="40" y="422" text-anchor="start" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#144ccd">Next: tighten override copy</text>
+</svg>

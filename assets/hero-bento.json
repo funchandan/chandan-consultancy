@@ -1,47 +1,93 @@
 {
   "toolkits": {
     "title": "Toolkits",
-    "description": "Decision teardowns, research scaffolds, and ship-ready frameworks.",
+    "description": "Open-source walkthroughs — BMAD, Hermes, agent skills, and design artefacts.",
     "href": "toolkits.html",
-    "cta": "Explore toolkits",
+    "cta": "Explore walkthroughs",
     "marquee": [
       {
-        "name": "Decision teardown",
-        "body": "Bet memo, kill date, and reversal cost before the brainstorm runs long.",
-        "href": "toolkits/decision-teardown.html"
+        "name": "Set up BMAD",
+        "body": "Install BMAD Method, config paths, and bmad-help routing.",
+        "href": "toolkits/setup-bmad.html"
       },
       {
-        "name": "AI workflow UX",
-        "body": "HITL map and guardrails for pilots humans can still override.",
-        "href": "toolkits.html#kit-create"
+        "name": "Personal Hermes stack",
+        "body": "Gateway, cron, and .hermes.md for repo-aware automation.",
+        "href": "toolkits/setup-hermes-personal.html"
       },
       {
-        "name": "Architecture audit",
-        "body": "Seam map and 90-day cohesion plan before the stack bends.",
-        "href": "toolkits.html#kit-build"
+        "name": "Curate agent skills",
+        "body": "Ten high-impact skills with install commands — not skill roulette.",
+        "href": "toolkits/curate-agent-skills.html"
       },
       {
-        "name": "User needs research",
-        "body": "Structured discovery doc for framing before UI scales.",
-        "href": "mailto:chandan004sharma@gmail.com?subject=User%20needs%20research%20toolkit"
+        "name": "WDS design loop",
+        "body": "Saga → Freya → Mimir handoffs with /handoff files.",
+        "href": "toolkits/wds-design-loop.html"
       },
       {
-        "name": "90-day rollout checklist",
-        "body": "Ship-ready checklist for enterprise programme delivery.",
-        "href": "toolkits.html#kit-build"
+        "name": "Score design before review",
+        "body": "Rubric + Excalidraw/Figma evidence before design review.",
+        "href": "toolkits/score-design-before-review.html"
+      },
+      {
+        "name": "Score R&D loop",
+        "body": "Team rubrics + repeating agent review on your research and design files.",
+        "href": "toolkits/score-research-and-design-loop.html"
+      },
+      {
+        "name": "Toolkit review loop",
+        "body": "Registry + education rubric + Hermes cron hygiene.",
+        "href": "toolkits/toolkit-review-loop.html"
       }
     ]
   },
-  "poll": {
-    "question": "What would you like to see more of?",
-    "description": "Pick one, then submit.",
-    "options": [
-      { "id": "cases", "label": "Case study deep dives" },
-      { "id": "toolkits", "label": "Design toolkits" },
-      { "id": "ai", "label": "AI product UX" },
-      { "id": "process", "label": "Design process notes" }
+  "quiz": {
+    "title": "Test your systems instinct",
+    "description": "Rank these moves for a 20M+ learner loyalty launch — most critical first.",
+    "items": [
+      {
+        "id": "map-journey",
+        "text": "Map earn-and-spend journeys end to end",
+        "rationale": "One clear story before marketplace UI scales."
+      },
+      {
+        "id": "align-metric",
+        "text": "Align stakeholders on one north-star metric",
+        "rationale": "Shared success measure before surface debates."
+      },
+      {
+        "id": "moderated-test",
+        "text": "Run moderated tests on production stimulus",
+        "rationale": "Validate with real learners in US + India."
+      },
+      {
+        "id": "marketplace",
+        "text": "Define marketplace mechanics and edge cases",
+        "rationale": "Earn/spend rules need defensible boundaries."
+      },
+      {
+        "id": "avatar",
+        "text": "Ship avatar rewards as a fast follow",
+        "rationale": "Delight layer after the core loop works."
+      }
     ],
-    "votes": { "cases": 12, "toolkits": 8, "ai": 15, "process": 5 }
+    "expertOrder": [
+      "map-journey",
+      "align-metric",
+      "moderated-test",
+      "marketplace",
+      "avatar"
+    ],
+    "startOrder": [
+      "avatar",
+      "marketplace",
+      "moderated-test",
+      "align-metric",
+      "map-journey"
+    ],
+    "caseHref": "#work",
+    "caseCta": "See the BYJU's case"
   },
   "reviews": {
     "title": "My reviews",
