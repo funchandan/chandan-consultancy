@@ -6,6 +6,7 @@ import { ReviewsBentoCard } from "@/components/reviews-bento-card";
 import { FileTextIcon } from "@radix-ui/react-icons";
 
 import { BentoToolkitTerminalBg } from "@/components/bento-toolkit-terminal-bg";
+import { NoiseTexture } from "@/components/ui/noise-texture";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import { cn } from "@/lib/utils";
 
@@ -43,6 +44,7 @@ export function BoxBento({
               data-bento-bg-toolkit
               aria-hidden
             >
+              <NoiseTexture className="bento-bg-toolkit__noise" />
               <BentoToolkitTerminalBg />
             </div>
           }
