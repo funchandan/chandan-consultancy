@@ -1,0 +1,13 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {"id": "bg", "type": "rectangle", "x": 0, "y": 0, "width": 390, "height": 844, "strokeColor": "#dee2e6", "backgroundColor": "#f8f9fa", "roughness": 0, "version": 1, "versionNonce": 1, "isDeleted": false},
+    {"id": "nav", "type": "rectangle", "x": 0, "y": 0, "width": 390, "height": 56, "strokeColor": "#dee2e6", "backgroundColor": "#ffffff", "roughness": 0, "version": 1, "versionNonce": 2, "isDeleted": false},
+    {"id": "btn", "type": "rectangle", "x": 16, "y": 760, "width": 358, "height": 48, "strokeColor": "#212529", "backgroundColor": "#212529", "roughness": 0, "version": 1, "versionNonce": 3, "isDeleted": false},
+    {"id": "btn-t", "type": "text", "x": 155, "y": 774, "text": "Continue", "fontSize": 14, "fontFamily": 5, "strokeColor": "#ffffff", "version": 1, "versionNonce": 4, "isDeleted": false}
+  ],
+  "appState": {"viewBackgroundColor": "#f8f9fa"},
+  "files": {}
+}

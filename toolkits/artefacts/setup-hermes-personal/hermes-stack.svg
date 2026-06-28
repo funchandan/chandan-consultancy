@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img" aria-label="Hermes personal stack: CLI, gateway, cron, project context">
+  <rect width="720" height="320" fill="#f8f9fa"/>
+  <text x="40" y="36" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#212529">Personal Hermes stack</text>
+  <rect x="40" y="70" width="140" height="72" rx="6" fill="#fff" stroke="#144ccd" stroke-width="2"/>
+  <text x="60" y="100" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#212529">Hermes CLI</text>
+  <text x="60" y="120" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#666">hermes setup</text>
+  <rect x="220" y="70" width="140" height="72" rx="6" fill="#fff" stroke="#144ccd" stroke-width="2"/>
+  <text x="240" y="100" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#212529">Gateway</text>
+  <text x="240" y="120" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#666">launchd</text>
+  <rect x="400" y="70" width="140" height="72" rx="6" fill="#fff" stroke="#144ccd" stroke-width="2"/>
+  <text x="420" y="100" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#212529">Cron</text>
+  <text x="420" y="120" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#666">every 12h</text>
+  <rect x="580" y="70" width="120" height="72" rx="6" fill="#fff" stroke="#144ccd" stroke-width="2"/>
+  <text x="600" y="100" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#212529">.hermes.md</text>
+  <text x="600" y="120" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#666">project context</text>
+  <path d="M180 106h40" stroke="#144ccd" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M360 106h40" stroke="#144ccd" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M540 106h40" stroke="#144ccd" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="40" y="200" width="640" height="80" rx="6" fill="#fff" stroke="#868e96" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="60" y="230" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#212529">Repo workdir - toolkits/*.html + walkthrough-registry.yaml</text>
+  <text x="60" y="252" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#666">Skills: requesting-code-review / artefacts: toolkits/artefacts/</text>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#144ccd"/>
+    </marker>
+  </defs>
+</svg>

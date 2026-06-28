@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" role="img" aria-label="BMAD setup wireframe: install, config, planning flow">
+  <rect width="400" height="220" fill="#f4f6f9"/>
+  <rect x="16" y="16" width="368" height="28" rx="4" fill="#fff" stroke="#c5cdd8" stroke-width="1"/>
+  <rect x="28" y="24" width="72" height="12" rx="2" fill="#144ccd" opacity="0.85"/>
+  <rect x="108" y="24" width="48" height="12" rx="2" fill="#dee2e6"/>
+  <rect x="164" y="24" width="56" height="12" rx="2" fill="#dee2e6"/>
+  <rect x="16" y="56" width="176" height="88" rx="6" fill="#1a2332"/>
+  <rect x="28" y="68" width="8" height="8" rx="2" fill="#4ade80"/>
+  <rect x="40" y="68" width="8" height="8" rx="2" fill="#fbbf24"/>
+  <rect x="52" y="68" width="8" height="8" rx="2" fill="#f87171"/>
+  <text x="28" y="92" font-family="Courier New, Courier, monospace" font-size="9" fill="#a8b8d0">npx bmad-method install</text>
+  <text x="28" y="108" font-family="Courier New, Courier, monospace" font-size="9" fill="#7dd3fc">_bmad/bmm/config.yaml</text>
+  <text x="28" y="124" font-family="Courier New, Courier, monospace" font-size="9" fill="#94a3b8">bmad-help - next skill</text>
+  <rect x="204" y="56" width="180" height="36" rx="4" fill="#fff" stroke="#144ccd" stroke-width="1.5"/>
+  <text x="218" y="78" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#212529">bmad-prd</text>
+  <rect x="204" y="100" width="180" height="36" rx="4" fill="#fff" stroke="#144ccd" stroke-width="1.5"/>
+  <text x="218" y="122" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#212529">create-epics</text>
+  <path d="M196 74h8 M196 118h8" stroke="#144ccd" stroke-width="1.5"/>
+  <rect x="16" y="156" width="368" height="48" rx="6" fill="#fff" stroke="#868e96" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="28" y="178" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#495057">_bmad-output/planning-artifacts/</text>
+  <text x="28" y="194" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#868e96">PRD - epics - dev-story</text>
+</svg>

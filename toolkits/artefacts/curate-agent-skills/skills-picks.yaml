@@ -1,0 +1,64 @@
+# Starter example skill picks for BMAD/WDS/Hermes stacks - replace with your audit results.
+# Install via: npx skills add <source> --skill <name> -y
+version: 1
+
+skills:
+  - name: bmad-help
+    type: skill
+    impact: Orient in any BMAD workflow; reads bmad-help.csv and artifact state
+    when: Starting a session or unsure what skill to run next
+    install: npx skills add bmad-code-org/BMAD-METHOD --skill bmad-help -y
+
+  - name: bmad-prd
+    type: skill
+    impact: Structured PRD create/update/validate with decision log discipline
+    when: Greenfield product or major scope change
+    install: bundled with BMAD install
+
+  - name: bmad-dev-story
+    type: skill
+    impact: Executes a single story with context file and implementation guardrails
+    when: Ready to ship a scoped story from epics
+    install: bundled with BMAD install
+
+  - name: bmad-create-epics-and-stories
+    type: skill
+    impact: Breaks PRD into epics and stories with traceability
+    when: After PRD approval, before dev stories
+    install: bundled with BMAD install
+
+  - name: bmad-code-review
+    type: skill
+    impact: Adversarial review with parallel reviewer subagents
+    when: Before merge on non-trivial changes
+    install: bundled with BMAD install
+
+  - name: handoff
+    type: skill
+    impact: Targeted Saga → Freya → Mimir transfers without session wrap noise
+    when: Design done, implementation starts (or reverse for correct-course)
+    install: WDS / whiteport-design-studio install
+
+  - name: sync
+    type: skill
+    impact: Keeps WDS skills current from upstream source
+    when: Agent startup or after pulling WDS updates
+    install: WDS install
+
+  - name: wireframe
+    type: skill
+    impact: Excalidraw wireframes with Freya rules (structure only, no annotations)
+    when: Page spec needs a layout artefact for Mimir
+    install: WDS install
+
+  - name: requesting-code-review
+    type: skill
+    impact: Structured review requests for Hermes cron and manual passes
+    when: Toolkit pages, PRs, or loop hygiene checks
+    install: npx skills add ./hermes-agent/skills --skill requesting-code-review -y
+
+  - name: plan
+    type: skill
+    impact: Bite-sized implementation plans under .hermes/plans/
+    when: Multi-step feature before execution
+    install: npx skills add ./hermes-agent/skills --skill plan -y

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Curate high-impact agent skills | Chandan Sharma</title>
+  <meta name="description" content="Walkthrough: audit agent skills, install with npx skills, and pin a starter set with skills-picks.yaml  -  downloadable template included." />
+  <link rel="stylesheet" href="../styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="../assets/site-nav.js" defer></script>
+  <link rel="stylesheet" href="../assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="../assets/motion/wp-lenis.css?v=1" />
+  <script src="../assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="../assets/motion/wp-lenis.js?v=1" defer></script>
+</head>
+<body>
+  <a class="skip-to-content" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" data-site-nav aria-label="Primary">
+      <a class="brand" href="../index.html" data-nav-brand>Chandan Sharma</a>
+      <button type="button" class="nav-menu-toggle" id="site-nav-open" aria-expanded="false" aria-controls="site-nav-dialog" aria-label="Open menu">
+        <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-menu-toggle__label">Menu</span>
+      </button>
+      <dialog id="site-nav-dialog" class="site-nav-dialog" aria-labelledby="site-nav-dialog-title">
+        <div class="site-nav-dialog__panel">
+          <div class="site-nav-dialog__header">
+            <p id="site-nav-dialog-title" class="site-nav-dialog__title">Menu</p>
+            <form method="dialog"><button type="submit" class="site-nav-dialog__close">Close</button></form>
+          </div>
+          <div class="nav-links nav-links--dialog" data-nav-links-dialog>
+            <a href="../work.html" data-nav-item="work">Work</a>
+            <div class="nav-drawer-group" role="group" aria-labelledby="nav-d-toolkits-label">
+              <p id="nav-d-toolkits-label" class="nav-drawer-group__label">Toolkits</p>
+              <a href="../toolkits.html">Overview</a>
+              <a href="setup-bmad.html">Set up BMAD</a>
+              <a href="setup-hermes-personal.html">Personal Hermes stack</a>
+              <a class="active" href="curate-agent-skills.html">Curate agent skills</a>
+              <a href="wds-design-loop.html">WDS design loop</a>
+              <a href="wireframe-with-excalidraw.html">Wireframe in Excalidraw</a>
+              <a href="score-design-before-review.html">Score design before review</a>
+              <a href="score-research-and-design-loop.html">Score R&amp;D loop</a>
+              <a href="toolkit-review-loop.html">Toolkit review loop</a>
+            </div>
+            <a href="../about.html" data-nav-item="about">About</a>
+          </div>
+        </div>
+      </dialog>
+      <div class="nav-links nav-links--desktop" data-nav-links>
+        <a href="../work.html" data-nav-item="work">Work</a>
+        <div class="nav-disclosure" data-nav-disclosure>
+          <button type="button" class="nav-disclosure__trigger" id="nav-trigger-toolkits" data-nav-disclosure-trigger aria-expanded="false" aria-haspopup="true" aria-controls="nav-panel-toolkits">Toolkits<span class="nav-disclosure__chevron" aria-hidden="true"></span></button>
+          <div class="nav-disclosure__panel" id="nav-panel-toolkits" data-nav-disclosure-panel role="region" aria-labelledby="nav-trigger-toolkits" hidden>
+            <p class="nav-disclosure__eyebrow">Walkthroughs</p>
+            <ul class="nav-disclosure__list">
+              <li><a href="../toolkits.html">Overview</a></li>
+              <li><a href="setup-bmad.html">Set up BMAD</a></li>
+              <li><a href="setup-hermes-personal.html">Personal Hermes stack</a></li>
+              <li><a class="active" href="curate-agent-skills.html">Curate agent skills</a></li>
+              <li><a href="wds-design-loop.html">WDS design loop</a></li>
+              <li><a href="wireframe-with-excalidraw.html">Wireframe in Excalidraw</a></li>
+              <li><a href="score-design-before-review.html">Score design before review</a></li>
+              <li><a href="score-research-and-design-loop.html">Score R&amp;D loop</a></li>
+              <li><a href="toolkit-review-loop.html">Toolkit review loop</a></li>
+            </ul>
+          </div>
+        </div>
+        <a href="../about.html" data-nav-item="about">About</a>
+      </div>
+      <a class="nav-cta" href="#step-1">Run step 1</a>
+    </nav>
+  </header>
+
+  <main id="main" class="toolkit-article toolkit-article--walkthrough" tabindex="-1">
+    <section class="toolkit-hero toolkit-hero--walkthrough section" aria-labelledby="curate-title">
+      <div class="shell">
+        <div class="toolkit-hero__copy">
+          <p class="eyebrow"><a href="../toolkits.html">Toolkits</a> / Research</p>
+          <div class="toolkit-hero__head">
+            <span class="toolkit-status toolkit-status--guide">Walkthrough</span>
+            <h1 id="curate-title">Curate high-impact agent skills</h1>
+          </div>
+          <p class="consulting-hero-lede">Run a repeatable skill audit: inventory what is installed, add only from known upstream sources, and pin a short starter list your team agrees on  -  not every skill in the catalogue.</p>
+          <p class="toolkit-prereq"><strong>Prerequisites:</strong> A repo with BMAD or Hermes already started; Node 18+; ~25 minutes.</p>
+          <div class="toolkit-outcome toolkit-outcome--hero">
+            <strong>After this walkthrough</strong>
+            You will have a pinned skill set in <code>skills-lock.json</code>, a shareable <code>skills-picks.yaml</code>, and a repeatable audit flow before adding more skills.
+          </div>
+          <ul class="toolkit-meta-strip toolkit-meta-strip--pills" aria-label="Walkthrough facts">
+            <li>~25 min</li>
+            <li>Self-serve</li>
+            <li>skills CLI</li>
+            <li>Starter example picks</li>
+          </ul>
+          <div class="toolkit-hero__actions">
+            <a class="wp-btn wp-btn--primary" href="#step-1">Run step 1</a>
+            <a class="button button--ghost" href="https://github.com/vercel-labs/skills" rel="noopener">skills CLI repo</a>
+          </div>
+          <p class="toolkit-hero__jump"><a href="#artefact">See skills catalogue</a> &middot; <a href="#downloads">Downloads</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" aria-label="Walkthrough content">
+      <div class="shell toolkit-body">
+        <aside class="toolkit-body__aside">
+          <nav class="toolkit-toc toolkit-toc--sticky" aria-label="On this page">
+            <p class="toolkit-toc__label">On this page</p>
+            <ol>
+              <li><a href="#start">Start here</a></li>
+              <li><a href="#improvement">Why curate</a></li>
+              <li>
+                <a href="#walkthrough">Walkthrough</a>
+                <ol class="toolkit-toc__sub">
+                  <li><a href="#step-1">1. Audit</a></li>
+                  <li><a href="#step-2">2. Install</a></li>
+                  <li><a href="#step-3">3. Hermes list</a></li>
+                  <li><a href="#step-4">4. Pin</a></li>
+                </ol>
+              </li>
+              <li><a href="#curated">Further reading</a></li>
+              <li><a href="#artefact">Skills catalogue</a></li>
+              <li><a href="#downloads">Downloads</a></li>
+              <li><a href="#pitfalls">Troubleshooting</a></li>
+            </ol>
+          </nav>
+        </aside>
+
+        <div class="toolkit-body__main">
+          <section id="start" aria-labelledby="start-heading">
+            <h2 id="start-heading">Start here</h2>
+            <p class="toolkit-section-lede">Confirm fit and the end state before you install more skills.</p>
+            <div class="toolkit-start-panel">
+              <section aria-labelledby="who-heading">
+                <h3 id="who-heading">Who this is for</h3>
+                <table class="toolkit-roles">
+                  <thead><tr><th>Role</th><th>Why run this</th></tr></thead>
+                  <tbody>
+                    <tr><td>Tech lead</td><td>Reproducible skill pins via <code>skills-lock.json</code></td></tr>
+                    <tr><td>Agent practitioner</td><td>Stop skill roulette; start from named defaults</td></tr>
+                    <tr><td>Team lead</td><td>Shareable <code>skills-picks.yaml</code> with install commands</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section aria-labelledby="end-state-heading">
+                <h3 id="end-state-heading">What you&rsquo;ll have</h3>
+                <ul class="toolkit-checklist">
+                  <li>Audit of <code>.agents/skills/</code> and <code>skills-lock.json</code></li>
+                  <li>Targeted installs via <code>npx skills add --skill</code></li>
+                  <li><code>skills-picks.yaml</code> with &le;10 example skills documented (replace with your stack)</li>
+                  <li>Top skills referenced in <code>.hermes.md</code> or AGENTS.md</li>
+                </ul>
+              </section>
+            </div>
+          </section>
+
+          <section id="improvement" aria-labelledby="improvement-heading">
+            <h2 id="improvement-heading">Why curate</h2>
+            <p class="toolkit-section-lede">Concrete shift in how agents pick skills  -  not &ldquo;install everything&rdquo; advice.</p>
+            <div class="toolkit-compare">
+              <p class="toolkit-compare__card toolkit-compare__card--before">
+                <span class="toolkit-compare__label">Before</span>
+                70+ Hermes skills installed with <code>--all</code>; agents pick generic skills or hallucinate workflows.
+              </p>
+              <p class="toolkit-compare__card toolkit-compare__card--after">
+                <span class="toolkit-compare__label">After</span>
+                Ten named skills with *when to use* documented; new sessions start from <code>bmad-help</code> or <code>.hermes.md</code> instead of skill roulette.
+              </p>
+            </div>
+          </section>
+
+          <section id="walkthrough" aria-labelledby="walkthrough-heading">
+            <div class="toolkit-walkthrough-header">
+              <h2 id="walkthrough-heading">Walkthrough</h2>
+              <p class="toolkit-walkthrough-meta">4 steps &middot; ~25 min &middot; copy-paste commands</p>
+            </div>
+            <p class="toolkit-section-lede">Run in order. Each step lists expected output so you know before moving on.</p>
+            <ol class="toolkit-method toolkit-phase-grid">
+              <li id="step-1">
+                <span class="toolkit-phase-grid__step-label">Step 1</span>
+                <strong>Audit installed skills.</strong><span class="toolkit-method__meta">5 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block">ls .agents/skills/
+cat skills-lock.json | head -40</pre>
+                <span class="toolkit-phase-exit">Expected: list what is pinned and where it came from (<code>source</code>, <code>computedHash</code>).</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Empty skills folder  -  run <a href="setup-bmad.html">Set up BMAD</a> or <a href="setup-hermes-personal.html">Personal Hermes stack</a> first.</p>
+              </li>
+              <li id="step-2">
+                <span class="toolkit-phase-grid__step-label">Step 2</span>
+                <strong>Install from a known source.</strong><span class="toolkit-method__meta">10 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block">npx skills add ./hermes-agent/skills --skill requesting-code-review -y
+npx skills add bmad-code-org/BMAD-METHOD --skill bmad-help -y</pre>
+                <span class="toolkit-phase-exit">Expected: prefer targeted <code>--skill</code> over <code>--all</code> unless you need the full Hermes bundle.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Duplicate skill names  -  prefer one source per skill name; see <a href="#pitfalls">troubleshooting</a>.</p>
+              </li>
+              <li id="step-3">
+                <span class="toolkit-phase-grid__step-label">Step 3</span>
+                <strong>Hermes skill list (optional).</strong><span class="toolkit-method__meta">2 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block">hermes skills list</pre>
+                <span class="toolkit-phase-exit">Expected: confirms what Hermes CLI sees vs Cursor <code>.agents/skills/</code>.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> CLI list differs from Cursor  -  check both paths; Hermes may use a separate skills directory.</p>
+              </li>
+              <li id="step-4">
+                <span class="toolkit-phase-grid__step-label">Step 4</span>
+                <strong>Pin in project context.</strong><span class="toolkit-method__meta">8 min</span>
+                <p>Copy <a href="artefacts/curate-agent-skills/skills-picks.yaml">skills-picks.yaml</a> to your repo. Reference top skills in <code>.hermes.md</code> or AGENTS.md so cron and chat sessions use the same list.</p>
+                <span class="toolkit-phase-exit">Exit: team agrees on &le;10 default skills; rest on demand.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Agent ignores skills  -  mention skill by name in prompt or attach via Cursor rules / Hermes <code>--skill</code>.</p>
+              </li>
+            </ol>
+          </section>
+
+          <section id="curated" aria-labelledby="curated-heading">
+            <h2 id="curated-heading">Further reading</h2>
+            <p class="toolkit-section-lede">Upstream install sources. Replace example skill names below with picks from your audit.</p>
+            <h3 id="example-picks-heading">Example picks (starter template)</h3>
+            <p class="toolkit-section-lede">Illustrative skills for BMAD + WDS + Hermes stacks  -  not a universal top ten. Download <a href="artefacts/curate-agent-skills/skills-picks.yaml">skills-picks.yaml</a> and edit for your team.</p>
+            <table class="toolkit-curated-table">
+              <thead><tr><th>Skill</th><th>Impact</th><th>When to use</th></tr></thead>
+              <tbody>
+                <tr><td><code>bmad-help</code></td><td>Routes next BMAD step from catalog + artifacts</td><td>Session start, stuck on phase</td></tr>
+                <tr><td><code>bmad-prd</code></td><td>PRD create/update/validate</td><td>Greenfield or scope change</td></tr>
+                <tr><td><code>bmad-create-epics-and-stories</code></td><td>PRD &rarr; epics &rarr; stories</td><td>After PRD sign-off</td></tr>
+                <tr><td><code>bmad-dev-story</code></td><td>Single-story implementation</td><td>Ready to ship a story</td></tr>
+                <tr><td><code>bmad-code-review</code></td><td>Adversarial multi-reviewer pass</td><td>Before merge</td></tr>
+                <tr><td><code>handoff</code></td><td>Saga/Freya/Mimir targeted transfer</td><td>Design &rarr; build boundary</td></tr>
+                <tr><td><code>sync</code></td><td>WDS skill updates</td><td>Startup or after WDS pull</td></tr>
+                <tr><td><code>wireframe</code></td><td>Excalidraw structure-only layouts</td><td>Freya page specs</td></tr>
+                <tr><td><code>requesting-code-review</code></td><td>Hermes/cron review structure</td><td>Toolkit loop, PRs</td></tr>
+                <tr><td><code>plan</code></td><td>Bite-sized plans in <code>.hermes/plans/</code></td><td>Multi-step features</td></tr>
+              </tbody>
+            </table>
+            <table class="toolkit-curated-table">
+              <thead><tr><th>Name</th><th>Type</th><th>Why this one</th><th>Link</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>hermes-agent/skills</td>
+                  <td>Repo</td>
+                  <td>70+ Hermes skills installable via <code>npx skills add</code></td>
+                  <td><a href="https://github.com/NousResearch/hermes-agent" rel="noopener">GitHub</a></td>
+                </tr>
+                <tr>
+                  <td>BMAD-METHOD</td>
+                  <td>Repo</td>
+                  <td>40+ planning and dev skills</td>
+                  <td><a href="https://github.com/bmad-code-org/BMAD-METHOD" rel="noopener">GitHub</a></td>
+                </tr>
+                <tr>
+                  <td>Vercel skills CLI</td>
+                  <td>Tool</td>
+                  <td><code>npx skills add</code> for GitHub, local paths, git URLs</td>
+                  <td><a href="https://github.com/vercel-labs/skills" rel="noopener">GitHub</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section id="artefact" aria-labelledby="artefact-heading">
+            <h2 id="artefact-heading">Skills catalogue</h2>
+            <p class="toolkit-section-lede">Visual index of the curated set  -  download the YAML for install commands.</p>
+            <figure class="toolkit-artefact-figure">
+              <img src="artefacts/toolkits-overview/card-skills.svg" width="720" height="360" alt="Curated agent skills card: ten high-impact picks for BMAD, WDS, and Hermes workflows" loading="lazy" />
+              <figcaption>
+                Example starter skill set  -  replace with your audit results.
+                <a href="artefacts/curate-agent-skills/skills-picks.yaml" download>Download skills-picks.yaml</a>
+              </figcaption>
+            </figure>
+          </section>
+
+          <section id="downloads" aria-labelledby="downloads-heading">
+            <h2 id="downloads-heading">Downloads</h2>
+            <p class="toolkit-section-lede">Take these into your repo  -  each file maps to a step above.</p>
+            <ul class="toolkit-download-list toolkit-download-cards">
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/curate-agent-skills/skills-picks.yaml" download>skills-picks.yaml</a>
+                  <p>10 example skills with install commands; copy and edit in step 4.</p>
+                </article>
+              </li>
+            </ul>
+          </section>
+
+          <section id="pitfalls" aria-labelledby="pitfalls-heading">
+            <h2 id="pitfalls-heading">Troubleshooting</h2>
+            <p class="toolkit-section-lede">Symptom &rarr; fix, tied to the step where it usually appears.</p>
+            <ul class="toolkit-pitfalls">
+              <li><strong>Skill hash drift.</strong> <span class="toolkit-pitfalls__step">Step 2</span>  -  Re-run <code>npx skills add</code> after upstream updates; commit new <code>skills-lock.json</code>.</li>
+              <li><strong>Duplicate skill names.</strong> <span class="toolkit-pitfalls__step">Step 2</span>  -  BMAD and Hermes may overlap; prefer one source per skill name.</li>
+              <li><strong>Agent ignores skills.</strong> <span class="toolkit-pitfalls__step">Step 4</span>  -  Mention skill by name in prompt or attach via Cursor rules / Hermes <code>--skill</code>.</li>
+              <li><strong>Too many skills.</strong> <span class="toolkit-pitfalls__step">Step 4</span>  -  Cap at ~10 defaults; document the rest in a catalogue file like this page.</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="related-heading">
+            <h2 id="related-heading">Optional on this site</h2>
+            <p class="toolkit-section-lede">Companion walkthroughs on this site. You do not need them to run a skill audit.</p>
+            <ul class="toolkit-related">
+              <li><a href="setup-bmad.html">Set up BMAD &rarr;</a></li>
+              <li><a href="setup-hermes-personal.html">Personal Hermes stack &rarr;</a></li>
+              <li><a href="wireframe-with-excalidraw.html">Wireframe in Excalidraw &rarr;</a></li>
+            </ul>
+            <div class="toolkit-cta-band">
+              <a class="wp-btn wp-btn--primary" href="#step-1">Run step 1</a>
+              <a class="button" href="artefacts/curate-agent-skills/skills-picks.yaml" download>Download picks</a>
+              <a class="button" href="../toolkits.html">All walkthroughs</a>
+            </div>
+            <p class="toolkit-attribution">
+              <strong>Attribution.</strong>
+              <a href="https://github.com/vercel-labs/skills" rel="noopener">Vercel skills CLI</a>,
+              <a href="https://github.com/bmad-code-org/BMAD-METHOD" rel="noopener">BMAD Method</a>, and
+              <a href="https://github.com/NousResearch/hermes-agent" rel="noopener">Hermes Agent</a> upstream sources.
+              Starter templates / process  -  adapt for your organisation. Not affiliated with upstream maintainers.
+            </p>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <span>Chandan Sharma</span>
+      <a href="mailto:chandan004sharma@gmail.com">chandan004sharma@gmail.com</a>
+    </div>
+  </footer>
+</body>
+</html>

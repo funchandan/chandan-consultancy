@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" role="img" aria-label="Curate agent skills wireframe: skills catalogue with install commands">
+  <rect width="400" height="220" fill="#f4f6f9"/>
+  <rect x="16" y="16" width="200" height="20" rx="4" fill="#212529"/>
+  <rect x="16" y="44" width="120" height="10" rx="2" fill="#dee2e6"/>
+  <rect x="16" y="68" width="368" height="36" rx="6" fill="#fff" stroke="#c5cdd8" stroke-width="1"/>
+  <rect x="28" y="80" width="14" height="14" rx="3" fill="#144ccd"/>
+  <text x="50" y="90" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#212529">systematic-debugging</text>
+  <text x="240" y="90" font-family="Courier New, Courier, monospace" font-size="8" fill="#868e96">npx skills add</text>
+  <rect x="16" y="110" width="368" height="36" rx="6" fill="#fff" stroke="#c5cdd8" stroke-width="1"/>
+  <rect x="28" y="122" width="14" height="14" rx="3" fill="#144ccd"/>
+  <text x="50" y="132" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#212529">requesting-code-review</text>
+  <text x="240" y="132" font-family="Arial, Helvetica, sans-serif" font-size="8" fill="#868e96">high impact</text>
+  <rect x="16" y="152" width="368" height="36" rx="6" fill="#fff" stroke="#c5cdd8" stroke-width="1"/>
+  <rect x="28" y="164" width="14" height="14" rx="3" stroke="#c5cdd8" stroke-width="1.5" fill="#fff"/>
+  <text x="50" y="174" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#495057">comfyui</text>
+  <text x="240" y="174" font-family="Arial, Helvetica, sans-serif" font-size="8" fill="#868e96">creative</text>
+  <rect x="16" y="196" width="140" height="12" rx="2" fill="#dee2e6"/>
+  <text x="168" y="206" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#868e96">skills-picks.yaml</text>
+</svg>

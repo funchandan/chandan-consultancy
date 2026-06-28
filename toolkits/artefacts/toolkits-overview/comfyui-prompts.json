@@ -1,0 +1,39 @@
+{
+  "_comment": "ComfyUI txt2img prompts for toolkit card wireframes. Regenerate with run_batch.py when local server or Comfy Cloud is available.",
+  "workflow": ".agents/skills/comfyui/workflows/sd15_txt2img.json",
+  "output_dir": "toolkits/artefacts/toolkits-overview/png",
+  "shared_args": {
+    "steps": 20,
+    "cfg": 7,
+    "width": 800,
+    "height": 440,
+    "negative_prompt": "photorealistic, color photo, 3d render, glossy, decorative, blurry, text gibberish, watermark"
+  },
+  "cards": [
+    {
+      "slug": "card-bmad",
+      "prompt": "low fidelity UI wireframe, grayscale and blue accent, BMAD planning toolkit card, terminal window with install command, config yaml file, flow diagram boxes labeled prd epics story, clean flat vector wireframe style, white background, structure only"
+    },
+    {
+      "slug": "card-hermes",
+      "prompt": "low fidelity UI wireframe, grayscale and blue accent, Hermes automation stack card, four connected boxes CLI gateway cron hermes md, terminal cron snippet, repo context dashed box, flat wireframe diagram"
+    },
+    {
+      "slug": "card-skills",
+      "prompt": "low fidelity UI wireframe, grayscale and blue accent, agent skills catalogue card, checklist rows with skill names and install commands, yaml file label, flat wireframe list layout"
+    },
+    {
+      "slug": "card-wds",
+      "prompt": "low fidelity UI wireframe, grayscale and blue accent, three agent boxes Saga Freya Mimir with arrows, handoff progress files, design studio workflow card, flat wireframe"
+    },
+    {
+      "slug": "card-wireframe",
+      "prompt": "low fidelity UI wireframe, grayscale, mobile phone frame 390x844, header content cards primary button, excalidraw label, structure only no decoration, UX wireframe card"
+    },
+    {
+      "slug": "card-review-loop",
+      "prompt": "low fidelity UI wireframe, grayscale and blue accent, education review loop card, yaml registry panel, rubric score 18/20 progress bars, cron terminal strip, review log file, flat wireframe"
+    }
+  ],
+  "regenerate": "python3 .agents/skills/comfyui/scripts/run_batch.py --workflow .agents/skills/comfyui/workflows/sd15_txt2img.json --count 1 --output-dir toolkits/artefacts/toolkits-overview/png --args-file toolkits/artefacts/toolkits-overview/comfyui-prompts.json"
+}

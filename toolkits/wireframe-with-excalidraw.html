@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Wireframe a flow in Excalidraw | Chandan Sharma</title>
+  <meta name="description" content="Walkthrough: Freya wireframe rules, Excalidraw file layout, mobile canvas 390×844  -  sample flow you can download and edit." />
+  <link rel="stylesheet" href="../styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="../assets/site-nav.js" defer></script>
+  <link rel="stylesheet" href="../assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="../assets/motion/wp-lenis.css?v=1" />
+  <script src="../assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="../assets/motion/wp-lenis.js?v=1" defer></script>
+</head>
+<body>
+  <a class="skip-to-content" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" data-site-nav aria-label="Primary">
+      <a class="brand" href="../index.html" data-nav-brand>Chandan Sharma</a>
+      <button type="button" class="nav-menu-toggle" id="site-nav-open" aria-expanded="false" aria-controls="site-nav-dialog" aria-label="Open menu">
+        <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-menu-toggle__label">Menu</span>
+      </button>
+      <dialog id="site-nav-dialog" class="site-nav-dialog" aria-labelledby="site-nav-dialog-title">
+        <div class="site-nav-dialog__panel">
+          <div class="site-nav-dialog__header">
+            <p id="site-nav-dialog-title" class="site-nav-dialog__title">Menu</p>
+            <form method="dialog"><button type="submit" class="site-nav-dialog__close">Close</button></form>
+          </div>
+          <div class="nav-links nav-links--dialog" data-nav-links-dialog>
+            <a href="../work.html" data-nav-item="work">Work</a>
+            <div class="nav-drawer-group" role="group" aria-labelledby="nav-d-toolkits-label">
+              <p id="nav-d-toolkits-label" class="nav-drawer-group__label">Toolkits</p>
+              <a href="../toolkits.html">Overview</a>
+              <a href="setup-bmad.html">Set up BMAD</a>
+              <a href="setup-hermes-personal.html">Personal Hermes stack</a>
+              <a href="curate-agent-skills.html">Curate agent skills</a>
+              <a href="wds-design-loop.html">WDS design loop</a>
+              <a class="active" href="wireframe-with-excalidraw.html">Wireframe in Excalidraw</a>
+              <a href="score-design-before-review.html">Score design before review</a>
+              <a href="score-research-and-design-loop.html">Score R&amp;D loop</a>
+              <a href="toolkit-review-loop.html">Toolkit review loop</a>
+            </div>
+            <a href="../about.html" data-nav-item="about">About</a>
+          </div>
+        </div>
+      </dialog>
+      <div class="nav-links nav-links--desktop" data-nav-links>
+        <a href="../work.html" data-nav-item="work">Work</a>
+        <div class="nav-disclosure" data-nav-disclosure>
+          <button type="button" class="nav-disclosure__trigger" id="nav-trigger-toolkits" data-nav-disclosure-trigger aria-expanded="false" aria-haspopup="true" aria-controls="nav-panel-toolkits">Toolkits<span class="nav-disclosure__chevron" aria-hidden="true"></span></button>
+          <div class="nav-disclosure__panel" id="nav-panel-toolkits" data-nav-disclosure-panel role="region" aria-labelledby="nav-trigger-toolkits" hidden>
+            <p class="nav-disclosure__eyebrow">Walkthroughs</p>
+            <ul class="nav-disclosure__list">
+              <li><a href="../toolkits.html">Overview</a></li>
+              <li><a href="setup-bmad.html">Set up BMAD</a></li>
+              <li><a href="setup-hermes-personal.html">Personal Hermes stack</a></li>
+              <li><a href="curate-agent-skills.html">Curate agent skills</a></li>
+              <li><a href="wds-design-loop.html">WDS design loop</a></li>
+              <li><a class="active" href="wireframe-with-excalidraw.html">Wireframe in Excalidraw</a></li>
+              <li><a href="score-design-before-review.html">Score design before review</a></li>
+              <li><a href="score-research-and-design-loop.html">Score R&amp;D loop</a></li>
+              <li><a href="toolkit-review-loop.html">Toolkit review loop</a></li>
+            </ul>
+          </div>
+        </div>
+        <a href="../about.html" data-nav-item="about">About</a>
+      </div>
+      <a class="nav-cta" href="#step-1">Run step 1</a>
+    </nav>
+  </header>
+
+  <main id="main" class="toolkit-article toolkit-article--walkthrough" tabindex="-1">
+    <section class="toolkit-hero toolkit-hero--walkthrough section" aria-labelledby="wireframe-title">
+      <div class="shell">
+        <div class="toolkit-hero__copy">
+          <p class="eyebrow"><a href="../toolkits.html">Toolkits</a> / Design</p>
+          <div class="toolkit-hero__head">
+            <span class="toolkit-status toolkit-status--guide">Walkthrough</span>
+            <h1 id="wireframe-title">Wireframe a flow in Excalidraw</h1>
+          </div>
+          <p class="consulting-hero-lede">Produce structure-only Excalidraw wireframes using Freya&rsquo;s rules  -  layout and labels in the file, intent in the step spec. No annotations in the canvas.</p>
+          <p class="toolkit-prereq"><strong>Prerequisites:</strong> Excalidraw (web or VS Code extension), Freya <code>wireframe</code> skill or this page, ~20 minutes.</p>
+          <div class="toolkit-outcome toolkit-outcome--hero">
+            <strong>After this walkthrough</strong>
+            You will have a mobile wireframe (<code>390 &times; 844</code>) under <code>work/design/wireframes/</code>, editable in Excalidraw, following structure-only rules.
+          </div>
+          <ul class="toolkit-meta-strip toolkit-meta-strip--pills" aria-label="Walkthrough facts">
+            <li>~20 min</li>
+            <li>Self-serve</li>
+            <li>Excalidraw</li>
+            <li>Mobile 390&times;844</li>
+          </ul>
+          <div class="toolkit-hero__actions">
+            <a class="wp-btn wp-btn--primary" href="#step-1">Run step 1</a>
+            <a class="button button--ghost" href="https://excalidraw.com" rel="noopener">Open Excalidraw</a>
+          </div>
+          <p class="toolkit-hero__jump"><a href="#artefact">See sample wireframe</a> &middot; <a href="#downloads">Downloads</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" aria-label="Walkthrough content">
+      <div class="shell toolkit-body">
+        <aside class="toolkit-body__aside">
+          <nav class="toolkit-toc toolkit-toc--sticky" aria-label="On this page">
+            <p class="toolkit-toc__label">On this page</p>
+            <ol>
+              <li><a href="#start">Start here</a></li>
+              <li><a href="#improvement">Why wireframes</a></li>
+              <li>
+                <a href="#walkthrough">Walkthrough</a>
+                <ol class="toolkit-toc__sub">
+                  <li><a href="#step-1">1. Path</a></li>
+                  <li><a href="#step-2">2. Canvas</a></li>
+                  <li><a href="#step-3">3. Regions</a></li>
+                  <li><a href="#step-4">4. Export</a></li>
+                </ol>
+              </li>
+              <li><a href="#curated">Further reading</a></li>
+              <li><a href="#artefact">Sample artefact</a></li>
+              <li><a href="#downloads">Downloads</a></li>
+              <li><a href="#pitfalls">Troubleshooting</a></li>
+            </ol>
+          </nav>
+        </aside>
+
+        <div class="toolkit-body__main">
+          <section id="start" aria-labelledby="start-heading">
+            <h2 id="start-heading">Start here</h2>
+            <p class="toolkit-section-lede">Freya&rsquo;s golden rules before you open Excalidraw.</p>
+            <div class="toolkit-start-panel">
+              <section aria-labelledby="who-heading">
+                <h3 id="who-heading">Who this is for</h3>
+                <table class="toolkit-roles">
+                  <thead><tr><th>Role</th><th>Why run this</th></tr></thead>
+                  <tbody>
+                    <tr><td>UX designer (Freya)</td><td>Structure-only layouts Mimir can implement without design debates</td></tr>
+                    <tr><td>PM / founder</td><td>Readable flow artefacts without high-fidelity polish</td></tr>
+                    <tr><td>Builder</td><td>One <code>.excalidraw</code> per screen with labelled regions</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section aria-labelledby="end-state-heading">
+                <h3 id="end-state-heading">What you&rsquo;ll have</h3>
+                <ul class="toolkit-checklist">
+                  <li>No annotations in the wireframe; rationale in step <code>.md</code> spec</li>
+                  <li>Canvas: desktop <code>1440 &times; 900</code> or mobile <code>390 &times; 844</code>, background <code>#f8f9fa</code></li>
+                  <li>Clean lines: <code>roughness: 0</code>, WDS palette from wireframe skill</li>
+                  <li>Buttons grouped with labels via shared <code>groupIds</code></li>
+                </ul>
+              </section>
+            </div>
+          </section>
+
+          <section id="improvement" aria-labelledby="improvement-heading">
+            <h2 id="improvement-heading">Why wireframes</h2>
+            <p class="toolkit-section-lede">Concrete shift in how specs reach build  -  not &ldquo;draw more screens&rdquo; advice.</p>
+            <div class="toolkit-compare">
+              <p class="toolkit-compare__card toolkit-compare__card--before">
+                <span class="toolkit-compare__label">Before</span>
+                Screenshots or prose-only specs; engineers guess layout.
+              </p>
+              <p class="toolkit-compare__card toolkit-compare__card--after">
+                <span class="toolkit-compare__label">After</span>
+                One Excalidraw file per page slug under <code>work/design/wireframes/</code>  -  WDS installs may use <code>_bmad-output/D-UX-Design/wireframes/</code> instead. Builders implement from structure without design debates on Slack.
+              </p>
+            </div>
+          </section>
+
+          <section id="walkthrough" aria-labelledby="walkthrough-heading">
+            <div class="toolkit-walkthrough-header">
+              <h2 id="walkthrough-heading">Walkthrough</h2>
+              <p class="toolkit-walkthrough-meta">4 steps &middot; ~20 min &middot; copy-paste paths</p>
+            </div>
+            <p class="toolkit-section-lede">Run in order. Steps 1 - 3 set up structure; step 4 is the exit check.</p>
+            <ol class="toolkit-method toolkit-phase-grid">
+              <li id="step-1">
+                <span class="toolkit-phase-grid__step-label">Step 1</span>
+                <strong>Choose slug and path.</strong><span class="toolkit-method__meta">2 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block">work/design/wireframes/[page-slug].excalidraw
+# WDS installs may use:
+# _bmad-output/D-UX-Design/wireframes/[page-slug].excalidraw
+# Education samples on this site:
+# toolkits/artefacts/wireframe-with-excalidraw/sample-flow.excalidraw</pre>
+                <span class="toolkit-phase-exit">Expected: file path matches page slug; one screen per file.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Wrong canvas size mixed on one frame  -  split mobile and desktop into separate files.</p>
+              </li>
+              <li id="step-2">
+                <span class="toolkit-phase-grid__step-label">Step 2</span>
+                <strong>Set canvas size.</strong><span class="toolkit-method__meta">3 min</span>
+                <p>In Excalidraw, set background <code>#f8f9fa</code>. Frame mobile at 390&times;844 or desktop at 1440&times;900.</p>
+                <span class="toolkit-phase-exit">Expected: frame dimensions match target breakpoint; background colour set.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Hand-drawn roughness  -  set <code>roughness: 0</code> for production wireframes in WDS.</p>
+              </li>
+              <li id="step-3">
+                <span class="toolkit-phase-grid__step-label">Step 3</span>
+                <strong>Draw regions only.</strong><span class="toolkit-method__meta">10 min</span>
+                <p>Nav, content cards, primary CTA. Use grey bars (<code>#dee2e6</code>) for body text placeholders; real text only when words matter for comprehension.</p>
+                <span class="toolkit-phase-exit">Expected: every interactive region visible; no callout annotations on canvas.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Icons without labels  -  use labelled rectangles for icon slots per Freya rules.</p>
+              </li>
+              <li id="step-4">
+                <span class="toolkit-phase-grid__step-label">Step 4</span>
+                <strong>Export for HTML embed (optional).</strong><span class="toolkit-method__meta">5 min</span>
+                <p>Export PNG/SVG for toolkit pages; keep <code>.excalidraw</code> as source of truth.</p>
+                <span class="toolkit-phase-exit">Exit: developer can open file and see every interactive region without reading a paragraph spec.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> PNG looks fine but SVG embed breaks  -  keep <code>.excalidraw</code> as source; export SVG with Arial-friendly labels only.</p>
+              </li>
+            </ol>
+          </section>
+
+          <section id="curated" aria-labelledby="curated-heading">
+            <h2 id="curated-heading">Further reading</h2>
+            <p class="toolkit-section-lede">Public tools and upstream design-process references.</p>
+            <table class="toolkit-curated-table">
+              <thead><tr><th>Name</th><th>Type</th><th>Why this one</th><th>Link</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Excalidraw</td>
+                  <td>Tool</td>
+                  <td>Open JSON format; VS Code + web editor</td>
+                  <td><a href="https://excalidraw.com" rel="noopener">excalidraw.com</a></td>
+                </tr>
+                <tr>
+                  <td>Excalidraw GitHub</td>
+                  <td>Repo</td>
+                  <td>File format reference and VS Code extension</td>
+                  <td><a href="https://github.com/excalidraw/excalidraw" rel="noopener">GitHub</a></td>
+                </tr>
+                <tr>
+                  <td>Whiteport Design Studio</td>
+                  <td>Repo</td>
+                  <td>Freya wireframe skill, palette, and grouping rules (if you use WDS)</td>
+                  <td><a href="https://github.com/whiteport-collective/whiteport-design-studio" rel="noopener">GitHub</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section id="artefact" aria-labelledby="artefact-heading">
+            <h2 id="artefact-heading">Sample artefact</h2>
+            <p class="toolkit-section-lede">Structure-only mobile flow  -  edit in Excalidraw, not in generated SVG.</p>
+            <figure class="toolkit-artefact-figure">
+              <img src="artefacts/wireframe-with-excalidraw/sample-flow.svg" width="390" height="844" alt="Mobile wireframe sample: header, two content cards, primary Continue button" loading="lazy" style="max-width: 390px" />
+              <figcaption>
+                Mobile flow sample (structure only).
+                <a href="artefacts/wireframe-with-excalidraw/sample-flow.excalidraw">Open editable .excalidraw</a>
+              </figcaption>
+            </figure>
+          </section>
+
+          <section id="downloads" aria-labelledby="downloads-heading">
+            <h2 id="downloads-heading">Downloads</h2>
+            <p class="toolkit-section-lede">Take these into your repo  -  each file maps to a step above.</p>
+            <ul class="toolkit-download-list toolkit-download-cards">
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/wireframe-with-excalidraw/sample-flow.excalidraw" download>sample-flow.excalidraw</a>
+                  <p>Source file for steps 1 - 4; adapt slug and regions for your page.</p>
+                </article>
+              </li>
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/wireframe-with-excalidraw/sample-flow.svg" download>sample-flow.svg</a>
+                  <p>Web embed export from step 4.</p>
+                </article>
+              </li>
+            </ul>
+          </section>
+
+          <section id="pitfalls" aria-labelledby="pitfalls-heading">
+            <h2 id="pitfalls-heading">Troubleshooting</h2>
+            <p class="toolkit-section-lede">Symptom &rarr; fix, tied to the step where it usually appears.</p>
+            <ul class="toolkit-pitfalls">
+              <li><strong>Annotations on canvas.</strong> <span class="toolkit-pitfalls__step">Step 3</span>  -  Move callouts to the step markdown; wireframe stays structural.</li>
+              <li><strong>Hand-drawn roughness.</strong> <span class="toolkit-pitfalls__step">Step 2</span>  -  Set <code>roughness: 0</code> for production wireframes in WDS.</li>
+              <li><strong>Wrong canvas size.</strong> <span class="toolkit-pitfalls__step">Step 1</span>  -  Mobile and desktop mixed on one frame confuses implementation  -  one screen per file.</li>
+              <li><strong>Icons without labels.</strong> <span class="toolkit-pitfalls__step">Step 3</span>  -  Use labelled rectangles for icon slots per Freya rules.</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="related-heading">
+            <h2 id="related-heading">Optional on this site</h2>
+            <p class="toolkit-section-lede">Companion walkthroughs on this site. You do not need them to create wireframes.</p>
+            <ul class="toolkit-related">
+              <li><a href="score-design-before-review.html">Score design before review &rarr;</a></li>
+              <li><a href="wds-design-loop.html">WDS design loop &rarr;</a></li>
+              <li><a href="curate-agent-skills.html">Curate agent skills &rarr;</a></li>
+            </ul>
+            <div class="toolkit-cta-band">
+              <a class="wp-btn wp-btn--primary" href="#step-1">Run step 1</a>
+              <a class="button" href="artefacts/wireframe-with-excalidraw/sample-flow.excalidraw" download>Download sample</a>
+              <a class="button" href="../toolkits.html">All walkthroughs</a>
+            </div>
+            <p class="toolkit-attribution">
+              <strong>Attribution.</strong>
+              <a href="https://excalidraw.com" rel="noopener">Excalidraw</a> (MIT).
+              Starter templates / process  -  adapt for your organisation. Not affiliated with Excalidraw or Whiteport Design Studio maintainers.
+            </p>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <span>Chandan Sharma</span>
+      <a href="mailto:chandan004sharma@gmail.com">chandan004sharma@gmail.com</a>
+    </div>
+  </footer>
+</body>
+</html>

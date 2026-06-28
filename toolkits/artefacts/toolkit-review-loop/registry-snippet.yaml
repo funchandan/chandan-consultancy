@@ -1,0 +1,17 @@
+# Snippet: add a walkthrough to the education registry (do not invent slugs).
+version: 2
+intent: education
+
+walkthroughs:
+  - slug: your-walkthrough-slug
+    title: Human-readable title
+    type: walkthrough  # walkthrough | catalogue | process | artefact-led | meta
+    status: draft      # draft → review → published
+    skills:
+      - skill-name
+    repos:
+      - url: https://github.com/org/repo
+        why: One line why this source
+    artefacts:
+      - toolkits/artefacts/your-walkthrough-slug/sample.excalidraw
+    replaces: null     # or retired consulting slug

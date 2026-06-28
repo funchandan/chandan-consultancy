@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Toolkits | Chandan Sharma</title>
-  <meta name="description" content="Productized diagnostics from the work — decision teardowns, architecture audits, and AI workflow design." />
+  <meta name="description" content="Open-source walkthroughs and curated AI setups — BMAD, Hermes, agent skills, and design artefacts you can copy." />
   <link rel="stylesheet" href="styles.css" />
   <script src="assets/site-nav.js" defer></script>
   <link rel="stylesheet" href="assets/vendor/lenis/lenis.css" />
@@ -34,8 +34,14 @@
             <div class="nav-drawer-group" role="group" aria-labelledby="nav-d-toolkits-label">
               <p id="nav-d-toolkits-label" class="nav-drawer-group__label">Toolkits</p>
               <a class="active" href="toolkits.html">Toolkits overview</a>
-              <a href="toolkits/decision-teardown.html">Decision teardown</a>
-              <a href="mailto:chandan004sharma@gmail.com?subject=Book%20a%20call&amp;body=Toolkits%20%E2%80%94%20what%20I%27d%20prioritize%3A%20">Signal kit interest</a>
+              <a href="toolkits/setup-bmad.html">Set up BMAD</a>
+              <a href="toolkits/setup-hermes-personal.html">Personal Hermes stack</a>
+              <a href="toolkits/curate-agent-skills.html">Curate agent skills</a>
+              <a href="toolkits/wds-design-loop.html">WDS design loop</a>
+              <a href="toolkits/wireframe-with-excalidraw.html">Wireframe in Excalidraw</a>
+              <a href="toolkits/score-design-before-review.html">Score design before review</a>
+              <a href="toolkits/score-research-and-design-loop.html">Score R&amp;D loop</a>
+              <a href="toolkits/toolkit-review-loop.html">Toolkit review loop</a>
             </div>
             <div class="nav-drawer-group" role="group" aria-labelledby="nav-d-services-label">
               <p id="nav-d-services-label" class="nav-drawer-group__label">Services</p>
@@ -56,11 +62,17 @@
             <span class="nav-disclosure__chevron" aria-hidden="true"></span>
           </button>
           <div class="nav-disclosure__panel" id="nav-panel-toolkits" data-nav-disclosure-panel role="region" aria-labelledby="nav-trigger-toolkits" hidden>
-            <p class="nav-disclosure__eyebrow">Toolkits</p>
+            <p class="nav-disclosure__eyebrow">Walkthroughs</p>
             <ul class="nav-disclosure__list">
               <li><a class="active" href="toolkits.html">Overview</a></li>
-              <li><a href="toolkits/decision-teardown.html">Decision teardown</a></li>
-              <li><a href="mailto:chandan004sharma@gmail.com?subject=Book%20a%20call&amp;body=Toolkits%20%E2%80%94%20what%20I%27d%20buy%3A%20">Tell me what you&rsquo;d buy</a></li>
+              <li><a href="toolkits/setup-bmad.html">Set up BMAD</a></li>
+              <li><a href="toolkits/setup-hermes-personal.html">Personal Hermes stack</a></li>
+              <li><a href="toolkits/curate-agent-skills.html">Curate agent skills</a></li>
+              <li><a href="toolkits/wds-design-loop.html">WDS design loop</a></li>
+              <li><a href="toolkits/wireframe-with-excalidraw.html">Wireframe in Excalidraw</a></li>
+              <li><a href="toolkits/score-design-before-review.html">Score design before review</a></li>
+              <li><a href="toolkits/score-research-and-design-loop.html">Score R&amp;D loop</a></li>
+              <li><a href="toolkits/toolkit-review-loop.html">Toolkit review loop</a></li>
             </ul>
           </div>
         </div>
@@ -88,8 +100,8 @@
     <section class="page-hero section" id="toolkit-create">
       <div class="shell narrow">
         <p class="eyebrow">Toolkits</p>
-        <h1>Reusable diagnostics from the work, packaged.</h1>
-        <p class="consulting-hero-lede">A toolkit is the structured way I run a specific kind of decision when a team brings it to me &mdash; not a Notion template or slide deck. The questions, the artefacts, and the handoff so your team can run it again.</p>
+        <h1>Open-source walkthroughs you can copy.</h1>
+        <p class="consulting-hero-lede">Step-by-step guides for planning, agents, design evidence, and quality loops. Download starter templates, adapt paths for your team, and pass them on. Not proprietary consulting kits.</p>
       </div>
     </section>
 
@@ -97,34 +109,108 @@
       <div class="shell">
         <h2 id="toolkit-grid-heading" class="visually-hidden">Available toolkits</h2>
         <div class="offering-grid offering-grid--toolkits">
-          <article class="offering-card offering-card--toolkit" id="kit-clarify">
+          <article class="offering-card offering-card--toolkit" id="kit-bmad">
+            <figure class="offering-card__wireframe" aria-hidden="true">
+              <img src="toolkits/artefacts/toolkits-overview/card-bmad.svg" alt="" width="400" height="220" decoding="async" />
+            </figure>
             <div class="offering-card__body">
-              <p class="eyebrow">Kit 01</p>
-              <h3>Decision teardown</h3>
-              <p class="offering-card__payoff">Leave with a written bet and kill criteria &mdash; not another brainstorm.</p>
-              <p class="offering-card__context">For founders and PMs carrying one high-stakes bet.</p>
-              <p class="offering-card__deliverable">Bet memo, reversal cost, two-week kill date.</p>
-              <a class="button offering-card__action offering-card__action--arrow" href="toolkits/decision-teardown.html">View kit</a>
+              <p class="eyebrow">Clarify</p>
+              <h3>Set up BMAD in your repo</h3>
+              <p class="offering-card__payoff">Install, configure paths, run bmad-help for the next skill.</p>
+              <p class="offering-card__context">For PMs and tech leads starting structured planning.</p>
+              <p class="offering-card__deliverable">Checklist, flow diagram, config pointers.</p>
+              <a class="button offering-card__action offering-card__action--arrow" href="toolkits/setup-bmad.html">View walkthrough</a>
             </div>
           </article>
-          <article class="offering-card offering-card--toolkit" id="kit-build">
+          <article class="offering-card offering-card--toolkit" id="kit-hermes">
+            <figure class="offering-card__wireframe" aria-hidden="true">
+              <img src="toolkits/artefacts/toolkits-overview/card-hermes.svg" alt="" width="400" height="220" decoding="async" />
+            </figure>
             <div class="offering-card__body">
-              <p class="eyebrow">Kit 02</p>
-              <h3>Architecture audit</h3>
-              <p class="offering-card__payoff">See where the seams are bending before they snap.</p>
-              <p class="offering-card__context">For eng and design leads inheriting a fragmented product.</p>
-              <p class="offering-card__deliverable">Seam map, north star, 90-day cohesion plan.</p>
-              <a class="button offering-card__action" href="mailto:chandan004sharma@gmail.com?subject=Architecture%20audit%20toolkit">Join waitlist</a>
+              <p class="eyebrow">Ship</p>
+              <h3>Personal Hermes AI stack</h3>
+              <p class="offering-card__payoff">Gateway, cron, and .hermes.md for repo-aware automation.</p>
+              <p class="offering-card__context">For builders who want loops without babysitting the CLI.</p>
+              <p class="offering-card__deliverable">Cron snippet, stack diagram, .hermes.md template.</p>
+              <a class="button offering-card__action offering-card__action--arrow" href="toolkits/setup-hermes-personal.html">View walkthrough</a>
             </div>
           </article>
-          <article class="offering-card offering-card--toolkit">
+          <article class="offering-card offering-card--toolkit" id="kit-skills">
+            <figure class="offering-card__wireframe" aria-hidden="true">
+              <img src="toolkits/artefacts/toolkits-overview/card-skills.svg" alt="" width="400" height="220" decoding="async" />
+            </figure>
             <div class="offering-card__body">
-              <p class="eyebrow">Kit 03</p>
-              <h3>AI workflow UX</h3>
-              <p class="offering-card__payoff">Put AI where humans can still override what matters.</p>
-              <p class="offering-card__context">For regulated or high-stakes AI in operations.</p>
-              <p class="offering-card__deliverable">HITL map, guardrails, one tested pilot scope.</p>
-              <a class="button offering-card__action" href="mailto:chandan004sharma@gmail.com?subject=AI%20workflow%20UX%20toolkit">Join waitlist</a>
+              <p class="eyebrow">Research</p>
+              <h3>Curate agent skills</h3>
+              <p class="offering-card__payoff">Ten high-impact skills with install commands — not skill roulette.</p>
+              <p class="offering-card__context">For teams using BMAD, WDS, and Hermes together.</p>
+              <p class="offering-card__deliverable">skills-picks.yaml, audit flow.</p>
+              <a class="button offering-card__action offering-card__action--arrow" href="toolkits/curate-agent-skills.html">View catalogue</a>
+            </div>
+          </article>
+          <article class="offering-card offering-card--toolkit" id="kit-wds">
+            <figure class="offering-card__wireframe" aria-hidden="true">
+              <img src="toolkits/artefacts/toolkits-overview/card-wds.svg" alt="" width="400" height="220" decoding="async" />
+            </figure>
+            <div class="offering-card__body">
+              <p class="eyebrow">Build</p>
+              <h3>WDS design loop</h3>
+              <p class="offering-card__payoff">Saga → Freya → Mimir with /handoff, not one long chat.</p>
+              <p class="offering-card__context">For design-led programmes using Whiteport Design Studio.</p>
+              <p class="offering-card__deliverable">Handoff flow diagram, install pointers.</p>
+              <a class="button offering-card__action offering-card__action--arrow" href="toolkits/wds-design-loop.html">View process</a>
+            </div>
+          </article>
+          <article class="offering-card offering-card--toolkit" id="kit-wireframe">
+            <figure class="offering-card__wireframe" aria-hidden="true">
+              <img src="toolkits/artefacts/toolkits-overview/card-wireframe.svg" alt="" width="400" height="220" decoding="async" />
+            </figure>
+            <div class="offering-card__body">
+              <p class="eyebrow">Design</p>
+              <h3>Wireframe in Excalidraw</h3>
+              <p class="offering-card__payoff">Freya rules — structure on canvas, intent in the spec.</p>
+              <p class="offering-card__context">For UX flows that need a buildable layout artefact.</p>
+              <p class="offering-card__deliverable">Sample .excalidraw + mobile canvas.</p>
+              <a class="button offering-card__action offering-card__action--arrow" href="toolkits/wireframe-with-excalidraw.html">View artefact</a>
+            </div>
+          </article>
+          <article class="offering-card offering-card--toolkit" id="kit-score-design">
+            <figure class="offering-card__wireframe" aria-hidden="true">
+              <img src="toolkits/artefacts/toolkits-overview/card-score-design.svg" alt="" width="400" height="220" decoding="async" />
+            </figure>
+            <div class="offering-card__body">
+              <p class="eyebrow">Design</p>
+              <h3>Score design before review</h3>
+              <p class="offering-card__payoff">Intent, rubric, Excalidraw or Figma evidence &mdash; score before share.</p>
+              <p class="offering-card__context">For teams tired of third-revision prompt loops on AI-assisted UI.</p>
+              <p class="offering-card__deliverable">Design standards rubric, pre-review checklist, acceptance loop.</p>
+              <a class="button offering-card__action offering-card__action--arrow" href="toolkits/score-design-before-review.html">View walkthrough</a>
+            </div>
+          </article>
+          <article class="offering-card offering-card--toolkit" id="kit-score-rd">
+            <figure class="offering-card__wireframe" aria-hidden="true">
+              <img src="toolkits/artefacts/toolkits-overview/card-rd-score-loop.svg" alt="" width="400" height="220" decoding="async" />
+            </figure>
+            <div class="offering-card__body">
+              <p class="eyebrow">Research + Design</p>
+              <h3>Score R&amp;D with self-improving loops</h3>
+              <p class="offering-card__payoff">Write rubrics, score research and design before share, rerun review with any agent.</p>
+              <p class="offering-card__context">For teams that need one pass bar across synthesis and design - no specific toolchain.</p>
+              <p class="offering-card__deliverable">Path convention, workshop guide, rubrics, checklist, agent prompt.</p>
+              <a class="button offering-card__action offering-card__action--arrow" href="toolkits/score-research-and-design-loop.html">View walkthrough</a>
+            </div>
+          </article>
+          <article class="offering-card offering-card--toolkit" id="kit-loop">
+            <figure class="offering-card__wireframe" aria-hidden="true">
+              <img src="toolkits/artefacts/toolkits-overview/card-review-loop.svg" alt="" width="400" height="220" decoding="async" />
+            </figure>
+            <div class="offering-card__body">
+              <p class="eyebrow">Measure</p>
+              <h3>Toolkit review loop</h3>
+              <p class="offering-card__payoff">Registry + education rubric + Hermes cron — curate, don&rsquo;t invent.</p>
+              <p class="offering-card__context">For maintaining walkthrough pages over time.</p>
+              <p class="offering-card__deliverable">Registry snippet, rubric, review log.</p>
+              <a class="button offering-card__action offering-card__action--arrow" href="toolkits/toolkit-review-loop.html">View meta guide</a>
             </div>
           </article>
         </div>
@@ -134,23 +220,23 @@
     <section class="section section-soft" aria-labelledby="toolkit-how-heading">
       <div class="shell narrow">
         <p class="eyebrow">How it works</p>
-        <h2 id="toolkit-how-heading">Three steps from context to artefact</h2>
+        <h2 id="toolkit-how-heading">How to use these</h2>
         <ol class="toolkit-steps">
-          <li><strong>Bring context.</strong> One decision, one constraint, one timeline &mdash; not a full product dump.</li>
-          <li><strong>Run the diagnostic.</strong> We work through the kit questions live (typically 60&ndash;90 minutes).</li>
-          <li><strong>Leave with the artefact.</strong> Written output your team can execute and revisit.</li>
+          <li><strong>Pick a walkthrough</strong> that matches where you are (BMAD setup, Hermes cron, skills audit).</li>
+          <li><strong>Run the commands</strong> in your repo &mdash; every step maps to real upstream tooling.</li>
+          <li><strong>Download artefacts</strong> (Excalidraw, YAML, checklists) and adapt them to your programme.</li>
         </ol>
-        <p class="section-intro">Scoped from Birlasoft and Fortune 100 field programmes &mdash; the same moves as the <a href="index.html#approach">case-study method</a>, packaged for a single decision.</p>
+        <p class="section-intro">Education over invention: each page is a runnable process or stack setup with downloads you can adapt. See the <a href="toolkits/toolkit-review-loop.html">review loop</a> if you publish similar pages on your own site.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="shell offer-card">
         <div>
-          <h2>Not sure which kit fits?</h2>
-          <p>Tell me the decision you&rsquo;re carrying. I&rsquo;ll recommend a kit or a teardown call.</p>
+          <h2>Need help applying this stack?</h2>
+          <p>I run these same flows on enterprise programmes &mdash; the walkthroughs are the open-source version.</p>
         </div>
-        <a class="wp-btn wp-btn--primary" href="mailto:chandan004sharma@gmail.com?subject=Toolkits%20%E2%80%94%20what%20I%27d%20actually%20buy%3A%20">Tell me what you&rsquo;d buy</a>
+        <a class="wp-btn wp-btn--primary" href="services.html">Services</a>
       </div>
     </section>
   </main>

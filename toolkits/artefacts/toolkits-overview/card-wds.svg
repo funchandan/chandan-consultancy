@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" role="img" aria-label="WDS design loop wireframe: Saga, Freya, Mimir handoff">
+  <rect width="400" height="220" fill="#f4f6f9"/>
+  <rect x="24" y="48" width="100" height="64" rx="8" fill="#fff" stroke="#144ccd" stroke-width="1.5"/>
+  <text x="58" y="76" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#212529">Saga</text>
+  <text x="40" y="94" font-family="Arial, Helvetica, sans-serif" font-size="8" fill="#868e96">strategy / brief</text>
+  <rect x="150" y="48" width="100" height="64" rx="8" fill="#fff" stroke="#144ccd" stroke-width="1.5"/>
+  <text x="184" y="76" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#212529">Freya</text>
+  <text x="166" y="94" font-family="Arial, Helvetica, sans-serif" font-size="8" fill="#868e96">UX / wireframes</text>
+  <rect x="276" y="48" width="100" height="64" rx="8" fill="#fff" stroke="#144ccd" stroke-width="1.5"/>
+  <text x="310" y="76" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#212529">Mimir</text>
+  <text x="292" y="94" font-family="Arial, Helvetica, sans-serif" font-size="8" fill="#868e96">build / specs</text>
+  <path d="M124 80h26 M250 80h26" stroke="#144ccd" stroke-width="2" marker-end="url(#w)"/>
+  <rect x="24" y="132" width="352" height="72" rx="6" fill="#fff" stroke="#868e96" stroke-width="1"/>
+  <text x="40" y="156" font-family="Courier New, Courier, monospace" font-size="9" fill="#495057">/handoff - _progress/saga.md</text>
+  <text x="40" y="172" font-family="Courier New, Courier, monospace" font-size="9" fill="#868e96">_progress/freya.md - _progress/mimir.md</text>
+  <text x="40" y="188" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#868e96">separate chats, not one long thread</text>
+  <defs><marker id="w" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L5,3 L0,6 Z" fill="#144ccd"/></marker></defs>
+</svg>

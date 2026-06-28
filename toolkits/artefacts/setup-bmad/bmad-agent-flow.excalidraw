@@ -1,0 +1,14 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {"id": "t", "type": "text", "x": 40, "y": 20, "text": "BMAD planning → build flow", "fontSize": 18, "fontFamily": 5, "strokeColor": "#212529", "version": 1, "versionNonce": 1, "isDeleted": false},
+    {"id": "h", "type": "rectangle", "x": 40, "y": 70, "width": 120, "height": 56, "strokeColor": "#144ccd", "backgroundColor": "#ffffff", "version": 1, "versionNonce": 2, "isDeleted": false},
+    {"id": "p", "type": "rectangle", "x": 190, "y": 70, "width": 120, "height": 56, "strokeColor": "#144ccd", "backgroundColor": "#ffffff", "version": 1, "versionNonce": 3, "isDeleted": false},
+    {"id": "e", "type": "rectangle", "x": 340, "y": 70, "width": 160, "height": 56, "strokeColor": "#144ccd", "backgroundColor": "#ffffff", "version": 1, "versionNonce": 4, "isDeleted": false},
+    {"id": "d", "type": "rectangle", "x": 530, "y": 70, "width": 150, "height": 56, "strokeColor": "#144ccd", "backgroundColor": "#ffffff", "version": 1, "versionNonce": 5, "isDeleted": false}
+  ],
+  "appState": {"viewBackgroundColor": "#f8f9fa"},
+  "files": {}
+}

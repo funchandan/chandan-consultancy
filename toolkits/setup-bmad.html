@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Set up BMAD in your repo | Chandan Sharma</title>
+  <meta name="description" content="Walkthrough: install BMAD Method, configure _bmad/bmm/config.yaml, and run your first PRD → epics → dev-story flow in any git repo." />
+  <link rel="stylesheet" href="../styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="../assets/site-nav.js" defer></script>
+  <link rel="stylesheet" href="../assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="../assets/motion/wp-lenis.css?v=1" />
+  <script src="../assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="../assets/motion/wp-lenis.js?v=1" defer></script>
+</head>
+<body>
+  <a class="skip-to-content" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" data-site-nav aria-label="Primary">
+      <a class="brand" href="../index.html" data-nav-brand>Chandan Sharma</a>
+      <button type="button" class="nav-menu-toggle" id="site-nav-open" aria-expanded="false" aria-controls="site-nav-dialog" aria-label="Open menu">
+        <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-menu-toggle__label">Menu</span>
+      </button>
+      <dialog id="site-nav-dialog" class="site-nav-dialog" aria-labelledby="site-nav-dialog-title">
+        <div class="site-nav-dialog__panel">
+          <div class="site-nav-dialog__header">
+            <p id="site-nav-dialog-title" class="site-nav-dialog__title">Menu</p>
+            <form method="dialog"><button type="submit" class="site-nav-dialog__close">Close</button></form>
+          </div>
+          <div class="nav-links nav-links--dialog" data-nav-links-dialog>
+            <a href="../work.html" data-nav-item="work">Work</a>
+            <div class="nav-drawer-group" role="group" aria-labelledby="nav-d-toolkits-label">
+              <p id="nav-d-toolkits-label" class="nav-drawer-group__label">Toolkits</p>
+              <a href="../toolkits.html">Overview</a>
+              <a class="active" href="setup-bmad.html">Set up BMAD</a>
+              <a href="setup-hermes-personal.html">Personal Hermes stack</a>
+              <a href="curate-agent-skills.html">Curate agent skills</a>
+              <a href="wds-design-loop.html">WDS design loop</a>
+              <a href="wireframe-with-excalidraw.html">Wireframe in Excalidraw</a>
+              <a href="score-design-before-review.html">Score design before review</a>
+              <a href="score-research-and-design-loop.html">Score R&amp;D loop</a>
+              <a href="toolkit-review-loop.html">Toolkit review loop</a>
+            </div>
+            <a href="../about.html" data-nav-item="about">About</a>
+          </div>
+        </div>
+      </dialog>
+      <div class="nav-links nav-links--desktop" data-nav-links>
+        <a href="../work.html" data-nav-item="work">Work</a>
+        <div class="nav-disclosure" data-nav-disclosure>
+          <button type="button" class="nav-disclosure__trigger" id="nav-trigger-toolkits" data-nav-disclosure-trigger aria-expanded="false" aria-haspopup="true" aria-controls="nav-panel-toolkits">Toolkits<span class="nav-disclosure__chevron" aria-hidden="true"></span></button>
+          <div class="nav-disclosure__panel" id="nav-panel-toolkits" data-nav-disclosure-panel role="region" aria-labelledby="nav-trigger-toolkits" hidden>
+            <p class="nav-disclosure__eyebrow">Walkthroughs</p>
+            <ul class="nav-disclosure__list">
+              <li><a href="../toolkits.html">Overview</a></li>
+              <li><a class="active" href="setup-bmad.html">Set up BMAD</a></li>
+              <li><a href="setup-hermes-personal.html">Personal Hermes stack</a></li>
+              <li><a href="curate-agent-skills.html">Curate agent skills</a></li>
+              <li><a href="wds-design-loop.html">WDS design loop</a></li>
+              <li><a href="wireframe-with-excalidraw.html">Wireframe in Excalidraw</a></li>
+              <li><a href="score-design-before-review.html">Score design before review</a></li>
+              <li><a href="score-research-and-design-loop.html">Score R&amp;D loop</a></li>
+              <li><a href="toolkit-review-loop.html">Toolkit review loop</a></li>
+            </ul>
+          </div>
+        </div>
+        <a href="../about.html" data-nav-item="about">About</a>
+      </div>
+      <a class="nav-cta" href="#step-1">Run step 1</a>
+    </nav>
+  </header>
+
+  <main id="main" class="toolkit-article toolkit-article--walkthrough" tabindex="-1">
+    <section class="toolkit-hero toolkit-hero--walkthrough section" aria-labelledby="bmad-title">
+      <div class="shell">
+        <div class="toolkit-hero__copy">
+          <p class="eyebrow"><a href="../toolkits.html">Toolkits</a> / Clarify</p>
+          <div class="toolkit-hero__head">
+            <span class="toolkit-status toolkit-status--guide">Walkthrough</span>
+            <h1 id="bmad-title">Set up BMAD in your repo</h1>
+          </div>
+          <p class="consulting-hero-lede">Install the BMad Method from upstream, wire output paths in your repo, and run the standard planning &rarr; epics &rarr; dev-story loop  -  the open-source skill catalog any compatible agent IDE can use.</p>
+          <p class="toolkit-prereq"><strong>Prerequisites:</strong> Node 18+, a git repo, Cursor or compatible agent IDE, ~45 minutes.</p>
+          <div class="toolkit-outcome toolkit-outcome--hero">
+            <strong>After this walkthrough</strong>
+            BMAD under <code>_bmad/</code>, skills in your agent, <code>config.yaml</code> pointing at <code>_bmad-output/</code>, and a clear next step from <code>bmad-help</code>.
+          </div>
+          <ul class="toolkit-meta-strip toolkit-meta-strip--pills" aria-label="Walkthrough facts">
+            <li>~45 min</li>
+            <li>Self-serve</li>
+            <li>BMAD v6+</li>
+            <li>MIT upstream</li>
+          </ul>
+          <div class="toolkit-hero__actions">
+            <a class="wp-btn wp-btn--primary" href="#step-1">Run step 1</a>
+            <a class="button button--ghost" href="https://github.com/bmad-code-org/BMAD-METHOD" rel="noopener">BMAD-METHOD repo</a>
+          </div>
+          <p class="toolkit-hero__jump"><a href="#artefact">See planning flow diagram</a> &middot; <a href="#downloads">Downloads</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" aria-label="Walkthrough content">
+      <div class="shell toolkit-body">
+        <aside class="toolkit-body__aside">
+          <nav class="toolkit-toc toolkit-toc--sticky" aria-label="On this page">
+            <p class="toolkit-toc__label">On this page</p>
+            <ol>
+              <li><a href="#start">Start here</a></li>
+              <li><a href="#improvement">Why BMAD</a></li>
+              <li>
+                <a href="#walkthrough">Walkthrough</a>
+                <ol class="toolkit-toc__sub">
+                  <li><a href="#step-1">1. Install</a></li>
+                  <li><a href="#step-2">2. Config</a></li>
+                  <li><a href="#step-3">3. Skills</a></li>
+                  <li><a href="#step-4">4. Orient</a></li>
+                  <li><a href="#step-5">5. First PRD</a></li>
+                </ol>
+              </li>
+              <li><a href="#curated">Further reading</a></li>
+              <li><a href="#artefact">Flow diagram</a></li>
+              <li><a href="#downloads">Downloads</a></li>
+              <li><a href="#pitfalls">Troubleshooting</a></li>
+            </ol>
+          </nav>
+        </aside>
+
+        <div class="toolkit-body__main">
+          <section id="start" aria-labelledby="start-heading">
+            <h2 id="start-heading">Start here</h2>
+            <p class="toolkit-section-lede">Confirm fit and the end state before you run commands.</p>
+            <div class="toolkit-start-panel">
+              <section aria-labelledby="who-heading">
+                <h3 id="who-heading">Who this is for</h3>
+                <table class="toolkit-roles">
+                  <thead><tr><th>Role</th><th>Why run this</th></tr></thead>
+                  <tbody>
+                    <tr><td>PM / founder</td><td>Structured PRDs and epics without reinventing process each programme</td></tr>
+                    <tr><td>Tech lead</td><td>Architecture and story skills with shared output folders</td></tr>
+                    <tr><td>Agent practitioner</td><td>40+ BMAD skills with catalog-driven routing via <code>bmad-help</code></td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section aria-labelledby="end-state-heading">
+                <h3 id="end-state-heading">What you&rsquo;ll have</h3>
+                <ul class="toolkit-checklist">
+                  <li><code>_bmad/bmm/config.yaml</code> with artifact paths set</li>
+                  <li><code>_bmad/_config/bmad-help.csv</code> skill catalog</li>
+                  <li>BMAD skills under <code>.agents/skills/bmad-*</code></li>
+                  <li><code>_bmad-output/planning-artifacts/</code> ready for your first PRD</li>
+                </ul>
+              </section>
+            </div>
+          </section>
+
+          <section id="improvement" aria-labelledby="improvement-heading">
+            <h2 id="improvement-heading">Why BMAD</h2>
+            <p class="toolkit-section-lede">Concrete shift in how planning runs when agents share artifact paths  -  not generic agile advice.</p>
+            <div class="toolkit-compare">
+              <p class="toolkit-compare__card toolkit-compare__card--before">
+                <span class="toolkit-compare__label">Before</span>
+                Ad-hoc prompts produce inconsistent PRDs. No shared artifact paths or phase gates. Every kickoff re-decides &ldquo;what&rsquo;s next.&rdquo;
+              </p>
+              <p class="toolkit-compare__card toolkit-compare__card--after">
+                <span class="toolkit-compare__label">After</span>
+                <code>bmad-help</code> reads the catalog and files on disk to recommend the next skill. Typically saves 2+ hours of orientation per programme kickoff.
+              </p>
+            </div>
+          </section>
+
+          <section id="walkthrough" aria-labelledby="walkthrough-heading">
+            <div class="toolkit-walkthrough-header">
+              <h2 id="walkthrough-heading">Walkthrough</h2>
+              <p class="toolkit-walkthrough-meta">5 steps &middot; ~45 min &middot; copy-paste commands</p>
+            </div>
+            <p class="toolkit-section-lede">Run in order. Each step lists expected output so you know before moving on.</p>
+            <ol class="toolkit-method toolkit-phase-grid">
+              <li id="step-1">
+                <span class="toolkit-phase-grid__step-label">Step 1</span>
+                <strong>Install BMAD Method.</strong><span class="toolkit-method__meta">15 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block">cd /path/to/your/repo
+npx bmad-method install</pre>
+                <span class="toolkit-phase-exit">Expected: <code>_bmad/</code> created, installer prompts for modules (BMM minimum). Follow prompts for skill level and output folder.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Use Node 18+; run <code>nvm use 20</code> before install. See <a href="#pitfalls">troubleshooting</a>.</p>
+              </li>
+              <li id="step-2">
+                <span class="toolkit-phase-grid__step-label">Step 2</span>
+                <strong>Verify config.</strong><span class="toolkit-method__meta">5 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block">cat _bmad/bmm/config.yaml</pre>
+                <span class="toolkit-phase-exit">Confirm <code>planning_artifacts</code> resolves to e.g. <code>{project-root}/_bmad-output/planning-artifacts</code>. Edit <code>user_name</code> if needed.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Outputs land in the wrong folder  -  check <code>planning_artifacts</code> uses <code>{project-root}</code> tokens in <code>config.yaml</code>.</p>
+              </li>
+              <li id="step-3">
+                <span class="toolkit-phase-grid__step-label">Step 3</span>
+                <strong>Install agent skills (if not bundled).</strong><span class="toolkit-method__meta">10 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block">npx skills add bmad-code-org/BMAD-METHOD --all --full-depth -y</pre>
+                <span class="toolkit-phase-exit">Expected: <code>.agents/skills/bmad-*</code> and <code>skills-lock.json</code> at repo root (paths vary by IDE).</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Skills not visible in Cursor  -  confirm <code>.agents/skills/</code> exists after <code>npx skills add</code>.</p>
+              </li>
+              <li id="step-4">
+                <span class="toolkit-phase-grid__step-label">Step 4</span>
+                <strong>Run orientation.</strong><span class="toolkit-method__meta">5 min</span>
+                <p>In Cursor, invoke <code>bmad-help</code> or ask &ldquo;what should I do next in BMAD?&rdquo;</p>
+                <span class="toolkit-phase-exit">Expected: skill recommends next phase based on <code>bmad-help.csv</code> and artifacts on disk.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Wrong phase recommended  -  state completion explicitly or add output files matching CSV patterns.</p>
+              </li>
+              <li id="step-5">
+                <span class="toolkit-phase-grid__step-label">Step 5</span>
+                <strong>First planning slice.</strong><span class="toolkit-method__meta">10 min</span>
+                <p>New project: run <code>bmad-prd</code> or <code>bmad-product-brief</code>. Existing codebase: run <code>bmad-document-project</code> then <code>bmad-prd</code> update mode.</p>
+                <span class="toolkit-phase-exit">Exit: first file under <code>_bmad-output/planning-artifacts/</code>.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Scope creep mid-PRD  -  use <code>bmad-correct-course</code> instead of editing the PRD by hand.</p>
+              </li>
+            </ol>
+          </section>
+
+          <section id="curated" aria-labelledby="curated-heading">
+            <h2 id="curated-heading">Further reading</h2>
+            <p class="toolkit-section-lede">Official upstream sources after install. None are required beyond the walkthrough steps.</p>
+            <table class="toolkit-curated-table">
+              <thead><tr><th>Name</th><th>Type</th><th>Why this one</th><th>Link</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>BMAD-METHOD</td>
+                  <td>Repo</td>
+                  <td>Official installer, modules, and skill source</td>
+                  <td><a href="https://github.com/bmad-code-org/BMAD-METHOD" rel="noopener">GitHub</a></td>
+                </tr>
+                <tr>
+                  <td>BMAD docs</td>
+                  <td>Docs</td>
+                  <td>Install paths, modules, and skill catalog reference</td>
+                  <td><a href="https://docs.bmad-method.org/" rel="noopener">docs.bmad-method.org</a></td>
+                </tr>
+                <tr>
+                  <td>bmad-help</td>
+                  <td>Skill</td>
+                  <td>Reads <code>bmad-help.csv</code> + artifacts to route your next step</td>
+                  <td><a href="https://github.com/bmad-code-org/BMAD-METHOD" rel="noopener">Bundled with BMAD</a></td>
+                </tr>
+                <tr>
+                  <td>Vercel skills CLI</td>
+                  <td>Tool</td>
+                  <td><code>npx skills add</code> for installing BMAD skills into your IDE</td>
+                  <td><a href="https://github.com/vercel-labs/skills" rel="noopener">GitHub</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section id="artefact" aria-labelledby="artefact-heading">
+            <h2 id="artefact-heading">Flow diagram</h2>
+            <p class="toolkit-section-lede">Buildable structure for your repo  -  edit labels in Excalidraw, not in generated images.</p>
+            <figure class="toolkit-artefact-figure">
+              <img src="artefacts/setup-bmad/bmad-agent-flow.svg" width="720" height="360" alt="BMAD flow from bmad-help through PRD, epics, and dev-story to output folders" loading="lazy" />
+              <figcaption>
+                Planning &rarr; build chain  -  adapt labels for your team&rsquo;s skill names.
+                <a href="artefacts/setup-bmad/bmad-agent-flow.excalidraw">Open editable .excalidraw</a>
+              </figcaption>
+            </figure>
+          </section>
+
+          <section id="downloads" aria-labelledby="downloads-heading">
+            <h2 id="downloads-heading">Downloads</h2>
+            <p class="toolkit-section-lede">Take these into your repo  -  each file maps to a step above.</p>
+            <ul class="toolkit-download-list toolkit-download-cards">
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/setup-bmad/install-checklist.md" download>install-checklist.md</a>
+                  <p>Printable checklist for steps 1 - 5; tick as you go.</p>
+                </article>
+              </li>
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/setup-bmad/bmad-agent-flow.excalidraw" download>bmad-agent-flow.excalidraw</a>
+                  <p>Adapt the flow diagram for your team&rsquo;s skill names.</p>
+                </article>
+              </li>
+            </ul>
+          </section>
+
+          <section id="pitfalls" aria-labelledby="pitfalls-heading">
+            <h2 id="pitfalls-heading">Troubleshooting</h2>
+            <p class="toolkit-section-lede">Symptom &rarr; fix, tied to the step where it usually appears.</p>
+            <ul class="toolkit-pitfalls">
+              <li><strong>Installer fails on Node version.</strong> <span class="toolkit-pitfalls__step">Step 1</span>  -  Use Node 18+; <code>nvm use 20</code> before install.</li>
+              <li><strong>Skills not visible in Cursor.</strong> <span class="toolkit-pitfalls__step">Step 3</span>  -  Run <code>npx skills add</code> and confirm <code>.agents/skills/</code> or your IDE skills directory.</li>
+              <li><strong>Outputs land in wrong folder.</strong> <span class="toolkit-pitfalls__step">Step 2</span>  -  Check <code>planning_artifacts</code> in <code>config.yaml</code>; paths use <code>{project-root}</code> tokens.</li>
+              <li><strong>bmad-help recommends wrong phase.</strong> <span class="toolkit-pitfalls__step">Step 4</span>  -  Artifact detection is fuzzy; state completion explicitly or add output files matching CSV patterns.</li>
+              <li><strong>Scope creep mid-PRD.</strong> <span class="toolkit-pitfalls__step">Step 5</span>  -  Use <code>bmad-correct-course</code> instead of editing the PRD by hand.</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="related-heading">
+            <h2 id="related-heading">Optional on this site</h2>
+            <p class="toolkit-section-lede">Companion walkthroughs on this site. You do not need them to install BMAD.</p>
+            <ul class="toolkit-related">
+              <li><a href="curate-agent-skills.html">Curate agent skills &rarr;</a></li>
+              <li><a href="wds-design-loop.html">WDS design loop &rarr;</a></li>
+              <li><a href="setup-hermes-personal.html">Personal Hermes stack &rarr;</a></li>
+            </ul>
+            <div class="toolkit-cta-band">
+              <a class="wp-btn wp-btn--primary" href="#step-1">Run step 1</a>
+              <a class="button" href="artefacts/setup-bmad/install-checklist.md" download>Download checklist</a>
+              <a class="button" href="../toolkits.html">All walkthroughs</a>
+            </div>
+            <p class="toolkit-attribution">
+              <strong>Attribution.</strong>
+              <a href="https://github.com/bmad-code-org/BMAD-METHOD" rel="noopener">BMAD Method</a> by bmad-code-org (MIT).
+              Starter templates / process  -  adapt for your organisation. Not affiliated with BMAD maintainers.
+            </p>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <span>Chandan Sharma</span>
+      <a href="mailto:chandan004sharma@gmail.com">chandan004sharma@gmail.com</a>
+    </div>
+  </footer>
+</body>
+</html>

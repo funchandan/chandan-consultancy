@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Self-improving toolkit content | Chandan Sharma</title>
+  <meta name="description" content="Meta walkthrough: education rubric, walkthrough registry, Hermes cron loop  -  how toolkit pages improve without inventing new kits." />
+  <link rel="stylesheet" href="../styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="../assets/site-nav.js" defer></script>
+  <link rel="stylesheet" href="../assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="../assets/motion/wp-lenis.css?v=1" />
+  <script src="../assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="../assets/motion/wp-lenis.js?v=1" defer></script>
+</head>
+<body>
+  <a class="skip-to-content" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" data-site-nav aria-label="Primary">
+      <a class="brand" href="../index.html" data-nav-brand>Chandan Sharma</a>
+      <button type="button" class="nav-menu-toggle" id="site-nav-open" aria-expanded="false" aria-controls="site-nav-dialog" aria-label="Open menu">
+        <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-menu-toggle__label">Menu</span>
+      </button>
+      <dialog id="site-nav-dialog" class="site-nav-dialog" aria-labelledby="site-nav-dialog-title">
+        <div class="site-nav-dialog__panel">
+          <div class="site-nav-dialog__header">
+            <p id="site-nav-dialog-title" class="site-nav-dialog__title">Menu</p>
+            <form method="dialog"><button type="submit" class="site-nav-dialog__close">Close</button></form>
+          </div>
+          <div class="nav-links nav-links--dialog" data-nav-links-dialog>
+            <a href="../work.html" data-nav-item="work">Work</a>
+            <div class="nav-drawer-group" role="group" aria-labelledby="nav-d-toolkits-label">
+              <p id="nav-d-toolkits-label" class="nav-drawer-group__label">Toolkits</p>
+              <a href="../toolkits.html">Overview</a>
+              <a href="setup-bmad.html">Set up BMAD</a>
+              <a href="setup-hermes-personal.html">Personal Hermes stack</a>
+              <a href="curate-agent-skills.html">Curate agent skills</a>
+              <a href="wds-design-loop.html">WDS design loop</a>
+              <a href="wireframe-with-excalidraw.html">Wireframe in Excalidraw</a>
+              <a href="score-design-before-review.html">Score design before review</a>
+              <a href="score-research-and-design-loop.html">Score R&amp;D loop</a>
+              <a class="active" href="toolkit-review-loop.html">Toolkit review loop</a>
+            </div>
+            <a href="../about.html" data-nav-item="about">About</a>
+          </div>
+        </div>
+      </dialog>
+      <div class="nav-links nav-links--desktop" data-nav-links>
+        <a href="../work.html" data-nav-item="work">Work</a>
+        <div class="nav-disclosure" data-nav-disclosure>
+          <button type="button" class="nav-disclosure__trigger" id="nav-trigger-toolkits" data-nav-disclosure-trigger aria-expanded="false" aria-haspopup="true" aria-controls="nav-panel-toolkits">Toolkits<span class="nav-disclosure__chevron" aria-hidden="true"></span></button>
+          <div class="nav-disclosure__panel" id="nav-panel-toolkits" data-nav-disclosure-panel role="region" aria-labelledby="nav-trigger-toolkits" hidden>
+            <p class="nav-disclosure__eyebrow">Walkthroughs</p>
+            <ul class="nav-disclosure__list">
+              <li><a href="../toolkits.html">Overview</a></li>
+              <li><a href="setup-bmad.html">Set up BMAD</a></li>
+              <li><a href="setup-hermes-personal.html">Personal Hermes stack</a></li>
+              <li><a href="curate-agent-skills.html">Curate agent skills</a></li>
+              <li><a href="wds-design-loop.html">WDS design loop</a></li>
+              <li><a href="wireframe-with-excalidraw.html">Wireframe in Excalidraw</a></li>
+              <li><a href="score-design-before-review.html">Score design before review</a></li>
+              <li><a href="score-research-and-design-loop.html">Score R&amp;D loop</a></li>
+              <li><a class="active" href="toolkit-review-loop.html">Toolkit review loop</a></li>
+            </ul>
+          </div>
+        </div>
+        <a href="../about.html" data-nav-item="about">About</a>
+      </div>
+      <a class="nav-cta" href="#step-1">Run step 1</a>
+    </nav>
+  </header>
+
+  <main id="main" class="toolkit-article toolkit-article--walkthrough" tabindex="-1">
+    <section class="toolkit-hero toolkit-hero--walkthrough section" aria-labelledby="review-loop-title">
+      <div class="shell">
+        <div class="toolkit-hero__copy">
+          <p class="eyebrow"><a href="../toolkits.html">Toolkits</a> / Measure</p>
+          <div class="toolkit-hero__head">
+            <span class="toolkit-status toolkit-status--guide">Walkthrough</span>
+            <h1 id="review-loop-title">Self-improving toolkit content</h1>
+          </div>
+          <p class="consulting-hero-lede">If you publish walkthrough pages on your site: keep them current with a registry allow-list, a scoring rubric, optional scheduled review, and a verdict log  -  curate learnings, don&rsquo;t invent new kits.</p>
+          <p class="toolkit-prereq"><strong>Prerequisites:</strong> Registry row drafted, Hermes optional, ~20 min read.</p>
+          <div class="toolkit-outcome toolkit-outcome--hero">
+            <strong>After this walkthrough</strong>
+            You can add a walkthrough to your registry, score pages with your education rubric, and optionally wire a scheduled agent job that patches gaps until all published pages pass.
+          </div>
+          <ul class="toolkit-meta-strip toolkit-meta-strip--pills" aria-label="Walkthrough facts">
+            <li>~20 min read</li>
+            <li>Self-serve</li>
+            <li>Registry + rubric</li>
+            <li>No new kits rule</li>
+          </ul>
+          <div class="toolkit-hero__actions">
+            <a class="wp-btn wp-btn--primary" href="#step-1">Run step 1</a>
+            <a class="button button--ghost" href="_education-rubric.md">Open rubric</a>
+          </div>
+          <p class="toolkit-hero__jump"><a href="#artefact">See loop diagram</a> &middot; <a href="#downloads">Downloads</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" aria-label="Walkthrough content">
+      <div class="shell toolkit-body">
+        <aside class="toolkit-body__aside">
+          <nav class="toolkit-toc toolkit-toc--sticky" aria-label="On this page">
+            <p class="toolkit-toc__label">On this page</p>
+            <ol>
+              <li><a href="#start">Start here</a></li>
+              <li><a href="#improvement">Why education rubric</a></li>
+              <li>
+                <a href="#walkthrough">Walkthrough</a>
+                <ol class="toolkit-toc__sub">
+                  <li><a href="#step-1">1. Registry row</a></li>
+                  <li><a href="#step-2">2. Author page</a></li>
+                  <li><a href="#step-3">3. Score once</a></li>
+                  <li><a href="#step-4">4. Cron maintain</a></li>
+                </ol>
+              </li>
+              <li><a href="#curated">Further reading</a></li>
+              <li><a href="#artefact">Loop diagram</a></li>
+              <li><a href="#downloads">Downloads</a></li>
+              <li><a href="#pitfalls">Troubleshooting</a></li>
+            </ol>
+          </nav>
+        </aside>
+
+        <div class="toolkit-body__main">
+          <section id="start" aria-labelledby="start-heading">
+            <h2 id="start-heading">Start here</h2>
+            <p class="toolkit-section-lede">If you publish walkthrough pages on your site, five file types define the loop. Understand the pattern before you add slugs or turn on automation.</p>
+            <div class="toolkit-start-panel">
+              <section aria-labelledby="who-heading">
+                <h3 id="who-heading">Who this is for</h3>
+                <table class="toolkit-roles">
+                  <thead><tr><th>Role</th><th>Why run this</th></tr></thead>
+                  <tbody>
+                    <tr><td>Toolkit maintainer</td><td>Keep walkthrough pages on the education rubric without inventing new kits</td></tr>
+                    <tr><td>Content author</td><td>Register slugs, match the walkthrough template, publish only when artefacts exist</td></tr>
+                    <tr><td>Hermes operator</td><td>Wire cron that scores and patches only allow-listed pages</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section aria-labelledby="loop-files-heading">
+                <h3 id="loop-files-heading">The five-file pattern</h3>
+                <p class="toolkit-section-lede">Rename paths for your site. This site&rsquo;s example filenames are shown in parentheses.</p>
+                <ol class="toolkit-checklist">
+                  <li><code>walkthrough-registry.yaml</code>  -  canonical slugs only (this site: <code>toolkits/walkthrough-registry.yaml</code>)</li>
+                  <li><code>_education-rubric.md</code> v3  -  five layers: 14 heuristics (all &ge; 8), UI sanity, research transmission, instruction design, plain language (this site: <code>toolkits/_education-rubric.md</code>)</li>
+                  <li>Reference walkthrough HTML  -  page structure template (this site: <code>setup-bmad.html</code>, <code>_walkthrough-template.html</code>)</li>
+                  <li>Scheduled review job (optional)  -  scores and patches on a cadence (this site: Hermes cron <code>toolkit-education-review</code> every 12h)</li>
+                  <li><code>review-log.md</code>  -  verdict log (this site: <code>_progress/toolkit-education-review.md</code>)</li>
+                </ol>
+              </section>
+            </div>
+          </section>
+
+          <section id="improvement" aria-labelledby="improvement-heading">
+            <h2 id="improvement-heading">Why education rubric</h2>
+            <p class="toolkit-section-lede">Concrete shift from consulting copy to open education walkthroughs any reader can run off-repo.</p>
+            <div class="toolkit-compare">
+              <p class="toolkit-compare__card toolkit-compare__card--before">
+                <span class="toolkit-compare__label">Before</span>
+                Consulting-style toolkit copy scored against a BCG rubric; pages drifted toward &ldquo;book a session.&rdquo;
+              </p>
+              <p class="toolkit-compare__card toolkit-compare__card--after">
+                <span class="toolkit-compare__label">After</span>
+                Education rubric enforces open-source walkthroughs, artefacts, and downloads; cron cannot add slugs outside the registry.
+              </p>
+            </div>
+          </section>
+
+          <section id="walkthrough" aria-labelledby="walkthrough-heading">
+            <div class="toolkit-walkthrough-header">
+              <h2 id="walkthrough-heading">Walkthrough</h2>
+              <p class="toolkit-walkthrough-meta">4 steps &middot; ~20 min &middot; copy-paste paths</p>
+            </div>
+            <p class="toolkit-section-lede">Run in order. Manual scoring once; cron handles ongoing hygiene if Hermes is wired.</p>
+            <ol class="toolkit-method toolkit-phase-grid">
+              <li id="step-1">
+                <span class="toolkit-phase-grid__step-label">Step 1</span>
+                <strong>Add a row to the registry.</strong><span class="toolkit-method__meta">5 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block"># Copy snippet into walkthrough-registry.yaml (your path)
+cp artefacts/toolkit-review-loop/registry-snippet.yaml /tmp/snippet.yaml
+# Edit slug, title, skills, artefacts; keep status: draft</pre>
+                <span class="toolkit-phase-exit">Expected: new row under <code>walkthroughs:</code> with <code>status: draft</code> until the HTML page and artefact folder exist. The registry is an allow-list: automation must not score or publish slugs outside it.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Slug not in allow-list later  -  cron ignores unknown slugs; add the row before authoring HTML.</p>
+              </li>
+              <li id="step-2">
+                <span class="toolkit-phase-grid__step-label">Step 2</span>
+                <strong>Author the page.</strong><span class="toolkit-method__meta">varies</span>
+                <p>Match a reference walkthrough page: hero with prereq, sticky TOC, start panel, compare, phased steps, artefact figure, download cards, pitfalls, attribution. Download <a href="_walkthrough-template.html">_walkthrough-template.html</a> or use any published page on your site as the shape.</p>
+                <span class="toolkit-phase-exit">Expected: HTML at <code>{your-walkthroughs-folder}/{slug}.html</code> with artefact files under <code>artefacts/{slug}/</code> (rename folders to match your site).</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Page looks like consulting copy  -  rewrite outcome and steps as self-serve education; remove booking CTAs.</p>
+              </li>
+              <li id="step-3">
+                <span class="toolkit-phase-grid__step-label">Step 3</span>
+                <strong>Score manually once.</strong><span class="toolkit-method__meta">10 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block">open _education-rubric.md
+# Score all five layers; every heuristic ≥ 8/10
+# Set status: published in walkthrough-registry.yaml when PASS</pre>
+                <span class="toolkit-phase-exit">Expected: all five rubric layers PASS; registry row moves from <code>draft</code> to <code>published</code>.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> BCG rubric confusion  -  use <code>_education-rubric.md</code> v3 only; BCG v1.1 is deprecated.</p>
+              </li>
+              <li id="step-4">
+                <span class="toolkit-phase-grid__step-label">Step 4</span>
+                <strong>Let cron maintain.</strong><span class="toolkit-method__meta">ongoing</span>
+                <pre class="toolkit-terminal toolkit-terminal--block">hermes cron run &lt;job-id&gt;
+# Or: manual rubric pass in your IDE / CI</pre>
+                <span class="toolkit-phase-exit">Updates your review log (e.g. <code>progress/review-log.md</code>). PASS when all published pages pass. See <a href="setup-hermes-personal.html">Personal Hermes stack</a> for cron setup, or use <a href="score-research-and-design-loop.html">agent-review-prompt.md</a> patterns without Hermes.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Cron invents new toolkits  -  tighten prompt: only registry slugs; education over invention.</p>
+              </li>
+            </ol>
+          </section>
+
+          <section id="curated" aria-labelledby="curated-heading">
+            <h2 id="curated-heading">Further reading</h2>
+            <p class="toolkit-section-lede">Public references for education quality and review design. Rename filenames for your site.</p>
+            <table class="toolkit-curated-table">
+              <thead><tr><th>Name</th><th>Type</th><th>Why this one</th><th>Link</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>GOV.UK Service Manual</td>
+                  <td>Docs</td>
+                  <td>Plain-language bar for public-facing guidance</td>
+                  <td><a href="https://www.gov.uk/service-manual" rel="noopener">gov.uk</a></td>
+                </tr>
+                <tr>
+                  <td>Nielsen Norman Group</td>
+                  <td>Article</td>
+                  <td>Heuristic evaluation dimensions you can adapt into rubrics</td>
+                  <td><a href="https://www.nngroup.com/articles/how-to-conduct-a-heuristic-evaluation/" rel="noopener">nngroup.com</a></td>
+                </tr>
+                <tr>
+                  <td>hermes-agent</td>
+                  <td>Repo</td>
+                  <td>Optional scheduled review via gateway + cron</td>
+                  <td><a href="https://github.com/NousResearch/hermes-agent" rel="noopener">GitHub</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section id="artefact" aria-labelledby="artefact-heading">
+            <h2 id="artefact-heading">Loop diagram</h2>
+            <p class="toolkit-section-lede">Registry and rubric feed cron review; verdicts land in the progress log.</p>
+            <figure class="toolkit-artefact-figure">
+              <img src="artefacts/toolkits-overview/card-review-loop.svg" width="400" height="220" alt="Toolkit review loop wireframe: registry, rubric, cron review, and verdict log" loading="lazy" />
+              <figcaption>
+                Education review loop  -  registry, rubric, optional cron, verdict log.
+                <a href="artefacts/toolkit-review-loop/registry-snippet.yaml">registry-snippet.yaml</a>
+              </figcaption>
+            </figure>
+          </section>
+
+          <section id="downloads" aria-labelledby="downloads-heading">
+            <h2 id="downloads-heading">Downloads</h2>
+            <p class="toolkit-section-lede">Copy into your repo  -  each file maps to a step above.</p>
+            <ul class="toolkit-download-list toolkit-download-cards">
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/toolkit-review-loop/registry-snippet.yaml" download>registry-snippet.yaml</a>
+                  <p>Starter row for step 1; edit slug and artefacts before merge.</p>
+                </article>
+              </li>
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/setup-hermes-personal/cron-prompt-snippet.md">cron-prompt-snippet.md</a>
+                  <p>Cron prompt constraints for step 4; pair with Hermes setup walkthrough.</p>
+                </article>
+              </li>
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="_walkthrough-template.html">_walkthrough-template.html</a>
+                  <p>HTML skeleton for step 2; live reference is setup-bmad.html.</p>
+                </article>
+              </li>
+            </ul>
+          </section>
+
+          <section id="pitfalls" aria-labelledby="pitfalls-heading">
+            <h2 id="pitfalls-heading">Troubleshooting</h2>
+            <p class="toolkit-section-lede">Symptom &rarr; fix, tied to the step where it usually appears.</p>
+            <ul class="toolkit-pitfalls">
+              <li><strong>Cron invents new toolkits.</strong> <span class="toolkit-pitfalls__step">Step 4</span>  -  Tighten prompt: only registry slugs; education over invention.</li>
+              <li><strong>Published too early.</strong> <span class="toolkit-pitfalls__step">Step 1</span>  -  Keep <code>draft</code> until artefact folder and downloads exist.</li>
+              <li><strong>BCG rubric confusion.</strong> <span class="toolkit-pitfalls__step">Step 3</span>  -  Use <code>_education-rubric.md</code> v3; BCG v1.1 is deprecated.</li>
+              <li><strong>Page missing walkthrough structure.</strong> <span class="toolkit-pitfalls__step">Step 2</span>  -  Compare against setup-bmad.html and _walkthrough-template.html; add sticky TOC and phased steps.</li>
+              <li><strong>Cron never runs.</strong> <span class="toolkit-pitfalls__step">Step 4</span>  -  Hermes optional; manual rubric pass still required before publish.</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="related-heading">
+            <h2 id="related-heading">Optional on this site</h2>
+            <p class="toolkit-section-lede">This site&rsquo;s live registry, rubric, and reference pages. Copy the pattern; rename paths for your site.</p>
+            <ul class="toolkit-related">
+              <li><a href="_education-rubric.md">Education rubric (this site) &rarr;</a></li>
+              <li><a href="walkthrough-registry.yaml">Walkthrough registry (this site) &rarr;</a></li>
+              <li><a href="setup-bmad.html">Reference walkthrough page &rarr;</a></li>
+              <li><a href="setup-hermes-personal.html">Personal Hermes stack &rarr;</a></li>
+              <li><a href="score-research-and-design-loop.html">Score R&amp;D loop &rarr;</a></li>
+              <li><a href="score-design-before-review.html">Score design before review &rarr;</a></li>
+            </ul>
+            <div class="toolkit-cta-band">
+              <a class="wp-btn wp-btn--primary" href="#step-1">Run step 1</a>
+              <a class="button" href="_education-rubric.md">Open rubric</a>
+              <a class="button" href="../toolkits.html">All walkthroughs</a>
+            </div>
+            <p class="toolkit-attribution">
+              <strong>Attribution.</strong>
+              Registry + rubric + review loop is a portable maintainer pattern.
+              Starter templates / process  -  adapt for your organisation. Hermes cron is optional; manual rubric scoring is the source of truth before publish.
+            </p>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <span>Chandan Sharma</span>
+      <a href="mailto:chandan004sharma@gmail.com">chandan004sharma@gmail.com</a>
+    </div>
+  </footer>
+</body>
+</html>
