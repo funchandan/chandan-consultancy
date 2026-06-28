@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "npm ci",
   "redirects": [
     { "source": "/", "destination": "/share/work.html", "permanent": false },
     { "source": "/work.html", "destination": "/share/work.html", "permanent": false },
