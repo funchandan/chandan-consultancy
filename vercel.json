@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "npm ci",
   "redirects": [
-    { "source": "/", "destination": "/share/work.html", "permanent": false },
+    { "source": "/", "destination": "/index.html", "permanent": false },
     { "source": "/work.html", "destination": "/share/work.html", "permanent": false },
     { "source": "/about.html", "destination": "/share/about.html", "permanent": false },
     { "source": "/share", "destination": "/share/work.html", "permanent": false },
