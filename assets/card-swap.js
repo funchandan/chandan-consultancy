@@ -39,6 +39,7 @@
   function CardSwap(container, options) {
     this.container = container;
     this.gsap = options.gsap;
+    this.flatMode = options.flatMode === true;
     this.cards = Array.prototype.slice.call(container.querySelectorAll(".card"));
     this.cardDistance = options.cardDistance;
     this.verticalDistance = options.verticalDistance;
@@ -132,6 +133,20 @@
     var self = this;
     var gsap = this.gsap;
     this.cards.forEach(function (card, cardIndex) {
+      if (self.flatMode) {
+        gsap.set(card, {
+          x: 0,
+          y: 0,
+          z: 0,
+          xPercent: -50,
+          yPercent: -50,
+          skewY: 0,
+          transformOrigin: "center center",
+          zIndex: self.order.indexOf(cardIndex) === 0 ? 2 : 1,
+          force3D: false,
+        });
+        return;
+      }
       var pos = self.order.indexOf(cardIndex);
       var slot = makeSlot(
         pos,
@@ -198,6 +213,23 @@
     var front = this.order[0];
     var rest = this.order.slice(1);
     var elFront = this.cards[front];
+
+    if (this.flatMode) {
+      this.isSwapping = true;
+      gsap.to(elFront, {
+        opacity: 0,
+        duration: 0.22,
+        ease: "power2.out",
+        onComplete: function () {
+          self.order = rest.concat(front);
+          self.layoutAll(false);
+          self.syncFrontState();
+          self.isSwapping = false;
+        },
+      });
+      return;
+    }
+
     var cfg = this.config;
 
     this.isSwapping = true;
@@ -300,6 +332,7 @@
     var reducedMotion = global.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var instance = new CardSwap(container, {
       gsap: global.gsap,
+      flatMode: !!container.closest(".bento-toolkit-swap"),
       width: container.getAttribute("data-width"),
       height: container.getAttribute("data-height"),
       cardDistance: readNumber(container, "data-card-distance", 18),

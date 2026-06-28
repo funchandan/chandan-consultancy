@@ -110,7 +110,7 @@
   align-self: end;
   font-size: 0.75rem;
   line-height: 1.35;
-  color: color-mix(in srgb, var(--wp-black, #111) 58%, transparent);
+  color: #333333;
 }
 
 .card__steps {

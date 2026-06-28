@@ -1,6 +1,11 @@
-/* Sortable quiz — standalone 120px rows on dark canvas (Cult UI SortableList port) */
+/* Sortable quiz — standalone 120px rows (Layer B token contract) */
 
 .bento-card--quiz {
+  --bento-quiz-ink: #0d0d0d;
+  --bento-quiz-body: #333333;
+  --bento-quiz-muted: #666666;
+  --bento-quiz-surface: #ffffff;
+  --bento-quiz-radius: 14px;
   overflow: visible;
   pointer-events: auto;
   position: relative;
@@ -12,6 +17,14 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
   pointer-events: auto;
 }
 
+.bento-card--quiz .bento-card__panel--quiz,
+.bento-quiz-mount,
+.bento-quiz {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
 .bento-card--quiz .bento-card__panel--quiz {
   display: flex;
   flex-direction: column;
@@ -19,7 +32,7 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
   min-height: 0;
   padding: 0;
   pointer-events: auto;
-  gap: 0.75rem;
+  gap: 0.875rem;
 }
 
 .bento-quiz-mount {
@@ -33,7 +46,7 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
 .bento-quiz {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.875rem;
   width: 100%;
   min-height: 0;
   flex: 1;
@@ -47,7 +60,7 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
 .bento-quiz__title {
   margin: 0;
   font-family: var(--wp-font-ui, "Inter", system-ui, sans-serif);
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.25;
@@ -55,10 +68,10 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
 }
 
 .bento-quiz__desc {
-  margin: 0.35rem 0 0;
-  font-size: 0.8125rem;
+  margin: 0.375rem 0 0;
+  font-size: 0.875rem;
   line-height: 1.45;
-  color: color-mix(in srgb, var(--wp-white, #fff) 72%, transparent);
+  color: color-mix(in srgb, var(--wp-white, #fff) 78%, transparent);
 }
 
 .bento-quiz__body {
@@ -70,7 +83,7 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
   flex-direction: column;
   gap: 0.625rem;
   margin: 0;
-  padding: 0;
+  padding: 0.125rem;
   list-style: none;
   flex: 1;
   min-height: 0;
@@ -78,8 +91,6 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
   scrollbar-gutter: stable;
-  padding-inline: 0.125rem;
-  padding-block: 0.125rem;
   scrollbar-width: thin;
   scrollbar-color: color-mix(in srgb, var(--wp-white, #fff) 28%, transparent) transparent;
 }
@@ -100,16 +111,19 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
   gap: 0.875rem;
   min-height: 120px;
   padding: 1rem 1.125rem;
-  border-radius: 0.875rem;
-  background: #fff;
-  border: 1px solid color-mix(in srgb, var(--wp-white, #fff) 14%, #0a0b10);
+  border-radius: var(--bento-quiz-radius);
+  background: var(--bento-quiz-surface);
+  color: var(--bento-quiz-ink);
+  color-scheme: light;
+  border: 1px solid color-mix(in srgb, var(--bento-quiz-ink) 10%, #fff);
   box-shadow:
-    0 1px 0 color-mix(in srgb, var(--wp-white, #fff) 85%, transparent) inset,
-    0 10px 28px rgba(0, 0, 0, 0.28);
+    0 1px 0 color-mix(in srgb, #fff 90%, transparent) inset,
+    0 12px 32px rgba(0, 0, 0, 0.22);
   cursor: grab;
   touch-action: none;
   user-select: none;
   flex-shrink: 0;
+  isolation: isolate;
 }
 
 .bento-quiz__row:active {
@@ -118,16 +132,16 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
 
 .bento-quiz__row--locked {
   cursor: default;
-  opacity: 0.94;
 }
 
 .bento-quiz__row.is-dragging {
-  opacity: 0.72;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+  outline: 2px solid color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 55%, transparent);
+  outline-offset: 0;
 }
 
 .bento-quiz__row.is-drag-over {
-  outline: 2px dashed color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 65%, transparent);
+  outline: 2px dashed color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 70%, transparent);
   outline-offset: 2px;
 }
 
@@ -136,24 +150,24 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 0.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.625rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  color: color-mix(in srgb, var(--wp-black, #111) 70%, transparent);
-  background: color-mix(in srgb, var(--wp-black, #111) 6%, #fff);
+  color: var(--bento-quiz-ink);
+  background: color-mix(in srgb, var(--bento-quiz-ink) 7%, #fff);
 }
 
 .bento-quiz__label {
   min-width: 0;
   font-family: var(--wp-font-ui, "Inter", system-ui, sans-serif);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   line-height: 1.4;
   font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--wp-black, #111);
+  letter-spacing: -0.015em;
+  color: var(--bento-quiz-ink);
 }
 
 .bento-quiz__handle {
@@ -161,46 +175,48 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 2.25rem;
+  height: 2.25rem;
   padding: 0;
-  border: none;
-  border-radius: 0.5rem;
-  background: color-mix(in srgb, var(--wp-black, #111) 5%, #fff);
-  color: color-mix(in srgb, var(--wp-black, #111) 45%, transparent);
+  border: 1px solid color-mix(in srgb, var(--bento-quiz-ink) 12%, #fff);
+  border-radius: 0.625rem;
+  background: color-mix(in srgb, var(--bento-quiz-ink) 4%, #fff);
+  color: var(--bento-quiz-muted);
   cursor: grab;
   touch-action: none;
 }
 
 .bento-quiz__handle:disabled {
   cursor: default;
-  opacity: 0.35;
+  opacity: 0.45;
 }
 
 .bento-quiz__submit {
   flex-shrink: 0;
   width: 100%;
-  padding: 0.75rem 1rem;
-  border: none;
-  border-radius: 0.75rem;
+  padding: 0.8125rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--bento-quiz-ink) 14%, var(--wp-index-label-gold, #e2c878));
+  border-radius: var(--bento-quiz-radius);
   font-family: var(--wp-font-ui, "Inter", system-ui, sans-serif);
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.01em;
-  color: var(--wp-black, #111);
+  color: var(--bento-quiz-ink);
   background: var(--wp-index-label-gold, #e2c878);
   cursor: pointer;
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
 }
 
 .bento-quiz__submit:hover:not(:disabled) {
-  opacity: 0.92;
+  background: color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 88%, #fff);
   transform: translateY(-1px);
 }
 
 .bento-quiz__submit:disabled {
-  opacity: 0.38;
   cursor: not-allowed;
+  color: var(--bento-quiz-muted);
+  background: color-mix(in srgb, var(--bento-quiz-ink) 6%, #fff);
+  border-color: color-mix(in srgb, var(--bento-quiz-ink) 12%, #fff);
   transform: none;
 }
 
@@ -209,7 +225,7 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
   flex-direction: column;
   gap: 0.625rem;
   margin: 0;
-  padding: 0;
+  padding: 0.125rem;
   list-style: none;
   overflow-y: auto;
   flex: 1;
@@ -223,10 +239,12 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
   align-items: start;
   min-height: 120px;
   padding: 1rem 1.125rem;
-  border-radius: 0.875rem;
-  background: #fff;
-  border: 1px solid color-mix(in srgb, var(--wp-white, #fff) 14%, #0a0b10);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  border-radius: var(--bento-quiz-radius);
+  background: var(--bento-quiz-surface);
+  color: var(--bento-quiz-ink);
+  color-scheme: light;
+  border: 1px solid color-mix(in srgb, var(--bento-quiz-ink) 10%, #fff);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
 }
 
 .bento-quiz__result-copy {
@@ -236,10 +254,14 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
   min-width: 0;
 }
 
+.bento-quiz__result .bento-quiz__label {
+  color: var(--bento-quiz-ink);
+}
+
 .bento-quiz__rationale {
   font-size: 0.8125rem;
   line-height: 1.45;
-  color: color-mix(in srgb, var(--wp-black, #111) 58%, transparent);
+  color: var(--bento-quiz-body);
 }
 
 .bento-quiz__cta {
@@ -247,17 +269,18 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  padding: 0.75rem 1rem;
-  border-radius: 0.75rem;
-  font-size: 0.8125rem;
+  padding: 0.8125rem 1rem;
+  border-radius: var(--bento-quiz-radius);
+  font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
-  color: var(--wp-black, #111);
+  color: var(--bento-quiz-ink);
   background: var(--wp-index-label-gold, #e2c878);
+  border: 1px solid color-mix(in srgb, var(--bento-quiz-ink) 12%, var(--wp-index-label-gold, #e2c878));
 }
 
 .bento-quiz__cta:hover {
-  opacity: 0.92;
+  background: color-mix(in srgb, var(--wp-index-label-gold, #e2c878) 88%, #fff);
 }
 
 .bento-quiz.is-results .bento-quiz__body,
@@ -281,7 +304,7 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
   }
 
   .bento-quiz__label {
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
   }
 }
 

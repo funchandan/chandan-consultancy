@@ -35,13 +35,48 @@ html.wp-box-bento-fallback:not(.wp-motion--static)
   body.home-page--product
   [data-box-bento] {
   --box-bento-blur: calc(12px * (1 - var(--box-bento-t, 0)));
-  opacity: var(--box-bento-t, 0);
-  filter: blur(var(--box-bento-blur));
-  transform: perspective(800px) scale(calc(0.94 + 0.06 * var(--box-bento-t, 0)));
+  opacity: 1;
+  filter: none;
+  transform: none;
   transform-style: flat;
   pointer-events: none;
   visibility: hidden;
+  will-change: auto;
+}
+
+html.wp-box-bento-fallback:not(.wp-motion--static)
+  body.home-page--product
+  [data-box-bento] .bento-card--search {
+  opacity: var(--box-bento-t, 0);
+  filter: blur(var(--box-bento-blur));
+  transform: perspective(800px) scale(calc(0.94 + 0.06 * var(--box-bento-t, 0)));
   will-change: opacity, filter, transform;
+}
+
+html.wp-box-bento-fallback:not(.wp-motion--static)
+  body.home-page--product
+  [data-box-bento] .bento-card--toolkits,
+html.wp-box-bento-fallback:not(.wp-motion--static)
+  body.home-page--product
+  [data-box-bento] .bento-card--quiz,
+html.wp-box-bento-fallback:not(.wp-motion--static)
+  body.home-page--product
+  [data-box-bento] .bento-reviews-embed {
+  opacity: calc(max(0, (var(--box-bento-t, 0) - 0.35) / 0.65));
+  filter: none;
+  transform: none;
+}
+
+html.wp-box-bento-fallback:not(.wp-motion--static)
+  body.home-page--product
+  [data-box-bento][data-box-bento-interactive] .bento-card--toolkits,
+html.wp-box-bento-fallback:not(.wp-motion--static)
+  body.home-page--product
+  [data-box-bento][data-box-bento-interactive] .bento-card--quiz,
+html.wp-box-bento-fallback:not(.wp-motion--static)
+  body.home-page--product
+  [data-box-bento][data-box-bento-interactive] .bento-reviews-embed {
+  opacity: 1 !important;
 }
 
 html.wp-box-bento-fallback:not(.wp-motion--static)
