@@ -1,0 +1,103 @@
+# LinkedIn series: AI user research & design (10 learnings)
+# Hermes drafts only rows in this file. Publish requires status: approved.
+
+version: 1
+cadence_days: 2
+skill: .agents/skills/linkedin-toolkit-series/SKILL.md
+voice_rubric: content/linkedin/_voice-rubric.md
+author_age: 31
+rules:
+  - No inflated tenure claims
+  - Open with personal trend observation (Lately I have noticed...)
+  - 600-900 char feed post, one clear takeaway line
+  - Visual must be walkthrough steps or repo evidence artefact
+
+posts:
+  - id: learning-01-intent-orchestration
+    learning_num: 1
+    slug: intent-orchestration
+    title: Lately, a lot of AI UX content teaches nothing
+    thesis: Score design outputs against standards before review - fewer prompt iterations, higher first-pass acceptance
+    product_objective: "After this walkthrough, users will integrate Hermes into their setup and develop self-improving design rubrics using Hermes."
+    toolkit_full: toolkits/score-research-and-design-loop.html
+    companion_slugs:
+      - score-design-before-review
+      - setup-hermes-personal
+    publish_at: 2026-06-29T07:00:00+05:30
+    status: review
+    post_md: content/linkedin/posts/01-intent-orchestration/post.md
+    artefact: content/linkedin/posts/01-intent-orchestration/artefact-walkthrough.svg
+    artefact_source: content/linkedin/posts/01-intent-orchestration/artefact-walkthrough.md
+    toolkit: toolkits/score-design-before-review.html
+
+  - id: learning-02-research-accelerant
+    learning_num: 2
+    slug: research-accelerant
+    title: TBD
+    thesis: AI as research accelerant, not researcher
+    publish_at: 2026-07-01T07:00:00+05:30
+    status: queued
+
+  - id: learning-03-practitioner-backlash
+    learning_num: 3
+    slug: practitioner-backlash
+    title: TBD
+    thesis: Practitioner backlash is organizational, not technical
+    publish_at: 2026-07-03T07:00:00+05:30
+    status: queued
+
+  - id: learning-04-multi-llm-analysis
+    learning_num: 4
+    slug: multi-llm-analysis
+    title: TBD
+    thesis: Multi-LLM qualitative analysis workflow
+    publish_at: 2026-07-05T07:00:00+05:30
+    status: queued
+
+  - id: learning-05-agentic-patterns
+    learning_num: 5
+    slug: agentic-patterns
+    title: TBD
+    thesis: Agentic UX patterns converging (preview, dial, receipt, undo)
+    publish_at: 2026-07-07T07:00:00+05:30
+    status: queued
+
+  - id: learning-06-fix-ux-skepticism
+    learning_num: 6
+    slug: fix-ux-skepticism
+    title: TBD
+    thesis: You cannot tell AI to fix UX end-to-end yet
+    publish_at: 2026-07-09T07:00:00+05:30
+    status: queued
+
+  - id: learning-07-frontier-uxr
+    learning_num: 7
+    slug: frontier-uxr
+    title: TBD
+    thesis: Frontier UXR at model labs is a new job shape
+    publish_at: 2026-07-11T07:00:00+05:30
+    status: queued
+
+  - id: learning-08-automated-platforms
+    learning_num: 8
+    slug: automated-platforms
+    title: TBD
+    thesis: Automated research platforms rise; supervision model matters
+    publish_at: 2026-07-13T07:00:00+05:30
+    status: queued
+
+  - id: learning-09-figma-to-code
+    learning_num: 9
+    slug: figma-to-code
+    title: TBD
+    thesis: Figma-to-code anxiety; designers editing codebases via AI
+    publish_at: 2026-07-15T07:00:00+05:30
+    status: queued
+
+  - id: learning-10-trust-over-speed
+    learning_num: 10
+    slug: trust-over-speed
+    title: TBD
+    thesis: Trust metrics beat speed metrics in AI-assisted research
+    publish_at: 2026-07-17T07:00:00+05:30
+    status: queued

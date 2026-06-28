@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Score design outputs before review | Chandan Sharma</title>
+  <meta name="description" content="Walkthrough: intent, design standards rubric, Excalidraw or Figma evidence, and pre-review scoring. Fewer prompt iterations, higher first-pass acceptance." />
+  <link rel="stylesheet" href="../styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="../assets/site-nav.js" defer></script>
+  <link rel="stylesheet" href="../assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="../assets/motion/wp-lenis.css?v=1" />
+  <script src="../assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="../assets/motion/wp-lenis.js?v=1" defer></script>
+</head>
+<body>
+  <a class="skip-to-content" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" data-site-nav aria-label="Primary">
+      <a class="brand" href="../index.html" data-nav-brand>Chandan Sharma</a>
+      <button type="button" class="nav-menu-toggle" id="site-nav-open" aria-expanded="false" aria-controls="site-nav-dialog" aria-label="Open menu">
+        <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-menu-toggle__label">Menu</span>
+      </button>
+      <dialog id="site-nav-dialog" class="site-nav-dialog" aria-labelledby="site-nav-dialog-title">
+        <div class="site-nav-dialog__panel">
+          <div class="site-nav-dialog__header">
+            <p id="site-nav-dialog-title" class="site-nav-dialog__title">Menu</p>
+            <form method="dialog"><button type="submit" class="site-nav-dialog__close">Close</button></form>
+          </div>
+          <div class="nav-links nav-links--dialog" data-nav-links-dialog>
+            <a href="../work.html" data-nav-item="work">Work</a>
+            <div class="nav-drawer-group" role="group" aria-labelledby="nav-d-toolkits-label">
+              <p id="nav-d-toolkits-label" class="nav-drawer-group__label">Toolkits</p>
+              <a href="../toolkits.html">Overview</a>
+              <a href="setup-bmad.html">Set up BMAD</a>
+              <a href="setup-hermes-personal.html">Personal Hermes stack</a>
+              <a href="curate-agent-skills.html">Curate agent skills</a>
+              <a href="wds-design-loop.html">WDS design loop</a>
+              <a href="wireframe-with-excalidraw.html">Wireframe in Excalidraw</a>
+              <a class="active" href="score-design-before-review.html">Score design before review</a>
+              <a href="score-research-and-design-loop.html">Score R&amp;D loop</a>
+              <a href="toolkit-review-loop.html">Toolkit review loop</a>
+            </div>
+            <a href="../about.html" data-nav-item="about">About</a>
+          </div>
+        </div>
+      </dialog>
+      <div class="nav-links nav-links--desktop" data-nav-links>
+        <a href="../work.html" data-nav-item="work">Work</a>
+        <div class="nav-disclosure" data-nav-disclosure>
+          <button type="button" class="nav-disclosure__trigger" id="nav-trigger-toolkits" data-nav-disclosure-trigger aria-expanded="false" aria-haspopup="true" aria-controls="nav-panel-toolkits">Toolkits<span class="nav-disclosure__chevron" aria-hidden="true"></span></button>
+          <div class="nav-disclosure__panel" id="nav-panel-toolkits" data-nav-disclosure-panel role="region" aria-labelledby="nav-trigger-toolkits" hidden>
+            <p class="nav-disclosure__eyebrow">Walkthroughs</p>
+            <ul class="nav-disclosure__list">
+              <li><a href="../toolkits.html">Overview</a></li>
+              <li><a href="setup-bmad.html">Set up BMAD</a></li>
+              <li><a href="setup-hermes-personal.html">Personal Hermes stack</a></li>
+              <li><a href="curate-agent-skills.html">Curate agent skills</a></li>
+              <li><a href="wds-design-loop.html">WDS design loop</a></li>
+              <li><a href="wireframe-with-excalidraw.html">Wireframe in Excalidraw</a></li>
+              <li><a class="active" href="score-design-before-review.html">Score design before review</a></li>
+              <li><a href="score-research-and-design-loop.html">Score R&amp;D loop</a></li>
+              <li><a href="toolkit-review-loop.html">Toolkit review loop</a></li>
+            </ul>
+          </div>
+        </div>
+        <a href="../about.html" data-nav-item="about">About</a>
+      </div>
+      <a class="nav-cta" href="#step-1">Run step 1</a>
+    </nav>
+  </header>
+
+  <main id="main" class="toolkit-article toolkit-article--walkthrough" tabindex="-1">
+    <section class="toolkit-hero toolkit-hero--walkthrough section" aria-labelledby="score-title">
+      <div class="shell">
+        <div class="toolkit-hero__copy">
+          <p class="eyebrow"><a href="../toolkits.html">Toolkits</a> / Design</p>
+          <div class="toolkit-hero__head">
+            <span class="toolkit-status toolkit-status--guide">Walkthrough</span>
+            <h1 id="score-title">Score design outputs before review</h1>
+          </div>
+          <p class="consulting-hero-lede">AI-assisted UI often looks fine in the prompt and falls apart in review. This walkthrough shows a simple loop: write intent, attach evidence, score against a rubric, then share. Works with Figma, Excalidraw, or files in any repo.</p>
+          <p class="toolkit-prereq"><strong>You need:</strong> A component list or design system reference, a place to store rubrics and wireframes, ~30 minutes for first-time setup.</p>
+          <div class="toolkit-outcome toolkit-outcome--hero">
+            <strong>After this walkthrough</strong>
+            A design rubric and pre-review checklist your team can reuse, plus a five-step loop to run before every design share or agent-generated UI review.
+          </div>
+          <ul class="toolkit-meta-strip toolkit-meta-strip--pills" aria-label="Walkthrough facts">
+            <li>~30 min setup</li>
+            <li>Self-serve</li>
+            <li>Excalidraw + Figma</li>
+            <li>14/16 pass bar</li>
+          </ul>
+          <div class="toolkit-hero__actions">
+            <a class="wp-btn wp-btn--primary" href="#step-1">Run step 1</a>
+            <a class="button button--ghost" href="artefacts/score-design-before-review/design-standards-rubric.md" download>Download rubric</a>
+          </div>
+          <p class="toolkit-hero__jump"><a href="#artefact">See acceptance loop</a> &middot; <a href="#downloads">Downloads</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" aria-label="Walkthrough content">
+      <div class="shell toolkit-body">
+        <aside class="toolkit-body__aside">
+          <nav class="toolkit-toc toolkit-toc--sticky" aria-label="On this page">
+            <p class="toolkit-toc__label">On this page</p>
+            <ol>
+              <li><a href="#start">Start here</a></li>
+              <li><a href="#improvement">Why score first</a></li>
+              <li>
+                <a href="#walkthrough">Walkthrough</a>
+                <ol class="toolkit-toc__sub">
+                  <li><a href="#step-1">1. Intent</a></li>
+                  <li><a href="#step-2">2. Rubric</a></li>
+                  <li><a href="#step-3">3. Artefact</a></li>
+                  <li><a href="#step-4">4. Score</a></li>
+                  <li><a href="#step-5">5. Automate</a></li>
+                </ol>
+              </li>
+              <li><a href="#curated">Further reading</a></li>
+              <li><a href="#artefact">Acceptance loop</a></li>
+              <li><a href="#downloads">Downloads</a></li>
+              <li><a href="#pitfalls">Troubleshooting</a></li>
+            </ol>
+          </nav>
+        </aside>
+
+        <div class="toolkit-body__main">
+          <section id="start" aria-labelledby="start-heading">
+            <h2 id="start-heading">Start here</h2>
+            <p class="toolkit-section-lede">A design-only scoring loop you can run in any team. For research plus repeating agent review, see the <a href="score-research-and-design-loop.html">R&amp;D walkthrough</a>.</p>
+            <div class="toolkit-start-panel">
+              <section aria-labelledby="who-heading">
+                <h3 id="who-heading">Who this is for</h3>
+                <table class="toolkit-roles">
+                  <thead><tr><th>Role</th><th>Why run this</th></tr></thead>
+                  <tbody>
+                    <tr><td>Product designer</td><td>Higher first-pass acceptance on Figma or Excalidraw shares</td></tr>
+                    <tr><td>Design lead</td><td>One rubric the team scores against before critique meetings</td></tr>
+                    <tr><td>PM / builder using agents</td><td>Fewer &ldquo;third revision&rdquo; prompt loops on UI output</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section aria-labelledby="end-state-heading">
+                <h3 id="end-state-heading">What you&rsquo;ll have</h3>
+                <ul class="toolkit-checklist">
+                  <li>A design rubric (8 rows, typical pass 14/16)</li>
+                  <li>A checklist copied per task</li>
+                  <li>Evidence as Excalidraw, Figma link, or file in your chosen folder</li>
+                  <li>Optional: repeating agent review (see <a href="score-research-and-design-loop.html">R&amp;D loop</a>)</li>
+                </ul>
+              </section>
+            </div>
+          </section>
+
+          <section id="improvement" aria-labelledby="improvement-heading">
+            <h2 id="improvement-heading">Why score first</h2>
+            <p class="toolkit-section-lede">What changed when we made the checklist mandatory before share.</p>
+            <div class="toolkit-compare">
+              <p class="toolkit-compare__card toolkit-compare__card--before">
+                <span class="toolkit-compare__label">Before</span>
+                Prompt, screenshot, design review, debate, re-prompt. Often three rounds before anyone agrees what done means.
+              </p>
+              <p class="toolkit-compare__card toolkit-compare__card--after">
+                <span class="toolkit-compare__label">After</span>
+                Intent, rubric, and evidence scored before share. Review becomes approve or one targeted fix instead of open-ended debate.
+              </p>
+            </div>
+          </section>
+
+          <section id="walkthrough" aria-labelledby="walkthrough-heading">
+            <div class="toolkit-walkthrough-header">
+              <h2 id="walkthrough-heading">Walkthrough</h2>
+              <p class="toolkit-walkthrough-meta">5 steps &middot; ~30 min setup &middot; copy-paste paths</p>
+            </div>
+            <p class="toolkit-section-lede">Run once to set up. Repeat steps 3-4 before each design share.</p>
+            <ol class="toolkit-method toolkit-phase-grid">
+              <li id="step-1">
+                <span class="toolkit-phase-grid__step-label">Step 1</span>
+                <strong>Write intent and acceptance criteria.</strong><span class="toolkit-method__meta">10 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block"># Example shape (use your feature name)
+Intent: User can complete checkout without leaving the cart.
+Pass checks:
+- Error shown if payment fails
+- Focus order documented
+- Empty cart state exists</pre>
+                <span class="toolkit-phase-exit">Expected: approver can say yes/no without opening comments first.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Criteria sound subjective ("feels polished"). Rewrite as pass/fail checks.</p>
+              </li>
+              <li id="step-2">
+                <span class="toolkit-phase-grid__step-label">Step 2</span>
+                <strong>Adapt the design rubric.</strong><span class="toolkit-method__meta">5 min</span>
+                <p>Download the starter rubric from this page. Save it where your team agrees (wiki, drive, or repo). Edit rows 3 and 5 for your design system and accessibility bar.</p>
+                <span class="toolkit-phase-exit">Expected: 8 rows, pass threshold written at top, stored at a stable path everyone knows.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Team ignores the rubric. Run a short working session on rows 3 and 5 only.</p>
+              </li>
+              <li id="step-3">
+                <span class="toolkit-phase-grid__step-label">Step 3</span>
+                <strong>Attach evidence.</strong><span class="toolkit-method__meta">10 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block"># Pick one canonical artefact per screen or flow:
+# - Excalidraw file in your project folder, or
+# - Figma frame URL pasted in the checklist, or
+# - Spec markdown linked from the checklist
+
+# Intent lives in the checklist, not only on the canvas.</pre>
+                <span class="toolkit-phase-exit">Expected: one link or file per feature; scope matches step 1.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Only prose from an agent, no file. Require wireframe or frame before review.</p>
+              </li>
+              <li id="step-4">
+                <span class="toolkit-phase-grid__step-label">Step 4</span>
+                <strong>Score before share.</strong><span class="toolkit-method__meta">5 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block">1. Copy pre-review-checklist.md for this task
+2. Score each rubric row 0, 1, or 2
+3. Share only if total >= pass threshold (default 14/16)
+4. Include checklist + artefact link in the review request</pre>
+                <span class="toolkit-phase-exit">Exit: design review invite includes checklist link and artefact path.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Scores cluster at 10-12. Fix intent or edge states, not the prompt adjective list.</p>
+              </li>
+              <li id="step-5">
+                <span class="toolkit-phase-grid__step-label">Step 5</span>
+                <strong>Automate (optional).</strong><span class="toolkit-method__meta">15 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block"># Design-only: steps 1-4 are enough for most teams.
+# Research + repeating review: see score-research-and-design-loop.html
+#   - path-convention.md + agent-review-prompt.md
+# Run manually in any chat agent, or on a schedule you choose.</pre>
+                <span class="toolkit-phase-exit">Expected: if you automate, the agent scores your design files with your rubric - not someone else's repo layout.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Agent wanders to unrelated folders. Paste explicit paths from your path convention into the prompt.</p>
+              </li>
+            </ol>
+          </section>
+
+          <section id="curated" aria-labelledby="curated-heading">
+            <h2 id="curated-heading">Further reading</h2>
+            <p class="toolkit-section-lede">Optional public references. Not required to run this walkthrough.</p>
+            <table class="toolkit-curated-table">
+              <thead><tr><th>Name</th><th>Type</th><th>Why this one</th><th>Link</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Score R&amp;D loop</td>
+                  <td>Walkthrough</td>
+                  <td>Add research rubrics and repeating agent review</td>
+                  <td><a href="score-research-and-design-loop.html">Open</a></td>
+                </tr>
+                <tr>
+                  <td>Nielsen Norman Group</td>
+                  <td>Article</td>
+                  <td>Heuristic evaluation rows for design rubrics</td>
+                  <td><a href="https://www.nngroup.com/articles/how-to-conduct-a-heuristic-evaluation/" rel="noopener">nngroup.com</a></td>
+                </tr>
+                <tr>
+                  <td>W3C WCAG quick ref</td>
+                  <td>Reference</td>
+                  <td>Concrete accessibility checks for rubric row 5</td>
+                  <td><a href="https://www.w3.org/WAI/WCAG22/quickref/" rel="noopener">w3.org</a></td>
+                </tr>
+                <tr>
+                  <td>Excalidraw</td>
+                  <td>Tool</td>
+                  <td>Open wireframe format for evidence files</td>
+                  <td><a href="https://excalidraw.com" rel="noopener">excalidraw.com</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section id="artefact" aria-labelledby="artefact-heading">
+            <h2 id="artefact-heading">Acceptance loop</h2>
+            <p class="toolkit-section-lede">Same five-step loop as the diagram below. Customize folder names to match your team.</p>
+            <figure class="toolkit-artefact-figure">
+              <img src="artefacts/score-design-before-review/acceptance-loop.svg" width="720" height="320" alt="Acceptance loop: intent, standards, artefact, score, review" loading="lazy" />
+              <figcaption>
+                Design pre-review loop (generic steps).
+                <a href="artefacts/score-design-before-review/acceptance-loop.excalidraw">Open editable .excalidraw</a>
+              </figcaption>
+            </figure>
+          </section>
+
+          <section id="downloads" aria-labelledby="downloads-heading">
+            <h2 id="downloads-heading">Downloads</h2>
+            <p class="toolkit-section-lede">Copy into your repo. Adapt dimensions 3 and 5 for your design system.</p>
+            <ul class="toolkit-download-list toolkit-download-cards">
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/score-design-before-review/design-standards-rubric.md" download>design-standards-rubric.md</a>
+                  <p>8-dimension rubric; pass &ge; 14/16.</p>
+                </article>
+              </li>
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/score-design-before-review/pre-review-checklist.md" download>pre-review-checklist.md</a>
+                  <p>Per-task checklist with score log table.</p>
+                </article>
+              </li>
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/score-design-before-review/acceptance-loop.excalidraw" download>acceptance-loop.excalidraw</a>
+                  <p>Editable loop diagram for team workshops.</p>
+                </article>
+              </li>
+            </ul>
+          </section>
+
+          <section id="pitfalls" aria-labelledby="pitfalls-heading">
+            <h2 id="pitfalls-heading">Troubleshooting</h2>
+            <p class="toolkit-section-lede">Symptom &rarr; fix, tied to the step where it usually appears.</p>
+            <ul class="toolkit-pitfalls">
+              <li><strong>Review still turns into opinion debate.</strong> <span class="toolkit-pitfalls__step">Step 1</span> - Acceptance criteria are not testable; rewrite as pass/fail.</li>
+              <li><strong>Rubric ignored after week one.</strong> <span class="toolkit-pitfalls__step">Step 2</span> - Tie share permission to checklist in PR or Figma description template.</li>
+              <li><strong>Agent output has no file.</strong> <span class="toolkit-pitfalls__step">Step 3</span> - Require <code>.excalidraw</code> or Figma frame URL before review; see wireframe walkthrough.</li>
+              <li><strong>Scores always 10-12.</strong> <span class="toolkit-pitfalls__step">Step 4</span> - Missing edge states or undo path; fix artefact scope, not prompt length.</li>
+              <li><strong>Cron scores toolkit HTML instead of design files.</strong> <span class="toolkit-pitfalls__step">Step 5</span> - Use <a href="score-research-and-design-loop.html">R&amp;D loop</a> or skip automation on this slice.</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="related-heading">
+            <h2 id="related-heading">Related walkthroughs</h2>
+            <ul class="toolkit-related">
+              <li><a href="score-research-and-design-loop.html">Score R&amp;D loop (full objective) &rarr;</a></li>
+              <li><a href="wireframe-with-excalidraw.html">Wireframe in Excalidraw &rarr;</a></li>
+              <li><a href="wds-design-loop.html">WDS design loop &rarr;</a></li>
+              <li><a href="toolkit-review-loop.html">Toolkit review loop &rarr;</a></li>
+            </ul>
+            <div class="toolkit-cta-band">
+              <a class="wp-btn wp-btn--primary" href="#step-1">Run step 1</a>
+              <a class="button" href="artefacts/score-design-before-review/design-standards-rubric.md" download>Download rubric</a>
+              <a class="button" href="artefacts/score-design-before-review/pre-review-checklist.md" download>Download checklist</a>
+              <a class="button" href="../toolkits.html">All walkthroughs</a>
+            </div>
+            <p class="toolkit-attribution">
+              <strong>Attribution.</strong>
+              Starter templates are generic guidance - adapt paths and rubric rows for your organisation.
+              Research + agent loop: <a href="score-research-and-design-loop.html">score research and design loop</a>.
+            </p>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <span>Chandan Sharma</span>
+      <a href="mailto:chandan004sharma@gmail.com">chandan004sharma@gmail.com</a>
+    </div>
+  </footer>
+</body>
+</html>

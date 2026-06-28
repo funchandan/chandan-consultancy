@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Self-improving design rubrics with Hermes | Chandan Sharma</title>
+  <meta name="description" content="Integrate Hermes, run a design rubric workshop, score work before share, and schedule a cron that rescored design files until they pass - then refine rubric rows when the same gap repeats." />
+  <link rel="stylesheet" href="../styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="../assets/site-nav.js" defer></script>
+  <link rel="stylesheet" href="../assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="../assets/motion/wp-lenis.css?v=1" />
+  <script src="../assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="../assets/motion/wp-lenis.js?v=1" defer></script>
+</head>
+<body>
+  <a class="skip-to-content" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" data-site-nav aria-label="Primary">
+      <a class="brand" href="../index.html" data-nav-brand>Chandan Sharma</a>
+      <button type="button" class="nav-menu-toggle" id="site-nav-open" aria-expanded="false" aria-controls="site-nav-dialog" aria-label="Open menu">
+        <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-menu-toggle__label">Menu</span>
+      </button>
+      <dialog id="site-nav-dialog" class="site-nav-dialog" aria-labelledby="site-nav-dialog-title">
+        <div class="site-nav-dialog__panel">
+          <div class="site-nav-dialog__header">
+            <p id="site-nav-dialog-title" class="site-nav-dialog__title">Menu</p>
+            <form method="dialog"><button type="submit" class="site-nav-dialog__close">Close</button></form>
+          </div>
+          <div class="nav-links nav-links--dialog" data-nav-links-dialog>
+            <a href="../work.html" data-nav-item="work">Work</a>
+            <div class="nav-drawer-group" role="group" aria-labelledby="nav-d-toolkits-label">
+              <p id="nav-d-toolkits-label" class="nav-drawer-group__label">Toolkits</p>
+              <a href="../toolkits.html">Overview</a>
+              <a href="setup-bmad.html">Set up BMAD</a>
+              <a href="setup-hermes-personal.html">Personal Hermes stack</a>
+              <a href="curate-agent-skills.html">Curate agent skills</a>
+              <a href="wds-design-loop.html">WDS design loop</a>
+              <a href="wireframe-with-excalidraw.html">Wireframe in Excalidraw</a>
+              <a href="score-design-before-review.html">Score design before review</a>
+              <a class="active" href="score-research-and-design-loop.html">Score R&amp;D loop</a>
+              <a href="toolkit-review-loop.html">Toolkit review loop</a>
+            </div>
+            <a href="../about.html" data-nav-item="about">About</a>
+          </div>
+        </div>
+      </dialog>
+      <div class="nav-links nav-links--desktop" data-nav-links>
+        <a href="../work.html" data-nav-item="work">Work</a>
+        <div class="nav-disclosure" data-nav-disclosure>
+          <button type="button" class="nav-disclosure__trigger" id="nav-trigger-toolkits" data-nav-disclosure-trigger aria-expanded="false" aria-haspopup="true" aria-controls="nav-panel-toolkits">Toolkits<span class="nav-disclosure__chevron" aria-hidden="true"></span></button>
+          <div class="nav-disclosure__panel" id="nav-panel-toolkits" data-nav-disclosure-panel role="region" aria-labelledby="nav-trigger-toolkits" hidden>
+            <p class="nav-disclosure__eyebrow">Walkthroughs</p>
+            <ul class="nav-disclosure__list">
+              <li><a href="../toolkits.html">Overview</a></li>
+              <li><a href="setup-bmad.html">Set up BMAD</a></li>
+              <li><a href="setup-hermes-personal.html">Personal Hermes stack</a></li>
+              <li><a href="curate-agent-skills.html">Curate agent skills</a></li>
+              <li><a href="wds-design-loop.html">WDS design loop</a></li>
+              <li><a href="wireframe-with-excalidraw.html">Wireframe in Excalidraw</a></li>
+              <li><a href="score-design-before-review.html">Score design before review</a></li>
+              <li><a class="active" href="score-research-and-design-loop.html">Score R&amp;D loop</a></li>
+              <li><a href="toolkit-review-loop.html">Toolkit review loop</a></li>
+            </ul>
+          </div>
+        </div>
+        <a href="../about.html" data-nav-item="about">About</a>
+      </div>
+      <a class="nav-cta" href="#step-1">Run step 1</a>
+    </nav>
+  </header>
+
+  <main id="main" class="toolkit-article toolkit-article--walkthrough" tabindex="-1">
+    <section class="toolkit-hero toolkit-hero--walkthrough section" aria-labelledby="rd-score-title">
+      <div class="shell">
+        <div class="toolkit-hero__copy">
+          <p class="eyebrow"><a href="../toolkits.html">Toolkits</a> / Research + Design</p>
+          <div class="toolkit-hero__head">
+            <span class="toolkit-status toolkit-status--guide">Walkthrough</span>
+            <h1 id="rd-score-title">Self-improving design rubrics with Hermes</h1>
+          </div>
+          <p class="consulting-hero-lede">Teams using AI for UI still lose time in review when nobody agrees what good looks like. This walkthrough helps you write a design rubric, score work before you share it, integrate Hermes, and rerun review on a schedule until outputs pass - then revise rubric rows when the same gap keeps showing up.</p>
+          <p class="toolkit-prereq"><strong>You need:</strong> A git repo (or drive) for rubrics and design evidence, people who approve design, and <a href="setup-hermes-personal.html">Hermes CLI + gateway</a> on a machine that can reach that repo.</p>
+          <div class="toolkit-outcome toolkit-outcome--hero">
+            <strong>After this walkthrough</strong>
+            You will integrate Hermes into your setup and develop self-improving design rubrics using Hermes: a team-authored design rubric, a score log, manual pre-share checks, and a Hermes cron that rescored design files against that rubric until they pass.
+          </div>
+          <ul class="toolkit-meta-strip toolkit-meta-strip--pills" aria-label="Walkthrough facts">
+            <li>~90 min first setup</li>
+            <li>Hermes CLI + gateway</li>
+            <li>Design rubrics</li>
+            <li>Scheduled cron review</li>
+          </ul>
+          <div class="toolkit-hero__actions">
+            <a class="wp-btn wp-btn--primary" href="#step-1">Run step 1</a>
+            <a class="button button--ghost" href="artefacts/score-research-and-design-loop/path-convention.md" download>Path convention</a>
+          </div>
+          <p class="toolkit-hero__jump"><a href="#artefact">See the loop</a> &middot; <a href="#downloads">Downloads</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" aria-label="Walkthrough content">
+      <div class="shell toolkit-body">
+        <aside class="toolkit-body__aside">
+          <nav class="toolkit-toc toolkit-toc--sticky" aria-label="On this page">
+            <p class="toolkit-toc__label">On this page</p>
+            <ol>
+              <li><a href="#start">Start here</a></li>
+              <li><a href="#improvement">Why rubrics + loop</a></li>
+              <li>
+                <a href="#walkthrough">Walkthrough</a>
+                <ol class="toolkit-toc__sub">
+                  <li><a href="#step-1">1. Agree paths</a></li>
+                  <li><a href="#step-2">2. Rubric workshop</a></li>
+                  <li><a href="#step-3">3. Save rubrics</a></li>
+                  <li><a href="#step-4">4. Score before share</a></li>
+                  <li><a href="#step-5">5. Integrate Hermes</a></li>
+                  <li><a href="#step-6">6. Improve rubric + rerun</a></li>
+                </ol>
+              </li>
+              <li><a href="#curated">Further reading</a></li>
+              <li><a href="#artefact">Loop diagram</a></li>
+              <li><a href="#downloads">Downloads</a></li>
+              <li><a href="#pitfalls">Troubleshooting</a></li>
+            </ol>
+          </nav>
+        </aside>
+
+        <div class="toolkit-body__main">
+          <section id="start" aria-labelledby="start-heading">
+            <h2 id="start-heading">Start here</h2>
+            <p class="toolkit-section-lede">This is a team process with Hermes handling the repeat scoring. You choose where files live, you write the rubric, and Hermes runs the review on a schedule you set.</p>
+            <div class="toolkit-start-panel">
+              <section aria-labelledby="who-heading">
+                <h3 id="who-heading">Who this is for</h3>
+                <table class="toolkit-roles">
+                  <thead><tr><th>Role</th><th>What you get</th></tr></thead>
+                  <tbody>
+                    <tr><td>UX researcher</td><td>Optional: add a research rubric using the same workshop pattern</td></tr>
+                    <tr><td>Product designer</td><td>Clear pass/fail language before critique or build</td></tr>
+                    <tr><td>PM or ops</td><td>One score log and one Hermes cron the whole team can reuse</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section aria-labelledby="end-state-heading">
+                <h3 id="end-state-heading">What you&rsquo;ll have</h3>
+                <ul class="toolkit-checklist">
+                  <li>A design rubric file with rows your team picked in the workshop</li>
+                  <li>A filled-in path convention (where rubric, work, and logs live)</li>
+                  <li>A score log every review appends to</li>
+                  <li>A Hermes cron job that reads the rubric and rescored design files on schedule</li>
+                </ul>
+              </section>
+            </div>
+          </section>
+
+          <section id="improvement" aria-labelledby="improvement-heading">
+            <h2 id="improvement-heading">Why rubrics + loop</h2>
+            <p class="toolkit-section-lede">What usually changes when review is scored instead of debated.</p>
+            <div class="toolkit-compare">
+              <p class="toolkit-compare__card toolkit-compare__card--before">
+                <span class="toolkit-compare__label">Before</span>
+                Research lives in one tool, design in another, and approval happens in meetings. AI drafts pile up with no shared pass line. The same gaps show up every sprint.
+              </p>
+              <p class="toolkit-compare__card toolkit-compare__card--after">
+                <span class="toolkit-compare__label">After</span>
+                The team agrees rubrics once, scores before share, and reruns review on failed items. Approvals become yes, or one named fix on a rubric row.
+              </p>
+            </div>
+          </section>
+
+          <section id="walkthrough" aria-labelledby="walkthrough-heading">
+            <div class="toolkit-walkthrough-header">
+              <h2 id="walkthrough-heading">Walkthrough</h2>
+              
+            </div>
+            <p class="toolkit-section-lede">Do steps 1-3 once per programme or product area. Do steps 4-6 whenever you prepare design work for approval or refine the rubric after repeat failures.</p>
+            <ol class="toolkit-method toolkit-phase-grid">
+              <li id="step-1">
+                <span class="toolkit-phase-grid__step-label">Step 1</span>
+                <strong>Agree where design work and the rubric live.</strong><span class="toolkit-method__meta">15 min</span>
+                <p>Download <a href="artefacts/score-research-and-design-loop/path-convention.md">path-convention.md</a> and fill in one row per deliverable type. Examples use a git layout; you can use Notion URLs and Figma links instead if every checklist names the canonical link.</p>
+                <pre class="toolkit-terminal toolkit-terminal--block"># Example layout (change names to match your team)
+standards/design-rubric.md
+work/design/&lt;feature-name&gt;/
+reviews/score-log.md
+reviews/checklists/&lt;task-name&gt;.md</pre>
+                <span class="toolkit-phase-exit">Expected: everyone can answer "where is the file?" without a Slack thread.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Outputs only exist in decks or chat. Pick one canonical path or URL per deliverable before continuing.</p>
+              </li>
+              <li id="step-2">
+                <span class="toolkit-phase-grid__step-label">Step 2</span>
+                <strong>Run the design rubric workshop.</strong><span class="toolkit-method__meta">45 min</span>
+                <p>Use <a href="artefacts/score-research-and-design-loop/rubric-design-workshop.md">rubric-design-workshop.md</a> as the facilitator guide. Pick 6-8 scoring rows for design, set the pass total, and dry-run one real screen or flow from last month.</p>
+                <span class="toolkit-phase-exit">Expected: design dimension list is written and two scorers are within 3 points on the dry run.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Scorers disagree widely. Rewrite vague rows ("high quality") into observable checks.</p>
+              </li>
+              <li id="step-3">
+                <span class="toolkit-phase-grid__step-label">Step 3</span>
+                <strong>Save the design rubric where the team can find it.</strong><span class="toolkit-method__meta">20 min</span>
+                <p>Start from <a href="artefacts/score-research-and-design-loop/design-standards-rubric.md">design-standards-rubric.md</a> on this page. Replace row names and pass rules with what the workshop produced. Store at the path you chose in step 1.</p>
+                <pre class="toolkit-terminal toolkit-terminal--block"># Example only - use YOUR paths from step 1
+# Copy templates from Downloads into your standards folder
+# Edit every row; add "when you score below threshold" notes</pre>
+                <span class="toolkit-phase-exit">Expected: design rubric at a stable location; header states version and pass threshold.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> File is still the generic template. Add at least two team-specific rows from the workshop.</p>
+              </li>
+              <li id="step-4">
+                <span class="toolkit-phase-grid__step-label">Step 4</span>
+                <strong>Score manually before share.</strong><span class="toolkit-method__meta">10 min per item</span>
+                <p>Copy <a href="artefacts/score-research-and-design-loop/rd-review-checklist.md">rd-review-checklist.md</a> for each task. Score the artefact, append a row to your score log, and share only if Pass = Y.</p>
+                <pre class="toolkit-terminal toolkit-terminal--block"># Per task
+1. Open checklist for this task
+2. Score each rubric row 0, 1, or 2
+3. Add row to score log (see score-log-template.md)
+4. Share only if Pass = Y</pre>
+                <span class="toolkit-phase-exit">Exit: approval request includes checklist, artefact link, and log row.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Scores look fine but critique still debates basics. Add one observable row before moving to Hermes.</p>
+              </li>
+              <li id="step-5">
+                <span class="toolkit-phase-grid__step-label">Step 5</span>
+                <strong>Integrate Hermes and create the review cron.</strong><span class="toolkit-method__meta">30 min</span>
+                <p>If Hermes is not installed yet, complete <a href="setup-hermes-personal.html">setup-hermes-personal</a> (CLI, gateway, workdir). Then open <a href="artefacts/score-research-and-design-loop/agent-review-prompt.md">agent-review-prompt.md</a>, paste your paths from step 1, and create the cron.</p>
+                <pre class="toolkit-terminal toolkit-terminal--block">hermes gateway install
+
+hermes cron create \
+  --name design-rubric-review \
+  --workdir "/path/to/your/repo" \
+  --skill requesting-code-review \
+  "every 12h" \
+  "Read standards/design-rubric.md. Score work/design/** changed in 14d. Append to reviews/score-log.md only."
+
+hermes cron run &lt;job-id&gt;</pre>
+                <span class="toolkit-phase-exit">Expected: job ID returned; manual run appends rows to YOUR score log; rubric file unchanged.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Cron never runs — gateway not installed; rerun <code>hermes gateway install</code> and check <code>hermes cron status</code>. Agent edits rubrics — tighten prompt: append log only, rubrics read-only.</p>
+              </li>
+              <li id="step-6">
+                <span class="toolkit-phase-grid__step-label">Step 6</span>
+                <strong>Improve the rubric and rerun until pass.</strong><span class="toolkit-method__meta">ongoing</span>
+                <p>For each Fail row in the log, apply one fix tied to the lowest-scoring rubric row. Let Hermes rescore on the next run. When the <strong>same rubric row</strong> fails on three different tasks, rewrite that row in a short workshop and bump the rubric version — that is the self-improving loop.</p>
+                <span class="toolkit-phase-exit">Expected: failed scores turn into one targeted fix, then Pass = Y on rerun.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Scope is too big. Score one study or one screen at a time.</p>
+              </li>
+            </ol>
+          </section>
+
+          <section id="curated" aria-labelledby="curated-heading">
+            <h2 id="curated-heading">Further reading</h2>
+            <p class="toolkit-section-lede">Public references for rubric design and review quality. None are required to run this walkthrough.</p>
+            <table class="toolkit-curated-table">
+              <thead><tr><th>Source</th><th>Topic</th><th>Why it helps</th><th>Link</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>GOV.UK Service Manual</td>
+                  <td>User research</td>
+                  <td>Plain-language bar for research quality and sharing</td>
+                  <td><a href="https://www.gov.uk/service-manual/user-research" rel="noopener">gov.uk</a></td>
+                </tr>
+                <tr>
+                  <td>Nielsen Norman Group</td>
+                  <td>Heuristic evaluation</td>
+                  <td>Scoring dimensions for design review</td>
+                  <td><a href="https://www.nngroup.com/articles/how-to-conduct-a-heuristic-evaluation/" rel="noopener">nngroup.com</a></td>
+                </tr>
+                <tr>
+                  <td>W3C</td>
+                  <td>WCAG quick reference</td>
+                  <td>Concrete checks for accessibility rows in design rubrics</td>
+                  <td><a href="https://www.w3.org/WAI/WCAG22/quickref/" rel="noopener">w3.org</a></td>
+                </tr>
+                <tr>
+                  <td>Excalidraw</td>
+                  <td>Wireframe files</td>
+                  <td>Open format for design evidence if you do not use Figma</td>
+                  <td><a href="https://excalidraw.com" rel="noopener">excalidraw.com</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section id="artefact" aria-labelledby="artefact-heading">
+            <h2 id="artefact-heading">Loop diagram</h2>
+            <p class="toolkit-section-lede">Six steps: agree paths, workshop, save design rubric, score manually, integrate Hermes cron, improve rubric rows when patterns repeat.</p>
+            <figure class="toolkit-artefact-figure">
+              <img src="artefacts/score-research-and-design-loop/rd-score-loop.svg" width="720" height="360" alt="Design rubric loop: scope, workshop, rubric, score, Hermes cron, improve" loading="lazy" />
+              <figcaption>
+                Design rubric loop with Hermes on step 5.
+                <a href="artefacts/score-research-and-design-loop/rd-score-loop.excalidraw">Open editable .excalidraw</a>
+              </figcaption>
+            </figure>
+          </section>
+
+          <section id="downloads" aria-labelledby="downloads-heading">
+            <h2 id="downloads-heading">Downloads</h2>
+            <p class="toolkit-section-lede">Starter files. Customize in step 3; do not treat them as final team standards.</p>
+            <ul class="toolkit-download-list toolkit-download-cards">
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/score-research-and-design-loop/path-convention.md" download>path-convention.md</a>
+                  <p>Fill in where rubrics, work, and logs live.</p>
+                </article>
+              </li>
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/score-research-and-design-loop/rubric-design-workshop.md" download>rubric-design-workshop.md</a>
+                  <p>45 min facilitator guide.</p>
+                </article>
+              </li>
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/score-research-and-design-loop/research-standards-rubric.md" download>research-standards-rubric.md</a>
+                  <p>Starter research rubric (8 rows).</p>
+                </article>
+              </li>
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/score-research-and-design-loop/design-standards-rubric.md" download>design-standards-rubric.md</a>
+                  <p>Starter design rubric (8 rows).</p>
+                </article>
+              </li>
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/score-research-and-design-loop/rd-review-checklist.md" download>rd-review-checklist.md</a>
+                  <p>Per-task checklist with score tables.</p>
+                </article>
+              </li>
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/score-research-and-design-loop/score-log-template.md" download>score-log-template.md</a>
+                  <p>Human and agent review history.</p>
+                </article>
+              </li>
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/score-research-and-design-loop/agent-review-prompt.md" download>agent-review-prompt.md</a>
+                  <p>Hermes cron create prompt + self-improving rubric notes.</p>
+                </article>
+              </li>
+            </ul>
+          </section>
+
+          <section id="pitfalls" aria-labelledby="pitfalls-heading">
+            <h2 id="pitfalls-heading">Troubleshooting</h2>
+            <p class="toolkit-section-lede">Common blockers and which step fixes them.</p>
+            <ul class="toolkit-pitfalls">
+              <li><strong>Nothing to score except slides.</strong> <span class="toolkit-pitfalls__step">Step 1</span> - Add a file path or URL rule before rubrics.</li>
+              <li><strong>Rubric forgotten after the workshop.</strong> <span class="toolkit-pitfalls__step">Step 2</span> - Require checklist link in your review template.</li>
+              <li><strong>Template shipped unchanged.</strong> <span class="toolkit-pitfalls__step">Step 3</span> - Add team-specific rows from workshop notes.</li>
+              <li><strong>Research does not unblock design.</strong> <span class="toolkit-pitfalls__step">Step 2</span> - Optional research rubric; fix design actionability rows first.</li>
+              <li><strong>Cron never runs.</strong> <span class="toolkit-pitfalls__step">Step 5</span> - Run <code>hermes gateway install</code>; confirm with <code>hermes cron status</code>.</li>
+              <li><strong>Agent reviews the wrong folders.</strong> <span class="toolkit-pitfalls__step">Step 5</span> - Paste explicit paths from path-convention into the cron prompt.</li>
+              <li><strong>Same item fails repeatedly.</strong> <span class="toolkit-pitfalls__step">Step 6</span> - Narrow scope or hold a live working session.</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="related-heading">
+            <h2 id="related-heading">Companion walkthroughs</h2>
+            <p class="toolkit-section-lede">Required for Hermes setup; optional shorter path if you want manual scoring only.</p>
+            <ul class="toolkit-related">
+              <li><a href="setup-hermes-personal.html">Hermes CLI + gateway setup (do before step 5) &rarr;</a></li>
+              <li><a href="score-design-before-review.html">Design-only scoring without Hermes (LinkedIn slice) &rarr;</a></li>
+              <li><a href="wireframe-with-excalidraw.html">Wireframe evidence format &rarr;</a></li>
+            </ul>
+            <div class="toolkit-cta-band">
+              <a class="wp-btn wp-btn--primary" href="#step-1">Run step 1</a>
+              <a class="button" href="setup-hermes-personal.html">Hermes setup</a>
+              <a class="button" href="artefacts/score-research-and-design-loop/agent-review-prompt.md" download>Hermes cron prompt</a>
+              <a class="button" href="../toolkits.html">All walkthroughs</a>
+            </div>
+            <p class="toolkit-attribution">
+              <strong>Attribution.</strong>
+              Process pattern: design rubric workshop, score-before-share, Hermes cron rescore, human rubric revision when rows repeat-fail. Starter templates are CC0-style guidance - adapt freely in your organisation.
+            </p>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <span>Chandan Sharma</span>
+      <a href="mailto:chandan004sharma@gmail.com">chandan004sharma@gmail.com</a>
+    </div>
+  </footer>
+</body>
+</html>

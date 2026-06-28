@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" role="img" aria-label="Hermes stack wireframe: CLI, gateway, cron, project context">
+  <rect width="400" height="220" fill="#f4f6f9"/>
+  <rect x="16" y="16" width="72" height="52" rx="6" fill="#fff" stroke="#144ccd" stroke-width="1.5"/>
+  <text x="28" y="40" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#212529">CLI</text>
+  <text x="28" y="56" font-family="Arial, Helvetica, sans-serif" font-size="8" fill="#868e96">hermes setup</text>
+  <rect x="100" y="16" width="72" height="52" rx="6" fill="#fff" stroke="#144ccd" stroke-width="1.5"/>
+  <text x="112" y="40" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#212529">Gateway</text>
+  <text x="112" y="56" font-family="Arial, Helvetica, sans-serif" font-size="8" fill="#868e96">launchd</text>
+  <rect x="184" y="16" width="72" height="52" rx="6" fill="#fff" stroke="#144ccd" stroke-width="1.5"/>
+  <text x="196" y="40" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#212529">Cron</text>
+  <text x="196" y="56" font-family="Arial, Helvetica, sans-serif" font-size="8" fill="#868e96">every 12h</text>
+  <rect x="268" y="16" width="116" height="52" rx="6" fill="#fff" stroke="#144ccd" stroke-width="1.5"/>
+  <text x="280" y="40" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#212529">.hermes.md</text>
+  <text x="280" y="56" font-family="Arial, Helvetica, sans-serif" font-size="8" fill="#868e96">repo context</text>
+  <path d="M88 42h12 M172 42h12 M256 42h12" stroke="#144ccd" stroke-width="1.5" marker-end="url(#h)"/>
+  <rect x="16" y="84" width="368" height="56" rx="6" fill="#1a2332"/>
+  <text x="28" y="108" font-family="Courier New, Courier, monospace" font-size="9" fill="#7dd3fc">hermes cron add toolkit-education-review</text>
+  <text x="28" y="124" font-family="Courier New, Courier, monospace" font-size="9" fill="#94a3b8">--schedule 0 */12 * * *</text>
+  <rect x="16" y="152" width="368" height="52" rx="6" fill="#fff" stroke="#868e96" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="28" y="174" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#495057">toolkits/*.html + walkthrough-registry.yaml</text>
+  <text x="28" y="190" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#868e96">repo-aware automation loop</text>
+  <defs><marker id="h" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L5,3 L0,6 Z" fill="#144ccd"/></marker></defs>
+</svg>

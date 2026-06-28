@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Personal Hermes AI stack | Chandan Sharma</title>
+  <meta name="description" content="Walkthrough: install Hermes, run the gateway, schedule a cron job, and wire project context in .hermes.md for any git repo." />
+  <link rel="stylesheet" href="../styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="../assets/site-nav.js" defer></script>
+  <link rel="stylesheet" href="../assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="../assets/motion/wp-lenis.css?v=1" />
+  <script src="../assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="../assets/motion/wp-lenis.js?v=1" defer></script>
+</head>
+<body>
+  <a class="skip-to-content" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" data-site-nav aria-label="Primary">
+      <a class="brand" href="../index.html" data-nav-brand>Chandan Sharma</a>
+      <button type="button" class="nav-menu-toggle" id="site-nav-open" aria-expanded="false" aria-controls="site-nav-dialog" aria-label="Open menu">
+        <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-menu-toggle__label">Menu</span>
+      </button>
+      <dialog id="site-nav-dialog" class="site-nav-dialog" aria-labelledby="site-nav-dialog-title">
+        <div class="site-nav-dialog__panel">
+          <div class="site-nav-dialog__header">
+            <p id="site-nav-dialog-title" class="site-nav-dialog__title">Menu</p>
+            <form method="dialog">
+              <button type="submit" class="site-nav-dialog__close">Close</button>
+            </form>
+          </div>
+          <div class="nav-links nav-links--dialog" data-nav-links-dialog>
+            <a href="../work.html" data-nav-item="work">Work</a>
+            <div class="nav-drawer-group" role="group" aria-labelledby="nav-d-toolkits-label">
+              <p id="nav-d-toolkits-label" class="nav-drawer-group__label">Toolkits</p>
+              <a href="../toolkits.html">Overview</a>
+              <a href="setup-bmad.html">Set up BMAD</a>
+              <a class="active" href="setup-hermes-personal.html">Personal Hermes stack</a>
+              <a href="curate-agent-skills.html">Curate agent skills</a>
+              <a href="wds-design-loop.html">WDS design loop</a>
+              <a href="wireframe-with-excalidraw.html">Wireframe in Excalidraw</a>
+              <a href="score-design-before-review.html">Score design before review</a>
+              <a href="score-research-and-design-loop.html">Score R&amp;D loop</a>
+              <a href="toolkit-review-loop.html">Toolkit review loop</a>
+            </div>
+            <a href="../about.html" data-nav-item="about">About</a>
+          </div>
+        </div>
+      </dialog>
+      <div class="nav-links nav-links--desktop" data-nav-links>
+        <a href="../work.html" data-nav-item="work">Work</a>
+        <div class="nav-disclosure" data-nav-disclosure>
+          <button type="button" class="nav-disclosure__trigger" id="nav-trigger-toolkits" data-nav-disclosure-trigger aria-expanded="false" aria-haspopup="true" aria-controls="nav-panel-toolkits">
+            Toolkits
+            <span class="nav-disclosure__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="nav-disclosure__panel" id="nav-panel-toolkits" data-nav-disclosure-panel role="region" aria-labelledby="nav-trigger-toolkits" hidden>
+            <p class="nav-disclosure__eyebrow">Walkthroughs</p>
+            <ul class="nav-disclosure__list">
+              <li><a href="../toolkits.html">Overview</a></li>
+              <li><a href="setup-bmad.html">Set up BMAD</a></li>
+              <li><a class="active" href="setup-hermes-personal.html">Personal Hermes stack</a></li>
+              <li><a href="curate-agent-skills.html">Curate agent skills</a></li>
+              <li><a href="wds-design-loop.html">WDS design loop</a></li>
+              <li><a href="wireframe-with-excalidraw.html">Wireframe in Excalidraw</a></li>
+              <li><a href="score-design-before-review.html">Score design before review</a></li>
+              <li><a href="score-research-and-design-loop.html">Score R&amp;D loop</a></li>
+              <li><a href="toolkit-review-loop.html">Toolkit review loop</a></li>
+            </ul>
+          </div>
+        </div>
+        <a href="../about.html" data-nav-item="about">About</a>
+      </div>
+      <a class="nav-cta" href="#step-1">Run step 1</a>
+    </nav>
+  </header>
+
+  <main id="main" class="toolkit-article toolkit-article--walkthrough" tabindex="-1">
+    <section class="toolkit-hero toolkit-hero--walkthrough section" aria-labelledby="hermes-title">
+      <div class="shell">
+        <div class="toolkit-hero__copy">
+          <p class="eyebrow"><a href="../toolkits.html">Toolkits</a> / Ship</p>
+          <div class="toolkit-hero__head">
+            <span class="toolkit-status toolkit-status--guide">Walkthrough</span>
+            <h1 id="hermes-title">Personal Hermes AI stack</h1>
+          </div>
+          <p class="consulting-hero-lede">Install Hermes from upstream, run the background gateway, schedule cron jobs, and add a <code>.hermes.md</code> project context file  -  so repo-aware automation runs without babysitting the CLI.</p>
+          <p class="toolkit-prereq"><strong>Prerequisites:</strong> macOS or Linux, Node 18+, a git repo you want the agent to work in, ~30 minutes.</p>
+          <div class="toolkit-outcome toolkit-outcome--hero">
+            <strong>After this walkthrough</strong>
+            Hermes CLI on your PATH, the gateway running via launchd (or systemd on Linux), at least one scheduled cron job, and <code>.hermes.md</code> at repo root describing loops, paths, and stop conditions.
+          </div>
+          <p class="toolkit-prereq"><strong>Optional on this site:</strong> maintainers who publish education walkthroughs may wire a toolkit-education cron instead  -  see <a href="toolkit-review-loop.html">Toolkit review loop</a>. That is not the default user outcome below.</p>
+          <ul class="toolkit-meta-strip toolkit-meta-strip--pills" aria-label="Walkthrough facts">
+            <li>~30 min</li>
+            <li>Self-serve</li>
+            <li>Hermes CLI + gateway</li>
+            <li>Open-source upstream</li>
+          </ul>
+          <div class="toolkit-hero__actions">
+            <a class="wp-btn wp-btn--primary" href="#step-1">Run step 1</a>
+            <a class="button button--ghost" href="https://github.com/NousResearch/hermes-agent" rel="noopener">hermes-agent repo</a>
+          </div>
+          <p class="toolkit-hero__jump"><a href="#artefact">See stack diagram</a> &middot; <a href="#downloads">Downloads</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" aria-label="Walkthrough content">
+      <div class="shell toolkit-body">
+        <aside class="toolkit-body__aside">
+          <nav class="toolkit-toc toolkit-toc--sticky" aria-label="On this page">
+            <p class="toolkit-toc__label">On this page</p>
+            <ol>
+              <li><a href="#start">Start here</a></li>
+              <li><a href="#improvement">Why Hermes</a></li>
+              <li>
+                <a href="#walkthrough">Walkthrough</a>
+                <ol class="toolkit-toc__sub">
+                  <li><a href="#step-1">1. Install</a></li>
+                  <li><a href="#step-2">2. Config</a></li>
+                  <li><a href="#step-3">3. Curator</a></li>
+                  <li><a href="#step-4">4. Gateway</a></li>
+                  <li><a href="#step-5">5. Cron job</a></li>
+                  <li><a href="#step-6">6. .hermes.md</a></li>
+                </ol>
+              </li>
+              <li><a href="#curated">Further reading</a></li>
+              <li><a href="#artefact">Stack diagram</a></li>
+              <li><a href="#downloads">Downloads</a></li>
+              <li><a href="#pitfalls">Troubleshooting</a></li>
+            </ol>
+          </nav>
+        </aside>
+
+        <div class="toolkit-body__main">
+          <section id="start" aria-labelledby="start-heading">
+            <h2 id="start-heading">Start here</h2>
+            <p class="toolkit-section-lede">Confirm fit and the end state before you run commands.</p>
+            <div class="toolkit-start-panel">
+              <section aria-labelledby="who-heading">
+                <h3 id="who-heading">Who this is for</h3>
+                <table class="toolkit-roles">
+                  <thead>
+                    <tr><th>Role</th><th>Why run this</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Solo builder / PM-engineer</td><td>Keep docs, toolkits, and PRDs fresh while you ship features</td></tr>
+                    <tr><td>Agent power user</td><td>Move from ad-hoc chat to scheduled, repo-aware automation</td></tr>
+                    <tr><td>BMAD / WDS practitioner</td><td>Pair Hermes cron with BMAD skills and design handoffs in the same repo</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section aria-labelledby="end-state-heading">
+                <h3 id="end-state-heading">What you&rsquo;ll have running</h3>
+                <ul class="toolkit-checklist">
+                  <li><code>hermes</code> CLI on your PATH (v0.17+)</li>
+                  <li>Gateway daemon installed (launchd on macOS)  -  cron fires without an open terminal</li>
+                  <li>One scheduled job (e.g. nightly doc review or PR hygiene check)</li>
+                  <li><code>.hermes.md</code> at repo root with loops, paths, and conventions</li>
+                  <li>Optional: <code>hermes-agent/</code> submodule with upstream skills</li>
+                </ul>
+              </section>
+            </div>
+          </section>
+
+          <section id="improvement" aria-labelledby="improvement-heading">
+            <h2 id="improvement-heading">Why Hermes</h2>
+            <p class="toolkit-section-lede">Concrete shift from ad-hoc chat to scheduled, repo-aware automation  -  not generic agent hype.</p>
+            <div class="toolkit-compare">
+              <p class="toolkit-compare__card toolkit-compare__card--before">
+                <span class="toolkit-compare__label">Before</span>
+                You re-explain repo context every session and manually re-check stale docs or open PRs.
+              </p>
+              <p class="toolkit-compare__card toolkit-compare__card--after">
+                <span class="toolkit-compare__label">After</span>
+                Cron runs on a schedule with <code>--workdir</code> set to your repo; <code>.hermes.md</code> loads priority loops and paths  -  typically saving 1 - 2 hours per review cycle on recurring hygiene tasks.
+              </p>
+            </div>
+          </section>
+
+          <section id="walkthrough" aria-labelledby="walkthrough-heading">
+            <div class="toolkit-walkthrough-header">
+              <h2 id="walkthrough-heading">Walkthrough</h2>
+              <p class="toolkit-walkthrough-meta">6 steps &middot; ~30 min &middot; copy-paste commands</p>
+            </div>
+            <p class="toolkit-section-lede">Run in order. Each step lists expected output so you know before moving on.</p>
+            <ol class="toolkit-method toolkit-phase-grid">
+              <li id="step-1">
+                <span class="toolkit-phase-grid__step-label">Step 1</span>
+                <strong>Install Hermes.</strong> Follow the upstream installer or use the binary already on your machine.<span class="toolkit-method__meta">5 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block">curl -fsSL https://hermes-agent.ai/install.sh | bash
+hermes --version</pre>
+                <span class="toolkit-phase-exit">Expected: version string (e.g. <code>0.17.0</code>). If command not found, add <code>~/.local/bin</code> to PATH.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Command not found after install  -  add <code>~/.local/bin</code> to PATH and open a new shell.</p>
+              </li>
+              <li id="step-2">
+                <span class="toolkit-phase-grid__step-label">Step 2</span>
+                <strong>Migrate config and set workdir.</strong><span class="toolkit-method__meta">5 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block">hermes config migrate
+hermes config set terminal.cwd "/path/to/your/repo"</pre>
+                <span class="toolkit-phase-exit">Expected: config version bumps (e.g. v0 &rarr; v30). <code>terminal.cwd</code> points at the repo Hermes should treat as home.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> <code>hermes setup</code> needs a TTY  -  run the interactive wizard in a real terminal; use <code>hermes config set</code> for non-interactive keys.</p>
+              </li>
+              <li id="step-3">
+                <span class="toolkit-phase-grid__step-label">Step 3</span>
+                <strong>Enable curator (optional).</strong><span class="toolkit-method__meta">2 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block">hermes config set curator.enabled true</pre>
+                <span class="toolkit-phase-exit">Curator helps Hermes prioritize context files like <code>.hermes.md</code> and skills.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Curator flag not recognized  -  confirm Hermes v0.17+ with <code>hermes --version</code> before retrying.</p>
+              </li>
+              <li id="step-4">
+                <span class="toolkit-phase-grid__step-label">Step 4</span>
+                <strong>Install the gateway.</strong><span class="toolkit-method__meta">5 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block">hermes gateway install
+hermes cron status</pre>
+                <span class="toolkit-phase-exit">Expected: gateway running (launchd plist on macOS). Cron scheduler reports active.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Cron never runs later  -  gateway not installed; rerun <code>hermes gateway install</code> and confirm with <code>hermes cron status</code>.</p>
+              </li>
+              <li id="step-5">
+                <span class="toolkit-phase-grid__step-label">Step 5</span>
+                <strong>Create a cron job.</strong><span class="toolkit-method__meta">10 min</span>
+                <pre class="toolkit-terminal toolkit-terminal--block">hermes cron create \
+  --name doc-hygiene-review \
+  --workdir "/path/to/your/repo" \
+  --skill requesting-code-review \
+  "every 12h" \
+  "Read docs/CHANGELOG.md and open PRs. Flag stale sections and missing links. Log findings to progress/review-log.md."</pre>
+                <span class="toolkit-phase-exit">Expected: job ID returned; <code>hermes cron list</code> shows schedule and workdir. Rename paths and prompt for your team&rsquo;s hygiene task.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Job runs in wrong directory  -  set <code>--workdir</code> to an absolute path; relative paths break when launchd starts the gateway.</p>
+              </li>
+              <li id="step-6">
+                <span class="toolkit-phase-grid__step-label">Step 6</span>
+                <strong>Add <code>.hermes.md</code>.</strong><span class="toolkit-method__meta">5 min</span>
+                <p>Copy the template from <a href="artefacts/setup-hermes-personal/cron-prompt-snippet.md">downloads</a>. List priority loops, paths, and stop conditions your team agrees on.</p>
+                <span class="toolkit-phase-exit">Exit: agent sessions launched from this repo load context without re-pasting instructions.</span>
+                <p class="toolkit-phase-fix"><strong>If it fails:</strong> Skills not found  -  install Hermes skills into the repo (<code>npx skills add ./hermes-agent/skills</code>) or attach via <code>--skill</code> on cron create.</p>
+              </li>
+            </ol>
+          </section>
+
+          <section id="curated" aria-labelledby="curated-heading">
+            <h2 id="curated-heading">Further reading</h2>
+            <p class="toolkit-section-lede">Official Hermes upstream sources. None are required beyond the walkthrough steps.</p>
+            <table class="toolkit-curated-table">
+              <thead>
+                <tr><th>Name</th><th>Type</th><th>Why this one</th><th>Link</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>hermes-agent</td>
+                  <td>Repo</td>
+                  <td>Official CLI, gateway, cron, and 70+ skills  -  the stack this walkthrough installs</td>
+                  <td><a href="https://github.com/NousResearch/hermes-agent" rel="noopener">GitHub</a></td>
+                </tr>
+                <tr>
+                  <td>Hermes cron docs</td>
+                  <td>Docs</td>
+                  <td>Schedule syntax, <code>cron edit</code>, gateway requirement  -  avoid silent job failures</td>
+                  <td><a href="https://github.com/NousResearch/hermes-agent#cron" rel="noopener">README § cron</a></td>
+                </tr>
+                <tr>
+                  <td>Hermes install</td>
+                  <td>Docs</td>
+                  <td>Installer script, PATH setup, and version requirements</td>
+                  <td><a href="https://hermes-agent.ai" rel="noopener">hermes-agent.ai</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section id="artefact" aria-labelledby="artefact-heading">
+            <h2 id="artefact-heading">Stack diagram</h2>
+            <p class="toolkit-section-lede">Buildable structure for your repo  -  edit labels in Excalidraw, not in generated images.</p>
+            <figure class="toolkit-artefact-figure">
+              <img src="artefacts/setup-hermes-personal/hermes-stack.svg" width="720" height="320" alt="Diagram: Hermes CLI connects to gateway, cron scheduler, and project .hermes.md context" loading="lazy" />
+              <figcaption>
+                Hermes personal stack  -  CLI, gateway, cron, and project context.
+                <a href="artefacts/setup-hermes-personal/hermes-stack.excalidraw">Open editable .excalidraw</a>
+              </figcaption>
+            </figure>
+          </section>
+
+          <section id="downloads" aria-labelledby="downloads-heading">
+            <h2 id="downloads-heading">Downloads</h2>
+            <p class="toolkit-section-lede">Take these into your repo  -  each file maps to a step above.</p>
+            <ul class="toolkit-download-list toolkit-download-cards">
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/setup-hermes-personal/cron-prompt-snippet.md" download>cron-prompt-snippet.md</a>
+                  <p>Copy-paste job create/edit commands for step 5.</p>
+                </article>
+              </li>
+              <li>
+                <article class="toolkit-download-card">
+                  <a href="artefacts/setup-hermes-personal/hermes-stack.excalidraw" download>hermes-stack.excalidraw</a>
+                  <p>Edit in Excalidraw or VS Code; adapt the stack diagram for your setup.</p>
+                </article>
+              </li>
+            </ul>
+          </section>
+
+          <section id="pitfalls" aria-labelledby="pitfalls-heading">
+            <h2 id="pitfalls-heading">Troubleshooting</h2>
+            <p class="toolkit-section-lede">Symptom &rarr; fix, tied to the step where it usually appears.</p>
+            <ul class="toolkit-pitfalls">
+              <li><strong>Cron never runs.</strong> <span class="toolkit-pitfalls__step">Step 4</span>  -  Gateway not installed; run <code>hermes gateway install</code> and confirm with <code>hermes cron status</code>.</li>
+              <li><strong>Job runs in wrong directory.</strong> <span class="toolkit-pitfalls__step">Step 5</span>  -  Set <code>--workdir</code> to an absolute path; relative paths break when launchd starts the gateway.</li>
+              <li><strong><code>hermes setup</code> needs a TTY.</strong> <span class="toolkit-pitfalls__step">Step 2</span>  -  Run the interactive wizard in a real terminal; use <code>hermes config set</code> for non-interactive keys.</li>
+              <li><strong>Skills not found.</strong> <span class="toolkit-pitfalls__step">Step 6</span>  -  Install Hermes skills into the repo (<code>npx skills add ./hermes-agent/skills</code>) or attach via <code>--skill</code> on cron create.</li>
+              <li><strong>Agent invents tasks outside scope.</strong> <span class="toolkit-pitfalls__step">Step 5</span>  -  Tighten the cron prompt with explicit file paths and forbidden actions.</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="related-heading">
+            <h2 id="related-heading">Optional on this site</h2>
+            <p class="toolkit-section-lede">Companion walkthroughs on this site. You do not need them to install Hermes.</p>
+            <ul class="toolkit-related">
+              <li><a href="setup-bmad.html">Set up BMAD in your repo &rarr;</a></li>
+              <li><a href="curate-agent-skills.html">Curate high-impact agent skills &rarr;</a></li>
+              <li><a href="toolkit-review-loop.html">Self-improving toolkit loop &rarr;</a> (education maintainer cron example)</li>
+            </ul>
+            <div class="toolkit-cta-band">
+              <a class="wp-btn wp-btn--primary" href="#step-1">Run step 1</a>
+              <a class="button" href="https://github.com/NousResearch/hermes-agent" rel="noopener">Open hermes-agent</a>
+              <a class="button" href="../toolkits.html">All walkthroughs</a>
+            </div>
+            <p class="toolkit-attribution">
+              <strong>Attribution.</strong>
+              <a href="https://github.com/NousResearch/hermes-agent" rel="noopener">hermes-agent</a> by NousResearch (MIT).
+              Starter templates / process  -  adapt for your organisation. Not affiliated with Hermes maintainers.
+            </p>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <span>Chandan Sharma</span>
+      <a href="mailto:chandan004sharma@gmail.com">chandan004sharma@gmail.com</a>
+    </div>
+  </footer>
+</body>
+</html>

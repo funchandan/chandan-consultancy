@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" aria-label="Design rubric loop: paths, workshop, rubric, score, Hermes cron, improve">
+  <defs>
+    <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#144ccd"/>
+    </marker>
+    <marker id="arrow-dim" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#868e96"/>
+    </marker>
+  </defs>
+  <rect width="720" height="360" fill="#f8f9fa"/>
+  <text x="24" y="36" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" fill="#212529">Design rubric + Hermes loop</text>
+  <text x="24" y="60" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#868e96">Paths - workshop - rubric - score - Hermes - improve</text>
+  <rect x="8" y="84" width="88" height="44" rx="6" fill="#fff" stroke="#212529"/>
+  <text x="28" y="112" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#212529">Paths</text>
+  <path d="M96 106h16" stroke="#144ccd" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="112" y="84" width="88" height="44" rx="6" fill="#fff" stroke="#212529"/>
+  <text x="120" y="112" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#212529">Workshop</text>
+  <path d="M200 106h16" stroke="#144ccd" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="216" y="84" width="88" height="44" rx="6" fill="#fff" stroke="#212529"/>
+  <text x="232" y="112" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#212529">Rubric</text>
+  <path d="M304 106h16" stroke="#144ccd" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="320" y="84" width="88" height="44" rx="6" fill="#e7f0ff" stroke="#144ccd" stroke-width="2"/>
+  <text x="340" y="112" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#144ccd">Score</text>
+  <path d="M408 106h16" stroke="#144ccd" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="424" y="84" width="88" height="44" rx="6" fill="#fff" stroke="#212529"/>
+  <text x="436" y="112" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#212529">Hermes</text>
+  <path d="M512 106h16" stroke="#144ccd" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="528" y="84" width="88" height="44" rx="6" fill="#212529"/>
+  <text x="540" y="112" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#fff">Improve</text>
+  <path d="M572 128v28h-280v28h-284" stroke="#868e96" stroke-width="1.5" fill="none" marker-end="url(#arrow-dim)"/>
+  <text x="248" y="156" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#868e96">Hermes re-scores; revise rubric row after 3x fail</text>
+  <rect x="24" y="200" width="320" height="140" rx="8" fill="#fff" stroke="#dee2e6"/>
+  <text x="40" y="228" font-family="Courier, monospace" font-size="12" fill="#212529">standards/design-rubric.md</text>
+  <text x="40" y="252" font-family="Courier, monospace" font-size="11" fill="#868e96">work/design/&lt;feature&gt;/</text>
+  <text x="40" y="276" font-family="Courier, monospace" font-size="11" fill="#868e96">reviews/score-log.md</text>
+  <text x="40" y="308" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#495057">See path-convention.md</text>
+  <rect x="376" y="200" width="320" height="140" rx="8" fill="#fff" stroke="#dee2e6"/>
+  <text x="392" y="228" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#212529">Hermes cron</text>
+  <text x="392" y="252" font-family="Courier, monospace" font-size="11" fill="#212529">design-rubric-review</text>
+  <text x="392" y="276" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#868e96">gateway install + every 12h</text>
+  <text x="392" y="308" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#495057">Append log only; rubric read-only</text>
+</svg>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" role="img" aria-label="Score design before review: intent, rubric, artefact, pass">
+  <rect width="400" height="220" fill="#f4f6f9"/>
+  <rect x="16" y="16" width="168" height="88" rx="6" fill="#fff" stroke="#c5cdd8" stroke-width="1"/>
+  <text x="28" y="36" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#212529">design-standards-rubric.md</text>
+  <text x="28" y="58" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#144ccd">14/16</text>
+  <text x="68" y="58" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#868e96">pass</text>
+  <rect x="28" y="68" width="140" height="6" rx="2" fill="#4ade80" opacity="0.6"/>
+  <rect x="28" y="80" width="120" height="6" rx="2" fill="#4ade80" opacity="0.6"/>
+  <rect x="196" y="16" width="188" height="88" rx="6" fill="#fff" stroke="#c5cdd8" stroke-width="1"/>
+  <text x="208" y="36" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#212529">acceptance-loop</text>
+  <rect x="208" y="48" width="48" height="24" rx="4" fill="#e7f0ff" stroke="#144ccd"/>
+  <text x="218" y="64" font-family="Arial, Helvetica, sans-serif" font-size="8" fill="#144ccd">Score</text>
+  <path d="M260 60h16 M292 60h16 M324 60h16" stroke="#868e96" stroke-width="1.5"/>
+  <rect x="340" y="48" width="32" height="24" rx="4" fill="#212529"/>
+  <text x="346" y="64" font-family="Arial, Helvetica, sans-serif" font-size="7" fill="#fff">OK</text>
+  <rect x="16" y="116" width="368" height="40" rx="6" fill="#fff" stroke="#c5cdd8"/>
+  <text x="28" y="140" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#495057">Intent → Standards → Excalidraw/Figma → Score → Review</text>
+  <rect x="16" y="168" width="368" height="36" rx="6" fill="#1a2332"/>
+  <text x="28" y="190" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#7dd3fc">Before share: fewer prompt loops, higher acceptance</text>
+</svg>

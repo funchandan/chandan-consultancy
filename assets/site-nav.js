@@ -243,7 +243,10 @@
     document.querySelectorAll(
       ".section, .work-card, .hero-spotlight__card, .case-architect-chapter, .case-method-stage, .case-refresh-outcome-card, .case-scan-exec__block"
     )
-  );
+  ).filter(function (el) {
+    /* Education toolkits: body must be readable without scroll-reveal (Lenis + IO miss) */
+    return !el.closest(".toolkit-article");
+  });
 
   revealTargets.forEach(function (el) {
     el.classList.add("motion-enter");

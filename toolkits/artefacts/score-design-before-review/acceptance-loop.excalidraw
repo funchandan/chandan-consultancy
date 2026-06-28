@@ -1,0 +1,25 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {"id": "bg", "type": "rectangle", "x": 0, "y": 0, "width": 720, "height": 480, "strokeColor": "#dee2e6", "backgroundColor": "#f8f9fa", "roughness": 0, "version": 1, "versionNonce": 1, "isDeleted": false},
+    {"id": "s1", "type": "rectangle", "x": 24, "y": 80, "width": 120, "height": 56, "strokeColor": "#212529", "backgroundColor": "#ffffff", "roughness": 0, "version": 1, "versionNonce": 2, "isDeleted": false},
+    {"id": "s1t", "type": "text", "x": 48, "y": 100, "text": "Intent", "fontSize": 16, "fontFamily": 5, "strokeColor": "#212529", "version": 1, "versionNonce": 3, "isDeleted": false},
+    {"id": "s2", "type": "rectangle", "x": 168, "y": 80, "width": 120, "height": 56, "strokeColor": "#212529", "backgroundColor": "#ffffff", "roughness": 0, "version": 1, "versionNonce": 4, "isDeleted": false},
+    {"id": "s2t", "type": "text", "x": 178, "y": 100, "text": "Standards", "fontSize": 16, "fontFamily": 5, "strokeColor": "#212529", "version": 1, "versionNonce": 5, "isDeleted": false},
+    {"id": "s3", "type": "rectangle", "x": 312, "y": 80, "width": 120, "height": 56, "strokeColor": "#212529", "backgroundColor": "#ffffff", "roughness": 0, "version": 1, "versionNonce": 6, "isDeleted": false},
+    {"id": "s3t", "type": "text", "x": 332, "y": 100, "text": "Artefact", "fontSize": 16, "fontFamily": 5, "strokeColor": "#212529", "version": 1, "versionNonce": 7, "isDeleted": false},
+    {"id": "s4", "type": "rectangle", "x": 456, "y": 80, "width": 120, "height": 56, "strokeColor": "#144ccd", "backgroundColor": "#e7f0ff", "roughness": 0, "version": 1, "versionNonce": 8, "isDeleted": false},
+    {"id": "s4t", "type": "text", "x": 488, "y": 100, "text": "Score", "fontSize": 16, "fontFamily": 5, "strokeColor": "#144ccd", "version": 1, "versionNonce": 9, "isDeleted": false},
+    {"id": "s5", "type": "rectangle", "x": 600, "y": 80, "width": 96, "height": 56, "strokeColor": "#212529", "backgroundColor": "#212529", "roughness": 0, "version": 1, "versionNonce": 10, "isDeleted": false},
+    {"id": "s5t", "type": "text", "x": 612, "y": 100, "text": "Review", "fontSize": 16, "fontFamily": 5, "strokeColor": "#ffffff", "version": 1, "versionNonce": 11, "isDeleted": false},
+    {"id": "note", "type": "text", "x": 24, "y": 180, "text": "Score BEFORE share. Fewer prompt loops. Higher first-pass acceptance.", "fontSize": 14, "fontFamily": 5, "strokeColor": "#495057", "version": 1, "versionNonce": 12, "isDeleted": false},
+    {"id": "ex", "type": "rectangle", "x": 24, "y": 220, "width": 320, "height": 120, "strokeColor": "#dee2e6", "backgroundColor": "#ffffff", "roughness": 0, "version": 1, "versionNonce": 13, "isDeleted": false},
+    {"id": "ext", "type": "text", "x": 40, "y": 240, "text": "Excalidraw / Figma evidence", "fontSize": 14, "fontFamily": 5, "strokeColor": "#212529", "version": 1, "versionNonce": 14, "isDeleted": false},
+    {"id": "fig", "type": "rectangle", "x": 376, "y": 220, "width": 320, "height": 120, "strokeColor": "#dee2e6", "backgroundColor": "#ffffff", "roughness": 0, "version": 1, "versionNonce": 15, "isDeleted": false},
+    {"id": "figt", "type": "text", "x": 392, "y": 240, "text": "design-standards-rubric.md", "fontSize": 14, "fontFamily": 5, "strokeColor": "#212529", "version": 1, "versionNonce": 16, "isDeleted": false}
+  ],
+  "appState": {"viewBackgroundColor": "#f8f9fa"},
+  "files": {}
+}

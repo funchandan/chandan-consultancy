@@ -1,0 +1,205 @@
+# Canonical catalogue for toolkit education pages.
+# Hermes loop MUST NOT add slugs outside this file.
+version: 2
+intent: education
+
+walkthroughs:
+  - slug: setup-bmad
+    title: Set up BMAD in your repo
+    audience_tier: B
+    type: walkthrough
+    status: published
+    skills:
+      - bmad-help
+      - bmad-prd
+      - bmad-dev-story
+    repos:
+      - url: https://github.com/bmad-code-org/BMAD-METHOD
+        why: Upstream BMAD method and installer
+      - path: .agents/skills/bmad-help
+        why: BMAD skills installed in this repo
+    artefacts:
+      - toolkits/artefacts/setup-bmad/bmad-agent-flow.excalidraw
+      - toolkits/artefacts/setup-bmad/bmad-agent-flow.svg
+      - toolkits/artefacts/setup-bmad/install-checklist.md
+    design_system: toolkit-article--walkthrough
+    template: toolkits/_walkthrough-template.html
+    replaces: decision-teardown
+
+  - slug: setup-hermes-personal
+    title: Personal Hermes AI stack
+    audience_tier: B
+    type: walkthrough
+    status: published
+    skills:
+      - requesting-code-review
+    repos:
+      - url: https://github.com/NousResearch/hermes-agent
+        why: Hermes agent, skills, and CLI source
+      - path: hermes-agent/
+        why: Submodule in this repo
+    artefacts:
+      - toolkits/artefacts/setup-hermes-personal/hermes-stack.excalidraw
+      - toolkits/artefacts/setup-hermes-personal/hermes-stack.svg
+      - toolkits/artefacts/setup-hermes-personal/cron-prompt-snippet.md
+    design_system: toolkit-article--walkthrough
+    template: toolkits/_walkthrough-template.html
+    replaces: ai-workflow-pilot
+
+  - slug: curate-agent-skills
+    title: Curate high-impact agent skills
+    audience_tier: B
+    type: catalogue
+    status: published
+    skills:
+      - sync
+    repos:
+      - path: skills-lock.json
+        why: Pinned skills manifest for this repo
+      - path: .agents/skills/
+        why: Installed Cursor/BMAD/Hermes skills
+    artefacts:
+      - toolkits/artefacts/curate-agent-skills/skills-picks.yaml
+      - toolkits/artefacts/toolkits-overview/card-skills.svg
+    design_system: toolkit-article--walkthrough
+    template: toolkits/_walkthrough-template.html
+    replaces: research-synthesis
+
+  - slug: wds-design-loop
+    title: WDS Saga → Freya → Mimir handoff
+    audience_tier: B
+    type: process
+    status: published
+    skills:
+      - handoff
+      - sync
+      - wireframe
+    repos:
+      - path: _progress/
+        why: Agent handoff state files
+      - path: .cursor/rules/wds/
+        why: WDS agent rules (Saga, Freya, Mimir)
+    artefacts:
+      - toolkits/artefacts/wds-design-loop/handoff-flow.excalidraw
+      - toolkits/artefacts/wds-design-loop/handoff-flow.svg
+    design_system: toolkit-article--walkthrough
+    template: toolkits/_walkthrough-template.html
+    replaces: architecture-audit
+
+  - slug: wireframe-with-excalidraw
+    title: Wireframe a flow in Excalidraw
+    audience_tier: B
+    type: artefact-led
+    status: published
+    skills:
+      - wireframe
+    repos:
+      - path: .agents/skills/wireframe/SKILL.md
+        why: Freya wireframe rules for this project
+    artefacts:
+      - toolkits/artefacts/wireframe-with-excalidraw/sample-flow.excalidraw
+      - toolkits/artefacts/wireframe-with-excalidraw/sample-flow.svg
+    design_system: toolkit-article--walkthrough
+    template: toolkits/_walkthrough-template.html
+    replaces: null
+
+  - slug: score-design-before-review
+    title: Score design outputs before review
+    audience_tier: A
+    product_objective: "After this walkthrough, users will score design outputs against a team rubric before review."
+    linkedin_thesis: "Score design outputs against standards before review - fewer prompt iterations, higher first-pass acceptance."
+    companion_slugs:
+      - score-research-and-design-loop
+      - toolkit-review-loop
+    type: walkthrough
+    status: published
+    skills:
+      - linkedin-toolkit-series
+      - wireframe
+      - requesting-code-review
+    repos:
+      - path: toolkits/artefacts/score-design-before-review/design-standards-rubric.md
+        why: Pre-review scoring rubric (8 dimensions)
+      - path: content/linkedin/_voice-rubric.md
+        why: Reader-value rules for design content series
+      - path: .agents/skills/linkedin-toolkit-series/SKILL.md
+        why: Two-phase LinkedIn + toolkit workflow
+    artefacts:
+      - toolkits/artefacts/score-design-before-review/acceptance-loop.excalidraw
+      - toolkits/artefacts/score-design-before-review/acceptance-loop.svg
+      - toolkits/artefacts/score-design-before-review/design-standards-rubric.md
+      - toolkits/artefacts/score-design-before-review/pre-review-checklist.md
+    linkedin:
+      - content/linkedin/posts/01-intent-orchestration/post.md
+    design_system: toolkit-article--walkthrough
+    template: toolkits/_walkthrough-template.html
+    replaces: null
+
+  - slug: score-research-and-design-loop
+    title: Self-improving design rubrics with Hermes
+    audience_tier: B
+    product_objective: "After this walkthrough, users will integrate Hermes into their setup and develop self-improving design rubrics using Hermes."
+    linkedin_thesis: "Score design outputs against standards before review - fewer prompt iterations, higher first-pass acceptance."
+    companion_slugs:
+      - setup-hermes-personal
+      - score-design-before-review
+    type: walkthrough
+    status: published
+    skills:
+      - linkedin-toolkit-series
+      - requesting-code-review
+      - wireframe
+    repos:
+      - path: toolkits/artefacts/score-research-and-design-loop/rubric-design-workshop.md
+        why: Facilitator guide to author rubrics
+      - path: toolkits/artefacts/score-research-and-design-loop/agent-review-prompt.md
+        why: Hermes cron prompt for design rubric scoring and score-log append
+      - path: .agents/skills/linkedin-toolkit-series/objective-gates.md
+        why: TPO vs LinkedIn thesis gates
+    artefacts:
+      - toolkits/artefacts/score-research-and-design-loop/rd-score-loop.excalidraw
+      - toolkits/artefacts/score-research-and-design-loop/rd-score-loop.svg
+      - toolkits/artefacts/score-research-and-design-loop/rubric-design-workshop.md
+      - toolkits/artefacts/score-research-and-design-loop/research-standards-rubric.md
+      - toolkits/artefacts/score-research-and-design-loop/design-standards-rubric.md
+      - toolkits/artefacts/score-research-and-design-loop/rd-review-checklist.md
+      - toolkits/artefacts/score-research-and-design-loop/score-log-template.md
+      - toolkits/artefacts/score-research-and-design-loop/agent-review-prompt.md
+      - toolkits/artefacts/score-research-and-design-loop/path-convention.md
+      - toolkits/artefacts/toolkits-overview/card-rd-score-loop.svg
+    linkedin:
+      - content/linkedin/posts/01-intent-orchestration/post.md
+    design_system: toolkit-article--walkthrough
+    template: toolkits/_walkthrough-template.html
+    replaces: null
+
+  - slug: toolkit-review-loop
+    title: Self-improving toolkit content
+    audience_tier: C
+    type: meta
+    status: published
+    skills:
+      - requesting-code-review
+    repos:
+      - path: .hermes/plans/2026-06-25_143000-toolkit-education-loop-rules.md
+        why: Implementation plan for education pivot
+      - path: toolkits/_education-rubric.md
+        why: Scoring rubric for the loop
+    artefacts:
+      - toolkits/artefacts/toolkit-review-loop/registry-snippet.yaml
+      - toolkits/artefacts/toolkits-overview/card-review-loop.svg
+    design_system: toolkit-article--walkthrough
+    template: toolkits/_walkthrough-template.html
+    replaces: outcomes-proof-loop
+
+retired:
+  - slug: decision-teardown
+    redirect: setup-bmad
+  - slug: research-synthesis
+    redirect: curate-agent-skills
+  - slug: architecture-audit
+    redirect: wds-design-loop
+  - slug: ai-workflow-pilot
+    redirect: setup-hermes-personal
+  - slug: outcomes-proof-loop
+    redirect: toolkit-review-loop

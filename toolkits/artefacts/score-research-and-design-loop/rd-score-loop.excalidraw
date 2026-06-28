@@ -1,0 +1,28 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {"id": "bg", "type": "rectangle", "x": 0, "y": 0, "width": 720, "height": 400, "strokeColor": "#dee2e6", "backgroundColor": "#f8f9fa", "roughness": 0, "version": 1, "versionNonce": 1, "isDeleted": false},
+    {"id": "title", "type": "text", "x": 24, "y": 24, "text": "Research and design score loop", "fontSize": 20, "fontFamily": 5, "strokeColor": "#212529", "version": 1, "versionNonce": 2, "isDeleted": false},
+    {"id": "s1", "type": "rectangle", "x": 16, "y": 72, "width": 88, "height": 48, "strokeColor": "#212529", "backgroundColor": "#ffffff", "roughness": 0, "version": 1, "versionNonce": 3, "isDeleted": false},
+    {"id": "s1t", "type": "text", "x": 32, "y": 88, "text": "Scope", "fontSize": 14, "fontFamily": 5, "strokeColor": "#212529", "version": 1, "versionNonce": 4, "isDeleted": false},
+    {"id": "s2", "type": "rectangle", "x": 120, "y": 72, "width": 88, "height": 48, "strokeColor": "#212529", "backgroundColor": "#ffffff", "roughness": 0, "version": 1, "versionNonce": 5, "isDeleted": false},
+    {"id": "s2t", "type": "text", "x": 124, "y": 88, "text": "Workshop", "fontSize": 14, "fontFamily": 5, "strokeColor": "#212529", "version": 1, "versionNonce": 6, "isDeleted": false},
+    {"id": "s3", "type": "rectangle", "x": 224, "y": 72, "width": 88, "height": 48, "strokeColor": "#212529", "backgroundColor": "#ffffff", "roughness": 0, "version": 1, "versionNonce": 7, "isDeleted": false},
+    {"id": "s3t", "type": "text", "x": 236, "y": 88, "text": "Rubrics", "fontSize": 14, "fontFamily": 5, "strokeColor": "#212529", "version": 1, "versionNonce": 8, "isDeleted": false},
+    {"id": "s4", "type": "rectangle", "x": 328, "y": 72, "width": 88, "height": 48, "strokeColor": "#144ccd", "backgroundColor": "#e7f0ff", "roughness": 0, "version": 1, "versionNonce": 9, "isDeleted": false},
+    {"id": "s4t", "type": "text", "x": 348, "y": 88, "text": "Score", "fontSize": 14, "fontFamily": 5, "strokeColor": "#144ccd", "version": 1, "versionNonce": 10, "isDeleted": false},
+    {"id": "s5", "type": "rectangle", "x": 432, "y": 72, "width": 88, "height": 48, "strokeColor": "#212529", "backgroundColor": "#ffffff", "roughness": 0, "version": 1, "versionNonce": 11, "isDeleted": false},
+    {"id": "s5t", "type": "text", "x": 448, "y": 88, "text": "Agent", "fontSize": 14, "fontFamily": 5, "strokeColor": "#212529", "version": 1, "versionNonce": 12, "isDeleted": false},
+    {"id": "s6", "type": "rectangle", "x": 536, "y": 72, "width": 88, "height": 48, "strokeColor": "#212529", "backgroundColor": "#212529", "roughness": 0, "version": 1, "versionNonce": 13, "isDeleted": false},
+    {"id": "s6t", "type": "text", "x": 548, "y": 88, "text": "Improve", "fontSize": 14, "fontFamily": 5, "strokeColor": "#ffffff", "version": 1, "versionNonce": 14, "isDeleted": false},
+    {"id": "note", "type": "text", "x": 24, "y": 140, "text": "Your paths. Your tools. One score log.", "fontSize": 14, "fontFamily": 5, "strokeColor": "#495057", "version": 1, "versionNonce": 15, "isDeleted": false},
+    {"id": "paths", "type": "rectangle", "x": 24, "y": 180, "width": 320, "height": 120, "strokeColor": "#dee2e6", "backgroundColor": "#ffffff", "roughness": 0, "version": 1, "versionNonce": 16, "isDeleted": false},
+    {"id": "pathst", "type": "text", "x": 40, "y": 200, "text": "standards/ + work/ + reviews/", "fontSize": 14, "fontFamily": 5, "strokeColor": "#212529", "version": 1, "versionNonce": 17, "isDeleted": false},
+    {"id": "cron", "type": "rectangle", "x": 376, "y": 180, "width": 320, "height": 120, "strokeColor": "#dee2e6", "backgroundColor": "#ffffff", "roughness": 0, "version": 1, "versionNonce": 18, "isDeleted": false},
+    {"id": "cront", "type": "text", "x": 392, "y": 200, "text": "agent-review-prompt.md", "fontSize": 14, "fontFamily": 5, "strokeColor": "#212529", "version": 1, "versionNonce": 19, "isDeleted": false}
+  ],
+  "appState": {"viewBackgroundColor": "#f8f9fa"},
+  "files": {}
+}
