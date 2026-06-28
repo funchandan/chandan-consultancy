@@ -4,7 +4,7 @@
   pointer-events: auto;
   position: relative;
   z-index: 2;
-  overflow: hidden;
+  overflow: visible;
 }
 
 html.wp-box-bento-fallback body.home-page--product [data-box-bento][data-box-bento-active] .bento-card--toolkits,
@@ -18,10 +18,10 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
   z-index: 3;
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
-  height: 100%;
+  gap: 0.65rem;
+  height: auto;
   min-height: 0;
-  padding: 0.85rem 1rem 0.7rem;
+  padding: 0.125rem 0 0;
   pointer-events: auto;
 }
 
@@ -31,8 +31,8 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
 
 @media (min-width: 1024px) {
   .bento-card--toolkits {
-    min-height: 18rem;
-    max-height: 18rem;
+    min-height: 11.5rem;
+    max-height: none;
   }
 }
 
@@ -87,12 +87,13 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
 .bento-toolkit-swap {
   position: relative;
   z-index: 4;
-  flex: 1 1 auto;
-  min-height: 11.5rem;
+  flex: 0 0 auto;
+  height: 120px;
+  min-height: 120px;
   width: 100%;
-  margin-top: 0.15rem;
+  margin-top: 0.35rem;
   pointer-events: auto;
-  overflow: hidden;
+  overflow: visible;
 }
 
 @media (max-width: 1023px) {
@@ -106,6 +107,7 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
   }
 
   .bento-toolkit-swap {
-    min-height: 10rem;
+    min-height: 120px;
+    height: 120px;
   }
 }

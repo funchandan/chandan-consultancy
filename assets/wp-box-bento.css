@@ -139,6 +139,36 @@ html:not(.wp-box-bento-fallback):not(.wp-motion--static)
   max-height: 16.5rem;
 }
 
+@media (min-width: 1024px) {
+  .bento-card--toolkits,
+  .bento-card--quiz {
+    min-height: auto;
+    max-height: none;
+  }
+
+  .bento-card--toolkits {
+    min-height: 11.5rem;
+  }
+
+  .bento-card--quiz {
+    min-height: 28rem;
+  }
+}
+
+/* Standalone cells — no shared black tray; cards carry their own surface */
+.bento-card--toolkits,
+.bento-card--quiz {
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.bento-card--toolkits .bento-card__panel,
+.bento-card--quiz .bento-card__panel {
+  padding: 0;
+  background: transparent;
+}
+
 @media (max-width: 1023px) {
   .bento-card:not(.bento-card--search) {
     min-height: 9rem;
@@ -404,9 +434,9 @@ body.home-page--product .bento-card--search .wp-glass-compose__main {
   }
 }
 
-/* Toolkit bento — CardSwap cell (terminal artefact removed v1) */
+/* Toolkit bento — CardSwap cell */
 .bento-card--toolkits {
-  overflow: hidden;
+  overflow: visible;
 }
 
 .bento-card--toolkits .bento-card__panel {
