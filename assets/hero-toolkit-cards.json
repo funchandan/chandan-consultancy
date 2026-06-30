@@ -20,6 +20,11 @@
       "primaryCta": {
         "label": "View walkthrough",
         "href": "toolkits/curate-agent-skills.html"
+      },
+      "expertSignals": {
+        "score": "19/20",
+        "artifactSrc": "toolkits/artefacts/toolkits-overview/card-skills.svg",
+        "chips": ["skills-lock.json audited", "BMAD + Hermes sources pinned", "Top 10 — not skill roulette"]
       }
     },
     {
@@ -38,6 +43,11 @@
       "primaryCta": {
         "label": "View walkthrough",
         "href": "toolkits/setup-bmad.html"
+      },
+      "expertSignals": {
+        "score": "18/20",
+        "artifactSrc": "toolkits/artefacts/setup-bmad/bmad-agent-flow.svg",
+        "chips": ["bmad-help routes next skill", "config.yaml paths verified", "PRD → epics handoff ready"]
       }
     },
     {
@@ -60,6 +70,11 @@
       "primaryCta": {
         "label": "View walkthrough",
         "href": "toolkits/setup-hermes-personal.html"
+      },
+      "expertSignals": {
+        "score": "18/20",
+        "artifactSrc": "toolkits/artefacts/setup-hermes-personal/hermes-stack.svg",
+        "chips": ["Gateway runs without open terminal", "toolkit-education-review cron", "Repo workdir + .hermes.md"]
       }
     },
     {
@@ -86,6 +101,11 @@
       "secondaryCta": {
         "label": "Full R&D loop",
         "href": "toolkits/score-research-and-design-loop.html"
+      },
+      "expertSignals": {
+        "score": "18/20",
+        "artifactSrc": "toolkits/artefacts/score-design-before-review/acceptance-loop.svg",
+        "chips": ["Excalidraw evidence attached", "14/16 rubric before review", "First-pass acceptance bar"]
       }
     },
     {
@@ -108,6 +128,11 @@
       "primaryCta": {
         "label": "View walkthrough",
         "href": "toolkits/score-research-and-design-loop.html"
+      },
+      "expertSignals": {
+        "score": "18/20",
+        "artifactSrc": "toolkits/artefacts/score-research-and-design-loop/rd-score-loop.svg",
+        "chips": ["Rubric workshop artefact", "Agent score log append-only", "Research + design one bar"]
       }
     },
     {
@@ -126,6 +151,11 @@
       "primaryCta": {
         "label": "View walkthrough",
         "href": "toolkits/toolkit-review-loop.html"
+      },
+      "expertSignals": {
+        "score": "18/20",
+        "artifactSrc": "toolkits/artefacts/toolkits-overview/card-review-loop.svg",
+        "chips": ["8 published in registry", "Education rubric v3 pass", "Cron patches gaps — no invented slugs"]
       }
     }
   ]

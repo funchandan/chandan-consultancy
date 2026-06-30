@@ -37,16 +37,17 @@
   <link rel="stylesheet" href="assets/wp-iphone-frame.css?v=2" />
   <link rel="stylesheet" href="assets/nav-immersive.css?v=5" />
   <link rel="stylesheet" href="assets/nav-product.css?v=2" />
-  <link rel="stylesheet" href="assets/nav-pill.css?v=10" />
+  <link rel="stylesheet" href="assets/nav-pill.css?v=11" />
   <link rel="stylesheet" href="assets/wp-index-page-torch.css?v=1" />
   <link rel="stylesheet" href="assets/wp-blue-pointer.css?v=1" />
   <link rel="stylesheet" href="assets/wp-dot-grid.css?v=1" />
   <link rel="stylesheet" href="assets/wp-noise-background.css?v=5" />
   <link rel="stylesheet" href="assets/wp-edge-blur.css?v=5" />
-  <link rel="stylesheet" href="assets/wp-box-bento.css?v=21" />
-  <link rel="stylesheet" href="assets/wp-toolkit-cardswap.css?v=7" />
+  <link rel="stylesheet" href="assets/wp-box-bento.css?v=23" />
+  <link rel="stylesheet" href="assets/wp-toolkit-cardswap.css?v=9" />
   <link rel="stylesheet" href="assets/card-swap.css?v=7" />
-  <link rel="stylesheet" href="assets/wp-bento-testimonial-box.css?v=5" />
+  <link rel="stylesheet" href="assets/wp-toolkit-hero.css?v=2" />
+  <link rel="stylesheet" href="assets/wp-bento-testimonial-box.css?v=6" />
   <link rel="stylesheet" href="assets/wp-bento-sortable-quiz.css?v=3" />
   <link rel="stylesheet" href="assets/wp-bento-title-reveal.css?v=3" />
   <link rel="stylesheet" href="assets/index-product-surface.css?v=11" />
@@ -92,7 +93,9 @@
   <script src="assets/motion/wp-bento-sortable-quiz.js?v=1" defer></script>
   <script src="assets/motion/wp-bento-testimonial-box.js?v=8" defer></script>
   <script src="assets/card-swap.js?v=7" defer></script>
-  <script src="assets/wp-box-bento.js?v=13" defer></script>
+  <script src="assets/wp-box-bento.js?v=14" defer></script>
+  <script src="assets/wp-toolkit-hero.js?v=1" defer></script>
+  <script src="assets/nav-search-overlay.js?v=1" defer></script>
 </head>
 <body class="home-page home-page--product" data-wp-motion="lenis-root glass-scroll dot-grid bg-grid-after-hero blue-pointer" data-wp-motion-profile="portfolio-default">
   <div class="bg-grid-after-hero" id="bg-grid-after-hero" data-bg-grid-after-hero aria-hidden="true"></div>
@@ -115,6 +118,9 @@
             <a href="about.html" class="nav-pill__link nav-link-secondary" data-nav-item="about">About</a>
           </div>
           <div class="nav-pill__actions">
+            <button type="button" class="nav-pill__search-btn" data-nav-search-toggle aria-label="Search portfolio" aria-expanded="false" aria-controls="nav-search-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
+            </button>
             <a class="nav-pill__cta" href="cv/pdf/cv-design.pdf" download data-nav-cta>
               <svg class="nav-pill__cta-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false">
                 <path d="M10 2a.75.75 0 0 1 .75.75v8.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V2.75A.75.75 0 0 1 10 2Zm-3.25 12.5a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Z" />
@@ -161,6 +167,48 @@
           </div>
         </dialog>
       </nav>
+      <div class="nav-search-overlay" id="nav-search-overlay" data-nav-search-overlay hidden>
+        <section class="wp-glass-compose wp-glass-compose--nav-overlay" data-wp-glass-compose aria-label="Ask about the work">
+          <div class="wp-glass-compose__shell">
+            <div class="wp-glass-compose__glow" aria-hidden="true"></div>
+            <div class="wp-glass-compose__frame" data-glass-compose-frame tabindex="-1">
+              <div class="wp-glass-compose__blur" aria-hidden="true"></div>
+              <div class="wp-glass-compose__bg" aria-hidden="true">
+                <img src="https://ik.imagekit.io/aitoolkit/bg%20images/Ethereal%20Orange%20Flower%204%20(1).png?updatedAt=1775226802133" alt="" width="840" height="560" decoding="async" />
+              </div>
+              <div class="wp-glass-compose__highlight" aria-hidden="true"></div>
+              <div class="wp-glass-compose__main">
+                <form class="wp-glass-compose__input" data-glass-prompt-form action="mailto:chandan004sharma@gmail.com" method="get" novalidate>
+                  <div
+                    class="wp-glass-compose__input-shell"
+                    data-glass-vanish-input
+                    data-vanish-placeholders="Ask about the work|Summarize a case study|What shipped at HP field service?|How do you run design programmes?|Book a 30-minute conversation"
+                  >
+                    <label class="visually-hidden" for="nav-glass-prompt">Ask about the work</label>
+                    <textarea
+                      id="nav-glass-prompt"
+                      class="wp-glass-compose__textarea"
+                      name="body"
+                      rows="1"
+                      data-glass-prompt-input
+                      autocomplete="off"
+                    ></textarea>
+                    <div class="wp-glass-compose__input-actions">
+                      <button type="submit" class="wp-glass-compose__submit" data-glass-prompt-send aria-label="Send message" disabled>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                <div class="wp-glass-compose__suggestions" data-glass-suggestions>
+                  <div class="wp-glass-compose__suggestion-tabs" data-glass-suggestion-tabs role="list" aria-label="Prompt categories"></div>
+                  <div class="wp-glass-compose__suggestion-list" data-glass-suggestion-list role="list" aria-label="Suggested prompts" hidden></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   </header>
   <!-- nav-pill:end -->
@@ -219,53 +267,7 @@
       <div class="shell">
         <div class="wp-box-bento" data-box-bento>
           <div class="bento-grid">
-            <div class="bento-card bento-card--search" data-box-bento-search>
-              <section class="wp-glass-compose" data-wp-glass-compose aria-label="Ask about the work" aria-hidden="true">
-                <div class="wp-glass-compose__shell">
-                  <div class="wp-glass-compose__glow" aria-hidden="true"></div>
-                  <div class="wp-glass-compose__frame" data-glass-compose-frame tabindex="-1">
-                  <div class="wp-glass-compose__blur" aria-hidden="true"></div>
-                  <div class="wp-glass-compose__bg" aria-hidden="true">
-                    <img src="https://ik.imagekit.io/aitoolkit/bg%20images/Ethereal%20Orange%20Flower%204%20(1).png?updatedAt=1775226802133" alt="" width="840" height="560" decoding="async" />
-                  </div>
-                  <div class="wp-glass-compose__highlight" aria-hidden="true"></div>
-
-                  <div class="wp-glass-compose__main">
-                    <form class="wp-glass-compose__input" data-glass-prompt-form action="mailto:chandan004sharma@gmail.com" method="get" novalidate>
-                      <div
-                        class="wp-glass-compose__input-shell"
-                        data-glass-vanish-input
-                        data-vanish-placeholders="Ask about the work|Summarize a case study|What shipped at HP field service?|How do you run design programmes?|Book a 30-minute conversation"
-                      >
-                        <label class="visually-hidden" for="hero-glass-prompt">Ask about the work</label>
-                        <textarea
-                          id="hero-glass-prompt"
-                          class="wp-glass-compose__textarea"
-                          name="body"
-                          rows="1"
-                          data-glass-prompt-input
-                          autocomplete="off"
-                          aria-hidden="true"
-                          tabindex="-1"
-                        ></textarea>
-                        <div class="wp-glass-compose__input-actions">
-                          <button type="submit" class="wp-glass-compose__submit" data-glass-prompt-send aria-label="Send message" disabled>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
-                          </button>
-                        </div>
-                      </div>
-                    </form>
-
-                    <div class="wp-glass-compose__suggestions" data-glass-suggestions>
-                      <div class="wp-glass-compose__suggestion-tabs" data-glass-suggestion-tabs role="list" aria-label="Prompt categories"></div>
-                      <div class="wp-glass-compose__suggestion-list" data-glass-suggestion-list role="list" aria-label="Suggested prompts" hidden></div>
-                    </div>
-                  </div>
-                </div>
-                </div>
-              </section>
-            </div>
-            <div class="bento-card bento-card--toolkits" data-hero-bento-toolkits data-toolkit-cardswap-root>
+            <div class="bento-card bento-card--toolkits" data-hero-bento-toolkits data-toolkit-cardswap-root data-toolkit-hero>
               <div class="bento-card__panel bento-card__panel--toolkits">
                 <div class="bento-toolkit-pills" data-toolkit-pills role="tablist" aria-label="Programme stages">
                   <button type="button" class="bento-toolkit-pill" role="tab" data-toolkit-pill="research" aria-selected="true">Research</button>
@@ -273,7 +275,13 @@
                   <button type="button" class="bento-toolkit-pill" role="tab" data-toolkit-pill="ship" aria-selected="false" tabindex="-1">Ship</button>
                   <button type="button" class="bento-toolkit-pill" role="tab" data-toolkit-pill="measure" aria-selected="false" tabindex="-1">Measure</button>
                 </div>
-                <div class="bento-toolkit-swap" data-toolkit-cardswap>
+                <div class="toolkit-hero__gallery">
+                  <div class="toolkit-hero__artifact">
+                    <img data-toolkit-artifact src="toolkits/artefacts/toolkits-overview/card-skills.svg" alt="Curate agent skills artefact" width="320" height="240" decoding="async" />
+                    <span class="toolkit-hero__score" data-toolkit-score>19/20</span>
+                  </div>
+                  <div class="toolkit-hero__walkthrough">
+                    <div class="bento-toolkit-swap" data-toolkit-cardswap>
                   <div
                     class="card-swap-container"
                     data-card-swap
@@ -343,6 +351,37 @@
                       </div>
                     </div>
                   </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="toolkit-hero__chips" data-toolkit-chips aria-label="Expert signals">
+                  <span class="toolkit-hero__chip toolkit-hero__chip--pass">skills-lock.json audited</span>
+                  <span class="toolkit-hero__chip">BMAD + Hermes sources pinned</span>
+                  <span class="toolkit-hero__chip">Top 10 — not skill roulette</span>
+                </div>
+              </div>
+            </div>
+            <div class="bento-reviews-embed bento-reviews-embed--compact" data-hero-bento-reviews-card data-wp-motion="bento-testimonial-box">
+              <div
+                class="bento-animated-testimonials-shell bento-bg-artifact bento-bg-artifact--testimonial-box"
+                data-bento-bg-artifact="testimonial-box"
+                data-hero-bento-reviews
+              >
+                <div class="bento-animated-testimonials" data-bento-animated-testimonials data-embedded="true">
+                  <div class="bento-animated-testimonials__grid">
+                    <div class="bento-animated-testimonials__media" data-bento-testimonial-avatars hidden>
+                      <img class="bento-animated-testimonials__avatar is-active" src="https://api.dicebear.com/9.x/avataaars/svg?seed=Spencer%20W." alt="" width="120" height="120" draggable="false" />
+                    </div>
+                    <div class="bento-animated-testimonials__copy">
+                      <p class="bento-animated-testimonials__name" data-bento-testimonial-name>Spencer W.</p>
+                      <p class="bento-animated-testimonials__designation" data-bento-testimonial-designation>Fortune 100 VP-Product</p>
+                      <p class="bento-animated-testimonials__quote" data-bento-testimonial-quote>Chandan's design perception is well ahead of what I could imagine as a business leader. I like his approach very much.</p>
+                      <div class="bento-animated-testimonials__nav">
+                        <button type="button" class="bento-animated-testimonials__nav-btn" data-bento-testimonial-prev aria-label="Previous review"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                        <button type="button" class="bento-animated-testimonials__nav-btn" data-bento-testimonial-next aria-label="Next review"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -371,30 +410,6 @@
                 </div>
               </div>
               <div class="bento-card__shade" aria-hidden="true"></div>
-            </div>
-            <div class="bento-reviews-embed" data-hero-bento-reviews-card data-wp-motion="bento-testimonial-box">
-              <div
-                class="bento-animated-testimonials-shell bento-bg-artifact bento-bg-artifact--testimonial-box"
-                data-bento-bg-artifact="testimonial-box"
-                data-hero-bento-reviews
-              >
-                <div class="bento-animated-testimonials" data-bento-animated-testimonials data-embedded="true">
-                  <div class="bento-animated-testimonials__grid">
-                    <div class="bento-animated-testimonials__media" data-bento-testimonial-avatars>
-                      <img class="bento-animated-testimonials__avatar is-active" src="https://api.dicebear.com/9.x/avataaars/svg?seed=Spencer%20W." alt="Spencer W." width="120" height="120" draggable="false" />
-                    </div>
-                    <div class="bento-animated-testimonials__copy">
-                      <p class="bento-animated-testimonials__name" data-bento-testimonial-name>Spencer W.</p>
-                      <p class="bento-animated-testimonials__designation" data-bento-testimonial-designation>Fortune 100 VP-Product</p>
-                      <p class="bento-animated-testimonials__quote" data-bento-testimonial-quote>Chandan's design perception is well ahead of what I could imagine as a business leader. I like his approach very much.</p>
-                      <div class="bento-animated-testimonials__nav">
-                        <button type="button" class="bento-animated-testimonials__nav-btn" data-bento-testimonial-prev aria-label="Previous review"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                        <button type="button" class="bento-animated-testimonials__nav-btn" data-bento-testimonial-next aria-label="Next review"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

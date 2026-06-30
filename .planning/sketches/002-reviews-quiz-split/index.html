@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sketch 002 — Reviews + Quiz Split</title>
+  <link rel="stylesheet" href="../themes/default.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 52px 0 64px;
+      font-family: var(--font-sans); font-size: var(--text-base);
+      color: var(--color-text); background-color: var(--color-bg);
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 24px 24px; min-height: 100vh;
+    }
+    #variant-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9998;
+      background: var(--color-surface-elevated); border-bottom: 1px solid var(--color-border);
+      padding: 8px 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    }
+    .variant-tab {
+      padding: 6px 14px; border-radius: var(--radius-full);
+      border: 1px solid var(--color-border); background: transparent;
+      color: var(--color-text-muted); font-size: var(--text-sm); cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .variant-tab:hover { border-color: var(--color-primary); color: var(--color-text); }
+    .variant-tab.active { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+    .sketch-label { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-dim); margin-right: auto; }
+    .variant { display: none; }
+    .variant.active { display: block; }
+    #sketch-viewport { width: 100%; margin: 0 auto; transition: max-width var(--transition-base); }
+    .shell { width: min(var(--shell-max), calc(100% - 3rem)); margin: var(--space-8) auto; }
+    .sketch-note {
+      margin: 0 0 var(--space-6); padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-md); background: var(--color-surface);
+      border: 1px solid var(--color-border); font-size: var(--text-sm); color: var(--color-text-muted);
+    }
+    .page-stack { display: flex; flex-direction: column; gap: var(--space-5); }
+    /* Toolkit hero (compact — winner from 001 TBD) */
+    .toolkit-hero-mini {
+      border-radius: var(--radius-lg); background: var(--color-surface);
+      border: 1px solid var(--color-border); box-shadow: var(--shadow-md);
+      padding: var(--space-4) var(--space-5) var(--space-5);
+    }
+    .toolkit-hero-mini__label {
+      font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--color-text-dim); margin: 0 0 var(--space-3);
+    }
+    .toolkit-hero-mini__title { margin: 0; font-size: var(--text-2xl); font-weight: 700; }
+    .toolkit-hero-mini__proof {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--space-3);
+    }
+    .proof-pill {
+      padding: 4px 10px; border-radius: var(--radius-full);
+      border: 1px solid var(--color-border); font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+    .proof-pill--gold { border-color: var(--color-border-gold); color: #f5e6c8; }
+    .proof-pill--pass { border-color: rgba(34,197,94,0.4); color: var(--color-success); }
+    /* Bottom row */
+    .bottom-row { display: grid; gap: var(--space-4); }
+    .bottom-row--a { grid-template-columns: 1fr; }
+    .bottom-row--b { grid-template-columns: 1fr; }
+    .bottom-row--c { grid-template-columns: 1fr; }
+    @media (min-width: 900px) {
+      .bottom-row--a { grid-template-columns: 1fr 2fr; }
+      .bottom-row--b { grid-template-columns: 1fr 3fr; }
+      .bottom-row--c { grid-template-columns: 1fr 1fr; }
+    }
+    /* Reviews */
+    .reviews-cell {
+      border-radius: var(--radius-lg); background: #0a0a0a;
+      border: 1px solid var(--color-border); box-shadow: var(--shadow-md);
+      padding: var(--space-4); min-height: 200px;
+      display: flex; flex-direction: column;
+    }
+    .reviews-cell--compact .reviews-cell__quote { font-size: var(--text-sm); -webkit-line-clamp: 3; }
+    .reviews-cell--typo-small .reviews-cell__quote { font-size: var(--text-sm); max-width: 28ch; }
+    .reviews-cell--typo-small .reviews-cell__name { font-size: var(--text-sm); }
+    .reviews-cell__grid {
+      display: grid; gap: var(--space-3); align-items: center; flex: 1;
+      grid-template-columns: minmax(5rem, 28%) minmax(0, 1fr);
+    }
+    .reviews-cell--no-avatar .reviews-cell__grid { grid-template-columns: 1fr; }
+    .reviews-cell__avatar {
+      width: 100%; aspect-ratio: 1; border-radius: var(--radius-md);
+      border: 1px solid var(--color-border); object-fit: cover; background: #171717;
+    }
+    .reviews-cell__name { margin: 0; font-weight: 700; font-size: var(--text-base); }
+    .reviews-cell__role { margin: 2px 0 0; font-size: var(--text-xs); color: var(--color-text-dim); }
+    .reviews-cell__quote {
+      margin: var(--space-2) 0 0; font-size: var(--text-base); line-height: 1.5;
+      color: #d4d4d4; display: -webkit-box; -webkit-box-orient: vertical;
+      overflow: hidden; -webkit-line-clamp: 5;
+    }
+    .reviews-cell__nav {
+      display: flex; gap: 6px; margin-top: auto; padding-top: var(--space-3);
+    }
+    .reviews-cell__nav button {
+      width: 28px; height: 28px; border: none; border-radius: 50%;
+      background: #262626; color: #a3a3a3; cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+    .reviews-cell__nav button:hover { background: #404040; color: #e5e5e5; }
+    /* Quiz */
+    .quiz-cell { display: flex; flex-direction: column; gap: var(--space-3); min-height: 0; }
+    .quiz-cell__title { margin: 0; font-size: var(--text-lg); font-weight: 700; }
+    .quiz-cell__desc { margin: 4px 0 0; font-size: var(--text-sm); color: var(--color-text-muted); }
+    .quiz-list {
+      list-style: none; margin: 0; padding: 0;
+      display: flex; flex-direction: column; gap: 10px;
+      max-height: 420px; overflow-y: auto;
+    }
+    .quiz-row {
+      display: grid; grid-template-columns: auto 1fr auto; align-items: center;
+      gap: 12px; min-height: 72px; padding: 12px 16px;
+      border-radius: 14px; background: var(--color-surface-light);
+      color: var(--color-ink-on-light); border: 1px solid rgba(13,13,13,0.1);
+      cursor: grab; transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+    }
+    .quiz-row:hover { box-shadow: var(--shadow-sm); }
+    .quiz-row.dragging { opacity: 0.5; cursor: grabbing; }
+    .quiz-row__rank { font-weight: 700; font-size: var(--text-sm); color: var(--color-muted-on-light); min-width: 1.25rem; }
+    .quiz-row__label { font-size: var(--text-sm); line-height: 1.35; }
+    .quiz-row__handle { color: var(--color-muted-on-light); user-select: none; }
+    .quiz-submit {
+      align-self: flex-start; padding: 10px 18px; border-radius: var(--radius-full);
+      border: 1px solid var(--color-border-gold); background: var(--color-accent-soft);
+      color: #f5e6c8; font-weight: 600; font-size: var(--text-sm);
+      cursor: pointer; transition: all var(--transition-fast);
+    }
+    .quiz-submit:disabled { opacity: 0.5; cursor: not-allowed; border-color: var(--color-border); color: var(--color-text-dim); background: #262626; }
+    .quiz-submit:not(:disabled):hover { background: rgba(197,160,89,0.3); }
+    .quiz-toast {
+      position: fixed; bottom: 72px; left: 50%; transform: translateX(-50%);
+      padding: 10px 16px; border-radius: var(--radius-md);
+      background: var(--color-success); color: #fff; font-size: var(--text-sm);
+      opacity: 0; pointer-events: none; transition: opacity var(--transition-base);
+    }
+    .quiz-toast.show { opacity: 1; }
+    @media (max-width: 899px) {
+      .page-stack { gap: var(--space-4); }
+      .quiz-row { min-height: 56px; }
+    }
+  </style>
+</head>
+<body>
+  <nav id="variant-nav">
+    <span class="sketch-label">Sketch 002</span>
+    <button type="button" class="variant-tab" data-variant="a">A: 1:2 sidebar</button>
+    <button type="button" class="variant-tab active" data-variant="b">B: 1:3 narrow ★</button>
+    <button type="button" class="variant-tab" data-variant="c">C: 1:1 compact</button>
+  </nav>
+
+  <div id="sketch-viewport">
+    <div id="variant-a" class="variant">
+      <div class="shell">
+        <p class="sketch-note"><strong>Variant A — 1:2.</strong> Reviews ~33% with avatar + quote. Quiz dominates right.</p>
+        <div class="page-stack" data-page-stack>
+          <div class="toolkit-hero-mini">
+            <p class="toolkit-hero-mini__label">Toolkit hero (placeholder — pick 001 winner)</p>
+            <h1 class="toolkit-hero-mini__title">Personal Hermes AI stack</h1>
+            <div class="toolkit-hero-mini__proof">
+              <span class="proof-pill">8 published</span>
+              <span class="proof-pill proof-pill--gold">18/20</span>
+              <span class="proof-pill proof-pill--pass">cron PASS</span>
+            </div>
+          </div>
+          <div class="bottom-row bottom-row--a">
+            <div class="reviews-cell" data-reviews></div>
+            <div class="quiz-cell" data-quiz></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="variant-b" class="variant active">
+      <div class="shell">
+        <p class="sketch-note"><strong>Variant B — 1:3.</strong> Narrow reviews strip; quote clamped; no avatar.</p>
+        <div class="page-stack">
+          <div class="toolkit-hero-mini">
+            <p class="toolkit-hero-mini__label">Toolkit hero</p>
+            <h1 class="toolkit-hero-mini__title">Personal Hermes AI stack</h1>
+            <div class="toolkit-hero-mini__proof">
+              <span class="proof-pill">8 published</span>
+              <span class="proof-pill proof-pill--gold">18/20</span>
+              <span class="proof-pill proof-pill--pass">cron PASS</span>
+            </div>
+          </div>
+          <div class="bottom-row bottom-row--b">
+            <div class="reviews-cell reviews-cell--compact reviews-cell--no-avatar" data-reviews></div>
+            <div class="quiz-cell" data-quiz></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="variant-c" class="variant">
+      <div class="shell">
+        <p class="sketch-note"><strong>Variant C — 1:1.</strong> Equal columns; reviews visually compact via typography.</p>
+        <div class="page-stack">
+          <div class="toolkit-hero-mini">
+            <p class="toolkit-hero-mini__label">Toolkit hero</p>
+            <h1 class="toolkit-hero-mini__title">Personal Hermes AI stack</h1>
+            <div class="toolkit-hero-mini__proof">
+              <span class="proof-pill">8 published</span>
+              <span class="proof-pill proof-pill--gold">18/20</span>
+              <span class="proof-pill proof-pill--pass">cron PASS</span>
+            </div>
+          </div>
+          <div class="bottom-row bottom-row--c">
+            <div class="reviews-cell reviews-cell--typo-small" data-reviews></div>
+            <div class="quiz-cell" data-quiz></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz-toast" id="quiz-toast">Ranking saved — compare on submit</div>
+
+  <div id="sketch-tools" style="position:fixed;bottom:12px;right:12px;z-index:9999;font-size:12px;background:rgba(0,0,0,0.75);color:white;padding:8px 12px;border-radius:8px;opacity:0.45;transition:opacity 0.2s;display:flex;gap:8px;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0.45'">
+    <button type="button" data-vp="375" style="background:#333;border:1px solid #555;color:#fff;padding:4px 8px;border-radius:4px;cursor:pointer;font-size:11px;">375</button>
+    <button type="button" data-vp="768" style="background:#333;border:1px solid #555;color:#fff;padding:4px 8px;border-radius:4px;cursor:pointer;font-size:11px;">768</button>
+    <button type="button" data-vp="1280" style="background:#333;border:1px solid #555;color:#fff;padding:4px 8px;border-radius:4px;cursor:pointer;font-size:11px;">1280</button>
+    <button type="button" data-vp="full" style="background:#333;border:1px solid #555;color:#fff;padding:4px 8px;border-radius:4px;cursor:pointer;font-size:11px;">Full</button>
+  </div>
+
+  <script>
+    var REVIEWS = [
+      { name: "Spencer W.", role: "Fortune 100 VP-Product", quote: "Chandan's design perception is well ahead of what I could imagine as a business leader. I like his approach very much.", seed: "Spencer%20W." },
+      { name: "Prachi", role: "Head of UX, Byju's", quote: "Chandan is great at baking user voice into product solutions which ultimately create delightful users", seed: "Prachi" },
+      { name: "Co-worker", role: "Byju's", quote: "I have worked on multiple projects with Chandan and I often been impressed by his ability to present his findings back in an instructive way that provides thoughtful guidance.", seed: "Coworker" }
+    ];
+    var QUIZ_ITEMS = [
+      { id: "avatar", text: "Ship avatar rewards as a fast follow" },
+      { id: "marketplace", text: "Define marketplace mechanics and edge cases" },
+      { id: "moderated-test", text: "Run moderated tests on production stimulus" },
+      { id: "align-metric", text: "Align stakeholders on one north-star metric" },
+      { id: "map-journey", text: "Map earn-and-spend journeys end to end" }
+    ];
+    var reviewIndex = 0;
+
+    function renderReviews(el) {
+      if (!el) return;
+      var noAvatar = el.classList.contains("reviews-cell--no-avatar");
+      var r = REVIEWS[reviewIndex];
+      var avatarHtml = noAvatar ? "" :
+        '<img class="reviews-cell__avatar" src="https://api.dicebear.com/9.x/avataaars/svg?seed=' + r.seed + '" alt="' + r.name + '" />';
+      el.innerHTML =
+        '<div class="reviews-cell__grid">' +
+        (noAvatar ? '' : avatarHtml) +
+        '<div><p class="reviews-cell__name">' + r.name + '</p>' +
+        '<p class="reviews-cell__role">' + r.role + '</p>' +
+        '<p class="reviews-cell__quote">' + r.quote + '</p></div></div>' +
+        '<div class="reviews-cell__nav">' +
+        '<button type="button" data-prev aria-label="Previous">‹</button>' +
+        '<button type="button" data-next aria-label="Next">›</button></div>';
+      el.querySelector("[data-prev]").onclick = function () {
+        reviewIndex = (reviewIndex - 1 + REVIEWS.length) % REVIEWS.length;
+        renderReviews(el);
+      };
+      el.querySelector("[data-next]").onclick = function () {
+        reviewIndex = (reviewIndex + 1) % REVIEWS.length;
+        renderReviews(el);
+      };
+    }
+
+    function renderQuiz(el) {
+      if (!el) return;
+      el.innerHTML =
+        '<h3 class="quiz-cell__title">Test your systems instinct</h3>' +
+        '<p class="quiz-cell__desc">Rank these moves for a 20M+ learner loyalty launch — most critical first.</p>' +
+        '<ul class="quiz-list" data-quiz-list></ul>' +
+        '<button type="button" class="quiz-submit" data-quiz-submit disabled>Check my ranking</button>';
+      var list = el.querySelector("[data-quiz-list]");
+      QUIZ_ITEMS.forEach(function (item, i) {
+        var li = document.createElement("li");
+        li.className = "quiz-row";
+        li.draggable = true;
+        li.dataset.id = item.id;
+        li.innerHTML = '<span class="quiz-row__rank">' + (i + 1) + '</span>' +
+          '<span class="quiz-row__label">' + item.text + '</span>' +
+          '<span class="quiz-row__handle">⋮⋮</span>';
+        list.appendChild(li);
+      });
+      bindDrag(list);
+      var submit = el.querySelector("[data-quiz-submit]");
+      var moved = false;
+      list.addEventListener("dragend", function () { moved = true; submit.disabled = false; });
+      submit.onclick = function () {
+        var toast = document.getElementById("quiz-toast");
+        toast.textContent = moved ? "Checked! Expert order differs — see BYJU's case." : "Drag to rank first.";
+        toast.classList.add("show");
+        setTimeout(function () { toast.classList.remove("show"); }, 2200);
+      };
+    }
+
+    function bindDrag(list) {
+      var dragEl = null;
+      list.querySelectorAll(".quiz-row").forEach(function (row) {
+        row.addEventListener("dragstart", function () {
+          dragEl = row; row.classList.add("dragging");
+        });
+        row.addEventListener("dragend", function () {
+          row.classList.remove("dragging"); renumber(list); dragEl = null;
+        });
+        row.addEventListener("dragover", function (e) {
+          e.preventDefault();
+          if (!dragEl || dragEl === row) return;
+          var rect = row.getBoundingClientRect();
+          var after = e.clientY > rect.top + rect.height / 2;
+          list.insertBefore(dragEl, after ? row.nextSibling : row);
+        });
+      });
+    }
+    function renumber(list) {
+      list.querySelectorAll(".quiz-row").forEach(function (row, i) {
+        row.querySelector(".quiz-row__rank").textContent = i + 1;
+      });
+    }
+
+    document.querySelectorAll("[data-reviews]").forEach(renderReviews);
+    document.querySelectorAll("[data-quiz]").forEach(renderQuiz);
+
+    document.querySelectorAll(".variant-tab").forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        var id = tab.getAttribute("data-variant");
+        document.querySelectorAll(".variant-tab").forEach(function (t) { t.classList.remove("active"); });
+        document.querySelectorAll(".variant").forEach(function (v) { v.classList.remove("active"); });
+        tab.classList.add("active");
+        document.getElementById("variant-" + id).classList.add("active");
+        document.querySelectorAll("#variant-" + id + " [data-reviews]").forEach(renderReviews);
+        document.querySelectorAll("#variant-" + id + " [data-quiz]").forEach(renderQuiz);
+      });
+    });
+
+    document.querySelectorAll("[data-vp]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var vp = btn.getAttribute("data-vp");
+        document.getElementById("sketch-viewport").style.maxWidth = vp === "full" ? "none" : vp + "px";
+      });
+    });
+  </script>
+</body>
+</html>

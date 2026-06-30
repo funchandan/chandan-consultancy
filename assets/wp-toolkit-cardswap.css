@@ -25,6 +25,11 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
   pointer-events: auto;
 }
 
+.bento-card--toolkits[data-toolkit-hero] .bento-card__panel--toolkits {
+  gap: 0;
+  padding: 0;
+}
+
 .bento-card--toolkits .bento-card__shade {
   display: none;
 }
@@ -94,6 +99,12 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
   margin-top: 0.35rem;
   pointer-events: auto;
   overflow: visible;
+}
+
+.bento-card--toolkits[data-toolkit-hero] .bento-toolkit-swap {
+  height: auto;
+  min-height: 0;
+  margin-top: 0;
 }
 
 @media (max-width: 1023px) {

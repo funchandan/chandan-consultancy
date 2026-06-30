@@ -324,6 +324,9 @@
       pill.setAttribute("aria-selected", on ? "true" : "false");
       pill.tabIndex = on ? 0 : -1;
     });
+    document.dispatchEvent(
+      new CustomEvent("wp:toolkit-stage-change", { detail: { stage: stage } })
+    );
   }
 
   function mount(container) {

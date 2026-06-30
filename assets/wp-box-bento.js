@@ -172,27 +172,6 @@
     } else {
       root.removeAttribute("data-box-bento-interactive");
     }
-
-    var askBlock = document.querySelector("[data-box-bento-search] .wp-glass-compose");
-    var promptInput = document.querySelector("#hero-glass-prompt");
-
-    if (askBlock) {
-      if (boxT >= 0.05) {
-        askBlock.removeAttribute("aria-hidden");
-      } else {
-        askBlock.setAttribute("aria-hidden", "true");
-      }
-    }
-
-    if (promptInput) {
-      if (boxT < 0.5) {
-        promptInput.setAttribute("aria-hidden", "true");
-        promptInput.setAttribute("tabindex", "-1");
-      } else {
-        promptInput.removeAttribute("aria-hidden");
-        promptInput.removeAttribute("tabindex");
-      }
-    }
   }
 
   function bootRevealScroll(root) {

@@ -1,6 +1,8 @@
 /* PP-C01 — Floating pill navbar (Figma mk1 visual spec) */
 
-body.home-page {
+body.home-page,
+body.work-page.work-page--product,
+body.about-page.about-page--product {
   --nav-pill-radius: 999px;
   --nav-pill-pad-y: 0.625rem;
   --nav-pill-pad-x: 1.5rem;
@@ -12,7 +14,11 @@ body.home-page {
 
 /* Floating dock — no full-width bar; hero/work show through */
 body.home-page .site-header--pill,
-body.home-page.home-page--product .site-header {
+body.work-page.work-page--product .site-header--pill,
+body.about-page.about-page--product .site-header--pill,
+body.home-page.home-page--product .site-header,
+body.work-page.work-page--product .site-header,
+body.about-page.about-page--product .site-header {
   position: sticky;
   top: 0;
   z-index: 20;
@@ -25,12 +31,16 @@ body.home-page.home-page--product .site-header {
   -webkit-backdrop-filter: none !important;
 }
 
-body.home-page .site-header__dock {
-  width: min(1280px, calc(100% - var(--layout-pad, 1.25rem) * 2));
+body.home-page .site-header__dock,
+body.work-page.work-page--product .site-header__dock,
+body.about-page.about-page--product .site-header__dock {
+  width: min(1280px, calc(100% - var(--layout-pad) * 2));
   margin-inline: auto;
 }
 
-body.home-page .nav--pill {
+body.home-page .nav--pill,
+body.work-page.work-page--product .nav--pill,
+body.about-page.about-page--product .nav--pill {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,7 +50,9 @@ body.home-page .nav--pill {
 }
 
 /* —— Pill shell —— */
-body.home-page .nav-pill {
+body.home-page .nav-pill,
+body.work-page.work-page--product .nav-pill,
+body.about-page.about-page--product .nav-pill {
   display: flex;
   align-items: center;
   width: 100%;
@@ -56,7 +68,9 @@ body.home-page .nav-pill {
     box-shadow 220ms ease;
 }
 
-body.home-page .site-header--top .nav-pill {
+body.home-page .site-header--top .nav-pill,
+body.work-page.work-page--product .site-header--top .nav-pill,
+body.about-page.about-page--product .site-header--top .nav-pill {
   background: var(--nav-pill-bg-light);
   border-color: color-mix(in srgb, var(--wp-black, #000) 6%, transparent);
   color: var(--wp-black, #000);
@@ -64,7 +78,9 @@ body.home-page .site-header--top .nav-pill {
 
 body.home-page .site-header--scrolled .nav-pill,
 body.home-page .site-header--on-dark .nav-pill,
-body.home-page .site-header--on-work .nav-pill {
+body.home-page .site-header--on-work .nav-pill,
+body.work-page.work-page--product .site-header--on-work .nav-pill,
+body.about-page.about-page--product .site-header--on-work .nav-pill {
   background: var(--nav-pill-bg-dark);
   border-color: color-mix(in srgb, var(--wp-white, #fff) 10%, transparent);
   color: var(--wp-white, #fff);
@@ -72,7 +88,9 @@ body.home-page .site-header--on-work .nav-pill {
 }
 
 /* Brand */
-body.home-page .nav-pill__brand {
+body.home-page .nav-pill__brand,
+body.work-page.work-page--product .nav-pill__brand,
+body.about-page.about-page--product .nav-pill__brand {
   flex-shrink: 0;
   margin-right: 0.5rem;
   padding: 0.25rem 0;
@@ -86,7 +104,9 @@ body.home-page .nav-pill__brand {
 }
 
 /* Center links */
-body.home-page .nav-pill__links {
+body.home-page .nav-pill__links,
+body.work-page.work-page--product .nav-pill__links,
+body.about-page.about-page--product .nav-pill__links {
   display: none;
   flex: 1;
   align-items: center;
@@ -96,7 +116,9 @@ body.home-page .nav-pill__links {
   min-width: 0;
 }
 
-body.home-page .nav-pill__link {
+body.home-page .nav-pill__link,
+body.work-page.work-page--product .nav-pill__link,
+body.about-page.about-page--product .nav-pill__link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -119,27 +141,37 @@ body.home-page .nav-pill__link {
 }
 
 body.home-page .nav-pill__link:hover,
-body.home-page .nav-pill__link:focus-visible {
+body.home-page .nav-pill__link:focus-visible,
+body.work-page.work-page--product .nav-pill__link:focus-visible,
+body.about-page.about-page--product .nav-pill__link:focus-visible {
   color: inherit;
 }
 
-body.home-page .site-header--top .nav-pill__link.is-active {
+body.home-page .site-header--top .nav-pill__link.is-active,
+body.work-page.work-page--product .site-header--top .nav-pill__link.is-active,
+body.about-page.about-page--product .site-header--top .nav-pill__link.is-active {
   background: color-mix(in srgb, var(--wp-black, #000) 10%, transparent);
 }
 
 body.home-page .site-header--scrolled .nav-pill__link.is-active,
 body.home-page .site-header--on-dark .nav-pill__link.is-active,
-body.home-page .site-header--on-work .nav-pill__link.is-active {
+body.home-page .site-header--on-work .nav-pill__link.is-active,
+body.work-page.work-page--product .site-header--on-work .nav-pill__link.is-active,
+body.about-page.about-page--product .site-header--on-work .nav-pill__link.is-active {
   background: color-mix(in srgb, var(--wp-white, #fff) 16%, transparent);
 }
 
-body.home-page .nav-pill__link:focus-visible {
+body.home-page .nav-pill__link:focus-visible,
+body.work-page.work-page--product .nav-pill__link:focus-visible,
+body.about-page.about-page--product .nav-pill__link:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
 
 /* Right actions */
-body.home-page .nav-pill__actions {
+body.home-page .nav-pill__actions,
+body.work-page.work-page--product .nav-pill__actions,
+body.about-page.about-page--product .nav-pill__actions {
   display: none;
   flex-shrink: 0;
   align-items: center;
@@ -149,7 +181,9 @@ body.home-page .nav-pill__actions {
   border-left: 1px solid color-mix(in srgb, currentColor 22%, transparent);
 }
 
-body.home-page .nav-pill__cta {
+body.home-page .nav-pill__cta,
+body.work-page.work-page--product .nav-pill__cta,
+body.about-page.about-page--product .nav-pill__cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -168,36 +202,48 @@ body.home-page .nav-pill__cta {
   transition: background 180ms ease, color 180ms ease;
 }
 
-body.home-page .site-header--top .nav-pill__cta {
+body.home-page .site-header--top .nav-pill__cta,
+body.work-page.work-page--product .site-header--top .nav-pill__cta,
+body.about-page.about-page--product .site-header--top .nav-pill__cta {
   background: var(--wp-black, #000);
   color: var(--wp-white, #fff);
 }
 
-body.home-page .site-header--top .nav-pill__cta:hover {
+body.home-page .site-header--top .nav-pill__cta:hover,
+body.work-page.work-page--product .site-header--top .nav-pill__cta:hover,
+body.about-page.about-page--product .site-header--top .nav-pill__cta:hover {
   background: color-mix(in srgb, var(--wp-black, #000) 85%, var(--wp-white, #fff));
   color: var(--wp-white, #fff);
 }
 
 body.home-page .site-header--scrolled .nav-pill__cta,
 body.home-page .site-header--on-dark .nav-pill__cta,
-body.home-page .site-header--on-work .nav-pill__cta {
+body.home-page .site-header--on-work .nav-pill__cta,
+body.work-page.work-page--product .site-header--on-work .nav-pill__cta,
+body.about-page.about-page--product .site-header--on-work .nav-pill__cta {
   background: var(--wp-white, #fff);
   color: var(--wp-black, #000);
 }
 
 body.home-page .site-header--scrolled .nav-pill__cta:hover,
 body.home-page .site-header--on-dark .nav-pill__cta:hover,
-body.home-page .site-header--on-work .nav-pill__cta:hover {
+body.home-page .site-header--on-work .nav-pill__cta:hover,
+body.work-page.work-page--product .site-header--on-work .nav-pill__cta:hover,
+body.about-page.about-page--product .site-header--on-work .nav-pill__cta:hover {
   background: color-mix(in srgb, var(--wp-white, #fff) 88%, var(--wp-black, #000));
   color: var(--wp-black, #000);
 }
 
-body.home-page .nav-pill__cta:focus-visible {
+body.home-page .nav-pill__cta:focus-visible,
+body.work-page.work-page--product .nav-pill__cta:focus-visible,
+body.about-page.about-page--product .nav-pill__cta:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
 
-body.home-page .nav-pill__cta-icon {
+body.home-page .nav-pill__cta-icon,
+body.work-page.work-page--product .nav-pill__cta-icon,
+body.about-page.about-page--product .nav-pill__cta-icon {
   flex-shrink: 0;
   width: 1rem;
   height: 1rem;
@@ -205,38 +251,54 @@ body.home-page .nav-pill__cta-icon {
 
 /* Desktop: full pill */
 @media (min-width: 900px) {
-  body.home-page .nav-pill--desktop {
+  body.home-page .nav-pill--desktop,
+  body.work-page.work-page--product .nav-pill--desktop,
+  body.about-page.about-page--product .nav-pill--desktop {
     display: flex;
   }
 
   body.home-page .nav-pill__links,
-  body.home-page .nav-pill__actions {
+  body.home-page .nav-pill__actions,
+  body.work-page.work-page--product .nav-pill__links,
+  body.work-page.work-page--product .nav-pill__actions,
+  body.about-page.about-page--product .nav-pill__links,
+  body.about-page.about-page--product .nav-pill__actions {
     display: flex;
   }
 
-  body.home-page .nav-pill--mobile {
+  body.home-page .nav-pill--mobile,
+  body.work-page.work-page--product .nav-pill--mobile,
+  body.about-page.about-page--product .nav-pill--mobile {
     display: none;
   }
 
-  body.home-page .nav--pill .nav-menu-toggle {
+  body.home-page .nav--pill .nav-menu-toggle,
+  body.work-page.work-page--product .nav--pill .nav-menu-toggle,
+  body.about-page.about-page--product .nav--pill .nav-menu-toggle {
     display: none;
   }
 }
 
 /* Mobile: compact pill + menu */
 @media (max-width: 899px) {
-  body.home-page .nav-pill--desktop {
+  body.home-page .nav-pill--desktop,
+  body.work-page.work-page--product .nav-pill--desktop,
+  body.about-page.about-page--product .nav-pill--desktop {
     display: none;
   }
 
-  body.home-page .nav-pill--mobile {
+  body.home-page .nav-pill--mobile,
+  body.work-page.work-page--product .nav-pill--mobile,
+  body.about-page.about-page--product .nav-pill--mobile {
     display: flex;
     flex: 1;
     justify-content: space-between;
     gap: 0.75rem;
   }
 
-  body.home-page .nav--pill .nav-menu-toggle {
+  body.home-page .nav--pill .nav-menu-toggle,
+  body.work-page.work-page--product .nav--pill .nav-menu-toggle,
+  body.about-page.about-page--product .nav--pill .nav-menu-toggle {
     display: inline-flex;
     flex-shrink: 0;
     color: inherit;
@@ -248,7 +310,73 @@ body.home-page .nav-pill__cta-icon {
 @media (prefers-reduced-motion: reduce) {
   body.home-page .nav-pill,
   body.home-page .nav-pill__link,
-  body.home-page .nav-pill__cta {
+  body.home-page .nav-pill__cta,
+  body.work-page.work-page--product .nav-pill,
+  body.work-page.work-page--product .nav-pill__link,
+  body.work-page.work-page--product .nav-pill__cta,
+  body.about-page.about-page--product .nav-pill,
+  body.about-page.about-page--product .nav-pill__link,
+  body.about-page.about-page--product .nav-pill__cta {
     transition: none;
+  }
+}
+
+/* —— Nav search overlay (sketch 003-C) —— */
+body.home-page .site-header__dock {
+  position: relative;
+}
+
+body.home-page .nav-pill__search-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  color: inherit;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+body.home-page .nav-pill__search-btn:hover {
+  background: color-mix(in srgb, currentColor 14%, transparent);
+  border-color: color-mix(in srgb, currentColor 28%, transparent);
+}
+
+body.home-page .nav-search-overlay {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  right: 0;
+  z-index: 30;
+  padding: 0.75rem;
+  border-radius: 1rem;
+  background: rgba(12, 12, 12, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+body.home-page .nav-search-overlay[hidden] {
+  display: none !important;
+}
+
+body.home-page .wp-glass-compose--nav-overlay {
+  margin: 0;
+  width: 100%;
+}
+
+body.home-page .wp-glass-compose--nav-overlay .wp-glass-compose__main {
+  padding: 1rem;
+}
+
+@media (max-width: 639px) {
+  body.home-page .nav-search-overlay {
+    left: -0.5rem;
+    right: -0.5rem;
   }
 }

@@ -1,10 +1,47 @@
 /* Reviews row — Aceternity AnimatedTestimonials embedded (no outer bento shell) */
 
 .bento-reviews-embed {
-  grid-column: 1 / -1;
   width: 100%;
   min-width: 0;
   pointer-events: auto;
+}
+
+@media (max-width: 899px) {
+  .bento-reviews-embed {
+    grid-column: 1 / -1;
+  }
+}
+
+.bento-reviews-embed--compact .bento-animated-testimonials__grid {
+  grid-template-columns: 1fr;
+}
+
+.bento-reviews-embed--compact .bento-animated-testimonials__media {
+  display: none;
+}
+
+.bento-reviews-embed--compact .bento-animated-testimonials__quote {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.bento-reviews-embed--compact .bento-animated-testimonials__copy {
+  min-height: 0;
+}
+
+.bento-reviews-embed--compact .bento-animated-testimonials {
+  padding: 0.875rem 1rem;
+}
+
+.bento-reviews-embed--compact .bento-animated-testimonials__name {
+  font-size: 0.9375rem;
+}
+
+.bento-reviews-embed--compact .bento-animated-testimonials__designation {
+  font-size: 0.75rem;
 }
 
 .bento-animated-testimonials-shell {

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sketch 003 — Nav Search Trigger</title>
+  <link rel="stylesheet" href="../themes/default.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 52px 0 80px;
+      font-family: var(--font-sans); color: var(--color-text);
+      background-color: var(--color-bg);
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 24px 24px; min-height: 100vh;
+    }
+    #variant-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 10001;
+      background: var(--color-surface-elevated); border-bottom: 1px solid var(--color-border);
+      padding: 8px 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    }
+    .variant-tab {
+      padding: 6px 14px; border-radius: var(--radius-full);
+      border: 1px solid var(--color-border); background: transparent;
+      color: var(--color-text-muted); font-size: var(--text-sm); cursor: pointer;
+    }
+    .variant-tab.active { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+    .sketch-label { font-size: var(--text-xs); text-transform: uppercase; color: var(--color-text-dim); margin-right: auto; }
+    .variant { display: none; }
+    .variant.active { display: block; }
+    #sketch-viewport { width: 100%; margin: 0 auto; transition: max-width var(--transition-base); }
+    .shell { width: min(1280px, calc(100% - 2rem)); margin: var(--space-8) auto; }
+    .sketch-note {
+      margin: 0 0 var(--space-6); padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-md); background: var(--color-surface);
+      border: 1px solid var(--color-border); font-size: var(--text-sm); color: var(--color-text-muted);
+    }
+    .demo-canvas {
+      min-height: 420px; border-radius: var(--radius-lg);
+      border: 1px dashed var(--color-border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      position: relative; padding-top: 72px;
+    }
+    /* Nav pill — matches nav-pill.css light scrolled state */
+    .site-header {
+      position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+      width: calc(100% - 2rem); max-width: 1280px; z-index: 10;
+    }
+    .nav-pill {
+      display: flex; align-items: center; gap: clamp(0.75rem, 2vw, 1.5rem);
+      min-height: 52px; padding: 0.625rem 1.5rem;
+      border-radius: 999px; background: #5a5a5a;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+      color: #fff; flex-wrap: wrap;
+    }
+    .nav-pill__brand {
+      font-weight: 600; text-decoration: none; color: inherit;
+      white-space: nowrap; font-size: var(--text-sm);
+    }
+    .nav-pill__links { display: flex; gap: clamp(1rem, 2.5vw, 2rem); flex-wrap: wrap; }
+    .nav-pill__link {
+      color: rgba(255,255,255,0.85); text-decoration: none; font-size: var(--text-sm);
+      transition: color var(--transition-fast);
+    }
+    .nav-pill__link:hover { color: #fff; }
+    .nav-pill__actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+    .nav-pill__cta {
+      padding: 6px 14px; border-radius: 999px; background: #fff; color: #111;
+      font-size: var(--text-xs); font-weight: 600; text-decoration: none;
+    }
+    .nav-search-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08);
+      color: #fff; cursor: pointer; transition: all var(--transition-fast);
+    }
+    .nav-search-btn:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.35); }
+    .nav-search-btn svg { width: 16px; height: 16px; }
+    /* Variant A — expand */
+    .nav-pill--expand .nav-search-expand {
+      display: none; flex: 1; min-width: 120px; max-width: 280px;
+    }
+    .nav-pill--expand.is-search-open .nav-search-expand { display: flex; }
+    .nav-pill--expand.is-search-open .nav-pill__links { display: none; }
+    .nav-search-input {
+      width: 100%; padding: 8px 12px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.25); background: rgba(0,0,0,0.25);
+      color: #fff; font-size: var(--text-sm); outline: none;
+    }
+    .nav-search-input::placeholder { color: rgba(255,255,255,0.5); }
+    .nav-search-input:focus { border-color: var(--color-primary); box-shadow: 0 0 0 2px rgba(7,110,255,0.3); }
+    /* Variant B — persistent slim */
+    .nav-search-slim {
+      flex: 0 1 160px; min-width: 100px;
+    }
+    .nav-search-slim .nav-search-input { font-size: var(--text-xs); padding: 6px 10px; }
+    @media (max-width: 640px) {
+      .nav-pill--slim .nav-pill__links { display: none; }
+      .nav-pill--slim .nav-search-slim { flex: 1; max-width: none; }
+    }
+    /* Variant C — overlay */
+    .search-overlay {
+      display: none; position: absolute; top: 68px; left: 0; right: 0;
+      padding: var(--space-4); border-radius: var(--radius-lg);
+      background: rgba(20,20,20,0.95); border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-lg); backdrop-filter: blur(12px);
+    }
+    .search-overlay.is-open { display: block; }
+    .search-overlay__input {
+      width: 100%; padding: 14px 16px; border-radius: var(--radius-md);
+      border: 1px solid var(--color-border); background: #0a0a0a;
+      color: #fff; font-size: var(--text-base);
+    }
+    .search-chips {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--space-3);
+    }
+    .search-chip {
+      padding: 6px 12px; border-radius: 999px;
+      border: 1px solid var(--color-border); background: rgba(255,255,255,0.06);
+      font-size: var(--text-xs); color: var(--color-text-muted); cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .search-chip:hover { border-color: var(--color-primary); color: #fff; }
+    .search-results {
+      margin-top: var(--space-3); font-size: var(--text-sm); color: var(--color-text-dim);
+    }
+    .hero-placeholder {
+      margin-top: 100px; padding: var(--space-6);
+      text-align: center; color: var(--color-text-dim); font-size: var(--text-sm);
+    }
+  </style>
+</head>
+<body>
+  <nav id="variant-nav">
+    <span class="sketch-label">Sketch 003</span>
+    <button type="button" class="variant-tab" data-variant="a">A: Icon expand</button>
+    <button type="button" class="variant-tab" data-variant="b">B: Slim slot</button>
+    <button type="button" class="variant-tab active" data-variant="c">C: Overlay ★</button>
+  </nav>
+
+  <div id="sketch-viewport">
+    <div id="variant-a" class="variant">
+      <div class="shell">
+        <p class="sketch-note"><strong>Variant A.</strong> Click search icon — pill expands inline field; links hide until blur/Escape.</p>
+        <div class="demo-canvas">
+          <header class="site-header">
+            <div class="nav-pill nav-pill--expand" data-nav-expand>
+              <a class="nav-pill__brand" href="#">Chandan Sharma</a>
+              <div class="nav-pill__links">
+                <a class="nav-pill__link" href="#">Work</a>
+                <a class="nav-pill__link" href="#">Method</a>
+                <a class="nav-pill__link" href="#">Connect</a>
+              </div>
+              <div class="nav-search-expand">
+                <input type="search" class="nav-search-input" data-search-input placeholder="Ask about the work…" aria-label="Search" />
+              </div>
+              <div class="nav-pill__actions">
+                <button type="button" class="nav-search-btn" data-search-toggle aria-label="Open search">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
+                </button>
+                <a class="nav-pill__cta" href="#">CV</a>
+              </div>
+            </div>
+          </header>
+          <p class="hero-placeholder">Hero keyword morph + toolkit proof hero below nav</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="variant-b" class="variant">
+      <div class="shell">
+        <p class="sketch-note"><strong>Variant B.</strong> Slim search always visible between Connect and actions.</p>
+        <div class="demo-canvas">
+          <header class="site-header">
+            <div class="nav-pill nav-pill--slim">
+              <a class="nav-pill__brand" href="#">Chandan Sharma</a>
+              <div class="nav-pill__links">
+                <a class="nav-pill__link" href="#">Work</a>
+                <a class="nav-pill__link" href="#">Method</a>
+                <a class="nav-pill__link" href="#">Connect</a>
+              </div>
+              <div class="nav-search-slim">
+                <input type="search" class="nav-search-input" data-search-input placeholder="Ask…" aria-label="Search" />
+              </div>
+              <div class="nav-pill__actions">
+                <a class="nav-pill__cta" href="#">CV</a>
+              </div>
+            </div>
+          </header>
+          <p class="hero-placeholder">Hero + toolkit ledge</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="variant-c" class="variant active">
+      <div class="shell">
+        <p class="sketch-note"><strong>Variant C.</strong> Search icon opens overlay drawer with chips + filtered results.</p>
+        <div class="demo-canvas">
+          <header class="site-header">
+            <div class="nav-pill">
+              <a class="nav-pill__brand" href="#">Chandan Sharma</a>
+              <div class="nav-pill__links">
+                <a class="nav-pill__link" href="#">Work</a>
+                <a class="nav-pill__link" href="#">Method</a>
+                <a class="nav-pill__link" href="#">Connect</a>
+              </div>
+              <div class="nav-pill__actions">
+                <button type="button" class="nav-search-btn" data-overlay-toggle aria-label="Open search">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
+                </button>
+                <a class="nav-pill__cta" href="#">CV</a>
+              </div>
+            </div>
+            <div class="search-overlay" data-search-overlay>
+              <input type="search" class="search-overlay__input" data-search-input placeholder="Summarize a case study…" />
+              <div class="search-chips">
+                <button type="button" class="search-chip" data-chip>Summary</button>
+                <button type="button" class="search-chip" data-chip>Code</button>
+                <button type="button" class="search-chip" data-chip>Design</button>
+                <button type="button" class="search-chip" data-chip>Research</button>
+              </div>
+              <p class="search-results" data-search-results>Type to filter toolkit walkthroughs and case studies.</p>
+            </div>
+          </header>
+          <p class="hero-placeholder">Pill width unchanged when overlay open</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="sketch-tools" style="position:fixed;bottom:12px;right:12px;z-index:10002;font-size:12px;background:rgba(0,0,0,0.75);color:white;padding:8px 12px;border-radius:8px;opacity:0.45;display:flex;gap:8px;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0.45'">
+    <button type="button" data-vp="375" style="background:#333;border:1px solid #555;color:#fff;padding:4px 8px;border-radius:4px;cursor:pointer;">375</button>
+    <button type="button" data-vp="768" style="background:#333;border:1px solid #555;color:#fff;padding:4px 8px;border-radius:4px;cursor:pointer;">768</button>
+    <button type="button" data-vp="full" style="background:#333;border:1px solid #555;color:#fff;padding:4px 8px;border-radius:4px;cursor:pointer;">Full</button>
+  </div>
+
+  <script>
+    var SEARCH_ITEMS = [
+      "Summarize a case study",
+      "Personal Hermes AI stack walkthrough",
+      "BYJU's points marketplace case",
+      "Set up BMAD in your repo",
+      "How do you run design programmes?"
+    ];
+
+    document.querySelectorAll("[data-nav-expand]").forEach(function (pill) {
+      var toggle = pill.querySelector("[data-search-toggle]");
+      var input = pill.querySelector("[data-search-input]");
+      toggle.addEventListener("click", function () {
+        pill.classList.add("is-search-open");
+        input.focus();
+      });
+      input.addEventListener("blur", function () {
+        if (!input.value) pill.classList.remove("is-search-open");
+      });
+      input.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") { pill.classList.remove("is-search-open"); input.blur(); }
+      });
+    });
+
+    document.querySelectorAll("[data-overlay-toggle]").forEach(function (btn) {
+      var overlay = btn.closest(".site-header").querySelector("[data-search-overlay]");
+      var input = overlay.querySelector("[data-search-input]");
+      var results = overlay.querySelector("[data-search-results]");
+      btn.addEventListener("click", function () {
+        overlay.classList.toggle("is-open");
+        if (overlay.classList.contains("is-open")) input.focus();
+      });
+      input.addEventListener("input", function () {
+        var q = input.value.toLowerCase();
+        var hits = SEARCH_ITEMS.filter(function (s) { return s.toLowerCase().indexOf(q) >= 0; });
+        results.textContent = hits.length ? hits.join(" · ") : "No matches — try Summary or Design chip.";
+      });
+      overlay.querySelectorAll("[data-chip]").forEach(function (chip) {
+        chip.addEventListener("click", function () {
+          input.value = chip.textContent + ": ";
+          input.dispatchEvent(new Event("input"));
+          input.focus();
+        });
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") overlay.classList.remove("is-open");
+      });
+    });
+
+    document.querySelectorAll("[data-search-input]").forEach(function (input) {
+      if (!input.closest("[data-search-overlay]")) {
+        input.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            alert("Sketch: would open mailto or toolkit funnel for \"" + input.value + "\"");
+          }
+        });
+      }
+    });
+
+    document.querySelectorAll(".variant-tab").forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        var id = tab.getAttribute("data-variant");
+        document.querySelectorAll(".variant-tab").forEach(function (t) { t.classList.remove("active"); });
+        document.querySelectorAll(".variant").forEach(function (v) { v.classList.remove("active"); });
+        tab.classList.add("active");
+        document.getElementById("variant-" + id).classList.add("active");
+      });
+    });
+
+    document.querySelectorAll("[data-vp]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        document.getElementById("sketch-viewport").style.maxWidth =
+          btn.getAttribute("data-vp") === "full" ? "none" : btn.getAttribute("data-vp") + "px";
+      });
+    });
+  </script>
+</body>
+</html>
