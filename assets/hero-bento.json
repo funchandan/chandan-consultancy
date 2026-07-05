@@ -43,32 +43,34 @@
     ]
   },
   "quiz": {
-    "title": "Test your systems instinct",
-    "description": "Rank these moves for a 20M+ learner loyalty launch — most critical first.",
+    "eyebrow": "Test yourself!",
+    "title": "What matters when building your website?",
+    "description": "Who said learning cannot be engaging?",
+    "hint": "Drag to rank · most critical first",
     "items": [
       {
         "id": "map-journey",
-        "text": "Map earn-and-spend journeys end to end",
+        "text": "Map earn/spend journeys (US + IN)",
         "rationale": "One clear story before marketplace UI scales."
       },
       {
         "id": "align-metric",
-        "text": "Align stakeholders on one north-star metric",
+        "text": "One north-star metric with product + GTM",
         "rationale": "Shared success measure before surface debates."
       },
       {
         "id": "moderated-test",
-        "text": "Run moderated tests on production stimulus",
+        "text": "Moderated tests on production stimulus",
         "rationale": "Validate with real learners in US + India."
       },
       {
         "id": "marketplace",
-        "text": "Define marketplace mechanics and edge cases",
+        "text": "Marketplace mechanics + edge cases",
         "rationale": "Earn/spend rules need defensible boundaries."
       },
       {
         "id": "avatar",
-        "text": "Ship avatar rewards as a fast follow",
+        "text": "Avatar rewards as a fast follow",
         "rationale": "Delight layer after the core loop works."
       }
     ],
@@ -86,8 +88,8 @@
       "align-metric",
       "map-journey"
     ],
-    "caseHref": "#work",
-    "caseCta": "See the BYJU's case"
+    "caseHref": "#connect",
+    "caseCta": "Get your free web presence audit today"
   },
   "reviews": {
     "title": "My reviews",

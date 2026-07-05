@@ -1,7 +1,9 @@
 /* Toolkit hero — artefact gallery (sketch 001-B) */
 
 .bento-card--toolkits[data-toolkit-hero] {
-  min-height: clamp(280px, 38vh, 420px);
+  height: auto;
+  min-height: 0;
+  justify-content: flex-start;
 }
 
 /* Unified dark hero surface — pills, gallery, chips in one card */
@@ -10,22 +12,28 @@
   flex-direction: column;
   gap: 0;
   padding: 0;
+  height: auto;
+  min-height: 0;
   border-radius: 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(10, 10, 10, 0.92);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(197, 160, 89, 0.2),
+    0 12px 28px rgba(0, 0, 0, 0.35);
   overflow: hidden;
 }
 
 .bento-card--toolkits[data-toolkit-hero] .bento-toolkit-pills {
+  flex: 0 0 auto;
   padding: 1rem 1.25rem 0;
 }
 
+/* 001-B gallery — artefact leads, walkthrough beside */
 .toolkit-hero__gallery {
   display: grid;
   gap: 1rem;
   align-items: start;
-  padding: 1rem 1.25rem 0;
+  padding: 1rem 1.25rem 1.25rem;
 }
 
 @media (min-width: 640px) {
@@ -37,6 +45,7 @@
 
 .toolkit-hero__artifact {
   position: relative;
+  align-self: start;
   border-radius: 0.625rem;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -48,7 +57,7 @@
   width: 100%;
   height: auto;
   aspect-ratio: 4 / 3;
-  object-fit: contain;
+  object-fit: cover;
   background: #171717;
 }
 
@@ -63,16 +72,19 @@
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.02em;
+  line-height: 1.2;
 }
 
 .toolkit-hero__walkthrough {
   min-width: 0;
+  align-self: start;
 }
 
 .toolkit-hero__walkthrough .bento-toolkit-swap {
   height: auto;
   min-height: 0;
-  margin-top: 0;
+  margin: 0;
+  overflow: visible;
 }
 
 .toolkit-hero__walkthrough .card-swap-container {
@@ -83,14 +95,17 @@
   min-height: 0;
   transform: none;
   perspective: none;
+  overflow: visible;
 }
 
-/* Walkthrough panel — in-hero typography (sketch 001-B), not floating white card */
+/* Only the front card sets walkthrough height; others overlay without stacking */
 [data-toolkit-hero] .bento-toolkit-swap .card {
-  position: relative;
-  top: auto;
-  left: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
+  max-width: none;
   height: auto !important;
   min-height: 0;
   padding: 0;
@@ -99,22 +114,29 @@
   background: transparent;
   box-shadow: none;
   transform: none !important;
+  transform-style: flat;
+  grid-template-columns: unset;
+  grid-template-rows: unset;
+  grid-template-areas: unset;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  z-index: 1;
 }
 
 [data-toolkit-hero] .bento-toolkit-swap .card.is-front {
-  opacity: 1;
-  visibility: visible;
+  position: relative;
+  z-index: 2;
+  opacity: 1 !important;
+  visibility: visible !important;
   pointer-events: auto;
 }
 
 [data-toolkit-hero] .bento-toolkit-swap .card.is-back,
 [data-toolkit-hero] .bento-toolkit-swap .card.is-hidden {
-  position: absolute;
-  inset: 0 auto auto 0;
-  width: 100%;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none;
 }
 
 [data-toolkit-hero] .card__eyebrow {
@@ -135,6 +157,7 @@
   color: #fafafa;
   display: block;
   -webkit-line-clamp: unset;
+  -webkit-box-orient: unset;
   overflow: visible;
 }
 
@@ -171,6 +194,7 @@
   padding-top: 0.75rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   justify-content: flex-start;
+  align-self: auto;
 }
 
 [data-toolkit-hero] .card__status--guide {
@@ -219,11 +243,12 @@
   }
 
   .toolkit-hero__gallery {
-    padding: 0.875rem 1rem 0;
+    padding: 0.875rem 1rem 1rem;
   }
 
   .toolkit-hero__artifact img {
-    max-height: 9rem;
+    max-height: 10rem;
+    object-fit: contain;
   }
 
   .toolkit-hero__chips {

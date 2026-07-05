@@ -35,7 +35,7 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
 }
 
 @media (min-width: 1024px) {
-  .bento-card--toolkits {
+  .bento-card--toolkits:not([data-toolkit-hero]) {
     min-height: 11.5rem;
     max-height: none;
   }
@@ -108,7 +108,7 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
 }
 
 @media (max-width: 1023px) {
-  .bento-card--toolkits .bento-card__panel--toolkits {
+  .bento-card--toolkits:not([data-toolkit-hero]) .bento-card__panel--toolkits {
     padding: 0.65rem 0.75rem;
   }
 
@@ -117,8 +117,13 @@ body.home-page--product [data-box-bento][data-box-bento-interactive] .bento-card
     padding: 0.28rem 0.55rem;
   }
 
-  .bento-toolkit-swap {
+  .bento-card--toolkits:not([data-toolkit-hero]) .bento-toolkit-swap {
     min-height: 120px;
     height: 120px;
+  }
+
+  .bento-card--toolkits[data-toolkit-hero] .bento-toolkit-swap {
+    height: auto;
+    min-height: 0;
   }
 }

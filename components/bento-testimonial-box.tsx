@@ -10,15 +10,18 @@ function randomRotateY() {
   return Math.floor(Math.random() * 21) - 10
 }
 
-/** Compact AnimatedTestimonials embed for bento pin lift — no nav chrome */
+/** Compact AnimatedTestimonials embed for bento reviews — no nav chrome */
 export function BentoTestimonialBox({
   testimonials,
   autoplay = true,
   className,
+  decorative = false,
 }: {
   testimonials: BentoTestimonial[]
   autoplay?: boolean
   className?: string
+  /** When true, hide from assistive tech (e.g. decorative pin lift) */
+  decorative?: boolean
 }) {
   const [active, setActive] = useState(0)
   const items = testimonials.length ? testimonials : []
@@ -42,7 +45,7 @@ export function BentoTestimonialBox({
         className
       )}
       data-bento-bg-artifact="testimonial-box"
-      aria-hidden
+      aria-hidden={decorative ? true : undefined}
     >
       <div className="relative h-24 w-full">
         <AnimatePresence>

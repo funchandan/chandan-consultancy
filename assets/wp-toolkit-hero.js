@@ -42,12 +42,6 @@
   }
 
   function bind(root) {
-    root.addEventListener("click", function (ev) {
-      var pill = ev.target.closest("[data-toolkit-pill]");
-      if (!pill || !root.contains(pill)) return;
-      applyStage(pill.getAttribute("data-toolkit-pill"));
-    });
-
     document.addEventListener("wp:toolkit-stage-change", function (ev) {
       if (ev.detail && ev.detail.stage) applyStage(ev.detail.stage);
     });

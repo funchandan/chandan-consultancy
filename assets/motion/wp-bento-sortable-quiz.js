@@ -6,33 +6,34 @@
 
   var STORAGE_KEY = "wp-bento-quiz-state";
   var DEFAULT_QUIZ = {
-    title: "Test your systems instinct",
-    description:
-      "Rank these moves for a 20M+ learner loyalty launch — most critical first.",
+    eyebrow: "Test yourself!",
+    title: "What matters when building your website?",
+    description: "Who said learning cannot be engaging?",
+    hint: "Drag to rank · most critical first",
     items: [
       {
         id: "map-journey",
-        text: "Map earn-and-spend journeys end to end",
+        text: "Map earn/spend journeys (US + IN)",
         rationale: "One clear story before marketplace UI scales.",
       },
       {
         id: "align-metric",
-        text: "Align stakeholders on one north-star metric",
+        text: "One north-star metric with product + GTM",
         rationale: "Shared success measure before surface debates.",
       },
       {
         id: "moderated-test",
-        text: "Run moderated tests on production stimulus",
+        text: "Moderated tests on production stimulus",
         rationale: "Validate with real learners in US + India.",
       },
       {
         id: "marketplace",
-        text: "Define marketplace mechanics and edge cases",
+        text: "Marketplace mechanics + edge cases",
         rationale: "Earn/spend rules need defensible boundaries.",
       },
       {
         id: "avatar",
-        text: "Ship avatar rewards as a fast follow",
+        text: "Avatar rewards as a fast follow",
         rationale: "Delight layer after the core loop works.",
       },
     ],
@@ -44,8 +45,8 @@
       "avatar",
     ],
     startOrder: ["avatar", "marketplace", "moderated-test", "align-metric", "map-journey"],
-    caseHref: "#work",
-    caseCta: "See the BYJU's case",
+    caseHref: "#connect",
+    caseCta: "Get your free web presence audit today",
   };
 
   function parseConfig(mount) {
@@ -125,6 +126,28 @@
     );
   }
 
+  function headerBlock(config, descOverride) {
+    var eyebrow = config.eyebrow
+      ? '<p class="bento-quiz__eyebrow" data-bento-quiz-eyebrow>' + config.eyebrow + "</p>"
+      : "";
+    var desc = descOverride != null ? descOverride : config.description || "";
+    var hint = config.hint
+      ? '<p class="bento-quiz__hint">' + config.hint + "</p>"
+      : "";
+    return (
+      '<div class="bento-quiz__header">' +
+      eyebrow +
+      '<h3 class="bento-quiz__title" data-bento-quiz-title>' +
+      config.title +
+      "</h3>" +
+      '<p class="bento-quiz__desc" data-bento-quiz-desc>' +
+      desc +
+      "</p>" +
+      hint +
+      "</div>"
+    );
+  }
+
   function resultsHtml(config, score) {
     var expert = orderItems(config.items, config.expertOrder);
     var rows = expert
@@ -153,13 +176,7 @@
 
     return (
       '<div class="bento-quiz bento-quiz--results" data-bento-quiz-root>' +
-      '<div class="bento-quiz__header">' +
-      "<h3 class=\"bento-quiz__title\">" +
-      config.title +
-      "</h3>" +
-      '<p class="bento-quiz__desc">' +
-      scoreCopy +
-      "</p></div>" +
+      headerBlock(config, scoreCopy) +
       '<ol class="bento-quiz__results" data-bento-quiz-results>' +
       rows +
       "</ol>" +
@@ -182,13 +199,7 @@
 
     return (
       '<div class="bento-quiz" data-bento-quiz-root data-bento-quiz-play>' +
-      '<div class="bento-quiz__header">' +
-      "<h3 class=\"bento-quiz__title\" data-bento-quiz-title>" +
-      config.title +
-      "</h3>" +
-      '<p class="bento-quiz__desc" data-bento-quiz-desc>' +
-      config.description +
-      "</p></div>" +
+      headerBlock(config) +
       '<ul class="bento-quiz__list" data-bento-quiz-list role="list">' +
       list +
       "</ul>" +
@@ -220,11 +231,17 @@
 
   function wireSortable(list, onDirty) {
     var dragged = null;
+    var orderAtDragStart = null;
+
+    list.querySelectorAll("[data-bento-quiz-item]").forEach(function (row) {
+      row.setAttribute("draggable", "true");
+    });
 
     list.addEventListener("dragstart", function (ev) {
       var row = ev.target.closest("[data-bento-quiz-item]");
       if (!row || !list.contains(row)) return;
       dragged = row;
+      orderAtDragStart = currentOrder(list).join("|");
       row.classList.add("is-dragging");
       if (ev.dataTransfer) {
         ev.dataTransfer.effectAllowed = "move";
@@ -237,8 +254,17 @@
       list.querySelectorAll(".is-drag-over").forEach(function (el) {
         el.classList.remove("is-drag-over");
       });
-      dragged = null;
       updateRanks(list);
+      if (
+        dragged &&
+        orderAtDragStart &&
+        orderAtDragStart !== currentOrder(list).join("|") &&
+        typeof onDirty === "function"
+      ) {
+        onDirty();
+      }
+      dragged = null;
+      orderAtDragStart = null;
     });
 
     list.addEventListener("dragover", function (ev) {
@@ -266,11 +292,11 @@
 
   function mountQuiz(mount, config) {
     if (mount.getAttribute("data-bento-quiz-wired") === "1") return;
-    mount.setAttribute("data-bento-quiz-wired", "1");
 
     var stored = readStoredState();
     if (stored && stored.completed) {
       mount.innerHTML = resultsHtml(config, stored.score);
+      mount.setAttribute("data-bento-quiz-wired", "1");
       return;
     }
 
@@ -282,6 +308,10 @@
     var list = mount.querySelector("[data-bento-quiz-list]");
     var submit = mount.querySelector("[data-bento-quiz-submit]");
     if (!root || !list || !submit) return;
+
+    list.querySelectorAll("[data-bento-quiz-item]").forEach(function (row) {
+      row.setAttribute("draggable", "true");
+    });
 
     var dirty = false;
 
@@ -296,7 +326,10 @@
       var score = scoreRanking(order, config.expertOrder);
       writeStoredState({ completed: true, order: order, score: score });
       mount.innerHTML = resultsHtml(config, score);
+      mount.setAttribute("data-bento-quiz-wired", "1");
     });
+
+    mount.setAttribute("data-bento-quiz-wired", "1");
   }
 
   function hydrate(mount, config) {

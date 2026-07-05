@@ -187,9 +187,18 @@ html:not(.wp-box-bento-fallback):not(.wp-motion--static)
     min-height: auto;
     max-height: none;
   }
+}
 
-  .bento-card--quiz {
-    min-height: 28rem;
+/* Quiz — no Magic UI hover shade wash */
+.bento-card--quiz .bento-card__shade {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .bento-card--quiz:hover .bento-card__shade,
+  .bento-card--quiz:focus-within .bento-card__shade {
+    opacity: 0 !important;
+    background: transparent !important;
   }
 }
 
@@ -393,6 +402,10 @@ html:not(.wp-box-bento-fallback):not(.wp-motion--static)
 
 .bento-card--toolkits .bento-card__panel {
   height: 100%;
+}
+
+.bento-card--toolkits[data-toolkit-hero] .bento-card__panel--toolkits {
+  height: auto;
 }
 
 /* Background decorations */

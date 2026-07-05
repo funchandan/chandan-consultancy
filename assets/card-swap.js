@@ -125,6 +125,10 @@
       card.classList.toggle("is-back", stackPos === 1);
       card.classList.toggle("is-hidden", stackPos > 1);
       card.setAttribute("aria-hidden", isFront ? "false" : "true");
+      if (self.flatMode) {
+        card.style.opacity = isFront ? "1" : "0";
+        card.style.visibility = isFront ? "visible" : "hidden";
+      }
     });
     if (this.onFrontChange) this.onFrontChange(front);
   };
@@ -132,17 +136,21 @@
   CardSwap.prototype.layoutAll = function (animate) {
     var self = this;
     var gsap = this.gsap;
+    var inToolkitHero = !!this.container.closest("[data-toolkit-hero]");
     this.cards.forEach(function (card, cardIndex) {
       if (self.flatMode) {
+        var isFront = self.order.indexOf(cardIndex) === 0;
         gsap.set(card, {
           x: 0,
           y: 0,
           z: 0,
-          xPercent: -50,
-          yPercent: -50,
+          xPercent: inToolkitHero ? 0 : -50,
+          yPercent: inToolkitHero ? 0 : -50,
           skewY: 0,
           transformOrigin: "center center",
-          zIndex: self.order.indexOf(cardIndex) === 0 ? 2 : 1,
+          zIndex: isFront ? 2 : 1,
+          opacity: isFront ? 1 : 0,
+          visibility: isFront ? "visible" : "hidden",
           force3D: false,
         });
         return;
@@ -204,6 +212,9 @@
       this.tlRef = null;
     }
     this.isSwapping = false;
+    if (this.gsap && this.cards) {
+      this.gsap.killTweensOf(this.cards);
+    }
   };
 
   CardSwap.prototype.swap = function () {
@@ -223,7 +234,6 @@
         onComplete: function () {
           self.order = rest.concat(front);
           self.layoutAll(false);
-          self.syncFrontState();
           self.isSwapping = false;
         },
       });
@@ -303,7 +313,8 @@
     this.killTimeline();
     this.resetInterval();
     if (pos === 0) {
-      this.syncFrontState();
+      if (this.flatMode) this.layoutAll(false);
+      else this.syncFrontState();
       return;
     }
     this.order = this.order.slice(pos).concat(this.order.slice(0, pos));
