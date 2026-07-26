@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "How do we make earn-and-spend legible before scaling the rewards marketplace?",
-    "hero_deck": "Attendance and time-on-platform were falling while points piled up with nowhere to go. I ran a foundational study—problem frame, design-system stimulus, and moderated testing—to define one earn-and-spend story product could ship before marketplace UI scaled.",
+    "hero_deck": "Attendance and time on platform were falling while points piled up with nowhere to go. I framed the retention gap with product, built design-system flows in Figma, and ran moderated sessions with learners in the US and India. I turned that work into one earn-and-spend story engineering could ship before marketplace UI scaled.",
     "hero_bg": {
       "style": "ticker"
     },
@@ -108,6 +108,7 @@
     ]
   },
   "resources": {
+    "product_mission": "BYJU's FutureSchool runs live math classes for grades 1-8 in the US and India. The product org was scaling rewards, avatars, and a points marketplace to keep learners motivated between classes.",
     "objective_notes": "Understand how young learners think about marketplaces and points redemption. Develop possible marketplace names, currencies, and personal avatar designs.",
     "method_notes": "Conducted in-depth interviews with 15 users, evenly distributed across grades 1\u20138 and US & IN geographies. Learners reviewed marketplace Figma prototypes with avatars, profile backgrounds, and class backgrounds.",
     "role_context": "I owned the design research practice end to end: problem framing with product, Figma stimulus on the FutureSchool design system, moderated sessions with learners, and a readout that tied every insight to a shippable UI decision.",

@@ -818,10 +818,13 @@ button.case-scan-gallery-nav__link {
 }
 
 .case-card-gallery__wireframe-img--portrait {
-  max-width: min(260px, 100%);
+  width: min(260px, 100%);
+  height: auto;
   max-height: min(58dvh, 460px);
-  margin-left: 0;
-  margin-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: contain;
+  object-position: center center;
 }
 
 .case-scan-page--boutique .case-scan-story__heuristic--glass {

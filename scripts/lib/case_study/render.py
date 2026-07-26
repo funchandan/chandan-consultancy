@@ -908,7 +908,7 @@ def render_scan_page(
 {header}
   <main id="main" class="case-scan case-scan--story" tabindex="-1">
     <div class="shell">
-    <a class="back-link case-scan-back" href="{asset_prefix}/work.html">Back to work</a>
+    <a class="back-link case-scan-back" href="{asset_prefix}/index.html#work">Back to work</a>
     </div>
 {hero_html}
 {scan_block}

@@ -3,11 +3,18 @@
 
 from __future__ import annotations
 
+import argparse
+import shutil
+import subprocess
+import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "assets" / "case-studies" / "stryker-field-logistics" / "hifi-src"
+SCREENS = OUT / "screens"
+HERO_TICKER = ROOT / "assets" / "case-studies" / "stryker-field-logistics" / "hero-ticker"
+BEATS = ROOT / "assets" / "case-studies" / "stryker-field-logistics" / "beats"
 
 # Canvas & device
 CW, CH = 1200, 960
@@ -324,6 +331,68 @@ def iphone_chrome(s: Screen, large_title: str, subtitle: str | None, trailing: s
     return "\n".join(o)
 
 
+def iphone_screen_chrome(s: Screen, large_title: str, subtitle: str | None, trailing: str | None) -> str:
+    """Screen-only chrome for Magic UI iPhone frame — no studio, bezel, or Dynamic Island."""
+    o = [f'<rect width="{SW}" height="{SH}" fill="{BG}"/>']
+    o.append(f'<rect x="0" y="0" width="{SW}" height="{STATUS}" fill="{BG}"/>')
+    ny = STATUS
+    o.append(f'<rect x="0" y="{ny}" width="{SW}" height="{NAV}" fill="{BG}"/>')
+    o.append(ic("chevron", 12, ny + 12, 18, BLUE, flip=True))
+    o.append(
+        f'<text x="{SW // 2}" y="{ny + 28}" text-anchor="middle" font-family="{FONT}" '
+        f'font-size="15" font-weight="700" fill="{INK}" letter-spacing="0.04em">stryker</text>'
+    )
+    if trailing:
+        o.append(ic(trailing, SW - 36, ny + 10, 22, BLUE))
+    ty = ny + NAV + 4
+    o.append(
+        f'<text x="{M}" y="{ty + 30}" font-family="{FONT}" font-size="34" font-weight="700" fill="{INK}">'
+        f'{xml_esc(large_title)}</text>'
+    )
+    if subtitle:
+        o.append(
+            f'<text x="{M}" y="{ty + 54}" font-family="{FONT}" font-size="15" fill="{LBL}">'
+            f'{xml_esc(subtitle)}</text>'
+        )
+    tb = SH - TAB
+    o.append(f'<rect x="0" y="{tb}" width="{SW}" height="{TAB}" fill="rgba(255,255,255,0.94)"/>')
+    o.append(f'<line x1="0" y1="{tb}" x2="{SW}" y2="{tb}" stroke="{SEP}"/>')
+    tabs = [("home", "Home"), ("cart", "Orders"), ("box", "Parts"), ("more", "More")]
+    for i, (icn, lb) in enumerate(tabs):
+        cx = 48 + i * 98
+        col = BLUE if i == s.nav_active else LBL
+        o.append(ic(icn, cx - 9, tb + 10, 22, col))
+        o.append(
+            f'<text x="{cx}" y="{tb + 48}" text-anchor="middle" font-family="{FONT}" font-size="10" '
+            f'font-weight="{"600" if i == s.nav_active else "400"}" fill="{col}">{lb}</text>'
+        )
+    o.append(
+        f'<rect x="{SW // 2 - 67}" y="{SH - 14}" width="134" height="5" rx="3" fill="#000" opacity="0.35"/>'
+    )
+    s.y = STATUS + NAV + TITLE_BLOCK
+    return "\n".join(o)
+
+
+def _with_screen_layout(embed: bool):
+    class _Ctx:
+        def __enter__(self):
+            global SX, SY, CONTENT_X, CONTENT_W, HEADER_BOTTOM, TAB_TOP, SCROLL_BOTTOM
+            self._prev = (SX, SY, CONTENT_X, CONTENT_W, HEADER_BOTTOM, TAB_TOP, SCROLL_BOTTOM)
+            if embed:
+                SX, SY = 0, 0
+                CONTENT_X, CONTENT_W = M, SW - M * 2
+                HEADER_BOTTOM = STATUS + NAV + TITLE_BLOCK
+                TAB_TOP = SH - TAB
+                SCROLL_BOTTOM = TAB_TOP - 8
+            return self
+
+        def __exit__(self, *_args):
+            global SX, SY, CONTENT_X, CONTENT_W, HEADER_BOTTOM, TAB_TOP, SCROLL_BOTTOM
+            SX, SY, CONTENT_X, CONTENT_W, HEADER_BOTTOM, TAB_TOP, SCROLL_BOTTOM = self._prev
+
+    return _Ctx()
+
+
 def build_beat_01(s: Screen) -> None:
     s.group(
         [Cell("Northwest Medical Center", "OR 4 · Robotic spine", "building", YEL)],
@@ -504,15 +573,140 @@ def build_beat_10(s: Screen) -> None:
 
 def write(name: str, caption: str, title: str, subtitle: str | None, trailing: str | None, nav: int, builder) -> None:
     s = Screen(beat_caption=caption, nav_active=nav)
-    head = iphone_chrome(s, title, subtitle, trailing)
-    builder(s)
+    with _with_screen_layout(embed=False):
+        head = iphone_chrome(s, title, subtitle, trailing)
+        builder(s)
     body = "\n".join(s.parts)
     svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{CW}" height="{CH}" viewBox="0 0 {CW} {CH}" role="img">\n{head}\n{body}\n</svg>'
     (OUT / name).write_text(svg, encoding="utf-8")
     print(f"  {name}")
 
 
+def write_screen(name: str, title: str, subtitle: str | None, trailing: str | None, nav: int, builder) -> Path:
+    s = Screen(beat_caption="", nav_active=nav)
+    with _with_screen_layout(embed=True):
+        head = iphone_screen_chrome(s, title, subtitle, trailing)
+        builder(s)
+    body = "\n".join(s.parts)
+    svg = (
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{SW}" height="{SH}" '
+        f'viewBox="0 0 {SW} {SH}" role="img" aria-label="{xml_esc(title)}">\n{head}\n{body}\n</svg>'
+    )
+    SCREENS.mkdir(parents=True, exist_ok=True)
+    path = SCREENS / name
+    path.write_text(svg, encoding="utf-8")
+    print(f"  screens/{name}")
+    return path
+
+
+def rasterize(svg_path: Path, png_path: Path, width: int = 1200) -> bool:
+    tmp = ROOT / ".cache" / "stryker-hifi-raster"
+    tmp.mkdir(parents=True, exist_ok=True)
+    for cmd in (
+        ["rsvg-convert", "-w", str(width), "-o", str(png_path), str(svg_path)],
+        ["magick", "-background", "none", str(svg_path), str(png_path)],
+    ):
+        try:
+            subprocess.run(cmd, check=True, capture_output=True)
+            return True
+        except (FileNotFoundError, subprocess.CalledProcessError):
+            continue
+    try:
+        subprocess.run(
+            ["qlmanage", "-t", "-s", str(width), "-o", str(tmp), str(svg_path)],
+            check=True,
+            capture_output=True,
+        )
+        raster = tmp / f"{svg_path.name}.png"
+        if raster.is_file():
+            shutil.copy2(raster, png_path)
+            return True
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        pass
+    return False
+
+
+def export_screen_png(svg_path: Path, dest: Path) -> bool:
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        subprocess.run(
+            [
+                "sips",
+                "-s",
+                "format",
+                "png",
+                "-z",
+                str(SH),
+                str(SW),
+                str(svg_path),
+                "--out",
+                str(dest),
+            ],
+            check=True,
+            capture_output=True,
+        )
+        return True
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        return False
+
+
+def crop_screen_portrait(svg_path: Path, dest: Path) -> bool:
+    screen = SCREENS / svg_path.name.replace(".svg", "-screen.svg")
+    if screen.is_file():
+        return export_screen_png(screen, dest)
+    tmp = ROOT / ".cache" / "stryker-hifi-raster"
+    tmp.mkdir(parents=True, exist_ok=True)
+    full = tmp / f"{svg_path.stem}-full.png"
+    if not rasterize(svg_path, full, 1200):
+        return False
+    try:
+        out = subprocess.run(
+            ["sips", "-g", "pixelWidth", "-g", "pixelHeight", str(full)],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        fw = fh = 0
+        for line in out.stdout.splitlines():
+            if "pixelWidth" in line:
+                fw = int(line.split()[-1])
+            if "pixelHeight" in line:
+                fh = int(line.split()[-1])
+    except (FileNotFoundError, subprocess.CalledProcessError, ValueError):
+        return False
+    scale = min(fw / CW, fh / CH)
+    pad_x = (fw - CW * scale) / 2
+    pad_y = (fh - CH * scale) / 2
+    left = int(pad_x + SX * scale)
+    top = int(pad_y + SY * scale)
+    width = int(SW * scale)
+    height = int(SH * scale)
+    try:
+        subprocess.run(
+            [
+                "sips",
+                "-c",
+                str(height),
+                str(width),
+                "--cropOffset",
+                str(top),
+                str(left),
+                str(full),
+                "--out",
+                str(dest),
+            ],
+            check=True,
+            capture_output=True,
+        )
+        return True
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        return False
+
+
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Generate Stryker field logistics hi-fi renders")
+    parser.add_argument("--png", action="store_true", help="Export screen-crop PNGs for ticker and gallery")
+    args = parser.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     print(f"Sally hi-fi iPhone renders → {OUT.relative_to(ROOT)}/")
     specs = [
@@ -529,8 +723,39 @@ def main() -> None:
     ]
     for item in specs:
         write(*item)
-    print("Done: 10 hi-fi SVGs")
+        svg_name = item[0]
+        screen_name = svg_name.replace(".svg", "-screen.svg")
+        write_screen(screen_name, item[2], item[3], item[4], item[5], item[6])
+
+    if args.png:
+        HERO_TICKER.mkdir(parents=True, exist_ok=True)
+        BEATS.mkdir(parents=True, exist_ok=True)
+        ticker_files = {
+            "beat-01-arrive.svg": "beat-01-arrive.png",
+            "beat-02-preferences.svg": "beat-02-preferences.png",
+            "beat-04-order-track.svg": "beat-04-order-track.png",
+            "beat-07-use.svg": "beat-07-use.png",
+        }
+        for svg_name, png_name in ticker_files.items():
+            svg = OUT / svg_name
+            dest = HERO_TICKER / png_name
+            if crop_screen_portrait(svg, dest):
+                print(f"  hero-ticker → {dest.relative_to(ROOT)}")
+            else:
+                print(f"  hero-ticker FAILED: {png_name}", file=sys.stderr)
+
+        for svg_name, *_ in specs:
+            stem = svg_name.replace(".svg", ".png")
+            svg = OUT / svg_name
+            dest = BEATS / stem
+            if crop_screen_portrait(svg, dest):
+                print(f"  beats → {dest.relative_to(ROOT)}")
+            else:
+                print(f"  beats FAILED: {stem}", file=sys.stderr)
+
+    print("Done: 10 hi-fi SVGs" + (" + screen-crop PNGs" if args.png else ""))
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

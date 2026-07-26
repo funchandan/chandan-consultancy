@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="960" viewBox="0 0 1200 960" role="img" aria-label="02 · PROBLEM — Commit latency">
+<defs>
+  <linearGradient id="studio" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#EEF4F8"/><stop offset="100%" stop-color="#F8FAFC"/>
+  </linearGradient>
+  <filter id="devShadow"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity="0.14"/></filter>
+</defs>
+<rect width="1200" height="960" fill="url(#studio)"/>
+<text x="80" y="76" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#005FB8" letter-spacing="0.12em">FIELD SERVICE · SYNTHETIC HIFI</text>
+<text x="80" y="108" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" fill="#5C6670">UX · UI · Architecture · Backend</text>
+<rect x="395" y="36" width="418" height="872" rx="54" fill="#1C1C1E" filter="url(#devShadow)"/>
+<rect x="409" y="50" width="390" height="844" rx="44" fill="#F4F7FA"/>
+<rect x="541" y="60" width="126" height="37" rx="19" fill="#000"/>
+<text x="437" y="88" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#1A1A1A">9:41</text>
+<rect x="409" y="104" width="390" height="44" fill="#F4F7FA"/>
+<text x="604" y="132" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="17" font-weight="700" fill="#005FB8">Field Service</text>
+<text x="425" y="188" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="30" font-weight="700" fill="#1A1A1A">AI suggestions</text>
+<text x="425" y="212" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="14" fill="#5C6670">Ranked paths · no next step</text>
+<rect x="409" y="811" width="390" height="83" fill="rgba(255,255,255,0.96)"/>
+<line x1="409" y1="811" x2="799" y2="811" stroke="#D8E2EA"/>
+<g transform="translate(448,821) scale(0.9166666666666666,0.9166666666666666)" fill="#5C6670"><path d="M10.55 2.1a1.5 1.5 0 0 1 2.1.35l8 10A1.5 1.5 0 0 1 19.5 15H17v6.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 11 21.5V17H9v4.5A1.5 1.5 0 0 1 7.5 23h-3A1.5 1.5 0 0 1 3 21.5V15H.9a1.5 1.5 0 0 1-1.15-2.45l8-10a1.5 1.5 0 0 1 2.1-.35Z"/></g>
+<text x="457" y="859" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="400" fill="#5C6670">Visits</text>
+<g transform="translate(546,821) scale(0.9166666666666666,0.9166666666666666)" fill="#005FB8"><path d="M14.7 6.3a5 5 0 0 0-6.9 6.9L2 19l3 3 7.8-5.8a5 5 0 0 0 1.9-9.9Z"/></g>
+<text x="555" y="859" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#005FB8">Diagnose</text>
+<g transform="translate(644,821) scale(0.9166666666666666,0.9166666666666666)" fill="#5C6670"><path d="M12 2.2a1.2 1.2 0 0 1 .5.1l8 3.5a1.2 1.2 0 0 1 .7 1.1v9.2a1.2 1.2 0 0 1-.7 1.1l-8 3.5a1.2 1.2 0 0 1-1 0l-8-3.5a1.2 1.2 0 0 1-.7-1.1V6.9a1.2 1.2 0 0 1 .7-1.1l8-3.5a1.2 1.2 0 0 1 .5-.1Z"/></g>
+<text x="653" y="859" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="400" fill="#5C6670">Parts</text>
+<g transform="translate(742,821) scale(0.9166666666666666,0.9166666666666666)" fill="#5C6670"><path d="M9.8 2.7a1.9 1.9 0 0 1 3.4 0l.9 1.9 2.1.3a1.9 1.9 0 0 1 1 3.2l-1.5 1.5.4 2.1a1.9 1.9 0 0 1-2.7 2L12 12l-1.9 1-.4-2.1-1.5-1.5a1.9 1.9 0 0 1 1-3.2l2.1-.3.9-1.9Z"/></g>
+<text x="751" y="859" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="400" fill="#5C6670">AI</text>
+<rect x="537" y="880" width="134" height="5" rx="3" fill="#000" opacity="0.35"/>
+<text x="604" y="944" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" fill="#5C6670" letter-spacing="0.04em">02 · PROBLEM — Commit latency</text>
+<rect x="425" y="236" width="358" height="52" rx="12" fill="#FFF4E8" stroke="#C45C00"/>
+<g transform="translate(439,250) scale(0.8333333333333334,0.8333333333333334)" fill="#C45C00"><path d="M12 2.5a1 1 0 0 1 .9.55l9 18A1 1 0 0 1 21 22.5H3a1 1 0 0 1-.9-1.45l9-18a1 1 0 0 1 .9-.55Zm0 5.75a.75.75 0 0 0-.75.75v6.5a.75.75 0 0 0 1.5 0v-6.5a.75.75 0 0 0-.75-.75Zm0 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></g>
+<text x="467" y="268" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#C45C00">3 ranked paths · no clear next step</text>
+<rect x="425" y="296" width="358" height="72" rx="12" fill="#FFFFFF" stroke="#D8E2EA"/>
+<text x="439" y="324" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#5C6670">#1</text>
+<text x="465" y="324" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1A1A1A">Fuser assembly</text>
+<rect x="695" y="308" width="74" height="26" rx="8" fill="#FFF8E6"/>
+<text x="732" y="326" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#B8860B">62%</text>
+<rect x="425" y="376" width="358" height="72" rx="12" fill="#FFFFFF" stroke="#D8E2EA"/>
+<text x="439" y="404" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#5C6670">#2</text>
+<text x="465" y="404" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1A1A1A">Pickup roller kit</text>
+<rect x="695" y="388" width="74" height="26" rx="8" fill="#FFF8E6"/>
+<text x="732" y="406" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#B8860B">58%</text>
+<rect x="425" y="456" width="358" height="72" rx="12" fill="#FFFFFF" stroke="#D8E2EA"/>
+<text x="439" y="484" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#5C6670">#3</text>
+<text x="465" y="484" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1A1A1A">Main drive motor</text>
+<rect x="695" y="468" width="74" height="26" rx="8" fill="#FEF3F2"/>
+<text x="732" y="486" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#B42318">41%</text>
+<text x="425" y="554" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" fill="#5C6670">Technicians pause here before parts commit</text>
+</svg>

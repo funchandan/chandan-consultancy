@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts" / "lib"))
 
+from case_study.asset_validate import validate_wireframe_assets  # noqa: E402
 from case_study.copy_compose import load_copy  # noqa: E402
 from case_study.package import approvals_ready, feed_package, load_json  # noqa: E402
 from case_study.paths import OUT_DIR, PACKAGES_DIR, PROMOTED_DIR  # noqa: E402
@@ -37,6 +38,13 @@ def main() -> int:
             print(f"  - {e}", file=sys.stderr)
         return 1
 
+    asset_errors = validate_wireframe_assets(pkg)
+    if asset_errors:
+        for e in asset_errors:
+            print(f"  - {e}", file=sys.stderr)
+        print("Publish blocked — fix wireframe assets (see scripts/README-case-study.md).", file=sys.stderr)
+        return 1
+
     ready, missing = approvals_ready(pkg)
     if not ready and not args.force:
         print(f"Publish blocked — approvals missing: {', '.join(missing)}", file=sys.stderr)
@@ -51,6 +59,7 @@ def main() -> int:
         return 1
 
     from case_study.copy_compose import _artefact_index, _artefact_src, compose_copy_draft
+    from case_study.copy_rules import sanitize_copy_tree
 
     # Merge approved copy with fresh artefact paths for promoted asset prefix
     fresh = compose_copy_draft(pkg, asset_prefix="..")
@@ -60,15 +69,25 @@ def main() -> int:
         copy["hero_bg"] = fresh["hero_bg"]
     if fresh.get("hero_facts"):
         copy["hero_facts"] = fresh["hero_facts"]
-    # Keep approved project context (details, toolstack, narrative); do not overwrite from draft.
+    # Merge approved copy with fresh compose output (artefacts, narrative, beats).
     if fresh.get("hero_ab"):
         copy["hero_ab"] = fresh["hero_ab"]
     if fresh.get("hero_ticker"):
         copy["hero_ticker"] = fresh["hero_ticker"]
     if fresh.get("hero_deck") is not None:
         copy["hero_deck"] = fresh["hero_deck"]
-    if fresh.get("meta_description"):
-        copy["meta_description"] = fresh["meta_description"]
+    # Keep Paige-approved meta description; compose defaults are slug-incomplete.
+    if fresh.get("project_context"):
+        fpc = fresh["project_context"]
+        pc = copy.setdefault("project_context", {})
+        if fpc.get("product"):
+            pc["product"] = fpc["product"]
+        if fpc.get("narrative"):
+            pc["narrative"] = fpc["narrative"]
+        if fpc.get("impact"):
+            pc["impact"] = fpc["impact"]
+        if fpc.get("details"):
+            pc["details"] = fpc["details"]
     scan = copy.setdefault("scan", {})
     fresh_scan = fresh.get("scan") or {}
     if fresh_scan.get("exec_blocks"):
@@ -100,6 +119,7 @@ def main() -> int:
         # Keep Paige-approved narrative from copy-approved.json; refresh assets only.
         if fresh_beat.get("artefact_crop") is not None:
             beat["artefact_crop"] = fresh_beat["artefact_crop"]
+        # Keep Paige-approved narrative from copy-approved.json; refresh assets only.
     slug = pkg["meta"]["slug"]
     for beat in copy.get("scan", {}).get("beats") or []:
         aid = beat.get("artefact_id")
@@ -125,6 +145,7 @@ def main() -> int:
             "alt": alt,
             "variant": "portrait",
         }
+    copy = sanitize_copy_tree(copy)
     html = render_scan_page(pkg, copy, asset_prefix="..", promoted=True)
     PROMOTED_DIR.mkdir(parents=True, exist_ok=True)
     dest = PROMOTED_DIR / f"{args.slug}.html"

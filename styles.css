@@ -7597,6 +7597,34 @@ html[data-theme="dark"] .framework-step--close .framework-close__panel {
   object-fit: contain;
 }
 
+/* Stryker Field Logistics — max wireframe size inside ticker */
+.case-scan-page--stryker-field-logistics {
+  --case-ticker-stage-h: clamp(380px, min(52vh, 56vw), 620px);
+  --case-ticker-slide-w-portrait: calc(var(--case-ticker-stage-h) * 390 / 844);
+}
+
+.case-scan-page--stryker-field-logistics .case-hero-ticker {
+  min-height: calc(var(--case-ticker-stage-h) + clamp(28px, 3.6vw, 40px));
+}
+
+.case-scan-page--stryker-field-logistics .case-hero-ticker__stage {
+  min-height: var(--case-ticker-stage-h);
+  height: var(--case-ticker-stage-h);
+}
+
+.case-scan-page--stryker-field-logistics .case-hero-ticker__slide {
+  width: auto;
+  max-width: min(calc(var(--case-ticker-stage-h) * 0.52), 48vw);
+}
+
+.case-scan-page--stryker-field-logistics .case-hero-ticker__img {
+  width: auto;
+  height: var(--case-ticker-stage-h);
+  max-width: none;
+  max-height: var(--case-ticker-stage-h);
+  object-fit: contain;
+}
+
 /* MacBook Pro frame — inset matches macbook-pro-frame.svg (1200×740) */
 .case-scan-page--boutique .case-hero-ticker__macbook {
   position: relative;

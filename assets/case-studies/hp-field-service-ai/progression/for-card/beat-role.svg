@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="960" viewBox="0 0 1200 960" role="img" aria-label="Journey and architecture">
+<defs>
+  <linearGradient id="studio" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#EEF4F8"/><stop offset="100%" stop-color="#F8FAFC"/>
+  </linearGradient>
+  <marker id="arrowHead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+    <path d="M0,0 L8,4 L0,8 Z" fill="#0096D6"/>
+  </marker>
+</defs>
+<rect width="1200" height="960" fill="url(#studio)"/>
+<text x="56" y="52" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#005FB8" letter-spacing="0.1em">SYSTEM DESIGN · JOURNEY + ARCHITECTURE</text>
+<text x="56" y="80" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#1A1A1A">Diagnosis → parts handoff</text>
+<text x="56" y="106" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="14" fill="#5C6670">End-to-end alignment for field technicians</text>
+<text x="56" y="140" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#5C6670">USER JOURNEY</text>
+<rect x="56" y="164" width="200" height="64" rx="12" fill="#FFFFFF" stroke="#D8E2EA"/>
+<text x="156.0" y="192" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">Arrive</text>
+<text x="156.0" y="212" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" fill="#5C6670">Technician</text>
+<line x1="256" y1="196" x2="272" y2="196" stroke="#0096D6" stroke-width="2" marker-end="url(#arrowHead)"/>
+<rect x="272" y="164" width="200" height="64" rx="12" fill="#FFFFFF" stroke="#D8E2EA"/>
+<text x="372.0" y="192" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">Diagnose</text>
+<text x="372.0" y="212" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" fill="#5C6670">Technician</text>
+<line x1="472" y1="196" x2="488" y2="196" stroke="#0096D6" stroke-width="2" marker-end="url(#arrowHead)"/>
+<rect x="488" y="164" width="200" height="64" rx="12" fill="#E8F4FC" stroke="#D8E2EA"/>
+<text x="588.0" y="192" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">Verify</text>
+<text x="588.0" y="212" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" fill="#5C6670">Technician</text>
+<line x1="688" y1="196" x2="704" y2="196" stroke="#0096D6" stroke-width="2" marker-end="url(#arrowHead)"/>
+<rect x="704" y="164" width="200" height="64" rx="12" fill="#FFFFFF" stroke="#D8E2EA"/>
+<text x="804.0" y="192" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">Order</text>
+<text x="804.0" y="212" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" fill="#5C6670">Technician</text>
+<line x1="904" y1="196" x2="920" y2="196" stroke="#0096D6" stroke-width="2" marker-end="url(#arrowHead)"/>
+<rect x="920" y="164" width="200" height="64" rx="12" fill="#FFFFFF" stroke="#D8E2EA"/>
+<text x="1020.0" y="192" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">Close</text>
+<text x="1020.0" y="212" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" fill="#5C6670">First-time fix</text>
+<text x="56" y="280" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#5C6670">SERVICE ARCHITECTURE</text>
+<rect x="56" y="304" width="168" height="72" rx="12" fill="#FFFFFF" stroke="#D8E2EA"/>
+<text x="140.0" y="332" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">Mobile app</text>
+<text x="140.0" y="352" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" fill="#5C6670">React Native · offline-first</text>
+<rect x="248" y="304" width="168" height="72" rx="12" fill="#FFFFFF" stroke="#D8E2EA"/>
+<text x="332.0" y="332" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">API gateway</text>
+<text x="332.0" y="352" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" fill="#5C6670">Auth · rate limit · routing</text>
+<rect x="440" y="304" width="168" height="72" rx="12" fill="#E8F4FC" stroke="#D8E2EA"/>
+<text x="524.0" y="332" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">Diagnosis svc</text>
+<text x="524.0" y="352" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" fill="#5C6670">AI + rules engine</text>
+<rect x="632" y="304" width="168" height="72" rx="12" fill="#FFFFFF" stroke="#D8E2EA"/>
+<text x="716.0" y="332" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">Parts svc</text>
+<text x="716.0" y="352" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" fill="#5C6670">Inventory · reserve</text>
+<rect x="824" y="304" width="168" height="72" rx="12" fill="#FFFFFF" stroke="#D8E2EA"/>
+<text x="908.0" y="332" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">Sync queue</text>
+<text x="908.0" y="352" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" fill="#5C6670">Retry · conflict resolve</text>
+<line x1="224" y1="340" x2="248" y2="340" stroke="#0096D6" stroke-width="2" marker-end="url(#arrowHead)"/>
+<line x1="416" y1="340" x2="440" y2="340" stroke="#0096D6" stroke-width="2" marker-end="url(#arrowHead)"/>
+<line x1="608" y1="340" x2="632" y2="340" stroke="#0096D6" stroke-width="2" marker-end="url(#arrowHead)"/>
+<line x1="800" y1="340" x2="824" y2="340" stroke="#0096D6" stroke-width="2" marker-end="url(#arrowHead)"/>
+<rect x="56" y="420" width="1088" height="120" rx="16" fill="#FFFFFF" stroke="#D8E2EA"/>
+<text x="80" y="452" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">Context carry-over (no re-entry)</text>
+<text x="80" y="476" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" fill="#5C6670">diagnosisId, verified symptoms, and customer SLA pass from Diagnosis svc → Parts svc in one payload</text>
+<text x="80" y="508" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="#005FB8">PATCH /visits/{id}/handoff  →  POST /parts/reserve  →  WebSocket dispatch notify</text>
+<text x="600" y="932" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" fill="#5C6670">03 · ROLE — Journey map + architecture alignment</text>
+</svg>

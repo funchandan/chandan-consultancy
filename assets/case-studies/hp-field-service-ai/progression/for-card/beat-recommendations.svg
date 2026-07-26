@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="960" viewBox="0 0 1200 960" role="img" aria-label="05 · SHIP — Scan &amp; confirm">
+<defs>
+  <linearGradient id="studio" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#EEF4F8"/><stop offset="100%" stop-color="#F8FAFC"/>
+  </linearGradient>
+  <filter id="devShadow"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity="0.14"/></filter>
+</defs>
+<rect width="1200" height="960" fill="url(#studio)"/>
+<text x="80" y="76" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#005FB8" letter-spacing="0.12em">FIELD SERVICE · SYNTHETIC HIFI</text>
+<text x="80" y="108" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" fill="#5C6670">UX · UI · Architecture · Backend</text>
+<rect x="395" y="36" width="418" height="872" rx="54" fill="#1C1C1E" filter="url(#devShadow)"/>
+<rect x="409" y="50" width="390" height="844" rx="44" fill="#F4F7FA"/>
+<rect x="541" y="60" width="126" height="37" rx="19" fill="#000"/>
+<text x="437" y="88" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#1A1A1A">9:41</text>
+<rect x="409" y="104" width="390" height="44" fill="#F4F7FA"/>
+<text x="604" y="132" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="17" font-weight="700" fill="#005FB8">Field Service</text>
+<text x="425" y="188" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="30" font-weight="700" fill="#1A1A1A">Order part</text>
+<text x="425" y="212" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="14" fill="#5C6670">Next-best-action · backend handoff</text>
+<rect x="409" y="811" width="390" height="83" fill="rgba(255,255,255,0.96)"/>
+<line x1="409" y1="811" x2="799" y2="811" stroke="#D8E2EA"/>
+<g transform="translate(448,821) scale(0.9166666666666666,0.9166666666666666)" fill="#5C6670"><path d="M10.55 2.1a1.5 1.5 0 0 1 2.1.35l8 10A1.5 1.5 0 0 1 19.5 15H17v6.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 11 21.5V17H9v4.5A1.5 1.5 0 0 1 7.5 23h-3A1.5 1.5 0 0 1 3 21.5V15H.9a1.5 1.5 0 0 1-1.15-2.45l8-10a1.5 1.5 0 0 1 2.1-.35Z"/></g>
+<text x="457" y="859" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="400" fill="#5C6670">Visits</text>
+<g transform="translate(546,821) scale(0.9166666666666666,0.9166666666666666)" fill="#5C6670"><path d="M14.7 6.3a5 5 0 0 0-6.9 6.9L2 19l3 3 7.8-5.8a5 5 0 0 0 1.9-9.9Z"/></g>
+<text x="555" y="859" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="400" fill="#5C6670">Diagnose</text>
+<g transform="translate(644,821) scale(0.9166666666666666,0.9166666666666666)" fill="#005FB8"><path d="M12 2.2a1.2 1.2 0 0 1 .5.1l8 3.5a1.2 1.2 0 0 1 .7 1.1v9.2a1.2 1.2 0 0 1-.7 1.1l-8 3.5a1.2 1.2 0 0 1-1 0l-8-3.5a1.2 1.2 0 0 1-.7-1.1V6.9a1.2 1.2 0 0 1 .7-1.1l8-3.5a1.2 1.2 0 0 1 .5-.1Z"/></g>
+<text x="653" y="859" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#005FB8">Parts</text>
+<g transform="translate(742,821) scale(0.9166666666666666,0.9166666666666666)" fill="#5C6670"><path d="M9.8 2.7a1.9 1.9 0 0 1 3.4 0l.9 1.9 2.1.3a1.9 1.9 0 0 1 1 3.2l-1.5 1.5.4 2.1a1.9 1.9 0 0 1-2.7 2L12 12l-1.9 1-.4-2.1-1.5-1.5a1.9 1.9 0 0 1 1-3.2l2.1-.3.9-1.9Z"/></g>
+<text x="751" y="859" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="400" fill="#5C6670">AI</text>
+<rect x="537" y="880" width="134" height="5" rx="3" fill="#000" opacity="0.35"/>
+<text x="604" y="944" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" fill="#5C6670" letter-spacing="0.04em">05 · SHIP — Scan &amp; confirm</text>
+<rect x="425" y="236" width="358" height="88" rx="16" fill="#E6F4EC" stroke="#0E7A3E"/>
+<g transform="translate(439,250) scale(0.8333333333333334,0.8333333333333334)" fill="#0E7A3E"><path d="M9.8 2.7a1.9 1.9 0 0 1 3.4 0l.9 1.9 2.1.3a1.9 1.9 0 0 1 1 3.2l-1.5 1.5.4 2.1a1.9 1.9 0 0 1-2.7 2L12 12l-1.9 1-.4-2.1-1.5-1.5a1.9 1.9 0 0 1 1-3.2l2.1-.3.9-1.9Z"/></g>
+<text x="469" y="264" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0E7A3E" letter-spacing="0.06em">NEXT BEST ACTION</text>
+<text x="469" y="286" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#1A1A1A">Verify fuser · scan to confirm</text>
+<text x="469" y="306" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" fill="#5C6670">Rationale: error E45 + jam pattern match</text>
+<rect x="425" y="332" width="358" height="120" rx="16" fill="#FFFFFF" stroke="#D8E2EA" stroke-dasharray="6 4"/>
+<g transform="translate(580,356) scale(2.0,2.0)" fill="#0096D6"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h3v2h-3a.5.5 0 0 0-.5.5v3H4V6.5ZM17 4h-3v2h3a.5.5 0 0 1 .5.5v3h2V6.5A2.5 2.5 0 0 0 17 4ZM6.5 20a.5.5 0 0 1-.5-.5v-3H4v3A2.5 2.5 0 0 0 6.5 22h3v-2h-3ZM20 16.5v3a2.5 2.5 0 0 1-2.5 2.5h-3v-2h3a.5.5 0 0 0 .5-.5v-3h2Z"/></g>
+<text x="604" y="420" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1A1A1A">Scan part barcode</text>
+<text x="604" y="438" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" fill="#5C6670">Closes loop on physical reality</text>
+<rect x="425" y="460" width="358" height="56" rx="10" fill="#1E293B"/>
+<text x="437" y="482" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="#94A3B8">POST /api/v2/parts/reserve</text>
+<text x="437" y="500" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#64748B">{"diagnosisId":"dx-8842","partSku":"FU-7740"}</text>
+</svg>

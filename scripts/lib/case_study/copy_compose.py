@@ -5,6 +5,15 @@ import shutil
 import subprocess
 from pathlib import Path
 
+from case_study.copy_rules import (
+    compose_hero_deck,
+    compose_impact_metrics,
+    compose_narrative_arc,
+    compose_product_description,
+    sanitize_copy_tree,
+    sanitize_prose,
+)
+
 REPO_ROOT = Path(__file__).resolve().parents[3]
 
 
@@ -263,39 +272,10 @@ def _build_project_context_points(pkg: dict) -> dict:
     """BYJU'S — cohesive design-practice narrative for project context cards."""
     meta = pkg["meta"]
     base = _build_project_context_default(pkg)
-    base["product"]["description"] = (meta.get("hero_deck") or "").strip()
-    base["details"][1]["text"] = "Design lead · foundational study"
-    base["narrative"] = [
-        {
-            "title": "Problem",
-            "subtitle": "Loop not legible",
-            "body": (
-                "Learners earned points and creator coins but could not describe how to spend them. "
-                "Attendance and session time dropped while the product prepared to scale marketplace "
-                "and avatar UI—without a validated earn-and-spend story in the journey."
-            ),
-        },
-        {
-            "title": "Approach",
-            "subtitle": "Design practice",
-            "body": (
-                "I framed the retention question with product, built moderated stimulus on the "
-                "design system (not throwaway comps), and paired every verbatim to the frame on screen. "
-                "Engineering reviewed the same components before recommendations became a ship plan."
-            ),
-        },
-        {
-            "title": "Outcome",
-            "subtitle": "Shippable foundation",
-            "body": (
-                "One ledger, onboarding before the shop, and aspiration-led marketplace framing—"
-                "staged so ledger clarity shipped first. Post-launch: 43% higher attendance and 27% "
-                "higher course completion in the weeks from the milestone."
-            ),
-        },
-    ]
-    base["impact"]["metrics"][0]["caption"] = "From launch milestone · directional programme metric"
-    base["impact"]["metrics"][1]["caption"] = "Students who finished the course"
+    base["product"]["description"] = compose_product_description(pkg)
+    base["details"][1]["text"] = "Design lead · system and UX"
+    base["narrative"] = compose_narrative_arc(pkg)
+    base["impact"]["metrics"] = compose_impact_metrics(pkg)
     return base
 
 
@@ -436,8 +416,7 @@ def _build_project_context_default(pkg: dict) -> dict:
         "product": {
             "label": "Product",
             "name": meta.get("client_safe_name", "Byju's FutureSchool"),
-            "description": (meta.get("hero_deck") or "").strip()
-            or res.get("objective_notes", ""),
+            "description": compose_product_description(pkg),
         },
         "details_approved_by": "",
         "details": [
@@ -534,15 +513,17 @@ def _build_project_context_default(pkg: dict) -> dict:
 
 
 def _build_project_context(pkg: dict) -> dict:
-    if pkg["meta"].get("slug") == "points-marketplace-foundational":
+    slug = pkg["meta"].get("slug")
+    if slug == "points-marketplace-foundational":
         return _build_project_context_points(pkg)
-    return _build_project_context_default(pkg)
+    ctx = _build_project_context_default(pkg)
+    ctx["narrative"] = compose_narrative_arc(pkg)
+    ctx["impact"]["metrics"] = compose_impact_metrics(pkg)
+    return ctx
 
 
 def _normalize_project_context(meta: dict, pkg: dict) -> dict:
-    raw = meta.get("project_context")
-    if isinstance(raw, dict) and raw.get("product"):
-        return raw
+    """Build from composer templates; package meta.project_context is not SSOT for narrative."""
     return _build_project_context(pkg)
 
 
@@ -578,127 +559,14 @@ def compose_copy_draft(pkg: dict, *, asset_prefix: str = "..") -> dict:
 
     hero_facts = _normalize_hero_facts(meta)
     project_context = _normalize_project_context(meta, pkg)
-    hero_deck = (meta.get("hero_deck") or "").strip()
+    hero_deck = compose_hero_deck(pkg)
 
     if slug == "points-marketplace-foundational":
         beats = _beats_points_marketplace(pkg, quotes, insights, recommendations)
     else:
-        beats = [
-            {
-                "id": "beat_objective",
-                "section": "Objective",
-                "glyph": BEAT_GLYPHS["01"],
-                "step": "01",
-                "title": "Objective",
-                "lead": "Set the rewards mental model before we scale UI.",
-                "body": (
-                    "Product was ready to invest in marketplace and avatar work "
-                    "without a shared earn and spend story."
-                ),
-                "heuristic": _heuristic(
-                    "Match between system and real world",
-                    "In IDIs, learners named heroes and powers—not ledger types or conversion rules the product never explained.",
-                    "Wallet, avatar grid, and redeem paths in the DS-aligned stimulus (15 sessions, grades 1–8, US + IN).",
-                ),
-                "artefact_id": "A1",
-            },
-            {
-                "id": "beat_problem",
-                "section": "Problem",
-                "glyph": BEAT_GLYPHS["02"],
-                "step": "02",
-                "title": "Problem",
-                "subtitle": "Engagement dropped when the loop was hard to read.",
-                "lead": (
-                    "Platform time and class attendance fell. "
-                    "Loyalty mechanics were not in the journey."
-                ),
-                "body": (
-                    "Kids stacked points and creator coins with no clear redeem path."
-                ),
-                "quotes": quotes,
-                "heuristic": _heuristic(
-                    "Visibility of system status",
-                    "After class 8, points piled up while attendance and time-on-platform fell—no visible earn or spend loop.",
-                    "Synthesis tied platform decline to loyalty mechanics missing from the journey.",
-                ),
-                "artefact_id": "A2",
-            },
-            {
-                "id": "beat_role_method",
-                "section": "My role / Methodology",
-                "glyph": BEAT_GLYPHS["03"],
-                "step": "03",
-                "title": "My role and methodology",
-                "lead": (
-                    "I led the design research flow end to end with product and engineering in the room."
-                ),
-                "body": (
-                    "Framed the problem, built Figma stimulus on the design system, and validated "
-                    "components with the team before ship. Ran 15 IDIs (US and IN, grades 1-8) and "
-                    "tech checks so recommendations were feasible to build."
-                ),
-                "heuristic": _heuristic(
-                    "Consistency and standards",
-                    "Findings had to ship: product and engineering reviewed the same components used in moderated sessions.",
-                    "FutureSchool design-system frames—not throwaway comps—across all 15 IDIs.",
-                ),
-                "artefact_id": "A3",
-            },
-            {
-                "id": "beat_insights",
-                "section": "Insights",
-                "glyph": BEAT_GLYPHS["04"],
-                "step": "04",
-                "title": "User testing",
-                "subtitle": "Testing the objective against the marketplace stimulus.",
-                "lead": (
-                    "Fifteen sessions. Every theme maps to a frame in Figma, not a survey row."
-                ),
-                "body": (
-                    "HCI signal and UI evidence stay paired: what they said is what they pointed at on screen."
-                ),
-                "insight_bullets": insights[:4],
-                "heuristic": _heuristic(
-                    "Help prevent mistakes",
-                    "Redemption intent was there; the UI offered no obvious next step on the marketplace surface.",
-                    "Each verbatim mapped to the wallet or grid frame the learner was viewing.",
-                    before="Points? nothing, i just have them, i dont know what to do with them",
-                    after="Quote pinned to marketplace frame with balance visible but no redeem affordance.",
-                ),
-                "artefact_id": "A5",
-            },
-            {
-                "id": "beat_recommendations",
-                "section": "Recommendations",
-                "glyph": BEAT_GLYPHS["05"],
-                "step": "05",
-                "title": "Recommendations and implementation guide",
-                "lead": (
-                    "One ledger, onboarding before the shop, aspiration-led avatars."
-                ),
-                "body": (
-                    "Ship with HCI components (balance, spend path), design tokens, "
-                    "UX writing guidelines, in-product comms, and a clear earn-to-spend journey."
-                ),
-                "implementation": [
-                    "HCI: single balance, spent history, visible next action on marketplace surfaces.",
-                    "Tokens: align reward states to design system color and type roles.",
-                    "Guidelines: plain earn/spend copy; no parallel currency names in child UI.",
-                    "Comms: onboarding modules at deploy (how to earn, how to spend).",
-                    "Journey: earn in class → see balance → redeem before deeper marketplace browse.",
-                ],
-                "recommendation_bullets": recommendations[:4],
-                "heuristic": _heuristic(
-                    "Recognition rather than recall",
-                    "Dual currency forced kids to invent rules (e.g. one coin equals two points) instead of reading one balance.",
-                    "Recommendation: single spendable-points ledger plus earn/spend onboarding before shop exposure.",
-                    before="I think 1 coin = 2 points because coins are more precious than points",
-                    after="One ledger, plain language, onboarding before marketplace browse.",
-                ),
-                "artefact_id": "A4",
-            },
-        ]
+        # Non-BYJU slugs: gallery beats live in copy-approved.json only.
+        # Do not fall back to the points-marketplace template (cross-study contamination).
+        beats = []
 
     hero_bg_cfg = meta.get("hero_bg") or {}
     hero_style = hero_bg_cfg.get("style", "devices")
@@ -791,13 +659,16 @@ def compose_copy_draft(pkg: dict, *, asset_prefix: str = "..") -> dict:
             "stimulus, moderated testing, and shippable earn-and-spend decisions."
             if slug == "points-marketplace-foundational"
             else (
-                f"{title} Foundational UX research on why loyalty mechanics failed "
-                "and what earn-and-spend should mean for a K-8 math platform."
+                f"{title} Enterprise mobile UX for orders, part tracking, "
+                "delivery, surgical use, and returns."
+                if slug == "stryker-field-logistics"
+                else f"{title} Case study."
             )
         )
     )
 
-    return {
+    return sanitize_copy_tree(
+        {
         "slug": slug,
         "version": 14,
         "hero_bg": {
@@ -841,6 +712,7 @@ def compose_copy_draft(pkg: dict, *, asset_prefix: str = "..") -> dict:
             "href": "mailto:hello@example.com?subject=Earn-and-spend%20UX%20research",
         },
     }
+    )
 
 
 def _programme_detail_blocks(pkg: dict) -> dict:

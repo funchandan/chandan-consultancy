@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="960" viewBox="0 0 1200 960" role="img" aria-label="01 · OBJECTIVE — Visit context">
+<defs>
+  <linearGradient id="studio" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#EEF4F8"/><stop offset="100%" stop-color="#F8FAFC"/>
+  </linearGradient>
+  <filter id="devShadow"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity="0.14"/></filter>
+</defs>
+<rect width="1200" height="960" fill="url(#studio)"/>
+<text x="80" y="76" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#005FB8" letter-spacing="0.12em">FIELD SERVICE · SYNTHETIC HIFI</text>
+<text x="80" y="108" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" fill="#5C6670">UX · UI · Architecture · Backend</text>
+<rect x="395" y="36" width="418" height="872" rx="54" fill="#1C1C1E" filter="url(#devShadow)"/>
+<rect x="409" y="50" width="390" height="844" rx="44" fill="#F4F7FA"/>
+<rect x="541" y="60" width="126" height="37" rx="19" fill="#000"/>
+<text x="437" y="88" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#1A1A1A">9:41</text>
+<rect x="409" y="104" width="390" height="44" fill="#F4F7FA"/>
+<text x="604" y="132" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="17" font-weight="700" fill="#005FB8">Field Service</text>
+<text x="425" y="188" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="30" font-weight="700" fill="#1A1A1A">Today's visit</text>
+<text x="425" y="212" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="14" fill="#5C6670">Field app home · UX framing</text>
+<rect x="409" y="811" width="390" height="83" fill="rgba(255,255,255,0.96)"/>
+<line x1="409" y1="811" x2="799" y2="811" stroke="#D8E2EA"/>
+<g transform="translate(448,821) scale(0.9166666666666666,0.9166666666666666)" fill="#005FB8"><path d="M10.55 2.1a1.5 1.5 0 0 1 2.1.35l8 10A1.5 1.5 0 0 1 19.5 15H17v6.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 11 21.5V17H9v4.5A1.5 1.5 0 0 1 7.5 23h-3A1.5 1.5 0 0 1 3 21.5V15H.9a1.5 1.5 0 0 1-1.15-2.45l8-10a1.5 1.5 0 0 1 2.1-.35Z"/></g>
+<text x="457" y="859" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#005FB8">Visits</text>
+<g transform="translate(546,821) scale(0.9166666666666666,0.9166666666666666)" fill="#5C6670"><path d="M14.7 6.3a5 5 0 0 0-6.9 6.9L2 19l3 3 7.8-5.8a5 5 0 0 0 1.9-9.9Z"/></g>
+<text x="555" y="859" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="400" fill="#5C6670">Diagnose</text>
+<g transform="translate(644,821) scale(0.9166666666666666,0.9166666666666666)" fill="#5C6670"><path d="M12 2.2a1.2 1.2 0 0 1 .5.1l8 3.5a1.2 1.2 0 0 1 .7 1.1v9.2a1.2 1.2 0 0 1-.7 1.1l-8 3.5a1.2 1.2 0 0 1-1 0l-8-3.5a1.2 1.2 0 0 1-.7-1.1V6.9a1.2 1.2 0 0 1 .7-1.1l8-3.5a1.2 1.2 0 0 1 .5-.1Z"/></g>
+<text x="653" y="859" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="400" fill="#5C6670">Parts</text>
+<g transform="translate(742,821) scale(0.9166666666666666,0.9166666666666666)" fill="#5C6670"><path d="M9.8 2.7a1.9 1.9 0 0 1 3.4 0l.9 1.9 2.1.3a1.9 1.9 0 0 1 1 3.2l-1.5 1.5.4 2.1a1.9 1.9 0 0 1-2.7 2L12 12l-1.9 1-.4-2.1-1.5-1.5a1.9 1.9 0 0 1 1-3.2l2.1-.3.9-1.9Z"/></g>
+<text x="751" y="859" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="400" fill="#5C6670">AI</text>
+<rect x="537" y="880" width="134" height="5" rx="3" fill="#000" opacity="0.35"/>
+<text x="604" y="944" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" fill="#5C6670" letter-spacing="0.04em">01 · OBJECTIVE — Visit context</text>
+<rect x="425" y="236" width="358" height="108" rx="16" fill="#FFFFFF" stroke="#D8E2EA"/>
+<g transform="translate(439,250) scale(0.8333333333333334,0.8333333333333334)" fill="#0096D6"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/></g>
+<text x="469" y="268" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="16" font-weight="600" fill="#1A1A1A">Acme Corp · Printer 7740</text>
+<text x="469" y="288" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" fill="#5C6670">2210 Market St · Bay 3</text>
+<rect x="439" y="304" width="120" height="28" rx="8" fill="#E8F4FC"/>
+<g transform="translate(447,308) scale(0.6666666666666666,0.6666666666666666)" fill="#005FB8"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 5a.75.75 0 0 1 .75.75v4.69l3.72 2.23a.75.75 0 1 1-.74 1.3l-4-2.4A.75.75 0 0 1 11.25 12V7.75A.75.75 0 0 1 12 7Z"/></g>
+<text x="469" y="323" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#005FB8">SLA 42m left</text>
+<rect x="425" y="356" width="358" height="64" rx="12" fill="#E8F4FC" stroke="#0096D6"/>
+<g transform="translate(439,374) scale(0.9166666666666666,0.9166666666666666)" fill="#005FB8"><path d="M14.7 6.3a5 5 0 0 0-6.9 6.9L2 19l3 3 7.8-5.8a5 5 0 0 0 1.9-9.9Z"/></g>
+<text x="469" y="384" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#005FB8">Open ticket · paper jam + error E45</text>
+<text x="469" y="404" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="12" fill="#5C6670">Context loads before you leave the truck</text>
+<rect x="425" y="428" width="358" height="52" rx="14" fill="#005FB8"/>
+<text x="604" y="460" text-anchor="middle" font-family="'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="16" font-weight="600" fill="#fff">Start AI-assisted diagnosis</text>
+</svg>

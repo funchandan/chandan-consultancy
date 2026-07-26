@@ -11,6 +11,7 @@ ARCHIVE (lo-fi wireframes):
 
 Regenerate hi-fi:
   python3 scripts/generate-stryker-logistics-hifi.py
+  python3 scripts/generate-stryker-logistics-hifi.py --png   # hero-ticker/ + beats/ screen crops (390×844)
 
 Alignment + copy:
   _bmad-output/planning-artifacts/stryker-field-logistics-alignment-v1.md
